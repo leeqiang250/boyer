@@ -104,7 +104,7 @@ googleplus_hidden: false
 # Google Analytics
 #其中 Google Analytics 是Octopress自带的统计工具，使用方式也非常简单，只需要到 Google Analytics 申请一个 app id ，填写到 _config.yml 文件中的 google_analytics_tracking_id 后面即可。
 
-google_analytics_tracking_id: UA-51742113-1
+google_analytics_tracking_id: UA-51742113-2
 
 # Facebook Like
 # facebook_like: false
