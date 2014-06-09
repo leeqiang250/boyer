@@ -1,17 +1,15 @@
-Date: 2014-06-06  
-Title: duoshuo comments  
-Published: true  
-Type: post  
-Excerpt: 
 ---
 layout: post
 title: 初步搭建Octopress
 date: 2014-06-09 23:26:22 +0800
 comments: true
-tags: [octopress,blog,github,mou,ruby]  <!--标签-->
+tags: octopress,blog,github,mou,ruby  <!--标签-->
 keywords: boys,octopress,技术			<!--搜索关键字-->
 description: 如何搭建Octopress
+Published: true  
+Type: post  
 categories: Octopress
+Excerpt: 
 ---
 ####软件支持：
 1. **Github**:后台新建项目，点击[下载](https://help.github.com/articles/set­up­git)

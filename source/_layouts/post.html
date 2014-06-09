@@ -33,12 +33,12 @@ single: true
 {% endif %}
 
 <!-- 添加多说模块 -->
-{ % if site.duoshuo_short_name and site.duoshuo_comments == true and  page.comments == true % }
+{% if site.duoshuo_short_name and site.duoshuo_comments == true and  page.comments == true %}
 			<section>
     			<h1>多说留言</h1>
-    				<div id="comments" aria-live="polite">{ % include post/duoshuo.html % }</div>
+    				<div id="comments" aria-live="polite">{% include post/duoshuo.html %}</div>
     		</section>
-{ % endif % }
+{% endif %}
 
 </div>
 {% unless page.sidebar == false %}
