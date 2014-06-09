@@ -1,0 +1,17 @@
+---
+layout: page
+title: 抱歉，你要访问的网页不存在
+date: 2014-06-09 23:12
+comments: true
+sharing: true
+footer: false
+---
+
+<h3> 看看下面有木有你要找的东东？</h3>
+<div id="blog-archives">
+{% for post in site.posts limit: 10 %}
+<article>
+  {% include archive_post.html %}
+</article>
+{% endfor %}
+</div>

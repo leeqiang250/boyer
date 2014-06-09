@@ -1,3 +1,19 @@
 <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--  取除Google字体
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+<!-- Octopress博客中默认是在当前页面中打开第三方链接，通过以下设置可避免这种问题，不过本站链接还是在当前页面打开的 -->
+<script type="text/javascript">
+ function addBlankTargetForLinks () {
+	 $('a[href^="http"]').each(function() { 
+	 	$(this).attr('target','_blank');
+	  });
+}
+
+ $(document).bind('DOMNodeInserted', function(event)
+{
+ addBlankTargetForLinks(); 
+ });
+ </script>
