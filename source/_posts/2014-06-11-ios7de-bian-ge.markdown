@@ -101,12 +101,77 @@ Now consider the use of your new subclass in the code below:
   Strive to use instancetype as much as possible going forward; it’s become a standard for Apple — and you never know when it will save you some painful debugging time later on.
 
 ###2. `UIPasteboard`由共享变为沙盒化了
+  
 3. `MAC地址`:统一化，不能再用来识别设备
-4. app启动麦克风，需争征得用户同意
+  
+###4. app启动麦克风，需争征得用户同意  
+  
+  以前如果app需要使用用户的位置，通讯录，日历，提醒以及照片，接受推送消息，使用用户的社交网络的时候需要征得用户的同意。
+  现在在iOS7当中，使用麦克风也需要取得用户同意了。如果用户不允许app使用麦克风的话，那么需要使用麦克风的app就不能接收不到任何声音。
+  以下的代码是用来查询用户是否允许app使用麦克风：  
+			
+	//第一次调用这个方法的时候，系统会提示用户让他同意你的app获取麦克风的数据 
+	// 其他时候调用方法的时候，则不会提醒用户 
+	// 而会传递之前的值来要求用户同意 
+	[[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) { 
+										    if (granted) { 
+												        // 用户同意获取数据 
+												    } else { 
+												        // 可以显示一个提示框告诉用户这个app没有得到允许？ 
+												    } 
+										    }
+    ];
+如果没有经过用户同意，就调用麦克风，iOS系统自动弹出以下警示栏：
+![image](/images/microphone.jpg)
+
+###Tint images with `UIImage.renderingMode`
+Tinting is a big part of the new look and feel of iOS 7, and you have control whether your image is tinted or not when rendered.   
+UIImage now has a read-only property named `renderingMode` as well as a new method `imageWithRenderingMode:` which uses the new enum `UIImageRenderingMode` containing the following possible values:
+	
+	// Use the default rendering mode for the context where the image is used
+		UIImageRenderingModeAutomatic      
+	// Always draw the original image, without treating it as a template
+		UIImageRenderingModeAlwaysOriginal 
+	// Always draw the image as a template image, ignoring its color information
+		UIImageRenderingModeAlwaysTemplate 
+The default value of renderingMode is UIImageRenderingModeAutomatic.  
+Whether the image will be tinted or not depends on where it’s being displayed as shown by the examples below:	  
+![image](/images/uiimagerenderingmode.png)  
+The code below shows how easy it is to create an image with a given rendering mode:
+												
+	UIImage *img = [UIImage imageNamed:@"myimage"]; 
+	img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]; 
+
+###Usage of tintColor vs barTintColor
+In iOS 7 you can tint your entire app with a given color or even implement color themes to help your app stand out from the rest.Setting the tint color of your app is as easy as using the new property `tintColor` of `UIView`.  
+Does that property sound familiar? it should — some classes such as `UINavigationBar`, `UISearchBar`, `UITabBar` and `UIToolbar` already had a property with this name. They now have a new property: `barTintColor`.  
+In order to avoid getting tripped up by the new property, you should perform the following check if your app needs to support iOS 6 or earlier:
+
+	UINavigationBar *bar = self.navigationController.navigationBar;
+	UIColor *color = [UIColor greenColor];
+	
+	if ([bar respondsToSelector:@selector(setBarTintColor:)]) { 
+			// iOS 7+
+			    bar.barTintColor = color;
+	} else { 
+			// iOS 6 or earlier
+			    bar.tintColor = color;
+	}
+
+###Check which wireless routes are available
+The ability to customize a video player (and friends) has evolved throughout the past few iOS versions. As an example, prior to iOS 6 you couldn’t change the AirPlay icon on a `MPVolumeView`.  
+In iOS 7, you’re finally able to know if a remote device is available via AirPlay, Bluetooth, or some other wireless mechanism. This allows your app to behave appropriately, such as hiding an AirPlay icon when that service isn’t available on other devices.  
+The following two new properties and notifications have been added to MPVolumeView:
 
 
-
-
+	 // is there a route that the device can connect to?
+		@property (nonatomic, readonly) BOOL wirelessRoutesAvailable;
+			
+	 // is the device currently connected?
+		@property (nonatomic, readonly) BOOL wirelessRouteActive;   	
+		
+	NSString *const MPVolumeViewWirelessRoutesAvailableDidChangeNotification;
+	NSString *const MPVolumeViewWirelessRouteActiveDidChangeNotification;
 
 
 
