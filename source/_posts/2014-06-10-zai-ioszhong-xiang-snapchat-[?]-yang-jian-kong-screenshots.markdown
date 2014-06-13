@@ -4,7 +4,7 @@ title: "在IOS中像(SnapChat)一样监控screenshots"
 date: 2014-06-10 18:45:37 +0800
 comments: true
 publiced: true
-tags: screenshot,SnapChat,截屏
+tags: [screenshot,SnapChat,截屏]
 keywords:  screenshot,SnapChat
 categories: screenshot
 ---

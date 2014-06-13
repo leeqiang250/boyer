@@ -3,7 +3,7 @@ layout: post
 title: "IOS7的变革"
 date: 2014-06-11 10:17:19 +0800
 comments: true
-tags: IOS7
+tags: [IOS7,变革,huos]
 keywords: 新特性, IOS7,优化,废弃,优点
 categories: IOS7
 ---

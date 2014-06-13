@@ -4,7 +4,7 @@ title: "IOS7截屏问题"
 date: 2014-06-10 18:29:31 +0800
 comments: true
 publiced: true
-tags: screenshot,SnapChat,截屏
+tags: [screenshot,SnapChat,截屏]
 keywords:  screenshot,SnapChat
 categories: screenshot
 ---
