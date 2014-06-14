@@ -23,3 +23,51 @@
 
 gem 'octopress-popular-posts'
 gem 'nokogiri', '1.6.2.1'
+
+
+brew install libiconv
+
+brew link libiconv --force
+
+sudo gem install nokogiri -- --with-iconv-dir=/usr/local/Cellar/libiconv/1.14
+
+bundle install
+
+brew uninstall rbenv
+brew uninstall ruby-build
+
+admindeair:MyBlog admin$ brew install libiconv
+==> Downloading http://ftpmirror.gnu.org/libiconv/libiconv-1.14.tar.gz
+######################################################################## 100.0%
+==> Downloading https://trac.macports.org/export/89276/trunk/dports/textproc/libiconv/files/patch-Makefile
+######################################################################## 100.0%
+==> Downloading https://trac.macports.org/export/89276/trunk/dports/textproc/libiconv/files/patch-utf8mac.
+######################################################################## 100.0%
+==> Patching
+patching file Makefile.devel
+Hunk #1 succeeded at 106 (offset 1 line).
+patching file lib/converters.h
+patching file lib/encodings.def
+patching file lib/utf8mac.h
+patching file lib/flags.h
+==> ./configure --prefix=/usr/local/Cellar/libiconv/1.14 --enable-extra-encodings
+==> make -f Makefile.devel CFLAGS= CC=clang
+==> make install
+==> Caveats
+This formula is keg-only, so it was not symlinked into /usr/local.
+
+Mac OS X already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+Generally there are no consequences of this for you. If you build your
+own software and it requires this formula, you'll need to add to your
+build variables:
+
+    LDFLAGS:  -L/usr/local/opt/libiconv/lib
+    CPPFLAGS: -I/usr/local/opt/libiconv/include
+
+==> Summary
+🍺  /usr/local/Cellar/libiconv/1.14: 26 files, 1.4M, built in 72 seconds
+
+
+

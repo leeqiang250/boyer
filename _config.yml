@@ -46,6 +46,8 @@ paginate: 10          # Posts per page on the blog index  每页展示blog的个
 pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section  左侧最近发表blog的数量
 
+popular_posts_count: 5      # Posts in the sidebar Popular Posts section 设置边栏显示最热文章数
+
 # 在某篇blog中使用<!-- more -->，起到截取保留前半部分的作用，列表页就不会展现该blog全文，就会显示这个read on链接，指向blog全文
 # excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
 excerpt_link: "阅读更多 →"
@@ -57,7 +59,7 @@ titlecase: true       # Converts page and post titles to titlecase
 # 右侧边栏的展现，有些要下面的设置配合，比如你没有配置github_user，则这儿也不会展现github.html
 # 也可以增加一些自己的页面，比如在/source/_includes/custom/asides/下增加about.html
 # 然后在列表中增加custom/asides/about.html即可，这儿前后的顺序，就代表了页面上下的次序 
-default_asides: [asides/recent_posts.html, asides/recent_comments.html, asides/category_list.html, custom/asides/category_cloud.html, custom/asides/tags.html, custom/asides/tag_cloud.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html,  custom/asides/weibo.html, asides/earth.html]
+default_asides: [custom/asides/popular_posts.html, asides/recent_posts.html, asides/recent_comments.html, asides/category_list.html, custom/asides/category_cloud.html, custom/asides/tags.html, custom/asides/tag_cloud.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html,  custom/asides/weibo.html, asides/earth.html]
 
 # Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
 # and add an array with the asides you want to use.
