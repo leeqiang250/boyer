@@ -104,13 +104,13 @@ module Jekyll
       if self.layouts.key? 'tag_index'
         dir = self.config['tag_dir'] || 'tags'
         self.tags.keys.each do |tag|
-#           self.write_tag_index(File.join(dir, tag.to_url), tag)
+          self.write_tag_index(File.join(dir, tag.to_url), tag)
 
-		  cate_dir =  tag.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase
-	      cate_dir = URI::escape(cate_dir)
-	      cate_dir = URI::parse(cate_dir)
-	      cate_dir = cate_dir.to_s
-	      self.write_tag_index(File.join(dir, cate_dir), tag)
+# 		  cate_dir =  tag.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase
+# 	      cate_dir = URI::escape(cate_dir)
+# 	      cate_dir = URI::parse(cate_dir)
+# 	      cate_dir = cate_dir.to_s
+# 	      self.write_tag_index(File.join(dir, cate_dir), tag)
 
         end
 
