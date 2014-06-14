@@ -14,7 +14,7 @@
         {% endif %}
         
         <!--       添加多说模块 -->
-      {% if site.duoshuo_short_name and page.comments != false and post.comments != false and site.duoshuo_comments == true %} | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#comments">多说留言板</a>
+      {% if site.duoshuo_short_name and page.comments != false and post.comments != false and site.duoshuo_comments == true %} | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#comments">多说板</a>
 	  {% endif %}
       </p>
       
@@ -32,19 +32,10 @@
   {% endif %}
 {% else %}
 <div class="entry-content">{{ content }}</div>
-
-{% endif %}
-
 <!-- 让文章支持短连接-->
 {% dlj_tag %}
 
-<section>
-    <h2>相关博文：</h2>
-    <ul class="posts">
-       {% for post in site.related_posts limit:5 %}
-          <li class="related">
-          <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
-          </li>
-      {% endfor %}
-      </ul>
-</section>
+{% endif %}
+
+
+

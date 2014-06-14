@@ -24,7 +24,18 @@ single: true
         <a class="basic-alignment right" href="{{page.next.url}}" title="Next Post: {{page.next.title}}">{{page.next.title}} &raquo;</a>
       {% endif %}
     </p>
+      <section>
+    <h6>您可能感兴趣的博文：</h6>
+    <ul class="posts">
+       {% for post in site.related_posts limit:5 %}
+          <li class="related">
+          <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+          </li>
+      {% endfor %}
+      </ul>
+</section>
   </footer>
+
 </article>
 {% if site.disqus_short_name and page.comments == true %}
   <section>
@@ -38,7 +49,7 @@ single: true
 <!-- 添加多说模块 -->
 {% if site.duoshuo_short_name and site.duoshuo_comments == true and  page.comments == true %}
 			<section>
-    			<h1>多说留言</h1>
+    			<h1>多说板</h1>
     				<div id="comments" aria-live="polite">{% include post/duoshuo.html %}</div>
     		</section>
 {% endif %}

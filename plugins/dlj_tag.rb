@@ -31,7 +31,7 @@ module Jekyll
         dlj_url = Dljbz.shorten(current_url).short_url
       end
       dlj =  "<div class='dljbz' style='font-size:14px;'>"
-      dlj += "原文地址：<a href='#{dlj_url}'>#{dlj_url}</a>"
+      dlj += "快链：<a href='#{dlj_url}'>#{dlj_url}</a>"
       dlj += "</div>"
     rescue Exception => e
       puts "......dlj error: #{e.inspect}"
