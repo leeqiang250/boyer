@@ -50,6 +50,7 @@ module Jekyll
 
   end
 
+
   # The CategoryFeed class creates an Atom feed for the specified category.
   class CategoryFeed < Page
 
@@ -108,7 +109,15 @@ module Jekyll
       if self.layouts.key? 'category_index'
         dir = self.config['category_dir'] || 'categories'
         self.categories.keys.each do |category|
-          self.write_category_index(File.join(dir, category.to_url), category)
+#           self.write_category_index(File.join(dir, category.to_url), category)
+          
+# 		self.write_category_index(File.join(dir, URI::parse(URI::escape(category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase)).to_s), category)
+		
+		  cate_dir =  category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase
+	      cate_dir = URI::escape(cate_dir)
+	      cate_dir = URI::parse(cate_dir)
+	      cate_dir = cate_dir.to_s
+	      self.write_category_index(File.join(dir, cate_dir), category)
         end
 
       # Throw an exception if the layout couldn't be found.
@@ -130,6 +139,8 @@ ERR
   end
 
 
+
+
   # Jekyll hook - the generate method is called by jekyll, and generates all of the category pages.
   class GenerateCategories < Generator
     safe true
@@ -140,8 +151,7 @@ ERR
     end
 
   end
-
-
+    
   # Adds some extra filters used during the category creation process.
   module Filters
 

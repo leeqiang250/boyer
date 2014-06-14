@@ -19,3 +19,7 @@
 </footer>
 {% endif %}
 -->
+
+
+gem 'octopress-popular-posts'
+gem 'nokogiri', '1.6.2.1'

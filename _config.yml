@@ -33,7 +33,7 @@ destination: public/MyBlog
 plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
-tag_dir: tags
+tag_dir: blog/tags
 markdown: rdiscount
 rdiscount:
   extensions:

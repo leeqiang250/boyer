@@ -165,4 +165,4 @@ module Jekyll
 
 end
 
-Liquid::Template.register_tag('tag_cloud', Jekyll::TagCloud)
+Liquid::Template.register_tag('tag1_cloud', Jekyll::TagCloud)

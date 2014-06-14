@@ -1,3 +1,4 @@
+# encoding: utf-8
 # WP-Cumulus for Octopress, originally developed by weefselkweekje and LukeMorton for WordPress.
 # Ported to Octopress by Joseph Z. Chang.
 #
@@ -38,6 +39,7 @@
 # MIT License: http://opensource.org/licenses/MIT
 #
 
+require 'stringex'
 
 module Jekyll
 
@@ -73,16 +75,18 @@ module Jekyll
       max, min = 1, 1
       config = context.registers[:site].config
       
-      if @tag_name == 'tag2_cloud'
+      if @tag_name == 'tag_cloud'
         cloud_dir = config['tag_dir']
-        cloud = context.registers[:site].tags
+# 		cloud_dir = context.registers[:site].config['tag_dir']
+		cloud = context.registers[:site].tags
       else
         cloud_dir = config['category_dir']
+# 		cloud_dir = context.registers[:site].config['category_dir']
         cloud = context.registers[:site].categories
       end
       
 #       cloud_dir = config['url'] + config['root'] + cloud_dir + '/'
-	  cloud_dir = config['url'] + '/' + cloud_dir + '/'
+      cloud_dir = config['url'] + '/' + cloud_dir + '/'
       #categories = context.registers[:site].categories
       cloud.keys.sort_by{ |str| str.downcase }.each do |item|
         count = cloud[item].count
@@ -111,7 +115,7 @@ module Jekyll
 
 
       lists.each do | item, counter |
-        url = cloud_dir + item.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
+        url = cloud_dir + item.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase.to_url
         style = "font-size: #{10 + (40 * Float(counter)/max)}%"
 
         tagcloud << "<a href='#{url}' style='#{style}'>#{item}"
@@ -132,4 +136,4 @@ module Jekyll
 end
 
 Liquid::Template.register_tag('category_cloud', Jekyll::CategoryCumulusCloud)
-Liquid::Template.register_tag('tag2_cloud', Jekyll::CategoryCumulusCloud)
+Liquid::Template.register_tag('tag_cloud', Jekyll::CategoryCumulusCloud)
