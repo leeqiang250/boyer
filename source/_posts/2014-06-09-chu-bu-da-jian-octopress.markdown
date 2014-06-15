@@ -19,13 +19,12 @@ categories: Octopress
 <!-- more -->
 
 ####学习目的：
-要求:我们需要自己搭建一个独立博客网站,需要什么?首先要有台连接到英特网服务器,要有前端的页面,要后端的数据库,要有域名等.  
+要求:搭建一个独立博客网站,首先要有台连接到英特网服务器,要有前端的页面和后端的数据库,以及域名等.  
   
-1. github可以提供给我们的是,github一个免费的代码托管仓库,它支持用户html页面的显示,也就是说，用户可以上传HTML文件,然后在远程像访问网页一样访问它。  
+1. github可以提供给我们的是,github一个免费的代码托管仓库,它支持用户html页面的显示,用户可以上传HTML文件,然后在远程像访问网页一样访问它。  
 
-2. 按照我们的设想1,我们这时候还缺网站的后台,数据库这些,github并不提供这些,数据库的作用是提高管理能力,对于个人博客这种数据规模很小,便可返璞归真,用回静态页面。
-	- 对于计算机和一切能被用来改造这个世界的事物的使用都不应受到任何限制, 任何试图隐藏系统的复杂性的行为都只会得到一个更为复杂的系统。
-3. 静态页面用起来很复杂,我们需要**Octopress**这样的引擎来帮我们干“重活”,我们可以关注于自己博客中的内容,用过HTML的都知道,内容需要写的标记,我们要把这些工作也简化,便有了Markdown,我们使用Markdown来描述我们的内容,然后由引擎“翻译”为HTML页面。
+2. 这时，博客还缺具有管理能力的网站后台,github不提供数据库等，对于博客这种数据规模很小,便可返璞归真,用回静态页面。
+3. **Octopress**:能将易于编写的**Markdown**的文本，翻译成为繁琐的**html**页面，同时帮助用户管理**html**页面并发布到github page上。
 
 ####搭建环境：
 
@@ -56,7 +55,7 @@ categories: Octopress
   
 博文是用markdown语法，另外扩充一些插件，网上相关介绍很多，例如：[这个](http://daringfireball.net/projects/markdown/)  
 
-* 新建Markdown文件: 		 `rake new_post['文章名']`
+* 新建Markdown文件: 		 `rake new_post['文章名']`或 `rake new_page['404']`
 * 翻译Mardown为静态文件:   `rake generate` 
 * 检测文件变化：			`rake watch`
 * 启动本机测试端口4000：  `rake preview`
@@ -188,31 +187,32 @@ categories: Octopress
 	* 将内容push到github后，大概需审核一个小时左右生效，然后就可以使用自己的域名访问该博客了。  
 
 * ######添加百度统计和google analytics  
-	* 从百度统计获取脚本,然后添加到文件source/_includes/after_footer.html文件中。
-	* 从google analytics获取跟踪ID,然后将这个ID添加到_config.yml文件的google_analytics_tracking_id后面即可。  
+	* 从[百度统计](http://tongji.baidu.com/)获取脚本,然后添加到文件source/_includes/after_footer.html文件中。
+	* 从[google analytics](https://support.google.com/analytics/)获取跟踪ID,然后将这个ID添加到_config.yml文件的google_analytics_tracking_id后面即可。  
 <!--![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "title text")-->  
 
 * **Octopress**目录结构，及之间的关系：  
 ￼![alt text](/images/sourceFrame.png "Octopress目录图解")  
 
 * ######原理：
-	* Octopress其实为你建立了2各分支：
-		* master分支：用于存放生成的最终网页。
-		* source分支:用于存放最初的markdown文件。
+	* Octopress版本库：
+		* **gh-pages**分支：用于存放生成的最终网页。
+		* **source**分支:用于存放最初的markdown文件。
 	  
-	 职责详述：平时写作和提交都在source分支下，当需要发布时，rake deploy 命令会将内容生成到public这个目录，然后将这个目录中的内容当做master分支的内容同步至github远程库中。
+	 职责详述：平时写作和提交都在**source**分支下，当需要发布时，`rake deploy` 命令会将内容生成到public这个目录，然后将这个目录中的内容push到**gh-pages**分支中。
 	 
 - * 其中**sass**和**source**:这是博客的源代码文件目录。发布时，需要把源代码也上传到github上,这样便可以多台机写博客了。
 - * **_deploy**:是通过octopress生成的静态页面的博客文件夹,我们可以看到它的里面也有.git的文件。 
 	- cd进到该目录,使用`git remote ­v`查看
 	
-			origin http://github.com/xunyn/xunyn.github.io(fetch) 
-			origin http://github.com/xunyn/xunyn.github.io(push)  
-	- 它会在我们使用rake deploy时自动push到 我们的路径下。这时候我们不需要在自已去push。但是博客源代码是需要我们自己push到github的server的.  
+			origin http://github.com/....github.io(fetch) 
+			origin http://github.com/....github.io(push)  
+	- 它会在我们使用`rake deploy`时自动push到该远程库的**gh-pages**分支。这时就不需要再手动push。只需要将博客源代码手动push到该远程库的**source**分支中.
+	**以上细节可参照Octopress根目录中Rakefile配置信息**  
 - * 使用多台电脑的同时写博客
-	- 1. 需要先拿把source code拿下来 `git pull origin source` 
-	- 2. 然后在更改了source后,`check in`更新,将本地 source update github的代码仓库上 
+	- 1. 需要先拿把**source** code拿下来 `git pull origin source` 
+	- 2. `check in`更新,将本地 **source**分支上的代码，合并到远程仓库上 
 	
 				git add . 
 				git commit -m 'yourmessage' 
-				git push origin source
+				git push origin source
