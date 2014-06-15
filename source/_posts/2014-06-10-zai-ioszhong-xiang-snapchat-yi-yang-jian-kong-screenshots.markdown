@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "在IOS中像(SnapChat)一样监控screenshots"
+title: "在IOS中像SnapChat一样监控screenshots"
 date: 2014-06-10 18:45:37 +0800
 comments: true
 publiced: true
