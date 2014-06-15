@@ -17,9 +17,10 @@ date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /MyBlog/atom.xml
-subscribe_email: 724987481@qq.com
+subscribe_email: 724987481@qq.com    #提供Email订阅的地址
+
 # RSS feeds can list your email address if you like
-email:
+email: 724987481@qq.com				#Rss订阅的Email地址
 
 # ----------------------- #
 #    Jekyll & Plugins     #
