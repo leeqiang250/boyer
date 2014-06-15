@@ -59,7 +59,7 @@ titlecase: true       # Converts page and post titles to titlecase
 # 右侧边栏的展现，有些要下面的设置配合，比如你没有配置github_user，则这儿也不会展现github.html
 # 也可以增加一些自己的页面，比如在/source/_includes/custom/asides/下增加about.html
 # 然后在列表中增加custom/asides/about.html即可，这儿前后的顺序，就代表了页面上下的次序 
-default_asides: [custom/asides/popular_posts.html, asides/recent_posts.html, asides/recent_comments.html, asides/category_list.html, custom/asides/category_cloud.html, custom/asides/tags.html, custom/asides/tag_cloud.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html,  custom/asides/weibo.html, asides/earth.html]
+default_asides: [custom/asides/popular_posts.html, asides/recent_posts.html, asides/recent_comments.html, asides/category_list.html, custom/asides/tags.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html,  custom/asides/weibo.html, asides/earth.html]
 
 # Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
 # and add an array with the asides you want to use.
