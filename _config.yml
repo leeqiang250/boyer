@@ -34,13 +34,21 @@ destination: public/MyBlog
 plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
-tag_dir: blog/tags
-markdown: rdiscount
+tag_dir: blog/tags					# 配置tags_dir目录
+
+#默认情况下,jekyll在对含有英文字母的有序列表,无法正常解析,是由markdown默认解析器导致的,解决方法如下:
+#编辑_config.yml文件，在pygments:true上面添加一行markdown: rdiscount,重启jekyll。
+#如果发现没有效果,请先安装rdiscount,另外请记住,如果在列表中行使用代码区块,请加入两个制表符或8个空格:
+#安装rdiscount : sudo gem install rdiscount
+markdown: rdiscount					#jekyll的默认解释器,jekyll的默认markdown引擎是maruku。现在要改为 rdiscount。
 rdiscount:
   extensions:
     - autolink
     - footnotes
     - smart
+
+#由于有部分的组件还会依赖到python，所以这里建议也安装上python（语法着色器pygments是python组件），虽然不安装也没问题，只是代码没有显示着色。
+#打开_config.yml，找到pygments把它的值修改为false，这样我们就不需要安装pygments了。（注意，如果不注释掉会出现请求正常，但网页是空白的情况）。
 pygments: false # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index  每页展示blog的个数，起到分页效果
@@ -70,6 +78,18 @@ default_asides: [custom/asides/popular_posts.html, asides/recent_posts.html, asi
 # post_asides:
 # page_asides:
 
+
+
+
+#MetaWeblog:
+MetaWeblog: 
+ SINA: 
+  MetaWeblog_username: '13598405623'
+  MetaWeblog_url: http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php 
+  MetaWeblog_blogid: 20009
+
+
+
 # ----------------------- #
 #   3rd Party Settings    #
 # ----------------------- #
@@ -85,13 +105,13 @@ github_skip_forks: true
 # twitter_tweet_button: true
 
 # Google +1
-# google_plus_one: false
-# google_plus_one_size: medium
+google_plus_one: true
+google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-# googleplus_user: huos3203@gmail.com
-# googleplus_hidden: false
+googleplus_user: huos3203@gmail.com
+googleplus_hidden: false
 
 # Pinboard
 # pinboard_user:
@@ -122,12 +142,5 @@ duoshuo_asides_num: 10      # 侧边栏评论显示条目数
 duoshuo_asides_avatars: 0   # 侧边栏评论是否显示头像
 duoshuo_asides_time: 0      # 侧边栏评论是否显示时间
 duoshuo_asides_title: 0     # 侧边栏评论是否显示标题
-duoshuo_asides_admin: 0     # 侧边栏评论是否显示作者评论
+duoshuo_asides_admin: 1     # 侧边栏评论是否显示作者评论
 duoshuo_asides_length: 18   # 侧边栏评论截取的长度
-
-#MetaWeblog:
-MetaWeblog: 
- SINA: 
-  MetaWeblog_username: '13598405623'
-  MetaWeblog_url: http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php 
-  MetaWeblog_blogid: 20009

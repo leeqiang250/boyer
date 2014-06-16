@@ -33,7 +33,7 @@ module HighlightCode
     end
     highlighted_code
   end
-  def tableize_code (str, lang = '')
+  def tableize_code (str, lang = '')		#主要是修改这个方法
     table = '<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers">'
     code = ''
     str.lines.each_with_index do |line,index|

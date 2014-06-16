@@ -105,14 +105,20 @@ Now consider the use of your new subclass in the code below:
 现在提供了一种全新的简单易用的方式来展示HTML内容，适用于任意的`UIKit`控件，如`UILabel`或`UITextField`等。   
 1.用少量HTML片段，初始化`NSAttributedString`对象:
 
+{% codeblock lang:objc Time to be Awesome - awesome.rb %}
 	NSString *html = @"<bold>Wow!</bold> Now <em>iOS</em> can create <h3>NSAttributedString</h3> from HTMLs!";
 	NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
+{% endcodeblock %}
 	
-	NSData *htmlData = [html dataUsingEncoding:NSUTF8StringEncoding];
-	NSAttributedString *attrString = [[NSAttributedString alloc] initWithData:htmlData
+``` objc 用少量HTML片段，初始化`NSAttributedString`对象 http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSAttributedString_Class/
+NSString *html = @"<bold>Wow!</bold> Now <em>iOS</em> can create <h3>NSAttributedString</h3> from HTMLs!";
+	NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
+NSData *htmlData = [html dataUsingEncoding:NSUTF8StringEncoding];
+NSAttributedString *attrString = [[NSAttributedString alloc] initWithData:htmlData
 												                      options:options 
 									                       documentAttributes:nil 
 									   			                        error:nil];
+```								   	
 NSDocumentTypeDocumentAttribute包括:
 
 	NSPlainTextDocumentType		//Plain text document.
@@ -121,16 +127,7 @@ NSDocumentTypeDocumentAttribute包括:
 
 2.相反，也可以将`NSAttributedString`对象，解析成HTML片段：
 
-	NSAttributedString *attrString; // from previous code
-	NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
-	 
-	NSData *htmlData = [attrString dataFromRange:NSMakeRange(0, [attrString length])
-							 documentAttributes:options 
-								 		 error:nil];  
-								 				
-	NSString *htmlString = [[NSString alloc] initWithData:htmlData 
-												 encoding:NSUTF8StringEncoding];	
-
+{% gist ecba275d5e4404678354 gistfile1.m %}	
 
 ###6.NSLinkAttributeName让标签（UILabel,UITextView）支持超链接
  
