@@ -92,7 +92,7 @@ module MetaWeblogSync
 	end
 
 	def getLatestBlogPath
-	  html = getHtmlBy('/../public/index.html')
+	  html = getHtmlBy('/../public/MyBlog/index.html')
 
 	  # get latest post path
 	  path = html.css('//h1[@class="entry-title"]/a')[0]['href']

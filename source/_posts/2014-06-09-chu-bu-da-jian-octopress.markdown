@@ -69,111 +69,121 @@ categories: Octopress
 * ######底部评论：
 	
 	* 在 <font color=red> _config.yml</font> 	中添加 
-	 
-			##duoshuo comments	
-			duoshuo_comments: true	
-			duoshuo_short_name: yourname
+{%codeblock lang:ruby %}
+#duoshuo comments	
+duoshuo_comments: true	
+duoshuo_short_name: yourname
+{%endcodeblock%}
+* 在<font color=red>`source/_layouts/post.html`</font>中的<font color=red> disqus</font>代码：
 
-	* 在<font color=red>`source/_layouts/post.html`</font>中的<font color=red> disqus</font>代码：
-	
-			{ % if site.disqus_short_name and page.comments == true % }
-				<section>
-					<h1>Comments</h1>
-			 		<div id="disqus_thread" aria-live="polite">{ % include post/disqus_thread.html % }</div>
-				</section>
-			{ % endif % }
-	
-		下方添加 <font color=red>多说评论</font> 模块:
+{%codeblock lang:js %}
+{ % if site.disqus_short_name and page.comments == true % }
+	<section>
+		<h1>Comments</h1>
+ 		<div id="disqus_thread" aria-live="polite">{ % include post/disqus_thread.html % }</div>
+	</section>
+{ % endif % }
+{%endcodeblock%}
+下方添加 <font color=red>多说评论</font> 模块:
 
-			{ % if site.duoshuo_short_name and site.duoshuo_comments == true and  page.comments == true % }
-			<section>
-    			<h1>Comments</h1>
-    				<div id="comments" aria-live="polite">{ % include post/duoshuo.html % }</div>
-    				</section>
-			{ % endif % }  
-	* 然后就按路径创建一个<font color=red>source/_includes/post/duoshuo.html</font>	
-	
-			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-title="{% if site.titlecase %}{{ post.title | site.titlecase }}{% else %}{{ post.title }}{% endif %}"></div>
-			<script type="text/javascript">
-			  var duoshuoQuery = {short_name:"{{ site.duoshuo_short_name }}"};
-			  (function() {
-			    var ds = document.createElement('script');
-			    ds.type = 'text/javascript';
-			    ds.async = true;
-			    ds.src = 'http://static.duoshuo.com/embed.js';
-			    ds.charset = 'UTF-8';
-			    (document.getElementsByTagName('head')[0]  || document.getElementsByTagName('body')[0]).appendChild(ds); 
-			    })();
-			</script>
-			<!-- Duoshuo Comment END -->  
-	  
-	  
-	* 随后，再修改 <font color=red>_includes/article.html </font>文件,
-		
-			
-			{ % if site.disqus_short_name and page.comments != false and post.comments !=false and site.disqus_show_comment_count == true % } 
-						 | <a href="{ % if index % }{{ root_url }}{{ post.url }}{ % endif % }#disqus_thread">Comments</a> 
-		    { % endif % }
+{%codeblock lang:js %}
+{ % if site.duoshuo_short_name and site.duoshuo_comments == true and  page.comments == true % }
+<section>
+ 			<h1>Comments</h1>
+ 				<div id="comments" aria-live="polite">{ % include post/duoshuo.html % }</div>
+ 				</section>
+{ % endif % }{%endcodeblock%}
 
-		  
-		下方添加如下<font color=red>多说评论链接路径</font>
-	
-			{ % if site.duoshuo_short_name 		and page.comments != false and post.comments != false and site.duoshuo_comments == true % }
-			| <a href="{ % if index % }{{ root_url }}{{ post.url }}{ % endif % }#comments">Comments</a>
-			{ % endif % }  
-* ######首页侧边栏插入最新评论
-	* 首先在 _config.yml 中再插入如下代码
-	
-			duoshuo_asides_num: 10      # 侧边栏评论显示条目数
-			duoshuo_asides_avatars: 0   # 侧边栏评论是否显示头像
-			duoshuo_asides_time: 0      # 侧边栏评论是否显示时间
-			duoshuo_asides_title: 0     # 侧边栏评论是否显示标题
-			duoshuo_asides_admin: 0     # 侧边栏评论是否显示作者评论
-			duoshuo_asides_length: 18   # 侧边栏评论截取的长度	  
-	* 再创建 <font color=red>_includes/custom/asides/recent_comments.html</font>
+* 然后就按路径创建一个<font color=red>source/_includes/post/duoshuo.html</font>    
+  
+{%codeblock lang:js %}
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread" data-title="{% if site.titlecase %}{{ post.title | site.titlecase }}{% else %}{{ post.title }}{% endif %}"></div>
+	<script type="text/javascript">
+	  var duoshuoQuery = {short_name:"{{ site.duoshuo_short_name }}"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';
+	    ds.async = true;
+	    ds.src = 'http://static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0]  || document.getElementsByTagName('body')[0]).appendChild(ds); 
+	    })();
+	</script>
+	<!-- Duoshuo Comment END -->  
+{%endcodeblock%}
 
-			<section>
-			<h1>Recent Comments</h1>
-		    <ul class="ds-recent-comments"
-		     data-num-items="{{ site.duoshuo_asides_num }}"
-		      data-show-avatars="{{ site.duoshuo_asides_avatars }}"
-		       data-show-time="{{ site.duoshuo_asides_time }}"
-		        data-show-title="{{ site.duoshuo_asides_title }}"
-		         data-show-admin="{{ site.duoshuo_asides_admin }}" 
-		         data-excerpt-length="{{ site.duoshuo_asides_length }}"></ul>
-		    { % if index % }
-			<!-- 多说js加载开始，一个页面只需要加载一次 -->
-					<script type="text/javascript">
-					  var duoshuoQuery = {short_name:"{{ site.duoshuo_short_name }}"};
-					  (function() {
-					    var ds = document.createElement('script');
-					    ds.type = 'text/javascript';
-					    ds.async = true;
-					    ds.src = 'http://static.duoshuo.com/embed.js';
-					    ds.charset = 'UTF-8';
-					    (document.getElementsByTagName('head')[0]  || 
-					    document.getElementsByTagName('body')[0]).appendChild(ds); 
-					    })();
-					</script>	
-			<!-- 多说js加载结束，一个页面只需要加载一次 -->
-		    { % endif % }
-			</section>	  
-	* 最后修改：<font color=red>_config.yml </font>配置:  
-		* 方式一：在<font color=red> blog_index_asides</font> 行或 <font color=red>page_asides </font>行或 <font color=red>post_asides </font>添加：
-			
-				blog_index_asides:[custom/asides/recent_comments.html]
-				或
-				page_asides:[custom/asides/recent_comments.html]
-				或
-				post_asides:[custom/asides/recent_comments.html]
-				
-		* 方式二：将路径添加到 default_asides:[...] 中
-		
-				default_asides: [custom/asides/recent_comments.html, asides/recent_posts.html, ...]
-	* Update
+随后，再修改 <font color=red>_includes/article.html </font>文件,  
+```	js  
+{ % if site.disqus_short_name and page.comments != false and post.comments !=false and site.disqus_show_comment_count == true % } 
+			 | <a href="{ % if index % }{{ root_url }}{{ post.url }}{ % endif % }#disqus_thread">Comments</a> 
+{ % endif % }
+```  
 
-			多说评论似乎升级了系统，无法自动获取到页面文章标题，所以手动在评论页插入 data-title。--2013.09.10
+下方添加如下<font color=red>多说评论链接路径</font>：  
+  
+{%codeblock lang:js %}
+{ % if site.duoshuo_short_name and page.comments != false and post.comments != false and site.duoshuo_comments == true % }
+| <a href="{ % if index % }{{ root_url }}{{ post.url }}{ % endif % }#comments">Comments</a>
+{ % endif % }{%endcodeblock %}
+
+* ######首页侧边栏插入最新评论  
+  * 首先在 _config.yml 中再插入如下代码  
+	{%codeblock lang:ruby %}
+	duoshuo_asides_num: 10      # 侧边栏评论显示条目数
+	duoshuo_asides_avatars: 0   # 侧边栏评论是否显示头像
+	duoshuo_asides_time: 0      # 侧边栏评论是否显示时间
+	duoshuo_asides_title: 0     # 侧边栏评论是否显示标题
+	duoshuo_asides_admin: 0     # 侧边栏评论是否显示作者评论
+	duoshuo_asides_length: 18   # 侧边栏评论截取的长度	{%endcodeblock %}  
+   				  
+  * 再创建 <font color=red>_includes/custom/asides/recent_comments.html</font>  
+{%codeblock lang:html %}
+<section>
+<h1>Recent Comments</h1>
+   <ul class="ds-recent-comments"
+    data-num-items="{{ site.duoshuo_asides_num }}"
+     data-show-avatars="{{ site.duoshuo_asides_avatars }}"
+      data-show-time="{{ site.duoshuo_asides_time }}"
+       data-show-title="{{ site.duoshuo_asides_title }}"
+        data-show-admin="{{ site.duoshuo_asides_admin }}" 
+        data-excerpt-length="{{ site.duoshuo_asides_length }}"></ul>
+   { % if index % }
+<!-- 多说js加载开始，一个页面只需要加载一次 -->
+		<script type="text/javascript">
+		  var duoshuoQuery = {short_name:"{{ site.duoshuo_short_name }}"};
+		  (function() {
+		    var ds = document.createElement('script');
+		    ds.type = 'text/javascript';
+		    ds.async = true;
+		    ds.src = 'http://static.duoshuo.com/embed.js';
+		    ds.charset = 'UTF-8';
+		    (document.getElementsByTagName('head')[0]  || 
+		    document.getElementsByTagName('body')[0]).appendChild(ds); 
+		    })();
+		</script>	
+<!-- 多说js加载结束，一个页面只需要加载一次 -->
+   { % endif % }
+</section>{%endcodeblock %}  
+
+* 最后修改：<font color=red>_config.yml </font>配置:  
+	* 方式一：在<font color=red> blog_index_asides</font> 行或 <font color=red>page_asides </font>行或 <font color=red>post_asides </font>添加：
+  
+{%codeblock lang:ruby %}
+blog_index_asides:[custom/asides/recent_comments.html]
+或
+page_asides:[custom/asides/recent_comments.html]
+或
+post_asides:[custom/asides/recent_comments.html]
+{%endcodeblock %}    
+
+   * 方式二：将路径添加到 default_asides:[...] 中
+{%codeblock lang:ruby %}
+default_asides: [custom/asides/recent_comments.html, asides/recent_posts.html, ...]
+{%endcodeblock %}
+   * Update  
+	``` html
+	 多说评论似乎升级了系统，无法自动获取到页面文章标题，所以手动在评论页插入 data-title。--2013.09.10	```
 ####Tips:
 * ######发布图文：
 如果在文章中上传图片：
@@ -204,15 +214,40 @@ categories: Octopress
 - * 其中**sass**和**source**:这是博客的源代码文件目录。发布时，需要把源代码也上传到github上,这样便可以多台机写博客了。
 - * **_deploy**:是通过octopress生成的静态页面的博客文件夹,我们可以看到它的里面也有.git的文件。 
 	- cd进到该目录,使用`git remote ­v`查看
-	
-			origin http://github.com/....github.io(fetch) 
-			origin http://github.com/....github.io(push)  
-	- 它会在我们使用`rake deploy`时自动push到该远程库的**gh-pages**分支。这时就不需要再手动push。只需要将博客源代码手动push到该远程库的**source**分支中.
+{%codeblock lang:js %}
+origin http://github.com/....github.io(fetch) 
+origin http://github.com/....github.io(push) 
+{%endcodeblock%}  
+- 它会在我们使用`rake deploy`时自动push到该远程库的**gh-pages**分支。这时就不需要再手动push。只需要将博客源代码手动push到该远程库的**source**分支中.
 	**以上细节可参照Octopress根目录中Rakefile配置信息**  
 - * 使用多台电脑的同时写博客
 	- 1. 需要先拿把**source** code拿下来 `git pull origin source` 
 	- 2. `check in`更新,将本地 **source**分支上的代码，合并到远程仓库上 
-	
-				git add . 
-				git commit -m 'yourmessage' 
-				git push origin source
+```
+git add . 
+git commit -m 'yourmessage' 
+git push origin source
+```			
+######版本管理
+
+你可以先去github上新建一个空的Repo（最好是private的，否则可能会被其他人拿到你的source），拿到repo的url，然后到octopress目录下执行下面这些操作：
+``` ruby
+# 因为你是从octopress github上clone的，所以需要把origin这个branch换一个名字
+git remote rename origin octopress
+git remote add origin (your github url)
+# 把你的github branch作为默认的branch
+git config branch.master.remote origin
+# 把你的octopress导入到github上去
+git push -u origin master
+```
+如果你新增加了博客或者修改了某些内容，你可以把你的改动commit到github上去：
+```
+git add source
+git commit -a -m 'new blog or edit some blog'
+git push -u origin master
+```
+如果octopress有更新，你可以直接pull octopress这个branch进行更新即可
+```
+git pull octopress master
+git push -u origin master
+```
