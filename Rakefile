@@ -403,6 +403,10 @@ task :list do
   puts "(type rake -T for more detail)\n\n"
 end
 
+#########################
+#同步博客 start
+##########################
+
 desc "sync latest post to MetaWeblog site"
 task :sync_latest_post, :passwd do |t, args|
   puts "Sync the latest post to MetaWeblog site"
@@ -442,3 +446,7 @@ task :sync_post_by_title, :title, :passwd do |t, args|
     system "ruby plugins/sync_post_by_title.rb  \"" + args[:title] +"\""
   end
 end
+
+#########################
+#同步博客 end
+##########################

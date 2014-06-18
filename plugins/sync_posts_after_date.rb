@@ -1,4 +1,5 @@
 require './plugins/sync_post.rb'
+puts "sync_posts_after_date.rb"
 raise "post date should not be empty" if($*[0] == nil)
 begin
 	date = Date.parse($*[0])
