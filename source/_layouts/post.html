@@ -14,7 +14,8 @@ single: true
       {% include post/tags.html %} <!-- 添加标签-->
     </p>
     {% unless page.sharing == false %}
-      {% include post/sharing.html %}
+<!--   google_plus_one，twitter_tweet_button，facebook_like  	 -->
+    	{% include post/sharing.html %}
     {% endunless %}
     <p class="meta">
       {% if page.previous.url %}
