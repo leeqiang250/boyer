@@ -22,10 +22,15 @@
 	  {% endif %}
 	  
 	  	   <!-- 在博文标题头部，增加如下分享模块 google_plus_one，twitter_tweet_button，facebook_like  	 -->
-	   {% unless page.sharing == false %}
+	   <!--
+{% unless page.sharing == false %}
     		| {% include post/sharing.html %}
-    	{% endunless %}
-    
+       {% endunless %}
+-->
+<!-- 	  {% if site.google_plus_one %} -->
+<!-- 	 	| <span class="g-plusone" data-size="{{ site.google_plus_one_size }}"></span> -->
+<!-- 	  {% endif %} -->
+	    
       </p>
       
 
