@@ -6,7 +6,7 @@ comments: true
 categories: TextKit
 ---
 
-####[TextKit之便笺](http://cdn4.raywenderlich.com/wp-content/uploads/2013/09/TextKitNotepad-starter.zip)实战
+####TextKit之便笺实战 [Notepad.zip](http://cdn4.raywenderlich.com/wp-content/uploads/2013/09/TextKitNotepad-starter.zip)
 * ##### 便笺练习功能点:
 通过实现以下特效，练习并掌握布局管理器（layout manger），文本容器（text containers）和文本存储器（text storage）等用法。
   * 动态样式（Dynamic type）  
@@ -85,6 +85,7 @@ cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
 }
 {%endcodeblock%}  
 Build并运行app，修改字体大小设置，Note页面就可以即时更新字体大小了。
+<!--more-->
 
   * * * ######更新布局
   现在，如果你把字体设置到很小，那每个单元格的空白区域是不是太多了，看上去文字比较稀疏，如下面所示：  
