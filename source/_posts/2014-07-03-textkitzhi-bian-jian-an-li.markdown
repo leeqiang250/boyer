@@ -534,7 +534,6 @@ w+   	 	 —— 后接一个或多个 “word”式 字符串
 s   	  —— 以空格结尾  
 {%endcodeblock%}
 > <font size=3>注：如果你想对正则表达式有更多了解，请参考 [NSRegularExpression tutorial and cheat sheet](http://www.raywenderlich.com/30288/nsregularexpression-tutorial-and-cheat-sheet).</font>  
-剩下的正则表达式你自己参照上面的解释来分析一下权作练习怎么样。试试看看你自己能分析出几个呢？  
 
 现在你需要调用`createHighlightPatterns：`
 将**SyntaxHighlightTextStorage.m** 中的`init`方法更新如下：
@@ -564,4 +563,4 @@ s   	  —— 以空格结尾
 }
 {%endcodeblock%}
 
-上面的代码作用式将提供的字体样式施用到正文字体上。它给fontWithDescriptor:size: 提供的size值为0，这样做会迫使UIFont返回用户设置的字体大小。
+上面的代码作用是将提供的字体样式作用到正文字体上。它给`fontWithDescriptor:size:` 提供的`size`值为0，这样做会迫使`UIFont`返回用户设置的字体大小。
