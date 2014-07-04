@@ -370,33 +370,36 @@ self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 {%endcodeblock%}
 这段代码有点多，我们一步一步来看：  
-* * * * 创建一个你自定义的text storage的实例以及一个用来承载便笺内容的attributed string  
+* * * * 创建一个你自定义的`NSTextStorage`的实例以及一个用来承载便笺内容的`NSAttributedString`  
 * * * * 创建一个布局管理器。  
 * * * * 创建一个文本容器，把它和布局管理器联系起来。然后把布局管理器和文本存储器联系起来。  
 * * * * 最后用你自定义的文本容器和代理组创建实际的文本视图，  并把文本视图添加为子视图。  
-现在回顾之前那个图表所展示的四个关键类(文本存储器`storage`, 布局管理器`layout manager`, 文本容器container 和文本视图text view)之间的关系，是不是觉得理解起来容易多了。  
+现在回顾之前那个图表所展示的四个关键类(文本存储器`storage`, 布局管理器`layout manager`, 文本容器`container` 和文本视图`textView`)之间的关系，是不是觉得理解起来容易多了。  
 ![image](/images/TextKitStack-443x320.png)  
-><font size=3>注意:文本容器的宽度会自动匹配视图的宽度，但是它的高度是无限高的——或者说无限接近于CGFLOAT_MAX，它的值可以是无限大。不管怎么说，它的高度足够让UITextView上下滚动以容纳很长的文本。</font>  
+><font size=3>注意:文本容器的宽度会自动匹配视图的宽度，但是它的高度是无限高的——或者说无限接近于`CGFLOAT_MAX`，它的值可以是无限大。不管怎么说，它的高度足够让`UITextView`上下滚动以容纳很长的文本。</font>    
+
 在`viewDidLoad`方法中调用超类的`viewDidLoad`方法的语句后面添加以下一行代码：
 {%codeblock lang:objc%}
 [self createTextView];
 {%endcodeblock%}
-然后修改preferredContentSizeChanged的第一行代码为：
+然后修改`preferredContentSizeChanged`的第一行代码为：
 {%codeblock lang:objc%}
 _textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 {%endcodeblock%}
 用新的实例变量来替换掉旧的outlet属性。 <p> 
-* * * 最后，编程创建的自定义视图是不会自动继承storyboard中的布局约束组的规则的。所以，设备方向变化后，视图的边界是不会自动随之改变的，你得自己编程设定视图边界。  
-可以在viewDidLayoutSubviews方法的最后添加以下代码来实现：
+最后，编程创建的自定义视图是不会自动继承storyboard中的布局约束组的规则的。所以，设备方向变化后，视图的边界是不会自动随之改变的，你得自己编程设定视图边界。  
+
+可以在`viewDidLayoutSubviews`方法的最后添加以下代码来实现：
 {%codeblock lang:objc%}
 _textView.frame = self.view.bounds;
 {%endcodeblock%}
-<p>Build并运行app，打开一个便笺项，注意看Xcode控制台。你会看到，在你编辑便笺文本的时候，会生成一堆运行日志；如下图：  
-![image](/images/LogMessages-480x266.png)  
-这些是在`SyntaxHighlightTextStorage`生成的运行日志，用来告诉你这些文本处理的代码确实被调用了。<p>
+<p>Build并运行app，打开一个便笺项，在Xcode控制台上有`SyntaxHighlightTextStorage`生成的运行日志，用来告诉你这些文本处理的代码确实被调用。  
+如下图：  
+![image](/images/LogMessages-480x266.png)<p>
 看来你的文本解析器的基础非常可靠了 —— 那现在来添加动态格式。
 #动态格式（Dynamic formatting）
 接下来将对你的自定义文本存储器进行修改以将＊星号符之间的文本＊变为黑体：
+
 打开**SyntaxHighlightTextStorage.m** 添加以下方法：
 {%codeblock lang:objc%}
 -(void)processEditing
@@ -405,9 +408,9 @@ _textView.frame = self.view.bounds;
     [super processEditing];
 }
 {%endcodeblock%}
+`processEditing` 将文本的变化通知给布局管理器。它也为文本编辑之后的处理提供便利。
+<p>在 `processEditing`方法之后紧接着添加以下代码：
 {%codeblock lang:objc%}
-processEditing 将文本的变化通知给布局管理器。它也为文本编辑之后的处理提供便利。
-<p>在 processEditing方法之后紧接着添加以下代码：
 - (void)performReplacementsForRange:(NSRange)changedRange
 {
     NSRange extendedRange = NSUnionRange(changedRange, [[_backingStore string]
@@ -417,7 +420,7 @@ processEditing 将文本的变化通知给布局管理器。它也为文本编�
     [self applyStylesToRange:extendedRange];
 }
 {%endcodeblock%}
-上面的代码拓展了受我们的黑体格式类型影响的文本范围。这是必须的，因为`changedRange`一般只是作用到单独的一个字符； 而`lineRangeForRange` 则扩展到一整行。<p>
+上面的代码拓展了受黑体格式类型影响的文本范围。因为`changedRange`一般只是作用到单独的一个字符； 而`lineRangeForRange` 则扩展到一整行。<p>
 在 `performReplacementsForRange`方法之后紧接着添加以下代码：
 {%codeblock lang:objc%}
 - (void)applyStylesToRange:(NSRange)searchRange
@@ -460,18 +463,18 @@ processEditing 将文本的变化通知给布局管理器。它也为文本编�
 }
 {%endcodeblock%}
 上面的代码有以下作用：  
-    1. 创建一个粗体及一个正常字体并使用字体描述器（ font descriptors）来格式化文本。字体描述器能使你无需对字体手动编码来设置字体和样式。  
-    2. 创建一个正则表达式来定位星号符包围的文本。例如，在字符串“iOS 7 is *awesome*”中，存储在regExStr中的正则表达式将会匹配并返回文本“*awesome*”。如果你对正则表达式不熟悉也不用担心，本章后面将会有详细一些的讲解。
-    3. 对正则表达式匹配到并返回的文本进行枚举并添加粗体属性。
+
+  1. 创建一个粗体及一个正常字体并使用字体描述器（ font descriptors）来格式化文本。字体描述器能使你无需对字体手动编码来设置字体和样式。  
+  2. 创建一个正则表达式来定位星号符包围的文本。例如，在字符串“iOS 7 is *awesome*”中，存储在regExStr中的正则表达式将会匹配并返回文本“*awesome*”。如果你对正则表达式不熟悉也不用担心，本章后面将会有详细一些的讲解。
+  3. 对正则表达式匹配到并返回的文本进行枚举并添加粗体属性。  
 将后一个星号符之后的文本都重置为“常规”样式。以保证添加在后一个星号符之后的文本不被粗体风格所影响。
 > <font size=3>注： 字体描述器（Font descriptors）是一种描述性语言，它使你可以通过设置属性来修改字体，或者无需初始化UIFont实例便可获取字体规格的细节。</font>    
 
-Build并运行app；向便笺中输入写文本，并将其中一个词用星号符包围。这个词将会自动变为黑体，如下面截图所示：  
+Build并运行app；向便笺中输入文本，并将其中一个词用星号符包围。这个词将会自动变为黑体，如下面截图所示：  
 ![image](/images/BoldText.png)  
-是不是很好用——你可能会想是不是也可以把别的样式也添加到文本中。
-<p>你运气不错哦：下面一部分将为你展示怎么把你的想法实现！
+
 ##进一步添加样式
-为限定文本添加风格的基本原则很简单：使用正则表达式来寻找和替换限定字符，然后用applyStylesToRange来设置想要的文本样式即可。  
+为限定文本添加风格的基本原则很简单：**使用正则表达式来寻找和替换限定字符，然后用applyStylesToRange来设置想要的文本样式即可。**  
 在SyntaxHighlightTextStorage.m中添加以下实例变量：
 {%codeblock lang:objc%}
 - (void) createHighlightPatterns {
