@@ -526,12 +526,12 @@ Build并运行app；向便笺中输入文本，并将其中一个词用星号符
 上面两个两个相连的斜杠，其中一个是用来将Objective-C中的特殊字符转义成实体字符。去掉用来转义的斜杠，来看下这个正则表达式的核心部分：  
 (\*w+(sw+)\*\*)s  
 现在，逐步来分析这个正则表达式：  
-{%codeblock lang:ruby%}
-(\*   ——  匹配星号符  
-w+   —— 后接一个或多个 “word”式 字符串  
-(sw+)\*   —— 后接零个或多组空格然后再接 “word” 式字符串  
-\*)   —— 后接星号符  
-s   —— 以空格结尾  
+{%codeblock lang:js%}
+(*  	  ——  匹配星号符  
+w+   	  —— 后接一个或多个 “word”式 字符串  
+(sw+)*    —— 后接零个或多组空格然后再接 “word” 式字符串  
+*)   	  —— 后接星号符  
+s   	  —— 以空格结尾  
 {%endcodeblock%}
 > <font size=3>注：如果你想对正则表达式有更多了解，请参考 [NSRegularExpression tutorial and cheat sheet](http://www.raywenderlich.com/30288/nsregularexpression-tutorial-and-cheat-sheet).</font>  
 剩下的正则表达式你自己参照上面的解释来分析一下权作练习怎么样。试试看看你自己能分析出几个呢？  
