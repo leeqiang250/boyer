@@ -504,32 +504,35 @@ Build并运行app；向便笺中输入文本，并将其中一个词用星号符
 
     // construct a dictionary of replacements based on regexes
     _replacements = @{
-              @"(*w+(sw+)**)s" : boldAttributes,
-              @"(_w+(sw+)*_)s" : italicAttributes,
+              @"(\*w+(sw+)\*\*)s" : boldAttributes,
+              @"(_w+(sw+)\*_)s" : italicAttributes,
               @"([0-9]+.)s" : boldAttributes,
-              @"(-w+(sw+)*-)s" : strikeThroughAttributes,
-              @"(~w+(sw+)*~)s" : scriptAttributes,
+              @"(-w+(sw+)\*-)s" : strikeThroughAttributes,
+              @"(~w+(sw+)\*~)s" : scriptAttributes,
               @"s([A-Z]{2,})s" : redTextAttributes};
 }
 {%endcodeblock%}
   
 这个方法的作用：
 
-   1. 首先它使用Zapfino字体来创建了“script”风格。Font descriptors会决定当前正文的首选字体，以保证script不会影响到用户的字体大小设置。  
-   2. 然后，它会为每种匹配的字体样式构造各个属性。你稍后将用到 createAttributesForFontStyle:withTrait: 现在先暂且将它放放。
-   3. 最后，它将创建一个dictionary并将正则表达式映射到上面声明的属性上。
+   1. 首先，它使用Zapfino字体来创建了“`script`”风格。**Font descriptors**会决定当前正文的首选字体，以保证`script`不会影响到用户的字体大小设置。  
+   2. 然后，它会为每种匹配的字体样式构造各个属性。你稍后将用到 **`createAttributesForFontStyle:withTrait:`**。
+   3. 最后，它将创建一个`NSDictionary`并将正则表达式映射到上面声明的属性上。
 
 如果你对正则表达式不是非常熟悉，上面的的dictionary对你来说可能很陌生。但是，如果你一点一点仔细分析它其中包含的正则表达式，其实不用很费力就能理解了。  
-以你上面实现的第一个正则表达式为例，它的工作是匹配星号符包围的文本：  
+
+以上面实现的第一个正则表达式为例，它的工作是匹配星号符包围的文本：  
 (\*w+(sw+)\*\*)s  
 上面两个两个相连的斜杠，其中一个是用来将Objective-C中的特殊字符转义成实体字符。去掉用来转义的斜杠，来看下这个正则表达式的核心部分：  
 (\*w+(sw+)\*\*)s  
 现在，逐步来分析这个正则表达式：  
+{%codeblock lang:ruby%}
 (\*   ——  匹配星号符  
 w+   —— 后接一个或多个 “word”式 字符串  
 (sw+)\*   —— 后接零个或多组空格然后再接 “word” 式字符串  
 \*)   —— 后接星号符  
 s   —— 以空格结尾  
+{%endcodeblock%}
 > <font size=3>注：如果你想对正则表达式有更多了解，请参考 [NSRegularExpression tutorial and cheat sheet](http://www.raywenderlich.com/30288/nsregularexpression-tutorial-and-cheat-sheet).</font>  
 剩下的正则表达式你自己参照上面的解释来分析一下权作练习怎么样。试试看看你自己能分析出几个呢？  
 
