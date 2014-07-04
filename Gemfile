@@ -18,6 +18,7 @@ group :development do
   gem 'nokogiri', '~> 1.5.6'
   gem 'octopress-popular-posts'
   gem 'metaweblog', '~> 0.1.0'
+  gem 'public_suffix', '~> 1.4.4'
 end
 
 gem 'sinatra', '~> 1.4.2'
