@@ -25,10 +25,12 @@ App开始运行后自动生成一组便笺实例并利用table view controller�
 选择SettingsGeneralAccessibility and SettingsGeneralText Size 来查看app中的字体设置。
 
 ![image](/images/UserTextPreferences.png)  
-iOS 7 支持通过粗体、设置字体大小等方式提高支持动态文本的应用的易读性。要使用动态文本的话，要给文本字体设置样式而不是制定具体的字体名称和大小。iOS 7中UIFont新增了一个方法： **`preferredFontForTextStyle`** 用来根据用户对字体大小的设置来自动制定字体样式。  
+iOS 7 支持通过粗体、设置字体大小等方式提高支持动态文本的应用的易读性。例如:**`UIFont`**新增了一个方法： **`preferredFontForTextStyle`** 用来根据用户对字体大小的设置来自动制定字体样式。  
 下面表格中是六种可用字体样式的示例：  
 ![image](/images/TextStyles.png)  
 最左边一列是最小字体；中间一列是最大字体；最右边一列是粗体效果。  
+
+> <font size=3>注：要使用动态文本的话，要给文本字体设置样式而不是制定具体的字体名称和大小。 </font>
 
    * * ######基本支持
 动态文本的基本支持设置还是比较简单明了的。无需指定具体字体名称，只要给出一个字体样式“style”请求，系统会在运行时自动根据这一样式以及用户的字体大小设置来选择使用合适的字体。
@@ -90,7 +92,7 @@ Build并运行app，修改字体大小设置，验证下app内的字体是不是
   ![image](/images/ChangingLayout.png)  
   这是这个动态样式有点小复杂的部分。要保证你的app在字体大小变化后看上去还不错，那你还得同时也更新下文字的布局才好。 Auto Layout已经帮我们处理了很多问题，但是这个问题，还是得自己来解决。  
 字体大小变化了表格的行高也得变化吧。实现`tableView:heightForRowAtIndexPath:` 代理方法可以很好得解决这个问题。  
-在NotesListViewController.m中UITableViewDatasource下面添加以下代码:
+<p>在NotesListViewController.m中UITableViewDatasource下面添加以下代码:
 {%codeblock lang:objc%}
 - (CGFloat)tableView:(UITableView *)tableView
         heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -108,7 +110,7 @@ Build并运行app，修改字体大小设置，验证下app内的字体是不是
 }
 {%endcodeblock%}
 以上代码创建了一个共享的——或者说静态的——UILabel实例，设定它的字体和表中单元格内文本字体一致。然后调用它的sizeToFit方法，使这个label的frame恰好能放得下它的内容文字, 然后把这个label的高度乘个1.7作为表内单元格高度。  
-Build并运行app，修改字体大小设置，现在行高会随着字体大小的变化而相应变化。 如下图所示：  
+<p>Build并运行app，修改字体大小设置，现在行高会随着字体大小的变化而相应变化。 如下图所示：  
 ![image](/images/TableViewAdaptsHeights.png)  
 
 * #####凸版印刷效果（Letterpress effects）  
@@ -179,8 +181,8 @@ _timeView = [[TimeIndicatorView alloc] initWithDate:_note.timestamp];
 `viewDidLayoutSubviews`调用`updateTimeIndicatorFrame`来做两件事：  
   第一调用`updateSize`来设定各个`subViews`的尺寸。  
   第二将这些`subViews`放在右上角。  
-<p>接下来在控件接收到文本内容的尺寸发生了变化的时候调用`updateTimeIndicatorFrame` 。修改NoteEditorViewController.m中 
-`preferredContentSizeChanged:`方法如下：
+<p>接下来在控件接收到文本内容的尺寸发生了变化的时候调用`updateTimeIndicatorFrame`。  
+修改NoteEditorViewController.m中`preferredContentSizeChanged:`方法如下：
 {%codeblock lang:objc%}
 - (void)preferredContentSizeChanged:(NSNotification *)n {
     self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -255,7 +257,7 @@ _textView.textContainer.exclusionPaths  = @[exclusionPath];
 }
 @end
 {%endcodeblock%}
-要使用NSMutableAttributedString作为“后台存储” (后面会详细讲解)，文本存储器子类必须提供它自己的“数据持久化层”。  
+要使用`NSMutableAttributedString`作为“后台存储” (后面会详细讲解)，文本存储器子类必须提供它自己的“数据持久化层”。  
 <p>接下来，还是在这个文件中，添加以下方法：
 {%codeblock lang:objc%}
 - (NSString *)string
@@ -298,11 +300,11 @@ _textView.textContainer.exclusionPaths  = @[exclusionPath];
 同样的，这些方法也是把任务代理给后台存储。不过，它们也调用`beginEditing` / `edited` / `endEditing`这些方法来完成一些编辑任务。这样做是为了在编辑发生后让文本存储器的类通知相关的布局管理器。  
 <p>你可能注意到了你需要很多代码来创建文本存储器的类的子类。既然`NSTextStorage`是一个类族的公共接口，那就不能只是通过创建子类及重载几个方法来扩张它的功能。有些特定需求你是要自己实现的，比方`attributed string`数据的后台存储。
 ><font size=3>注: 类族是Apple的framework中广泛用到的一种设计模式。  
-类族就是抽象工厂模式的实现，无需指定具体的类就可以为创建一族相关或从属的对象提供一个公共接口。一些我们很熟悉的类比方NSArray和NSNumber事实上是一族类的公共接口。  
-Apple使用类族来封装同一个公共抽象超类下的私有具体子类，抽象超类声明了客户创建私有子类的实例时必须要用到的方法。客户是完全无法知道工厂正在用哪一个私有类，它只和公共接口相互协作。  
-使用类族当然可以简化接口，使学习和使用类更加容易，但是必须要需要指出的是要在功能扩展和接口简化之间达到平衡。创建一个类族的抽象超类的定制子类也常常是非常难的。</font>  
+>>类族就是抽象工厂模式的实现，无需指定具体的类就可以为创建一族相关或从属的对象提供一个公共接口。一些我们很熟悉的类比方NSArray和NSNumber事实上是一族类的公共接口。  
+>>>Apple使用类族来封装同一个公共抽象超类下的私有具体子类，抽象超类声明了客户创建私有子类的实例时必须要用到的方法。客户是完全无法知道工厂正在用哪一个私有类，它只和公共接口相互协作。  
+>>>>使用类族当然可以简化接口，使学习和使用类更加容易，但是必须要需要指出的是要在功能扩展和接口简化之间达到平衡。创建一个类族的抽象超类的定制子类也常常是非常难的。</font> 
 
-现在有了一个自定义的NSTextStorage，还需创建一个UITextView来使用它。  
+现在有了一个自定义的`NSTextStorage`，还需创建一个`UITextView`来使用它。  
 
 * ###使用自定义Text Kit堆栈创建UITextView
 从**storyboard**编辑器实例化`UITextView`会自动创建**`NSTextStorage`**, **`NSLayoutManager`**和**`NSTextContainer`** (例如Text Kit stack)实例以及所有的这三个只读属性。  
@@ -371,3 +373,185 @@ self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 现在回顾之前那个图表所展示的四个关键类(文本存储器`storage`, 布局管理器`layout manager`, 文本容器container 和文本视图text view)之间的关系，是不是觉得理解起来容易多了。  
 ![image](/images/TextKitStack-443x320.png)  
 ><font size=3>注意:文本容器的宽度会自动匹配视图的宽度，但是它的高度是无限高的——或者说无限接近于CGFLOAT_MAX，它的值可以是无限大。不管怎么说，它的高度足够让UITextView上下滚动以容纳很长的文本。</font>  
+在`viewDidLoad`方法中调用超类的`viewDidLoad`方法的语句后面添加以下一行代码：
+{%codeblock lang:objc%}
+[self createTextView];
+{%endcodeblock%}
+然后修改preferredContentSizeChanged的第一行代码为：
+{%codeblock lang:objc%}
+_textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+{%endcodeblock%}
+用新的实例变量来替换掉旧的outlet属性。 <p> 
+* * * 最后，编程创建的自定义视图是不会自动继承storyboard中的布局约束组的规则的。所以，设备方向变化后，视图的边界是不会自动随之改变的，你得自己编程设定视图边界。  
+可以在viewDidLayoutSubviews方法的最后添加以下代码来实现：
+{%codeblock lang:objc%}
+_textView.frame = self.view.bounds;
+{%endcodeblock%}
+<p>Build并运行app，打开一个便笺项，注意看Xcode控制台。你会看到，在你编辑便笺文本的时候，会生成一堆运行日志；如下图：  
+![image](/images/LogMessages-480x266.png)  
+这些是在`SyntaxHighlightTextStorage`生成的运行日志，用来告诉你这些文本处理的代码确实被调用了。<p>
+看来你的文本解析器的基础非常可靠了 —— 那现在来添加动态格式。
+#动态格式（Dynamic formatting）
+接下来将对你的自定义文本存储器进行修改以将＊星号符之间的文本＊变为黑体：
+打开**SyntaxHighlightTextStorage.m** 添加以下方法：
+{%codeblock lang:objc%}
+-(void)processEditing
+{
+    [self performReplacementsForRange:[self editedRange]];
+    [super processEditing];
+}
+{%endcodeblock%}
+{%codeblock lang:objc%}
+processEditing 将文本的变化通知给布局管理器。它也为文本编辑之后的处理提供便利。
+<p>在 processEditing方法之后紧接着添加以下代码：
+- (void)performReplacementsForRange:(NSRange)changedRange
+{
+    NSRange extendedRange = NSUnionRange(changedRange, [[_backingStore string]
+                             lineRangeForRange:NSMakeRange(changedRange.location, 0)]);
+    extendedRange = NSUnionRange(changedRange, [[_backingStore string] 
+                          lineRangeForRange:NSMakeRange(NSMaxRange(changedRange), 0)]);
+    [self applyStylesToRange:extendedRange];
+}
+{%endcodeblock%}
+上面的代码拓展了受我们的黑体格式类型影响的文本范围。这是必须的，因为`changedRange`一般只是作用到单独的一个字符； 而`lineRangeForRange` 则扩展到一整行。<p>
+在 `performReplacementsForRange`方法之后紧接着添加以下代码：
+{%codeblock lang:objc%}
+- (void)applyStylesToRange:(NSRange)searchRange
+{
+    // 1. create some fonts
+    UIFontDescriptor* fontDescriptor = [UIFontDescriptor
+                             preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+    UIFontDescriptor* boldFontDescriptor = [fontDescriptor
+                           fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+    UIFont* boldFont =  [UIFont fontWithDescriptor:boldFontDescriptor size: 0.0];
+    UIFont* normalFont =  [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
+    // 2. match items surrounded by asterisks
+    NSString* regexStr = @"(*w+(sw+)**)s";
+    NSRegularExpression* regex = [NSRegularExpression
+                                   regularExpressionWithPattern:regexStr
+                                                        options:0
+                                                          error:nil];
+
+    NSDictionary* boldAttributes = @{ NSFontAttributeName : boldFont };
+    NSDictionary* normalAttributes = @{ NSFontAttributeName : normalFont };
+
+    // 3. iterate over each match, making the text bold
+    [regex enumerateMatchesInString:[_backingStore string]
+              options:0
+                range:searchRange
+           usingBlock:^(NSTextCheckingResult *match,
+                        NSMatchingFlags flags,
+                        BOOL *stop){
+
+        NSRange matchRange = [match rangeAtIndex:1];
+        [self addAttributes:boldAttributes range:matchRange];
+
+        // 4. reset the style to the original
+        if (NSMaxRange(matchRange)+1 < self.length) {
+            [self addAttributes:normalAttributes
+                range:NSMakeRange(NSMaxRange(matchRange)+1, 1)];
+        }
+    }];
+}
+{%endcodeblock%}
+上面的代码有以下作用：  
+    1. 创建一个粗体及一个正常字体并使用字体描述器（ font descriptors）来格式化文本。字体描述器能使你无需对字体手动编码来设置字体和样式。  
+    2. 创建一个正则表达式来定位星号符包围的文本。例如，在字符串“iOS 7 is *awesome*”中，存储在regExStr中的正则表达式将会匹配并返回文本“*awesome*”。如果你对正则表达式不熟悉也不用担心，本章后面将会有详细一些的讲解。
+    3. 对正则表达式匹配到并返回的文本进行枚举并添加粗体属性。
+将后一个星号符之后的文本都重置为“常规”样式。以保证添加在后一个星号符之后的文本不被粗体风格所影响。
+> <font size=3>注： 字体描述器（Font descriptors）是一种描述性语言，它使你可以通过设置属性来修改字体，或者无需初始化UIFont实例便可获取字体规格的细节。</font>    
+
+Build并运行app；向便笺中输入写文本，并将其中一个词用星号符包围。这个词将会自动变为黑体，如下面截图所示：  
+![image](/images/BoldText.png)  
+是不是很好用——你可能会想是不是也可以把别的样式也添加到文本中。
+<p>你运气不错哦：下面一部分将为你展示怎么把你的想法实现！
+##进一步添加样式
+为限定文本添加风格的基本原则很简单：使用正则表达式来寻找和替换限定字符，然后用applyStylesToRange来设置想要的文本样式即可。  
+在SyntaxHighlightTextStorage.m中添加以下实例变量：
+{%codeblock lang:objc%}
+- (void) createHighlightPatterns {
+    UIFontDescriptor *scriptFontDescriptor =
+      [UIFontDescriptor fontDescriptorWithFontAttributes:
+          @{UIFontDescriptorFamilyAttribute: @"Zapfino"}];
+
+    // 1. base our script font on the preferred body font size
+    UIFontDescriptor* bodyFontDescriptor = [UIFontDescriptor
+      preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+    NSNumber* bodyFontSize = bodyFontDescriptor.
+                  fontAttributes[UIFontDescriptorSizeAttribute];
+    UIFont* scriptFont = [UIFont
+              fontWithDescriptor:scriptFontDescriptor size:[bodyFontSize floatValue]];
+
+    // 2. create the attributes
+    NSDictionary* boldAttributes = [self
+     createAttributesForFontStyle:UIFontTextStyleBody
+                        withTrait:UIFontDescriptorTraitBold];
+    NSDictionary* italicAttributes = [self
+     createAttributesForFontStyle:UIFontTextStyleBody
+                        withTrait:UIFontDescriptorTraitItalic];
+    NSDictionary* strikeThroughAttributes = @{ NSStrikethroughStyleAttributeName : @1};
+    NSDictionary* scriptAttributes = @{ NSFontAttributeName : scriptFont};
+    NSDictionary* redTextAttributes =
+                          @{ NSForegroundColorAttributeName : [UIColor redColor]};
+
+    // construct a dictionary of replacements based on regexes
+    _replacements = @{
+              @"(*w+(sw+)**)s" : boldAttributes,
+              @"(_w+(sw+)*_)s" : italicAttributes,
+              @"([0-9]+.)s" : boldAttributes,
+              @"(-w+(sw+)*-)s" : strikeThroughAttributes,
+              @"(~w+(sw+)*~)s" : scriptAttributes,
+              @"s([A-Z]{2,})s" : redTextAttributes};
+}
+{%endcodeblock%}
+  
+这个方法的作用：
+
+   1. 首先它使用Zapfino字体来创建了“script”风格。Font descriptors会决定当前正文的首选字体，以保证script不会影响到用户的字体大小设置。  
+   2. 然后，它会为每种匹配的字体样式构造各个属性。你稍后将用到 createAttributesForFontStyle:withTrait: 现在先暂且将它放放。
+   3. 最后，它将创建一个dictionary并将正则表达式映射到上面声明的属性上。
+
+如果你对正则表达式不是非常熟悉，上面的的dictionary对你来说可能很陌生。但是，如果你一点一点仔细分析它其中包含的正则表达式，其实不用很费力就能理解了。  
+以你上面实现的第一个正则表达式为例，它的工作是匹配星号符包围的文本：  
+(\*w+(sw+)\*\*)s  
+上面两个两个相连的斜杠，其中一个是用来将Objective-C中的特殊字符转义成实体字符。去掉用来转义的斜杠，来看下这个正则表达式的核心部分：  
+(\*w+(sw+)\*\*)s  
+现在，逐步来分析这个正则表达式：  
+(\*   ——  匹配星号符  
+w+   —— 后接一个或多个 “word”式 字符串  
+(sw+)\*   —— 后接零个或多组空格然后再接 “word” 式字符串  
+\*)   —— 后接星号符  
+s   —— 以空格结尾  
+> <font size=3>注：如果你想对正则表达式有更多了解，请参考 [NSRegularExpression tutorial and cheat sheet](http://www.raywenderlich.com/30288/nsregularexpression-tutorial-and-cheat-sheet).</font>  
+剩下的正则表达式你自己参照上面的解释来分析一下权作练习怎么样。试试看看你自己能分析出几个呢？  
+
+现在你需要调用`createHighlightPatterns：`
+将**SyntaxHighlightTextStorage.m** 中的`init`方法更新如下：
+{%codeblock lang:objc%}
+- (id)init
+{
+    if (self = [super init]) {
+        _backingStore = [NSMutableAttributedString new];
+        [self createHighlightPatterns];
+    }
+    return self;
+}
+{%endcodeblock%}
+
+在SyntaxHighlightTextStorage.m方法中添加以下代码：
+{%codeblock lang:objc%}
+- (NSDictionary*)createAttributesForFontStyle:(NSString*)style
+                                    withTrait:(uint32_t)trait {
+    UIFontDescriptor *fontDescriptor = [UIFontDescriptor
+                               preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+
+    UIFontDescriptor *descriptorWithTrait = [fontDescriptor
+                                    fontDescriptorWithSymbolicTraits:trait];
+
+    UIFont* font =  [UIFont fontWithDescriptor:descriptorWithTrait size: 0.0];
+    return @{ NSFontAttributeName : font };
+}
+{%endcodeblock%}
+
+上面的代码作用式将提供的字体样式施用到正文字体上。它给fontWithDescriptor:size: 提供的size值为0，这样做会迫使UIFont返回用户设置的字体大小。
