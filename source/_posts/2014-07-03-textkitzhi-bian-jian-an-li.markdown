@@ -1,0 +1,373 @@
+---
+layout: post
+title: "TextKit之便笺实战"
+date: 2014-07-03 17:29:00 +0800
+comments: true
+categories: TextKit
+---
+
+####[TextKit之便笺](http://cdn4.raywenderlich.com/wp-content/uploads/2013/09/TextKitNotepad-starter.zip)实战
+* ##### 便笺练习功能点:
+通过实现以下特效，练习并掌握布局管理器（layout manger），文本容器（text containers）和文本存储器（text storage）等用法。
+  * 动态样式（Dynamic type）  
+  * 凸版印刷效果（Letterpress effects）  
+  * 环绕路径（Exclusion paths）  
+  * 动态文本格式及存储（Dynamic text formatting and storage）  
+  
+这个应用中我们将实现回流文本，字体大小的动态变换，以及闪回文本等效果。
+效果图:  
+![image](/images/bianqian.png)  
+App开始运行后自动生成一组便笺实例并利用table view controller显示出来。Storyboards和segues会将被选中的单元格所对应的便笺内容显示出来以供用户编辑。
+
+* #####动态样式
+
+动态样式（Dynamic type）是iOS 7里面变化最大的特性之一; 它使得app可以遵从用户选择的字体大小和粗细。
+选择SettingsGeneralAccessibility and SettingsGeneralText Size 来查看app中的字体设置。
+
+![image](/images/UserTextPreferences.png)  
+iOS 7 支持通过粗体、设置字体大小等方式提高支持动态文本的应用的易读性。要使用动态文本的话，要给文本字体设置样式而不是制定具体的字体名称和大小。iOS 7中UIFont新增了一个方法： **`preferredFontForTextStyle`** 用来根据用户对字体大小的设置来自动制定字体样式。  
+下面表格中是六种可用字体样式的示例：  
+![image](/images/TextStyles.png)  
+最左边一列是最小字体；中间一列是最大字体；最右边一列是粗体效果。  
+
+   * * ######基本支持
+动态文本的基本支持设置还是比较简单明了的。无需指定具体字体名称，只要给出一个字体样式“style”请求，系统会在运行时自动根据这一样式以及用户的字体大小设置来选择使用合适的字体。
+打开 NoteEditorViewController.m 在`viewDidLoad：`方法实现的最后面加入以下代码：
+{%codeblock lang:objc%}
+self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+{%endcodeblock%}
+然后打开 NotesListViewController.m 在 `tableView:cellForRowAtIndexPath:` 方法实现的最后加入以下代码:
+{%codeblock lang:objc%}
+cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+{%endcodeblock%}
+上面两行代码都用到了新版iOS的字体样式.
+><font size=2 >注: 通过语义法命名字体，例如 UIFontTextStyleSubHeadline, 可以避免在代码里每一处都指定具体的字体名称和样式， 而且能够确保app可以对用户的字体大小设置做出恰当的回应。</font>   
+  
+再次运行 TextKitNotepad, 可以看到，Note页面采用了当前设定的字体大小；前后截屏对比图如下：  
+![image](/images/NotepadWithDynamicType.png)  
+看上去很不错呢——不过心细的读者可能已经发现，分辨率小了一半。  
+**未回应用户字体设置的变化问题**：当我们返回到SettingsGeneralText Size 重新修改字体设置. 然后再打开TextKitNotepad 页面——不过我们没有重新运行这个app, 然后会发现app并没有对字体设置的变化做出相应反应。
+
+   * * * ######解决未回应用户字体设置的变化的问题
+   打开 NoteEditorViewController.m 文件并在`viewDidLoad`方法的实现的最后加入以下代码：
+{%codeblock lang:objc%}
+[[NSNotificationCenter defaultCenter]
+                              addObserver:self
+                                 selector:@selector(preferredContentSizeChanged:)
+                                     name:UIContentSizeCategoryDidChangeNotification
+                                   object:nil];
+{%endcodeblock%}
+用于指定本类接收字体设定变化的通知，收到通知后调用`preferredContentSizeChanged:`方法。  
+下一步，在NoteEditorViewController.m中`viewDidLoad`方法之后紧接着添加以下方法：
+{%codeblock lang:objc%}
+- (void)preferredContentSizeChanged:(NSNotification *)notification {
+    self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+}
+{%endcodeblock%}
+这一方法作用是根据新的字体设置来设定textView中的字体。
+> <font size=3>注: 你可能会想好像看上去和之前用的是一样的字体样式啊。当用户修改了他们的字体大小设置之后，这一样式对应的字体并不会自动更新，你必须重新请求才能获取新的值。 用户设置变化后，`preferredFontForTextStyle:`方法返回的字体也会变化。</font>  
+
+下一步，NotesListViewController.m 在`viewDidLoad` 方法的最后加入以下代码:
+{%codeblock lang:objc%}
+[[NSNotificationCenter defaultCenter]
+                              addObserver:self
+                                 selector:@selector(preferredContentSizeChanged:)
+                                     name:UIContentSizeCategoryDidChangeNotification
+                                   object:nil];
+{%endcodeblock%}
+什么啊，这是和你刚才加入到NoteEditorViewController.m里的代码一模一样的吗? 是啦，但是这里我们将会用另一种稍微有点不同的方式处理字体设置的变化。
+在NotesListViewController.m中`viewDidLoad`方法之后添加以下方法：
+{%codeblock lang:objc%}
+- (void)preferredContentSizeChanged:(NSNotification *)notification {
+    [self.tableView reloadData];
+}
+{%endcodeblock%}
+上面这段代码就是简单地告诉UITableView重新载入各个单元格, 同时也就更新了各个单元格的外观。
+Build并运行app，修改字体大小设置，验证下app内的字体是不是有相应的正确反应。
+
+  * * * ######更新布局
+  现在，这个app上，布局貌似没啥问题。但是如果你把字体设置到很小，那每个单元格的空白区域是不是太多了，看上去文字好稀疏的感觉，就如下面左图所示：  
+  ![image](/images/ChangingLayout.png)  
+  这是这个动态样式有点小复杂的部分。要保证你的app在字体大小变化后看上去还不错，那你还得同时也更新下文字的布局才好。 Auto Layout已经帮我们处理了很多问题，但是这个问题，还是得自己来解决。  
+字体大小变化了表格的行高也得变化吧。实现`tableView:heightForRowAtIndexPath:` 代理方法可以很好得解决这个问题。  
+在NotesListViewController.m中UITableViewDatasource下面添加以下代码:
+{%codeblock lang:objc%}
+- (CGFloat)tableView:(UITableView *)tableView
+        heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+    static UILabel* label;
+    if (!label) {
+        label = [[UILabel alloc]
+             initWithFrame:CGRectMake(0, 0, FLT_MAX, FLT_MAX)];
+        label.text = @"test";
+    }
+ 
+    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    [label sizeToFit];
+    return label.frame.size.height * 1.7;
+}
+{%endcodeblock%}
+以上代码创建了一个共享的——或者说静态的——UILabel实例，设定它的字体和表中单元格内文本字体一致。然后调用它的sizeToFit方法，使这个label的frame恰好能放得下它的内容文字, 然后把这个label的高度乘个1.7作为表内单元格高度。  
+Build并运行app，修改字体大小设置，现在行高会随着字体大小的变化而相应变化。 如下图所示：  
+![image](/images/TableViewAdaptsHeights.png)  
+
+* #####凸版印刷效果（Letterpress effects）  
+凸版印刷效果（Letterpress effects）给文字加上精致的阴影和高光是文字看上去有一定一体感——就好像轻轻嵌入屏幕里一样。  
+> <font size=3>注: 使用“凸版印刷（letterpress）”这一印刷术语是向早期印刷业的致敬。所谓凸版印刷，就是将涂上油墨的图文凸版嵌在印版上，然后在纸面上按压就把图文凸版上的油墨转移到纸面上了——纸面受力在文字边缘形成好看的突起。现在这一工艺已广泛被数码打印所取代。</font>  
+
+打开NotesListViewController.m 将`tableView:cellForRowAtIndexPath: `方法中的代码用以下代码替换:  
+{%codeblock lang:objc%}
+static NSString *CellIdentifier = @"Cell";
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier 
+                                                        forIndexPath:indexPath];
+Note* note = [self notes][indexPath.row];
+UIFont* font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+UIColor* textColor = [UIColor colorWithRed:0.175f green:0.458f blue:0.831f alpha:1.0f];
+NSDictionary *attrs = @{ NSForegroundColorAttributeName : textColor,
+                                    NSFontAttributeName : font,
+                              NSTextEffectAttributeName : NSTextEffectLetterpressStyle};
+NSAttributedString* attrString = [[NSAttributedString alloc]
+                                       initWithString:note.title
+                                           attributes:attrs];
+cell.textLabel.attributedText = attrString;
+return cell;
+{%endcodeblock%}
+上面的代码为单元格的标题创建了一个使用了凸版印刷效果的attributed string。  
+Build并运行app， 表格将显示凸版印刷效果，如下图所示：  
+![image](/images/Letterpress.png)  
+凸版印刷效果是很精巧——但是并不表示你可以随意过度使用它。视觉特效能让文字看上去更有趣，但并不表示一定能让你的文字更清晰易读。
+
+* #####环绕路径（Exclusion paths）
+文字环绕图片或其它内容分布是大多数文字处理软件的标准特性之一。Text Kit允许你通过环绕路径（`exclusion paths`）将文字按照复杂路径和形状分布。  
+
+**任务需求**:告知用户便笺创建的日期，是个很便利有用的功能吧。你可以在便笺右上角添加一个曲线形试图来显示通知内容。  
+任务分解：  
+ * * 首先添加一个视图。  
+ * * 再创建一个环绕路径，以使文字按照这个路径分布。 
+
+ * * ######添加视图
+打开 NoteEditorViewController.m 在顶部的`imports`部分加入以下代码：
+{%codeblock lang:objc%}
+#import "TimeIndicatorView.h"
+{%endcodeblock%} 
+然后，在NoteEditorViewController.m中添加以下变量：
+{%codeblock lang:objc%}
+@implementation NoteEditorViewController
+{
+    TimeIndicatorView* _timeView;
+}
+{%endcodeblock%}
+正如其名，这个变量表示的是一个用以显示文本创建日期的子视图。  
+在NoteEditorViewController.m的`viewDidLoad`方法的最后添加以下代码：
+{%codeblock lang:objc%}
+_timeView = [[TimeIndicatorView alloc] initWithDate:_note.timestamp];
+[self.view addSubview:_timeView];
+{%endcodeblock%}
+这一步创建了新的视图实例并把它作为一个子视图添加进去。  
+<p>`TimeIndicatorView`会自己计算自己的尺寸，但是当然了它并不会自己自动进行。当这个视图的控件对它的子视图来进行布局的时候，我们需要一个机制去调用`updateSize`方法。  
+在NoteEditorViewController.m 的最后添加如下代码：
+{%codeblock lang:objc%}
+- (void)viewDidLayoutSubviews {
+    [self updateTimeIndicatorFrame];
+}
+- (void)updateTimeIndicatorFrame {
+    [_timeView updateSize];
+    _timeView.frame = CGRectOffset(_timeView.frame,
+                          self.view.frame.size.width - _timeView.frame.size.width, 0.0);
+}
+{%endcodeblock%}
+`viewDidLayoutSubviews`调用`updateTimeIndicatorFrame`来做两件事：  
+  第一调用`updateSize`来设定各个`subViews`的尺寸。  
+  第二将这些`subViews`放在右上角。  
+<p>接下来在控件接收到文本内容的尺寸发生了变化的时候调用`updateTimeIndicatorFrame` 。修改NoteEditorViewController.m中 
+`preferredContentSizeChanged:`方法如下：
+{%codeblock lang:objc%}
+- (void)preferredContentSizeChanged:(NSNotification *)n {
+    self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    [self updateTimeIndicatorFrame];
+}
+{%endcodeblock%}
+Build并运行app，点击选择一个便笺，日期显示视图将出现在右上角，如下图所示：  
+![image](/images/TimIndicator.png)  
+修改设备中文本大小设置，这个视图也将自动调整到相应的合适尺寸。  
+可是，看上去好像还是有什么感觉不太对。日期显示视图背后的文字并没有向我们以为的那样会环绕在它的周围。幸好，这正是环绕路径（exclusion paths）将要解决的问题!
+
+ * * ######创建环绕路径
+ 打开 TimeIndicatorView.h 添加如下方法声明：
+{%codeblock lang:objc%}
+- (UIBezierPath *)curvePathWithOrigin:(CGPoint)origin;
+{%endcodeblock%}
+这就可以在从视图控件中调用 `curvePathWithOrigin:`以及定义文本所要遵循的环绕路径。 这就是为啥这个方法中会涉及到贝赛尔曲线！  
+<p>接下来定义环绕路径本身。  
+打开 NoteEditorViewController.m 在`updateTimeIndicatorFrame`方法实现的最后面添加如下代码：
+{%codeblock lang:objc%}
+UIBezierPath* exclusionPath = [_timeView curvePathWithOrigin:_timeView.center];
+_textView.textContainer.exclusionPaths  = @[exclusionPath];
+{%endcodeblock%}
+上面的代码根据你的日期显示视图创建了一个基于贝赛尔路径的环绕路径。还有相对与文本视图的原点和坐标信息。  
+<p>Build并运行app，选择一个便笺项，可以看到文字很好地环绕在日期显示视图的周围，如下图所示：  
+![image](/images/ExclusionPath.png)  
+这也只是涉及到了环绕路径能力的一点皮毛而已。你也许已经注意到了exclusionPaths是NSArray类型，因此一个文本容器是可以支持多个环绕路径的。  
+此外，环绕路径的使用既可以更简单也可以很复杂，看你怎么使用了。想要让文字环绕出一个星形或者蝴蝶形状么？只要你能定义出路径，环绕路径功能就能将它实现！  
+<p>文本环绕路径发生改变后会通知文本管理器，然后环绕路径的变化就可以动态地，甚至是动画式地体现到文本上——不过可别指望的你的用户会喜欢他们正在阅读的文字在屏幕上到处乱跑哟！  
+
+* #####动态文本格式及存储（Dynamic text formatting and storage）
+你已经看到了Text Kit可以根据用户设置的字体大小动态地调整字体。
+但是如果字体也可以根据实际的文字本身来进行动态更新是不是会更酷呢？  
+比方说，你想要你的app可以自动地：  
+	* *  把波浪线(~)之间的文本变为艺术字体  
+	* *  把下划线(_)之间的文本变为斜体  
+	* *  为破折号(-)之间的文本添加删除线  
+	* *  把字母全部大写的单词变为红色  
+![image](/images/DynamicTextExample.png)  
+这些正是你将要在这一部分利用Text Kit framework来实现的效果。  
+
+<p>做这些之前，你要先理解Text Kit中的文本存储系统是如何工作的。这里有张图展示了“Text Kit 堆栈”是如何存储、处理以及显示文本的。  
+![image](/images/TextKitStack-443x320.png)  
+当你创建`UITextView`, `UILabel` or `UITextField`的时候，Apple在自动在后台帮你创建了这些类。你可以使用这些默认的实现或者是自定义一些部分去达到你所要的效果。我们来一起看看这些类:
+
+* * * **`NSTextStorage`**: 以attributed string的方式存储所要处理的文本并且将文本内容的任何变化都通知给布局管理器。你可以创建NSTextStorage的子类，当文本发生变化时，动态地对文本属性做出相应改变。(本章稍后你将看到这些是怎么实现的)  
+* * * **`NSLayoutManager`**: 获取存储的文本并加以处理显示在屏幕上；可以把它看作是你的app中的布局“引擎”。  
+* * * **`NSTextContainer`**: 描述了所要处理的文本在屏幕上的位置信息。每一个文本容器都有一个关联的`UITextView`. 你可以创建 `NSTextContainer`的子类来定义**一个复杂的形状，然后在这个形状内来处理文本**。  
+<p>
+* * * ######**在app中实现动态文本格式**
+    1. 需要创建一个`NSTextStorage`的子类，用以在用户输入文本的时候，动态地添加文本属性。  
+    2. 创建了`NSTextStorage`子类之后,将UITextView的默认文本存储器实例用你自定义的实现替换掉。
+<p>
+*  ###创建NSTextStorage子类
+鼠标右键单击project navigator中的TextKitNotepad组，选择New File…, 然后选择iOSCocoa TouchObjective-C 类。将新建的类命名为**`SyntaxHighlightTextStorage`**, 并设为**`NSTextStorage`**的子类。  
+<p>打开 **SyntaxHighlightTextStorage.m**并添加实例变量并初始化：
+{%codeblock lang:objc%}
+
+#import "SyntaxHighlightTextStorage.h"
+
+@implementation SyntaxHighlightTextStorage
+{
+    NSMutableAttributedString *_backingStore;
+}
+
+- (id)init
+{
+    if (self = [super init]) {
+        _backingStore = [NSMutableAttributedString new];
+    }
+    return self;
+}
+@end
+{%endcodeblock%}
+要使用NSMutableAttributedString作为“后台存储” (后面会详细讲解)，文本存储器子类必须提供它自己的“数据持久化层”。  
+<p>接下来，还是在这个文件中，添加以下方法：
+{%codeblock lang:objc%}
+- (NSString *)string
+{
+    return [_backingStore string];
+}
+
+- (NSDictionary *)attributesAtIndex:(NSUInteger)location
+                     effectiveRange:(NSRangePointer)range
+{
+    return [_backingStore attributesAtIndex:location
+                             effectiveRange:range];
+}
+{%endcodeblock%}
+上面两个方法直接把任务代理给了后台存储。  
+<p>最后，还在这个文件中，重载以下方法：
+{%codeblock lang:objc%}
+- (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str
+{
+    NSLog(@"replaceCharactersInRange:%@ withString:%@", NSStringFromRange(range), str);
+
+    [self beginEditing];
+    [_backingStore replaceCharactersInRange:range withString:str];
+    [self  edited:NSTextStorageEditedCharacters | NSTextStorageEditedAttributes
+              range:range
+     changeInLength:str.length - range.length];
+    [self endEditing];
+}
+
+- (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range
+{
+    NSLog(@"setAttributes:%@ range:%@", attrs, NSStringFromRange(range));
+
+    [self beginEditing];
+    [_backingStore setAttributes:attrs range:range];
+    [self edited:NSTextStorageEditedAttributes range:range changeInLength:0];
+    [self endEditing];
+}
+{%endcodeblock%}
+同样的，这些方法也是把任务代理给后台存储。不过，它们也调用`beginEditing` / `edited` / `endEditing`这些方法来完成一些编辑任务。这样做是为了在编辑发生后让文本存储器的类通知相关的布局管理器。  
+<p>你可能注意到了你需要很多代码来创建文本存储器的类的子类。既然`NSTextStorage`是一个类族的公共接口，那就不能只是通过创建子类及重载几个方法来扩张它的功能。有些特定需求你是要自己实现的，比方`attributed string`数据的后台存储。
+><font size=3>注: 类族是Apple的framework中广泛用到的一种设计模式。  
+类族就是抽象工厂模式的实现，无需指定具体的类就可以为创建一族相关或从属的对象提供一个公共接口。一些我们很熟悉的类比方NSArray和NSNumber事实上是一族类的公共接口。  
+Apple使用类族来封装同一个公共抽象超类下的私有具体子类，抽象超类声明了客户创建私有子类的实例时必须要用到的方法。客户是完全无法知道工厂正在用哪一个私有类，它只和公共接口相互协作。  
+使用类族当然可以简化接口，使学习和使用类更加容易，但是必须要需要指出的是要在功能扩展和接口简化之间达到平衡。创建一个类族的抽象超类的定制子类也常常是非常难的。</font>  
+
+现在有了一个自定义的NSTextStorage，还需创建一个UITextView来使用它。  
+
+* ###使用自定义Text Kit堆栈创建UITextView
+从**storyboard**编辑器实例化`UITextView`会自动创建**`NSTextStorage`**, **`NSLayoutManager`**和**`NSTextContainer`** (例如Text Kit stack)实例以及所有的这三个只读属性。  
+<p>虽然没有办法从**storyboard**编辑器中改变这种设定，除非你手动编程创建`UITextView`和Text Kit堆栈。  
+具体步骤如下: 
+* * 删除IB相关的设置:<p> 
+* * * 在IB中打开**Main.storyboard** 找到**NoteEditorViewController**。 删除`UITextView`实例。
+然后，打开**NoteEditorViewController.m**删除**UITextView outlet**。<p>
+* * * 在**NoteEditorViewController.m**最上面，添加下面一行代码:
+{%codeblock lang:objc%}
+#import "SyntaxHighlightTextStorage.h"
+{%endcodeblock%}
+在NoteEditorViewController.m:中`TimeIndicatorView`实例变量后面紧接着添加以下代码：
+{%codeblock lang:objc%}
+SyntaxHighlightTextStorage* _textStorage;
+UITextView* _textView;
+{%endcodeblock%}
+文本存储器子类有两个实例变量，还有一个文本视图稍后需要添加。  
+
+* * * 然后从NoteEditorViewController.m的`viewDidLoad` 方法中删除以下代码：
+{%codeblock lang:objc%}
+self.textView.text = self.note.contents;
+self.textView.delegate = self;
+self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+{%endcodeblock%}
+既然不再为文本视图使用IBOutlet，而是要编程添加，所以也就不需要这些代码了。  
+
+* * 手动创建`UITextView`和Text Kit堆栈:<p>
+* * * 在NoteEditorViewController.m中，添加下面方法：
+{%codeblock lang:objc%}
+- (void)createTextView
+{
+    // 1. Create the text storage that backs the editor
+    NSDictionary* attrs = @{NSFontAttributeName:
+        [UIFont preferredFontForTextStyle:UIFontTextStyleBody]};
+    NSAttributedString* attrString = [[NSAttributedString alloc]
+                                   initWithString:_note.contents
+                                       attributes:attrs];
+    _textStorage = [SyntaxHighlightTextStorage new];
+    [_textStorage appendAttributedString:attrString];
+
+    CGRect newTextViewRect = self.view.bounds;
+
+    // 2. Create the layout manager
+    NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
+
+    // 3. Create a text container
+    CGSize containerSize = CGSizeMake(newTextViewRect.size.width,  CGFLOAT_MAX);
+    NSTextContainer *container = [[NSTextContainer alloc] initWithSize:containerSize];
+    container.widthTracksTextView = YES;
+    [layoutManager addTextContainer:container];
+    [_textStorage addLayoutManager:layoutManager];
+
+    // 4. Create a UITextView
+    _textView = [[UITextView alloc] initWithFrame:newTextViewRect
+                                    textContainer:container];
+    _textView.delegate = self;
+    [self.view addSubview:_textView];
+}
+{%endcodeblock%}
+这段代码有点多，我们一步一步来看：  
+* * * * 创建一个你自定义的text storage的实例以及一个用来承载便笺内容的attributed string  
+* * * * 创建一个布局管理器。  
+* * * * 创建一个文本容器，把它和布局管理器联系起来。然后把布局管理器和文本存储器联系起来。  
+* * * * 最后用你自定义的文本容器和代理组创建实际的文本视图，  并把文本视图添加为子视图。  
+现在回顾之前那个图表所展示的四个关键类(文本存储器`storage`, 布局管理器`layout manager`, 文本容器container 和文本视图text view)之间的关系，是不是觉得理解起来容易多了。  
+![image](/images/TextKitStack-443x320.png)  
+><font size=3>注意:文本容器的宽度会自动匹配视图的宽度，但是它的高度是无限高的——或者说无限接近于CGFLOAT_MAX，它的值可以是无限大。不管怎么说，它的高度足够让UITextView上下滚动以容纳很长的文本。</font>  
