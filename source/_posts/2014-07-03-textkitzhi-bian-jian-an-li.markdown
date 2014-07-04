@@ -249,7 +249,7 @@ _textView.textContainer.exclusionPaths  = @[exclusionPath];
 
 @implementation SyntaxHighlightTextStorage
 {
-    NSMutableAttributedString *\\_backingStore;
+    NSMutableAttributedString *	_backingStore;
 }
 
 - (id)init
@@ -264,12 +264,12 @@ _textView.textContainer.exclusionPaths  = @[exclusionPath];
 要使用**`NSMutableAttributedString`**作为“后台存储” (后面会详细讲解)，文本存储器子类必须提供它自己的“数据持久化层”。  
 <p>接下来，还是在这个文件中，添加以下方法：
 {%codeblock lang:objc%}
-- (NSString \\*)string
+- (NSString *)string
 {
     return [_backingStore string];
 }
 
-- (NSDictionary \\*)attributesAtIndex:(NSUInteger)location
+- (NSDictionary *)attributesAtIndex:(NSUInteger)location
                      effectiveRange:(NSRangePointer)range
 {
     return [_backingStore attributesAtIndex:location
@@ -279,7 +279,7 @@ _textView.textContainer.exclusionPaths  = @[exclusionPath];
 上面两个方法直接把任务代理给了后台存储。  
 <p>最后，还在这个文件中，重载以下方法：
 {%codeblock lang:objc%}
-- (void)replaceCharactersInRange:(NSRange)range withString:(NSString \\*)str
+- (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)str
 {
     NSLog(@"replaceCharactersInRange:%@ withString:%@", NSStringFromRange(range), str);
 
@@ -291,7 +291,7 @@ _textView.textContainer.exclusionPaths  = @[exclusionPath];
     [self endEditing];
 }
 
-- (void)setAttributes:(NSDictionary \\*)attrs range:(NSRange)range
+- (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range
 {
     NSLog(@"setAttributes:%@ range:%@", attrs, NSStringFromRange(range));
 
