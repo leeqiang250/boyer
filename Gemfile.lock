@@ -86,6 +86,7 @@ DEPENDENCIES
   metaweblog (~> 0.1.0)
   nokogiri (~> 1.5.6)
   octopress-popular-posts
+  public_suffix (~> 1.4.4)
   pygments.rb (~> 0.3.4)
   rake (~> 10.3.2)
   rb-fsevent (~> 0.9)

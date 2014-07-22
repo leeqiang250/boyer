@@ -50,7 +50,7 @@ cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
 看上去很不错呢——不过心细的读者可能已经发现，分辨率小了一半。  <p>
 **问题**：当我们返回到**通用->文字大小**重新修改字体设置. 再打开**Note**页面, 会发现app并没有**立即**对字体设置的变化做出相应反应。
 
-   * * * ######解决问题：未回应用户字体设置的变化
+   * * * ######通过添加通知来通知APP响应用户字体设置的变化
    打开 NoteEditorViewController.m 文件并在`viewDidLoad`方法的实现的最后加入以下代码：
 {%codeblock lang:objc%}
 [[NSNotificationCenter defaultCenter]
@@ -59,7 +59,7 @@ cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
                                      name:UIContentSizeCategoryDidChangeNotification
                                    object:nil];
 {%endcodeblock%}
-用于指定本类接收字体设定变化的通知，收到通知后调用`preferredContentSizeChanged:`方法。  
+收到用于指定本类接收字体设定变化的通知后，调用`preferredContentSizeChanged:`方法。  <p>
 下一步，在NoteEditorViewController.m中`viewDidLoad`方法之后紧接着添加以下方法：
 {%codeblock lang:objc%}
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
@@ -67,7 +67,7 @@ cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
 }
 {%endcodeblock%}
 这一方法作用是根据新的字体设置来设定textView中的字体。
-> <font size=3>注: 你可能会想好像看上去和之前用的是一样的字体样式啊。当用户修改了他们的字体大小设置之后，这一样式对应的字体并不会自动更新，你必须重新请求才能获取新的值。 用户设置变化后，`preferredFontForTextStyle:`方法返回的字体也会变化。</font>  
+> <font size=3>注: 当用户修改了他们的字体大小设置之后，这一样式对应的字体并不会自动更新，必须重新请求才能获取新的值。用户设置变化后，`preferredFontForTextStyle:`方法返回的字体也会变化。</font>  
 
 下一步，NotesListViewController.m 在`viewDidLoad` 方法的最后加入以下代码:
 {%codeblock lang:objc%}
@@ -77,7 +77,7 @@ cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
                                      name:UIContentSizeCategoryDidChangeNotification
                                    object:nil];
 {%endcodeblock%}
-使用tableview重新载入各个单元格的`reloadData`方法，来响应字体大小设置，更新各个单元格上的字体。  
+使用tableview重新载入各个单元格的`reloadData`方法，来响应字体设置的变化，更新各个单元格的字体。  
 在NotesListViewController.m中`viewDidLoad`方法之后添加以下方法：
 {%codeblock lang:objc%}
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
@@ -138,15 +138,15 @@ NSAttributedString* attrString = [[NSAttributedString alloc]
 cell.textLabel.attributedText = attrString;
 return cell;
 {%endcodeblock%}
-上面的代码为单元格的标题创建了一个使用了凸版印刷效果的**attributedstring**。  
+上面的代码为单元格的标题创建了一个使用了凸版印刷效果的**`NSAttributedString`**。  <p>
 Build并运行app， 表格将显示凸版印刷效果，如下图所示：  
 ![image](/images/Letterpress.png)  
 凸版印刷效果是很精巧——但是并不表示你可以随意过度使用它。视觉特效能让文字看上去更有趣，但并不表示一定能让你的文字更清晰易读。
 
 * #####环绕路径（Exclusion paths）
-文字环绕图片或其它内容分布是大多数文字处理软件的标准特性之一。Text Kit允许你通过环绕路径（`exclusion paths`）将文字按照复杂路径和形状分布。  
+文字环绕图片或其它内容分布是大多数文字处理软件的标准特性之一。`Text Kit`允许你通过环绕路径（`exclusion paths`）将文字按照复杂路径和形状分布。  
 
-**任务需求**:在便笺右上角添加一个曲线形试图，告知用户便笺创建的日期。  
+**任务需求**:在便笺右上角添加一个曲线形视图，告知用户便笺创建的日期。  
 任务分解：  
  * * 首先添加一个视图。  
  * * 再创建一个环绕路径，以使文字按照这个路径分布。 
