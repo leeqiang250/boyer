@@ -54,8 +54,10 @@ HeaderDoc 标签可以分为两种：
    * @abstract: 等于 @brief。
 	* @discussion: 类似 @abstract 和 @brief，但允许多行。它不是必须的，仅仅是为了使描述更清晰。
 	* @param: 描述方法、回调或函数的参数名称。
-	* @return: 描述方法或函数的返回值。（等同于 @result）
-	
+	* @return: 描述方法或函数的返回值。（等同于 @result）  
+
+<!-- More -->
+
 ####具体实现
  * ######属性的文档化
 用 Xcode 打开**DocumentationExamples** 项目, 打开**ViewController.h**,   
