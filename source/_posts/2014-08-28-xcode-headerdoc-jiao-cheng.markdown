@@ -65,10 +65,10 @@ HeaderDoc 标签可以分为两种：
 
 		@property (nonatomic) Car *car;
 
-编译项目。编译结束，按住 alt/option 键，点击**car** 变量名。你将看到**pop菜单**中显示了刚才的注释内容。
- ![image](../images/car.jpg)
-另一种方法:切换到Utitlities 面板的**Quick Help** 检查器窗口。点击 **car** 变量名，通过**Quick Help**,你将看到如下效果：
- ![image](../images/carquickhelp.jpg)
+编译项目。编译结束，按住 alt/option 键，点击**car** 变量名。你将看到**pop菜单**中显示了刚才的注释内容。  
+ ![image](/images/car.jpg)
+另一种方法:切换到Utitlities 面板的**Quick Help** 检查器窗口。点击 **car** 变量名，通过**Quick Help**,你将看到如下效果：  
+ ![image](/images/carquickhelp.jpg)
 
  * ######方法的文档化
  
@@ -90,8 +90,8 @@ HeaderDoc 标签可以分为两种：
 	+ (NSInteger)addNumber:(NSInteger)firstNumber toNumber:(NSInteger)secondNumber;
 
 
-编译，再 **alt + 左键**：
- ![image](../images/method.jpg)
+编译，再 **alt + 左键**：  
+ ![image](/images/method.jpg)
  
  问题: 在 Xcode 文本编辑窗口，很多地方都支持 **alt+左键**。请确保你点击在正确的地方。在上面的例子里，你应当在addNumber: 和 toNumber: 两处使用 alt+左键。
 
@@ -99,8 +99,8 @@ HeaderDoc 标签可以分为两种：
 		
 	* @warning Please make note that this method is only good for adding non-negative numbers.
 
-编译项目，然后使用 alt+左键。我们添加的 @warning 标签效果如下：
- ![image](../images/warning.jpg)
+编译项目，然后使用 alt+左键。我们添加的 @warning 标签效果如下：  
+ ![image](/images/warning.jpg)
  
 #### Code Snippets，让一切变得更简单:
 一个**snippet** 是一个可以重用的代码块（存储在 snippet 库中）。**Snippets** 甚至可以包含一些需要你去填充的占位符。  
@@ -114,14 +114,14 @@ HeaderDoc 标签可以分为两种：
 	     
 	     * @return <#return description#> 
 	*/
- 注意，当粘贴上述代码时，“<# #>”之间的内容会变成一个**token**,意味着可以通过 **tab 键**在 **token** 之间来回切换。就像编写代码时的自动完成功能。
- ![image](../images/token.png)
+ 注意，当粘贴上述代码时，“<# #>”之间的内容会变成一个**token**,意味着可以通过 **tab 键**在 **token** 之间来回切换。就像编写代码时的自动完成功能。  
+ ![image](/images/token.png)
  
 ######学习使用Code Snippets工具  
  打开 **Utilities 面板**中的 **CodeSnippets Library 检查器**窗口，选中上述注释块，将它拖到该检查器窗口中（从某个 token 例如<#description#>开始拖）:  
- ![image](../images/codesnippet.jpg)  
- 将会弹出一个编辑窗口让输入 snippet 的某些信息，并以此来创建一个**自动完成快捷方式**。要修改某个**snippet**时,直接点击 **Code Snippet Library** 中的 snippet，然后点 Edit 按钮。按照如下形式填写：
- ![image](../images/snippetwindow.jpg)  
+ ![image](/images/codesnippet.jpg)  
+ 将会弹出一个编辑窗口让输入 snippet 的某些信息，并以此来创建一个**自动完成快捷方式**。要修改某个**snippet**时,直接点击 **Code Snippet Library** 中的 snippet，然后点 Edit 按钮。按照如下形式填写：  
+ ![image](/images/snippetwindow.jpg)  
 
 要想让 **snippet** 生效，首先删除原有注释，然后将鼠标放到addNumber:toNumber: 方法的 + 号前面,输入**doccomment**，然后回车，该**snippet** 将自动生成。然后，通过 Tab 键在3个 token 间移动，并填充它们。最终完成的文档化结果如下:  
 	
@@ -221,17 +221,17 @@ HeaderDoc 标签可以分为两种：
 		 					}];
 	*/
 
-编译，在方法名上使用**alt+左键**。如下图所示。
- ![image](../images/driveCar.jpg)
+编译，在方法名上使用**alt+左键**。如下图所示：  
+ ![image](/images/driveCar.jpg)
  
 ####检查文档
 学会了如何添加注释，如果 **Xcode** 能帮你检查你的工作，就像Xcode会自动检查代码中的语法错误，那岂不是更好？有一个好消息，Clang 有一个标志，叫做“**CLANG_WARN_DOCUMENTATION_COMMENTS**”,可以用于检查 **HeaderDoc** 格式的注释。
 
-打开 **DocumentationExamples**的项目设置，点击 **Build Settings**，找到 **DocumentationComments**, 将值设置为 **YES**。
-![image](../images/buildsetting.jpg)  
+打开 **DocumentationExamples**的项目设置，点击 **Build Settings**，找到 **DocumentationComments**, 将值设置为 **YES**。  
+![image](/images/buildsetting.jpg)  
 如下，打开 **MathAPI.h**，将第一个 @param 标签的参数名由**firstNumber** 修改为 **thirdNumber**,然后编译。  
-有一个警告发生，甚至提出了修改建议。它不会影响任何事情，但有助于检查文档中的错误。
- ![image](../images/RW_Documentation_WarningEx.png)  
+有一个警告发生，甚至提出了修改建议。它不会影响任何事情，但有助于检查文档中的错误。  
+ ![image](/images/RW_Documentation_WarningEx.png)  
 ####特殊注释
 
 **Xcode** 还支持几种特殊注释，对于你或者使用你代码的人非常有用。
@@ -252,12 +252,12 @@ HeaderDoc 标签可以分为两种：
 
 这些注释不但有助于浏览代码，而且 Xcode 绘制 **Jump Bar** 中显示它们。点击**Jump Bar**，如下图所示：  
 
-![image](../images/RW_Documentation_JumpBar-700x151.png)  
+![image](/images/RW_Documentation_JumpBar-700x151.png)  
 
  
  你将看到这3个注释以粗体显示：  
  
- ![image](../images/RW_Documentation_JumpBarSelect-700x287.png)
+ ![image](/images/RW_Documentation_JumpBarSelect-700x287.png)
  
  到此，你已经完全掌握了如何对项目进行文档化。花一些时间对项目的其他属性和方法操作一番，并加入一些自己的东西。看看在注释块中改变一些东西或者删除某个标签会发生什么。这将让你明白注释格式如何对文档造成影响的。  
 
@@ -281,7 +281,7 @@ HeaderDoc 标签可以分为两种：
 		headerdoc2html -o ~/Desktop/documentation DocumentationExamples/
 
 此时终端会有许多输出。当创建完毕，返回桌面，出现一个名为documentation 的目录。双击打开，找到 Car_h 目录，打开 index.html：  
-![image](../images/Screen-Shot-2014-04-05-at-5.58.18-PM.png)
+![image](/images/Screen-Shot-2014-04-05-at-5.58.18-PM.png)
 
 **headerdoc2html 脚本**有两个参数：
 
@@ -306,7 +306,7 @@ So what justhappened? Well, you ran the headerdoc2htmlscript with 2 options:
 
 **gatherheaderdoc**自动查找目录，为 **.** 目录（表示当前目录）创建索引。  
 用 Finder 打开 documentation  目录。你会发现多出一个 **masterTOC.html** 文件。打开它，它将列出所有已文档化的属性、方法、枚举和块的链接。  
-![image](../images/Screen-Shot-2014-04-05-at-6.01.35-PM.png)  
+![image](/images/Screen-Shot-2014-04-05-at-6.01.35-PM.png)  
 你可以将所有 HTML 文件放到 web 服务器上，然后所有人都可以访问你的文档！
 
 #VVDocumenter-Xcode
@@ -321,8 +321,8 @@ So what justhappened? Well, you ran the headerdoc2htmlscript with 2 options:
 
 	///
 
-**VVDocumenter-Xcode** 将自动创建注释块，包括所有必要的 **@param** 标签以及自动完成 **token**。  
-![image](../images/RW_Documentation_VVDocumentor-700x184.png)  
+**VVDocumenter-Xcode** 将自动创建注释块，包括所有必要的 **@param** 标签以及自动完成 **token**。     
+![image](/images/RW_Documentation_VVDocumentor-700x184.png)  
 
 打开 Car.h，删除 **NS_ENUM CarType** 的注释，以及每个常量的注释。在**NS_ENUM** 声明之上，输入：
 
@@ -331,7 +331,7 @@ So what justhappened? Well, you ran the headerdoc2htmlscript with 2 options:
 这回，它会在 enum 之上创建 **discussion** 标签，甚至还每个常量上面放入了必要的注释！
 
 **VVDocumenter-Xcode** 使你的生活更加轻松。如果你想定制**VVDocumenter-Xcode**，在Xcode中，使用 **Window>VVDocumenter菜单**。  
-![image](../images/VW_Documentation_VVDocPrefs-700x410.png)  
+![image](/images/VW_Documentation_VVDocPrefs-700x410.png)  
 
 这里，你可以改变自动完成关键字、注释风格以及其他。你想怎样定制 VVDocumenter-Xcode都行。VVDocumenter-Xcode 为我省下了大量的时间！  
 接下来做什么？
