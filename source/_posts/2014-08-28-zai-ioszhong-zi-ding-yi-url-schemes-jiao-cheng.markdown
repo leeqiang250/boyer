@@ -38,7 +38,7 @@ iPhone SDK中最酷的功能之一是一个应用程序能够把自己和自定�
 ![image](/images/urlScheme2f.png)
 ######xml  
 ![image](/images/urlScheme2g.gif)
-
+<!--more-->
 ####处理URL
 
 现在，URL已经注册好了。任何人都可以用打开URL的方式通过你的协议去启动一个应用程序。
