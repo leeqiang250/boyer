@@ -17,27 +17,27 @@ iPhone SDK中最酷的功能之一是一个应用程序能够把自己和自定�
 默认，Xcode在图形窗口中打开info.pllist，当然也可以直接用文本模式打开——对有的人来说这反而更简单。
 
 ######Step1. 右键，选择“Add Row”,在下拉选框中选择“**URL types**”，类型为Array:  
-![image](../images/urlScheme2.gif)  
+![image](/images/urlScheme2.gif)  
 ######Step2. 打开“Item 0″类型为Dic,添加新key为"URL identifier",类型为String。可以是任何值，但建议用“反域名”(例如 “com.myapp”)。
-![image](../images/urlScheme2a.gif)  
+![image](/images/urlScheme2a.gif)  
 #####Step3. 打开“Item 0″类型为Dic,添加新key为“URL Schemes”,类型为Array:
-![image](../images/urlScheme2b.gif)  
+![image](/images/urlScheme2b.gif)  
 
 * 类型为Array:  
 
-	![image](../images/urlScheme2c.gif)
+	![image](/images/urlScheme2c.gif)
 
 #####Step4. 在URL Schemes数组中添加Value，输入你的URL协议名 (例如“myapp://” 应写做“myapp”)。如果有必要，你可以在这里加入多个协议。
-![image](../images/urlScheme2d.gif)  
+![image](/images/urlScheme2d.gif)  
 
 ######完成后如图所示：  
-![image](../images/urlScheme2e.gif)  
+![image](/images/urlScheme2e.gif)  
 	
 * ######另两种视图浏览方式：
 在info.plist页面上右击，选择**Raw Keys/Values**显示如下：  
-![image](../images/urlScheme2f.png)
+![image](/images/urlScheme2f.png)
 ######xml  
-![image](../images/urlScheme2g.gif)
+![image](/images/urlScheme2g.gif)
 
 ####处理URL
 
@@ -48,15 +48,15 @@ iPhone SDK中最酷的功能之一是一个应用程序能够把自己和自定�
 Using the simulator, here’s how to call the app:
 
 - Run the application from within Xcode  
-![image](../images/urlScheme4a.png)  
+![image](/images/urlScheme4a.png)  
 - Once installed, the custom URL scheme will now be registered
 - Close the app via the Hardware menu in simulator and choose Home
 - Start Safari
 - Enter the URL scheme defined previously in the browser address bar (see below)  
-![image](../images/urlScheme32.png)  
+![image](/images/urlScheme32.png)  
 
 * #####通过其他应用启动：Calling Custom URL Scheme from Another iPhone App【[下载](http://iosdevelopertips.com/downloads/#customURLScheme)】  
-![image](../images/urlScheme4b.png)  
+![image](/images/urlScheme4b.png)  
 
 按钮的实现：
 
