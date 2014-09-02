@@ -9,20 +9,20 @@ categories:
 
 ##按比例缩放
 按比例缩放，这是在Interface Builder中无法设置的内容。  
-而在代码中:    
-  
+而在代码中，有如下两种实现方式:
+
 1. 使用`NSLayoutConstraint`类型的初始化函数中的`multiplier`参数就可以非常简单的设置按比例缩放。  
 2. 同时也可以设置不同`NSLayoutAttribute`参数来达到意想不到的效果，比如“A的Width等于B的Height的2倍”这样的效果。  
 
 现在就拿一个简单的**`UIButton`**做示例，在ViewController中创建一个UIButton字段：  
-{%codeblock lang:objc%}  
+{%codeblock lang:objc%}
 	UIButton *btn;  
 {%endcodeblock%}  
 ####需求 1：  
 
 1. 要求**`UIButton`**水平居中，始终距离父View底部**20**单位，其高度是父View高度的三分之一。
 2. 使用**KVO**来监控**`UIButton`**的大小并实时输出到屏幕上。  
-{%codeblock lang:objc%}  
+{%codeblock lang:objc%}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -81,18 +81,19 @@ categories:
 }
 {%endcodeblock%}  
 运行结果：  
-![image](/images/runbtn1.png)  ![image](/images/runbtn2.png)  
+![image](/images/runbtn1.png)![image](/images/runbtn2.png)  
+<!--more-->
 ####需求 2：  
 1. 在横向的显示中，Button的高度只有96，所以要求Button的最小高度为150。   
 
 涉及到的相关特性：
  
  - **优先级**：当两个**`Constraint`**同时作用在一个控件时，在某些情况下是有冲突的，可以通过设置**`Constraint`**的优先级来解决。
-优先级对应**`NSLayoutConstraint`**类型的**`priority`**属性，默认值是**`UILayoutPriorityRequired`**，数值上等于**1000**. 设置一个低的值代表更低的优先级。
+优先级对应**`NSLayoutConstraint`**类型的**`priority`**属性，默认值是**`UILayoutPriorityRequired`**，数值上等于**1000**. 设置一个低的值代表更低的优先级。  
  - **最小值的定义**：使用**`NSLayoutRelationGreaterThanOrEqual`**作为**`NSLayoutConstraint`**类型创建时的**`relatedBy`**参数。
 
 修改上面的比例Constraint，并在下方加入一个新的限制最小值的Constraint，代码：  
-{%codeblock lang:objc%}  
+{%codeblock lang:objc%}
 //定义高度是父View的三分之一
 //设置优先级低于UILayoutPriorityRequired(1000)，UILayoutPriorityDefaultHigh是750
 NSLayoutConstraint *con = [NSLayoutConstraint
@@ -125,10 +126,10 @@ con.priority = UILayoutPriorityDefaultHigh;
 1. 通过`UIView`的`intrinsicContentSize`属性来获取；
 2. 通过`invalidateIntrinsicContentSize`方法来在下次UI规划事件中重新计算`intrinsicContentSize`。  
 
-注意：如果直接创建一个原始的UIView对象，它的内置大小为0。
+注意：如果直接创建一个原始的UIView对象，它的内置大小为0。  
 
-继续用代码来写Autolayout，先写一个辅助方法来快速设置UIView的边距限制：  
-{%codeblock lang:objc%}  
+先写一个辅助方法来快速设置UIView的边距限制：  
+{%codeblock lang:objc%}
 //设置Autolayout中的边距辅助方法
 - (void)setEdge:(UIView*)superview view:(UIView*)view attr:(NSLayoutAttribute)attr constant:(CGFloat)constant
 {
@@ -143,7 +144,7 @@ con.priority = UILayoutPriorityDefaultHigh;
 }
 {%endcodeblock%}  
 接下来，创建一个UIView，利用上面的辅助方法快速设置其在父控件的左，上，右边距为20单位。如下代码：  
-{%codeblock lang:objc%}   
+{%codeblock lang:objc%}
 //view1
 UIView *view1 = [UIView new];
 view1.backgroundColor = [UIColor yellowColor];
@@ -160,7 +161,7 @@ view1.translatesAutoresizingMaskIntoConstraints = NO;
 创建一个自定义的`UIView`来改写**`intrinsicContentSize`**：MyView:  
 ![image](/images/MyView.png)  
 然后在.m文件中改写**intrinsicContentSize**方法，并返回有效值，比如这样：  
-{%codeblock lang:objc%}  
+{%codeblock lang:objc%}
 //改写UIView的intrinsicContentSize
 - (CGSize)intrinsicContentSize
 {
@@ -168,13 +169,13 @@ view1.translatesAutoresizingMaskIntoConstraints = NO;
 }  
 {%endcodeblock%}  
 接着修改最上面的代码，把上面view1变量的类型从UIView替换成我们自定义的View：MyView类型：  
-{%codeblock lang:objc%}  
+{%codeblock lang:objc%}
 MyView *view1 = [MyView new];  
 {%endcodeblock%}  
 再次运行代码，View会按照要求显示在屏幕上：  
 ![image](/images/Myview2.png)  
 按照同样的方式，在下方添加另一个`MyView`，要求其距离父控件边距左，下，右各为**20**，代码：  
-{%codeblock lang:objc%}  
+{%codeblock lang:objc%}
 //view2  
 MyView *view2 = [MyView new];  
 view2.backgroundColor = [UIColor yellowColor];  
@@ -196,7 +197,7 @@ view2.translatesAutoresizingMaskIntoConstraints = NO;
 	1. - 控件的**`Content Hugging Priority`**拒绝拉伸的优先级，优先级越高，控件会越不容易被拉伸。    
 	2. - 控件的**`Content Compression Resistance Priority`**拒绝压缩内置空间(`intrinsicContentSize`)的优先级。优先级越高，控件的内置空间(`intrinsicContentSize`)会越不容易被压缩。  
 	
-{%codeblock lang:objc%}   
+{%codeblock lang:objc%}
 //设置两个View上下间距为20
 [self.view addConstraint:[NSLayoutConstraint constraintWithItem:view2 
 											attribute:NSLayoutAttributeTop 
@@ -215,7 +216,7 @@ OK，的确，此时view1和view2相互间隔20单位，但是view1被拉伸了�
 ![image](/images/ContentHuggingPriority.png)  
 如图,把view1（上图中被拉伸的，在上面的View）的**`Content Hugging Priority`**设置一个更高的值，那么当`Autolayout`遇到这种决定谁来拉伸的情况时，view1不会被优先拉伸，而优先级稍低的view2才会被拉伸。  
 可以直接通过UIView的`setContentHuggingPriority:forAxis`方法来设置控件的**`Content Hugging Priority`**，其中`forAxis`参数代表横向和纵向，本例中只需要设置纵向，所以传入**`UILayoutConstraintAxisVertical`**。整句代码：  
-{%codeblock lang:objc%}  
+{%codeblock lang:objc%}
 	//提高view1的Content Hugging Priority
 	[view1 setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
 {%endcodeblock%}  
