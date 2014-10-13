@@ -59,7 +59,7 @@ Using the simulator, here’s how to call the app:
 ![image](/images/urlScheme4b.png)  
 
 按钮的实现：
-
+{%codeblock lang:objc%}
 	 - (void)buttonPressed:(UIButton *)button
 	{
 	  NSString *customURL = @"iOSDevTips://";
@@ -79,26 +79,30 @@ Using the simulator, here’s how to call the app:
 	    [alert show];
 	  }    
 	}
-Line 5 we check to see if the custom URL is defined, and if so, use the shared application instance to open the URL (line 8). The openURL: method starts the application and passes the URL into the app. The current application is exited during this process.  
+{%endcodeblock%}
+Line 5 we check to see if the custom URL is defined, and if so, use the shared application instance to open the URL (line 8).   
+The **`openURL:`**method starts the application and passes the URL into the app. The current application is exited during this process.  
 
 * ##### 通过URL Schemes 传递参数启动应用：Passing Parameters To App Via Custom URL Scheme
 Chances are you’ll need to pass parameters into the application with the custom URL definition. Let’s look at how we can do this with.
 
-The NSURL class which is the basis for calling from one app to another conforms to the RFC 1808 (Relative Uniform Resource Locators). Therefore the same URL formatting you may be familiar with for web-based content will apply here as well.
+The **`NSURL `**class which is the basis for calling from one app to another conforms to the `RFC 1808` (Relative Uniform Resource Locators). Therefore the same URL formatting you may be familiar with for web-based content will apply here as well.
 
-In the application with the custom URL scheme, the app delegate must implement the method with the signature below:
-
-- (BOOL)application:(UIApplication *)application 
-  openURL:(NSURL *)url 
-  sourceApplication:(NSString *)sourceApplication 
-  annotation:(id)annotation
-The trick to passing in parameters from one app to another is via the URL. For example, assume we are using the following custom URL scheme and want to pass in a value for a ‘token’ and a flag indicating registration state, we could create URL as follows:
-
+In the application with the custom `URL scheme`, the app delegate must implement the method with the signature below:
+{%codeblock lang:objc%}
+- (BOOL)application:(UIApplication *)application  openURL:(NSURL *)url 
+										  sourceApplication:(NSString *)sourceApplication 
+										         annotation:(id)annotation
+{%endcodeblock%}   
+The trick to passing in parameters from one app to another is via the URL.   
+For example, assume we are using the following custom `URL scheme `and want to pass in a value for a ‘**token**’ and a flag indicating registration state, we could create URL as follows:
+{%codeblock lang:objc%}
 NSString *customURL = @"iOSDevTips://?token=123abct&registered=1";
-As in web development, the string ?token=123abct&registered=1 is known as the query string.
+{%endcodeblock%}  
+As in web development, the string **`?token=123abct&registered=1`** is known as the `query` string.
 
 Inside the app delegate of the app being called (the app with the custom URL), the code to retrieve the parameters would be as follows:
-
+{%codeblock lang:objc%}
 	- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
 	        sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 	{
@@ -108,15 +112,17 @@ Inside the app delegate of the app being called (the app with the custom URL), t
 	 
 	  return YES;
 	}
+{%endcodeblock%}  
 The output from the app with the custom URL (using my Bundle ID), when called from another app, is as follows:
-
+{%codeblock lang:objc%}
 Calling Application Bundle ID: com.3Sixty.CallCustomURL
 URL scheme:iOSDevTips
 URL query: token=123abct&registered=1
-Take note of the ‘Calling Application Bundle ID’ as you could use this to ensure that only an application that you define can interact directly with your app.
+{%endcodeblock%}  
+Take note of the ‘**Calling Application Bundle ID**’ as you could use this to ensure that only an application that you define can interact directly with your app.
 
 Let’s change up the delegate method to verify the calling application Bundle ID is known:
-
+{%codeblock lang:objc%}
 	- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
 	        sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 	{
@@ -132,7 +138,8 @@ Let’s change up the delegate method to verify the calling application Bundle I
 	  else
 	    return NO;
 	}
-It’s important to note that you cannot prevent another application from calling your app via custom URL scheme, however you can skip any further processing and return NO as shown above. With that said, if you desire to keep other apps from calling your app, create a unique (non-obvious) URL scheme. Although this will guarantee you app won’t be called, it will make it more unlikely.
+{%endcodeblock%}
+It’s important to note that you cannot prevent another application from calling your app via custom **`URL scheme`**, however you can skip any further processing and `return NO` as shown above. With that said, if you desire to keep other apps from calling your app, create a unique (non-obvious) `URL scheme`. Although this will guarantee you app won’t be called, it will make it more unlikely.
 
 Custom URL Scheme Example Projects
 
