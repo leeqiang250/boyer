@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://huos3203.github.io/MyBlog
+url: http://huos3203.github.io
 title: 布衣男儿
-subtitle: 不以物喜，不以己悲，善假于物也！
-author: 四棵松
+subtitle: 不物喜，不己悲，善假物，易参行！
+author: 布衣男儿
 simple_search: https://www.google.com/search
-description: 从心而行
+description: 新的开始
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -16,8 +16,8 @@ description: 从心而行
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /MyBlog/atom.xml
-# subscribe_email: 724987481@qq.com    #提供Email订阅的地址
+subscribe_rss: /MyBlog/atom.xml		   #http://huos3203.github.io/MyBlog/atom.xml
+subscribe_email: 724987481@qq.com    #提供Email订阅的地址
 
 # RSS feeds can list your email address if you like
 email: 724987481@qq.com				#Rss订阅的Email地址
