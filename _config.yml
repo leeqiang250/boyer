@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://huos3203.github.io
+url: http://huos3203.github.io/MyBlog   #不能省略MyBlog，否则在通过标签或类别访问网页时，提示找不到
 title: 布衣男儿
 subtitle: 不物喜，不己悲，善假物，易参行！
 author: 布衣男儿
