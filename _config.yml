@@ -6,7 +6,7 @@ url: http://huos3203.github.io/MyBlog   #不能省略MyBlog，否则在通过标
 title: 布衣男儿
 subtitle: 不物喜，不己悲，善假物，易参行！
 author: 布衣男儿
-simple_search: https://www.google.com/search
+simple_search: http://www.gfsoso.com/?q=    #设置导航栏的搜索引擎
 description: 新的开始
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
