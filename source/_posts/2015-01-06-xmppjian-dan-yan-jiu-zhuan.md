@@ -3,7 +3,7 @@ layout: post
 title: "XMPP简单研究[转]"
 date: 2015-01-06 14:36:06 +0800
 comments: true
-tags: [XMPP,web,im,即时]
+tags: [XMPP,web,im,即时,通讯,socket]
 keywords: 技术
 categories: 网络
 ---
@@ -54,5 +54,7 @@ XMPP 的核心协议无非规定了以上三种通讯协议，此外规范了服
 
 实现一个 jabber server 或许比你想象的还简单。in.jabberd 居然只用 600 多行 C 代码就从零实现了一个 jabber 服务器。当然功能非常的简陋了。
 
-至于我想做的东西，我希望一个在名为 xyz 的梦幻西游服务器上的 12345 号玩家，一旦选择绑定他的 popo 帐号 player@popo.163.com ，他在他的 popo 上就会收到名叫 12345.xyz@xyq.163.com 的好友请求。当他通过好友认证后，就可以从这个通道获取游戏里的信息，也可以对游戏帐号做有限的操作。我想有了这样一项服务，对玩家对运营商都会有极大的好处的。
-
+至于我想做的东西，我希望一个在名为 xyz 的梦幻西游服务器上的 12345 号玩家，一旦选择绑定他的 popo 帐号 player@popo.163.com ，他在他的 popo 上就会收到名叫 12345.xyz@xyq.163.com 的好友请求。当他通过好友认证后，就可以从这个通道获取游戏里的信息，也可以对游戏帐号做有限的操作。我想有了这样一项服务，对玩家对运营商都会有极大的好处的。  
+其他资源：  
+[使用 XMPP 构建一个基于 web 的通知工具
+](http://www.ibm.com/developerworks/cn/xml/tutorials/x-realtimeXMPPtut/)
