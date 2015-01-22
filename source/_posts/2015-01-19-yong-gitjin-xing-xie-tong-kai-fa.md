@@ -12,7 +12,7 @@ categories:
 4. <a href="#applyIndex">被暂存的文件重新暂存</a>
 5. <a href="#drop">应用后，移除储藏的内容</a>
 6. <a href="#unapply">取消储藏(Un-applying a Stash)</a>
-7. .<a href="#stash-unapply">新建stash-unapply别名</a>
+* * <a href="#stash-unapply">新建stash-unapply别名</a>
 8. <a href="#stashBranch">从储藏中创建分支</a>
 
 ####<a name="Stashing">Git工具 - 储藏（Stashing）</a>
@@ -29,7 +29,7 @@ categories:
 演示：
 step 1 ：进入项目目录，修改某个文件，有可能还暂存其中的一个变更。
 step 2 ：**<font color="red">git status </font>**命令,查看中间状态：
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git status
 # On branch master
 # Changes to be committed:
@@ -45,7 +45,7 @@ $ git status
 {%endcodeblock%}
 step 3 : 切换分支，但不提交step 1 中的变更，所以储藏这些变更。
 执行**<font color="red">git stash </font>**命令，往堆栈中推送一个新的储藏：
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git stash
 Saved working directory and index state \
   "WIP on master: 049d078 added the index file"
@@ -53,14 +53,14 @@ HEAD is now at 049d078 added the index file
 (To restore them type "git stash apply")
 {%endcodeblock%}
 step 4 : 执行step 2查看目录库，中间状态就不见了：
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git status
 #######On branch master
 nothing to commit, working directory clean
 {%endcodeblock%}
 这时，你可以方便地切换到其他分支工作；你的变更都保存在栈上。
 step 5 : 使用**<font color="red">git stash list</font>**要查看现有的储藏：
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git stash list
 stash@{0}: WIP on master: 049d078 added the index file
 stash@{1}: WIP on master: c264051 Revert "added file_size"
@@ -70,7 +70,7 @@ stash@{2}: WIP on master: 21d80a5 added number to log
 ####<a name="apply">应用储藏</a>
 执行**<font color="red">git stash apply</font>**命令, 可以重新应用最近的一次储藏；
 执行**<font color="red">git stash apply stash@{2}</font>**命令，即通过指定储藏的名字，来应用更早的储藏。
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git stash apply
 # On branch master
 # Changes not staged for commit:
@@ -86,7 +86,7 @@ $ git stash apply
 执行**<font color="red">git stash apply</font>**命令,虽然对文件的变更被重新应用，但是被暂存的文件没有重新被暂存。
 执行**<font color="red">git stash apply --index</font>**命令,即可让被暂存的文件重新暂存。
 **--index**选项告诉命令重新应用被暂存的变更：
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git stash apply --index
 # On branch master
 # Changes to be committed:
@@ -103,7 +103,7 @@ $ git stash apply --index
 ####<a name="drop">应用后，移除储藏的内容</a>
 **apply **选项只尝试应用储藏的工作——储藏的内容仍然在栈上。
 执行**<font color="red">git stash drop 储藏的名字</font>**命令，，即可从栈中彻底移除储藏内容：
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git stash list
 stash@{0}: WIP on master: 049d078 added the index file
 stash@{1}: WIP on master: c264051 Revert "added file_size"
@@ -115,7 +115,7 @@ Dropped stash@{0} (364e91f3f268f0900bc3ee613f9f733e82aaed43)
 ####<a name="unapply">取消储藏(Un-applying a Stash)</a>
 在某些情况下，重新应用了之前的储藏的变更，进行了一些其他的修改后，又想要取消之前所应用储藏的修改。
 Git没有提供类似于 **<font color="red">stash unapply</font>**的命令，但是可以通过取消该储藏的补丁达到同样的效果：
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git stash show -p stash@{0} | git apply -R
 {%endcodeblock%}
 同样的，如果你沒有指定具体的某个储藏，Git 会选择最近的储藏：
@@ -124,15 +124,15 @@ $ git stash show -p | git apply -R
 {%endcodeblock%}
 ######<a name="stash-unapply">新建stash-unapply别名</a>
 你可能会想要新建一个別名，在你的 Git 里增加一个**<font color="red">stash-unapply</font>** 命，这样更有效率。例如：
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git config --global alias.stash-unapply '!git stash show -p | git apply -R'
 $ git stash apply
 $ #... work work work
 $ git stash-unapply
-{%%endcodeblock}
+{%endcodeblock%}
 ####<a name="stashBranch">从储藏中创建分支</a>
 如果你储藏了一些工作，暂时不去理会，然后继续在你储藏工作的分支上工作，你在重新应用工作时可能会碰到一些问题。如果尝试应用的变更是针对一个你那之后修改过的文件，你会碰到一个归并冲突并且必须去化解它。如果你想用更方便的方法来重新检验你储藏的变更，你可以运行 git stash branch，这会创建一个新的分支，检出你储藏工作时的所处的提交，重新应用你的工作，如果成功，将会丢弃储藏。
-{%codeblock lang:js%}
+{%codeblock lang:js %}
 $ git stash branch testchanges
 Switched to a new branch "testchanges"
 # On branch testchanges
@@ -147,5 +147,11 @@ Switched to a new branch "testchanges"
 #      modified:   lib/simplegit.rb
 #
 Dropped refs/stash@{0} (f0dfc4d5dc332d1cee34a634182e168c4efc3359)
-{%enccodeblock%}
+{%endcodeblock%}
 这是一个很棒的捷径来恢复储藏的工作然后在新的分支上继续当时的工作。
+
+
+
+
+
+

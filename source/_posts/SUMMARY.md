@@ -10,4 +10,6 @@
    * [Git协议介绍](2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md)
 * [IOS应用内付费IAP](IAPChapter/IAPRead.md)
    * [IAP开发步骤](2015-01-20-iapkai-fa-bu-zou.md)
+* [RubyGems初探](RubyGemsChapter/RubyGemsReader.md)
+   * [RubyGems学习](2015-01-21-rubygemsxue-xi.md)
 
