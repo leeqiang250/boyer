@@ -12,8 +12,7 @@ categories:
 4. <a href="#applyIndex">被暂存的文件重新暂存</a>
 5. <a href="#drop">应用后，移除储藏的内容</a>
 6. <a href="#unapply">取消储藏(Un-applying a Stash)</a>
-<<<<<<< HEAD
-7. .<a href="#stash-unapply">新建stash-unapply别名</a>
+7. <a href="#stash-unapply">新建stash-unapply别名</a>
 8. <a href="#stashBranch">从储藏中创建分支</a>
 
 ####<a name="Stashing">Git工具 - 储藏（Stashing）</a>
@@ -130,7 +129,7 @@ $ git config --global alias.stash-unapply '!git stash show -p | git apply -R'
 $ git stash apply
 $ #... work work work
 $ git stash-unapply
-{%%endcodeblock}
+{%endcodeblock%}
 ####<a name="stashBranch">从储藏中创建分支</a>
 如果你储藏了一些工作，暂时不去理会，然后继续在你储藏工作的分支上工作，你在重新应用工作时可能会碰到一些问题。如果尝试应用的变更是针对一个你那之后修改过的文件，你会碰到一个归并冲突并且必须去化解它。如果你想用更方便的方法来重新检验你储藏的变更，你可以运行 git stash branch，这会创建一个新的分支，检出你储藏工作时的所处的提交，重新应用你的工作，如果成功，将会丢弃储藏。
 {%codeblock lang:js%}
@@ -148,7 +147,7 @@ Switched to a new branch "testchanges"
 #      modified:   lib/simplegit.rb
 #
 Dropped refs/stash@{0} (f0dfc4d5dc332d1cee34a634182e168c4efc3359)
-{%enccodeblock%}
+{%endcodeblock%}
 这是一个很棒的捷径来恢复储藏的工作然后在新的分支上继续当时的工作。
 =======
 * * <a href="#stash-unapply">新建stash-unapply别名</a>
@@ -288,10 +287,3 @@ Switched to a new branch "testchanges"
 Dropped refs/stash@{0} (f0dfc4d5dc332d1cee34a634182e168c4efc3359)
 {%endcodeblock%}
 这是一个很棒的捷径来恢复储藏的工作然后在新的分支上继续当时的工作。
-
-
-
-
-
-
->>>>>>> branch 'GitBook' of git@github.com:huos3203/MyBlog.git

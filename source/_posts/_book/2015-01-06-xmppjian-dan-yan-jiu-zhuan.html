@@ -33,11 +33,7 @@
 
 
         
-<<<<<<< HEAD
-    <div class="book"  data-level="2.1" data-basepath="." data-revision="1421745051589">
-=======
-    <div class="book"  data-level="2.1" data-basepath="." data-revision="1421851142477">
->>>>>>> branch 'GitBook' of git@github.com:huos3203/MyBlog.git
+    <div class="book"  data-level="2.1" data-basepath="." data-revision="1439279669380">
     
 
 <div class="book-summary">
@@ -61,10 +57,32 @@
                     <a href="./index.html">
                         <i class="fa fa-check"></i>
                         
-                         Introduction
+                         gitBook协作Octopress同时完成博客和书籍
                     </a>
                 
             
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="0.1" data-path="2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.html">
+            
+                
+                    <a href="./2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>0.1.</b>
+                        
+                         如何协作
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -236,6 +254,44 @@
             
         </li>
     
+        
+        <li class="chapter " data-level="5" data-path="RubyGemsChapter/RubyGemsReader.html">
+            
+                
+                    <a href="./RubyGemsChapter/RubyGemsReader.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                         RubyGems初探
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="5.1" data-path="2015-01-21-rubygemsxue-xi.html">
+            
+                
+                    <a href="./2015-01-21-rubygemsxue-xi.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                         RubyGems学习
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
 
         
@@ -325,17 +381,13 @@
                 <div class="page-inner">
                 
                 
-<<<<<<< HEAD
-                    <section class="normal" id="section-gitbook_2764">
-=======
-                    <section class="normal" id="section-gitbook_367">
->>>>>>> branch 'GitBook' of git@github.com:huos3203/MyBlog.git
+                    <section class="normal" id="section-gitbook_409">
                     
                         <p>layout: post
 title: &quot;XMPP简单研究[转]&quot;
 date: 2015-01-06 14:36:06 +0800
 comments: true
-tags: [XMPP,web,im,即时]
+tags: [XMPP,web,im,即时,通讯,socket]
 keywords: 技术</p>
 <h2 id="categories-">categories: 网络</h2>
 <p>最近想做一个游戏服务器和 IM 互通的服务。最初的想法是可以增进游戏帐号的安全，比如游戏用户可以通过绑定一个 IM 帐号，从而不用登陆游戏就向游戏服务器发一些指令。这些指定通常是用来冻结一些帐号的功能。而游戏服务器也可以通过 IM 帐号向离线用户发送一些关键消息。这样，只需要解除绑定 IM 帐号需要一定的时间，或使用更安全的途径，即可以让游戏帐号更加安全。（至少，游戏用户可以从 IM 上获知他的游戏帐号每次登陆登出的时间、IP 等等）</p>
@@ -363,7 +415,10 @@ keywords: 技术</p>
 <p>XMPP 的核心协议无非规定了以上三种通讯协议，此外规范了服务器间互连的握手认证方案。然后给出了一些错误信息的表述方法。稍微了解过之后，很容易编写。如果希望重造轮子的话，对于 C 语言开发者来说，最繁琐的可能是 XML 的解析于生成。我自己稍微考察了一下，有个叫 LoudMouth 的库还不错。</p>
 <p>如果实现 s2s 网关的话，有些细节做起来可能很麻烦，比如查询 DNS 的 SRV 记录。这个在 jabberd 1.x 里其实有独立的模块实现好了，取来用即可 (见 dnsrv) 。而 TLS SASL 层的实现则早就有现成的开源库了。</p>
 <p>实现一个 jabber server 或许比你想象的还简单。in.jabberd 居然只用 600 多行 C 代码就从零实现了一个 jabber 服务器。当然功能非常的简陋了。</p>
-<p>至于我想做的东西，我希望一个在名为 xyz 的梦幻西游服务器上的 12345 号玩家，一旦选择绑定他的 popo 帐号 player@popo.163.com ，他在他的 popo 上就会收到名叫 12345.xyz@xyq.163.com 的好友请求。当他通过好友认证后，就可以从这个通道获取游戏里的信息，也可以对游戏帐号做有限的操作。我想有了这样一项服务，对玩家对运营商都会有极大的好处的。</p>
+<p>至于我想做的东西，我希望一个在名为 xyz 的梦幻西游服务器上的 12345 号玩家，一旦选择绑定他的 popo 帐号 player@popo.163.com ，他在他的 popo 上就会收到名叫 12345.xyz@xyq.163.com 的好友请求。当他通过好友认证后，就可以从这个通道获取游戏里的信息，也可以对游戏帐号做有限的操作。我想有了这样一项服务，对玩家对运营商都会有极大的好处的。
+其他资源：
+<a href="http://www.ibm.com/developerworks/cn/xml/tutorials/x-realtimeXMPPtut/" target="_blank">使用 XMPP 构建一个基于 web 的通知工具
+</a></p>
 
                     
                     </section>

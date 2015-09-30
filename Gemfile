@@ -15,7 +15,7 @@ group :development do
   gem 'stringex', '~> 1.4.0'
   gem 'liquid', '~> 2.3.0'
   gem 'directory_watcher', '1.4.1'
-  gem 'nokogiri', '~> 1.5.6'
+  gem 'nokogiri', '~> 1.6.6.2'
   gem 'octopress-popular-posts'
   gem 'metaweblog', '~> 0.1.0'
   gem 'public_suffix', '~> 1.4.4'

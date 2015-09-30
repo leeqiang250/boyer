@@ -1,6 +1,7 @@
 # Summary
 
-* [Introduction](README.md)
+* [gitBook协作Octopress同时完成博客和书籍](README.md)
+   * [如何协作](2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md)
 * [章节二](README.md)
    * [初步搭建Octopress](2014-06-09-chu-bu-da-jian-octopress.md)
    * [Xcode HeaderDoc 教程](2014-08-28-xcode-headerdoc-jiao-cheng.md)
