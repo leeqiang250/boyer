@@ -73,3 +73,55 @@ categories:
 			/etc/init.d/firewall restart
 
 5.由于铁通机制，分配的独立iP，并不能被外网访问
+#### ssh登录数据库	[转](http://bbs.xiaomi.cn/thread-10339070-1-1.html)
+先确保能访问[LLMP搭建的个人网站地址](http://192.168.31.1:8088/phpinfo.php)  
+
+修复教程：  
+
+1. 登录路由： `ssh root@192.168.31.1`  mm:admin
+2. 执行命令：`/userdisk/data/lamp.sh fix`  
+3. 再次访问个人网站地址。  
+
+		1./userdisk/data/lamp.sh  (安装本插件，一键开启llmp，具体安装过程可见前面的安装步骤）       
+		2./userdisk/data/lamp.sh a（卸载本插件，恢复安装前，注：卸载本插件时路由器会自动重启一次，自动断网几分钟）
+		3./userdisk/data/lamp.sh fix（升级小米路由器固件后，能瞬间恢复自己搭建的网站功能，另外，如果在极特殊的情况的情况下，本功能无效，可使用如下方法恢复自建网站的功能：先尝试重新安装本插件，如果提示不能重复安装，可先卸载本插件，再重新安装本插件，并按说明3对数据库执行修改密码命令，改回原来的密码，原来自己搭建网站就可恢复使用） 		4./userdisk/data/lamp.sh help  (插件用法的帮助信息）
+
+登录数据库：`ssh mysql@192.168.31.1 -p 2222`
+
+正确日志：
+		
+	AdmindeMacBook-Air:~ admin$ ssh mysql@192.168.31.1 -p 2222
+	The authenticity of host '[192.168.31.1]:2222 ([192.168.31.1]:2222)' can't be established.
+	RSA key fingerprint is SHA256:bLH9smUb7sD9CZLWCsT6t9YqPy2jciznepkscFNd59M.
+	Are you sure you want to continue connecting (yes/no)? yes
+	Warning: Permanently added '[192.168.31.1]:2222' (RSA) to the list of known hosts.
+	mysql@192.168.31.1's password:admin
+
+	BusyBox v1.19.4 (2015-05-08 18:41:26 CST) built-in shell (ash)
+	Enter 'help' for a list of built-in commands.
+
+		~ $
+错误日志：
+需要修改本地的ssh配置。
+
+1. vi /Users/admin/.ssh/known_hosts文件
+2. 删除包含[192.168.31.1]:2222的一行内容。
+3. 重新登录数据库：ssh mysql@192.168.31.1 -p 2222。  
+
+		AdmindeMacBook-Air:~ admin$ ssh mysql@192.168.31.1 -p 2222
+		@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+		@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+		Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+		It is also possible that a host key has just been changed.
+		The fingerprint for the RSA key sent by the remote host is
+		SHA256:bLH9smUb7sD9CZLWCsT6t9YqPy2jciznepkscFNd59M.
+		Please contact your system administrator.
+		Add correct host key in /Users/admin/.ssh/known_hosts to get rid of this message.
+		Offending RSA key in /Users/admin/.ssh/known_hosts:10
+		RSA host key for [192.168.31.1]:2222 has changed and you have requested strict checking.
+		Host key verification failed.
+		
+#####客户端MySQLWorkbench无法连接LLMP个人网站的MySql数据库
+
