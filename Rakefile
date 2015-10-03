@@ -269,7 +269,6 @@ multitask :push do
     puts "\n## Github Pages deploy complete"
     system "start gitcafe pull"
     system "git remote add gitcafe git@gitcafe.com:huosan/huosan.git >> /dev/null 2>&1"
-    system "git push -u gitcafe master:gh-pages"
     system "git push -u gitcafe gh-pages:gh-pages"
     puts "\n## Gitcafe Pages deploy complete"
   end
