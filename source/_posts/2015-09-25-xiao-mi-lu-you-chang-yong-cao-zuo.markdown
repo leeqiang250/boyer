@@ -21,7 +21,6 @@ categories:
 		输入新密码
 		回车
 		再次输入新密码
-
 2. 远程拷贝数据
 		
 		scp Desktop/ar71xx/* root@192.168.31.1:/userdisk/myWorkspace/ar71xx
@@ -74,7 +73,6 @@ categories:
 			/etc/init.d/firewall restart
 
 5.由于铁通机制，分配的独立iP，并不能被外网访问
-
 #### ssh登录数据库	[转](http://bbs.xiaomi.cn/thread-10339070-1-1.html)
 先确保能访问[LLMP搭建的个人网站地址](http://192.168.31.1:8088/phpinfo.php)  
 
