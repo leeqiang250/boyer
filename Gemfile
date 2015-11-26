@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 group :development do
-  gem 'rake', '~>10.4.2'
+
   gem 'jekyll', '~> 0.12.1'
   gem 'rdiscount', '~> 2.0.7'
   gem 'pygments.rb', '~> 0.3.2'
@@ -15,7 +15,7 @@ group :development do
   gem 'stringex', '~> 1.4.0'
   gem 'liquid', '~> 2.6.1'
   gem 'directory_watcher', '1.4.1'
-  gem 'nokogiri', '~> 1.6.6.2'
+  gem 'nokogiri', '~> 1.6.3.1'
   gem 'octopress-popular-posts'
   gem 'metaweblog', '~> 0.1.0'
   gem 'public_suffix', '~> 1.4.4'
