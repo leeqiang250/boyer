@@ -24,7 +24,7 @@ HeaderDoc 是在Xcode 5 和 iOS7 发布时，新增的一个命令行工具，�
 * Car: 包含几个属性及一个 “drive” 方法以及一个 completion 块。
 * MathAPI: 包含了1个方法，用于累加两个数。
 现在，这两个类还没有任何注释。以便演示如何通过 **HeaderDoc** 为这两个类创建文档。
-
+<!--more-->
 ####HeaderDoc 注释
 
 **HeaderDoc** 可以从命令行中运行，也可以通过 Xcode 运行。它扫描文件中以某种格式书写的注释,包括这3种形式：

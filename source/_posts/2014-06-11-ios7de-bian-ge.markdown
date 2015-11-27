@@ -78,7 +78,7 @@ Now consider the use of your new subclass in the code below:
 当`MyArray`调用`arrayWithObjects:`时，返回类型推断为MyArray\*。  
 
 `instancetype`解决`id`类型的问题，同时也继承`id`类型功能。如果编译在Xcode 5的原代码，你会看到下面的警告：  
-``` objc
+```objc
 	warning: incompatible pointer types initializing 'NSDictionary *' with an expression of type 'NSArray *' [-Wincompatible-pointer-types]
     NSDictionary *d = [NSArray arrayWithObjects:@(1), @(2), nil];
                 ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  

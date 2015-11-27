@@ -22,7 +22,7 @@ iPhone SDK中最酷的功能之一是一个应用程序能够把自己和自定�
 ![image](/images/urlScheme2a.gif)  
 #####Step3. 打开“Item 0″类型为Dic,添加新key为“URL Schemes”,类型为Array:
 ![image](/images/urlScheme2b.gif)  
-
+<!--more-->
 * 类型为Array:  
 
 	![image](/images/urlScheme2c.gif)

@@ -32,7 +32,8 @@ categories: Octopress
 
 2. **Octopress**:是基于Jekyll的,需要ruby的环境编译。检查本机ruby环境，命令行：`ruby-v`ruby的version1.9.3以上,新版的Mac,这些都是有装的。
 3. **gcc**和**make**,ruby的环境需要gcc,这个会通过安装xcode的command line tool来完成安装 检查本机gcc环境，命令行：`gcc -v`
-####安装Octpress:
+
+####安装Octpress:
 
 通过Git安装:
 
@@ -56,10 +57,14 @@ categories: Octopress
 博文是用markdown语法，另外扩充一些插件，网上相关介绍很多，例如：[这个](http://daringfireball.net/projects/markdown/)
 
 * 新建Markdown文件: 		 `rake new_post['文章名']`或 `rake new_page['404']`
-* 翻译Mardown为静态文件:   `rake generate`
-* 检测文件变化：			`rake watch`
-* 启动本机测试端口4000：  `rake preview`
-* 发布至git库：			`rake deploy`
+
+* 翻译Mardown为静态文件:   `rake generate`
+
+* 检测文件变化：			`rake watch`
+
+* 启动本机测试端口4000：  `rake preview`
+
+* 发布至git库：			`rake deploy`
 
 
 ####添加多说：
@@ -92,7 +97,8 @@ duoshuo_short_name: yourname
  			<h1>Comments</h1>
  				<div id="comments" aria-live="polite">{ % include post/duoshuo.html % }</div>
  				</section>
-{ % endif % }{%endcodeblock%}
+{ % endif % }
+{%endcodeblock%}
 
 * 然后就按路径创建一个<font color=red>source/_includes/post/duoshuo.html</font>
 
@@ -125,7 +131,9 @@ duoshuo_short_name: yourname
 {%codeblock lang:js %}
 { % if site.duoshuo_short_name and page.comments != false and post.comments != false and site.duoshuo_comments == true % }
 | <a href="{ % if index % }{{ root_url }}{{ post.url }}{ % endif % }#comments">Comments</a>
-{ % endif % }{%endcodeblock %}
+{ % endif % }
+
+{%endcodeblock %}
 
 * ######首页侧边栏插入最新评论
   * 首先在 _config.yml 中再插入如下代码
@@ -135,7 +143,8 @@ duoshuo_short_name: yourname
 	duoshuo_asides_time: 0      # 侧边栏评论是否显示时间
 	duoshuo_asides_title: 0     # 侧边栏评论是否显示标题
 	duoshuo_asides_admin: 0     # 侧边栏评论是否显示作者评论
-	duoshuo_asides_length: 18   # 侧边栏评论截取的长度	{%endcodeblock %}
+	duoshuo_asides_length: 18   # 侧边栏评论截取的长度
+	{%endcodeblock %}
 
   * 再创建 <font color=red>_includes/custom/asides/recent_comments.html</font>
 {%codeblock lang:html %}
@@ -164,7 +173,8 @@ duoshuo_short_name: yourname
 		</script>
 <!-- 多说js加载结束，一个页面只需要加载一次 -->
    { % endif % }
-</section>{%endcodeblock %}
+</section>
+{%endcodeblock %}
 
 * 最后修改：<font color=red>_config.yml </font>配置:
 	* 方式一：在<font color=red> blog_index_asides</font> 行或 <font color=red>page_asides </font>行或 <font color=red>post_asides </font>添加：
@@ -181,20 +191,29 @@ post_asides:[custom/asides/recent_comments.html]
 {%codeblock lang:ruby %}
 default_asides: [custom/asides/recent_comments.html, asides/recent_posts.html, ...]
 {%endcodeblock %}
-   * Update
+
+   * Update
 	``` html
-	 多说评论似乎升级了系统，无法自动获取到页面文章标题，所以手动在评论页插入 data-title。--2013.09.10	```
+	 多说评论似乎升级了系统，无法自动获取到页面文章标题，所以手动在评论页插入 data-title。--2013.09.10
+	```
 ####Tips:
-* ######发布图文：
-如果在文章中上传图片：
-	* 直接copy到/source/images目录即可。便可以以相对路径(/images/imgname.png)的形式，在文章中引用。	* 或找一个图库站点，例如flickr之类，然后在文章中引用该图片远程路径即可。
+
+* ######发布图文：
+
+如果在文章中上传图片：
+
+	* 直接copy到/source/images目录即可。便可以以相对路径(/images/imgname.png)的形式，在文章中引用。
+
+	* 或找一个图库站点，例如flickr之类，然后在文章中引用该图片远程路径即可。
 * ######域名：
 如果有自己的域名空间，可以将域名指向自己的博客，步骤如下：
 
 
 	* **配置DNS(需购买域名)**:在域名管理中，新建一个CNAME指向，将自己的域名指向yourname.github.com.
-	* **给repo配置域名**:在source目录里，新建一个名为CNAME的文件，然后将自己的域名输入即可。
-	* 将内容push到github后，大概需审核一个小时左右生效，然后就可以使用自己的域名访问该博客了。
+
+	* **给repo配置域名**:在source目录里，新建一个名为CNAME的文件，然后将自己的域名输入即可。
+
+	* 将内容push到github后，大概需审核一个小时左右生效，然后就可以使用自己的域名访问该博客了。
 
 * ######添加百度统计和google analytics
 	* 从[百度统计](http://tongji.baidu.com/)获取脚本,然后添加到文件source/_includes/after_footer.html文件中。
@@ -202,12 +221,16 @@ default_asides: [custom/asides/recent_comments.html, asides/recent_posts.html, .
 <!--![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "title text")-->
 
 * **Octopress**目录结构，及之间的关系：
-￼![alt text](/images/sourceFrame.png "Octopress目录图解")
+
+￼![alt text](/images/sourceFrame.png "Octopress目录图解")
 
 * ######原理：
-	* Octopress版本库：
-		* **gh-pages**分支：用于存放生成的最终网页。
-		* **source**分支:用于存放最初的markdown文件。
+
+	* Octopress版本库：
+
+		* **gh-pages**分支：用于存放生成的最终网页。
+
+		* **source**分支:用于存放最初的markdown文件。
 
 	 职责详述：平时写作和提交都在**source**分支下，当需要发布时，`rake deploy` 命令会将内容生成到public这个目录，然后将这个目录中的内容push到**gh-pages**分支中。
 

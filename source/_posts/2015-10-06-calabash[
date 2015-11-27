@@ -45,7 +45,7 @@ categories: 持续集成
 	```
 
 If all goes well, you are now ready to write your first test. Start by editing the file features/my_first.feature.
-<!--more-->
+
 ####[cucumber官网](https://cukes.info/)   
 
 		* Feature（功能）  

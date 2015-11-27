@@ -15,7 +15,7 @@ categories:
 这个动作行为依赖segue的类型如modal,push,custom,modal segue告诉源视图控制器present目标视图控制器。
 
 在源视图控制器的prepareForSegue:sender:的方法中，执行对目标视图控制器所有必要的属性配置，包括委托设置（如目标视图控制器有协议）。
-
+<!--more-->
 在apple的文档库中第二个示例应用开发文档中，介绍了这样一个segue的使用例子。
 {%codeblock lang:objc%}
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender  

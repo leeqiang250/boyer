@@ -22,7 +22,7 @@ categories:
 Gem是一个ruby库和程序的标准包，它通过RubyGem来定位、安装、升级和卸载，非常的便捷。
 
 Ruby 1.9.2版本默认安装RubyGem，如果你使用其它版本，请参考如何安装RubyGem。
-
+<!--more-->
 ####升级RubyGem
 {%codeblock lang:ruby%}
 $ gem update --system

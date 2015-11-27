@@ -70,7 +70,7 @@ categories:
     //注册KVO方法
     [btn addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial context:nil];    
 }
-
+<!--more-->
 //KVO回调
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {

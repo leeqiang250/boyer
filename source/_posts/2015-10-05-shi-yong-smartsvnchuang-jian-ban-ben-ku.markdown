@@ -27,7 +27,7 @@ SmartSVN有以下版本：
 4. 完成。  
 ![image](https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/ed975623-72bb-4132-8d04-ac9a7b1d2fc9/screenshot.png?resizeSmall&width=832)  
 ![image](https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/53306789-9d97-485c-a54d-a143e7b078f1/screenshot.png?resizeSmall&width=832)
-	
+<!--more-->	
 #####开始导入项目源码，来跟踪版本变化，实现版本控制。  
 5. 新建SmartSVNRepos目录，存放APP源码，用于导入版本库的原始目录。导入后，该目录源码就被版本跟踪了，在开发时，不用再从版本库导出，可以用该目录的代码直接在版本上开发了。  
 ![image](https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/ee02bf65-27e3-435a-8300-8189bc087eb8/screenshot.png?resizeSmall&width=832)

@@ -21,7 +21,7 @@ categories:
 1. 把SMS4.h文件内容合并到include/mupdf/fitz/stream.h文件中，然后删除SMS4.h文件
 2. 把SMS4.c文件内容合并到source/fitz/stream-open.c 文件中，然后删除SMS4.c
 3. 在include/mupdf/fitz/stream.h增加以下内容:  用于方法声明，供其他类使用。
-
+<!--more-->
  ```
  void set_key_info(char* key, long long code_len);  
 int pbb_read(int fd, unsigned char *buf, int size);  
