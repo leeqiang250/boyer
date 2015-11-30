@@ -9,13 +9,11 @@ single: true
   <footer>
     <p class="meta">
       {% include post/author.html %}
-      {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+      {% include post/date.html %}{{ time }}{% if updated %} {{ updated }}{% endif %}
       {% include post/categories.html %}
-      {% include post/tags.html %} <!-- 添加标签-->
     </p>
     {% unless page.sharing == false %}
-<!--   google_plus_one，twitter_tweet_button，facebook_like  	 -->
-    	{% include post/sharing.html %}
+      {% include post/sharing.html %}
     {% endunless %}
     <p class="meta">
       {% if page.previous.url %}
@@ -25,36 +23,14 @@ single: true
         <a class="basic-alignment right" href="{{page.next.url}}" title="Next Post: {{page.next.title}}">{{page.next.title}} &raquo;</a>
       {% endif %}
     </p>
-      <section>
-    <h6>您可能感兴趣的博文：</h6>
-    <ul class="posts">
-       {% for post in site.related_posts limit:5 %}
-          <li class="related">
-          <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
-          </li>
-      {% endfor %}
-      </ul>
-</section>
   </footer>
-
 </article>
 {% if site.disqus_short_name and page.comments == true %}
   <section>
     <h1>Comments</h1>
     <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
   </section>
- 
 {% endif %}
-
-
-<!-- 添加多说模块 -->
-{% if site.duoshuo_short_name and site.duoshuo_comments == true and  page.comments == true %}
-			<section>
-    			<h1>多说板</h1>
-    				<div id="comments" aria-live="polite">{% include post/duoshuo.html %}</div>
-    		</section>
-{% endif %}
-
 </div>
 {% unless page.sidebar == false %}
 <aside class="sidebar">

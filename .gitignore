@@ -14,3 +14,4 @@ node_modules
 .dlj-cache
 .page_ranks
 归档.zip
+Gemfile.lock

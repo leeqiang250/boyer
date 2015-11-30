@@ -7,33 +7,12 @@
     {% endif %}
     {% unless page.meta == false %}
       <p class="meta">
-         
-         <!--       博文标头日期 -->
         {% include post/date.html %}{{ time }}
-        
-         <!--  在博文标题头部，添加disqus模块 -->
         {% if site.disqus_short_name and page.comments != false and post.comments != false and site.disqus_show_comment_count == true %}
            | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread"
              data-disqus-identifier="{% if post.meta.disqus_id %}{{ post.meta.disqus_id }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">Comments</a>
         {% endif %}
-        
-        <!--   在博文标题头部， 添加多说模块 -->
-      {% if site.duoshuo_short_name and page.comments != false and post.comments != false and site.duoshuo_comments == true %} | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#comments">多说板</a>
-	  {% endif %}
-	  
-	  	   <!-- 在博文标题头部，增加如下分享模块 google_plus_one，twitter_tweet_button，facebook_like  	 -->
-	   <!--
-{% unless page.sharing == false %}
-    		| {% include post/sharing.html %}
-       {% endunless %}
--->
-<!-- 	  {% if site.google_plus_one %} -->
-<!-- 	 	| <span class="g-plusone" data-size="{{ site.google_plus_one_size }}"></span> -->
-<!-- 	  {% endif %} -->
-	    
       </p>
-      
-
     {% endunless %}
   </header>
 {% endunless %}
@@ -47,10 +26,4 @@
   {% endif %}
 {% else %}
 <div class="entry-content">{{ content }}</div>
-<!-- 让文章支持短连接-->
-{% dlj_tag %}
-
 {% endif %}
-
-
-

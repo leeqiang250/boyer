@@ -49,10 +49,12 @@ rdiscount:
 
 #由于有部分的组件还会依赖到python，所以这里建议也安装上python（语法着色器pygments是python组件），虽然不安装也没问题，只是代码没有显示着色。
 #打开_config.yml，找到pygments把它的值修改为false，这样我们就不需要安装pygments了。（注意，如果不注释掉会出现请求正常，但网页是空白的情况）。
-pygments: false # default python pygments have been replaced by pygments.rb
+#pygments: false # default python pygments have been replaced by pygments.rb
+highlighter: pygments # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index  每页展示blog的个数，起到分页效果
 pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
+paginate_path: "posts/:num"  # Directory base for pagination URLs eg. /posts/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section  左侧最近发表blog的数量
 
 popular_posts_count: 5      # Posts in the sidebar Popular Posts section 设置边栏显示最热文章数

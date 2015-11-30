@@ -10,6 +10,11 @@
 * [ruby类工具集](rubylei_gong_ju_ji.md)
    * [安装 Ruby, Rails 运行环境](2015-01-21-rubygemsxue-xi.md)
    * [calabash一款跨平台UI测试工具初探](2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown)
-* [学习管理](xue_xi_guan_li.md)
+* [项目管理](xue_xi_guan_li.md)
    * [产品领导者的五种特质](2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown)
+* 版本库管理
+   * 清除git历史记录大文件bfg
+* [Swift学习](swiftxue_xi.md)
+   * [Swift最佳实践](2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown)
+   * [Swift入门](2015-11-27-swiftru-men.markdown)
 
