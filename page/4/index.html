@@ -44,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,7 +60,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -77,6 +77,131 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" title="代码实现autoLayout相关特性" itemprop="url">代码实现autoLayout相关特性</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2014-09-02T07:53:11.000Z" itemprop="datePublished"> Published 2014-09-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>##按比例缩放<br>按比例缩放，这是在Interface Builder中无法设置的内容。<br>而在代码中，有如下两种实现方式:</p>
+<ol>
+<li>使用<code>NSLayoutConstraint</code>类型的初始化函数中的<code>multiplier</code>参数就可以非常简单的设置按比例缩放。  </li>
+<li>同时也可以设置不同<code>NSLayoutAttribute</code>参数来达到意想不到的效果，比如“A的Width等于B的Height的2倍”这样的效果。  </li>
+</ol>
+<p>现在就拿一个简单的<strong><code>UIButton</code></strong>做示例，在ViewController中创建一个UIButton字段：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIButton</span> *btn;  </div></pre></td></tr></table></figure>  </p>
+<p>####需求 1：  </p>
+<ol>
+<li>要求<strong><code>UIButton</code></strong>水平居中，始终距离父View底部<strong>20</strong>单位，其高度是父View高度的三分之一。</li>
+<li>使用<strong>KVO</strong>来监控<strong><code>UIButton</code></strong>的大小并实时输出到屏幕上。  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    </div><div class="line">    <span class="comment">//创建UIButton，不需要设置frame</span></div><div class="line">    btn = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeRoundedRect</span>];</div><div class="line">    [btn setTitle:<span class="string">@"mgen"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    btn.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</div><div class="line">    [<span class="keyword">self</span>.view addSubview:btn];</div><div class="line"></div><div class="line">    <span class="comment">//禁止自动转换AutoresizingMask</span></div><div class="line">    btn.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//居中</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                              multiplier:<span class="number">1</span></div><div class="line">                              constant:<span class="number">0</span>]];</div><div class="line">    </div><div class="line">    <span class="comment">//距离底部20单位</span></div><div class="line">    <span class="comment">//注意NSLayoutConstraint创建的constant是加在toItem参数的，所以需要-20。</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                              multiplier:<span class="number">1</span></div><div class="line">                              constant:<span class="number">-20</span>]];</div><div class="line">    </div><div class="line">    <span class="comment">//定义高度是父View的三分之一</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeHeight</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeHeight</span></div><div class="line">                              multiplier:<span class="number">0.3</span></div><div class="line">                              constant:<span class="number">0</span>]];</div><div class="line"></div><div class="line">    <span class="comment">//注册KVO方法</span></div><div class="line">    [btn addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"bounds"</span> options:<span class="built_in">NSKeyValueObservingOptionNew</span> | <span class="built_in">NSKeyValueObservingOptionInitial</span> context:<span class="literal">nil</span>];    </div><div class="line">&#125;</div><div class="line">&lt;!--more--&gt;</div><div class="line"><span class="comment">//KVO回调</span></div><div class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span> *)change context:(<span class="keyword">void</span> *)context</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (object == btn &amp;&amp; [keyPath isEqualToString:<span class="string">@"bounds"</span>])</div><div class="line">    &#123;</div><div class="line">        [btn setTitle:<span class="built_in">NSStringFromCGSize</span>(btn.bounds.size) forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+运行结果：<br><img src="/images/runbtn1.png" alt="image"><img src="/images/runbtn2.png" alt="image">
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/#more">更多-&gt;</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/" title="在IOS中自定义URL Schemes 教程" itemprop="url">在IOS中自定义URL Schemes 教程</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2014-08-28T12:32:48.000Z" itemprop="datePublished"> Published 2014-08-28</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h4 id="URL-Schemes"><a href="#URL-Schemes" class="headerlink" title="URL Schemes"></a>URL Schemes</h4><p>iPhone SDK中最酷的功能之一是一个应用程序能够把自己和自定义的URL协议绑定，这个URL协议可用于启动该应用程序（通过浏览器或者iPhone上的另一个程序）。创建这样的绑定并不难，难得的是你忍不住要在你的程序里用它！</p>
+<p>首先，你需要说明你想如何在程序中响应这个URL。最简单的自定义协议的方法是“唤醒”，而且可以通过URL把数据信息传递给程序，这样，程序被唤醒后能做更多的事情。</p>
+<p>####注册自定义URL协议</p>
+<p>首先需要向iPhone注册一个自定义URL协议。这是在你的项目文件夹的info.plist文件进行的（就是你改变应用程序图标的同一个文件）。</p>
+<p>默认，Xcode在图形窗口中打开info.pllist，当然也可以直接用文本模式打开——对有的人来说这反而更简单。</p>
+<p>######Step1. 右键，选择“Add Row”,在下拉选框中选择“<strong>URL types</strong>”，类型为Array:<br><img src="/images/urlScheme2.gif" alt="image">  </p>
+<p>######Step2. 打开“Item 0″类型为Dic,添加新key为”URL identifier”,类型为String。可以是任何值，但建议用“反域名”(例如 “com.myapp”)。<br><img src="/images/urlScheme2a.gif" alt="image">  </p>
+<p>#####Step3. 打开“Item 0″类型为Dic,添加新key为“URL Schemes”,类型为Array:<br><img src="/images/urlScheme2b.gif" alt="image"><br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/#more">更多-&gt;</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2014/08/28/2014-08-28-xcode-headerdoc-jiao-cheng/" title="Xcode HeaderDoc 教程" itemprop="url">Xcode HeaderDoc 教程</a>
   </h1>
   <p class="article-author">By
@@ -84,7 +209,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-08-28T07:18:41.000Z" itemprop="datePublished"> 发表于 2014-08-28</time>
+    <time datetime="2014-08-28T07:18:41.000Z" itemprop="datePublished"> Published 2014-08-28</time>
     
   </p>
 </header>
@@ -151,7 +276,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-07-22T02:59:49.000Z" itemprop="datePublished"> 发表于 2014-07-22</time>
+    <time datetime="2014-07-22T02:59:49.000Z" itemprop="datePublished"> Published 2014-07-22</time>
     
   </p>
 </header>
@@ -212,7 +337,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-07-03T09:29:00.000Z" itemprop="datePublished"> 发表于 2014-07-03</time>
+    <time datetime="2014-07-03T09:29:00.000Z" itemprop="datePublished"> Published 2014-07-03</time>
     
   </p>
 </header>
@@ -319,7 +444,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-07-01T15:12:01.000Z" itemprop="datePublished"> 发表于 2014-07-01</time>
+    <time datetime="2014-07-01T15:12:01.000Z" itemprop="datePublished"> Published 2014-07-01</time>
     
   </p>
 </header>
@@ -405,7 +530,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-07-01T11:54:02.000Z" itemprop="datePublished"> 发表于 2014-07-01</time>
+    <time datetime="2014-07-01T11:54:02.000Z" itemprop="datePublished"> Published 2014-07-01</time>
     
   </p>
 </header>
@@ -472,7 +597,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-06-17T07:12:53.000Z" itemprop="datePublished"> 发表于 2014-06-17</time>
+    <time datetime="2014-06-17T07:12:53.000Z" itemprop="datePublished"> Published 2014-06-17</time>
     
   </p>
 </header>
@@ -539,7 +664,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-06-16T14:24:48.000Z" itemprop="datePublished"> 发表于 2014-06-16</time>
+    <time datetime="2014-06-16T14:24:48.000Z" itemprop="datePublished"> Published 2014-06-16</time>
     
   </p>
 </header>
@@ -605,7 +730,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-06-11T02:17:19.000Z" itemprop="datePublished"> 发表于 2014-06-11</time>
+    <time datetime="2014-06-11T02:17:19.000Z" itemprop="datePublished"> Published 2014-06-11</time>
     
   </p>
 </header>
@@ -661,150 +786,21 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" title="在IOS中像SnapChat一样监控screenshots" itemprop="url">在IOS中像SnapChat一样监控screenshots</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2014-06-10T10:45:37.000Z" itemprop="datePublished"> 发表于 2014-06-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>A <a href="http://stackoverflow.com/questions/2121970/notification-of-or-detecting-screenshot-being-taken/2122117">number</a> of <a href="http://stackoverflow.com/questions/13484516/ios-detection-of-screenshot">Stack</a>  <a href="http://stackoverflow.com/questions/10122212/iphone-screenshot">Overflow</a>questions were having issues with this, so I figured I’d explain. From reverse engineering, this is the exact method used by SnapChat, but it’s also pretty much what I’d have done myself.<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/screenshot/">screenshot</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/screenshot/">screenshot</a><a href="/tags/SnapChat/">SnapChat</a><a href="/tags/截屏/">截屏</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/06/10/2014-06-10-ios7jie-ping-wen-ti/" title="IOS7截屏问题" itemprop="url">IOS7截屏问题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2014-06-10T10:29:31.000Z" itemprop="datePublished"> 发表于 2014-06-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>###iOS 7截图最新变化: 不再影响用户其他操作</p>
-<p>   在 iOS 7 中，截图动作已经发生了变化，就如苹果在版本说明中描述的那样：用户截图时，有效点击不会再失效了。这个微小的变化对于多款依赖截屏来提醒用户一些不必要动作的应用来说，具有很重要的意义，比如 Snapchat 和 Facebook Poke。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/06/10/2014-06-10-ios7jie-ping-wen-ti/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/screenshot/">screenshot</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/screenshot/">screenshot</a><a href="/tags/SnapChat/">SnapChat</a><a href="/tags/截屏/">截屏</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2014/06/10/2014-06-10-ios7jie-ping-wen-ti/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/06/10/2014-06-10-ios7jie-ping-wen-ti/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github 名片</p>
+<p class="asidetitle">Github Card</p>
 <div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -814,7 +810,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -887,7 +883,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -903,19 +899,19 @@
 			
 		
 			
-				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
 			
 		
 			
@@ -963,7 +959,7 @@
 			
 		
 			
-				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
+				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
 			
 		
 			
@@ -975,7 +971,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -997,11 +993,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=&dpc=1"></iframe>
 </div>
 
@@ -1159,7 +1155,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

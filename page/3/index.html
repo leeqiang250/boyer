@@ -44,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,7 +60,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -77,6 +77,214 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/" title="Mac安装gitLab服务器" itemprop="url">Mac安装gitLab服务器</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-27T11:25:38.000Z" itemprop="datePublished"> Published 2015-09-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>####必要配置</p>
+<pre><code>*创建一个名称为&quot;gitlab&quot;管理员用户，然后再创建一个名称为&quot;gitlab&quot;的群组
+*开启gitlab用户的远程登录
+</code></pre><p>在系统启动界面:<br>隐藏gitlab用户 </p>
+<pre><code>sudo defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add gitlab
+</code></pre><p>显示git用户</p>
+<pre><code>sudo defaults delete /Library/Preferences/com.apple.loginwindow HiddenUsersList
+</code></pre><p>####添加系统账户gitlab</p>
+<p>######生成gitlab服务器目录，即用户根目录<br>进入<strong>系统偏好设置…</strong>,在管理<strong>用户与群组</strong>中，添加其他用户，暂时定为：gitlab ，登录密码假设为：gitlab，添加完成后，会自动在/Users目录下，生成用户根目录gitlab.</p>
+<p>######安装 Gitlab Shell</p>
+<pre><code>cd /Users/gitlab
+sudo -u gitlab git clone https://github.com/gitlabhq/gitlab-shell.git
+cd gitlab-shell
+sudo -u gitlab git checkout v1.9.1
+sudo -u gitlab cp config.yml.example config.yml
+</code></pre><p>打开 config.yml,然后进行编辑<br>设置  gitlab_url. 把 gitlab.example.com 替换成你自己的域名 （如果本地就不用了）<br>把所有的/home 替换成 /Users</p>
+<pre><code>sudo -u gitlab sed -i &quot;&quot; &quot;s/\/home\//\/Users\//g&quot; config.yml
+sudo -u gitlab sed -i &quot;&quot; &quot;s/\/usr\/bin\/redis-cli/\/usr\/local\/bin\/redis-cli/&quot; config.yml
+</code></pre><p>然后执行安装脚本：<code>sudo -u gitlab -H ./bin/install</code>  <strong>//需在gitlab-shell目录下载执行</strong></p>
+<p>######安装gitlab<br>先下载gitlab</p>
+<pre><code>cd /Users/gitlab
+sudo -u gitlab git clone https://github.com/gitlabhq/gitlabhq.git
+cd gitlab
+sudo -u gitlab git checkout 6-7-stable
+</code></pre><p>配置gitlab</p>
+<pre><code>sudo -u gitlab cp config/gitlab.yml.example config/gitlab.yml
+sudo -u gitlab sed -i &quot;&quot; &quot;s/\/usr\/bin\/git/\/usr\/local\/bin\/git/g&quot; config/gitlab.yml
+sudo -u gitlab sed -i &quot;&quot; &quot;s/\/home/\/Users/g&quot; config/gitlab.yml
+sudo -u gitlab sed -i &quot;&quot; &quot;s/localhost/domain.com/g&quot; config/gitlab.yml
+</code></pre><p>配置MySQL数据库，创建gitlab用户，数据库，和gitlab用户的管理权限</p>
+<pre><code># Login to MySQL
+$ mysql -u root -p
+
+# Create the GitLab production database
+mysql&gt; CREATE DATABASE IF NOT EXISTS `gitlabhq_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`;
+
+# Create the MySQL User change $password to a real password
+mysql&gt; CREATE USER &apos;gitlab&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;$password&apos;;
+
+# Grant proper permissions to the MySQL User
+mysql&gt; GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON `gitlabhq_production`.* TO &apos;gitlab&apos;@&apos;localhost&apos;;
+</code></pre><p>######安装 Gitolite帮助管理git内部用户</p>
+<p>克隆gitlab的gitolite分支源代码：</p>
+<pre><code>sudo -H -u gitlab git clone -b gl-v304 https://github.com/gitlabhq/gitolite.git /Users/gitlab/gitolite
+</code></pre><p>安装：</p>
+<pre><code>cd /Users/gitlab
+sudo -u gitlab -H mkdir bin
+sudo -u gitlab sh -c &apos;echo -e &quot;PATH=\$PATH:/Users/gitlab/bin\nexport PATH&quot; &gt;&gt; /Users/gitlab/.profile&apos;
+sudo -u gitlab sh -c &apos;gitolite/install -ln /Users/gitlab/bin&apos;
+
+sudo cp ~/.ssh/id_rsa.pub /Users/gitlab/gitlab.pub
+sudo chmod 0444 /Users/gitlab/gitlab.pub
+
+sudo -u gitlab -H sh -c &quot;PATH=/Users/gitlab/bin:$PATH; gitolite setup -pk /Users/gitlab/gitlab.pub&quot;
+</code></pre><p>为 Git 创建用户：    </p>
+<pre><code>sudo adduser \
+  --system \
+  --shell /bin/sh \
+  --gecos &apos;git version control&apos; \
+  --group \
+  --disabled-password \
+  --home /home/git \
+  git
+</code></pre><p>若干问题解决办法：<a href="http://www.cnblogs.com/whj198579/archive/2013/04/09/3009350.html" target="_blank" rel="external">Mac搭建Git服务器—开启SSH</a></p>
+<pre><code>Cloning into &apos;/tmp/gitolite-admin&apos;...
+ssh: connect to host localhost port 22: Connection refused
+fatal: Could not read from remote repository.
+</code></pre><p>SSH无密码登陆设置：</p>
+<pre><code>$ cd /etc
+$ chmod 666 sshd_config
+$ vim sshd_config
+
+#PermitRootLogin yes  改为：PermitRootLogin no
+#UsePAM yes             改为: UsePAM no
+</code></pre><p>Remove the # from the following</p>
+<pre><code>#RSAAuthentication yes
+#PubkeyAuthentication yes
+#AuthorizedKeysFile     .ssh/authorized_keys    
+#PasswordAuthentication no
+#PermitEmptyPasswords no
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/25/2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo/" title="小米路由常用操作" itemprop="url">小米路由常用操作</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-25T15:59:16.000Z" itemprop="datePublished"> Published 2015-09-25</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>####常用命令</p>
+<ol>
+<li><p>ssh登录</p>
+<pre><code>局域网登录:
+ssh [user@]hostname [command]
+ 例如：ssh root@192.168.31.1  或  远程登录：ssh root@222.35.145.28 -p 2195
+回车
+输入密码
+
+**修改密码：**
+root@xiaoqiang:~#passwd   
+回车
+输入新密码
+回车
+再次输入新密码
+</code></pre></li>
+<li><p>远程拷贝数据</p>
+<pre><code>scp Desktop/ar71xx/* root@192.168.31.1:/userdisk/myWorkspace/ar71xx
+</code></pre></li>
+<li><p>每次重启路由获取IP:</p>
+<pre><code>vi /etc/rc.local
+sh /etc/getIP.sh
+</code></pre><p>//启动后，等待20秒，然后，获取当前时间作为文件名称<br>//使用ifconfig 获取路由器的ip信息<br>//使用 | grep 通道，和grep正则来过滤出，wan口的ip所在行<br>// &gt; 使用重定向，将过滤的ip行，写入路由硬盘/userdisk/data/my/ip目录中<br>//通过小米路由手机客户端，找到该txt文件，并下载到手机sd卡中<br>//查看该文件，既有路由重启后的当前IP  </p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/09/25/2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo/#more">更多-&gt;</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/25/2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/25/2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/09/25/2015-09-25-xcode7bian-yi-fa-bu-wen-ti/" title="Xcode7编译发布问题" itemprop="url">Xcode7编译发布问题</a>
   </h1>
   <p class="article-author">By
@@ -84,7 +292,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-25T07:58:17.000Z" itemprop="datePublished"> 发表于 2015-09-25</time>
+    <time datetime="2015-09-25T07:58:17.000Z" itemprop="datePublished"> Published 2015-09-25</time>
     
   </p>
 </header>
@@ -154,7 +362,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-18T15:52:06.000Z" itemprop="datePublished"> 发表于 2015-09-18</time>
+    <time datetime="2015-09-18T15:52:06.000Z" itemprop="datePublished"> Published 2015-09-18</time>
     
   </p>
 </header>
@@ -230,7 +438,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-14T02:45:35.000Z" itemprop="datePublished"> 发表于 2015-08-14</time>
+    <time datetime="2015-08-14T02:45:35.000Z" itemprop="datePublished"> Published 2015-08-14</time>
     
   </p>
 </header>
@@ -288,7 +496,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-11T06:41:40.000Z" itemprop="datePublished"> 发表于 2015-08-11</time>
+    <time datetime="2015-08-11T06:41:40.000Z" itemprop="datePublished"> Published 2015-08-11</time>
     
   </p>
 </header>
@@ -378,7 +586,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-21T15:00:39.000Z" itemprop="datePublished"> 发表于 2015-01-21</time>
+    <time datetime="2015-01-21T15:00:39.000Z" itemprop="datePublished"> Published 2015-01-21</time>
     
   </p>
 </header>
@@ -437,7 +645,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-20T04:04:39.000Z" itemprop="datePublished"> 发表于 2015-01-20</time>
+    <time datetime="2015-01-20T04:04:39.000Z" itemprop="datePublished"> Published 2015-01-20</time>
     
   </p>
 </header>
@@ -490,7 +698,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-19T11:57:04.000Z" itemprop="datePublished"> 发表于 2015-01-19</time>
+    <time datetime="2015-01-19T11:57:04.000Z" itemprop="datePublished"> Published 2015-01-19</time>
     
   </p>
 </header>
@@ -571,7 +779,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-06T06:36:06.000Z" itemprop="datePublished"> 发表于 2015-01-06</time>
+    <time datetime="2015-01-06T06:36:06.000Z" itemprop="datePublished"> Published 2015-01-06</time>
     
   </p>
 </header>
@@ -625,146 +833,21 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" title="代码实现autoLayout相关特性" itemprop="url">代码实现autoLayout相关特性</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2014-09-02T07:53:11.000Z" itemprop="datePublished"> 发表于 2014-09-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>##按比例缩放<br>按比例缩放，这是在Interface Builder中无法设置的内容。<br>而在代码中，有如下两种实现方式:</p>
-<ol>
-<li>使用<code>NSLayoutConstraint</code>类型的初始化函数中的<code>multiplier</code>参数就可以非常简单的设置按比例缩放。  </li>
-<li>同时也可以设置不同<code>NSLayoutAttribute</code>参数来达到意想不到的效果，比如“A的Width等于B的Height的2倍”这样的效果。  </li>
-</ol>
-<p>现在就拿一个简单的<strong><code>UIButton</code></strong>做示例，在ViewController中创建一个UIButton字段：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIButton</span> *btn;  </div></pre></td></tr></table></figure>  </p>
-<p>####需求 1：  </p>
-<ol>
-<li>要求<strong><code>UIButton</code></strong>水平居中，始终距离父View底部<strong>20</strong>单位，其高度是父View高度的三分之一。</li>
-<li>使用<strong>KVO</strong>来监控<strong><code>UIButton</code></strong>的大小并实时输出到屏幕上。  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    </div><div class="line">    <span class="comment">//创建UIButton，不需要设置frame</span></div><div class="line">    btn = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeRoundedRect</span>];</div><div class="line">    [btn setTitle:<span class="string">@"mgen"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    btn.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</div><div class="line">    [<span class="keyword">self</span>.view addSubview:btn];</div><div class="line"></div><div class="line">    <span class="comment">//禁止自动转换AutoresizingMask</span></div><div class="line">    btn.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//居中</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                              multiplier:<span class="number">1</span></div><div class="line">                              constant:<span class="number">0</span>]];</div><div class="line">    </div><div class="line">    <span class="comment">//距离底部20单位</span></div><div class="line">    <span class="comment">//注意NSLayoutConstraint创建的constant是加在toItem参数的，所以需要-20。</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                              multiplier:<span class="number">1</span></div><div class="line">                              constant:<span class="number">-20</span>]];</div><div class="line">    </div><div class="line">    <span class="comment">//定义高度是父View的三分之一</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeHeight</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeHeight</span></div><div class="line">                              multiplier:<span class="number">0.3</span></div><div class="line">                              constant:<span class="number">0</span>]];</div><div class="line"></div><div class="line">    <span class="comment">//注册KVO方法</span></div><div class="line">    [btn addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"bounds"</span> options:<span class="built_in">NSKeyValueObservingOptionNew</span> | <span class="built_in">NSKeyValueObservingOptionInitial</span> context:<span class="literal">nil</span>];    </div><div class="line">&#125;</div><div class="line">&lt;!--more--&gt;</div><div class="line"><span class="comment">//KVO回调</span></div><div class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span> *)change context:(<span class="keyword">void</span> *)context</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (object == btn &amp;&amp; [keyPath isEqualToString:<span class="string">@"bounds"</span>])</div><div class="line">    &#123;</div><div class="line">        [btn setTitle:<span class="built_in">NSStringFromCGSize</span>(btn.bounds.size) forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
-运行结果：<br><img src="/images/runbtn1.png" alt="image"><img src="/images/runbtn2.png" alt="image">
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/" title="在IOS中自定义URL Schemes 教程" itemprop="url">在IOS中自定义URL Schemes 教程</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2014-08-28T12:32:48.000Z" itemprop="datePublished"> 发表于 2014-08-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h4 id="URL-Schemes"><a href="#URL-Schemes" class="headerlink" title="URL Schemes"></a>URL Schemes</h4><p>iPhone SDK中最酷的功能之一是一个应用程序能够把自己和自定义的URL协议绑定，这个URL协议可用于启动该应用程序（通过浏览器或者iPhone上的另一个程序）。创建这样的绑定并不难，难得的是你忍不住要在你的程序里用它！</p>
-<p>首先，你需要说明你想如何在程序中响应这个URL。最简单的自定义协议的方法是“唤醒”，而且可以通过URL把数据信息传递给程序，这样，程序被唤醒后能做更多的事情。</p>
-<p>####注册自定义URL协议</p>
-<p>首先需要向iPhone注册一个自定义URL协议。这是在你的项目文件夹的info.plist文件进行的（就是你改变应用程序图标的同一个文件）。</p>
-<p>默认，Xcode在图形窗口中打开info.pllist，当然也可以直接用文本模式打开——对有的人来说这反而更简单。</p>
-<p>######Step1. 右键，选择“Add Row”,在下拉选框中选择“<strong>URL types</strong>”，类型为Array:<br><img src="/images/urlScheme2.gif" alt="image">  </p>
-<p>######Step2. 打开“Item 0″类型为Dic,添加新key为”URL identifier”,类型为String。可以是任何值，但建议用“反域名”(例如 “com.myapp”)。<br><img src="/images/urlScheme2a.gif" alt="image">  </p>
-<p>#####Step3. 打开“Item 0″类型为Dic,添加新key为“URL Schemes”,类型为Array:<br><img src="/images/urlScheme2b.gif" alt="image"><br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github 名片</p>
+<p class="asidetitle">Github Card</p>
 <div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -774,7 +857,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -847,7 +930,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -863,19 +946,19 @@
 			
 		
 			
-				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
 			
 		
 			
@@ -923,7 +1006,7 @@
 			
 		
 			
-				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
+				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
 			
 		
 			
@@ -935,7 +1018,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -957,11 +1040,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=&dpc=1"></iframe>
 </div>
 
@@ -1119,7 +1202,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

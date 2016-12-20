@@ -44,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,7 +60,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -77,6 +77,283 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/12/01/2015-12-01-ocyu-swiftxiang-hu-diao-yong/" title="OC与swift相互调用" itemprop="url">OC与swift相互调用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-01T03:42:18.000Z" itemprop="datePublished"> Published 2015-12-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>####Swift中使用OC的类声明  – 实现配置 桥接的头文件</p>
+<p>######方式一：自动添加桥接头文件</p>
+<ol>
+<li>在一个全新的Swift，利用第一次新建提示的方式自动添加桥接头文件。</li>
+<li>点确定这后就会生成一个以<producename-bridging-header.h>的头文件。</producename-bridging-header.h></li>
+<li>在targets-&gt;build settings -&gt;Object-C Bridging Header 设为生成的个桥接的头文件即可。</li>
+<li>把想要在swift类中调用的OC头文件放使用import “” 写到这个桥接文件中：<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Use this file to import your target's public headers that you would like to expose to Swift.  </span></div><div class="line"><span class="comment">//MixDemo/MixDemo-Bridging-Header.h    </span></div><div class="line"><span class="meta">#import <span class="meta-string">"OCChannel.h"</span></span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>######方式二：手动添加桥接头文件<br>同样的，当你知道这个swift搜索头文件的关系后，就不需要再理会这个-Bridging-Header.h的文件了。<br>完全可以手工建一个并取自己喜欢的名字：</p>
+<ol>
+<li>新建一个头文件，名为:OCContainerHeader.h</li>
+<li>在targets-&gt;build settings -&gt;Object-C Bridging Header 设为生成的个桥接的头文件即可。</li>
+<li>把想要在swift类中调用的OC头文件放使用import “” 写到这个桥接文件中：<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Use this file to import your target's public headers that you would like to expose to Swift.  	</span></div><div class="line"><span class="comment">//MixDemo/MixDemo-Bridging-Header.h    </span></div><div class="line"><span class="meta">#import <span class="meta-string">"OCChannel.h"</span></span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>####OC如何调用Swift写的类  –     为了在 Objective-C 中可用， Swift 类必须是 Objective-C 类的子类，或者用 @Objective-C 标记；</p>
+<ol>
+<li>选中targets-&gt;build settings -&gt;packing-&gt;Product Module Name 中设置模块名（可以自定义），这个名称很重要 swift 的头文件就是根据这个来命名的，例如：SwiftModule。</li>
+<li>在OC头文件类中，添加import “SwiftModule-swift.h”但你在整个工程中是找不到这个文件的，但可以使用CMD+ 鼠标点击可看这个头文件中的内容。  </li>
+</ol>
+<p>####总结：<br>这样，工程中如查Swift要使用OC,则把需要使用的OC类的头文件，全写在MixDemo-Bridging-Header.h里。同样如果OC中所使用的swift类，只需要Clean一把，再编就可以了，但不要忘了导入SwiftModule-swift.h哦（名称自取，但-swift.h是固定的），另外还有一个需要读者注意的。</p>
+<p>注：<br>    凡是用Swift写的类，如果不继成自NSObject或NSObject 的派生类，哪么编译后将不会生成对应的转换类。从而使得OC 中找不到相应的声明。<br>如我的例子中 class Act 这样不会被编译到SwiftModule-swift.h中，但写为 class Act : NSObject，就可以编译出相应的声明。另外可以使用@objc加以声明，但这个还是一样，类最好继承NSObject下来。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/swift/">swift</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/swift/">swift</a><a href="/tags/objc/">objc</a><a href="/tags/混编/">混编</a><a href="/tags/Invalid-Swift-Support/">Invalid Swift Support</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/01/2015-12-01-ocyu-swiftxiang-hu-diao-yong/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/01/2015-12-01-ocyu-swiftxiang-hu-diao-yong/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/27/2015-11-27-swiftru-men/" title="Swift入门" itemprop="url">Swift入门</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-27T09:18:21.000Z" itemprop="datePublished"> Published 2015-11-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ul>
+<li><a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-XID_1" target="_blank" rel="external">苹果官方</a>  </li>
+<li><a href="http://wiki.jikexueyuan.com/project/swift/" target="_blank" rel="external">中文版</a><br>####背景<br>Apple基于已有的编译器、调试器、框架作为其基础架构。通过ARC(Automatic Reference Counting，自动引用计数)来简化内存管理。我们的框架栈则一直基于Cocoa，且Objective-C进化支持了块、collection literal和模块，允许现代语言的框架无需深入即可使用。<br>(by gashero)感谢这些基础工作，才使得可以在Apple软件开发中引入新的编程语言Swift。</li>
+</ul>
+<p>####swift有点</p>
+<p>编译器是按照性能优化的，而语言是为开发优化的</p>
+<p>Swift采用了Objective-C的命名参数和动态对象模型。提供了对Cocoa框架和mix-and-match的互操作性。基于这些基础，Swift引入了很多新功能和结合面向过程和面向对象的功能。<br>Swift对新的程序员也是友好的：</p>
+<ol>
+<li>它是工业级品质的系统编程语言，却又像脚本语言一样的友好。</li>
+<li>它支持playground，允许程序员实验一段Swift代码功能并立即看到结果，而无需麻烦的构建和运行一个应用。<br>Swift集成了现代编程语言思想，以及Apple工程文化的智慧，编译器是按照性能优化的，而语言是为开发优化的，无需互相折中。</li>
+</ol>
+<p>####swift语法<br>Playground允许你编辑代码并立即看到结果,可以从”Hello, world”开始学起并过渡到整个系统。<br>在Xcode的playground中打开:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">println(<span class="string">"Hello, world"</span>)</div></pre></td></tr></table></figure></p>
+<p>在Swift，这就是完整的程序:</p>
+<ol>
+<li>无需导入(import)输入输出和字符串处理的系统库。</li>
+<li>全局范围的代码就是用于程序的入口，所以你无需编写一个 main() 函数。也无需在每个语句后写分号。</li>
+</ol>
+<p>所有这些使得Swift成为Apple软件开发者创新的源泉。</p>
+<p>####简单值  – 使用 let 来定义常量， var 定义变量<br>提供一个值就可以创建常量或变量，并让编译器推断其类型,一个常量或变量必须与赋值时拥有相同的类型。因此你不用严格定义类型。<br>常量定义类似于函数式编程语言中的变量,常量的值无需在编译时指定，但是至少要赋值一次,赋值后就无法修改。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myVariable = <span class="number">42</span></div><div class="line">myVariable = <span class="number">50</span></div><div class="line"><span class="keyword">let</span> myConstant = <span class="number">42</span></div></pre></td></tr></table></figure></p>
+<p>在上面例子中，编译其会推断myVariable是一个整数类型，因为其初始化值就是个整数。</p>
+<p>######1. 显示/隐式 初始化数据类型 —   类型与变量名绑定，属于静态类型语言<br>类型与变量名绑定，属于静态类型语言。有助于静态优化。与Python、JavaScript等有所区别。<br>例如：初始化值没有提供足够的信息(或没有初始化值)，可以在变量名后写类型，以冒号分隔。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> imlicitInteger = <span class="number">70</span></div><div class="line"><span class="keyword">let</span> imlicitDouble = <span class="number">70.0</span></div><div class="line"><span class="keyword">let</span> explicitDouble: <span class="type">Double</span> = <span class="number">70</span></div></pre></td></tr></table></figure></p>
+<p>######2. 变量  拼接到字符串  – 变量值永远不会隐含转换到其他类型</p>
+<ul>
+<li><p>String(变量名)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> label = <span class="string">"The width is "</span></div><div class="line"><span class="keyword">let</span> width = <span class="number">94</span></div><div class="line"><span class="keyword">let</span> widthLabel = label + <span class="type">String</span>(width)</div></pre></td></tr></table></figure>
+</li>
+<li><p>以小括号来写值，并用反斜线(“”)放在小括号之前</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> apples = <span class="number">3</span></div><div class="line"><span class="keyword">let</span> oranges = <span class="number">5</span>     <span class="comment">//by gashero</span></div><div class="line"><span class="keyword">let</span> appleSummary = <span class="string">"I have \(apples) apples."</span></div><div class="line"><span class="keyword">let</span> fruitSummary = <span class="string">"I have \(apples + oranges) pieces of fruit."</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>####数组和字典的用法</p>
+<ol>
+<li>声明并初始化<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> emptyArray = <span class="type">String</span>[]()</div><div class="line"><span class="keyword">let</span> emptyDictionary = <span class="type">Dictionary</span>&lt;<span class="type">String</span>, <span class="type">Float</span>&gt;()</div><div class="line">shoppingList = [] <span class="comment">//去购物并买些东西</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果数组类型无法推断，你可以写空的数组为 “[]” 和空的字典为 “[:]“。</p>
+<ol>
+<li>访问<br>创建一个数组和字典使用方括号 “[]”，访问其元素则是通过方括号中的索引或键。                      <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> shoppingList = [<span class="string">"catfish"</span>, <span class="string">"water"</span>, <span class="string">"tulips"</span>, <span class="string">"blue paint"</span>]</div><div class="line">shoppingList[<span class="number">1</span>] = <span class="string">"bottle of water"</span></div><div class="line"><span class="keyword">var</span> occupations = [</div><div class="line">   <span class="string">"Malcolm"</span>: <span class="string">"Captain"</span>,</div><div class="line">   <span class="string">"Kaylee"</span>: <span class="string">"Mechanic"</span>,</div><div class="line">]</div><div class="line">occupations[<span class="string">"Jayne"</span>] = <span class="string">"Public Relations"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>####控制流  –  条件控制，循环控制</p>
+<p>######1. 条件控制</p>
+<ul>
+<li><p>if  条件必须是布尔表达式<br>在 if 语句中，条件必须是布尔表达式，这意味着 if score { … } 是错误的，不能隐含的与0比较。<br>你可以一起使用 if 和 let 来防止值的丢失。这些值是可选的。<br>可选值可以包含一个值或包含一个 nil 来指定值还不存在。写一个问号 “?” 在类型后表示值是可选的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> optionalString: <span class="type">String</span>? = <span class="string">"Hello"</span></div><div class="line">optionalString == <span class="literal">nil</span></div><div class="line"><span class="keyword">var</span> optionalName: <span class="type">String</span>? = <span class="string">"John Appleseed"</span></div><div class="line"><span class="keyword">var</span> greeting = <span class="string">"Hello!"</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> name = optionalName &#123;</div><div class="line">    greeting = <span class="string">"Hello, \(name)"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>switch 支持多种数据以及多种比较，不限制必须是整数和测试相等  </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> vegetable = <span class="string">"red pepper"</span></div><div class="line"><span class="keyword">switch</span> vegetable &#123;</div><div class="line"><span class="keyword">case</span> <span class="string">"celery"</span>:</div><div class="line">    <span class="keyword">let</span> vegetableComment = <span class="string">"Add some raisins and make ants on a log."</span></div><div class="line"><span class="keyword">case</span> <span class="string">"cucumber"</span>, <span class="string">"watercress"</span>:</div><div class="line">    <span class="keyword">let</span> vegetableComment = <span class="string">"That would make a good tea sandwich."</span></div><div class="line"><span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasSuffix(<span class="string">"pepper"</span>):</div><div class="line">    <span class="keyword">let</span> vegetableComment = <span class="string">"Is it a spicy \(x)?"</span></div><div class="line"><span class="keyword">default</span>:    <span class="comment">//by gashero</span></div><div class="line">    <span class="keyword">let</span> vegetableComment = <span class="string">"Everything tastes good in soup."</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在执行匹配的情况后，程序会从 switch 跳出，而不是继续执行下一个情况。所以不再需要 break 跳出 switch 。</p>
+<p>######2. 循环控制</p>
+<ul>
+<li>for-in 来迭代字典中的每个元素<br>可使用 for-in 来迭代字典中的每个元素，提供一对名字来使用每个键值对。<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> interestingNumbers = [</div><div class="line">    <span class="string">"Prime"</span>: [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>],</div><div class="line">    <span class="string">"Fibonacci"</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>],</div><div class="line">    <span class="string">"Square"</span>: [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>],</div><div class="line">]</div><div class="line"><span class="keyword">var</span> largest = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> (kind, numbers) <span class="keyword">in</span> interestingNumbers &#123;</div><div class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</div><div class="line">        <span class="keyword">if</span> number &gt; largest &#123;</div><div class="line">            largest = number</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```  </div><div class="line">你可以在循环中保持一个索引，通过“..”来表示索引范围或明确声明一个初始值、条件、增量。   </div><div class="line">这两个循环做相同的事情:  </div><div class="line">```swift</div><div class="line"><span class="keyword">var</span> firstForLoop = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..<span class="number">3</span> &#123;</div><div class="line">    firstForLoop += i</div><div class="line">&#125;</div><div class="line">firstForLoop</div><div class="line"><span class="keyword">var</span> secondForLoop = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i &#123;</div><div class="line">    secondForLoop += <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用 .. 构造范围忽略最高值，而用 … 构造的范围则包含两个值。</p>
+<ul>
+<li>while 来重复执行代码块直到条件改变<br>使用 while 来重复执行代码块直到条件改变。循环的条件可以放在末尾来确保循环至少执行一次。<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> n = <span class="number">2</span></div><div class="line"><span class="keyword">while</span> n &lt; <span class="number">100</span> &#123;</div><div class="line">    n = n * <span class="number">2</span></div><div class="line">&#125;</div><div class="line">n</div><div class="line"><span class="keyword">var</span> m = <span class="number">2</span></div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">    m = m * <span class="number">2</span></div><div class="line">&#125; <span class="keyword">while</span> m &lt; <span class="number">100</span></div><div class="line">m</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>####函数与闭包  – 函数是闭包的特殊情况</p>
+<p>######1. 闭包 无需名字，只需要放在大括号中即可<br>编写闭包时有多种选项:</p>
+<ol>
+<li><p>使用 in 到特定参数和主体的返回值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">numbers.<span class="built_in">map</span>(&#123;</div><div class="line">    (number: <span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">let</span> result = <span class="number">3</span> * number</div><div class="line">    <span class="keyword">return</span> result</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>单一语句的闭包可以直接返回值<br>例如：当一个闭包的类型是已知时，例如代表回调，你可以忽略其参数和返回值，或两者</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">numbers.<span class="built_in">map</span>(&#123;number <span class="keyword">in</span> <span class="number">3</span> * number&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过数字而不是名字来引用一个参数，这对于很短的闭包很有用。<br>例如：一个闭包传递其最后一个参数到函数作为返回值。  </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sort</span>([<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">12</span>, <span class="number">2</span>]) &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>######2. 函数</p>
+<ul>
+<li><p>函数的声明   –  使用func 声明一个函数  使用 -&gt;分隔参数的名字和返回值类型,<br>调用函数使用他的名字加上小括号中的参数列表</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">greet</span><span class="params">(name: String, day: String)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hello \(name), today is \(day)."</span></div><div class="line">&#125;</div><div class="line">greet(<span class="string">"Bob"</span>, <span class="string">"Tuesday"</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数的嵌套<br>内嵌函数可以访问其定义所在函数的变量。<br>你可以使用内嵌函数来组织代码，避免过长和过于复杂：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">returnFifteen</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">var</span> y = <span class="number">10</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">()</span></span> &#123;</div><div class="line">        y += <span class="number">5</span></div><div class="line">    &#125;</div><div class="line">    add()</div><div class="line">    <span class="keyword">return</span> y</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数接收的参数</p>
+<ol>
+<li><p>可变参数的个数  sumOf(numbers: Int…) -&gt; Int{}<br>函数可以接受可变参数个数，收集到一个数组中</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sumOf</span><span class="params">(numbers: Int...)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">var</span> sum = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</div><div class="line">        sum += number</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sum</div><div class="line">&#125;</div><div class="line"><span class="comment">//例子</span></div><div class="line">sumOf(<span class="number">42</span>, <span class="number">597</span>, <span class="number">12</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>其他函数作为参数  func hasAnyMatches(list: Int[], condition: Int -&gt; Bool) -&gt; Bool{}</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">func</span> <span class="title">hasAnyMatches</span><span class="params">(list: Int[], condition: Int -&gt; Bool)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> list &#123;</div><div class="line">        <span class="keyword">if</span> condition(item) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">lessThanTen</span><span class="params">(number: Int)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">return</span> number &lt; <span class="number">10</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> numbers = [<span class="number">20</span>, <span class="number">19</span>, <span class="number">7</span>, <span class="number">12</span>]</div><div class="line">hasAnyMatches(numbers, lessThanTen)</div></pre></td></tr></table></figure>
+<p>函数实际是闭包的特殊情况。你可以写一个闭包而无需名字，只需要放在大括号中即可。使用 in 到特定参数和主体的返回值。</p>
+</li>
+</ol>
+</li>
+<li><p>函数的返回值</p>
+<ol>
+<li><p>返回多个值 ： getGasPrices() -&gt; (Double, Double, Double)<br>使用元组(tuple)来返回多个值                           </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getGasPrices</span><span class="params">()</span></span> -&gt; (<span class="type">Double</span>, <span class="type">Double</span>, <span class="type">Double</span>) &#123;</div><div class="line">    <span class="keyword">return</span> (<span class="number">3.59</span>, <span class="number">3.69</span>, <span class="number">3.79</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>返回另一个函数  ： makeIncrementer() -&gt; (Int -&gt; Int)<br>函数是第一类型的</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeIncrementer</span><span class="params">()</span></span> -&gt; (<span class="type">Int</span> -&gt; <span class="type">Int</span>) &#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addOne</span><span class="params">(number: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span> + number</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> addOne</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> increment = makeIncrementer()</div><div class="line">increment(<span class="number">7</span>)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<p>####对象与类</p>
+<p>######1. 类的创建  ：class 类名 {}</p>
+<ol>
+<li><p>使用 class 可以创建一个类。<br>一个属性的声明则是在类里作为常量或变量声明的，除了是在类的上下文中。方法和函数也是这么写的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> numberOfSides = <span class="number">0</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"A shape with \(numberOfSides) sides."</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>类的构造器  ： 构造器来在创建实例时设置类，使用 init 来创建</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NamedShape</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> numberOfSides: <span class="type">Int</span> = <span class="number">0</span></div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line"></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;   <span class="comment">//by gashero</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"A Shape with \(numberOfSides) sides."</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>self 用来区分 name 属性和 name 参数。<br>构造器的声明跟函数一样，除了会创建类的实例。每个属性都需要赋值，无论在声明里还是在构造器里。</p>
+<ol>
+<li>类的析构器，来执行对象销毁时的清理工作，使用 deinit 来创建<br>使用 deinit 来创建一个析构器，来执行对象销毁时的清理工作。</li>
+<li>超类的继承    <ul>
+<li>子类包括其超类的名字，以冒号分隔。在继承标准根类时无需声明，所以你可以忽略超类。  </li>
+<li>子类的方法可以通过标记 override 重载超类中的实现，而没有 override 的会被编译器看作是错误,编译器也会检查那些没有被重载的方法。<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span>: <span class="title">NamedShape</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> sideLength: <span class="type">Double</span></div><div class="line"></div><div class="line">    <span class="keyword">init</span>(sideLength: <span class="type">Double</span>, name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.sideLength = sideLength</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">        numberOfSides = <span class="number">4</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">area</span><span class="params">()</span></span> -&gt; <span class="type">Double</span> &#123;</div><div class="line">        <span class="keyword">return</span> sideLength * sideLength</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"A square with sides of length \(sideLength)."</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> test = <span class="type">Square</span>(sideLength: <span class="number">5.2</span>, name: <span class="string">"my test square"</span>)</div><div class="line">test.area()</div><div class="line">test.simpleDescription()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<p>######2. 类的实例创建   :  类名()  ,点语法来访问实例的属性和方法<br>通过在类名后加小括号来创建类的实例。使用点语法来访问实例的属性和方法。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> shape = <span class="type">Shape</span>()</div><div class="line">shape.numberOfSides = <span class="number">7</span></div><div class="line"><span class="keyword">var</span> shapeDescription = shape.simpleDescription()</div></pre></td></tr></table></figure></p>
+<p>可选类型 Int?<br>可选绑定 if while</p>
+<p>强制取值表达式 expression!<br>可选链表达式   expression?</p>
+<p>类型转换运算符 is , as, is?, as!</p>
+<p>标示符模式<br>值绑定模式<br>可选模式<br>类型转换模式</p>
+<p>实例方法  func<br>类型方法 class func</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Swift/">Swift</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/swift/">swift</a><a href="/tags/语法/">语法</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/11/27/2015-11-27-swiftru-men/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/11/27/2015-11-27-swiftru-men/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/11/27/2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi/" title="产品领导者的五种特质" itemprop="url">产品领导者的五种特质</a>
   </h1>
   <p class="article-author">By
@@ -84,7 +361,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-27T02:24:44.000Z" itemprop="datePublished"> 发表于 2015-11-27</time>
+    <time datetime="2015-11-27T02:24:44.000Z" itemprop="datePublished"> Published 2015-11-27</time>
     
   </p>
 </header>
@@ -150,7 +427,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-26T08:15:11.000Z" itemprop="datePublished"> 发表于 2015-11-26</time>
+    <time datetime="2015-11-26T08:15:11.000Z" itemprop="datePublished"> Published 2015-11-26</time>
     
   </p>
 </header>
@@ -203,7 +480,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-20T02:06:38.000Z" itemprop="datePublished"> 发表于 2015-11-20</time>
+    <time datetime="2015-11-20T02:06:38.000Z" itemprop="datePublished"> Published 2015-11-20</time>
     
   </p>
 </header>
@@ -275,7 +552,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-20T03:17:27.000Z" itemprop="datePublished"> 发表于 2015-10-20</time>
+    <time datetime="2015-10-20T03:17:27.000Z" itemprop="datePublished"> Published 2015-10-20</time>
     
   </p>
 </header>
@@ -340,7 +617,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-06T02:18:02.000Z" itemprop="datePublished"> 发表于 2015-10-06</time>
+    <time datetime="2015-10-06T02:18:02.000Z" itemprop="datePublished"> Published 2015-10-06</time>
     
   </p>
 </header>
@@ -405,7 +682,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-06T00:32:41.000Z" itemprop="datePublished"> 发表于 2015-10-06</time>
+    <time datetime="2015-10-06T00:32:41.000Z" itemprop="datePublished"> Published 2015-10-06</time>
     
   </p>
 </header>
@@ -502,7 +779,7 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-05T11:16:47.000Z" itemprop="datePublished"> 发表于 2015-10-05</time>
+    <time datetime="2015-10-05T11:16:47.000Z" itemprop="datePublished"> Published 2015-10-05</time>
     
   </p>
 </header>
@@ -572,7 +849,7 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-29T09:05:21.000Z" itemprop="datePublished"> 发表于 2015-09-29</time>
+    <time datetime="2015-09-29T09:05:21.000Z" itemprop="datePublished"> Published 2015-09-29</time>
     
   </p>
 </header>
@@ -649,229 +926,21 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/" title="Mac安装gitLab服务器" itemprop="url">Mac安装gitLab服务器</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2015-09-27T11:25:38.000Z" itemprop="datePublished"> 发表于 2015-09-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>####必要配置</p>
-<pre><code>*创建一个名称为&quot;gitlab&quot;管理员用户，然后再创建一个名称为&quot;gitlab&quot;的群组
-*开启gitlab用户的远程登录
-</code></pre><p>在系统启动界面:<br>隐藏gitlab用户 </p>
-<pre><code>sudo defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add gitlab
-</code></pre><p>显示git用户</p>
-<pre><code>sudo defaults delete /Library/Preferences/com.apple.loginwindow HiddenUsersList
-</code></pre><p>####添加系统账户gitlab</p>
-<p>######生成gitlab服务器目录，即用户根目录<br>进入<strong>系统偏好设置…</strong>,在管理<strong>用户与群组</strong>中，添加其他用户，暂时定为：gitlab ，登录密码假设为：gitlab，添加完成后，会自动在/Users目录下，生成用户根目录gitlab.</p>
-<p>######安装 Gitlab Shell</p>
-<pre><code>cd /Users/gitlab
-sudo -u gitlab git clone https://github.com/gitlabhq/gitlab-shell.git
-cd gitlab-shell
-sudo -u gitlab git checkout v1.9.1
-sudo -u gitlab cp config.yml.example config.yml
-</code></pre><p>打开 config.yml,然后进行编辑<br>设置  gitlab_url. 把 gitlab.example.com 替换成你自己的域名 （如果本地就不用了）<br>把所有的/home 替换成 /Users</p>
-<pre><code>sudo -u gitlab sed -i &quot;&quot; &quot;s/\/home\//\/Users\//g&quot; config.yml
-sudo -u gitlab sed -i &quot;&quot; &quot;s/\/usr\/bin\/redis-cli/\/usr\/local\/bin\/redis-cli/&quot; config.yml
-</code></pre><p>然后执行安装脚本：<code>sudo -u gitlab -H ./bin/install</code>  <strong>//需在gitlab-shell目录下载执行</strong></p>
-<p>######安装gitlab<br>先下载gitlab</p>
-<pre><code>cd /Users/gitlab
-sudo -u gitlab git clone https://github.com/gitlabhq/gitlabhq.git
-cd gitlab
-sudo -u gitlab git checkout 6-7-stable
-</code></pre><p>配置gitlab</p>
-<pre><code>sudo -u gitlab cp config/gitlab.yml.example config/gitlab.yml
-sudo -u gitlab sed -i &quot;&quot; &quot;s/\/usr\/bin\/git/\/usr\/local\/bin\/git/g&quot; config/gitlab.yml
-sudo -u gitlab sed -i &quot;&quot; &quot;s/\/home/\/Users/g&quot; config/gitlab.yml
-sudo -u gitlab sed -i &quot;&quot; &quot;s/localhost/domain.com/g&quot; config/gitlab.yml
-</code></pre><p>配置MySQL数据库，创建gitlab用户，数据库，和gitlab用户的管理权限</p>
-<pre><code># Login to MySQL
-$ mysql -u root -p
-
-# Create the GitLab production database
-mysql&gt; CREATE DATABASE IF NOT EXISTS `gitlabhq_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`;
-
-# Create the MySQL User change $password to a real password
-mysql&gt; CREATE USER &apos;gitlab&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;$password&apos;;
-
-# Grant proper permissions to the MySQL User
-mysql&gt; GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON `gitlabhq_production`.* TO &apos;gitlab&apos;@&apos;localhost&apos;;
-</code></pre><p>######安装 Gitolite帮助管理git内部用户</p>
-<p>克隆gitlab的gitolite分支源代码：</p>
-<pre><code>sudo -H -u gitlab git clone -b gl-v304 https://github.com/gitlabhq/gitolite.git /Users/gitlab/gitolite
-</code></pre><p>安装：</p>
-<pre><code>cd /Users/gitlab
-sudo -u gitlab -H mkdir bin
-sudo -u gitlab sh -c &apos;echo -e &quot;PATH=\$PATH:/Users/gitlab/bin\nexport PATH&quot; &gt;&gt; /Users/gitlab/.profile&apos;
-sudo -u gitlab sh -c &apos;gitolite/install -ln /Users/gitlab/bin&apos;
-
-sudo cp ~/.ssh/id_rsa.pub /Users/gitlab/gitlab.pub
-sudo chmod 0444 /Users/gitlab/gitlab.pub
-
-sudo -u gitlab -H sh -c &quot;PATH=/Users/gitlab/bin:$PATH; gitolite setup -pk /Users/gitlab/gitlab.pub&quot;
-</code></pre><p>为 Git 创建用户：    </p>
-<pre><code>sudo adduser \
-  --system \
-  --shell /bin/sh \
-  --gecos &apos;git version control&apos; \
-  --group \
-  --disabled-password \
-  --home /home/git \
-  git
-</code></pre><p>若干问题解决办法：<a href="http://www.cnblogs.com/whj198579/archive/2013/04/09/3009350.html" target="_blank" rel="external">Mac搭建Git服务器—开启SSH</a></p>
-<pre><code>Cloning into &apos;/tmp/gitolite-admin&apos;...
-ssh: connect to host localhost port 22: Connection refused
-fatal: Could not read from remote repository.
-</code></pre><p>SSH无密码登陆设置：</p>
-<pre><code>$ cd /etc
-$ chmod 666 sshd_config
-$ vim sshd_config
-
-#PermitRootLogin yes  改为：PermitRootLogin no
-#UsePAM yes             改为: UsePAM no
-</code></pre><p>Remove the # from the following</p>
-<pre><code>#RSAAuthentication yes
-#PubkeyAuthentication yes
-#AuthorizedKeysFile     .ssh/authorized_keys    
-#PasswordAuthentication no
-#PermitEmptyPasswords no
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/09/25/2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo/" title="小米路由常用操作" itemprop="url">小米路由常用操作</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2015-09-25T15:59:16.000Z" itemprop="datePublished"> 发表于 2015-09-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>####常用命令</p>
-<ol>
-<li><p>ssh登录</p>
-<pre><code>局域网登录:
-ssh [user@]hostname [command]
- 例如：ssh root@192.168.31.1  或  远程登录：ssh root@222.35.145.28 -p 2195
-回车
-输入密码
-
-**修改密码：**
-root@xiaoqiang:~#passwd   
-回车
-输入新密码
-回车
-再次输入新密码
-</code></pre></li>
-<li><p>远程拷贝数据</p>
-<pre><code>scp Desktop/ar71xx/* root@192.168.31.1:/userdisk/myWorkspace/ar71xx
-</code></pre></li>
-<li><p>每次重启路由获取IP:</p>
-<pre><code>vi /etc/rc.local
-sh /etc/getIP.sh
-</code></pre><p>//启动后，等待20秒，然后，获取当前时间作为文件名称<br>//使用ifconfig 获取路由器的ip信息<br>//使用 | grep 通道，和grep正则来过滤出，wan口的ip所在行<br>// &gt; 使用重定向，将过滤的ip行，写入路由硬盘/userdisk/data/my/ip目录中<br>//通过小米路由手机客户端，找到该txt文件，并下载到手机sd卡中<br>//查看该文件，既有路由重启后的当前IP  </p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/09/25/2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/09/25/2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/25/2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github 名片</p>
+<p class="asidetitle">Github Card</p>
 <div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -881,7 +950,7 @@ sh /etc/getIP.sh
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -954,7 +1023,7 @@ sh /etc/getIP.sh
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -970,19 +1039,19 @@ sh /etc/getIP.sh
 			
 		
 			
-				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
 			
 		
 			
@@ -1030,7 +1099,7 @@ sh /etc/getIP.sh
 			
 		
 			
-				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
+				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
 			
 		
 			
@@ -1042,7 +1111,7 @@ sh /etc/getIP.sh
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -1064,11 +1133,11 @@ sh /etc/getIP.sh
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=&dpc=1"></iframe>
 </div>
 
@@ -1226,7 +1295,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
