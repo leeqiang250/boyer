@@ -96,55 +96,11 @@
 <h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><h5 id="无参普通blockquote"><a href="#无参普通blockquote" class="headerlink" title="无参普通blockquote"></a>无参普通blockquote</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote %&#125;</div><div class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
 <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
 </blockquote>
-<h5 id="引用书上的句子"><a href="#引用书上的句子" class="headerlink" title="引用书上的句子"></a>引用书上的句子</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote David Levithan, Wide Awake %&#125;</div><div class="line">Do not just seek happiness <span class="keyword">for</span> yourself. Seek happiness <span class="keyword">for</span> all. Through kindness. Through mercy.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
-<footer><strong>boyer huo </strong><cite>Wide Awake</cite></footer></blockquote>
-<h5 id="引用-Twitter"><a href="#引用-Twitter" class="headerlink" title="引用 Twitter"></a>引用 Twitter</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote @DevDocs https:<span class="comment">//twitter.com/devdocs/status/356095192085962752 %&#125;</span></div><div class="line">NEW: DevDocs now comes <span class="keyword">with</span> syntax highlighting. http:<span class="comment">//devdocs.io</span></div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="external">http://devdocs.io</a></p>
-<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="external">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
-<h5 id="引用网络上的文章"><a href="#引用网络上的文章" class="headerlink" title="引用网络上的文章"></a>引用网络上的文章</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote Seth Godin http:<span class="comment">//sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %&#125;</span></div><div class="line">Every interaction is both precious and an opportunity to delight.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
-<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="external">Welcome to Island Marketing</a></cite></footer></blockquote>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>在文章中插入代码。</p>
-<h3 id="别名：-code"><a href="#别名：-code" class="headerlink" title="别名： code"></a>别名： code</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock [title] [lang:language] [url] [link text] %&#125;</div><div class="line">code snippet</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<h4 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h4><hr>
-<h5 id="普通的代码块"><a href="#普通的代码块" class="headerlink" title="普通的代码块"></a>普通的代码块</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock %&#125;</div><div class="line">alert(<span class="string">'Hello World!'</span>);</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(&apos;Hello World!&apos;);</div></pre></td></tr></table></figure>
-<h5 id="指定语言"><a href="#指定语言" class="headerlink" title="指定语言"></a>指定语言</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock lang:objc %&#125;</div><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div></pre></td></tr></table></figure>
-<h5 id="附加说明"><a href="#附加说明" class="headerlink" title="附加说明"></a>附加说明</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock <span class="built_in">Array</span>.map %&#125;</div><div class="line">array.map(callback[, thisArg])</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>Array.map</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Array.map</div><div class="line">array.map(callback[, thisArg])</div></pre></td></tr></table></figure>
-<h5 id="附加说明和网址"><a href="#附加说明和网址" class="headerlink" title="附加说明和网址"></a>附加说明和网址</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock _.compact http:<span class="comment">//underscorejs.org/#compact Underscore.js %&#125;</span></div><div class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="literal">false</span>, <span class="number">2</span>, <span class="string">''</span>, <span class="number">3</span>]);</div><div class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_.compactUnderscore.js</div><div class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</div><div class="line">=&gt; [1, 2, 3]</div></pre></td></tr></table></figure>
-<h3 id="反引号代码块"><a href="#反引号代码块" class="headerlink" title="反引号代码块"></a>反引号代码块</h3><hr>
-<p>另一种形式的代码块，不同的是它使用三个反引号来包裹。<br><figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="code">``` [language] [title] [url] [link text] code snippet</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">### Pull Quote</div><div class="line">---</div><div class="line">在文章中插入 Pull quote。</div><div class="line">```js</div><div class="line">&#123;% pullquote [class] %&#125;</div><div class="line">content</div><div class="line">&#123;% endpullquote %&#125;</div></pre></td></tr></table></figure>
-<h3 id="jsFiddle"><a href="#jsFiddle" class="headerlink" title="jsFiddle"></a>jsFiddle</h3><hr>
-<p>在文章中嵌入 jsFiddle。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% jsfiddle shorttag [tabs] [skin] [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h3><hr>
-<p>在文章中嵌入 Gist。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist gist_id [filename] %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h3><hr>
-<p>在文章中插入 iframe。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% iframe url [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><hr>
-<p>在文章中插入指定大小的图片。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% img [class names] /path/to/image [width] [height] [title text [alt text]] %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h3><hr>
-<p>在文章中插入链接，并自动给外部链接添加 target=”_blank” 属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% link text url [external] [title] %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="Include-Code"><a href="#Include-Code" class="headerlink" title="Include Code"></a>Include Code</h3><hr>
-<p>插入 source 文件夹内的代码文件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube"></a>Youtube</h3><hr>
-<p>在文章中插入 Youtube 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% youtube video_id %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="Vimeo"><a href="#Vimeo" class="headerlink" title="Vimeo"></a>Vimeo</h3><hr>
-<p>在文章中插入 Vimeo 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% vimeo video_id %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h3><hr>
-<p>引用其他文章的链接。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% post_path slug %&#125;</div><div class="line">&#123;% post_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h3><hr>
-<p>引用文章的资源。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% asset_path slug %&#125;</div><div class="line">&#123;% asset_img slug [title] %&#125;</div><div class="line">&#123;% asset_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="Raw"><a href="#Raw" class="headerlink" title="Raw"></a>Raw</h3><hr>
-<p>如果您想在文章中插入 Swig 标签，可以尝试使用 Raw 标签，以免发生解析异常。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% raw %&#125;</div><div class="line">content</div><div class="line">&#123;% endraw %&#125;</div></pre></td></tr></table></figure></p>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/2016/12/20/Hexo标签插件/#more">更多-&gt;</a>
           
        </p>
     </div>
@@ -1016,15 +972,11 @@
 			
 		
 			
-				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
 			
 		
 			
@@ -1032,19 +984,11 @@
 			
 		
 			
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/swift/" title="swift">swift<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
 			
 		
 			
@@ -1064,6 +1008,18 @@
 			
 		
 			
+				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
 			
 		
@@ -1076,7 +1032,7 @@
 			
 		
 			
-				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
+				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
 			
 		
 			
