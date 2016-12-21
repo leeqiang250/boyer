@@ -1,0 +1,461 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		149F33481E0A74AE00AAC556 /* Deploy */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 149F33491E0A74B000AAC556 /* Build configuration list for PBXAggregateTarget "Deploy" */;
+			buildPhases = (
+				149F334C1E0A74BD00AAC556 /* 发布 */,
+				149F334D1E0A74E200AAC556 /* server调试 */,
+			);
+			dependencies = (
+			);
+			name = Deploy;
+			productName = Deploy;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXFileReference section */
+		149F334E1E0A767600AAC556 /* _config.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = _config.yml; sourceTree = "<group>"; };
+		149F33501E0A767600AAC556 /* 2014-06-09-chu-bu-da-jian-octopress.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-09-chu-bu-da-jian-octopress.md"; sourceTree = "<group>"; };
+		149F33511E0A767600AAC556 /* 2014-06-10-ios7jie-ping-wen-ti.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-10-ios7jie-ping-wen-ti.markdown"; sourceTree = "<group>"; };
+		149F33521E0A767600AAC556 /* 2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots.markdown"; sourceTree = "<group>"; };
+		149F33531E0A767600AAC556 /* 2014-06-11-ios7de-bian-ge.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-11-ios7de-bian-ge.markdown"; sourceTree = "<group>"; };
+		149F33541E0A767600AAC556 /* 2014-06-16-ios7xin-chong-text-kit.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-16-ios7xin-chong-text-kit.markdown"; sourceTree = "<group>"; };
+		149F33551E0A767600AAC556 /* 2014-06-17-uidevicelei-jie-shao.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-17-uidevicelei-jie-shao.markdown"; sourceTree = "<group>"; };
+		149F33561E0A767600AAC556 /* 2014-07-01-instrumentzhi-zombiegong-ju.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-07-01-instrumentzhi-zombiegong-ju.markdown"; sourceTree = "<group>"; };
+		149F33571E0A767600AAC556 /* 2014-07-01-ios-document-interaction-bian-cheng-zhi-nan.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-07-01-ios-document-interaction-bian-cheng-zhi-nan.markdown"; sourceTree = "<group>"; };
+		149F33581E0A767600AAC556 /* 2014-07-03-textkitzhi-bian-jian-an-li.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-07-03-textkitzhi-bian-jian-an-li.markdown"; sourceTree = "<group>"; };
+		149F33591E0A767600AAC556 /* 2014-07-22-storyboardzhi-segue.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-07-22-storyboardzhi-segue.markdown"; sourceTree = "<group>"; };
+		149F335A1E0A767600AAC556 /* 2014-08-28-xcode-headerdoc-jiao-cheng.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-08-28-xcode-headerdoc-jiao-cheng.md"; sourceTree = "<group>"; };
+		149F335B1E0A767600AAC556 /* 2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng.markdown"; sourceTree = "<group>"; };
+		149F335C1E0A767600AAC556 /* 2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing.markdown"; sourceTree = "<group>"; };
+		149F335D1E0A767600AAC556 /* 2015-01-06-xmppjian-dan-yan-jiu-zhuan.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-01-06-xmppjian-dan-yan-jiu-zhuan.md"; sourceTree = "<group>"; };
+		149F335E1E0A767600AAC556 /* 2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md"; sourceTree = "<group>"; };
+		149F335F1E0A767600AAC556 /* 2015-01-20-iapkai-fa-bu-zou.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-01-20-iapkai-fa-bu-zou.md"; sourceTree = "<group>"; };
+		149F33601E0A767600AAC556 /* 2015-01-21-rubygemsxue-xi.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-01-21-rubygemsxue-xi.md"; sourceTree = "<group>"; };
+		149F33611E0A767600AAC556 /* 2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md"; sourceTree = "<group>"; };
+		149F33621E0A767600AAC556 /* 2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa.md"; sourceTree = "<group>"; };
+		149F33631E0A767600AAC556 /* 2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi.markdown"; sourceTree = "<group>"; };
+		149F33641E0A767600AAC556 /* 2015-09-25-xcode7bian-yi-fa-bu-wen-ti.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-09-25-xcode7bian-yi-fa-bu-wen-ti.markdown"; sourceTree = "<group>"; };
+		149F33651E0A767600AAC556 /* 2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo.markdown"; sourceTree = "<group>"; };
+		149F33661E0A767600AAC556 /* 2015-09-27-macan-zhuang-gitlabfu-wu-qi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-09-27-macan-zhuang-gitlabfu-wu-qi.markdown"; sourceTree = "<group>"; };
+		149F33671E0A767600AAC556 /* 2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown"; sourceTree = "<group>"; };
+		149F33681E0A767600AAC556 /* 2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku.markdown"; sourceTree = "<group>"; };
+		149F33691E0A767600AAC556 /* 2015-10-06-calabash[ */ = {isa = PBXFileReference; lastKnownFileType = text; path = "2015-10-06-calabash["; sourceTree = "<group>"; };
+		149F336A1E0A767600AAC556 /* 2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown"; sourceTree = "<group>"; };
+		149F336B1E0A767600AAC556 /* 2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd.markdown"; sourceTree = "<group>"; };
+		149F336C1E0A767600AAC556 /* 2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg.markdown"; sourceTree = "<group>"; };
+		149F336D1E0A767600AAC556 /* 2015-11-20-min-jie-kai-fa-zong-jie.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-11-20-min-jie-kai-fa-zong-jie.markdown"; sourceTree = "<group>"; };
+		149F336E1E0A767600AAC556 /* 2015-11-26-uiimagede-xuan-ran-mo-shi.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-11-26-uiimagede-xuan-ran-mo-shi.md"; sourceTree = "<group>"; };
+		149F336F1E0A767600AAC556 /* 2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown"; sourceTree = "<group>"; };
+		149F33701E0A767600AAC556 /* 2015-11-27-swiftru-men.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-11-27-swiftru-men.markdown"; sourceTree = "<group>"; };
+		149F33711E0A767600AAC556 /* 2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown"; sourceTree = "<group>"; };
+		149F33721E0A767600AAC556 /* 2015-12-15-zong-jie.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-15-zong-jie.markdown"; sourceTree = "<group>"; };
+		149F33731E0A767600AAC556 /* 2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown"; sourceTree = "<group>"; };
+		149F33741E0A767600AAC556 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown"; sourceTree = "<group>"; };
+		149F33751E0A767600AAC556 /* 2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown"; sourceTree = "<group>"; };
+		149F33761E0A767600AAC556 /* 2016-01-07-gtdru-men.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-07-gtdru-men.markdown"; sourceTree = "<group>"; };
+		149F33771E0A767600AAC556 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown"; sourceTree = "<group>"; };
+		149F33781E0A767600AAC556 /* Front-matter.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Front-matter.md"; sourceTree = "<group>"; };
+		149F33791E0A767600AAC556 /* gitbook+Hexo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "gitbook+Hexo.md"; sourceTree = "<group>"; };
+		149F337A1E0A767600AAC556 /* hello-world.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "hello-world.md"; sourceTree = "<group>"; };
+		149F337B1E0A767600AAC556 /* Hexo标签插件.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Hexo标签插件.md"; sourceTree = "<group>"; };
+		149F337C1E0A767600AAC556 /* 微信小程序开发-一.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "微信小程序开发-一.md"; sourceTree = "<group>"; };
+		149F337E1E0A767600AAC556 /* index.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = index.md; sourceTree = "<group>"; };
+		149F33801E0A767600AAC556 /* index.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = index.md; sourceTree = "<group>"; };
+		149F33811E0A767600AAC556 /* hexo学习.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "hexo学习.md"; sourceTree = "<group>"; };
+		149F33831E0A767600AAC556 /* 1430807925718367.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1430807925718367.png; sourceTree = "<group>"; };
+		149F33841E0A767600AAC556 /* bianqian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bianqian.png; sourceTree = "<group>"; };
+		149F33851E0A767600AAC556 /* bird_32_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_32_gray.png; sourceTree = "<group>"; };
+		149F33861E0A767600AAC556 /* bird_32_gray_fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_32_gray_fail.png; sourceTree = "<group>"; };
+		149F33871E0A767600AAC556 /* BoldText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoldText.png; sourceTree = "<group>"; };
+		149F33881E0A767600AAC556 /* buildsetting.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = buildsetting.jpg; sourceTree = "<group>"; };
+		149F33891E0A767600AAC556 /* car.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = car.jpg; sourceTree = "<group>"; };
+		149F338A1E0A767600AAC556 /* carquickhelp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carquickhelp.jpg; sourceTree = "<group>"; };
+		149F338B1E0A767600AAC556 /* ChangingLayout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChangingLayout.png; sourceTree = "<group>"; };
+		149F338C1E0A767600AAC556 /* code_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = code_bg.png; sourceTree = "<group>"; };
+		149F338D1E0A767600AAC556 /* codesnippet.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = codesnippet.jpg; sourceTree = "<group>"; };
+		149F338E1E0A767600AAC556 /* ContentHuggingPriority.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContentHuggingPriority.png; sourceTree = "<group>"; };
+		149F338F1E0A767600AAC556 /* dotted-border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dotted-border.png"; sourceTree = "<group>"; };
+		149F33901E0A767600AAC556 /* driveCar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = driveCar.jpg; sourceTree = "<group>"; };
+		149F33911E0A767600AAC556 /* DynamicTextExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DynamicTextExample.png; sourceTree = "<group>"; };
+		149F33921E0A767600AAC556 /* EAC7C104-FCE1-40CF-9766-F14C4F271FCF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EAC7C104-FCE1-40CF-9766-F14C4F271FCF.png"; sourceTree = "<group>"; };
+		149F33931E0A767600AAC556 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
+		149F33941E0A767600AAC556 /* ErrCodeline.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ErrCodeline.jpg; sourceTree = "<group>"; };
+		149F33951E0A767600AAC556 /* Errorcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Errorcode.png; sourceTree = "<group>"; };
+		149F33961E0A767600AAC556 /* ExclusionPath.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExclusionPath.png; sourceTree = "<group>"; };
+		149F33971E0A767600AAC556 /* IFTTT.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IFTTT.jpg; sourceTree = "<group>"; };
+		149F33981E0A767600AAC556 /* IMG_0028.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0028.JPG; sourceTree = "<group>"; };
+		149F33991E0A767600AAC556 /* Letterpress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Letterpress.png; sourceTree = "<group>"; };
+		149F339A1E0A767600AAC556 /* line-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line-tile.png"; sourceTree = "<group>"; };
+		149F339B1E0A767600AAC556 /* LogMessages-480x266.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogMessages-480x266.png"; sourceTree = "<group>"; };
+		149F339C1E0A767600AAC556 /* method.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = method.jpg; sourceTree = "<group>"; };
+		149F339D1E0A767600AAC556 /* microphone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = microphone.jpg; sourceTree = "<group>"; };
+		149F339E1E0A767600AAC556 /* MyView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyView.png; sourceTree = "<group>"; };
+		149F339F1E0A767600AAC556 /* Myview2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Myview2.png; sourceTree = "<group>"; };
+		149F33A01E0A767600AAC556 /* myview4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myview4.png; sourceTree = "<group>"; };
+		149F33A11E0A767600AAC556 /* noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise.png; sourceTree = "<group>"; };
+		149F33A21E0A767600AAC556 /* NotepadWithDynamicType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotepadWithDynamicType.png; sourceTree = "<group>"; };
+		149F33A31E0A767600AAC556 /* QbMJNrM.png!web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QbMJNrM.png!web.png"; sourceTree = "<group>"; };
+		149F33A41E0A767600AAC556 /* QQ20160114-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQ20160114-0.png"; sourceTree = "<group>"; };
+		149F33A51E0A767600AAC556 /* QQ20160114-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQ20160114-1.png"; sourceTree = "<group>"; };
+		149F33A61E0A767600AAC556 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		149F33A71E0A767600AAC556 /* rss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rss.png; sourceTree = "<group>"; };
+		149F33A81E0A767600AAC556 /* runbtn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runbtn1.png; sourceTree = "<group>"; };
+		149F33A91E0A767600AAC556 /* runbtn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runbtn2.png; sourceTree = "<group>"; };
+		149F33AA1E0A767600AAC556 /* runbtn3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runbtn3.png; sourceTree = "<group>"; };
+		149F33AB1E0A767600AAC556 /* runview1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runview1.png; sourceTree = "<group>"; };
+		149F33AC1E0A767600AAC556 /* RW_Documentation_JumpBar-700x151.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RW_Documentation_JumpBar-700x151.png"; sourceTree = "<group>"; };
+		149F33AD1E0A767600AAC556 /* RW_Documentation_JumpBarSelect-700x287.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RW_Documentation_JumpBarSelect-700x287.png"; sourceTree = "<group>"; };
+		149F33AE1E0A767600AAC556 /* RW_Documentation_VVDocumentor-700x184.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RW_Documentation_VVDocumentor-700x184.png"; sourceTree = "<group>"; };
+		149F33AF1E0A767600AAC556 /* RW_Documentation_WarningEx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RW_Documentation_WarningEx.png; sourceTree = "<group>"; };
+		149F33B01E0A767600AAC556 /* Screen-Shot-2014-04-05-at-5.58.18-PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen-Shot-2014-04-05-at-5.58.18-PM.png"; sourceTree = "<group>"; };
+		149F33B11E0A767600AAC556 /* Screen-Shot-2014-04-05-at-6.01.35-PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen-Shot-2014-04-05-at-6.01.35-PM.png"; sourceTree = "<group>"; };
+		149F33B21E0A767600AAC556 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		149F33B31E0A767600AAC556 /* snippetwindow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snippetwindow.jpg; sourceTree = "<group>"; };
+		149F33B41E0A767600AAC556 /* sourceFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sourceFrame.png; sourceTree = "<group>"; };
+		149F33B51E0A767600AAC556 /* TableViewAdaptsHeights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TableViewAdaptsHeights.png; sourceTree = "<group>"; };
+		149F33B61E0A767600AAC556 /* templateOfTraceDcument.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = templateOfTraceDcument.jpg; sourceTree = "<group>"; };
+		149F33B71E0A767600AAC556 /* TextKit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TextKit.jpg; sourceTree = "<group>"; };
+		149F33B81E0A767600AAC556 /* TextKit_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TextKit_gif.gif; sourceTree = "<group>"; };
+		149F33B91E0A767600AAC556 /* TextKit_obj.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TextKit_obj.jpg; sourceTree = "<group>"; };
+		149F33BA1E0A767600AAC556 /* TextKit_obj1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TextKit_obj1.jpg; sourceTree = "<group>"; };
+		149F33BB1E0A767600AAC556 /* TextKit_obj2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TextKit_obj2.jpg; sourceTree = "<group>"; };
+		149F33BC1E0A767600AAC556 /* TextKit_obj3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TextKit_obj3.jpg; sourceTree = "<group>"; };
+		149F33BD1E0A767600AAC556 /* TextKitStack-443x320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TextKitStack-443x320.png"; sourceTree = "<group>"; };
+		149F33BE1E0A767600AAC556 /* TextRenderingArchitecture-iOS6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TextRenderingArchitecture-iOS6.png"; sourceTree = "<group>"; };
+		149F33BF1E0A767600AAC556 /* TextRenderingArchitecture-iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TextRenderingArchitecture-iOS7.png"; sourceTree = "<group>"; };
+		149F33C01E0A767600AAC556 /* TextStyles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextStyles.png; sourceTree = "<group>"; };
+		149F33C11E0A767600AAC556 /* TimIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimIndicator.png; sourceTree = "<group>"; };
+		149F33C21E0A767600AAC556 /* token.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = token.png; sourceTree = "<group>"; };
+		149F33C31E0A767600AAC556 /* uiimagerenderingmode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uiimagerenderingmode.png; sourceTree = "<group>"; };
+		149F33C41E0A767600AAC556 /* UIScrollViewKeyboardDismissMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIScrollViewKeyboardDismissMode.png; sourceTree = "<group>"; };
+		149F33C51E0A767600AAC556 /* urlScheme2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = urlScheme2.gif; sourceTree = "<group>"; };
+		149F33C61E0A767600AAC556 /* urlScheme2a.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = urlScheme2a.gif; sourceTree = "<group>"; };
+		149F33C71E0A767600AAC556 /* urlScheme2b.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = urlScheme2b.gif; sourceTree = "<group>"; };
+		149F33C81E0A767600AAC556 /* urlScheme2c.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = urlScheme2c.gif; sourceTree = "<group>"; };
+		149F33C91E0A767600AAC556 /* urlScheme2d.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = urlScheme2d.gif; sourceTree = "<group>"; };
+		149F33CA1E0A767600AAC556 /* urlScheme2e.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = urlScheme2e.gif; sourceTree = "<group>"; };
+		149F33CB1E0A767600AAC556 /* urlScheme2f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = urlScheme2f.png; sourceTree = "<group>"; };
+		149F33CC1E0A767600AAC556 /* urlScheme2g.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = urlScheme2g.gif; sourceTree = "<group>"; };
+		149F33CD1E0A767600AAC556 /* urlScheme32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = urlScheme32.png; sourceTree = "<group>"; };
+		149F33CE1E0A767600AAC556 /* urlScheme4a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = urlScheme4a.png; sourceTree = "<group>"; };
+		149F33CF1E0A767600AAC556 /* urlScheme4b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = urlScheme4b.png; sourceTree = "<group>"; };
+		149F33D01E0A767600AAC556 /* UserTextPreferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserTextPreferences.png; sourceTree = "<group>"; };
+		149F33D11E0A767600AAC556 /* view1Toview2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view1Toview2.png; sourceTree = "<group>"; };
+		149F33D21E0A767600AAC556 /* vIfAjiY.png!web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vIfAjiY.png!web.png"; sourceTree = "<group>"; };
+		149F33D31E0A767600AAC556 /* VW_Documentation_VVDocPrefs-700x410.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VW_Documentation_VVDocPrefs-700x410.png"; sourceTree = "<group>"; };
+		149F33D41E0A767600AAC556 /* warning.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = warning.jpg; sourceTree = "<group>"; };
+		149F33D51E0A767600AAC556 /* ZombieMsgAlert.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ZombieMsgAlert.jpg; sourceTree = "<group>"; };
+		149F33D61E0A767600AAC556 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		149F33D71E0A767600AAC556 /* SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SUMMARY.md; sourceTree = "<group>"; };
+		149F33D91E0A767600AAC556 /* index.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = index.md; sourceTree = "<group>"; };
+		149F33DA1E0A767600AAC556 /* 框架.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "框架.md"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		149F33411E0A746F00AAC556 = {
+			isa = PBXGroup;
+			children = (
+				149F334E1E0A767600AAC556 /* _config.yml */,
+				149F334F1E0A767600AAC556 /* _posts */,
+				149F337D1E0A767600AAC556 /* about */,
+				149F337F1E0A767600AAC556 /* categories */,
+				149F33811E0A767600AAC556 /* hexo学习.md */,
+				149F33821E0A767600AAC556 /* images */,
+				149F33D61E0A767600AAC556 /* README.md */,
+				149F33D71E0A767600AAC556 /* SUMMARY.md */,
+				149F33D81E0A767600AAC556 /* tags */,
+				149F33DA1E0A767600AAC556 /* 框架.md */,
+			);
+			sourceTree = "<group>";
+		};
+		149F334F1E0A767600AAC556 /* _posts */ = {
+			isa = PBXGroup;
+			children = (
+				149F33501E0A767600AAC556 /* 2014-06-09-chu-bu-da-jian-octopress.md */,
+				149F33511E0A767600AAC556 /* 2014-06-10-ios7jie-ping-wen-ti.markdown */,
+				149F33521E0A767600AAC556 /* 2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots.markdown */,
+				149F33531E0A767600AAC556 /* 2014-06-11-ios7de-bian-ge.markdown */,
+				149F33541E0A767600AAC556 /* 2014-06-16-ios7xin-chong-text-kit.markdown */,
+				149F33551E0A767600AAC556 /* 2014-06-17-uidevicelei-jie-shao.markdown */,
+				149F33561E0A767600AAC556 /* 2014-07-01-instrumentzhi-zombiegong-ju.markdown */,
+				149F33571E0A767600AAC556 /* 2014-07-01-ios-document-interaction-bian-cheng-zhi-nan.markdown */,
+				149F33581E0A767600AAC556 /* 2014-07-03-textkitzhi-bian-jian-an-li.markdown */,
+				149F33591E0A767600AAC556 /* 2014-07-22-storyboardzhi-segue.markdown */,
+				149F335A1E0A767600AAC556 /* 2014-08-28-xcode-headerdoc-jiao-cheng.md */,
+				149F335B1E0A767600AAC556 /* 2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng.markdown */,
+				149F335C1E0A767600AAC556 /* 2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing.markdown */,
+				149F335D1E0A767600AAC556 /* 2015-01-06-xmppjian-dan-yan-jiu-zhuan.md */,
+				149F335E1E0A767600AAC556 /* 2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md */,
+				149F335F1E0A767600AAC556 /* 2015-01-20-iapkai-fa-bu-zou.md */,
+				149F33601E0A767600AAC556 /* 2015-01-21-rubygemsxue-xi.md */,
+				149F33611E0A767600AAC556 /* 2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md */,
+				149F33621E0A767600AAC556 /* 2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa.md */,
+				149F33631E0A767600AAC556 /* 2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi.markdown */,
+				149F33641E0A767600AAC556 /* 2015-09-25-xcode7bian-yi-fa-bu-wen-ti.markdown */,
+				149F33651E0A767600AAC556 /* 2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo.markdown */,
+				149F33661E0A767600AAC556 /* 2015-09-27-macan-zhuang-gitlabfu-wu-qi.markdown */,
+				149F33671E0A767600AAC556 /* 2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown */,
+				149F33681E0A767600AAC556 /* 2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku.markdown */,
+				149F33691E0A767600AAC556 /* 2015-10-06-calabash[ */,
+				149F336A1E0A767600AAC556 /* 2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown */,
+				149F336B1E0A767600AAC556 /* 2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd.markdown */,
+				149F336C1E0A767600AAC556 /* 2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg.markdown */,
+				149F336D1E0A767600AAC556 /* 2015-11-20-min-jie-kai-fa-zong-jie.markdown */,
+				149F336E1E0A767600AAC556 /* 2015-11-26-uiimagede-xuan-ran-mo-shi.md */,
+				149F336F1E0A767600AAC556 /* 2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown */,
+				149F33701E0A767600AAC556 /* 2015-11-27-swiftru-men.markdown */,
+				149F33711E0A767600AAC556 /* 2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown */,
+				149F33721E0A767600AAC556 /* 2015-12-15-zong-jie.markdown */,
+				149F33731E0A767600AAC556 /* 2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown */,
+				149F33741E0A767600AAC556 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */,
+				149F33751E0A767600AAC556 /* 2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown */,
+				149F33761E0A767600AAC556 /* 2016-01-07-gtdru-men.markdown */,
+				149F33771E0A767600AAC556 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */,
+				149F33781E0A767600AAC556 /* Front-matter.md */,
+				149F33791E0A767600AAC556 /* gitbook+Hexo.md */,
+				149F337A1E0A767600AAC556 /* hello-world.md */,
+				149F337B1E0A767600AAC556 /* Hexo标签插件.md */,
+				149F337C1E0A767600AAC556 /* 微信小程序开发-一.md */,
+			);
+			path = _posts;
+			sourceTree = "<group>";
+		};
+		149F337D1E0A767600AAC556 /* about */ = {
+			isa = PBXGroup;
+			children = (
+				149F337E1E0A767600AAC556 /* index.md */,
+			);
+			path = about;
+			sourceTree = "<group>";
+		};
+		149F337F1E0A767600AAC556 /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				149F33801E0A767600AAC556 /* index.md */,
+			);
+			path = categories;
+			sourceTree = "<group>";
+		};
+		149F33821E0A767600AAC556 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				149F33831E0A767600AAC556 /* 1430807925718367.png */,
+				149F33841E0A767600AAC556 /* bianqian.png */,
+				149F33851E0A767600AAC556 /* bird_32_gray.png */,
+				149F33861E0A767600AAC556 /* bird_32_gray_fail.png */,
+				149F33871E0A767600AAC556 /* BoldText.png */,
+				149F33881E0A767600AAC556 /* buildsetting.jpg */,
+				149F33891E0A767600AAC556 /* car.jpg */,
+				149F338A1E0A767600AAC556 /* carquickhelp.jpg */,
+				149F338B1E0A767600AAC556 /* ChangingLayout.png */,
+				149F338C1E0A767600AAC556 /* code_bg.png */,
+				149F338D1E0A767600AAC556 /* codesnippet.jpg */,
+				149F338E1E0A767600AAC556 /* ContentHuggingPriority.png */,
+				149F338F1E0A767600AAC556 /* dotted-border.png */,
+				149F33901E0A767600AAC556 /* driveCar.jpg */,
+				149F33911E0A767600AAC556 /* DynamicTextExample.png */,
+				149F33921E0A767600AAC556 /* EAC7C104-FCE1-40CF-9766-F14C4F271FCF.png */,
+				149F33931E0A767600AAC556 /* email.png */,
+				149F33941E0A767600AAC556 /* ErrCodeline.jpg */,
+				149F33951E0A767600AAC556 /* Errorcode.png */,
+				149F33961E0A767600AAC556 /* ExclusionPath.png */,
+				149F33971E0A767600AAC556 /* IFTTT.jpg */,
+				149F33981E0A767600AAC556 /* IMG_0028.JPG */,
+				149F33991E0A767600AAC556 /* Letterpress.png */,
+				149F339A1E0A767600AAC556 /* line-tile.png */,
+				149F339B1E0A767600AAC556 /* LogMessages-480x266.png */,
+				149F339C1E0A767600AAC556 /* method.jpg */,
+				149F339D1E0A767600AAC556 /* microphone.jpg */,
+				149F339E1E0A767600AAC556 /* MyView.png */,
+				149F339F1E0A767600AAC556 /* Myview2.png */,
+				149F33A01E0A767600AAC556 /* myview4.png */,
+				149F33A11E0A767600AAC556 /* noise.png */,
+				149F33A21E0A767600AAC556 /* NotepadWithDynamicType.png */,
+				149F33A31E0A767600AAC556 /* QbMJNrM.png!web.png */,
+				149F33A41E0A767600AAC556 /* QQ20160114-0.png */,
+				149F33A51E0A767600AAC556 /* QQ20160114-1.png */,
+				149F33A61E0A767600AAC556 /* README.md */,
+				149F33A71E0A767600AAC556 /* rss.png */,
+				149F33A81E0A767600AAC556 /* runbtn1.png */,
+				149F33A91E0A767600AAC556 /* runbtn2.png */,
+				149F33AA1E0A767600AAC556 /* runbtn3.png */,
+				149F33AB1E0A767600AAC556 /* runview1.png */,
+				149F33AC1E0A767600AAC556 /* RW_Documentation_JumpBar-700x151.png */,
+				149F33AD1E0A767600AAC556 /* RW_Documentation_JumpBarSelect-700x287.png */,
+				149F33AE1E0A767600AAC556 /* RW_Documentation_VVDocumentor-700x184.png */,
+				149F33AF1E0A767600AAC556 /* RW_Documentation_WarningEx.png */,
+				149F33B01E0A767600AAC556 /* Screen-Shot-2014-04-05-at-5.58.18-PM.png */,
+				149F33B11E0A767600AAC556 /* Screen-Shot-2014-04-05-at-6.01.35-PM.png */,
+				149F33B21E0A767600AAC556 /* search.png */,
+				149F33B31E0A767600AAC556 /* snippetwindow.jpg */,
+				149F33B41E0A767600AAC556 /* sourceFrame.png */,
+				149F33B51E0A767600AAC556 /* TableViewAdaptsHeights.png */,
+				149F33B61E0A767600AAC556 /* templateOfTraceDcument.jpg */,
+				149F33B71E0A767600AAC556 /* TextKit.jpg */,
+				149F33B81E0A767600AAC556 /* TextKit_gif.gif */,
+				149F33B91E0A767600AAC556 /* TextKit_obj.jpg */,
+				149F33BA1E0A767600AAC556 /* TextKit_obj1.jpg */,
+				149F33BB1E0A767600AAC556 /* TextKit_obj2.jpg */,
+				149F33BC1E0A767600AAC556 /* TextKit_obj3.jpg */,
+				149F33BD1E0A767600AAC556 /* TextKitStack-443x320.png */,
+				149F33BE1E0A767600AAC556 /* TextRenderingArchitecture-iOS6.png */,
+				149F33BF1E0A767600AAC556 /* TextRenderingArchitecture-iOS7.png */,
+				149F33C01E0A767600AAC556 /* TextStyles.png */,
+				149F33C11E0A767600AAC556 /* TimIndicator.png */,
+				149F33C21E0A767600AAC556 /* token.png */,
+				149F33C31E0A767600AAC556 /* uiimagerenderingmode.png */,
+				149F33C41E0A767600AAC556 /* UIScrollViewKeyboardDismissMode.png */,
+				149F33C51E0A767600AAC556 /* urlScheme2.gif */,
+				149F33C61E0A767600AAC556 /* urlScheme2a.gif */,
+				149F33C71E0A767600AAC556 /* urlScheme2b.gif */,
+				149F33C81E0A767600AAC556 /* urlScheme2c.gif */,
+				149F33C91E0A767600AAC556 /* urlScheme2d.gif */,
+				149F33CA1E0A767600AAC556 /* urlScheme2e.gif */,
+				149F33CB1E0A767600AAC556 /* urlScheme2f.png */,
+				149F33CC1E0A767600AAC556 /* urlScheme2g.gif */,
+				149F33CD1E0A767600AAC556 /* urlScheme32.png */,
+				149F33CE1E0A767600AAC556 /* urlScheme4a.png */,
+				149F33CF1E0A767600AAC556 /* urlScheme4b.png */,
+				149F33D01E0A767600AAC556 /* UserTextPreferences.png */,
+				149F33D11E0A767600AAC556 /* view1Toview2.png */,
+				149F33D21E0A767600AAC556 /* vIfAjiY.png!web.png */,
+				149F33D31E0A767600AAC556 /* VW_Documentation_VVDocPrefs-700x410.png */,
+				149F33D41E0A767600AAC556 /* warning.jpg */,
+				149F33D51E0A767600AAC556 /* ZombieMsgAlert.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		149F33D81E0A767600AAC556 /* tags */ = {
+			isa = PBXGroup;
+			children = (
+				149F33D91E0A767600AAC556 /* index.md */,
+			);
+			path = tags;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		149F33421E0A747000AAC556 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				TargetAttributes = {
+					149F33481E0A74AE00AAC556 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = FA78T6VRG8;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 149F33451E0A747000AAC556 /* Build configuration list for PBXProject "Deploy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 149F33411E0A746F00AAC556;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				149F33481E0A74AE00AAC556 /* Deploy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		149F334C1E0A74BD00AAC556 /* 发布 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "发布";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "hexo g\nhexo d";
+		};
+		149F334D1E0A74E200AAC556 /* server调试 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "server调试";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		149F33461E0A747000AAC556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		149F33471E0A747000AAC556 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		149F334A1E0A74B000AAC556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		149F334B1E0A74B000AAC556 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		149F33451E0A747000AAC556 /* Build configuration list for PBXProject "Deploy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				149F33461E0A747000AAC556 /* Debug */,
+				149F33471E0A747000AAC556 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		149F33491E0A74B000AAC556 /* Build configuration list for PBXAggregateTarget "Deploy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				149F334A1E0A74B000AAC556 /* Debug */,
+				149F334B1E0A74B000AAC556 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 149F33421E0A747000AAC556 /* Project object */;
+}
