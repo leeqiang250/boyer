@@ -1,0 +1,145 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		149F33481E0A74AE00AAC556 /* Deploy */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 149F33491E0A74B000AAC556 /* Build configuration list for PBXAggregateTarget "Deploy" */;
+			buildPhases = (
+				149F334C1E0A74BD00AAC556 /* 发布 */,
+				149F334D1E0A74E200AAC556 /* server调试 */,
+			);
+			dependencies = (
+			);
+			name = Deploy;
+			productName = Deploy;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXGroup section */
+		149F33411E0A746F00AAC556 = {
+			isa = PBXGroup;
+			children = (
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		149F33421E0A747000AAC556 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				TargetAttributes = {
+					149F33481E0A74AE00AAC556 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = FA78T6VRG8;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 149F33451E0A747000AAC556 /* Build configuration list for PBXProject "Deploy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 149F33411E0A746F00AAC556;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				149F33481E0A74AE00AAC556 /* Deploy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		149F334C1E0A74BD00AAC556 /* 发布 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "发布";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "hexo g\nhexo d";
+		};
+		149F334D1E0A74E200AAC556 /* server调试 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "server调试";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		149F33461E0A747000AAC556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		149F33471E0A747000AAC556 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		149F334A1E0A74B000AAC556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		149F334B1E0A74B000AAC556 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		149F33451E0A747000AAC556 /* Build configuration list for PBXProject "Deploy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				149F33461E0A747000AAC556 /* Debug */,
+				149F33471E0A747000AAC556 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		149F33491E0A74B000AAC556 /* Build configuration list for PBXAggregateTarget "Deploy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				149F334A1E0A74B000AAC556 /* Debug */,
+				149F334B1E0A74B000AAC556 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 149F33421E0A747000AAC556 /* Project object */;
+}

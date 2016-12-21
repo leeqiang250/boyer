@@ -5,6 +5,9 @@
       location = "group:"
       name = "source">
       <FileRef
+         location = "group:Deploy/Deploy.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:_config.yml">
       </FileRef>
       <Group
