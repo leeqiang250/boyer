@@ -77,6 +77,75 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2014/06/11/2014-06-11-ios7de-bian-ge/" title="IOS7的变革" itemprop="url">IOS7的变革</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2014-06-11T02:17:19.000Z" itemprop="datePublished"> Published 2014-06-11</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>##性能提高以及被遗弃的功能  </p>
+<p>###1.新增截屏通知:<code>UIApplicationUserDidTakeScreenshotNotification</code></p>
+<p>在IOS 7之前，开发者使用了一种<strong><a href="http://dlj.bz/XflV">很赞的方法</a></strong>，来<strong>拦截</strong>截屏事件的.<br>比如，Snapchat的实现原理: 用户通过<strong>Snapchat</strong>发送的照片将会在数秒内自动被删除，而且在浏览照片时，必须将手指按在屏幕上，否则会立即关闭。然而，在 iOS 6 中，<font color=red><strong>截屏将打断触控操作</strong></font>，开发者就利用这个功能点，在恰当时机捕捉到了截屏事件。  </p>
+<p>在iOS 7中，专门为<font color=red><strong>截屏完成后</strong></font>提供了一个通知:<br>  <code>UIApplicationUserDidTakeScreenshotNotification</code>.同时，也规避了IOS 6中<font color=red><strong>截屏将打断触控操作</strong></font>的关键功能点。以至于在截屏之前，无法拦截用户的截屏操作。<br>注册<font color=red><strong>截屏完成后</strong></font>通知:<br><figure class="highlight objc"><figcaption><span>注册监听事件，接收截屏完成后的通知</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter]  addObserver:<span class="keyword">self</span> </div><div class="line">										  selector:<span class="keyword">@selector</span>(mymethod:)</div><div class="line">										  	    name:<span class="built_in">UIApplicationUserDidTakeScreenshotNotification</span> </div><div class="line">										    object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure></p>
+<p>Note:<br>    1.This notification is posted after the screenshot is taken.<br>    2.This notification does not contain a userInfo dictionary.</p>
+<p>###2.新增手势: UIScreenEdgePanGestureRecognizer<br><code>UIScreenEdgePanGestureRecognizer</code> inherits from <code>UIPanGestureRecognizer</code> and lets you <strong>detect gestures starting near the edge of the screen</strong>.<br>Using this new gesture recognizer is quite simple, as shown below:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIScreenEdgePanGestureRecognizer</span> *recognizer = [[<span class="built_in">UIScreenEdgePanGestureRecognizer</span> alloc] </div><div class="line">													initWithTarget:<span class="keyword">self</span> </div><div class="line">														action:<span class="keyword">@selector</span>(handleScreenEdgeRecognizer:)];</div><div class="line"><span class="comment">// accept gestures that start from the left; we're probably building another hamburger menu!</span></div><div class="line">recognizer.edges = <span class="built_in">UIRectEdgeLeft</span>; </div><div class="line">[<span class="keyword">self</span>.view addGestureRecognizer:recognizer];</div></pre></td></tr></table></figure></p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2014/06/11/2014-06-11-ios7de-bian-ge/#more">更多-&gt;</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/IOS7/">IOS7</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/IOS7/">IOS7</a><a href="/tags/变革/">变革</a><a href="/tags/huos/">huos</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/06/11/2014-06-11-ios7de-bian-ge/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/06/11/2014-06-11-ios7de-bian-ge/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" title="在IOS中像SnapChat一样监控screenshots" itemprop="url">在IOS中像SnapChat一样监控screenshots</a>
   </h1>
   <p class="article-author">By
@@ -417,18 +486,6 @@
 			
 		
 			
-				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
 			
 		
@@ -442,6 +499,18 @@
 		
 			
 				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
 			
 		
 			

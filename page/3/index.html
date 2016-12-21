@@ -77,6 +77,96 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/09/29/2015-09-29-zhuan-swiftzui-jia-shi-jian/" title="[转]Swift最佳实践" itemprop="url">[转]Swift最佳实践</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-29T09:05:21.000Z" itemprop="datePublished"> Published 2015-09-29</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><a href="https://github.com/schwa/Swift-Community-Best-Practices" target="_blank" rel="external">英文</a></p>
+<p>###黄金法则</p>
+<ul>
+<li>Apple 通常是对的。应紧随苹果所推荐的或他的 Demo 中所展示的方式。您应该尽可能地遵守 Apple 在 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 一书中所定义的代码风格。但我们还是可以看到他们的示例代码中有不符合这些规则的地方，毕竟 Apple 是一家大公司嘛。</li>
+<li>不要仅仅为了减少字符的键入数量而使用模棱两可的简短命名，较长的命名都可以依赖自动完成、自我暗示、复制粘贴来减低键入的难度。命名的详细程度往往对代码维护者很有帮助。但过于冗长的命名却会绕过Swift的主要特性之一: 类型推导,所以命名的原则应该是简洁明了。</li>
+</ul>
+<p>##最佳实践</p>
+<p>###命名<br>按照 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 所推荐的命名法则，类型名称应该使用<a href="http://www.wikiwand.com/en/Studly_caps" target="_blank" rel="external">首字母大写的驼峰命名法</a> (例如: “VehicleController”)。</p>
+<p>变量与常量应该使用首字母小写的驼峰命名法(例如: “ vehicleName “ )。</p>
+<p>推荐使用 Swift 模块来定义代码的命名空间，而非在 Swift 代码上使用 Objective-C 样式的类前缀(除非接口要与 Objective-C 交互)。</p>
+<p>不推荐使用任何形式的<a href="http://www.wikiwand.com/en/Hungarian_notation" target="_blank" rel="external">匈牙利命名法</a>（比如：k 代表常量，m 代表方法）,取代代之我们应该使用短而简洁的名字并使用 Xcode 的类型快速帮助 (⌥ + 左击)。同样我们也不要使用类似 <code>SNAKE_CASE</code> 这样的名字。</p>
+<p>这些法则之上，唯一例外的情况就是枚举值了，枚举值在这里应该首字母大写(这是 Apple 的 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 中的规范)：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">enum Planet &#123;</div><div class="line">    <span class="keyword">case</span> Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Nepture</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有必要的话命名不要缩写，实际上在 Xcode 的”文本自动补全”功能下你可以轻而易举地键入 类似 <code>ViewController</code> 的长命名。极为常见的缩写，例如: URL， 是很好的。缩写应该是全部大写 ( “URL” )或者酌情全部小写( “url” )。URL 的类型和变量命名推荐的规则： 如果 url 是一个类型，它应该被大写，如果是一个变量，那么应该小写。</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>不应该使用注释来禁用代码。被注释掉的代码会污染你的源代码。如果你当前想要删除一段代码，但将来又可能会用到，推荐你依赖 git 或你的 bug 追踪系统来管理。</p>
+<p>(TODO: 追加一个关于文档注释的小节，使用 nshipster 的链接)</p>
+<h3 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h3><p>如果可能的话，使用 Swift 的类型推导，以避免冗余的类型信息。例如：</p>
+<p>推荐：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Swift</div><div class="line">var currentLocation = Location()</div></pre></td></tr></table></figure>
+<p>而非：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Swift</div><div class="line">var <span class="symbol">currentLocation:</span> Location = Location()</div></pre></td></tr></table></figure>
+<h3 id="内省"><a href="#内省" class="headerlink" title="内省"></a>内省</h3><p>让编译器自动推断所有的情况，这是可以做到的。在一些领域 self 应该被显式地使用，包括在 init 中设置参数，或者 <code>non-escaping</code>闭包。例如：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">struct Example&#123;</div><div class="line"> 	  let <span class="symbol">name:</span> String</div><div class="line">	   init(<span class="symbol">name:</span> String) &#123;</div><div class="line"> 	      <span class="keyword">self</span>.name = name</div><div class="line"> 	  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="捕获列表的类型推导"><a href="#捕获列表的类型推导" class="headerlink" title="捕获列表的类型推导"></a>捕获列表的类型推导</h3><p>在一个捕获列表( capture list )中指定参数类型会导致代码冗余。如果需要的话，仅指定类型即可。  </p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let people = [</div><div class="line">    (<span class="string">"Mary"</span>, <span class="number">42</span>),</div><div class="line">    (<span class="string">"Susan"</span>, <span class="number">27</span>),</div><div class="line">    (<span class="string">"Charlie"</span>, <span class="number">18</span>),</div><div class="line">]	</div><div class="line"></div><div class="line">let strings = people.map() &#123;</div><div class="line">    (<span class="symbol">name:</span> String, <span class="symbol">age:</span> Int) -&gt; String <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> <span class="string">"\(name) is \(age) years old"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果编译器可以推导出来的话，完全可以把类型删掉：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let strings = people.map() &#123;</div><div class="line">    (name, age) <span class="keyword">in</span> </div><div class="line">    <span class="keyword">return</span> <span class="string">"\(name) is \(age) years old"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用编号的参数名 (“$0”) 进一步降低冗长，往往能彻底消除捕获列表的代码冗余。在闭包中当参数名没有附带任何更多信息时仅使用编号形式即可( 如非常简单的映射和过滤器 )。</p>
+<p>Apple 能够并且将会改变闭包的参数类型，通过他们的 Objective-C 框架的 Swift 变种提供出来。例如，<code>optionals</code> 被删除或更改为 <code>auto-unwrapping</code> 等。故意 under-specifying 可选并依赖 Swift 来推导类型，可以减少在这些情况下代码被破译的风险。</p>
+<p>你应该避免指定返回类型，例如这个捕获列表( capture list )就是完全多余的:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dispatch_async(queue) &#123;</div><div class="line">    ()-&gt;Void <span class="keyword">in</span></div><div class="line">    print(<span class="string">"Fired."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(以上内容也可以参考:<a href="http://www.russbishop.net/swift-capture-lists" target="_blank" rel="external">这里</a>)</p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>类型定义中使用的常量应当被申明成静态类型。例如:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">struct PhysicsModel &#123;</div><div class="line">   static var speedOfLightInAVacuum = <span class="number">299_792_458</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Spaceship</span> &#123;</span></div><div class="line">  		 static let topSpeed = PhysicsModel.speedOfLightInAVacuum</div><div class="line"> 	     var <span class="symbol">speed:</span> Double</div><div class="line">  		 func fullSpeedAhead() &#123;</div><div class="line">      		 speed = Spaceship.topSpeed</div><div class="line">   	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>将常量标示为 static ，允许它们可以被无类型的实例引用。</p>
+<p>一般应该避免生成全局范围的常量，单例除外。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Swift-IOS/">Swift,IOS</a>
+</div>
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/29/2015-09-29-zhuan-swiftzui-jia-shi-jian/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/29/2015-09-29-zhuan-swiftzui-jia-shi-jian/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/" title="Mac安装gitLab服务器" itemprop="url">Mac安装gitLab服务器</a>
   </h1>
   <p class="article-author">By
@@ -766,73 +856,6 @@ sh /etc/getIP.sh
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" title="XMPP简单研究[转]" itemprop="url">XMPP简单研究[转]</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2015-01-06T06:36:06.000Z" itemprop="datePublished"> Published 2015-01-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>最近想做一个游戏服务器和 IM 互通的服务。最初的想法是可以增进游戏帐号的安全，比如游戏用户可以通过绑定一个 IM 帐号，从而不用登陆游戏就向游戏服务器发一些指令。这些指定通常是用来冻结一些帐号的功能。而游戏服务器也可以通过 IM 帐号向离线用户发送一些关键消息。这样，只需要解除绑定 IM 帐号需要一定的时间，或使用更安全的途径，即可以让游戏帐号更加安全。（至少，游戏用户可以从 IM 上获知他的游戏帐号每次登陆登出的时间、IP 等等）</p>
-<p>后来细想，这里面可以做的东西还有许多。玩家会因为多一个信息通道，而更轻松的去玩那些需要长期驻留的游戏。游戏厂商也可以多一个挽留玩家的渠道，甚至用来宣传新游戏或游戏的增值服务，等等。好处不再列举。</p>
-<p>其实、绑定 IM 帐号和绑定手机号本质上区别不大。只不过，IM 帐号几乎是零费用，又不像 SMS ，控制权掌控在移动手里。IM 更适合做双向交流（SMS 的双向交流不那么方便，而且对用户和游戏运营商都有经济负担）。独立提供一个 Game2IM 的服务供众多游戏运营商使用也是个有趣的主意。和 SMS 一样，只要给出一个简单接口让游戏运营商调用，把游戏网络和 IM 网络互联就可以了。</p>
-<p>实现这个想法有两个方案。其一是制作各种 IM 的机器人，通过机器人和用户 IM 沟通。这个方案技术门槛稍低，有许多现成的机器人可以使用。缺点是，受 IM 提供商的限制（比如好友数量限制）。无法使用机器人的签名针对性的向用户传递特有的消息。除非你为每个游戏用户定制一个机器人，但那样，每个机器人都需要单独一个连接，对资源消耗过大。<br>￼<!--显示文章缩略部分的标记方法--><br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/网络/">网络</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/XMPP/">XMPP</a><a href="/tags/web/">web</a><a href="/tags/im/">im</a><a href="/tags/即时/">即时</a><a href="/tags/通讯/">通讯</a><a href="/tags/socket/">socket</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
@@ -978,18 +1001,6 @@ sh /etc/getIP.sh
 			
 		
 			
-				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
 			
 		
@@ -1003,6 +1014,18 @@ sh /etc/getIP.sh
 		
 			
 				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
 			
 		
 			

@@ -77,6 +77,73 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" title="XMPP简单研究[转]" itemprop="url">XMPP简单研究[转]</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-06T06:36:06.000Z" itemprop="datePublished"> Published 2015-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>最近想做一个游戏服务器和 IM 互通的服务。最初的想法是可以增进游戏帐号的安全，比如游戏用户可以通过绑定一个 IM 帐号，从而不用登陆游戏就向游戏服务器发一些指令。这些指定通常是用来冻结一些帐号的功能。而游戏服务器也可以通过 IM 帐号向离线用户发送一些关键消息。这样，只需要解除绑定 IM 帐号需要一定的时间，或使用更安全的途径，即可以让游戏帐号更加安全。（至少，游戏用户可以从 IM 上获知他的游戏帐号每次登陆登出的时间、IP 等等）</p>
+<p>后来细想，这里面可以做的东西还有许多。玩家会因为多一个信息通道，而更轻松的去玩那些需要长期驻留的游戏。游戏厂商也可以多一个挽留玩家的渠道，甚至用来宣传新游戏或游戏的增值服务，等等。好处不再列举。</p>
+<p>其实、绑定 IM 帐号和绑定手机号本质上区别不大。只不过，IM 帐号几乎是零费用，又不像 SMS ，控制权掌控在移动手里。IM 更适合做双向交流（SMS 的双向交流不那么方便，而且对用户和游戏运营商都有经济负担）。独立提供一个 Game2IM 的服务供众多游戏运营商使用也是个有趣的主意。和 SMS 一样，只要给出一个简单接口让游戏运营商调用，把游戏网络和 IM 网络互联就可以了。</p>
+<p>实现这个想法有两个方案。其一是制作各种 IM 的机器人，通过机器人和用户 IM 沟通。这个方案技术门槛稍低，有许多现成的机器人可以使用。缺点是，受 IM 提供商的限制（比如好友数量限制）。无法使用机器人的签名针对性的向用户传递特有的消息。除非你为每个游戏用户定制一个机器人，但那样，每个机器人都需要单独一个连接，对资源消耗过大。<br>￼<!--显示文章缩略部分的标记方法--><br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#more">更多-&gt;</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/网络/">网络</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/XMPP/">XMPP</a><a href="/tags/web/">web</a><a href="/tags/im/">im</a><a href="/tags/即时/">即时</a><a href="/tags/通讯/">通讯</a><a href="/tags/socket/">socket</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" title="代码实现autoLayout相关特性" itemprop="url">代码实现autoLayout相关特性</a>
   </h1>
   <p class="article-author">By
@@ -717,75 +784,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/06/11/2014-06-11-ios7de-bian-ge/" title="IOS7的变革" itemprop="url">IOS7的变革</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2014-06-11T02:17:19.000Z" itemprop="datePublished"> Published 2014-06-11</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>##性能提高以及被遗弃的功能  </p>
-<p>###1.新增截屏通知:<code>UIApplicationUserDidTakeScreenshotNotification</code></p>
-<p>在IOS 7之前，开发者使用了一种<strong><a href="http://dlj.bz/XflV">很赞的方法</a></strong>，来<strong>拦截</strong>截屏事件的.<br>比如，Snapchat的实现原理: 用户通过<strong>Snapchat</strong>发送的照片将会在数秒内自动被删除，而且在浏览照片时，必须将手指按在屏幕上，否则会立即关闭。然而，在 iOS 6 中，<font color=red><strong>截屏将打断触控操作</strong></font>，开发者就利用这个功能点，在恰当时机捕捉到了截屏事件。  </p>
-<p>在iOS 7中，专门为<font color=red><strong>截屏完成后</strong></font>提供了一个通知:<br>  <code>UIApplicationUserDidTakeScreenshotNotification</code>.同时，也规避了IOS 6中<font color=red><strong>截屏将打断触控操作</strong></font>的关键功能点。以至于在截屏之前，无法拦截用户的截屏操作。<br>注册<font color=red><strong>截屏完成后</strong></font>通知:<br><figure class="highlight objc"><figcaption><span>注册监听事件，接收截屏完成后的通知</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter]  addObserver:<span class="keyword">self</span> </div><div class="line">										  selector:<span class="keyword">@selector</span>(mymethod:)</div><div class="line">										  	    name:<span class="built_in">UIApplicationUserDidTakeScreenshotNotification</span> </div><div class="line">										    object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure></p>
-<p>Note:<br>    1.This notification is posted after the screenshot is taken.<br>    2.This notification does not contain a userInfo dictionary.</p>
-<p>###2.新增手势: UIScreenEdgePanGestureRecognizer<br><code>UIScreenEdgePanGestureRecognizer</code> inherits from <code>UIPanGestureRecognizer</code> and lets you <strong>detect gestures starting near the edge of the screen</strong>.<br>Using this new gesture recognizer is quite simple, as shown below:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIScreenEdgePanGestureRecognizer</span> *recognizer = [[<span class="built_in">UIScreenEdgePanGestureRecognizer</span> alloc] </div><div class="line">													initWithTarget:<span class="keyword">self</span> </div><div class="line">														action:<span class="keyword">@selector</span>(handleScreenEdgeRecognizer:)];</div><div class="line"><span class="comment">// accept gestures that start from the left; we're probably building another hamburger menu!</span></div><div class="line">recognizer.edges = <span class="built_in">UIRectEdgeLeft</span>; </div><div class="line">[<span class="keyword">self</span>.view addGestureRecognizer:recognizer];</div></pre></td></tr></table></figure></p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/06/11/2014-06-11-ios7de-bian-ge/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/IOS7/">IOS7</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/IOS7/">IOS7</a><a href="/tags/变革/">变革</a><a href="/tags/huos/">huos</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2014/06/11/2014-06-11-ios7de-bian-ge/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/06/11/2014-06-11-ios7de-bian-ge/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
@@ -931,18 +929,6 @@
 			
 		
 			
-				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
 			
 		
@@ -956,6 +942,18 @@
 		
 			
 				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
 			
 		
 			
