@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:"
+      name = "source">
+      <FileRef
+         location = "group:_config.yml">
+      </FileRef>
+      <Group
+         location = "group:_posts"
+         name = "_posts">
+         <FileRef
+            location = "group:2014-06-09-chu-bu-da-jian-octopress.md">
+         </FileRef>
+         <FileRef
+            location = "group:2014-06-10-ios7jie-ping-wen-ti.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-06-11-ios7de-bian-ge.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-06-16-ios7xin-chong-text-kit.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-06-17-uidevicelei-jie-shao.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-07-01-instrumentzhi-zombiegong-ju.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-07-01-ios-document-interaction-bian-cheng-zhi-nan.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-07-03-textkitzhi-bian-jian-an-li.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-07-22-storyboardzhi-segue.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-08-28-xcode-headerdoc-jiao-cheng.md">
+         </FileRef>
+         <FileRef
+            location = "group:2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-01-06-xmppjian-dan-yan-jiu-zhuan.md">
+         </FileRef>
+         <FileRef
+            location = "group:2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md">
+         </FileRef>
+         <FileRef
+            location = "group:2015-01-20-iapkai-fa-bu-zou.md">
+         </FileRef>
+         <FileRef
+            location = "group:2015-01-21-rubygemsxue-xi.md">
+         </FileRef>
+         <FileRef
+            location = "group:2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md">
+         </FileRef>
+         <FileRef
+            location = "group:2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa.md">
+         </FileRef>
+         <FileRef
+            location = "group:2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-09-25-xcode7bian-yi-fa-bu-wen-ti.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-09-27-macan-zhuang-gitlabfu-wu-qi.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-10-06-calabash[">
+         </FileRef>
+         <FileRef
+            location = "group:2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-11-20-min-jie-kai-fa-zong-jie.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-11-26-uiimagede-xuan-ran-mo-shi.md">
+         </FileRef>
+         <FileRef
+            location = "group:2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-11-27-swiftru-men.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-12-15-zong-jie.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2016-01-07-gtdru-men.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:Front-matter.md">
+         </FileRef>
+         <FileRef
+            location = "group:gitbook+Hexo.md">
+         </FileRef>
+         <FileRef
+            location = "group:hello-world.md">
+         </FileRef>
+         <FileRef
+            location = "group:Hexo&#x6807;&#x7b7e;&#x63d2;&#x4ef6;.md">
+         </FileRef>
+         <FileRef
+            location = "group:&#x5fae;&#x4fe1;&#x5c0f;&#x7a0b;&#x5e8f;&#x5f00;&#x53d1;-&#x4e00;.md">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:about"
+         name = "about">
+         <FileRef
+            location = "group:index.md">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:categories"
+         name = "categories">
+         <FileRef
+            location = "group:index.md">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:images"
+         name = "images">
+         <FileRef
+            location = "group:1430807925718367.png">
+         </FileRef>
+         <FileRef
+            location = "group:bianqian.png">
+         </FileRef>
+         <FileRef
+            location = "group:bird_32_gray.png">
+         </FileRef>
+         <FileRef
+            location = "group:bird_32_gray_fail.png">
+         </FileRef>
+         <FileRef
+            location = "group:BoldText.png">
+         </FileRef>
+         <FileRef
+            location = "group:buildsetting.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:car.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:carquickhelp.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:ChangingLayout.png">
+         </FileRef>
+         <FileRef
+            location = "group:code_bg.png">
+         </FileRef>
+         <FileRef
+            location = "group:codesnippet.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:ContentHuggingPriority.png">
+         </FileRef>
+         <FileRef
+            location = "group:dotted-border.png">
+         </FileRef>
+         <FileRef
+            location = "group:driveCar.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:DynamicTextExample.png">
+         </FileRef>
+         <FileRef
+            location = "group:EAC7C104-FCE1-40CF-9766-F14C4F271FCF.png">
+         </FileRef>
+         <FileRef
+            location = "group:email.png">
+         </FileRef>
+         <FileRef
+            location = "group:ErrCodeline.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:Errorcode.png">
+         </FileRef>
+         <FileRef
+            location = "group:ExclusionPath.png">
+         </FileRef>
+         <FileRef
+            location = "group:IFTTT.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:IMG_0028.JPG">
+         </FileRef>
+         <FileRef
+            location = "group:Letterpress.png">
+         </FileRef>
+         <FileRef
+            location = "group:line-tile.png">
+         </FileRef>
+         <FileRef
+            location = "group:LogMessages-480x266.png">
+         </FileRef>
+         <FileRef
+            location = "group:method.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:microphone.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:MyView.png">
+         </FileRef>
+         <FileRef
+            location = "group:Myview2.png">
+         </FileRef>
+         <FileRef
+            location = "group:myview4.png">
+         </FileRef>
+         <FileRef
+            location = "group:noise.png">
+         </FileRef>
+         <FileRef
+            location = "group:NotepadWithDynamicType.png">
+         </FileRef>
+         <FileRef
+            location = "group:QbMJNrM.png!web.png">
+         </FileRef>
+         <FileRef
+            location = "group:QQ20160114-0.png">
+         </FileRef>
+         <FileRef
+            location = "group:QQ20160114-1.png">
+         </FileRef>
+         <FileRef
+            location = "group:README.md">
+         </FileRef>
+         <FileRef
+            location = "group:rss.png">
+         </FileRef>
+         <FileRef
+            location = "group:runbtn1.png">
+         </FileRef>
+         <FileRef
+            location = "group:runbtn2.png">
+         </FileRef>
+         <FileRef
+            location = "group:runbtn3.png">
+         </FileRef>
+         <FileRef
+            location = "group:runview1.png">
+         </FileRef>
+         <FileRef
+            location = "group:RW_Documentation_JumpBar-700x151.png">
+         </FileRef>
+         <FileRef
+            location = "group:RW_Documentation_JumpBarSelect-700x287.png">
+         </FileRef>
+         <FileRef
+            location = "group:RW_Documentation_VVDocumentor-700x184.png">
+         </FileRef>
+         <FileRef
+            location = "group:RW_Documentation_WarningEx.png">
+         </FileRef>
+         <FileRef
+            location = "group:Screen-Shot-2014-04-05-at-5.58.18-PM.png">
+         </FileRef>
+         <FileRef
+            location = "group:Screen-Shot-2014-04-05-at-6.01.35-PM.png">
+         </FileRef>
+         <FileRef
+            location = "group:search.png">
+         </FileRef>
+         <FileRef
+            location = "group:snippetwindow.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:sourceFrame.png">
+         </FileRef>
+         <FileRef
+            location = "group:TableViewAdaptsHeights.png">
+         </FileRef>
+         <FileRef
+            location = "group:templateOfTraceDcument.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:TextKit.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:TextKit_gif.gif">
+         </FileRef>
+         <FileRef
+            location = "group:TextKit_obj.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:TextKit_obj1.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:TextKit_obj2.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:TextKit_obj3.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:TextKitStack-443x320.png">
+         </FileRef>
+         <FileRef
+            location = "group:TextRenderingArchitecture-iOS6.png">
+         </FileRef>
+         <FileRef
+            location = "group:TextRenderingArchitecture-iOS7.png">
+         </FileRef>
+         <FileRef
+            location = "group:TextStyles.png">
+         </FileRef>
+         <FileRef
+            location = "group:TimIndicator.png">
+         </FileRef>
+         <FileRef
+            location = "group:token.png">
+         </FileRef>
+         <FileRef
+            location = "group:uiimagerenderingmode.png">
+         </FileRef>
+         <FileRef
+            location = "group:UIScrollViewKeyboardDismissMode.png">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme2.gif">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme2a.gif">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme2b.gif">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme2c.gif">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme2d.gif">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme2e.gif">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme2f.png">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme2g.gif">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme32.png">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme4a.png">
+         </FileRef>
+         <FileRef
+            location = "group:urlScheme4b.png">
+         </FileRef>
+         <FileRef
+            location = "group:UserTextPreferences.png">
+         </FileRef>
+         <FileRef
+            location = "group:view1Toview2.png">
+         </FileRef>
+         <FileRef
+            location = "group:vIfAjiY.png!web.png">
+         </FileRef>
+         <FileRef
+            location = "group:VW_Documentation_VVDocPrefs-700x410.png">
+         </FileRef>
+         <FileRef
+            location = "group:warning.jpg">
+         </FileRef>
+         <FileRef
+            location = "group:ZombieMsgAlert.jpg">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+      <FileRef
+         location = "group:SUMMARY.md">
+      </FileRef>
+      <Group
+         location = "group:tags"
+         name = "tags">
+         <FileRef
+            location = "group:index.md">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:&#x6846;&#x67b6;.md">
+      </FileRef>
+   </Group>
+</Workspace>
