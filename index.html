@@ -90,10 +90,10 @@
 </header>
     <div class="article-content">
         
-        <iframe src="https://hackmd.io/features" width="[100%]" height="[500]" frameborder="0" allowfullscreen></iframe>
+        <!--<iframe src="https://hackmd.io/features" width="[100%]" height="[500]" frameborder="0" allowfullscreen></iframe>–&gt;
 <h1 id="編輯"><a href="#編輯" class="headerlink" title="編輯"></a>編輯</h1><h2 id="快速鍵"><a href="#快速鍵" class="headerlink" title="快速鍵"></a>快速鍵</h2><p>跟又快又方便的Sublime text很像</p>
 <blockquote>
-<p>更多訊息請至 <a href="https://codemirror.net/demo/sublime.html" target="_blank" rel="external">這裡</a></p>
+<p>更多訊息請至 <a href="https://codemirror.net/demo/sublime.html">這裡</a></p>
 </blockquote>
 <h2 id="自動完成"><a href="#自動完成" class="headerlink" title="自動完成"></a>自動完成</h2><p>提供完整的 Markdown 自動完成與提示</p>
 <ul>
@@ -120,12 +120,12 @@
 <h3 id="SlideShare"><a href="#SlideShare" class="headerlink" title="SlideShare"></a>SlideShare</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;%slideshare briansolis/<span class="number">26</span>-disruptive-technology-trends<span class="number">-2016</span><span class="number">-2018</span><span class="number">-56796196</span> %&#125;</div></pre></td></tr></table></figure>
 <h3 id="Speakerdeck"><a href="#Speakerdeck" class="headerlink" title="Speakerdeck"></a>Speakerdeck</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;%speakerdeck sugarenia/xxlcss-how-to-scale-css-and-keep-your-sanity %&#125;</div></pre></td></tr></table></figure>
 <h3 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h3><p><strong>注意：請使用 https 的網址，否則可能會被您的瀏覽器阻擋載入</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;%pdf https:<span class="comment">//papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf %&#125;</span></div></pre></td></tr></table></figure></p>
-<h2 id="MathJax"><a href="#MathJax" class="headerlink" title="MathJax"></a>MathJax</h2><p>您可以使用 <strong>MathJax</strong> 語法 來產生 <em>LaTeX</em> 數學表達式，如同 <a href="http://math.stackexchange.com/" target="_blank" rel="external">math.stackexchange.com</a>：</p>
+<h2 id="MathJax"><a href="#MathJax" class="headerlink" title="MathJax"></a>MathJax</h2><p>您可以使用 <strong>MathJax</strong> 語法 來產生 <em>LaTeX</em> 數學表達式，如同 <a href="http://math.stackexchange.com/">math.stackexchange.com</a>：</p>
 <p>The <em>Gamma function</em> satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral</p>
 <p>$$<br>x = {-b \pm \sqrt{b^2-4ac} \over 2a}.<br>$$</p>
 <p>$$<br>\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.<br>$$</p>
 <blockquote>
-<p>更多關於 <strong>LaTeX</strong> 數學表達式 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external">請至這裡</a></p>
+<p>更多關於 <strong>LaTeX</strong> 數學表達式 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">請至這裡</a></p>
 </blockquote>
 <h2 id="UML-圖表"><a href="#UML-圖表" class="headerlink" title="UML 圖表"></a>UML 圖表</h2><h3 id="循序圖"><a href="#循序圖" class="headerlink" title="循序圖"></a>循序圖</h3><p>您可以像是以下使用循序圖：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">艾莉絲-&gt;包柏: 哈摟，你好嗎？</div><div class="line">Note right of 包柏: 包柏思考中</div><div class="line">包柏--&gt;艾莉絲: 我很好，謝謝！</div><div class="line">Note left of 艾莉絲: 艾莉絲回應</div><div class="line">艾莉絲-&gt;包柏: 最近過得怎樣？</div></pre></td></tr></table></figure>
@@ -133,7 +133,7 @@
 <h3 id="Graphviz"><a href="#Graphviz" class="headerlink" title="Graphviz"></a>Graphviz</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">digraph hierarchy &#123;</div><div class="line"></div><div class="line">                nodesep=1.0 // increases the separation between nodes</div><div class="line">                </div><div class="line">                node [color=Red,fontname=Courier,shape=box] //All nodes will this shape and colour</div><div class="line">                edge [color=Blue, style=dashed] //All the lines look like this</div><div class="line"></div><div class="line">                Headteacher-&gt;&#123;Deputy1 Deputy2 BusinessManager&#125;</div><div class="line">                Deputy1-&gt;&#123;Teacher1 Teacher2&#125;</div><div class="line">                BusinessManager-&gt;ITManager</div><div class="line">                &#123;rank=same;ITManager Teacher1 Teacher2&#125;  // Put them on the same level</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="Mermaid"><a href="#Mermaid" class="headerlink" title="Mermaid"></a>Mermaid</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gantt</div><div class="line">    title A Gantt Diagram</div><div class="line"></div><div class="line">    section Section</div><div class="line">    A task           :a1, 2014-01-01, 30d</div><div class="line">    Another task     :after a1  , 20d</div><div class="line">    section Another</div><div class="line">    Task in sec      :2014-01-12  , 12d</div><div class="line">    anther task      : 24d</div></pre></td></tr></table></figure>
 <blockquote>
-<p>更多關於 <strong>循序圖</strong> 語法 <a href="http://bramp.github.io/js-sequence-diagrams/" target="_blank" rel="external">在這裡</a>.<br>更多關於 <strong>流程圖</strong> 語法 <a href="http://adrai.github.io/flowchart.js/" target="_blank" rel="external">在這裡</a>.<br>更多關於 <strong>Graphviz</strong> 語法 <a href="http://www.tonyballantyne.com/graphs.html" target="_blank" rel="external">在這裡</a><br>更多關於 <strong>Mermaid</strong> 語法 <a href="http://knsv.github.io/mermaid" target="_blank" rel="external">在這裡</a></p>
+<p>更多關於 <strong>循序圖</strong> 語法 <a href="http://bramp.github.io/js-sequence-diagrams/">在這裡</a>.<br>更多關於 <strong>流程圖</strong> 語法 <a href="http://adrai.github.io/flowchart.js/">在這裡</a>.<br>更多關於 <strong>Graphviz</strong> 語法 <a href="http://www.tonyballantyne.com/graphs.html">在這裡</a><br>更多關於 <strong>Mermaid</strong> 語法 <a href="http://knsv.github.io/mermaid">在這裡</a></p>
 </blockquote>
 <h2 id="警告區塊"><a href="#警告區塊" class="headerlink" title="警告區塊"></a>警告區塊</h2><p>:::success<br>耶 :tada:<br>:::</p>
 <p>:::info<br>這是訊息 :mega:<br>:::</p>
@@ -304,7 +304,7 @@ line 3 of code
 </tr>
 </tbody>
 </table>
-<h3 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h3><p><a href="http://dev.nodeca.com" target="_blank" rel="external">連結文字</a><br><a href="http://nodeca.github.io/pica/demo/" title="標題文字！" target="_blank" rel="external">加上標題的連結文字</a><br>自動轉換連結 <a href="https://github.com/nodeca/pica" target="_blank" rel="external">https://github.com/nodeca/pica</a></p>
+<h3 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h3><p><a href="http://dev.nodeca.com">連結文字</a><br><a href="http://nodeca.github.io/pica/demo/" title="標題文字！">加上標題的連結文字</a><br>自動轉換連結 <a href="https://github.com/nodeca/pica">https://github.com/nodeca/pica</a></p>
 <h3 id="圖片"><a href="#圖片" class="headerlink" title="圖片"></a>圖片</h3><p><img src="https://octodex.github.com/images/minion.png" alt="Minion"><br><img src="https://octodex.github.com/images/stormtroopocat.jpg" alt="Stormtroopocat" title="The Stormtroopocat"><br>如同連結一般，圖片也可以用註腳語法<br><img src="https://octodex.github.com/images/dojocat.jpg" alt="Alt text" title="The Dojocat"><br>使用參考，可以在稍後的文件中再定義圖片網址</p>
 <p><img src="https://octodex.github.com/images/minion.png =200x200" alt="Minion"><br>使用指定的大小顯示圖片</p>
 <h3 id="註腳"><a href="#註腳" class="headerlink" title="註腳"></a>註腳</h3><p>註腳 1 連結[^first].<br>註腳 2 連結[^second].<br>行內註腳^[行內註腳的文字] 定義<br>重複的註腳參考[^second].</p>
@@ -321,7 +321,7 @@ line 3 of code
 <p>名詞 2<br>  ~ 定義 2a<br>  ~ 定義 2b</p>
 <h3 id="縮寫"><a href="#縮寫" class="headerlink" title="縮寫"></a>縮寫</h3><p>這是 HTML 的縮寫範例<br>它會轉換 “HTML”，但是縮寫旁邊其他的部分，例如：”xxxHTMLyyy”，不受影響</p>
 <p>*[HTML]: Hyper Text Markup Language</p>
-
+-->
         
         
         <p class="article-more-link">
@@ -1077,6 +1077,18 @@ line 3 of code
 			
 		
 			
+				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
 			
 		
@@ -1090,18 +1102,6 @@ line 3 of code
 		
 			
 				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
 			
 		
 			
