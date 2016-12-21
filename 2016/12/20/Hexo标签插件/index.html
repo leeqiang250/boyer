@@ -29,7 +29,7 @@
 123&amp;#123;% blockquote [author[, source]] [link] [source_link_title] %&amp;#125;content&amp;#123;% endblockquote %&amp;#125;
 样例
 无">
-<meta property="og:updated_time" content="2016-12-21T05:09:23.000Z">
+<meta property="og:updated_time" content="2016-12-21T05:57:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo标签插件">
 <meta name="twitter:description" content="标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。
@@ -158,7 +158,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock _.compact http:<span class="comment">//underscorejs.org/#compact Underscore.js %&#125;</span></div><div class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="literal">false</span>, <span class="number">2</span>, <span class="string">''</span>, <span class="number">3</span>]);</div><div class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_.compactUnderscore.js</div><div class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</div><div class="line">=&gt; [1, 2, 3]</div></pre></td></tr></table></figure>
 <h2 id="反引号代码块-MD语法"><a href="#反引号代码块-MD语法" class="headerlink" title="反引号代码块 (MD语法)"></a>反引号代码块 (MD语法)</h2><hr>
-<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h3><p>===</p>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h3><hr>
 <h4 id="行内代码块"><a href="#行内代码块" class="headerlink" title="行内代码块"></a>行内代码块</h4><hr>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">行内 <span class="code">`code 块 `</span></div></pre></td></tr></table></figure>
 <h4 id="缩进代码块"><a href="#缩进代码块" class="headerlink" title="缩进代码块"></a>缩进代码块</h4><hr>
@@ -168,6 +168,7 @@
 <h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><hr>
 <h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例"></a>样例</h3><hr>
 <h4 id="默认左对齐"><a href="#默认左对齐" class="headerlink" title="默认左对齐"></a>默认左对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------|-------|----------|</div><div class="line">|文本内容 |文本内容| 文本内容  |</div></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -219,6 +220,7 @@
 </tbody>
 </table>
 <h4 id="向右对齐"><a href="#向右对齐" class="headerlink" title="向右对齐"></a>向右对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------:|-------:|-------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -242,6 +244,7 @@
 </tbody>
 </table>
 <h4 id="向左对齐"><a href="#向左对齐" class="headerlink" title="向左对齐"></a>向左对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------|:------|:------|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -277,6 +280,7 @@
 </tbody>
 </table>
 <h4 id="居中对齐"><a href="#居中对齐" class="headerlink" title="居中对齐"></a>居中对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------:|:------:|:------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -511,15 +515,11 @@
 			
 		
 			
-				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
 			
 		
 			
@@ -527,19 +527,11 @@
 			
 		
 			
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/swift/" title="swift">swift<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
 			
 		
 			
@@ -552,6 +544,18 @@
 		
 			
 				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
 			
 		
 			
@@ -571,7 +575,7 @@
 			
 		
 			
-				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
+				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
 			
 		
 			
