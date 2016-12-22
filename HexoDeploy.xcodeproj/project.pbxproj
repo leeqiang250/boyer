@@ -420,7 +420,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "pwd\n#修改更新时间\nsh tool/postsUpdated.sh\n#执行发布操作\nhexo g\nhexo d\n";
+			shellScript = "#修改更新时间\nsh tool/postsUpdated.sh\n#执行发布操作\nhexo g\nhexo d\n";
 		};
 		149F334D1E0A74E200AAC556 /* server调试 */ = {
 			isa = PBXShellScriptBuildPhase;

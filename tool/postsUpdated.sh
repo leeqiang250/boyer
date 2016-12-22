@@ -5,6 +5,8 @@
 #
 #  Created by pengyucheng on 22/12/2016.
 #
+
+echo "执行 postsUpdated.sh 文件"
 #将Git配置变量 core.quotepath 设置为false，就可以解决中文文件名称在这些Git命令输出中的显示问题
 git config --global core.quotepath false
 git status -s > modified.txt
