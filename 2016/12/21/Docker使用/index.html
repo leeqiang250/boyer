@@ -11,29 +11,18 @@
     
 
     
-    <meta name="description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。
-安装主机监控程序加速器
-
-登录到 DaoCloud 控制台，点击「我的集群」按钮，在「接入自有主机」界面，点击 Mac 按钮。
-安装DockerToo">
+    <meta name="description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &amp;apos;下载dmg...&amp;apos;curl -o Docker.dmg https://dn-dao-github-mir">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker安装使用">
 <meta property="og:url" content="https://huos3203.github.io/2016/12/21/Docker使用/index.html">
 <meta property="og:site_name" content="布衣男儿">
-<meta property="og:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。
-安装主机监控程序加速器
-
-登录到 DaoCloud 控制台，点击「我的集群」按钮，在「接入自有主机」界面，点击 Mac 按钮。
-安装DockerToo">
+<meta property="og:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &amp;apos;下载dmg...&amp;apos;curl -o Docker.dmg https://dn-dao-github-mir">
 <meta property="og:image" content="http://docs.daocloud.io/user/pages/03.faq/08.install-docker-daocloud/DashboardDaoCloudInstall.png">
-<meta property="og:updated_time" content="2016-12-22T05:51:40.000Z">
+<meta property="og:image" content="https://huos3203.github.io/../images/daoshell.png">
+<meta property="og:updated_time" content="2016-12-22T07:32:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker安装使用">
-<meta name="twitter:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。
-安装主机监控程序加速器
-
-登录到 DaoCloud 控制台，点击「我的集群」按钮，在「接入自有主机」界面，点击 Mac 按钮。
-安装DockerToo">
+<meta name="twitter:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &amp;apos;下载dmg...&amp;apos;curl -o Docker.dmg https://dn-dao-github-mir">
 <meta name="twitter:image" content="http://docs.daocloud.io/user/pages/03.faq/08.install-docker-daocloud/DashboardDaoCloudInstall.png">
 
     
@@ -109,21 +98,27 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.1.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.2.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和管理容器"><span class="toc-number">2.</span> <span class="toc-text">创建和管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例：创建并启动Ubuntu新容器"><span class="toc-number">2.1.</span> <span class="toc-text">样例：创建并启动Ubuntu新容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.2.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.3.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-容器"><span class="toc-number">2.4.</span> <span class="toc-text">启动/退出 容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.1.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.2.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Docker-加速器镜像源"><span class="toc-number">1.1.</span> <span class="toc-text">配置 Docker 加速器镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.2.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.3.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和管理容器"><span class="toc-number">2.</span> <span class="toc-text">创建和管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例：创建并启动Ubuntu新容器"><span class="toc-number">2.1.</span> <span class="toc-text">样例：创建并启动Ubuntu新容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.2.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.3.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-容器"><span class="toc-number">2.4.</span> <span class="toc-text">启动/退出 容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.1.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.2.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="安装Docker-for-Mac"><a href="#安装Docker-for-Mac" class="headerlink" title="安装Docker for Mac"></a>安装<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">Docker for Mac</a></h2><p>在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。</p>
+		<h2 id="安装Docker-for-Mac"><a href="#安装Docker-for-Mac" class="headerlink" title="安装Docker for Mac"></a>安装<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">Docker for Mac</a></h2><p>在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">echo &apos;下载dmg...&apos;</div><div class="line">curl -o Docker.dmg https://dn-dao-github-mirror.qbox.me/docker/install/mac/Docker.dmg</div><div class="line">#安装Docker.dmg</div><div class="line">MOUNTDIR=$(echo `hdiutil mount Docker.dmg | tail -1 \</div><div class="line">| awk &apos;&#123;$1=$2=&quot;&quot;; print $0&#125;&apos;` | xargs -0 echo) \</div><div class="line">&amp;&amp; cd $&#123;MOUNTDIR&#125; &amp;&amp; cp -R Docker.app /Applications/ \</div><div class="line">&amp;&amp; open /Applications/Docker.app</div></pre></td></tr></table></figure></p>
+<h3 id="配置-Docker-加速器镜像源"><a href="#配置-Docker-加速器镜像源" class="headerlink" title="配置 Docker 加速器镜像源"></a>配置 Docker 加速器镜像源</h3><p>右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Advanced 标签下的 Registry mirrors 列表中加入下面的镜像地址:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://142900b5.m.daocloud.io</div></pre></td></tr></table></figure></p>
+<p>点击 Apply &amp; Restart 按钮使设置生效。</p>
 <h3 id="安装主机监控程序加速器"><a href="#安装主机监控程序加速器" class="headerlink" title="安装主机监控程序加速器"></a>安装主机监控程序加速器</h3><hr>
 <ol>
 <li>登录到 <code>DaoCloud 控制台</code>，点击「我的集群」按钮，在「接入自有主机」界面，点击 Mac 按钮。</li>
-<li>安装<a href="https://github.com/docker/toolbox/releases/download/v1.12.5/DockerToolbox-1.12.5.pkg" target="_blank" rel="external">DockerToolbox</a>，是一个完整的开发组件，通过安装和配置<code>DaoCloud加速器 v2</code>，提升下载 <code>Docker Hub 镜像</code>的速度。<a id="more"></a></li>
+<li>安装<a href="https://github.com/docker/toolbox/releases/download/v1.12.5/DockerToolbox-1.12.5.pkg" target="_blank" rel="external">DockerToolbox</a>，是一个完整的开发组件，通过安装和配置<code>DaoCloud加速器 v2</code>，提升下载 <code>Docker Hub 镜像</code>的速度。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//下载pkg</div><div class="line">curl -o DockerToolbox.pkg https://github.com/docker/toolbox/releases/download/v1.12.5/DockerToolbox-1.12.5.pkg</div><div class="line">//安装pkg</div><div class="line">sudo installer -pkg DockerToolbox.pkg -target /</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
 <li>安装Toolbox好了，下一步：<br><img src="http://docs.daocloud.io/user/pages/03.faq/08.install-docker-daocloud/DashboardDaoCloudInstall.png" alt=""></li>
 <li><code>$ docker-machine start default</code>启动 Docker.</li>
 <li><p>在 <code>Docker 主机</code> DaoCloud 加速器的组件包：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL https://get.daocloud.io/daomonit/install.sh | sh -s d0312f829e9807ee0bf157******</div></pre></td></tr></table></figure>
 </li>
-<li><p>启动组件包,会在「安装主机监控程序」的 DaoCloud 控制台页面下方显示一台已经接入的主机。</p>
+<li><p>启动组件包,会在「安装主机监控程序」的 DaoCloud 控制台页面下方显示一台已经接入的主机。<br><img src="../images/daoshell.png" alt=""></p>
 </li>
 <li>执行<code>Dao Pull</code>命令,高速下载<code>Docker Hub</code>镜像文件<br>这台 Docker 主机已经被接入 DaoCloud 平台，用户可以在 DaoCloud 控制台的「我的集群」页面发现这台主机，可以执行管理和部署应用的操作。</li>
 </ol>
@@ -203,8 +198,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#115;&#x6f;&#x6d;&#101;&#x2d;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;">&#115;&#x6f;&#x6d;&#101;&#x2d;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x73;&#x6f;&#109;&#x65;&#x2d;&#x6f;&#110;&#101;&#x40;&#101;&#x78;&#x61;&#x6d;&#112;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;">&#x73;&#x6f;&#109;&#x65;&#x2d;&#x6f;&#110;&#101;&#x40;&#101;&#x78;&#x61;&#x6d;&#112;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#x73;&#111;&#109;&#x65;&#x2d;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;">&#x73;&#111;&#109;&#x65;&#x2d;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#115;&#x6f;&#x6d;&#101;&#x2d;&#111;&#110;&#x65;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#46;&#x63;&#111;&#109;">&#115;&#x6f;&#x6d;&#101;&#x2d;&#111;&#110;&#x65;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#46;&#x63;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -325,7 +320,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.1.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.2.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和管理容器"><span class="toc-number">2.</span> <span class="toc-text">创建和管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例：创建并启动Ubuntu新容器"><span class="toc-number">2.1.</span> <span class="toc-text">样例：创建并启动Ubuntu新容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.2.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.3.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-容器"><span class="toc-number">2.4.</span> <span class="toc-text">启动/退出 容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.1.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.2.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Docker-加速器镜像源"><span class="toc-number">1.1.</span> <span class="toc-text">配置 Docker 加速器镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.2.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.3.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和管理容器"><span class="toc-number">2.</span> <span class="toc-text">创建和管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例：创建并启动Ubuntu新容器"><span class="toc-number">2.1.</span> <span class="toc-text">样例：创建并启动Ubuntu新容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.2.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.3.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-容器"><span class="toc-number">2.4.</span> <span class="toc-text">启动/退出 容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.1.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.2.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -442,11 +437,11 @@
 			
 		
 			
-				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
+				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
 			
 		
 			
@@ -474,23 +469,19 @@
 			
 		
 			
-				<li><a href="/tags/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
+				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/web/" title="web">web<sup>1</sup></a></li>
+				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/im/" title="im">im<sup>1</sup></a></li>
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/即时/" title="即时">即时<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/通讯/" title="通讯">通讯<sup>1</sup></a></li>
+				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
 			
 		
 			
@@ -499,6 +490,10 @@
 		
 			
 				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/web/" title="web">web<sup>1</sup></a></li>
 			
 		
 		</ul>

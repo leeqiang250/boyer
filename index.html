@@ -90,11 +90,15 @@
 </header>
     <div class="article-content">
         
-        <h2 id="安装Docker-for-Mac"><a href="#安装Docker-for-Mac" class="headerlink" title="安装Docker for Mac"></a>安装<a href="https://www.docker.com/products/docker#/mac">Docker for Mac</a></h2><p>在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。</p>
+        <h2 id="安装Docker-for-Mac"><a href="#安装Docker-for-Mac" class="headerlink" title="安装Docker for Mac"></a>安装<a href="https://www.docker.com/products/docker#/mac">Docker for Mac</a></h2><p>在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">echo &apos;下载dmg...&apos;</div><div class="line">curl -o Docker.dmg https://dn-dao-github-mirror.qbox.me/docker/install/mac/Docker.dmg</div><div class="line">#安装Docker.dmg</div><div class="line">MOUNTDIR=$(echo `hdiutil mount Docker.dmg | tail -1 \</div><div class="line">| awk &apos;&#123;$1=$2=&quot;&quot;; print $0&#125;&apos;` | xargs -0 echo) \</div><div class="line">&amp;&amp; cd $&#123;MOUNTDIR&#125; &amp;&amp; cp -R Docker.app /Applications/ \</div><div class="line">&amp;&amp; open /Applications/Docker.app</div></pre></td></tr></table></figure></p>
+<h3 id="配置-Docker-加速器镜像源"><a href="#配置-Docker-加速器镜像源" class="headerlink" title="配置 Docker 加速器镜像源"></a>配置 Docker 加速器镜像源</h3><p>右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Advanced 标签下的 Registry mirrors 列表中加入下面的镜像地址:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://142900b5.m.daocloud.io</div></pre></td></tr></table></figure></p>
+<p>点击 Apply &amp; Restart 按钮使设置生效。</p>
 <h3 id="安装主机监控程序加速器"><a href="#安装主机监控程序加速器" class="headerlink" title="安装主机监控程序加速器"></a>安装主机监控程序加速器</h3><hr>
 <ol>
 <li>登录到 <code>DaoCloud 控制台</code>，点击「我的集群」按钮，在「接入自有主机」界面，点击 Mac 按钮。</li>
-<li>安装<a href="https://github.com/docker/toolbox/releases/download/v1.12.5/DockerToolbox-1.12.5.pkg">DockerToolbox</a>，是一个完整的开发组件，通过安装和配置<code>DaoCloud加速器 v2</code>，提升下载 <code>Docker Hub 镜像</code>的速度。
+<li>安装<a href="https://github.com/docker/toolbox/releases/download/v1.12.5/DockerToolbox-1.12.5.pkg">DockerToolbox</a>，是一个完整的开发组件，通过安装和配置<code>DaoCloud加速器 v2</code>，提升下载 <code>Docker Hub 镜像</code>的速度。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//下载pkg</div><div class="line">curl -o DockerToolbox.pkg https://github.com/docker/toolbox/releases/download/v1.12.5/DockerToolbox-1.12.5.pkg</div><div class="line">//安装pkg</div><div class="line">sudo installer -pkg DockerToolbox.pkg -target /</div></pre></td></tr></table></figure>
+</li>
+</ol>
         
         
         <p class="article-more-link">
@@ -1033,11 +1037,11 @@ line 3 of code
 			
 		
 			
-				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
+				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
 			
 		
 			
@@ -1065,23 +1069,19 @@ line 3 of code
 			
 		
 			
-				<li><a href="/tags/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
+				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/web/" title="web">web<sup>1</sup></a></li>
+				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/im/" title="im">im<sup>1</sup></a></li>
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/即时/" title="即时">即时<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/通讯/" title="通讯">通讯<sup>1</sup></a></li>
+				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
 			
 		
 			
@@ -1090,6 +1090,10 @@ line 3 of code
 		
 			
 				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/web/" title="web">web<sup>1</sup></a></li>
 			
 		
 		</ul>
