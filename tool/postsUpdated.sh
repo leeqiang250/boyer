@@ -22,7 +22,7 @@ do
         echo "--开始替换${postPath}--"
         #直接修改文件内容(危险动作) updated:值
         updatedLine=$(cat ${postPath} | grep 'updated:')
-        time="updated: `date '+%Y-%m-%d  %H:%M:%S'`"
+        time="updated: `date '+%Y-%m-%d %H:%M:%S'`"
         echo "${updatedLine} 替换为 ${time}"
         echo "sed -i '' "s/${updatedLine}/${time}/g" ${postPath}"
         sed -i '' "s/${updatedLine}/${time}/g" ${postPath}
