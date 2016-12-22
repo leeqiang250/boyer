@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &amp;apos;下载dmg...&amp;apos;curl -o Docker.dmg https://dn-dao-github-mir">
+    <meta name="description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &apos;下载dmg...&apos;curl -o Docker.dmg https://dn-dao-github-mirror.qbox.m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker安装使用">
 <meta property="og:url" content="https://huos3203.github.io/2016/12/21/Docker使用/index.html">
 <meta property="og:site_name" content="布衣男儿">
-<meta property="og:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &amp;apos;下载dmg...&amp;apos;curl -o Docker.dmg https://dn-dao-github-mir">
+<meta property="og:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &apos;下载dmg...&apos;curl -o Docker.dmg https://dn-dao-github-mirror.qbox.m">
 <meta property="og:image" content="http://docs.daocloud.io/user/pages/03.faq/08.install-docker-daocloud/DashboardDaoCloudInstall.png">
 <meta property="og:image" content="https://huos3203.github.io/images/daoshell.png">
-<meta property="og:updated_time" content="2016-12-22T07:37:32.000Z">
+<meta property="og:updated_time" content="2016-12-22T08:20:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker安装使用">
-<meta name="twitter:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &amp;apos;下载dmg...&amp;apos;curl -o Docker.dmg https://dn-dao-github-mir">
+<meta name="twitter:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &apos;下载dmg...&apos;curl -o Docker.dmg https://dn-dao-github-mirror.qbox.m">
 <meta name="twitter:image" content="http://docs.daocloud.io/user/pages/03.faq/08.install-docker-daocloud/DashboardDaoCloudInstall.png">
 
     
@@ -51,7 +51,7 @@
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -89,21 +89,21 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2016-12-21T13:25:29.000Z" itemprop="datePublished"> 发表于 2016-12-21</time>
+    <time datetime="2016-12-21T13:25:29.000Z" itemprop="datePublished"> 發表於 2016-12-21</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Docker-加速器镜像源"><span class="toc-number">1.1.</span> <span class="toc-text">配置 Docker 加速器镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.2.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.3.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和管理容器"><span class="toc-number">2.</span> <span class="toc-text">创建和管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例：创建并启动Ubuntu新容器"><span class="toc-number">2.1.</span> <span class="toc-text">样例：创建并启动Ubuntu新容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.2.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.3.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-容器"><span class="toc-number">2.4.</span> <span class="toc-text">启动/退出 容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.1.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.2.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="安装Docker-for-Mac"><a href="#安装Docker-for-Mac" class="headerlink" title="安装Docker for Mac"></a>安装<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">Docker for Mac</a></h2><p>在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">echo &apos;下载dmg...&apos;</div><div class="line">curl -o Docker.dmg https://dn-dao-github-mirror.qbox.me/docker/install/mac/Docker.dmg</div><div class="line">#安装Docker.dmg</div><div class="line">MOUNTDIR=$(echo `hdiutil mount Docker.dmg | tail -1 \</div><div class="line">| awk &apos;&#123;$1=$2=&quot;&quot;; print $0&#125;&apos;` | xargs -0 echo) \</div><div class="line">&amp;&amp; cd $&#123;MOUNTDIR&#125; &amp;&amp; cp -R Docker.app /Applications/ \</div><div class="line">&amp;&amp; open /Applications/Docker.app</div></pre></td></tr></table></figure></p>
-<h3 id="配置-Docker-加速器镜像源"><a href="#配置-Docker-加速器镜像源" class="headerlink" title="配置 Docker 加速器镜像源"></a>配置 Docker 加速器镜像源</h3><p>右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Advanced 标签下的 Registry mirrors 列表中加入下面的镜像地址:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://142900b5.m.daocloud.io</div></pre></td></tr></table></figure></p>
+		<h2 id="安装Docker-for-Mac"><a href="#安装Docker-for-Mac" class="headerlink" title="安装Docker for Mac"></a>安装<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">Docker for Mac</a></h2><p>在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">echo '下载dmg...'</div><div class="line">curl -o Docker.dmg https://dn-dao-github-mirror.qbox.me/docker/install/mac/Docker.dmg</div><div class="line">#安装Docker.dmg</div><div class="line">MOUNTDIR=$(echo `hdiutil mount Docker.dmg | tail -1 \</div><div class="line">| awk '&#123;$1=$2=""; print $0&#125;'` | xargs -0 echo) \</div><div class="line">&amp;&amp; cd $&#123;MOUNTDIR&#125; &amp;&amp; cp -R Docker.app /Applications/ \</div><div class="line">&amp;&amp; open /Applications/Docker.app</div></pre></td></tr></table></figure></p>
+<h3 id="配置-Docker-加速器镜像源"><a href="#配置-Docker-加速器镜像源" class="headerlink" title="配置 Docker 加速器镜像源"></a>配置 Docker 加速器镜像源</h3><p>右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Advanced 标签下的 Registry mirrors 列表中加入下面的镜像地址:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://142*****.m.daocloud.io</div></pre></td></tr></table></figure></p>
 <p>点击 Apply &amp; Restart 按钮使设置生效。</p>
 <h3 id="安装主机监控程序加速器"><a href="#安装主机监控程序加速器" class="headerlink" title="安装主机监控程序加速器"></a>安装主机监控程序加速器</h3><hr>
 <ol>
@@ -114,30 +114,30 @@
 <a id="more"></a>
 <ol>
 <li>安装Toolbox好了，下一步：<br><img src="http://docs.daocloud.io/user/pages/03.faq/08.install-docker-daocloud/DashboardDaoCloudInstall.png" alt=""></li>
-<li><code>$ docker-machine start default</code>启动 Docker.</li>
+<li><code>$ docker-machine start default</code>启动 Docker.<br>当执行后提示：<code>Host does not exist: &quot;default&quot;</code><figure class="highlight ruby"><figcaption><span>http://stackoverflow.com/a/38602630 stackoverflow</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker-machine create -d virtualbox default</div></pre></td></tr></table></figure></li>
 <li><p>在 <code>Docker 主机</code> DaoCloud 加速器的组件包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL https://get.daocloud.io/daomonit/install.sh | sh -s d0312f829e9807ee0bf157******</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL <span class="symbol">https:</span>/<span class="regexp">/get.daocloud.io/daomonit</span><span class="regexp">/install.sh | sh -s d0312f829e9807ee0bf157******</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>启动组件包,会在「安装主机监控程序」的 DaoCloud 控制台页面下方显示一台已经接入的主机。<br><img src="/images/daoshell.png" alt=""></p>
 </li>
 <li>执行<code>Dao Pull</code>命令,高速下载<code>Docker Hub</code>镜像文件<br>这台 Docker 主机已经被接入 DaoCloud 平台，用户可以在 DaoCloud 控制台的「我的集群」页面发现这台主机，可以执行管理和部署应用的操作。</li>
 </ol>
 <h3 id="从Docker-Hub-仓库中获取一个镜像"><a href="#从Docker-Hub-仓库中获取一个镜像" class="headerlink" title="从Docker Hub 仓库中获取一个镜像"></a>从Docker Hub 仓库中获取一个镜像</h3><hr>
-<p>Docker 使用类似 git 的方式管理镜像。通过基本的镜像可以定制创建出来不同种应用的 Docker 镜像。Docker Hub 是 Docker 官方提供的镜像中心。在这里可以很方便地找到各类应用、环境的镜像。由于 Docker 使用联合文件系统，所以镜像就像是夹心饼干一样一层层构成，相同底层的镜像可以共享。所以 Docker 还是相当节约磁盘空间的。要使用一 个镜像，需要先从远程的镜像注册中心拉取，这点非常类似 git。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull ubuntu</div></pre></td></tr></table></figure></p>
+<p>Docker 使用类似 git 的方式管理镜像。通过基本的镜像可以定制创建出来不同种应用的 Docker 镜像。Docker Hub 是 Docker 官方提供的镜像中心。在这里可以很方便地找到各类应用、环境的镜像。由于 Docker 使用联合文件系统，所以镜像就像是夹心饼干一样一层层构成，相同底层的镜像可以共享。所以 Docker 还是相当节约磁盘空间的。要使用一 个镜像，需要先从远程的镜像注册中心拉取，这点非常类似 git。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull ubuntu</div></pre></td></tr></table></figure></p>
 <h2 id="创建和管理容器"><a href="#创建和管理容器" class="headerlink" title="创建和管理容器"></a>创建和管理容器</h2><hr>
-<p>创建一个容器有两种方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker create [--name]</div><div class="line">docker run</div></pre></td></tr></table></figure></p>
+<p>创建一个容器有两种方式：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker create [--name]</div><div class="line">docker run</div></pre></td></tr></table></figure></p>
 <p>两个命令并没有太大差别，只是前者创建后并不会立即启动容器。</p>
 <h3 id="样例：创建并启动Ubuntu新容器"><a href="#样例：创建并启动Ubuntu新容器" class="headerlink" title="样例：创建并启动Ubuntu新容器"></a>样例：创建并启动Ubuntu新容器</h3><hr>
-<p>将 Ubuntu 的 Shell 作为入口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it ubuntu:latest sh -c &apos;/bin/bash&apos;</div></pre></td></tr></table></figure></p>
+<p>将 Ubuntu 的 Shell 作为入口：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it <span class="symbol">ubuntu:</span>latest sh -c <span class="string">'/bin/bash'</span></div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>参数<br>-i 表示这是一个交互容器，会把当前标准输入重定向到容器的标准输入中，而不是终止程序运行<br>-t 指为这个容器分配一个终端<br>这时候我们成功创建了一个 Ubuntu 的容器，并将当前终端连接为这个 Ubuntu 的 bash shell。这时候就可以愉快地使用 Ubuntu 的相关命令了。</p>
 </blockquote>
 <h3 id="ps-查看容器状态"><a href="#ps-查看容器状态" class="headerlink" title="ps 查看容器状态"></a>ps 查看容器状态</h3><hr>
-<p>在容器运行期间，我们可以通过 <code>docker ps</code> 命令看到所有当前正在运行的容器。<br>添加-a参数可以看到所有创建的容器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure></p>
+<p>在容器运行期间，我们可以通过 <code>docker ps</code> 命令看到所有当前正在运行的容器。<br>添加-a参数可以看到所有创建的容器：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure></p>
 <h3 id="容器ID标识"><a href="#容器ID标识" class="headerlink" title="容器ID标识"></a>容器ID标识</h3><hr>
 <p>每个容器都有一个唯一的 ID 标识，通过 ID 可以对这个容器进行管理和操作。在创建容器时，我们可以通过 –name 参数指定一个容器名称，如果没有指定系统将会分配一个，就像这里的「trusting_morse」。</p>
 <h3 id="启动-退出-容器"><a href="#启动-退出-容器" class="headerlink" title="启动/退出 容器"></a>启动/退出 容器</h3><hr>
-<p>启动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker start -i trusting_morse</div></pre></td></tr></table></figure></p>
+<p>启动：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker start -i trusting_morse</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注意：每次执行 docker run 命令都会创建新的容器，建议一次创建后，使用 docker start/stop 来启动和停用容器。</p>
 </blockquote>
@@ -151,10 +151,10 @@
 <h3 id="将容器创建为镜像"><a href="#将容器创建为镜像" class="headerlink" title="将容器创建为镜像"></a>将容器创建为镜像</h3><hr>
 <ol>
 <li><p>为了创建一个新的镜像，我们先创建一个新的容器作为基底：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it ubuntu:latest sh -c &apos;/bin/bash&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it <span class="symbol">ubuntu:</span>latest sh -c <span class="string">'/bin/bash'</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>定制这个容器，例如我们可以配置 PHP 环境、将我们的项目代码部署在里面等：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install php</div><div class="line"># some other opreations ...</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install php</div><div class="line"><span class="comment"># some other opreations ...</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>当执行完操作之后，我们按 Ctrl+D 退出容器.</p>
@@ -169,10 +169,10 @@
 <p>这时候 docker 容器会被创建为一个新的 Ubuntu 镜像，版本名称为 myubuntu。以后我们可以随时使用这个镜像来创建容器了，新的容器将自动包含上面对容器的操作。    </p>
 <ol>
 <li><p>打包/发布镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker save -o myubuntu.tar.gz ubuntu:myubuntu</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker save -o myubuntu.tar.gz <span class="symbol">ubuntu:</span>myubuntu</div></pre></td></tr></table></figure>
 </li>
 <li><p>导入打包镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker import myubuntu.tar.gz</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker import myubuntu.tar.gz</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><hr>
@@ -198,8 +198,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x73;&#x6f;&#x6d;&#x65;&#45;&#111;&#110;&#101;&#x40;&#101;&#x78;&#97;&#109;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;">&#x73;&#x6f;&#x6d;&#x65;&#45;&#111;&#110;&#101;&#x40;&#101;&#x78;&#97;&#109;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#115;&#x6f;&#x6d;&#101;&#x2d;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#108;&#x65;&#46;&#x63;&#x6f;&#109;">&#115;&#x6f;&#x6d;&#101;&#x2d;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#108;&#x65;&#46;&#x63;&#x6f;&#109;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#115;&#111;&#109;&#x65;&#45;&#x6f;&#110;&#x65;&#64;&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#101;&#46;&#99;&#x6f;&#109;">&#115;&#111;&#109;&#x65;&#45;&#x6f;&#110;&#x65;&#64;&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#101;&#46;&#99;&#x6f;&#109;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#x73;&#x6f;&#109;&#101;&#x2d;&#x6f;&#110;&#101;&#64;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#111;&#109;">&#x73;&#x6f;&#109;&#101;&#x2d;&#x6f;&#110;&#101;&#64;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -239,15 +239,15 @@
 </tbody>
 </table>
 <h4 id="配置Dockerfile"><a href="#配置Dockerfile" class="headerlink" title="配置Dockerfile"></a>配置Dockerfile</h4><hr>
-<p>下面是一个 Dockerfile 的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># This is a comment</div><div class="line">FROM ubuntu:14.04</div><div class="line">MAINTAINER Kate Smith &lt;ksmith@example.com&gt;</div><div class="line">RUN apt-get update &amp;&amp; apt-get install -y ruby ruby-dev</div><div class="line">RUN gem install sinatra</div></pre></td></tr></table></figure></p>
+<p>下面是一个 Dockerfile 的例子：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># This is a comment</span></div><div class="line">FROM <span class="symbol">ubuntu:</span><span class="number">14.04</span></div><div class="line">MAINTAINER Kate Smith &lt;ksmith@example.com&gt;</div><div class="line">RUN apt-get update &amp;&amp; apt-get install -y ruby ruby-dev</div><div class="line">RUN gem install sinatra</div></pre></td></tr></table></figure></p>
 <h5 id="CMD命令"><a href="#CMD命令" class="headerlink" title="CMD命令"></a><code>CMD</code>命令</h5><hr>
 <p><code>CMD</code>: 命令可用指定 Docker 容器启动时默认的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it ubuntu:latest sh -c &apos;/bin/bash&apos;</div></pre></td></tr></table></figure></p>
 <p>其中 <code>sh -c &#39;/bin/bash&#39;</code> 就是手工指定的<code>CMD</code>,否则容器将会使用默认 <code>CMD</code> 指定的命令启动。</p>
 <h5 id="ENTRYPOINT命令"><a href="#ENTRYPOINT命令" class="headerlink" title="ENTRYPOINT命令"></a><code>ENTRYPOINT</code>命令</h5><hr>
-<p>用来指定可执行文件、Shell 脚本，同时会并把启动参数或 CMD 指定的默认值，当作附加参数传递给 执行文件、Shell 脚本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ENTRYPOINT [&apos;/usr/bin/mysql&apos;]</div><div class="line">CMD [&apos;-h 192.168.100.128&apos;, &apos;-p&apos;]</div></pre></td></tr></table></figure></p>
+<p>用来指定可执行文件、Shell 脚本，同时会并把启动参数或 CMD 指定的默认值，当作附加参数传递给 执行文件、Shell 脚本。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ENTRYPOINT [<span class="string">'/usr/bin/mysql'</span>]</div><div class="line">CMD [<span class="string">'-h 192.168.100.128'</span>, <span class="string">'-p'</span>]</div></pre></td></tr></table></figure></p>
 <p>执行mysql启动程序，连接<code>192.168.100.128</code> 主机,也可以通过指定参数，来连接别的主机。</p>
 <p>因此，我们在使用 Dockerfile 创建文件的时候，可以创建一个 entrypoint.sh 脚本，作为系统入口。在这个文件里面，我们可以进行一些基础性的自举操作，比如检查环境变量，根据需要初始化数据库等等。下面两个文件是我在日常工作的项目中添加的 Dockerfile 和 entrypoint.sh，仅供参考：<br><a href="https://github.com/starlight36/SimpleOA/blob/master/Dockerfile" target="_blank" rel="external">https://github.com/starlight36/SimpleOA/blob/master/Dockerfile</a><br><a href="https://github.com/starlight36/SimpleOA/blob/master/docker-entrypoint.sh" target="_blank" rel="external">https://github.com/starlight36/SimpleOA/blob/master/docker-entrypoint.sh</a><br>在准备好 Dockerfile 之后，我们就可以创建镜像了：</p>
-<h4 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t starlight36/simpleoa .</div></pre></td></tr></table></figure>
+<h4 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t starlight36/simpleoa .</div></pre></td></tr></table></figure>
 <p>关于 Dockerfile 的更详细说明，请参考 <a href="https://docs.docker.com/reference/builder/。" target="_blank" rel="external">https://docs.docker.com/reference/builder/。</a></p>
   
 	</div>
@@ -315,17 +315,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Docker-加速器镜像源"><span class="toc-number">1.1.</span> <span class="toc-text">配置 Docker 加速器镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.2.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.3.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和管理容器"><span class="toc-number">2.</span> <span class="toc-text">创建和管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例：创建并启动Ubuntu新容器"><span class="toc-number">2.1.</span> <span class="toc-text">样例：创建并启动Ubuntu新容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.2.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.3.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-容器"><span class="toc-number">2.4.</span> <span class="toc-text">启动/退出 容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.1.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.2.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
@@ -340,7 +340,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">分類</p>
 		<ul>
 		
 		  
@@ -413,7 +413,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
@@ -453,6 +453,22 @@
 			
 		
 			
+				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/方向/" title="方向">方向<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
 			
 		
@@ -473,27 +489,11 @@
 			
 		
 			
-				<li><a href="/tags/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/web/" title="web">web<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/im/" title="im">im<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/即时/" title="即时">即时<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/socket/" title="socket">socket<sup>1</sup></a></li>
+				<li><a href="/tags/web/" title="web">web<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -501,7 +501,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -523,7 +523,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
@@ -725,7 +725,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
