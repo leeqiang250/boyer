@@ -19,9 +19,22 @@
 			name = HexoDeploy;
 			productName = Deploy;
 		};
+		843D6AD01E0AE20B004A5FB0 /* HexoServer */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 843D6AD31E0AE20B004A5FB0 /* Build configuration list for PBXAggregateTarget "HexoServer" */;
+			buildPhases = (
+				843D6AD21E0AE20B004A5FB0 /* server调试 */,
+			);
+			dependencies = (
+			);
+			name = HexoServer;
+			productName = Deploy;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
+		1407ACAB1E0B7547001D4D65 /* setup_snippets.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_snippets.sh; sourceTree = "<group>"; };
+		1407ACAF1E0B8464001D4D65 /* postsUpdated.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postsUpdated.sh; sourceTree = "<group>"; };
 		149F334E1E0A767600AAC556 /* _config.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = _config.yml; sourceTree = "<group>"; };
 		149F33501E0A767600AAC556 /* 2014-06-09-chu-bu-da-jian-octopress.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-09-chu-bu-da-jian-octopress.md"; sourceTree = "<group>"; };
 		149F33511E0A767600AAC556 /* 2014-06-10-ios7jie-ping-wen-ti.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-10-ios7jie-ping-wen-ti.markdown"; sourceTree = "<group>"; };
@@ -156,14 +169,33 @@
 		149F33D61E0A767600AAC556 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		149F33D71E0A767600AAC556 /* SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SUMMARY.md; sourceTree = "<group>"; };
 		149F33D91E0A767600AAC556 /* index.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = index.md; sourceTree = "<group>"; };
+		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		1407ACA91E0B7547001D4D65 /* CodeSnippets */ = {
+			isa = PBXGroup;
+			children = (
+				1407ACAB1E0B7547001D4D65 /* setup_snippets.sh */,
+			);
+			path = CodeSnippets;
+			sourceTree = "<group>";
+		};
+		1407ACAE1E0B8464001D4D65 /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				1407ACAF1E0B8464001D4D65 /* postsUpdated.sh */,
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
 		149F33411E0A746F00AAC556 = {
 			isa = PBXGroup;
 			children = (
 				149F334E1E0A767600AAC556 /* _config.yml */,
 				149F33D71E0A767600AAC556 /* SUMMARY.md */,
+				1407ACAE1E0B8464001D4D65 /* tool */,
+				1407ACA91E0B7547001D4D65 /* CodeSnippets */,
 				149F334F1E0A767600AAC556 /* _posts */,
 				149F337D1E0A767600AAC556 /* about */,
 				149F337F1E0A767600AAC556 /* categories */,
@@ -221,6 +253,7 @@
 				149F337A1E0A767600AAC556 /* hello-world.md */,
 				149F337B1E0A767600AAC556 /* Hexo标签插件.md */,
 				149F337C1E0A767600AAC556 /* 微信小程序开发-一.md */,
+				843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */,
 			);
 			path = _posts;
 			sourceTree = "<group>";
@@ -352,6 +385,9 @@
 						DevelopmentTeam = FA78T6VRG8;
 						ProvisioningStyle = Automatic;
 					};
+					843D6AD01E0AE20B004A5FB0 = {
+						DevelopmentTeam = FA78T6VRG8;
+					};
 				};
 			};
 			buildConfigurationList = 149F33451E0A747000AAC556 /* Build configuration list for PBXProject "HexoDeploy" */;
@@ -366,6 +402,7 @@
 			projectRoot = "";
 			targets = (
 				149F33481E0A74AE00AAC556 /* HexoDeploy */,
+				843D6AD01E0AE20B004A5FB0 /* HexoServer */,
 			);
 		};
 /* End PBXProject section */
@@ -383,7 +420,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "hexo g\nhexo d";
+			shellScript = "pwd\n#修改更新时间\nsh tool/postsUpdated.sh\n#执行发布操作\nhexo g\nhexo d\n";
 		};
 		149F334D1E0A74E200AAC556 /* server调试 */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -398,6 +435,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "";
+		};
+		843D6AD21E0AE20B004A5FB0 /* server调试 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "server调试";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "hexo g\nhexo s\nopen http:\\/\\/localhost:4000/\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -430,6 +481,22 @@
 			};
 			name = Release;
 		};
+		843D6AD41E0AE20B004A5FB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		843D6AD51E0AE20B004A5FB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -447,6 +514,15 @@
 			buildConfigurations = (
 				149F334A1E0A74B000AAC556 /* Debug */,
 				149F334B1E0A74B000AAC556 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		843D6AD31E0AE20B004A5FB0 /* Build configuration list for PBXAggregateTarget "HexoServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843D6AD41E0AE20B004A5FB0 /* Debug */,
+				843D6AD51E0AE20B004A5FB0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

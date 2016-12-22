@@ -44,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,7 +60,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -77,6 +77,87 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/" title="Git协议介绍" itemprop="url">Git协议介绍</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-19T11:57:04.000Z" itemprop="datePublished"> Published 2015-01-19</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>###列表：</p>
+<ol>
+<li><a href="#Stashing">Stashing</a></li>
+<li><a href="#work">储藏工作</a></li>
+<li><a href="#apply">应用储藏</a></li>
+<li><a href="#applyIndex">被暂存的文件重新暂存</a></li>
+<li><a href="#drop">应用后，移除储藏的内容</a></li>
+<li><a href="#unapply">取消储藏(Un-applying a Stash)</a></li>
+<li><a href="#stash-unapply">新建stash-unapply别名</a></li>
+<li><a href="#stashBranch">从储藏中创建分支</a></li>
+</ol>
+<p>####惨痛经历<br> 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果：<br> 解决办法：<br> 查看本地的索引的提交日志：</p>
+<pre><code>admin$ git reflog
+
+        a1d09fd HEAD@{0}: checkout: moving from all to master
+       a1d09fd HEAD@{1}: checkout: moving from master to all
+       a1d09fd HEAD@{2}: checkout: moving from HEAD to master
+       a1d09fd HEAD@{3}: checkout: moving from all to HEAD
+</code></pre><p>根据上面的sh2值，回滚：</p>
+<pre><code>admin$ git reset  —hard  a1d09fd 
+</code></pre><p>这样就可以找回代码.</p>
+<p>####<a name="Stashing">Git工具 - 储藏（Stashing）</a></p>
+<p>场景：当项目中某一部分正在编码中，突然接到新任务，又必须换至其他分支去完成。</p>
+<p>问题：你不想提交进行了一半的工作，否则以后你无法回到这个工作点。</p>
+<p>解决：<strong><font color="red">git stash </font></strong>命令。</p>
+<p>“Stashing”可以获取工作目录的中间状态，即：将修改过的被追踪的文件和暂存的变更，保存到一个未完结变更的堆栈中，随时可以重新应用。</p>
+<p>####<a name="work">储藏工作</a><br>演示：<br>step 1 ：进入项目目录，修改某个文件，有可能还暂存其中的一个变更。<br>step 2 ：<strong><font color="red">git status </font></strong>命令,查看中间状态：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line"># On branch master</div><div class="line"># Changes to be committed:</div><div class="line">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</div><div class="line">#</div><div class="line">#      modified:   index.html</div><div class="line">#</div><div class="line"># Changes not staged for commit:</div><div class="line">#   (use "git add &lt;file&gt;..." to update what will be committed)</div><div class="line">#</div><div class="line">#      modified:   lib/simplegit.rb</div><div class="line">#</div></pre></td></tr></table></figure><br>step 3 : 切换分支，但不提交step 1 中的变更，所以储藏这些变更。<br>执行<strong><font color="red">git stash </font></strong>命令，往堆栈中推送一个新的储藏：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git stash</div><div class="line">Saved working directory and index state \</div><div class="line">  <span class="string">"WIP on master: 049d078 added the index file"</span></div><div class="line">HEAD is now at <span class="number">049</span>d078 added the index file</div><div class="line">(To restore them type <span class="string">"git stash apply"</span>)</div></pre></td></tr></table></figure><br>step 4 : 执行step 2查看目录库，中间状态就不见了：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">#######On branch master</div><div class="line">nothing to commit, working directory clean</div></pre></td></tr></table></figure><br>这时，你可以方便地切换到其他分支工作；你的变更都保存在栈上。<br>step 5 : 使用<strong><font color="red">git stash list</font></strong>要查看现有的储藏：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git stash list</div><div class="line">stash@&#123;<span class="number">0</span>&#125;: WIP on master: <span class="number">049</span>d078 added the index file</div><div class="line">stash@&#123;<span class="number">1</span>&#125;: WIP on master: c264051 Revert <span class="string">"added file_size"</span></div><div class="line">stash@&#123;<span class="number">2</span>&#125;: WIP on master: <span class="number">21</span>d80a5 added number to log</div></pre></td></tr></table></figure><br>在这个案例中，之前已经进行了两次储藏，所以你可以访问到三个不同的储藏。</p>
+<p>####<a name="apply">应用储藏</a><br>执行<strong><font color="red">git stash apply</font></strong>命令, 可以重新应用最近的一次储藏；<br>执行<strong><font color="red">git stash apply stash@{2}</font></strong>命令，即通过指定储藏的名字，来应用更早的储藏。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ git stash apply</div><div class="line"># On branch master</div><div class="line"># Changes not staged for commit:</div><div class="line">#   (use "git add &lt;file&gt;..." to update what will be committed)</div><div class="line">#</div><div class="line">#      modified:   index.html</div><div class="line">#      modified:   lib/simplegit.rb</div><div class="line">#</div></pre></td></tr></table></figure><br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/#more">更多-&gt;</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" title="XMPP简单研究[转]" itemprop="url">XMPP简单研究[转]</a>
   </h1>
   <p class="article-author">By
@@ -84,7 +165,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-06T06:36:06.000Z" itemprop="datePublished"> 發表於 2015-01-06</time>
+    <time datetime="2015-01-06T06:36:06.000Z" itemprop="datePublished"> Published 2015-01-06</time>
     
   </p>
 </header>
@@ -151,7 +232,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-09-02T07:53:11.000Z" itemprop="datePublished"> 發表於 2014-09-02</time>
+    <time datetime="2014-09-02T07:53:11.000Z" itemprop="datePublished"> Published 2014-09-02</time>
     
   </p>
 </header>
@@ -215,7 +296,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-08-28T12:32:48.000Z" itemprop="datePublished"> 發表於 2014-08-28</time>
+    <time datetime="2014-08-28T12:32:48.000Z" itemprop="datePublished"> Published 2014-08-28</time>
     
   </p>
 </header>
@@ -276,7 +357,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-08-28T07:18:41.000Z" itemprop="datePublished"> 發表於 2014-08-28</time>
+    <time datetime="2014-08-28T07:18:41.000Z" itemprop="datePublished"> Published 2014-08-28</time>
     
   </p>
 </header>
@@ -343,7 +424,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-07-22T02:59:49.000Z" itemprop="datePublished"> 發表於 2014-07-22</time>
+    <time datetime="2014-07-22T02:59:49.000Z" itemprop="datePublished"> Published 2014-07-22</time>
     
   </p>
 </header>
@@ -404,7 +485,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-07-03T09:29:00.000Z" itemprop="datePublished"> 發表於 2014-07-03</time>
+    <time datetime="2014-07-03T09:29:00.000Z" itemprop="datePublished"> Published 2014-07-03</time>
     
   </p>
 </header>
@@ -511,7 +592,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-07-01T15:12:01.000Z" itemprop="datePublished"> 發表於 2014-07-01</time>
+    <time datetime="2014-07-01T15:12:01.000Z" itemprop="datePublished"> Published 2014-07-01</time>
     
   </p>
 </header>
@@ -597,7 +678,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-07-01T11:54:02.000Z" itemprop="datePublished"> 發表於 2014-07-01</time>
+    <time datetime="2014-07-01T11:54:02.000Z" itemprop="datePublished"> Published 2014-07-01</time>
     
   </p>
 </header>
@@ -664,7 +745,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2014-06-17T07:12:53.000Z" itemprop="datePublished"> 發表於 2014-06-17</time>
+    <time datetime="2014-06-17T07:12:53.000Z" itemprop="datePublished"> Published 2014-06-17</time>
     
   </p>
 </header>
@@ -718,87 +799,21 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/06/16/2014-06-16-ios7xin-chong-text-kit/" title="IOS7新宠Text Kit" itemprop="url">IOS7新宠Text Kit</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2014-06-16T14:24:48.000Z" itemprop="datePublished"> 發表於 2014-06-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <ul>
-<li>##Text Kit<br><strong><code>Text Kit</code></strong>：是个庞大的framework，继承了<code>Core Text</code>的全部功能，构建了快速、先进的文本排版和渲染引擎，更让开发者们高兴的是，设计者把它封装在了一个面向对象的API中。并且与UIKit框架很好的集成，它让程序能够通过<strong>NSTextStorage</strong>对象存储文本排版和显示文本等主要信息，并支持排版所需要的所有特性，包括字距调整、连写、换行和对齐等。  <blockquote>
-<font size=3>更直观的理解，<strong>UITextView</strong>，<strong>UITextField</strong>、<strong>UILabel</strong>等UIKit控件都已经基于<strong>Text Kit</strong>重新构建，是为UIKit框架提供高质量排版服务而扩展的一些类和协议.<br>例如：NSTextStorage对象，它本身是<strong>NSMutableAttributedString</strong>的子类，支持分批编辑，这就意味着在改变一个范围内的字符样式时，不用整体替换文本内容，就能完成排版效果。其中支持分页文本、文本包装、富文本编辑、交互式文本着色、文本折叠和自定义截取等特性。</font>  
-
-</blockquote>
-</li>
-</ul>
-<p>IOS6之前，想实现一些丰富的文本排版，例如在textView中显示不同样式的文本，或者图片和文字混排等，就需要借助于UIWebView或者深入研究一下<code>Core Text</code>。后来iOS6，增加一个很棒的属性:<code>NSAttributedString</code>，主要用于支持UILabel、UITextField、UITextView等UIKit控件自主排版的功能。很显然，IOS7并没有满足于这一改进，同时推出一款功能更为齐全，易用的<code>Text Kit</code>新宠。<br>在iOS 6中, 用于文本的UIKit控件是基于WebKit和Core Graphics的字符串绘制方法来实现的。如下面层级体系图所示：<br><img src="/images/TextRenderingArchitecture-iOS6.png" alt="image"><br>iOS 7的整体构架要更清晰，所有基于文本的UIKit控件（除了UIWebView）现在都可以使用Text Kit，如下图所示：<br><img src="/images/TextRenderingArchitecture-iOS7.png" alt="image">  </p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/06/16/2014-06-16-ios7xin-chong-text-kit/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/TextKit/">TextKit</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2014/06/16/2014-06-16-ios7xin-chong-text-kit/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/06/16/2014-06-16-ios7xin-chong-text-kit/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github 名片</p>
+<p class="asidetitle">Github Card</p>
 <div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -808,7 +823,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -881,7 +896,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -897,15 +912,7 @@
 			
 		
 			
-				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
 			
 		
 			
@@ -913,27 +920,15 @@
 			
 		
 			
+				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/swift/" title="swift">swift<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
 			
 		
 			
@@ -942,6 +937,26 @@
 		
 			
 				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
 			
 		
 			
@@ -957,7 +972,7 @@
 			
 		
 			
-				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
+				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
 			
 		
 			
@@ -969,7 +984,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -991,11 +1006,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=&dpc=1"></iframe>
 </div>
 
@@ -1153,7 +1168,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
