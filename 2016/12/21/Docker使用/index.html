@@ -19,7 +19,7 @@
 <meta property="og:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &apos;下载dmg...&apos;curl -o Docker.dmg https://dn-dao-github-mirror.qbox.m">
 <meta property="og:image" content="http://docs.daocloud.io/user/pages/03.faq/08.install-docker-daocloud/DashboardDaoCloudInstall.png">
 <meta property="og:image" content="https://huos3203.github.io/images/daoshell.png">
-<meta property="og:updated_time" content="2016-12-23T09:03:07.000Z">
+<meta property="og:updated_time" content="2016-12-23T09:09:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker安装使用">
 <meta name="twitter:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &apos;下载dmg...&apos;curl -o Docker.dmg https://dn-dao-github-mirror.qbox.m">
@@ -144,8 +144,9 @@
 </li>
 </ol>
 <blockquote>
-<p>参数<br>-i 表示这是一个交互容器，会把当前标准输入重定向到容器的标准输入中，而不是终止程序运行<br>-t 指为这个容器分配一个终端<br>这时候我们成功创建了一个 Ubuntu 的容器，并将当前终端连接为这个 Ubuntu 的 bash shell。这时候就可以愉快地使用 Ubuntu 的相关命令了。</p>
+<p>参数<br>-i 表示这是一个交互容器，会把当前标准输入重定向到容器的标准输入中，而不是终止程序运行<br>-t 指为这个容器分配一个终端</p>
 </blockquote>
+<p>这时候我们成功创建了一个 Ubuntu 的容器，并将当前终端连接为这个 Ubuntu 的 bash shell。这时候就可以愉快地使用 Ubuntu 的相关命令了。</p>
 <h3 id="ps-查看容器状态"><a href="#ps-查看容器状态" class="headerlink" title="ps 查看容器状态"></a>ps 查看容器状态</h3><hr>
 <p>在容器运行期间，我们可以通过 <code>docker ps</code> 命令看到所有当前正在运行的容器。<br>添加-a参数可以看到所有创建的容器：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure></p>
 <h3 id="容器ID标识"><a href="#容器ID标识" class="headerlink" title="容器ID标识"></a>容器ID标识</h3><hr>
@@ -216,8 +217,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#115;&#x6f;&#109;&#101;&#x2d;&#x6f;&#110;&#x65;&#x40;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#109;">&#115;&#x6f;&#109;&#101;&#x2d;&#x6f;&#110;&#x65;&#x40;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#109;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#x73;&#x6f;&#x6d;&#101;&#x2d;&#x6f;&#110;&#101;&#x40;&#x65;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#x6d;">&#x73;&#x6f;&#x6d;&#101;&#x2d;&#x6f;&#110;&#101;&#x40;&#x65;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#x6d;</a></td>
+<td style="text-align:right">Author <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#115;&#111;&#x6d;&#101;&#45;&#111;&#110;&#x65;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#x6d;">&#115;&#111;&#x6d;&#101;&#45;&#111;&#110;&#x65;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#115;&#111;&#x6d;&#x65;&#45;&#111;&#x6e;&#101;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;">&#115;&#111;&#x6d;&#x65;&#45;&#111;&#x6e;&#101;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -450,10 +451,6 @@
 			
 		
 			
-				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
 			
 		
@@ -462,11 +459,35 @@
 			
 		
 			
+				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/swift/" title="swift">swift<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/方向/" title="方向">方向<sup>1</sup></a></li>
 			
 		
 			
@@ -486,27 +507,7 @@
 			
 		
 			
-				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
+				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
 			
 		
 			
