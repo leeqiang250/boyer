@@ -77,6 +77,73 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2014/06/17/2014-06-17-uidevicelei-jie-shao/" title="UIDevice类介绍" itemprop="url">UIDevice类介绍</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2014-06-17T07:12:53.000Z" itemprop="datePublished"> Published 2014-06-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>###UIDevice.h</p>
+<figure class="highlight objc"><figcaption><span>设备的基本属性</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">UIDevice</span> *)currentDevice; 		  <span class="comment">// 获取当前设备</span></div><div class="line"></div><div class="line"><span class="built_in">NSString</span>    *name;               	  <span class="comment">// e.g. "My iPhone"  </span></div><div class="line"><span class="built_in">NSString</span>    *model;              	  <span class="comment">// e.g. @"iPhone", @"iPod touch"  </span></div><div class="line"><span class="built_in">NSString</span>    *localizedModel;     	  <span class="comment">// localized version of model  </span></div><div class="line"><span class="built_in">NSString</span>    *systemName;     		  <span class="comment">// e.g. @"iOS"  </span></div><div class="line"><span class="built_in">NSString</span>    *systemVersion;   	  <span class="comment">// e.g. @"4.0"  </span></div><div class="line"><span class="built_in">UIDeviceOrientation</span> orientation;    <span class="comment">//除非正在生成设备方向的通知，否则返回UIDeviceOrientationUnknown  </span></div><div class="line"><span class="built_in">NSUUID</span> *identifierForVendor         <span class="comment">//可用于唯一标识该设备，同一供应商不同应用具有相同的UUID</span></div></pre></td></tr></table></figure>
+<figure class="highlight objc"><figcaption><span>方向属性值</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIDeviceOrientationUnknown</span>,</div><div class="line"><span class="built_in">UIDeviceOrientationPortrait</span>,                    <span class="comment">// 竖向，头向上</span></div><div class="line"><span class="built_in">UIDeviceOrientationPortraitUpsideDown</span>,  		<span class="comment">// 竖向，头向下</span></div><div class="line"><span class="built_in">UIDeviceOrientationLandscapeLeft</span>,         		<span class="comment">// 横向，头向左</span></div><div class="line"><span class="built_in">UIDeviceOrientationLandscapeRight</span>,       		<span class="comment">// 横向，头向右</span></div><div class="line"><span class="built_in">UIDeviceOrientationFaceUp</span>,                  	<span class="comment">// 平放，屏幕朝下</span></div><div class="line"><span class="built_in">UIDeviceOrientationFaceDown</span>                	 <span class="comment">// 平放，屏幕朝下</span></div></pre></td></tr></table></figure>
+<p>//使用内置的宏定义的函数，根据<strong>orientation</strong>判断设备方向,返回值类型<strong>BOOL</strong>.<br><figure class="highlight"><figcaption><span>纵向宏定义,返回YES:纵向</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define UIDeviceOrientationIsPortrait(orientation)  ((orientation) == UIDeviceOrientationPortrait || (orientation) == UIDeviceOrientationPortraitUpsideDown)</div></pre></td></tr></table></figure><br><figure class="highlight"><figcaption><span>横向宏定义,返回YES:横向</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define UIDeviceOrientationIsLandscape(orientation) ((orientation) == UIDeviceOrientationLandscapeLeft || (orientation) == UIDeviceOrientationLandscapeRight)</div></pre></td></tr></table></figure><br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2014/06/17/2014-06-17-uidevicelei-jie-shao/#more">更多-&gt;</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/IOS基础/">IOS基础</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/UIDevice/">UIDevice</a><a href="/tags/电量/">电量</a><a href="/tags/方向/">方向</a><a href="/tags/近距离感应/">近距离感应</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/06/17/2014-06-17-uidevicelei-jie-shao/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/06/17/2014-06-17-uidevicelei-jie-shao/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2014/06/16/2014-06-16-ios7xin-chong-text-kit/" title="IOS7新宠Text Kit" itemprop="url">IOS7新宠Text Kit</a>
   </h1>
   <p class="article-author">By
@@ -520,11 +587,11 @@
 			
 		
 			
-				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
+				<li><a href="/tags/swift/" title="swift">swift<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
 			
 		
 			
@@ -536,23 +603,11 @@
 			
 		
 			
-				<li><a href="/tags/swift/" title="swift">swift<sup>2</sup></a></li>
+				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/方向/" title="方向">方向<sup>1</sup></a></li>
+				<li><a href="/tags/混编/" title="混编">混编<sup>2</sup></a></li>
 			
 		
 			
@@ -560,7 +615,19 @@
 			
 		
 			
-				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
+				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
 			
 		
 			
@@ -580,11 +647,11 @@
 			
 		
 			
-				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
+				<li><a href="/tags/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/web/" title="web">web<sup>1</sup></a></li>
+				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
 			
 		
 		</ul>
