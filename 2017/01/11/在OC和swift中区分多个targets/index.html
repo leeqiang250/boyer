@@ -11,22 +11,19 @@
     
 
     
-    <meta name="description" content="title: OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 13:59:11comments: truetags: [boyer,混编,targets,swift]categories:keywords: 宏,Flags,混编,buildpermalink: 
-
-配置文件build setting预编译位置Pr">
+    <meta name="description" content="title: OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 14:01:28comments: truetags: [boyer,混编,targets,swift]categories:keywords: 宏,Flags,混编,build
+permalink: 配置文件build setting预编译位置Prep">
 <meta property="og:type" content="article">
 <meta property="og:title" content="布衣男儿">
 <meta property="og:url" content="https://huos3203.github.io/2017/01/11/在OC和swift中区分多个targets/index.html">
 <meta property="og:site_name" content="布衣男儿">
-<meta property="og:description" content="title: OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 13:59:11comments: truetags: [boyer,混编,targets,swift]categories:keywords: 宏,Flags,混编,buildpermalink: 
-
-配置文件build setting预编译位置Pr">
-<meta property="og:updated_time" content="2017-01-11T05:59:11.000Z">
+<meta property="og:description" content="title: OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 14:01:28comments: truetags: [boyer,混编,targets,swift]categories:keywords: 宏,Flags,混编,build
+permalink: 配置文件build setting预编译位置Prep">
+<meta property="og:updated_time" content="2017-01-11T06:01:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="布衣男儿">
-<meta name="twitter:description" content="title: OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 13:59:11comments: truetags: [boyer,混编,targets,swift]categories:keywords: 宏,Flags,混编,buildpermalink: 
-
-配置文件build setting预编译位置Pr">
+<meta name="twitter:description" content="title: OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 14:01:28comments: truetags: [boyer,混编,targets,swift]categories:keywords: 宏,Flags,混编,build
+permalink: 配置文件build setting预编译位置Prep">
 
     
     <link rel="alternative" href="/atom.xml" title="布衣男儿" type="application/atom+xml">
@@ -92,7 +89,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2017-01-11T05:59:11.000Z" itemprop="datePublished"> Published 2017-01-11</time>
+    <time datetime="2017-01-11T06:01:28.000Z" itemprop="datePublished"> Published 2017-01-11</time>
     
   </p>
 </header>
@@ -101,15 +98,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#permalink"><span class="toc-number">1.</span> <span class="toc-text">permalink: </span></a></li></ol>
 		
 		</div>
 		
 		<hr>
-<!--Front-matter-->
-<p>title: OC和swift中区分多个targets<br>date: 2017-01-11 13:49:33<br>updated: 2017-01-11 13:59:11<br>comments: true<br>tags: [boyer,混编,targets,swift]<br>categories:<br>keywords: 宏,Flags,混编,build<br>permalink: </p>
-<hr>
-<p>配置文件build setting预编译位置<br>Preprocessor Macros:<br>Other Swift Flags:</p>
+<p>title: OC和swift中区分多个targets<br>date: 2017-01-11 13:49:33<br>updated: 2017-01-11 14:01:28<br>comments: true<br>tags: [boyer,混编,targets,swift]<br>categories:<br>keywords: 宏,Flags,混编,build</p>
+<h2 id="permalink"><a href="#permalink" class="headerlink" title="permalink: "></a>permalink: </h2><p>配置文件build setting预编译位置<br>Preprocessor Macros:<br>Other Swift Flags:</p>
 <p>###1. OC<br>为生产和开发target配置预处理宏/编译器标识。之后我们就可以使用该标识在我们的代码来检测应用程序正在运行的版本。</p>
 <p>对于Objective-C的项目，去到<code>Build Settings</code>下<code>Apple LLVM 7.0 - Preprocessing</code>。拓展<code>Preprocessor Macros</code>在Rebug和Release区域添加一个变量。对于开发target（即todo Dev），将该值设置为<code>DEVELOPMENT = 1</code>。另一个，将值设为<code>DEVELOPMENT=0</code>来表示生产版本。<br>根据已配置的宏DEV_VERSION，我们可以在代码中利用它动态地编译项目。下面是一个简单的例子：<br>Objective-C中你可以使用<code>＃if</code>检查<code>DEVELOPMENT</code>的环境，并相应的设置URLs/ API密钥。<br>Objective-C:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#if DEVELOPMENT</div><div class="line">#define SERVER_URL @&quot;http://dev.server.com/api/&quot;</div><div class="line">#define API_TOKEN @&quot;DI2023409jf90ew&quot;</div><div class="line">#else</div><div class="line">#define SERVER_URL @&quot;http://prod.server.com/api/&quot;</div><div class="line">#define API_TOKEN @&quot;71a629j0f090232&quot;</div><div class="line">#endif</div><div class="line">```    </div><div class="line"></div><div class="line">###2. Swift</div><div class="line">对于swift的项目，编译器不再支持预处理指令。作为替代，它使用编译时的属性和build配置。选中开发target，添加一个标识表示开发版本。找到`Build Setting`往下滚动到`Swift Compiler - Custom Flags`部分。将值设为`-DDEVELOPMENT`表示这个target作为开发版本。</div><div class="line">Swift中你仍然可以使用`#if`判定build的参数动态编译。然而，除了使用`#define`定义基本常量，在swift中我们也可以用`let`定义一个全局常量。</div><div class="line"></div><div class="line">Swift:</div></pre></td></tr></table></figure></p>
 <p>#if DEVELOPMENT<br>let SERVER_URL = “<a href="http://dev.server.com/api/" target="_blank" rel="external">http://dev.server.com/api/</a>“<br>let API_TOKEN = “DI2023409jf90ew”</p>
@@ -186,7 +181,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#permalink"><span class="toc-number">1.</span> <span class="toc-text">permalink: </span></a></li></ol>
  
   </div>
 
@@ -315,22 +310,6 @@
 			
 		
 			
-				<li><a href="/tags/方向/" title="方向">方向<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
 			
 		
@@ -340,6 +319,22 @@
 		
 			
 				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/方向/" title="方向">方向<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
 			
 		
 			
