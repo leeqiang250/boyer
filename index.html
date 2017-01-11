@@ -90,16 +90,19 @@
 </header>
     <div class="article-content">
         
-        <h2 id="build-setting预编译位置"><a href="#build-setting预编译位置" class="headerlink" title="build setting预编译位置"></a>build setting预编译位置</h2><p>配置文件build setting预编译位置</p>
-<ol>
-<li>Preprocessor Macros:</li>
-<li>Other Swift Flags:</li>
+        <h2 id="build-setting预编译位置"><a href="#build-setting预编译位置" class="headerlink" title="build setting预编译位置"></a>build setting预编译位置</h2><ol>
+<li>Preprocessor Macros</li>
+<li>Other Swift Flags</li>
 </ol>
-<h3 id="OC中Preprocessor-Macros"><a href="#OC中Preprocessor-Macros" class="headerlink" title="OC中Preprocessor Macros"></a>OC中Preprocessor Macros</h3><p>为生产和开发target配置预处理宏/编译器标识。之后我们就可以使用该标识在我们的代码来检测应用程序正在运行的版本。</p>
-<p>对于Objective-C的项目，去到<code>Build Settings</code>下<code>Apple LLVM 7.0 - Preprocessing</code>。拓展<code>Preprocessor Macros</code>在Rebug和Release区域添加一个变量。对于开发target（即todo Dev），将该值设置为<code>DEVELOPMENT = 1</code>。另一个，将值设为<code>DEVELOPMENT=0</code>来表示生产版本。<br>根据已配置的宏DEV_VERSION，我们可以在代码中利用它动态地编译项目。下面是一个简单的例子：</p>
-<p>Objective-C中你可以使用<code>＃if</code>检查<code>DEVELOPMENT</code>的环境，并相应的设置URLs/ API密钥。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#if DEVELOPMENT</span></div><div class="line">     define SERVER_URL <span class="string">@"http://dev.server.com/api/"</span></div><div class="line">     define API_TOKEN <span class="string">@"DI2023409jf90ew"</span></div><div class="line"><span class="meta">#else</span></div><div class="line">    define SERVER_URL <span class="string">@"http://prod.server.com/api/"</span></div><div class="line">    define API_TOKEN <span class="string">@"71a629j0f090232"</span></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
-<h3 id="Swift中Other-Swift-Flags"><a href="#Swift中Other-Swift-Flags" class="headerlink" title="Swift中Other Swift Flags"></a>Swift中Other Swift Flags</h3><p>对于swift的项目，编译器不再支持预处理指令。作为替代，它使用编译时的属性和build配置。选中开发target，添加一个标识表示开发版本。找到<code>Build Setting</code>往下滚动到<code>Swift Compiler - Custom Flags</code>部分。将值设为<code>-DDEVELOPMENT</code>表示这个target作为开发版本。<br>Swift中你仍然可以使用<code>#if</code>判定build的参数动态编译。然而，除了使用<code>#define</code>定义基本常量，在swift中我们也可以用<code>let</code>定义一个全局常量。</p>
+<p>为生产和开发target配置预处理宏/编译器标识。之后我们就可以使用该标识在我们的代码来检测应用程序正在运行的版本。</p>
+<h3 id="Objective-C项目中Preprocessor-Macros"><a href="#Objective-C项目中Preprocessor-Macros" class="headerlink" title="Objective-C项目中Preprocessor Macros"></a>Objective-C项目中Preprocessor Macros</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>添加位置：选择项目中对应的target名-&gt;在<code>Build Settings</code>下<code>Apple LLVM 7.0 - Preprocessing</code>-&gt;<code>Preprocessor Macros</code>。<br>添加变量：在Rebug和Release区域添加一个变量<code>DEVELOPMENT</code><br>    对应target1: 设<code>DEVELOPMENT=1</code>表示开发版<br>    对应target2: 设<code>DEVELOPMENT=0</code>表示生产版</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>根据已配置的宏DEV_VERSION，我们可以在代码中利用它动态地编译项目。下面是一个简单的例子：<br>Objective-C中使用<code>＃if</code>检查<code>DEVELOPMENT</code>的环境，并相应的设置URLs/ API密钥。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#if DEVELOPMENT</span></div><div class="line">     <span class="meta">#define SERVER_URL @<span class="meta-string">"http://dev.server.com/api/"</span></span></div><div class="line">     <span class="meta">#define API_TOKEN @<span class="meta-string">"DI2023409jf90ew"</span></span></div><div class="line"><span class="meta">#else</span></div><div class="line">     <span class="meta">#define SERVER_URL @<span class="meta-string">"http://prod.server.com/api/"</span></span></div><div class="line">     <span class="meta">#define API_TOKEN @<span class="meta-string">"71a629j0f090232"</span></span></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
+<h3 id="Swift中Other-Swift-Flags"><a href="#Swift中Other-Swift-Flags" class="headerlink" title="Swift中Other Swift Flags"></a>Swift中Other Swift Flags</h3><p>对于swift的项目，编译器不再支持预处理指令。作为替代，它使用编译时的属性和build配置。</p>
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><ol>
+<li>选中开发target，添加一个标识表示开发版本。</li>
+<li><code>Build Setting</code>-&gt;<code>Swift Compiler - Custom Flags</code>-&gt;将值设为<code>-DDEVELOPMENT</code>表示这个target作为开发版本。<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4>Swift中你仍然可以使用<code>#if</code>判定build的参数动态编译。然而，除了使用<code>#define</code>定义基本常量，在swift中我们也可以用<code>let</code>定义一个全局常量。</li>
+</ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#<span class="keyword">if</span> <span class="type">DEVELOPMENT</span></div><div class="line"><span class="keyword">let</span> <span class="type">SERVER_URL</span> = <span class="string">"http://dev.server.com/api/"</span></div><div class="line"><span class="keyword">let</span> <span class="type">API_TOKEN</span> = <span class="string">"DI2023409jf90ew"</span></div><div class="line">#<span class="keyword">else</span></div><div class="line"><span class="keyword">let</span> <span class="type">SERVER_URL</span> = <span class="string">"http://prod.server.com/api/"</span></div><div class="line"><span class="keyword">let</span> <span class="type">API_TOKEN</span> = <span class="string">"71a629j0f090232"</span></div><div class="line">#endif</div></pre></td></tr></table></figure>
 <p><a href="http://www.cocoachina.com/ios/20160331/15832.html" target="_blank" rel="external">参照</a></p>
 
@@ -1056,11 +1059,7 @@ line 3 of code
 			
 		
 			
-				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
+				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
 			
 		
 			
@@ -1076,19 +1075,23 @@ line 3 of code
 			
 		
 			
-				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
+				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
+				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/方向/" title="方向">方向<sup>1</sup></a></li>
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
+				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
 			
 		
 			
@@ -1096,7 +1099,7 @@ line 3 of code
 			
 		
 			
-				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
+				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
 			
 		
 		</ul>
