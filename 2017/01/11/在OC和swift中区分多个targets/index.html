@@ -11,20 +11,20 @@
     
 
     
-    <meta name="description" content="title: 在OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 14:14:32
+    <meta name="description" content="title: 在OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 14:18:42
 tags:222配置文件build setting预编译位置Preprocessor Macros:Other Swift Flags:
 1. OC为生产和开发target配置预处理宏/编译器标识。之后我们就可以使用该标识在我们的代码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="布衣男儿">
 <meta property="og:url" content="https://huos3203.github.io/2017/01/11/在OC和swift中区分多个targets/index.html">
 <meta property="og:site_name" content="布衣男儿">
-<meta property="og:description" content="title: 在OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 14:14:32
+<meta property="og:description" content="title: 在OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 14:18:42
 tags:222配置文件build setting预编译位置Preprocessor Macros:Other Swift Flags:
 1. OC为生产和开发target配置预处理宏/编译器标识。之后我们就可以使用该标识在我们的代码">
-<meta property="og:updated_time" content="2017-01-11T06:14:32.000Z">
+<meta property="og:updated_time" content="2017-01-11T06:18:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="布衣男儿">
-<meta name="twitter:description" content="title: 在OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 14:14:32
+<meta name="twitter:description" content="title: 在OC和swift中区分多个targetsdate: 2017-01-11 13:49:33updated: 2017-01-11 14:18:42
 tags:222配置文件build setting预编译位置Preprocessor Macros:Other Swift Flags:
 1. OC为生产和开发target配置预处理宏/编译器标识。之后我们就可以使用该标识在我们的代码">
 
@@ -92,7 +92,7 @@ tags:222配置文件build setting预编译位置Preprocessor Macros:Other Swift 
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2017-01-11T06:14:32.000Z" itemprop="datePublished"> Published 2017-01-11</time>
+    <time datetime="2017-01-11T06:18:42.000Z" itemprop="datePublished"> Published 2017-01-11</time>
     
   </p>
 </header>
@@ -106,7 +106,7 @@ tags:222配置文件build setting预编译位置Preprocessor Macros:Other Swift 
 		</div>
 		
 		<hr>
-<p>title: 在OC和swift中区分多个targets<br>date: 2017-01-11 13:49:33<br>updated: 2017-01-11 14:14:32</p>
+<p>title: 在OC和swift中区分多个targets<br>date: 2017-01-11 13:49:33<br>updated: 2017-01-11 14:18:42</p>
 <h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h3 id="222"><a href="#222" class="headerlink" title="222"></a>222</h3><p>配置文件build setting预编译位置<br>Preprocessor Macros:<br>Other Swift Flags:</p>
 <h3 id="1-OC"><a href="#1-OC" class="headerlink" title="1. OC"></a>1. OC</h3><p>为生产和开发target配置预处理宏/编译器标识。之后我们就可以使用该标识在我们的代码来检测应用程序正在运行的版本。</p>
 <p>对于Objective-C的项目，去到<code>Build Settings</code>下<code>Apple LLVM 7.0 - Preprocessing</code>。拓展<code>Preprocessor Macros</code>在Rebug和Release区域添加一个变量。对于开发target（即todo Dev），将该值设置为<code>DEVELOPMENT = 1</code>。另一个，将值设为<code>DEVELOPMENT=0</code>来表示生产版本。<br>根据已配置的宏DEV_VERSION，我们可以在代码中利用它动态地编译项目。下面是一个简单的例子：<br>Objective-C中你可以使用<code>＃if</code>检查<code>DEVELOPMENT</code>的环境，并相应的设置URLs/ API密钥。<br>Objective-C:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#if DEVELOPMENT</div><div class="line">     define SERVER_URL @&quot;http://dev.server.com/api/&quot;</div><div class="line">    define API_TOKEN @&quot;DI2023409jf90ew&quot;</div><div class="line">#else</div><div class="line">    define SERVER_URL @&quot;http://prod.server.com/api/&quot;</div><div class="line">    define API_TOKEN @&quot;71a629j0f090232&quot;</div><div class="line">#endif</div><div class="line">```    </div><div class="line"></div><div class="line">### 2. Swift</div><div class="line">对于swift的项目，编译器不再支持预处理指令。作为替代，它使用编译时的属性和build配置。选中开发target，添加一个标识表示开发版本。找到`Build Setting`往下滚动到`Swift Compiler - Custom Flags`部分。将值设为`-DDEVELOPMENT`表示这个target作为开发版本。</div><div class="line">Swift中你仍然可以使用`#if`判定build的参数动态编译。然而，除了使用`#define`定义基本常量，在swift中我们也可以用`let`定义一个全局常量。</div><div class="line"></div><div class="line">Swift:</div></pre></td></tr></table></figure></p>
@@ -161,19 +161,11 @@ tags:222配置文件build setting预编译位置Preprocessor Macros:Other Swift 
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/01/11/Docker使用/" title="">
-  <strong>上一篇：</strong><br/>
-  <span>
-  (no title)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/12/21/Front-matter/"  title="hackmd使用">
+<a href="/2016/12/21/Docker使用/"  title="Docker安装使用">
  <strong>下一篇：</strong><br/> 
- <span>hackmd使用
+ <span>Docker安装使用
 </span>
 </a>
 </div>
@@ -321,23 +313,23 @@ tags:222配置文件build setting预编译位置Preprocessor Macros:Other Swift 
 			
 		
 			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/方向/" title="方向">方向<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
 			
 		
 			
