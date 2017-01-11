@@ -170,7 +170,8 @@
 		149F33D71E0A767600AAC556 /* SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SUMMARY.md; sourceTree = "<group>"; };
 		149F33D91E0A767600AAC556 /* index.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = index.md; sourceTree = "<group>"; };
 		14B363EA1E25FA6A00D1FB05 /* 在OC和swift中区分多个targets.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "在OC和swift中区分多个targets.md"; sourceTree = "<group>"; };
-		14B363ED1E261CA000D1FB05 /* 测试草稿.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "测试草稿.md"; sourceTree = "<group>"; };
+		14B363EF1E26207300D1FB05 /* 草稿.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "草稿.md"; sourceTree = "<group>"; };
+		14B363F11E262CB300D1FB05 /* ErrorHandlingForSwift.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ErrorHandlingForSwift.md; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,6 +220,7 @@
 				149F337C1E0A767600AAC556 /* 微信小程序开发-一.md */,
 				843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */,
 				14B363EA1E25FA6A00D1FB05 /* 在OC和swift中区分多个targets.md */,
+				14B363F11E262CB300D1FB05 /* ErrorHandlingForSwift.md */,
 			);
 			path = _posts;
 			sourceTree = "<group>";
@@ -387,7 +389,7 @@
 		14B363EB1E261B0F00D1FB05 /* _drafts */ = {
 			isa = PBXGroup;
 			children = (
-				14B363ED1E261CA000D1FB05 /* 测试草稿.md */,
+				14B363EF1E26207300D1FB05 /* 草稿.md */,
 			);
 			path = _drafts;
 			sourceTree = "<group>";
