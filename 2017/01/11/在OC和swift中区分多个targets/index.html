@@ -27,7 +27,7 @@ Other Swift Flags
 
 为生产和开发target配置预处理宏/编译器标识。之后我们就可以使用该标识在我们的代码来检测应用程序正在运行的版本。
 Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对应的target名-&amp;gt;在Build Settings下Apple L">
-<meta property="og:updated_time" content="2017-01-11T07:25:40.000Z">
+<meta property="og:updated_time" content="2017-01-11T07:28:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在OC和swift中区分多个targets">
 <meta name="twitter:description" content="build setting预编译位置
@@ -63,7 +63,7 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -79,7 +79,7 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -101,14 +101,14 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2017-01-11T05:49:33.000Z" itemprop="datePublished"> Published 2017-01-11</time>
+    <time datetime="2017-01-11T05:49:33.000Z" itemprop="datePublished"> 发表于 2017-01-11</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#build-setting预编译位置"><span class="toc-number">1.</span> <span class="toc-text">build setting预编译位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Objective-C项目中Preprocessor-Macros"><span class="toc-number">1.1.</span> <span class="toc-text">Objective-C项目中Preprocessor Macros</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-number">1.1.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">1.1.2.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swift中Other-Swift-Flags"><span class="toc-number">1.2.</span> <span class="toc-text">Swift中Other Swift Flags</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">使用</span></a></li></ol></li></ol></li></ol>
 		
@@ -123,10 +123,8 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 <h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>根据已配置的宏DEV_VERSION，我们可以在代码中利用它动态地编译项目。下面是一个简单的例子：<br>Objective-C中使用<code>＃if</code>检查<code>DEVELOPMENT</code>的环境，并相应的设置URLs/ API密钥。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#if DEVELOPMENT</span></div><div class="line">     <span class="meta">#define SERVER_URL @<span class="meta-string">"http://dev.server.com/api/"</span></span></div><div class="line">     <span class="meta">#define API_TOKEN @<span class="meta-string">"DI2023409jf90ew"</span></span></div><div class="line"><span class="meta">#else</span></div><div class="line">     <span class="meta">#define SERVER_URL @<span class="meta-string">"http://prod.server.com/api/"</span></span></div><div class="line">     <span class="meta">#define API_TOKEN @<span class="meta-string">"71a629j0f090232"</span></span></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
 <h3 id="Swift中Other-Swift-Flags"><a href="#Swift中Other-Swift-Flags" class="headerlink" title="Swift中Other Swift Flags"></a>Swift中Other Swift Flags</h3><p>对于swift的项目，编译器不再支持预处理指令。作为替代，它使用编译时的属性和build配置。</p>
-<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><ol>
-<li>选中开发target，添加一个标识表示开发版本。</li>
-<li><code>Build Setting</code>-&gt;<code>Swift Compiler - Custom Flags</code>-&gt;将值设为<code>-DDEVELOPMENT</code>表示这个target作为开发版本。<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4>Swift中你仍然可以使用<code>#if</code>判定build的参数动态编译。然而，除了使用<code>#define</code>定义基本常量，在swift中我们也可以用<code>let</code>定义一个全局常量。</li>
-</ol>
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><p>选中开发target，添加一个标识表示开发版本<br>选中<code>target</code> -&gt; <code>Build Setting</code>-&gt;<code>Swift Compiler - Custom Flags</code>-&gt;将值设为<code>-DDEVELOPMENT</code>表示这个target作为开发版本。</p>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><p>Swift中你仍然可以使用<code>#if</code>判定build的参数动态编译。然而，除了使用<code>#define</code>定义基本常量，在swift中我们也可以用<code>let</code>定义一个全局常量。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#<span class="keyword">if</span> <span class="type">DEVELOPMENT</span></div><div class="line"><span class="keyword">let</span> <span class="type">SERVER_URL</span> = <span class="string">"http://dev.server.com/api/"</span></div><div class="line"><span class="keyword">let</span> <span class="type">API_TOKEN</span> = <span class="string">"DI2023409jf90ew"</span></div><div class="line">#<span class="keyword">else</span></div><div class="line"><span class="keyword">let</span> <span class="type">SERVER_URL</span> = <span class="string">"http://prod.server.com/api/"</span></div><div class="line"><span class="keyword">let</span> <span class="type">API_TOKEN</span> = <span class="string">"71a629j0f090232"</span></div><div class="line">#endif</div></pre></td></tr></table></figure>
 <p><a href="http://www.cocoachina.com/ios/20160331/15832.html" target="_blank" rel="external">参照</a></p>
   
@@ -200,22 +198,22 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#build-setting预编译位置"><span class="toc-number">1.</span> <span class="toc-text">build setting预编译位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Objective-C项目中Preprocessor-Macros"><span class="toc-number">1.1.</span> <span class="toc-text">Objective-C项目中Preprocessor Macros</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-number">1.1.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">1.1.2.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swift中Other-Swift-Flags"><span class="toc-number">1.2.</span> <span class="toc-text">Swift中Other Swift Flags</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">使用</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -225,7 +223,7 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -298,7 +296,7 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -338,14 +336,6 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 			
 		
 			
-				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
 			
 		
@@ -354,23 +344,31 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 			
 		
 			
-				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
+				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
+				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+				<li><a href="/tags/方向/" title="方向">方向<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
+				<li><a href="/tags/近距离感应/" title="近距离感应">近距离感应<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
+				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
 			
 		
 			
@@ -378,7 +376,7 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 			
 		
 			
-				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -386,7 +384,7 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -408,11 +406,11 @@ Objective-C项目中Preprocessor Macros配置添加位置：选择项目中对�
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=&dpc=1"></iframe>
 </div>
 
@@ -610,7 +608,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
