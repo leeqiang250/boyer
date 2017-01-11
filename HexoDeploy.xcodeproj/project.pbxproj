@@ -70,13 +70,10 @@
 		149F336F1E0A767600AAC556 /* 2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown"; sourceTree = "<group>"; };
 		149F33701E0A767600AAC556 /* 2015-11-27-swiftru-men.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-11-27-swiftru-men.markdown"; sourceTree = "<group>"; };
 		149F33711E0A767600AAC556 /* 2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown"; sourceTree = "<group>"; };
-		149F33721E0A767600AAC556 /* 2015-12-15-zong-jie.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-15-zong-jie.markdown"; sourceTree = "<group>"; };
 		149F33731E0A767600AAC556 /* 2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown"; sourceTree = "<group>"; };
-		149F33741E0A767600AAC556 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown"; sourceTree = "<group>"; };
 		149F33751E0A767600AAC556 /* 2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown"; sourceTree = "<group>"; };
 		149F33761E0A767600AAC556 /* 2016-01-07-gtdru-men.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-07-gtdru-men.markdown"; sourceTree = "<group>"; };
-		149F33771E0A767600AAC556 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown"; sourceTree = "<group>"; };
-		149F33781E0A767600AAC556 /* Front-matter.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Front-matter.md"; sourceTree = "<group>"; };
+		149F33781E0A767600AAC556 /* hackmd使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "hackmd使用.md"; sourceTree = "<group>"; };
 		149F33791E0A767600AAC556 /* gitbook+Hexo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "gitbook+Hexo.md"; sourceTree = "<group>"; };
 		149F337A1E0A767600AAC556 /* hello-world.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "hello-world.md"; sourceTree = "<group>"; };
 		149F337B1E0A767600AAC556 /* Hexo标签插件.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Hexo标签插件.md"; sourceTree = "<group>"; };
@@ -172,6 +169,9 @@
 		14B363EA1E25FA6A00D1FB05 /* 在OC和swift中区分多个targets.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "在OC和swift中区分多个targets.md"; sourceTree = "<group>"; };
 		14B363EF1E26207300D1FB05 /* 草稿.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "草稿.md"; sourceTree = "<group>"; };
 		14B363F11E262CB300D1FB05 /* ErrorHandlingForSwift.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ErrorHandlingForSwift.md; sourceTree = "<group>"; };
+		14B363F21E26399400D1FB05 /* 2015-12-15-zong-jie.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-15-zong-jie.markdown"; sourceTree = "<group>"; };
+		14B363F31E26399400D1FB05 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown"; sourceTree = "<group>"; };
+		14B363F41E26399400D1FB05 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown"; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				14B363E91E25F9D800D1FB05 /* old */,
-				149F33781E0A767600AAC556 /* Front-matter.md */,
+				149F33781E0A767600AAC556 /* hackmd使用.md */,
 				149F33791E0A767600AAC556 /* gitbook+Hexo.md */,
 				149F337A1E0A767600AAC556 /* hello-world.md */,
 				149F337B1E0A767600AAC556 /* Hexo标签插件.md */,
@@ -376,12 +376,9 @@
 				149F336F1E0A767600AAC556 /* 2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown */,
 				149F33701E0A767600AAC556 /* 2015-11-27-swiftru-men.markdown */,
 				149F33711E0A767600AAC556 /* 2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown */,
-				149F33721E0A767600AAC556 /* 2015-12-15-zong-jie.markdown */,
 				149F33731E0A767600AAC556 /* 2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown */,
-				149F33741E0A767600AAC556 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */,
 				149F33751E0A767600AAC556 /* 2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown */,
 				149F33761E0A767600AAC556 /* 2016-01-07-gtdru-men.markdown */,
-				149F33771E0A767600AAC556 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */,
 			);
 			name = old;
 			sourceTree = "<group>";
@@ -390,6 +387,9 @@
 			isa = PBXGroup;
 			children = (
 				14B363EF1E26207300D1FB05 /* 草稿.md */,
+				14B363F21E26399400D1FB05 /* 2015-12-15-zong-jie.markdown */,
+				14B363F31E26399400D1FB05 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */,
+				14B363F41E26399400D1FB05 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */,
 			);
 			path = _drafts;
 			sourceTree = "<group>";
