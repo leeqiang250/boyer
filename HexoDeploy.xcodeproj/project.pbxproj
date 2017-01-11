@@ -170,6 +170,7 @@
 		149F33D71E0A767600AAC556 /* SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SUMMARY.md; sourceTree = "<group>"; };
 		149F33D91E0A767600AAC556 /* index.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = index.md; sourceTree = "<group>"; };
 		14B363EA1E25FA6A00D1FB05 /* 在OC和swift中区分多个targets.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "在OC和swift中区分多个targets.md"; sourceTree = "<group>"; };
+		14B363ED1E261CA000D1FB05 /* 测试草稿.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "测试草稿.md"; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +198,7 @@
 				149F33D71E0A767600AAC556 /* SUMMARY.md */,
 				1407ACAE1E0B8464001D4D65 /* tool */,
 				1407ACA91E0B7547001D4D65 /* CodeSnippets */,
+				14B363EB1E261B0F00D1FB05 /* _drafts */,
 				149F334F1E0A767600AAC556 /* _posts */,
 				149F337D1E0A767600AAC556 /* about */,
 				149F337F1E0A767600AAC556 /* categories */,
@@ -380,6 +382,14 @@
 				149F33771E0A767600AAC556 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */,
 			);
 			name = old;
+			sourceTree = "<group>";
+		};
+		14B363EB1E261B0F00D1FB05 /* _drafts */ = {
+			isa = PBXGroup;
+			children = (
+				14B363ED1E261CA000D1FB05 /* 测试草稿.md */,
+			);
+			path = _drafts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
