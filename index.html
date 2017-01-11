@@ -161,12 +161,16 @@
 <li>Other Swift Flags</li>
 </ol>
 <p>为生产和开发target配置预处理宏/编译器标识。之后我们就可以使用该标识在我们的代码来检测应用程序正在运行的版本。</p>
-<h3 id="Objective-C项目中Preprocessor-Macros"><a href="#Objective-C项目中Preprocessor-Macros" class="headerlink" title="Objective-C项目中Preprocessor Macros"></a>Objective-C项目中Preprocessor Macros</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>添加位置：选择项目中对应的target名-&gt;在<code>Build Settings</code>下<code>Apple LLVM 7.0 - Preprocessing</code>-&gt;<code>Preprocessor Macros</code>。<br>添加变量：在Rebug和Release区域添加一个变量<code>DEVELOPMENT</code><br>    对应target1: 设<code>DEVELOPMENT=1</code>表示开发版<br>    对应target2: 设<code>DEVELOPMENT=0</code>表示生产版</p>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>根据已配置的宏DEV_VERSION，我们可以在代码中利用它动态地编译项目。下面是一个简单的例子：<br>Objective-C中使用<code>＃if</code>检查<code>DEVELOPMENT</code>的环境，并相应的设置URLs/ API密钥。</p>
+<h3 id="Objective-C项目中Preprocessor-Macros"><a href="#Objective-C项目中Preprocessor-Macros" class="headerlink" title="Objective-C项目中Preprocessor Macros"></a>Objective-C项目中Preprocessor Macros</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><hr>
+<p>添加位置：选择项目中对应的target名-&gt;在<code>Build Settings</code>下<code>Apple LLVM 7.0 - Preprocessing</code>-&gt;<code>Preprocessor Macros</code>。<br>添加变量：在Rebug和Release区域添加一个变量<code>DEVELOPMENT</code><br>    对应target1: 设<code>DEVELOPMENT=1</code>表示开发版<br>    对应target2: 设<code>DEVELOPMENT=0</code>表示生产版</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><hr>
+<p>根据已配置的宏DEV_VERSION，我们可以在代码中利用它动态地编译项目。下面是一个简单的例子：<br>Objective-C中使用<code>＃if</code>检查<code>DEVELOPMENT</code>的环境，并相应的设置URLs/ API密钥。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#if DEVELOPMENT</span></div><div class="line">     <span class="meta">#define SERVER_URL @<span class="meta-string">"http://dev.server.com/api/"</span></span></div><div class="line">     <span class="meta">#define API_TOKEN @<span class="meta-string">"DI2023409jf90ew"</span></span></div><div class="line"><span class="meta">#else</span></div><div class="line">     <span class="meta">#define SERVER_URL @<span class="meta-string">"http://prod.server.com/api/"</span></span></div><div class="line">     <span class="meta">#define API_TOKEN @<span class="meta-string">"71a629j0f090232"</span></span></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
 <h3 id="Swift中Other-Swift-Flags"><a href="#Swift中Other-Swift-Flags" class="headerlink" title="Swift中Other Swift Flags"></a>Swift中Other Swift Flags</h3><p>对于swift的项目，编译器不再支持预处理指令。作为替代，它使用编译时的属性和build配置。</p>
-<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><p>选中开发target，添加一个标识表示开发版本<br>选中<code>target</code> -&gt; <code>Build Setting</code>-&gt;<code>Swift Compiler - Custom Flags</code>-&gt;将值设为<code>-DDEVELOPMENT</code>表示这个target作为开发版本。</p>
-<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><p>Swift中你仍然可以使用<code>#if</code>判定build的参数动态编译。然而，除了使用<code>#define</code>定义基本常量，在swift中我们也可以用<code>let</code>定义一个全局常量。</p>
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><hr>
+<p>选中开发target，添加一个标识表示开发版本<br>选中<code>target</code> -&gt; <code>Build Setting</code>-&gt;<code>Swift Compiler - Custom Flags</code>-&gt;将值设为<code>-DDEVELOPMENT</code>表示这个target作为开发版本。</p>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><hr>
+<p>Swift中你仍然可以使用<code>#if</code>判定build的参数动态编译。然而，除了使用<code>#define</code>定义基本常量，在swift中我们也可以用<code>let</code>定义一个全局常量。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#<span class="keyword">if</span> <span class="type">DEVELOPMENT</span></div><div class="line"><span class="keyword">let</span> <span class="type">SERVER_URL</span> = <span class="string">"http://dev.server.com/api/"</span></div><div class="line"><span class="keyword">let</span> <span class="type">API_TOKEN</span> = <span class="string">"DI2023409jf90ew"</span></div><div class="line">#<span class="keyword">else</span></div><div class="line"><span class="keyword">let</span> <span class="type">SERVER_URL</span> = <span class="string">"http://prod.server.com/api/"</span></div><div class="line"><span class="keyword">let</span> <span class="type">API_TOKEN</span> = <span class="string">"71a629j0f090232"</span></div><div class="line">#endif</div></pre></td></tr></table></figure>
 <p><a href="http://www.cocoachina.com/ios/20160331/15832.html" target="_blank" rel="external">参照</a></p>
 
@@ -295,7 +299,7 @@
 <h2 id="自動完成"><a href="#自動完成" class="headerlink" title="自動完成"></a>自動完成</h2><p>提供完整的 Markdown 自動完成與提示</p>
 <ul>
 <li>表情符號：輸入 <code>:</code> 顯示提示</li>
-<li>程式碼區塊：輸入 ` <figure class="highlight plain"><figcaption><span>加上一個字元 顯示提示 <i hidden>```</i></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">- 標頭：輸入 `#` 顯示提示</div><div class="line">- 參考：輸入 `[]` 顯示提示</div><div class="line">- 外部：輸入 `&#123;&#125;` 顯示提示</div><div class="line">- 圖片：輸入 `!` 顯示提示</div><div class="line"></div><div class="line">## 標題</div><div class="line">會使用 **第一個第一級標頭** 作為筆記標題</div><div class="line"></div><div class="line">## 標籤</div><div class="line">如同以下方式來使用標籤，它們會顯示在您的 **歷史紀錄**</div><div class="line">###### tags: `功能` `酷` `更新`</div><div class="line"></div><div class="line">## [YAML metadata](./yaml-metadata)</div><div class="line">提供描述筆記的資訊，以進階設定瀏覽行為，詳細請至上連結</div><div class="line">- robots: 設定網路機器人 meta</div><div class="line">- lang: 設定瀏覽器顯示語言</div><div class="line">- dir: 設定文字方向</div><div class="line">- breaks: 設定是否使用分行</div><div class="line">- mathjax: 設定是否使用 mathjax</div><div class="line"></div><div class="line">## 表情符號</div><div class="line">您可以像是這樣使用表情符號 :smile: :smiley: :cry: :wink:</div><div class="line">&gt; 完整的表情符號列表 [在這裡](http://www.emoji-cheat-sheet.com/)</div><div class="line"></div><div class="line">## 待辦清單</div><div class="line">- [ ] 待辦</div><div class="line">    - [x] 買些沙拉</div><div class="line">    - [x] 刷牙</div><div class="line">    - [ ] 喝水</div><div class="line"></div><div class="line">## 程式碼區塊</div><div class="line">我們支援非常多程式語言，使用自動完成來看看有些什麼</div><div class="line">```javascript=</div><div class="line">var s = &quot;JavaScript syntax highlighting&quot;;</div><div class="line">alert(s);</div><div class="line">function $initHighlight(block, cls) &#123;</div><div class="line">  try &#123;</div><div class="line">    if (cls.search(/\bno\-highlight\b/) != -1)</div><div class="line">      return process(block, true, 0x0F) + </div><div class="line">             &apos; class=&quot;&quot;&apos;;</div><div class="line">  &#125; catch (e) &#123;</div><div class="line">    /* handle exception */</div><div class="line">  &#125;</div><div class="line">  for (var i = 0 / 2; i &lt; classes.length; i++) &#123;</div><div class="line">    if (checkCondition(classes[i]) === undefined)</div><div class="line">      return /\d+[\s/]/g;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li>程式碼區塊：輸入 ` <figure class="highlight plain"><figcaption><span>加上一個字元 顯示提示 <i hidden>```</i></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">- 標頭：輸入 `#` 顯示提示</div><div class="line">- 參考：輸入 `[]` 顯示提示</div><div class="line">- 外部：輸入 `&#123;&#125;` 顯示提示</div><div class="line">- 圖片：輸入 `!` 顯示提示</div><div class="line"></div><div class="line">## 標題</div><div class="line">會使用 **第一個第一級標頭** 作為筆記標題</div><div class="line"></div><div class="line">## 標籤</div><div class="line">如同以下方式來使用標籤，它們會顯示在您的 **歷史紀錄**</div><div class="line">###### tags: `功能` `酷` `更新`</div><div class="line"></div><div class="line">## [YAML metadata](./yaml-metadata)</div><div class="line">提供描述筆記的資訊，以進階設定瀏覽行為，詳細請至上連結</div><div class="line">- robots: 設定網路機器人 meta</div><div class="line">- lang: 設定瀏覽器顯示語言</div><div class="line">- dir: 設定文字方向</div><div class="line">- breaks: 設定是否使用分行</div><div class="line">- mathjax: 設定是否使用 mathjax</div><div class="line"></div><div class="line">## 表情符號</div><div class="line">您可以像是這樣使用表情符號 :smile: :smiley: :cry: :wink:</div><div class="line">&gt; 完整的表情符號列表 [在這裡](http://www.emoji-cheat-sheet.com/)</div><div class="line"></div><div class="line">## 待辦清單</div><div class="line">- [ ] 待辦</div><div class="line">    - [x] 買些沙拉</div><div class="line">    - [x] 刷牙</div><div class="line">    - [ ] 喝水</div><div class="line">&lt;!--more--&gt;</div><div class="line">## 程式碼區塊</div><div class="line">我們支援非常多程式語言，使用自動完成來看看有些什麼</div><div class="line">```javascript=</div><div class="line">var s = &quot;JavaScript syntax highlighting&quot;;</div><div class="line">alert(s);</div><div class="line">function $initHighlight(block, cls) &#123;</div><div class="line">  try &#123;</div><div class="line">    if (cls.search(/\bno\-highlight\b/) != -1)</div><div class="line">      return process(block, true, 0x0F) + </div><div class="line">             &apos; class=&quot;&quot;&apos;;</div><div class="line">  &#125; catch (e) &#123;</div><div class="line">    /* handle exception */</div><div class="line">  &#125;</div><div class="line">  for (var i = 0 / 2; i &lt; classes.length; i++) &#123;</div><div class="line">    if (checkCondition(classes[i]) === undefined)</div><div class="line">      return /\d+[\s/]/g;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ul>
 <blockquote>
 <p>如果想要 <strong>行號</strong>，在表明程式語言之後輸入 <code>=</code><br>您也可以指定開始行號，如下所示，行號從101開始</p>
@@ -1054,7 +1058,15 @@ line 3 of code
 			
 		
 			
+				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/混编/" title="混编">混编<sup>2</sup></a></li>
 			
 		
 			
@@ -1062,11 +1074,19 @@ line 3 of code
 			
 		
 			
-				<li><a href="/tags/SnapChat/" title="SnapChat">SnapChat<sup>2</sup></a></li>
+				<li><a href="/tags/im/" title="im">im<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/混编/" title="混编">混编<sup>2</sup></a></li>
+				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/方向/" title="方向">方向<sup>1</sup></a></li>
 			
 		
 			
@@ -1086,31 +1106,15 @@ line 3 of code
 			
 		
 			
-				<li><a href="/tags/web/" title="web">web<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+				<li><a href="/tags/web/" title="web">web<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
 			
 		
 		</ul>
