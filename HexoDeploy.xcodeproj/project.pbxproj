@@ -169,6 +169,7 @@
 		149F33D61E0A767600AAC556 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		149F33D71E0A767600AAC556 /* SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SUMMARY.md; sourceTree = "<group>"; };
 		149F33D91E0A767600AAC556 /* index.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = index.md; sourceTree = "<group>"; };
+		14B363EA1E25FA6A00D1FB05 /* 在OC和swift中区分多个targets.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "在OC和swift中区分多个targets.md"; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,52 +209,14 @@
 		149F334F1E0A767600AAC556 /* _posts */ = {
 			isa = PBXGroup;
 			children = (
-				149F33501E0A767600AAC556 /* 2014-06-09-chu-bu-da-jian-octopress.md */,
-				149F33511E0A767600AAC556 /* 2014-06-10-ios7jie-ping-wen-ti.markdown */,
-				149F33521E0A767600AAC556 /* 2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots.markdown */,
-				149F33531E0A767600AAC556 /* 2014-06-11-ios7de-bian-ge.markdown */,
-				149F33541E0A767600AAC556 /* 2014-06-16-ios7xin-chong-text-kit.markdown */,
-				149F33551E0A767600AAC556 /* 2014-06-17-uidevicelei-jie-shao.markdown */,
-				149F33561E0A767600AAC556 /* 2014-07-01-instrumentzhi-zombiegong-ju.markdown */,
-				149F33571E0A767600AAC556 /* 2014-07-01-ios-document-interaction-bian-cheng-zhi-nan.markdown */,
-				149F33581E0A767600AAC556 /* 2014-07-03-textkitzhi-bian-jian-an-li.markdown */,
-				149F33591E0A767600AAC556 /* 2014-07-22-storyboardzhi-segue.markdown */,
-				149F335A1E0A767600AAC556 /* 2014-08-28-xcode-headerdoc-jiao-cheng.md */,
-				149F335B1E0A767600AAC556 /* 2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng.markdown */,
-				149F335C1E0A767600AAC556 /* 2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing.markdown */,
-				149F335D1E0A767600AAC556 /* 2015-01-06-xmppjian-dan-yan-jiu-zhuan.md */,
-				149F335E1E0A767600AAC556 /* 2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md */,
-				149F335F1E0A767600AAC556 /* 2015-01-20-iapkai-fa-bu-zou.md */,
-				149F33601E0A767600AAC556 /* 2015-01-21-rubygemsxue-xi.md */,
-				149F33611E0A767600AAC556 /* 2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md */,
-				149F33621E0A767600AAC556 /* 2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa.md */,
-				149F33631E0A767600AAC556 /* 2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi.markdown */,
-				149F33641E0A767600AAC556 /* 2015-09-25-xcode7bian-yi-fa-bu-wen-ti.markdown */,
-				149F33651E0A767600AAC556 /* 2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo.markdown */,
-				149F33661E0A767600AAC556 /* 2015-09-27-macan-zhuang-gitlabfu-wu-qi.markdown */,
-				149F33671E0A767600AAC556 /* 2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown */,
-				149F33681E0A767600AAC556 /* 2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku.markdown */,
-				149F33691E0A767600AAC556 /* 2015-10-06-calabash[ */,
-				149F336A1E0A767600AAC556 /* 2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown */,
-				149F336B1E0A767600AAC556 /* 2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd.markdown */,
-				149F336C1E0A767600AAC556 /* 2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg.markdown */,
-				149F336D1E0A767600AAC556 /* 2015-11-20-min-jie-kai-fa-zong-jie.markdown */,
-				149F336E1E0A767600AAC556 /* 2015-11-26-uiimagede-xuan-ran-mo-shi.md */,
-				149F336F1E0A767600AAC556 /* 2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown */,
-				149F33701E0A767600AAC556 /* 2015-11-27-swiftru-men.markdown */,
-				149F33711E0A767600AAC556 /* 2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown */,
-				149F33721E0A767600AAC556 /* 2015-12-15-zong-jie.markdown */,
-				149F33731E0A767600AAC556 /* 2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown */,
-				149F33741E0A767600AAC556 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */,
-				149F33751E0A767600AAC556 /* 2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown */,
-				149F33761E0A767600AAC556 /* 2016-01-07-gtdru-men.markdown */,
-				149F33771E0A767600AAC556 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */,
+				14B363E91E25F9D800D1FB05 /* old */,
 				149F33781E0A767600AAC556 /* Front-matter.md */,
 				149F33791E0A767600AAC556 /* gitbook+Hexo.md */,
 				149F337A1E0A767600AAC556 /* hello-world.md */,
 				149F337B1E0A767600AAC556 /* Hexo标签插件.md */,
 				149F337C1E0A767600AAC556 /* 微信小程序开发-一.md */,
 				843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */,
+				14B363EA1E25FA6A00D1FB05 /* 在OC和swift中区分多个targets.md */,
 			);
 			path = _posts;
 			sourceTree = "<group>";
@@ -370,6 +333,53 @@
 				149F33D91E0A767600AAC556 /* index.md */,
 			);
 			path = tags;
+			sourceTree = "<group>";
+		};
+		14B363E91E25F9D800D1FB05 /* old */ = {
+			isa = PBXGroup;
+			children = (
+				149F33501E0A767600AAC556 /* 2014-06-09-chu-bu-da-jian-octopress.md */,
+				149F33511E0A767600AAC556 /* 2014-06-10-ios7jie-ping-wen-ti.markdown */,
+				149F33521E0A767600AAC556 /* 2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots.markdown */,
+				149F33531E0A767600AAC556 /* 2014-06-11-ios7de-bian-ge.markdown */,
+				149F33541E0A767600AAC556 /* 2014-06-16-ios7xin-chong-text-kit.markdown */,
+				149F33551E0A767600AAC556 /* 2014-06-17-uidevicelei-jie-shao.markdown */,
+				149F33561E0A767600AAC556 /* 2014-07-01-instrumentzhi-zombiegong-ju.markdown */,
+				149F33571E0A767600AAC556 /* 2014-07-01-ios-document-interaction-bian-cheng-zhi-nan.markdown */,
+				149F33581E0A767600AAC556 /* 2014-07-03-textkitzhi-bian-jian-an-li.markdown */,
+				149F33591E0A767600AAC556 /* 2014-07-22-storyboardzhi-segue.markdown */,
+				149F335A1E0A767600AAC556 /* 2014-08-28-xcode-headerdoc-jiao-cheng.md */,
+				149F335B1E0A767600AAC556 /* 2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng.markdown */,
+				149F335C1E0A767600AAC556 /* 2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing.markdown */,
+				149F335D1E0A767600AAC556 /* 2015-01-06-xmppjian-dan-yan-jiu-zhuan.md */,
+				149F335E1E0A767600AAC556 /* 2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md */,
+				149F335F1E0A767600AAC556 /* 2015-01-20-iapkai-fa-bu-zou.md */,
+				149F33601E0A767600AAC556 /* 2015-01-21-rubygemsxue-xi.md */,
+				149F33611E0A767600AAC556 /* 2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md */,
+				149F33621E0A767600AAC556 /* 2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa.md */,
+				149F33631E0A767600AAC556 /* 2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi.markdown */,
+				149F33641E0A767600AAC556 /* 2015-09-25-xcode7bian-yi-fa-bu-wen-ti.markdown */,
+				149F33651E0A767600AAC556 /* 2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo.markdown */,
+				149F33661E0A767600AAC556 /* 2015-09-27-macan-zhuang-gitlabfu-wu-qi.markdown */,
+				149F33671E0A767600AAC556 /* 2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown */,
+				149F33681E0A767600AAC556 /* 2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku.markdown */,
+				149F33691E0A767600AAC556 /* 2015-10-06-calabash[ */,
+				149F336A1E0A767600AAC556 /* 2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown */,
+				149F336B1E0A767600AAC556 /* 2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd.markdown */,
+				149F336C1E0A767600AAC556 /* 2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg.markdown */,
+				149F336D1E0A767600AAC556 /* 2015-11-20-min-jie-kai-fa-zong-jie.markdown */,
+				149F336E1E0A767600AAC556 /* 2015-11-26-uiimagede-xuan-ran-mo-shi.md */,
+				149F336F1E0A767600AAC556 /* 2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi.markdown */,
+				149F33701E0A767600AAC556 /* 2015-11-27-swiftru-men.markdown */,
+				149F33711E0A767600AAC556 /* 2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown */,
+				149F33721E0A767600AAC556 /* 2015-12-15-zong-jie.markdown */,
+				149F33731E0A767600AAC556 /* 2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown */,
+				149F33741E0A767600AAC556 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */,
+				149F33751E0A767600AAC556 /* 2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown */,
+				149F33761E0A767600AAC556 /* 2016-01-07-gtdru-men.markdown */,
+				149F33771E0A767600AAC556 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */,
+			);
+			name = old;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
