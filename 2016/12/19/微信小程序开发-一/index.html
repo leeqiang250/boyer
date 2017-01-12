@@ -138,7 +138,7 @@
 <li>.wxss后缀的是样式表文件（非必须）</li>
 <li>.wxml后缀的文件是页面结构文件  </li>
 </ul>
-<h4 id="index-wxml页面结构："><a href="#index-wxml页面结构：" class="headerlink" title="index.wxml页面结构："></a>index.wxml页面结构：</h4><p>使用了<code>&lt;view/&gt;、&lt;image/&gt;、&lt;text/&gt;</code>来搭建页面结构(container)，绑定数据(userInfo)和交互处理函数(bindViewTap)。<br><figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!--index.wxml--&gt;</div><div class="line">&lt;view class="container"&gt;</div><div class="line">  &lt;view  bindtap="bindViewTap" class="userinfo"&gt;</div><div class="line"><span class="code">    &lt;image class="userinfo-avatar" src="&#123;&#123;userInfo.avatarUrl&#125;&#125;" background-size="cover"&gt;&lt;/image&gt;</span></div><div class="line"><span class="code">    &lt;text class="userinfo-nickname"&gt;&#123;&#123;userInfo.nickName&#125;&#125;&lt;/text&gt;</span></div><div class="line">  &lt;/view&gt;</div><div class="line">  &lt;view class="usermotto"&gt;</div><div class="line"><span class="code">    &lt;text class="user-motto"&gt;&#123;&#123;motto&#125;&#125;&lt;/text&gt;</span></div><div class="line">  &lt;/view&gt;</div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="index-wxml页面结构："><a href="#index-wxml页面结构：" class="headerlink" title="index.wxml页面结构："></a>index.wxml页面结构：</h4><p>使用了<code>&lt;view/&gt;、&lt;image/&gt;、&lt;text/&gt;</code>来搭建页面结构(container)，绑定数据(userInfo)和交互处理函数(bindViewTap)。<br><figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="comment">&lt;!--index.wxml--&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span></div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">view</span>  <span class="attr">bindtap</span>=<span class="string">"bindViewTap"</span> <span class="attr">class</span>=<span class="string">"userinfo"</span>&gt;</span></span></div><div class="line"><span class="code">    &lt;image class="userinfo-avatar" src="&#123;&#123;userInfo.avatarUrl&#125;&#125;" background-size="cover"&gt;&lt;/image&gt;</span></div><div class="line"><span class="code">    &lt;text class="userinfo-nickname"&gt;&#123;&#123;userInfo.nickName&#125;&#125;&lt;/text&gt;</span></div><div class="line">  <span class="xml"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"usermotto"</span>&gt;</span></span></div><div class="line"><span class="code">    &lt;text class="user-motto"&gt;&#123;&#123;motto&#125;&#125;&lt;/text&gt;</span></div><div class="line">  <span class="xml"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 <h4 id="index-js脚本文件"><a href="#index-js脚本文件" class="headerlink" title="index.js脚本文件"></a>index.js脚本文件</h4><p>在这个文件中我们可以监听并处理页面的生命周期函数、获取小程序实例，声明并处理数据，响应页面交互事件等。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//index.js</span></div><div class="line"><span class="comment">//获取应用实例</span></div><div class="line"><span class="keyword">var</span> app = getApp()</div><div class="line">Page(&#123;</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">motto</span>: <span class="string">'Hello World'</span>,</div><div class="line">    <span class="attr">userInfo</span>: &#123;&#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">//事件处理函数</span></div><div class="line">  bindViewTap: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    wx.navigateTo(&#123;</div><div class="line">      <span class="attr">url</span>: <span class="string">'../logs/logs'</span></div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">onLoad</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'onLoad'</span>)</div><div class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span></div><div class="line">    <span class="comment">//调用应用实例的方法获取全局数据</span></div><div class="line">    app.getUserInfo(<span class="function"><span class="keyword">function</span>(<span class="params">userInfo</span>)</span>&#123;</div><div class="line">      <span class="comment">//更新数据</span></div><div class="line">      that.setData(&#123;</div><div class="line">        <span class="attr">userInfo</span>:userInfo</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <h4 id="index-wxss样式表"><a href="#index-wxss样式表" class="headerlink" title="index.wxss样式表"></a>index.wxss样式表</h4><ol>
 <li>页面的样式表是非必要的,该样式表中的样式规则会层叠覆盖 app.wxss 中的样式规则。</li>
@@ -146,7 +146,7 @@
 </ol>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**index.wxss**/</span></div><div class="line"><span class="selector-class">.userinfo</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-direction</span>: column;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.userinfo-avatar</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">128</span>rpx;</div><div class="line">  <span class="attribute">height</span>: <span class="number">128</span>rpx;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">20</span>rpx;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.userinfo-nickname</span> &#123;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#aaa</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.usermotto</span> &#123;</div><div class="line">  <span class="attribute">margin-top</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="index-json配置文件"><a href="#index-json配置文件" class="headerlink" title="index.json配置文件"></a>index.json配置文件</h4><p>页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window 中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。</p>
-<h3 id="logs-的页面"><a href="#logs-的页面" class="headerlink" title="logs 的页面"></a>logs 的页面</h3><h4 id="logs-wxml页面结构"><a href="#logs-wxml页面结构" class="headerlink" title="logs.wxml页面结构"></a>logs.wxml页面结构</h4><figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;!--logs.wxml--&gt;</div><div class="line">&lt;view class="container log-list"&gt;</div><div class="line">  &lt;block wx:for="&#123;&#123;logs&#125;&#125;" wx:for-item="log"&gt;</div><div class="line"><span class="code">    &lt;text class="log-item"&gt;&#123;&#123;index + 1&#125;&#125;. &#123;&#123;log&#125;&#125;&lt;/text&gt;</span></div><div class="line">  &lt;/block&gt;</div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure>
+<h3 id="logs-的页面"><a href="#logs-的页面" class="headerlink" title="logs 的页面"></a>logs 的页面</h3><h4 id="logs-wxml页面结构"><a href="#logs-wxml页面结构" class="headerlink" title="logs.wxml页面结构"></a>logs.wxml页面结构</h4><figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="comment">&lt;!--logs.wxml--&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"container log-list"</span>&gt;</span></span></div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;logs&#125;&#125;"</span> <span class="attr">wx:for-item</span>=<span class="string">"log"</span>&gt;</span></span></div><div class="line"><span class="code">    &lt;text class="log-item"&gt;&#123;&#123;index + 1&#125;&#125;. &#123;&#123;log&#125;&#125;&lt;/text&gt;</span></div><div class="line">  <span class="xml"><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></div></pre></td></tr></table></figure>
 <h4 id="logs-js脚本文件"><a href="#logs-js脚本文件" class="headerlink" title="logs.js脚本文件"></a>logs.js脚本文件</h4><p>logs 页面使用 <code>&lt;block/&gt;</code> 控制标签来组织代码，在 <code>&lt;block/&gt;</code> 上使用 <code>wx:for</code> 绑定 logs 数据，并将 logs 数据循环展开节点<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//logs.js</span></div><div class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'../../utils/util.js'</span>)</div><div class="line">Page(&#123;</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">logs</span>: []</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">onLoad</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.setData(&#123;</div><div class="line">      <span class="attr">logs</span>: (wx.getStorageSync(<span class="string">'logs'</span>) || []).map(<span class="function"><span class="keyword">function</span> (<span class="params">log</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> util.formatTime(<span class="keyword">new</span> <span class="built_in">Date</span>(log))</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">运行结果如下：</div></pre></td></tr></table></figure></p>
 <h3 id="运行结果如下："><a href="#运行结果如下：" class="headerlink" title="运行结果如下："></a>运行结果如下：</h3><p><img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/start_result.png?t=20161122" alt=""></p>
   
@@ -325,15 +325,15 @@
 			
 		
 			
-				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
 			
 		
 			
@@ -345,11 +345,11 @@
 			
 		
 			
-				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
 			
 		
 			
@@ -357,19 +357,19 @@
 			
 		
 			
-				<li><a href="/tags/管理/" title="管理">管理<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/加密/" title="加密">加密<sup>1</sup></a></li>
+				<li><a href="/tags/管理/" title="管理">管理<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/指南/" title="指南">指南<sup>1</sup></a></li>
 			
 		
 			
@@ -418,6 +418,12 @@
         
           <li>
             
+            	<a href="http://nshipster.cn" target="_blank" title="NSHipster">NSHipster</a>
+            
+          </li>
+        
+          <li>
+            
             	<a href="https://git-scm.com/book/zh" target="_blank" title="Git Pro">Git Pro</a>
             
           </li>
@@ -431,6 +437,18 @@
           <li>
             
             	<a href="https://mp.weixin.qq.com/" target="_blank" title="小程序官方">小程序官方</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://onevcat.com/" target="_blank" title="王维">王维</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.devtang.com" target="_blank" title="唐巧">唐巧</a>
             
           </li>
         
@@ -452,7 +470,7 @@
 
   <div class="weiboshow">
   <p class="asidetitle">Weibo</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=1791281385&dpc=1"></iframe>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=&dpc=1"></iframe>
 </div>
 
 
