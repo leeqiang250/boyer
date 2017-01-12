@@ -44,4 +44,4 @@ do
     fi
 done
 #删除临时文件
-rm -r modified.txt postfile.txt _posts/.\!9*
+rm -r modified.txt postfile.txt # _posts/.\!9*
