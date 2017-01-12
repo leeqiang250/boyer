@@ -44,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,7 +60,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -77,6 +77,183 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/10/06/2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan/" title="calabash一款跨平台UI测试工具初探" itemprop="url">calabash一款跨平台UI测试工具初探</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-06T00:32:41.000Z" itemprop="datePublished"> Published 2015-10-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>参考：<a href="http://blog.csdn.net/zangcw/article/details/25299243" target="_blank" rel="external">使用jenkins+calabash+cocoapods搭建ios持续集成环境</a></p>
+<ol>
+<li>calabash  是一款开源的跨平台UI测试工具，目前支持iOS和Android。它使用Cucumber作为测试核心，Cucumber是一个在敏捷团队十分流行的自动化的功能测试工具，它使用接近于自然语言的特性文档进行用例的书写和测试，支持多语言和多平台。</li>
+<li><p>安装Calabash  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install calabash-cucumber</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装Calabash中文支持包  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install calabash-cucumber-cn</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>####For automatic setup:      </p>
+<ol>
+<li><p>In a terminal, go to your iOS project  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	cd path-to-my-ios-project (i.e. directory containing .xcodeproj file)</div><div class="line">	```  </div><div class="line">2. Install calabash-cucumber gem (this make take some time because of dependencies)</div></pre></td></tr></table></figure>
+<p> gem install calabash-cucumber</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">3. Setup your project for Calabash-iOS.</div></pre></td></tr></table></figure>
+<p> calabash-ios setup  //Answer the questions and read the output :)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4. Generate a skeleton features folder for your tests</div></pre></td></tr></table></figure>
+<p> calabash-ios gen</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">5. In Xcode, build your project using the -cal scheme</div><div class="line"></div><div class="line">6. Run the generated test!</div></pre></td></tr></table></figure>
+<p> cucumber</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">If all goes well, you are now ready to write your first test. Start by editing the file features/my_first.feature.</div><div class="line">&lt;!--more--&gt;</div><div class="line">####[cucumber官网](https://cukes.info/)   </div><div class="line"></div><div class="line">		* Feature（功能）  </div><div class="line">		* Scenario（情景）  </div><div class="line">		*  Given（给定）  </div><div class="line">		*  When（当）  </div><div class="line">		*  Then（则） </div><div class="line">#####[运行原理](http://www.educity.cn/se/619226.html)  </div><div class="line">![image](http://img.educity.cn/img_7/262/2013122000/125005907.jpg)  </div><div class="line">cucumber是一种BDD测试框架，核心为cucumber的calabash的脚本在运行测试的时候会在虚拟机/真机上预装一个web服务器，这个web服务器就是解释calabash的脚本，将其解释为robotium的脚本，然后这个web服务器会想测试app发送robotium的脚本，测试app拿到robotium脚本后，将其解释为instumentation命令向被测试的app发送这些命令，被测试的app执行这些命令，然后将结果返回给测试app，然后一级一级返得到最后的测试结果。    </div><div class="line">#####结构框架</div><div class="line">calabash完全采用了cucumber的结构模式，calabash是脚本与TC分离设计，在业务变化的情况下，只要功能存在基本只需要修改TC逻辑，在业务不变，功能变化的情况下，基本只需要修改脚本。   </div><div class="line">![image](http://img.educity.cn/img_7/262/2013122000/126005907.jpg)  </div><div class="line">feature为主件夹，step_definitions目录内是你封装的脚本，my_first.feature文件就是你的TC逻辑。  </div><div class="line">再看一下其中的内容：</div><div class="line"></div><div class="line">	　　my_first.feature</div><div class="line">	</div><div class="line">	　　Feature： 登陆</div><div class="line">	</div><div class="line">	　　Scenario： 输入正确的用户名密码能够正常登陆</div><div class="line">	</div><div class="line">	　　When 打开登陆页面</div><div class="line">	</div><div class="line">	　　And    输入用户名XXX输入密码XXX</div><div class="line">	</div><div class="line">	　　And   点击登陆</div><div class="line">	</div><div class="line">	　　Then  验证登陆成功</div><div class="line"></div><div class="line">　　看起来很简单吧，想要验证其他功能也是类似的语言描述即可。  </div><div class="line">如果你没有用过cucumber或者calabash那么你肯定现在有一个疑问，计算机怎么能识别汉字来进行测试的呢，  </div><div class="line">那么看一下step_definition，以 输入用户名XXX输入密码XXX为例：</div><div class="line"></div><div class="line">		When /^ 输入用户名\&quot;([^\\\&quot;]*)\&quot; 输入密码\&quot;([^\\\&quot;]*)\&quot;  $/ do |username，password|</div><div class="line">		performAction(&apos;enter_text_into_numbered_field&apos;，username，1)</div><div class="line">		performAction(&apos;enter_text_into_numbered_field&apos;，password，2)</div><div class="line">		end</div><div class="line">现在应该能明白为什么你需要写汉字的脚本就可以了吧。  </div><div class="line">在这里解释一下为什么如果业务存在功能修改这种情况，自动化脚本的修改量会小。  </div><div class="line">还是以这个登录脚本为例：</div><div class="line"></div><div class="line">	假如现在输入用户名和密码的输入框顺序变了，在你的页面显示上，可能是从左下角移到中间了，这种变化，那么feature文件你不用改，只需要改step_definition脚本就好了</div><div class="line">#####运行报告</div><div class="line">alabash-android支持很多报告生成模式，支持html，json，junit等等报告模式，只需要你在run的时候添加-f参数-o参数就可以了。</div><div class="line"></div><div class="line">　　例如 calabash-android run xxxx.apk -f html -o l，上图展示一下强大html报告  </div><div class="line">　　![image](http://img.educity.cn/img_7/262/2013122000/127005907.jpg)</div><div class="line"></div><div class="line">[【cucumber解析features文件】](http://blog.csdn.net/qs_csu/article/details/9000262) 		</div><div class="line">1. my_first.feature: 描述在这个条件下需要做什么事情；</div><div class="line"></div><div class="line">		Feature: Running a test  </div><div class="line">		  As an iOS developer  </div><div class="line">		  I want to have a sample feature file  </div><div class="line">		  So I can begin testing quickly  </div><div class="line">		  </div><div class="line">		Scenario: Example steps1  </div><div class="line">		  Given I am on the Welcome Screen  </div><div class="line">		  Then I swipe left  </div><div class="line">		  And I wait until I don&apos;t see &quot;Please swipe left&quot;  </div><div class="line">		  And take picture  </div><div class="line">		  </div><div class="line">		Scenario: Example steps2  </div><div class="line">		  Given I am on the Welcome Screen  </div><div class="line">		 #ASSERTION  </div><div class="line">		  Then I should see a &quot;login&quot; button  </div><div class="line">		 #INPUT TEXT  </div><div class="line">		  Then I enter &quot;my_username&quot; into text field number 1  </div><div class="line">		#  Then I touch &quot;Return&quot;  </div><div class="line">		  </div><div class="line">		 #TOGGLE SWITCH  </div><div class="line">		  Then I toggle the switch  </div><div class="line">		  Then I touch &quot;Login&quot;  </div><div class="line">		  And I touch &quot;Second&quot;  </div><div class="line">		  And take picture  </div><div class="line">	该文件描述了在“on the Welcome Screen”这个Step中需要做的事情，两个场景:steps1 和 steps2. </div><div class="line"></div><div class="line">2. my_first_step.rb: 解释了Given的具体条件</div><div class="line"></div><div class="line">		Given /^I am on the Welcome Screen$/ do  </div><div class="line">		  element_exists(&quot;view&quot;)  </div><div class="line">		  check_element_exists(&quot;label text:&apos;First View&apos;&quot;)  </div><div class="line">		  sleep(STEP_PSEAU)  </div><div class="line">		end</div><div class="line">	这个语句，判定了当前条件&quot;on the Welcome Screen&quot;是否满足，如果element存在，则就在&quot;Welcome Screen&quot;</div><div class="line">	</div><div class="line">[更多的测试框架](http://www.infoq.com/cn/articles/build-ios-continuous-integration-platform-part2)</div><div class="line"></div><div class="line">UIAutomation</div><div class="line"></div><div class="line">UIAutomation是随着iOS SDK 4.0引入，帮助开发者在真实设备和模拟器上执行自动化的UI测试。其本质上是一个Javascript的类库，通过 界面上的标签和值的访问性来获得UI元素，完成相应的交互操作，从而达到测试的目的，类似于Web世界的Selenium。</div><div class="line"></div><div class="line">通过上面的描述，可以得知，使用UIAutomation做测试时，开发者必须掌握两件事：</div><div class="line"></div><div class="line">- 如何找到界面上的一个UI元素</div><div class="line">- 如何指定针对一个UI元素的操作</div><div class="line"></div><div class="line">在UIAutomation中，界面就是由一堆UI元素构建的层级结构，所有UI元素都继承对象UIAElement ，该对象提供了每个UI元素必须具备的一些属性：</div><div class="line"></div><div class="line">- name</div><div class="line">- value</div><div class="line">- elements</div><div class="line">- parent</div><div class="line">- …</div><div class="line"></div><div class="line">而整个界面的层级结构如下：</div><div class="line"></div><div class="line">	arget（设备级别的UI，用于支持晃动，屏幕方向变动等操作）</div><div class="line">	    Application（设备上的应用，比方说Status Bar，keyboard等）</div><div class="line">	      Main window（应用的界面，比方说导航条）</div><div class="line">	        View（界面下的View，比方说UITableView）</div><div class="line">	           Element（View下的一个元素）</div><div class="line">	              Child element(元素下的一个子元素)</div><div class="line">下面是一个访问到Child element的例子：</div><div class="line"></div><div class="line">	UIATarget.localTarget().HamcrestDemo().tableViews()[0].cells()[0].elements()</div><div class="line">开发者还可以通过“UIATarget.localTarget().logElementTree()”在控制台打印出该target下所有的的elements。</div><div class="line"></div><div class="line">找到UI元素之后，开发者可以基于该UI元素做期望的操作，UIAutomation作为原生的UI测试框架，基本上支持iOS上的所有UI元素和操作，比方说：</div><div class="line"></div><div class="line">- 点击按钮，例: ***.buttons[“add”].tap()</div><div class="line">- 输入文本, 例:***.textfields[0].setValue(“new”)</div><div class="line">- 滚动屏幕，例:***.scrollToElementWithPredicate(“name begin with ’test’”)</div><div class="line">- ……</div><div class="line">关于使用UIAutomation做UI测试，推荐大家一定要看一下2010的WWDC的Session 306：[Automating User Interface Testing with Instruments](https://developer.apple.com/videos/wwdc/2010/?id=306)。 另外，这儿还有一篇很好的博客，详细的讲解了[如何使用UIAutomation做UI自动化测试](http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation)  </div><div class="line">Apple通过Instruments为UIAutomation测试用例的命令行运行提供了支持，这样就为UIAutomation和CI服务器的集成提供了便利。开发者可以通过如下的步骤在命令行中运行UIAutomation测试脚本:</div><div class="line">1. 指定目标设备，构建被测应用，该应用会被安装到指定的DSTROOT目录下</div><div class="line">```ruby</div><div class="line">xcodebuild</div><div class="line">-project &quot;/Users/twer/Documents/xcodeworkspace/AudioDemo/AudioDemo.xcodeproj&quot; </div><div class="line">-schemeAudioDemo</div><div class="line">-sdk iphonesimulator6.1 </div><div class="line">-configuration Release SYMROOT=&quot;/Users/twer/Documents/xcodeworkspace/</div><div class="line">AudioDemo/build&quot; DSTROOT=&quot;/Users/twer/Documents/xcodeworkspace/AudioDemo/</div><div class="line">build&quot; TARGETED_DEVICE_FAMILY=&quot;1&quot; </div><div class="line">install</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动Instruments，基于第一步生成的应用运行UIAutomation测试</p>
+<pre><code class="ruby">instruments
+-t  <span class="string">"/Applications/Xcode.app/Contents/Applications/Instruments.app/
+Contents/PlugIns/AutomationInstrument.bundle/Contents/Resources/
+Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xcodeworkspace/AudioDemo
+/build/Applications/TestExample.app"</span>
+-e UIASCRIPT &lt;absolute_path_to_the_test_file&gt;
+</code></pre>
+<p>为了更好的展示测试效果以及与CI服务器集成，活跃的社区开发者们还尝试把UIAutomation和Jasmine集成: <a href="https://github.com/shaune/jasmine-ios-acceptance-tests" target="_blank" rel="external">https://github.com/shaune/jasmine-ios-acceptance-tests</a></p>
+</li>
+</ol>
+<p>UIAutomation因其原生支持，并且通过和Instruments的绝佳配合，开发者可以非常方便的使用录制操作自动生成测试脚本，赢得了很多开发者的支持，但是因苹果公司的基因，其系统非常封闭，导致开发者难以扩展，于是活跃的社区开发者们开始制造自己的轮子，<a href="https://gorillalogic.com/fonemonkey-0-7-1-released/" target="_blank" rel="external">Fone Monkey,最新版本更新于2010年，估计过时</a>就是其中的一个优秀成果。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CI/">CI</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/工具/">工具</a><a href="/tags/测试/">测试</a><a href="/tags/UI/">UI</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/06/2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/06/2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/" title="使用SmartSVN创建版本库" itemprop="url">使用SmartSVN创建版本库</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-05T11:16:47.000Z" itemprop="datePublished"> Published 2015-10-05</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>SmartSVN有以下版本：</p>
+<ol>
+<li>SmartSVN enterprise 9 企业版</li>
+<li>SmartSVN foundation 8 基础版</li>
+</ol>
+<p>由于企业版只能建立本地的版本库，无法创建&amp;使用svn://localhost方式。</p>
+<p>####用基础版来说明创建版本库。<br>参考：<a href="http://hammadk.com/how-to-create-repository-in-smartsvn-tutorial/">Create Repository in SmartSVN – Tutorial</a>  </p>
+<ol>
+<li>启动SmartSVN SmartSVN foundation 8 基础版  </li>
+<li>菜单栏Project-&gt; set up Local Repository…<br>需要设置如下两个参数：  <ol>
+<li>svnadmin 在终端执行： whereis svnadmin  </li>
+<li>svnserve 在终端执行： whereis svnserve<br>￼<img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/adeb039a-b429-481a-ac25-2044b871e45e/screenshot.png?resizeSmall&amp;width=832" alt="image">  </li>
+</ol>
+</li>
+<li>指定版本库的目录位置：<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/a3f00903-101c-4848-a10a-3479643baea7/screenshot.png?resizeSmall&amp;width=832" alt="image">  </li>
+<li>初始化账户密码：<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/140f257e-e452-47ea-8317-34a5ed8d6c7f/screenshot.png?resizeSmall&amp;width=832" alt="image">  </li>
+<li>完成。<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/ed975623-72bb-4132-8d04-ac9a7b1d2fc9/screenshot.png?resizeSmall&amp;width=832" alt="image"><br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/53306789-9d97-485c-a54d-a143e7b078f1/screenshot.png?resizeSmall&amp;width=832" alt="image">
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/#more">更多-&gt;</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/git/">git</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/工具/">工具</a><a href="/tags/搭建/">搭建</a><a href="/tags/svn/">svn</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/09/29/2015-09-29-zhuan-swiftzui-jia-shi-jian/" title="[转]Swift最佳实践" itemprop="url">[转]Swift最佳实践</a>
   </h1>
   <p class="article-author">By
@@ -84,7 +261,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-29T09:05:21.000Z" itemprop="datePublished"> 发表于 2015-09-29</time>
+    <time datetime="2015-09-29T09:05:21.000Z" itemprop="datePublished"> Published 2015-09-29</time>
     
   </p>
 </header>
@@ -180,7 +357,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-27T11:25:38.000Z" itemprop="datePublished"> 发表于 2015-09-27</time>
+    <time datetime="2015-09-27T11:25:38.000Z" itemprop="datePublished"> Published 2015-09-27</time>
     
   </p>
 </header>
@@ -322,7 +499,7 @@ $ vim sshd_config
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-25T15:59:16.000Z" itemprop="datePublished"> 发表于 2015-09-25</time>
+    <time datetime="2015-09-25T15:59:16.000Z" itemprop="datePublished"> Published 2015-09-25</time>
     
   </p>
 </header>
@@ -408,7 +585,7 @@ sh /etc/getIP.sh
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-25T07:58:17.000Z" itemprop="datePublished"> 发表于 2015-09-25</time>
+    <time datetime="2015-09-25T07:58:17.000Z" itemprop="datePublished"> Published 2015-09-25</time>
     
   </p>
 </header>
@@ -483,7 +660,7 @@ sh /etc/getIP.sh
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-18T15:52:06.000Z" itemprop="datePublished"> 发表于 2015-09-18</time>
+    <time datetime="2015-09-18T15:52:06.000Z" itemprop="datePublished"> Published 2015-09-18</time>
     
   </p>
 </header>
@@ -559,7 +736,7 @@ sh /etc/getIP.sh
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-14T02:45:35.000Z" itemprop="datePublished"> 发表于 2015-08-14</time>
+    <time datetime="2015-08-14T02:45:35.000Z" itemprop="datePublished"> Published 2015-08-14</time>
     
   </p>
 </header>
@@ -627,7 +804,7 @@ sh /etc/getIP.sh
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-11T06:41:40.000Z" itemprop="datePublished"> 发表于 2015-08-11</time>
+    <time datetime="2015-08-11T06:41:40.000Z" itemprop="datePublished"> Published 2015-08-11</time>
     
   </p>
 </header>
@@ -717,7 +894,7 @@ sh /etc/getIP.sh
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-21T15:00:39.000Z" itemprop="datePublished"> 发表于 2015-01-21</time>
+    <time datetime="2015-01-21T15:00:39.000Z" itemprop="datePublished"> Published 2015-01-21</time>
     
   </p>
 </header>
@@ -773,176 +950,21 @@ sh /etc/getIP.sh
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/" title="Git协议介绍" itemprop="url">Git协议介绍</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2015-01-19T11:57:04.000Z" itemprop="datePublished"> 发表于 2015-01-19</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="列表："><a href="#列表：" class="headerlink" title="列表："></a>列表：</h2><ol>
-<li><a href="#Stashing">Stashing</a></li>
-<li><a href="#work">储藏工作</a></li>
-<li><a href="#apply">应用储藏</a></li>
-<li><a href="#applyIndex">被暂存的文件重新暂存</a></li>
-<li><a href="#drop">应用后，移除储藏的内容</a></li>
-<li><a href="#unapply">取消储藏(Un-applying a Stash)</a></li>
-<li><a href="#stash-unapply">新建stash-unapply别名</a></li>
-<li><a href="#stashBranch">从储藏中创建分支</a></li>
-</ol>
-<h3 id="惨痛经历"><a href="#惨痛经历" class="headerlink" title="惨痛经历"></a>惨痛经历</h3><p> 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果：<br> 查看本地的索引的提交日志：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git reflog 		</div><div class="line">a1d09fd HEAD@&#123;0&#125;: checkout: moving from all to master</div><div class="line">a1d09fd HEAD@&#123;1&#125;: checkout: moving from master to all</div><div class="line">a1d09fd HEAD@&#123;2&#125;: checkout: moving from HEAD to master</div><div class="line">a1d09fd HEAD@&#123;3&#125;: checkout: moving from all to HEAD</div><div class="line">``` </div><div class="line">根据上面的sh2值，回滚：</div><div class="line">```bash</div><div class="line">git reset  —hard  a1d09fd</div></pre></td></tr></table></figure></p>
-<p>这样就可以找回代码.</p>
-<h3 id="Git工具-储藏（Stashing）"><a href="#Git工具-储藏（Stashing）" class="headerlink" title="Git工具 - 储藏（Stashing）"></a><a name="Stashing">Git工具 - 储藏（Stashing）</a></h3><p>场景：当项目中某一部分正在编码中，突然接到新任务，又必须换至其他分支去完成。</p>
-<p>问题：你不想提交进行了一半的工作，否则以后你无法回到这个工作点。</p>
-<p>解决：<strong><font color="red">git stash </font></strong>命令。</p>
-<p>“Stashing”可以获取工作目录的中间状态，即：将修改过的被追踪的文件和暂存的变更，保存到一个未完结变更的堆栈中，随时可以重新应用。</p>
-<h3 id="储藏工作"><a href="#储藏工作" class="headerlink" title="储藏工作"></a><a name="work">储藏工作</a></h3><p>演示：</p>
-<ol>
-<li>进入项目目录，修改某个文件，有可能还暂存其中的一个变更。</li>
-<li><strong><font color="red">git status </font></strong>命令,查看中间状态：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes to be committed:</span></div><div class="line"><span class="comment">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure></li>
-<li>切换分支，但不提交step 1 中的变更，所以储藏这些变更。<br>执行<strong><font color="red">git stash </font></strong>命令，往堆栈中推送一个新的储藏：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git stash</div><div class="line">Saved working directory and index state \</div><div class="line">  <span class="string">"WIP on master: 049d078 added the index file"</span></div><div class="line">HEAD is now at 049d078 added the index file</div><div class="line">(To restore them <span class="built_in">type</span> <span class="string">"git stash apply"</span>)</div></pre></td></tr></table></figure></li>
-<li>执行step 2查看目录库，中间状态就不见了：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line"><span class="comment">#######On branch master</span></div><div class="line">nothing to commit, working directory clean</div></pre></td></tr></table></figure>
-这时，你可以方便地切换到其他分支工作；你的变更都保存在栈上。</li>
-<li>使用<strong><font color="red">git stash list</font></strong>要查看现有的储藏：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git stash list</div><div class="line">stash@&#123;0&#125;: WIP on master: 049d078 added the index file</div><div class="line">stash@&#123;1&#125;: WIP on master: c264051 Revert <span class="string">"added file_size"</span></div><div class="line">stash@&#123;2&#125;: WIP on master: 21d80a5 added number to <span class="built_in">log</span></div></pre></td></tr></table></figure>
-在这个案例中，之前已经进行了两次储藏，所以你可以访问到三个不同的储藏。<h3 id="应用储藏"><a href="#应用储藏" class="headerlink" title="应用储藏"></a><a name="apply">应用储藏</a></h3>执行<strong><font color="red">git stash apply</font></strong>命令, 可以重新应用最近的一次储藏；<br>执行<strong><font color="red">git stash apply stash@{2}</font></strong>命令，即通过指定储藏的名字，来应用更早的储藏。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ git stash apply</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/git/">git</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/版本控制/">版本控制</a><a href="/tags/坑/">坑</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" title="XMPP简单研究[转]" itemprop="url">XMPP简单研究[转]</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2015-01-06T06:36:06.000Z" itemprop="datePublished"> 发表于 2015-01-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>最近想做一个游戏服务器和 IM 互通的服务。最初的想法是可以增进游戏帐号的安全，比如游戏用户可以通过绑定一个 IM 帐号，从而不用登陆游戏就向游戏服务器发一些指令。这些指定通常是用来冻结一些帐号的功能。而游戏服务器也可以通过 IM 帐号向离线用户发送一些关键消息。这样，只需要解除绑定 IM 帐号需要一定的时间，或使用更安全的途径，即可以让游戏帐号更加安全。（至少，游戏用户可以从 IM 上获知他的游戏帐号每次登陆登出的时间、IP 等等）</p>
-<p>后来细想，这里面可以做的东西还有许多。玩家会因为多一个信息通道，而更轻松的去玩那些需要长期驻留的游戏。游戏厂商也可以多一个挽留玩家的渠道，甚至用来宣传新游戏或游戏的增值服务，等等。好处不再列举。</p>
-<p>其实、绑定 IM 帐号和绑定手机号本质上区别不大。只不过，IM 帐号几乎是零费用，又不像 SMS ，控制权掌控在移动手里。IM 更适合做双向交流（SMS 的双向交流不那么方便，而且对用户和游戏运营商都有经济负担）。独立提供一个 Game2IM 的服务供众多游戏运营商使用也是个有趣的主意。和 SMS 一样，只要给出一个简单接口让游戏运营商调用，把游戏网络和 IM 网络互联就可以了。</p>
-<p>实现这个想法有两个方案。其一是制作各种 IM 的机器人，通过机器人和用户 IM 沟通。这个方案技术门槛稍低，有许多现成的机器人可以使用。缺点是，受 IM 提供商的限制（比如好友数量限制）。无法使用机器人的签名针对性的向用户传递特有的消息。除非你为每个游戏用户定制一个机器人，但那样，每个机器人都需要单独一个连接，对资源消耗过大。<br>￼<!--显示文章缩略部分的标记方法--><br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/协议/">协议</a><a href="/tags/socket/">socket</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github 名片</p>
+<p class="asidetitle">Github Card</p>
 <div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -952,7 +974,7 @@ sh /etc/getIP.sh
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -960,7 +982,15 @@ sh /etc/getIP.sh
 		  
 		
 		  
+		
+		  
+		
+		  
+		
+		  
 			<li><a href="/categories/Octopress/" title="Octopress">Octopress<sup>1</sup></a></li>
+		  
+		
 		  
 		
 		  
@@ -1007,7 +1037,7 @@ sh /etc/getIP.sh
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -1039,14 +1069,6 @@ sh /etc/getIP.sh
 			
 		
 			
-				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
 			
 		
@@ -1055,15 +1077,23 @@ sh /etc/getIP.sh
 			
 		
 			
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/gitBook/" title="gitBook">gitBook<sup>1</sup></a></li>
+				<li><a href="/tags/脚本/" title="脚本">脚本<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
 			
 		
 			
@@ -1075,7 +1105,7 @@ sh /etc/getIP.sh
 			
 		
 			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
 			
 		
 			
@@ -1095,7 +1125,7 @@ sh /etc/getIP.sh
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -1159,11 +1189,11 @@ sh /etc/getIP.sh
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=&dpc=1"></iframe>
 </div>
 
@@ -1321,7 +1351,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

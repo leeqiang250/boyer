@@ -11,8 +11,7 @@
     
 
     
-    <meta name="description" content="列表：
-Stashing
+    <meta name="description" content="Stashing
 储藏工作
 应用储藏
 被暂存的文件重新暂存
@@ -21,13 +20,13 @@ Stashing
 新建stash-unapply别名
 从储藏中创建分支
 
-惨痛经历 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果： 查看本地的索引的提交日志：123456789$ git reflog 		a1d09fd HEAD@&amp;#123;0">
+惨痛经历
+ 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果： 查看本地的索引的提交日志：123456789$ git reflog 		a1d09fd HEAD@&amp;#123;0&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git协议介绍">
 <meta property="og:url" content="https://huos3203.github.io/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/index.html">
 <meta property="og:site_name" content="布衣男儿">
-<meta property="og:description" content="列表：
-Stashing
+<meta property="og:description" content="Stashing
 储藏工作
 应用储藏
 被暂存的文件重新暂存
@@ -36,12 +35,12 @@ Stashing
 新建stash-unapply别名
 从储藏中创建分支
 
-惨痛经历 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果： 查看本地的索引的提交日志：123456789$ git reflog 		a1d09fd HEAD@&amp;#123;0">
-<meta property="og:updated_time" content="2017-01-12T08:43:50.000Z">
+惨痛经历
+ 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果： 查看本地的索引的提交日志：123456789$ git reflog 		a1d09fd HEAD@&amp;#123;0&amp;#">
+<meta property="og:updated_time" content="2017-01-12T08:52:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git协议介绍">
-<meta name="twitter:description" content="列表：
-Stashing
+<meta name="twitter:description" content="Stashing
 储藏工作
 应用储藏
 被暂存的文件重新暂存
@@ -50,7 +49,8 @@ Stashing
 新建stash-unapply别名
 从储藏中创建分支
 
-惨痛经历 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果： 查看本地的索引的提交日志：123456789$ git reflog 		a1d09fd HEAD@&amp;#123;0">
+惨痛经历
+ 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果： 查看本地的索引的提交日志：123456789$ git reflog 		a1d09fd HEAD@&amp;#123;0&amp;#">
 
     
     <link rel="alternative" href="/atom.xml" title="布衣男儿" type="application/atom+xml">
@@ -78,7 +78,7 @@ Stashing
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -94,7 +94,7 @@ Stashing
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -116,20 +116,20 @@ Stashing
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-19T11:57:04.000Z" itemprop="datePublished"> 发表于 2015-01-19</time>
+    <time datetime="2015-01-19T11:57:04.000Z" itemprop="datePublished"> Published 2015-01-19</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#列表："><span class="toc-number">1.</span> <span class="toc-text">列表：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#惨痛经历"><span class="toc-number">1.1.</span> <span class="toc-text">惨痛经历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git工具-储藏（Stashing）"><span class="toc-number">1.2.</span> <span class="toc-text">Git工具 - 储藏（Stashing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#储藏工作"><span class="toc-number">1.3.</span> <span class="toc-text">储藏工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用储藏"><span class="toc-number">1.4.</span> <span class="toc-text">应用储藏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#被暂存的文件重新暂存"><span class="toc-number">1.5.</span> <span class="toc-text">被暂存的文件重新暂存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用后，移除储藏的内容"><span class="toc-number">1.6.</span> <span class="toc-text">应用后，移除储藏的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取消储藏-Un-applying-a-Stash"><span class="toc-number">1.7.</span> <span class="toc-text">取消储藏(Un-applying a Stash)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建stash-unapply别名"><span class="toc-number">1.7.1.</span> <span class="toc-text">新建stash-unapply别名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从储藏中创建分支"><span class="toc-number">1.8.</span> <span class="toc-text">从储藏中创建分支</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#惨痛经历"><span class="toc-number">1.</span> <span class="toc-text">惨痛经历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git工具-储藏（Stashing）"><span class="toc-number">2.</span> <span class="toc-text">Git工具 - 储藏（Stashing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#储藏工作"><span class="toc-number">3.</span> <span class="toc-text">储藏工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用储藏"><span class="toc-number">4.</span> <span class="toc-text">应用储藏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#被暂存的文件重新暂存"><span class="toc-number">5.</span> <span class="toc-text">被暂存的文件重新暂存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用后，移除储藏的内容"><span class="toc-number">6.</span> <span class="toc-text">应用后，移除储藏的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取消储藏-Un-applying-a-Stash"><span class="toc-number">7.</span> <span class="toc-text">取消储藏(Un-applying a Stash)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建stash-unapply别名"><span class="toc-number">7.1.</span> <span class="toc-text">新建stash-unapply别名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从储藏中创建分支"><span class="toc-number">8.</span> <span class="toc-text">从储藏中创建分支</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="列表："><a href="#列表：" class="headerlink" title="列表："></a>列表：</h2><ol>
+		<ol>
 <li><a href="#Stashing">Stashing</a></li>
 <li><a href="#work">储藏工作</a></li>
 <li><a href="#apply">应用储藏</a></li>
@@ -139,13 +139,15 @@ Stashing
 <li><a href="#stash-unapply">新建stash-unapply别名</a></li>
 <li><a href="#stashBranch">从储藏中创建分支</a></li>
 </ol>
-<h3 id="惨痛经历"><a href="#惨痛经历" class="headerlink" title="惨痛经历"></a>惨痛经历</h3><p> 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果：<br> 查看本地的索引的提交日志：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git reflog 		</div><div class="line">a1d09fd HEAD@&#123;0&#125;: checkout: moving from all to master</div><div class="line">a1d09fd HEAD@&#123;1&#125;: checkout: moving from master to all</div><div class="line">a1d09fd HEAD@&#123;2&#125;: checkout: moving from HEAD to master</div><div class="line">a1d09fd HEAD@&#123;3&#125;: checkout: moving from all to HEAD</div><div class="line">``` </div><div class="line">根据上面的sh2值，回滚：</div><div class="line">```bash</div><div class="line">git reset  —hard  a1d09fd</div></pre></td></tr></table></figure></p>
+<h3 id="惨痛经历"><a href="#惨痛经历" class="headerlink" title="惨痛经历"></a>惨痛经历</h3><hr>
+<p> 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果：<br> 查看本地的索引的提交日志：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git reflog 		</div><div class="line">a1d09fd HEAD@&#123;0&#125;: checkout: moving from all to master</div><div class="line">a1d09fd HEAD@&#123;1&#125;: checkout: moving from master to all</div><div class="line">a1d09fd HEAD@&#123;2&#125;: checkout: moving from HEAD to master</div><div class="line">a1d09fd HEAD@&#123;3&#125;: checkout: moving from all to HEAD</div><div class="line">``` </div><div class="line">根据上面的sh2值，回滚：</div><div class="line">```bash</div><div class="line">git reset  —hard  a1d09fd</div></pre></td></tr></table></figure></p>
 <p>这样就可以找回代码.</p>
-<h3 id="Git工具-储藏（Stashing）"><a href="#Git工具-储藏（Stashing）" class="headerlink" title="Git工具 - 储藏（Stashing）"></a><a name="Stashing">Git工具 - 储藏（Stashing）</a></h3><p>场景：当项目中某一部分正在编码中，突然接到新任务，又必须换至其他分支去完成。</p>
+<h3 id="Git工具-储藏（Stashing）"><a href="#Git工具-储藏（Stashing）" class="headerlink" title="Git工具 - 储藏（Stashing）"></a><a name="Stashing">Git工具 - 储藏（Stashing）</a></h3><hr>
+<p>场景：当项目中某一部分正在编码中，突然接到新任务，又必须换至其他分支去完成。</p>
 <p>问题：你不想提交进行了一半的工作，否则以后你无法回到这个工作点。</p>
 <p>解决：<strong><font color="red">git stash </font></strong>命令。</p>
 <p>“Stashing”可以获取工作目录的中间状态，即：将修改过的被追踪的文件和暂存的变更，保存到一个未完结变更的堆栈中，随时可以重新应用。</p>
-<h3 id="储藏工作"><a href="#储藏工作" class="headerlink" title="储藏工作"></a><a name="work">储藏工作</a></h3><p>演示：</p>
+<h3 id="储藏工作"><a href="#储藏工作" class="headerlink" title="储藏工作"></a><a name="work">储藏工作</a></h3><hr>
 <ol>
 <li>进入项目目录，修改某个文件，有可能还暂存其中的一个变更。</li>
 <li><strong><font color="red">git status </font></strong>命令,查看中间状态：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes to be committed:</span></div><div class="line"><span class="comment">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure></li>
@@ -153,15 +155,20 @@ Stashing
 <li>执行step 2查看目录库，中间状态就不见了：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line"><span class="comment">#######On branch master</span></div><div class="line">nothing to commit, working directory clean</div></pre></td></tr></table></figure>
 这时，你可以方便地切换到其他分支工作；你的变更都保存在栈上。</li>
 <li>使用<strong><font color="red">git stash list</font></strong>要查看现有的储藏：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git stash list</div><div class="line">stash@&#123;0&#125;: WIP on master: 049d078 added the index file</div><div class="line">stash@&#123;1&#125;: WIP on master: c264051 Revert <span class="string">"added file_size"</span></div><div class="line">stash@&#123;2&#125;: WIP on master: 21d80a5 added number to <span class="built_in">log</span></div></pre></td></tr></table></figure>
-在这个案例中，之前已经进行了两次储藏，所以你可以访问到三个不同的储藏。<h3 id="应用储藏"><a href="#应用储藏" class="headerlink" title="应用储藏"></a><a name="apply">应用储藏</a></h3>执行<strong><font color="red">git stash apply</font></strong>命令, 可以重新应用最近的一次储藏；<br>执行<strong><font color="red">git stash apply stash@{2}</font></strong>命令，即通过指定储藏的名字，来应用更早的储藏。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ git stash apply</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-可以看到 Git 重新修改了你所储藏的那些当时尚未提交的文件。在这个案例里，你尝试应用储藏的工作目录是干净的，并且属于同一分支；但是一个干净的工作目录和应用到相同的分支上并不是应用储藏的必要条件。你可以在其中一个分支上保留一份储藏，随后切换到另外一个分支，再重新应用这些变更。在工作目录里包含已修改和未提交的文件时，你也可以应用储藏——Git 会给出归并冲突如果有任何变更无法干净地被应用。</li>
+在这个案例中，之前已经进行了两次储藏，所以你可以访问到三个不同的储藏。<h3 id="应用储藏"><a href="#应用储藏" class="headerlink" title="应用储藏"></a><a name="apply">应用储藏</a></h3></li>
 </ol>
-<h3 id="被暂存的文件重新暂存"><a href="#被暂存的文件重新暂存" class="headerlink" title="被暂存的文件重新暂存"></a><a name="applyIndex">被暂存的文件重新暂存</a></h3><p>执行<strong><font color="red">git stash apply</font></strong>命令,虽然对文件的变更被重新应用，但是被暂存的文件没有重新被暂存。<br>执行<strong><font color="red">git stash apply –index</font></strong>命令,即可让被暂存的文件重新暂存。<br><strong>–index</strong>选项告诉命令重新应用被暂存的变更：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git stash apply --index</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes to be committed:</span></div><div class="line"><span class="comment">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure></p>
-<h3 id="应用后，移除储藏的内容"><a href="#应用后，移除储藏的内容" class="headerlink" title="应用后，移除储藏的内容"></a><a name="drop">应用后，移除储藏的内容</a></h3><p><strong>apply </strong>选项只尝试应用储藏的工作——储藏的内容仍然在栈上。<br>执行<strong><font color="red">git stash drop 储藏的名字</font></strong>命令，，即可从栈中彻底移除储藏内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git stash list</div><div class="line">stash@&#123;0&#125;: WIP on master: 049d078 added the index file</div><div class="line">stash@&#123;1&#125;: WIP on master: c264051 Revert <span class="string">"added file_size"</span></div><div class="line">stash@&#123;2&#125;: WIP on master: 21d80a5 added number to <span class="built_in">log</span></div><div class="line">$ git stash drop stash@&#123;0&#125;</div><div class="line">Dropped stash@&#123;0&#125; (364e91f3f268f0900bc3ee613f9f733e82aaed43)</div></pre></td></tr></table></figure><br>你也可以运行 <strong><font color="red">git stash pop</font></strong>命令，来重新应用储藏，同时立刻将其从堆栈中移走。</p>
-<h3 id="取消储藏-Un-applying-a-Stash"><a href="#取消储藏-Un-applying-a-Stash" class="headerlink" title="取消储藏(Un-applying a Stash)"></a><a name="unapply">取消储藏(Un-applying a Stash)</a></h3><p>在某些情况下，重新应用了之前的储藏的变更，进行了一些其他的修改后，又想要取消之前所应用储藏的修改。<br>Git没有提供类似于 <strong><font color="red">stash unapply</font></strong>的命令，但是可以通过取消该储藏的补丁达到同样的效果：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git stash show -p stash@&#123;0&#125; | git apply -R</div></pre></td></tr></table></figure><br>同样的，如果你沒有指定具体的某个储藏，Git 会选择最近的储藏：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git stash show -p | git apply -R</div></pre></td></tr></table></figure></p>
-<h4 id="新建stash-unapply别名"><a href="#新建stash-unapply别名" class="headerlink" title="新建stash-unapply别名"></a><a name="stash-unapply">新建stash-unapply别名</a></h4><p>你可能会想要新建一个別名，在你的 Git 里增加一个<strong><font color="red">stash-unapply</font></strong> 命，这样更有效率。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git config --global alias.stash-unapply <span class="string">'!git stash show -p | git apply -R'</span></div><div class="line">$ git stash apply</div><div class="line">$ <span class="comment">#... work work work</span></div><div class="line">$ git stash-unapply</div></pre></td></tr></table></figure></p>
-<h3 id="从储藏中创建分支"><a href="#从储藏中创建分支" class="headerlink" title="从储藏中创建分支"></a><a name="stashBranch">从储藏中创建分支</a></h3><p>如果你储藏了一些工作，暂时不去理会，然后继续在你储藏工作的分支上工作，你在重新应用工作时可能会碰到一些问题。如果尝试应用的变更是针对一个你那之后修改过的文件，你会碰到一个归并冲突并且必须去化解它。如果你想用更方便的方法来重新检验你储藏的变更，你可以运行 git stash branch，这会创建一个新的分支，检出你储藏工作时的所处的提交，重新应用你的工作，如果成功，将会丢弃储藏。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ git stash branch testchanges</div><div class="line">Switched to a new branch <span class="string">"testchanges"</span></div><div class="line"><span class="comment"># On branch testchanges</span></div><div class="line"><span class="comment"># Changes to be committed:</span></div><div class="line"><span class="comment">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div><div class="line">Dropped refs/stash@&#123;0&#125; (f0dfc4d5dc332d1cee34a634182e168c4efc3359)</div></pre></td></tr></table></figure><br>这是一个很棒的捷径来恢复储藏的工作然后在新的分支上继续当时的工作。</p>
+<hr>
+<p>执行<strong><font color="red">git stash apply</font></strong>命令, 可以重新应用最近的一次储藏；<br>执行<strong><font color="red">git stash apply stash@{2}</font></strong>命令，即通过指定储藏的名字，来应用更早的储藏。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ git stash apply</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure><br><a id="more"></a><br>可以看到 Git 重新修改了你所储藏的那些当时尚未提交的文件。在这个案例里，你尝试应用储藏的工作目录是干净的，并且属于同一分支；但是一个干净的工作目录和应用到相同的分支上并不是应用储藏的必要条件。你可以在其中一个分支上保留一份储藏，随后切换到另外一个分支，再重新应用这些变更。在工作目录里包含已修改和未提交的文件时，你也可以应用储藏——Git 会给出归并冲突如果有任何变更无法干净地被应用。</p>
+<h3 id="被暂存的文件重新暂存"><a href="#被暂存的文件重新暂存" class="headerlink" title="被暂存的文件重新暂存"></a><a name="applyIndex">被暂存的文件重新暂存</a></h3><hr>
+<p>执行<strong><font color="red">git stash apply</font></strong>命令,虽然对文件的变更被重新应用，但是被暂存的文件没有重新被暂存。<br>执行<strong><font color="red">git stash apply –index</font></strong>命令,即可让被暂存的文件重新暂存。<br><strong>–index</strong>选项告诉命令重新应用被暂存的变更：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git stash apply --index</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes to be committed:</span></div><div class="line"><span class="comment">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h3 id="应用后，移除储藏的内容"><a href="#应用后，移除储藏的内容" class="headerlink" title="应用后，移除储藏的内容"></a><a name="drop">应用后，移除储藏的内容</a></h3><hr>
+<p><strong>apply </strong>选项只尝试应用储藏的工作——储藏的内容仍然在栈上。<br>执行<strong><font color="red">git stash drop 储藏的名字</font></strong>命令，，即可从栈中彻底移除储藏内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git stash list</div><div class="line">stash@&#123;0&#125;: WIP on master: 049d078 added the index file</div><div class="line">stash@&#123;1&#125;: WIP on master: c264051 Revert <span class="string">"added file_size"</span></div><div class="line">stash@&#123;2&#125;: WIP on master: 21d80a5 added number to <span class="built_in">log</span></div><div class="line">$ git stash drop stash@&#123;0&#125;</div><div class="line">Dropped stash@&#123;0&#125; (364e91f3f268f0900bc3ee613f9f733e82aaed43)</div></pre></td></tr></table></figure><br>你也可以运行 <strong><font color="red">git stash pop</font></strong>命令，来重新应用储藏，同时立刻将其从堆栈中移走。</p>
+<h3 id="取消储藏-Un-applying-a-Stash"><a href="#取消储藏-Un-applying-a-Stash" class="headerlink" title="取消储藏(Un-applying a Stash)"></a><a name="unapply">取消储藏(Un-applying a Stash)</a></h3><hr>
+<p>在某些情况下，重新应用了之前的储藏的变更，进行了一些其他的修改后，又想要取消之前所应用储藏的修改。<br>Git没有提供类似于 <strong><font color="red">stash unapply</font></strong>的命令，但是可以通过取消该储藏的补丁达到同样的效果：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git stash show -p stash@&#123;0&#125; | git apply -R</div></pre></td></tr></table></figure><br>同样的，如果你沒有指定具体的某个储藏，Git 会选择最近的储藏：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git stash show -p | git apply -R</div></pre></td></tr></table></figure></p>
+<h4 id="新建stash-unapply别名"><a href="#新建stash-unapply别名" class="headerlink" title="新建stash-unapply别名"></a><a name="stash-unapply">新建stash-unapply别名</a></h4><hr>
+<p>你可能会想要新建一个別名，在你的 Git 里增加一个<strong><font color="red">stash-unapply</font></strong> 命，这样更有效率。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git config --global alias.stash-unapply <span class="string">'!git stash show -p | git apply -R'</span></div><div class="line">$ git stash apply</div><div class="line">$ <span class="comment">#... work work work</span></div><div class="line">$ git stash-unapply</div></pre></td></tr></table></figure></p>
+<h3 id="从储藏中创建分支"><a href="#从储藏中创建分支" class="headerlink" title="从储藏中创建分支"></a><a name="stashBranch">从储藏中创建分支</a></h3><hr>
+<p>如果你储藏了一些工作，暂时不去理会，然后继续在你储藏工作的分支上工作，你在重新应用工作时可能会碰到一些问题。如果尝试应用的变更是针对一个你那之后修改过的文件，你会碰到一个归并冲突并且必须去化解它。如果你想用更方便的方法来重新检验你储藏的变更，你可以运行 git stash branch，这会创建一个新的分支，检出你储藏工作时的所处的提交，重新应用你的工作，如果成功，将会丢弃储藏。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ git stash branch testchanges</div><div class="line">Switched to a new branch <span class="string">"testchanges"</span></div><div class="line"><span class="comment"># On branch testchanges</span></div><div class="line"><span class="comment"># Changes to be committed:</span></div><div class="line"><span class="comment">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div><div class="line">Dropped refs/stash@&#123;0&#125; (f0dfc4d5dc332d1cee34a634182e168c4efc3359)</div></pre></td></tr></table></figure><br>这是一个很棒的捷径来恢复储藏的工作然后在新的分支上继续当时的工作。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -246,22 +253,22 @@ Stashing
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#列表："><span class="toc-number">1.</span> <span class="toc-text">列表：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#惨痛经历"><span class="toc-number">1.1.</span> <span class="toc-text">惨痛经历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git工具-储藏（Stashing）"><span class="toc-number">1.2.</span> <span class="toc-text">Git工具 - 储藏（Stashing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#储藏工作"><span class="toc-number">1.3.</span> <span class="toc-text">储藏工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用储藏"><span class="toc-number">1.4.</span> <span class="toc-text">应用储藏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#被暂存的文件重新暂存"><span class="toc-number">1.5.</span> <span class="toc-text">被暂存的文件重新暂存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用后，移除储藏的内容"><span class="toc-number">1.6.</span> <span class="toc-text">应用后，移除储藏的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取消储藏-Un-applying-a-Stash"><span class="toc-number">1.7.</span> <span class="toc-text">取消储藏(Un-applying a Stash)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建stash-unapply别名"><span class="toc-number">1.7.1.</span> <span class="toc-text">新建stash-unapply别名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从储藏中创建分支"><span class="toc-number">1.8.</span> <span class="toc-text">从储藏中创建分支</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#惨痛经历"><span class="toc-number">1.</span> <span class="toc-text">惨痛经历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git工具-储藏（Stashing）"><span class="toc-number">2.</span> <span class="toc-text">Git工具 - 储藏（Stashing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#储藏工作"><span class="toc-number">3.</span> <span class="toc-text">储藏工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用储藏"><span class="toc-number">4.</span> <span class="toc-text">应用储藏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#被暂存的文件重新暂存"><span class="toc-number">5.</span> <span class="toc-text">被暂存的文件重新暂存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用后，移除储藏的内容"><span class="toc-number">6.</span> <span class="toc-text">应用后，移除储藏的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取消储藏-Un-applying-a-Stash"><span class="toc-number">7.</span> <span class="toc-text">取消储藏(Un-applying a Stash)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建stash-unapply别名"><span class="toc-number">7.1.</span> <span class="toc-text">新建stash-unapply别名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从储藏中创建分支"><span class="toc-number">8.</span> <span class="toc-text">从储藏中创建分支</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github 名片</p>
+<p class="asidetitle">Github Card</p>
 <div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -271,7 +278,7 @@ Stashing
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -279,7 +286,15 @@ Stashing
 		  
 		
 		  
+		
+		  
+		
+		  
+		
+		  
 			<li><a href="/categories/Octopress/" title="Octopress">Octopress<sup>1</sup></a></li>
+		  
+		
 		  
 		
 		  
@@ -326,7 +341,7 @@ Stashing
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -358,14 +373,6 @@ Stashing
 			
 		
 			
-				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
 			
 		
@@ -374,15 +381,23 @@ Stashing
 			
 		
 			
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/gitBook/" title="gitBook">gitBook<sup>1</sup></a></li>
+				<li><a href="/tags/脚本/" title="脚本">脚本<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
 			
 		
 			
@@ -394,7 +409,7 @@ Stashing
 			
 		
 			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
 			
 		
 			
@@ -414,7 +429,7 @@ Stashing
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -478,11 +493,11 @@ Stashing
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=&dpc=1"></iframe>
 </div>
 
@@ -680,7 +695,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
