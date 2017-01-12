@@ -169,6 +169,197 @@
 		14B363F21E26399400D1FB05 /* 2015-12-15-zong-jie.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-15-zong-jie.markdown"; sourceTree = "<group>"; };
 		14B363F31E26399400D1FB05 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown"; sourceTree = "<group>"; };
 		14B363F41E26399400D1FB05 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown"; sourceTree = "<group>"; };
+		14B363F51E27374700D1FB05 /* 2015-01-20-iapkai-fa-bu-zou.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-01-20-iapkai-fa-bu-zou.md"; sourceTree = "<group>"; };
+		14B363F81E27389D00D1FB05 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		14B363F91E27389D00D1FB05 /* _config.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = _config.yml; path = ../themes/jacman/_config.yml; sourceTree = "<group>"; };
+		14B363FB1E27389D00D1FB05 /* default.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = default.yml; sourceTree = "<group>"; };
+		14B363FC1E27389D00D1FB05 /* zh-CN.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = "zh-CN.yml"; sourceTree = "<group>"; };
+		14B363FD1E27389D00D1FB05 /* zh-TW.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = "zh-TW.yml"; sourceTree = "<group>"; };
+		14B364001E27389D00D1FB05 /* after_footer.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = after_footer.ejs; sourceTree = "<group>"; };
+		14B364011E27389D00D1FB05 /* analytics.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = analytics.ejs; sourceTree = "<group>"; };
+		14B364021E27389D00D1FB05 /* archive.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ejs; sourceTree = "<group>"; };
+		14B364031E27389D00D1FB05 /* article.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = article.ejs; sourceTree = "<group>"; };
+		14B364041E27389D00D1FB05 /* article_row.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = article_row.ejs; sourceTree = "<group>"; };
+		14B364051E27389D00D1FB05 /* categories.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = categories.ejs; sourceTree = "<group>"; };
+		14B364061E27389D00D1FB05 /* footer.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = footer.ejs; sourceTree = "<group>"; };
+		14B364071E27389D00D1FB05 /* head.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = head.ejs; sourceTree = "<group>"; };
+		14B364081E27389D00D1FB05 /* header.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = header.ejs; sourceTree = "<group>"; };
+		14B364091E27389D00D1FB05 /* mathjax.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = mathjax.ejs; sourceTree = "<group>"; };
+		14B3640A1E27389D00D1FB05 /* pagination.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = pagination.ejs; sourceTree = "<group>"; };
+		14B3640C1E27389D00D1FB05 /* article.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = article.ejs; sourceTree = "<group>"; };
+		14B3640D1E27389D00D1FB05 /* catetags.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = catetags.ejs; sourceTree = "<group>"; };
+		14B3640E1E27389D00D1FB05 /* comment.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = comment.ejs; sourceTree = "<group>"; };
+		14B3640F1E27389D00D1FB05 /* footer.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = footer.ejs; sourceTree = "<group>"; };
+		14B364101E27389D00D1FB05 /* gallery.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = gallery.ejs; sourceTree = "<group>"; };
+		14B364111E27389D00D1FB05 /* header.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = header.ejs; sourceTree = "<group>"; };
+		14B364121E27389D00D1FB05 /* jiathis.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = jiathis.ejs; sourceTree = "<group>"; };
+		14B364131E27389D00D1FB05 /* pagination.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = pagination.ejs; sourceTree = "<group>"; };
+		14B364141E27389D00D1FB05 /* search.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = search.ejs; sourceTree = "<group>"; };
+		14B364151E27389D00D1FB05 /* sidebar.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = sidebar.ejs; sourceTree = "<group>"; };
+		14B364161E27389D00D1FB05 /* tags.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tags.ejs; sourceTree = "<group>"; };
+		14B364171E27389D00D1FB05 /* tinysou_search.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tinysou_search.ejs; sourceTree = "<group>"; };
+		14B364181E27389D00D1FB05 /* totop.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = totop.ejs; sourceTree = "<group>"; };
+		14B3641A1E27389D00D1FB05 /* archive.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ejs; sourceTree = "<group>"; };
+		14B3641B1E27389D00D1FB05 /* category.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = category.ejs; sourceTree = "<group>"; };
+		14B3641C1E27389D00D1FB05 /* douban.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = douban.ejs; sourceTree = "<group>"; };
+		14B3641D1E27389D00D1FB05 /* github-card.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "github-card.ejs"; sourceTree = "<group>"; };
+		14B3641E1E27389D00D1FB05 /* links.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = links.ejs; sourceTree = "<group>"; };
+		14B3641F1E27389D00D1FB05 /* rss.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = rss.ejs; sourceTree = "<group>"; };
+		14B364201E27389D00D1FB05 /* tag.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tag.ejs; sourceTree = "<group>"; };
+		14B364211E27389D00D1FB05 /* tagcloud.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tagcloud.ejs; sourceTree = "<group>"; };
+		14B364221E27389D00D1FB05 /* weibo.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = weibo.ejs; sourceTree = "<group>"; };
+		14B364231E27389D00D1FB05 /* archive.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ejs; sourceTree = "<group>"; };
+		14B364241E27389D00D1FB05 /* category.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = category.ejs; sourceTree = "<group>"; };
+		14B364251E27389D00D1FB05 /* index.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = index.ejs; sourceTree = "<group>"; };
+		14B364261E27389D00D1FB05 /* layout.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = layout.ejs; sourceTree = "<group>"; };
+		14B364271E27389D00D1FB05 /* page.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = page.ejs; sourceTree = "<group>"; };
+		14B364281E27389D00D1FB05 /* post.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = post.ejs; sourceTree = "<group>"; };
+		14B364291E27389D00D1FB05 /* tag.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tag.ejs; sourceTree = "<group>"; };
+		14B3642A1E27389D00D1FB05 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		14B3642B1E27389D00D1FB05 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		14B3642C1E27389D00D1FB05 /* README_zh.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_zh.md; sourceTree = "<group>"; };
+		14B3642E1E27389D00D1FB05 /* fancybox.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = fancybox.js; sourceTree = "<group>"; };
+		14B364321E27389D00D1FB05 /* font.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = font.styl; sourceTree = "<group>"; };
+		14B364341E27389D00D1FB05 /* highlight.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = highlight.styl; sourceTree = "<group>"; };
+		14B364351E27389D00D1FB05 /* theme.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = theme.styl; sourceTree = "<group>"; };
+		14B364361E27389D00D1FB05 /* public.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = public.styl; sourceTree = "<group>"; };
+		14B364371E27389D00D1FB05 /* variable.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = variable.styl; sourceTree = "<group>"; };
+		14B364391E27389D00D1FB05 /* article.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = article.styl; sourceTree = "<group>"; };
+		14B3643A1E27389D00D1FB05 /* aside.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = aside.styl; sourceTree = "<group>"; };
+		14B3643B1E27389D00D1FB05 /* duoshuo.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = duoshuo.styl; sourceTree = "<group>"; };
+		14B3643C1E27389D00D1FB05 /* footer.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = footer.styl; sourceTree = "<group>"; };
+		14B3643D1E27389D00D1FB05 /* gallery.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = gallery.styl; sourceTree = "<group>"; };
+		14B3643E1E27389D00D1FB05 /* header.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = header.styl; sourceTree = "<group>"; };
+		14B3643F1E27389D00D1FB05 /* helper.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = helper.styl; sourceTree = "<group>"; };
+		14B364401E27389D00D1FB05 /* index.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = index.styl; sourceTree = "<group>"; };
+		14B364411E27389D00D1FB05 /* totop.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = totop.styl; sourceTree = "<group>"; };
+		14B364421E27389D00D1FB05 /* style.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = style.styl; sourceTree = "<group>"; };
+		14B364441E27389D00D1FB05 /* blank.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = blank.gif; sourceTree = "<group>"; };
+		14B364451E27389D00D1FB05 /* fancybox_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fancybox_loading.gif; sourceTree = "<group>"; };
+		14B364461E27389D00D1FB05 /* fancybox_loading@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fancybox_loading@2x.gif"; sourceTree = "<group>"; };
+		14B364471E27389D00D1FB05 /* fancybox_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fancybox_overlay.png; sourceTree = "<group>"; };
+		14B364481E27389D00D1FB05 /* fancybox_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fancybox_sprite.png; sourceTree = "<group>"; };
+		14B364491E27389D00D1FB05 /* fancybox_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fancybox_sprite@2x.png"; sourceTree = "<group>"; };
+		14B3644B1E27389D00D1FB05 /* fancybox_buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fancybox_buttons.png; sourceTree = "<group>"; };
+		14B3644C1E27389D00D1FB05 /* jquery.fancybox-buttons.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "jquery.fancybox-buttons.css"; sourceTree = "<group>"; };
+		14B3644D1E27389D00D1FB05 /* jquery.fancybox-buttons.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery.fancybox-buttons.js"; sourceTree = "<group>"; };
+		14B3644E1E27389D00D1FB05 /* jquery.fancybox-media.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery.fancybox-media.js"; sourceTree = "<group>"; };
+		14B3644F1E27389D00D1FB05 /* jquery.fancybox-thumbs.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "jquery.fancybox-thumbs.css"; sourceTree = "<group>"; };
+		14B364501E27389D00D1FB05 /* jquery.fancybox-thumbs.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery.fancybox-thumbs.js"; sourceTree = "<group>"; };
+		14B364511E27389D00D1FB05 /* jquery.fancybox.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = jquery.fancybox.css; sourceTree = "<group>"; };
+		14B364521E27389D00D1FB05 /* jquery.fancybox.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.fancybox.js; sourceTree = "<group>"; };
+		14B364531E27389D00D1FB05 /* jquery.fancybox.pack.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.fancybox.pack.js; sourceTree = "<group>"; };
+		14B364551E27389D00D1FB05 /* coveredbyyourgrace-webfont.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coveredbyyourgrace-webfont.eot"; sourceTree = "<group>"; };
+		14B364561E27389D00D1FB05 /* coveredbyyourgrace-webfont.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "coveredbyyourgrace-webfont.svg"; sourceTree = "<group>"; };
+		14B364571E27389D00D1FB05 /* coveredbyyourgrace-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coveredbyyourgrace-webfont.ttf"; sourceTree = "<group>"; };
+		14B364581E27389D00D1FB05 /* coveredbyyourgrace-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coveredbyyourgrace-webfont.woff"; sourceTree = "<group>"; };
+		14B364591E27389D00D1FB05 /* fontawesome-webfont.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.eot"; sourceTree = "<group>"; };
+		14B3645A1E27389D00D1FB05 /* fontawesome-webfont.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "fontawesome-webfont.svg"; sourceTree = "<group>"; };
+		14B3645B1E27389D00D1FB05 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		14B3645C1E27389D00D1FB05 /* fontawesome-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.woff"; sourceTree = "<group>"; };
+		14B3645D1E27389D00D1FB05 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		14B3645E1E27389D00D1FB05 /* fontdiao.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontdiao.eot; sourceTree = "<group>"; };
+		14B3645F1E27389D00D1FB05 /* fontdiao.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = fontdiao.svg; sourceTree = "<group>"; };
+		14B364601E27389D00D1FB05 /* fontdiao.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontdiao.ttf; sourceTree = "<group>"; };
+		14B364611E27389D00D1FB05 /* fontdiao.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontdiao.woff; sourceTree = "<group>"; };
+		14B364631E27389D00D1FB05 /* author.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = author.jpg; sourceTree = "<group>"; };
+		14B364641E27389D00D1FB05 /* banner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner.jpg; sourceTree = "<group>"; };
+		14B364651E27389D00D1FB05 /* cc-by-nc-nd.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "cc-by-nc-nd.svg"; sourceTree = "<group>"; };
+		14B364661E27389D00D1FB05 /* cc-by-nc-sa.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "cc-by-nc-sa.svg"; sourceTree = "<group>"; };
+		14B364671E27389D00D1FB05 /* cc-by-nc.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "cc-by-nc.svg"; sourceTree = "<group>"; };
+		14B364681E27389D00D1FB05 /* cc-by-nd.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "cc-by-nd.svg"; sourceTree = "<group>"; };
+		14B364691E27389D00D1FB05 /* cc-by-sa.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "cc-by-sa.svg"; sourceTree = "<group>"; };
+		14B3646A1E27389D00D1FB05 /* cc-by.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "cc-by.svg"; sourceTree = "<group>"; };
+		14B3646B1E27389D00D1FB05 /* cc-zero.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "cc-zero.svg"; sourceTree = "<group>"; };
+		14B3646C1E27389D00D1FB05 /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = favicon.ico; sourceTree = "<group>"; };
+		14B3646D1E27389D00D1FB05 /* jacman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jacman.jpg; sourceTree = "<group>"; };
+		14B3646E1E27389D00D1FB05 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		14B3646F1E27389D00D1FB05 /* logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = logo.svg; sourceTree = "<group>"; };
+		14B364701E27389D00D1FB05 /* scrollup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollup.png; sourceTree = "<group>"; };
+		14B364721E27389D00D1FB05 /* gallery.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = gallery.js; sourceTree = "<group>"; };
+		14B364731E27389D00D1FB05 /* jquery-2.0.3.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery-2.0.3.min.js"; sourceTree = "<group>"; };
+		14B364741E27389D00D1FB05 /* jquery.imagesloaded.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.imagesloaded.min.js; sourceTree = "<group>"; };
+		14B364751E27389D00D1FB05 /* jquery.qrcode-0.12.0.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery.qrcode-0.12.0.min.js"; sourceTree = "<group>"; };
+		14B364761E27389D00D1FB05 /* totop.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = totop.js; sourceTree = "<group>"; };
+		14B364781E27389D00D1FB05 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		14B364791E27389D00D1FB05 /* _config.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = _config.yml; sourceTree = "<group>"; };
+		14B3647A1E27389D00D1FB05 /* Gruntfile.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Gruntfile.js; sourceTree = "<group>"; };
+		14B3647C1E27389D00D1FB05 /* default.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = default.yml; sourceTree = "<group>"; };
+		14B3647D1E27389D00D1FB05 /* fr.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = fr.yml; sourceTree = "<group>"; };
+		14B3647E1E27389D00D1FB05 /* nl.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = nl.yml; sourceTree = "<group>"; };
+		14B3647F1E27389D00D1FB05 /* no.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = no.yml; sourceTree = "<group>"; };
+		14B364801E27389D00D1FB05 /* ru.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = ru.yml; sourceTree = "<group>"; };
+		14B364811E27389D00D1FB05 /* zh-CN.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = "zh-CN.yml"; sourceTree = "<group>"; };
+		14B364821E27389D00D1FB05 /* zh-TW.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = "zh-TW.yml"; sourceTree = "<group>"; };
+		14B364851E27389D00D1FB05 /* after-footer.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "after-footer.ejs"; sourceTree = "<group>"; };
+		14B364861E27389D00D1FB05 /* archive-post.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "archive-post.ejs"; sourceTree = "<group>"; };
+		14B364871E27389D00D1FB05 /* archive.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ejs; sourceTree = "<group>"; };
+		14B364881E27389D00D1FB05 /* article.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = article.ejs; sourceTree = "<group>"; };
+		14B364891E27389D00D1FB05 /* footer.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = footer.ejs; sourceTree = "<group>"; };
+		14B3648A1E27389D00D1FB05 /* google-analytics.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "google-analytics.ejs"; sourceTree = "<group>"; };
+		14B3648B1E27389D00D1FB05 /* head.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = head.ejs; sourceTree = "<group>"; };
+		14B3648C1E27389D00D1FB05 /* header.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = header.ejs; sourceTree = "<group>"; };
+		14B3648D1E27389D00D1FB05 /* mobile-nav.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "mobile-nav.ejs"; sourceTree = "<group>"; };
+		14B3648F1E27389D00D1FB05 /* category.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = category.ejs; sourceTree = "<group>"; };
+		14B364901E27389D00D1FB05 /* date.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = date.ejs; sourceTree = "<group>"; };
+		14B364911E27389D00D1FB05 /* gallery.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = gallery.ejs; sourceTree = "<group>"; };
+		14B364921E27389D00D1FB05 /* nav.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = nav.ejs; sourceTree = "<group>"; };
+		14B364931E27389D00D1FB05 /* tag.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tag.ejs; sourceTree = "<group>"; };
+		14B364941E27389D00D1FB05 /* title.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = title.ejs; sourceTree = "<group>"; };
+		14B364951E27389D00D1FB05 /* sidebar.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = sidebar.ejs; sourceTree = "<group>"; };
+		14B364971E27389D00D1FB05 /* archive.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ejs; sourceTree = "<group>"; };
+		14B364981E27389D00D1FB05 /* category.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = category.ejs; sourceTree = "<group>"; };
+		14B364991E27389D00D1FB05 /* recent_posts.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = recent_posts.ejs; sourceTree = "<group>"; };
+		14B3649A1E27389D00D1FB05 /* tag.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tag.ejs; sourceTree = "<group>"; };
+		14B3649B1E27389D00D1FB05 /* tagcloud.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tagcloud.ejs; sourceTree = "<group>"; };
+		14B3649C1E27389D00D1FB05 /* archive.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ejs; sourceTree = "<group>"; };
+		14B3649D1E27389D00D1FB05 /* category.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = category.ejs; sourceTree = "<group>"; };
+		14B3649E1E27389D00D1FB05 /* index.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = index.ejs; sourceTree = "<group>"; };
+		14B3649F1E27389D00D1FB05 /* layout.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = layout.ejs; sourceTree = "<group>"; };
+		14B364A01E27389D00D1FB05 /* page.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = page.ejs; sourceTree = "<group>"; };
+		14B364A11E27389D00D1FB05 /* post.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = post.ejs; sourceTree = "<group>"; };
+		14B364A21E27389D00D1FB05 /* tag.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tag.ejs; sourceTree = "<group>"; };
+		14B364A31E27389D00D1FB05 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		14B364A41E27389D00D1FB05 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		14B364A51E27389D00D1FB05 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		14B364A71E27389D00D1FB05 /* fancybox.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = fancybox.js; sourceTree = "<group>"; };
+		14B364AA1E27389D00D1FB05 /* _extend.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = _extend.styl; sourceTree = "<group>"; };
+		14B364AC1E27389D00D1FB05 /* archive.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.styl; sourceTree = "<group>"; };
+		14B364AD1E27389D00D1FB05 /* article.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = article.styl; sourceTree = "<group>"; };
+		14B364AE1E27389D00D1FB05 /* comment.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = comment.styl; sourceTree = "<group>"; };
+		14B364AF1E27389D00D1FB05 /* footer.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = footer.styl; sourceTree = "<group>"; };
+		14B364B01E27389D00D1FB05 /* header.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = header.styl; sourceTree = "<group>"; };
+		14B364B11E27389D00D1FB05 /* highlight.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = highlight.styl; sourceTree = "<group>"; };
+		14B364B21E27389D00D1FB05 /* mobile.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = mobile.styl; sourceTree = "<group>"; };
+		14B364B31E27389D00D1FB05 /* sidebar-aside.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sidebar-aside.styl"; sourceTree = "<group>"; };
+		14B364B41E27389D00D1FB05 /* sidebar-bottom.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sidebar-bottom.styl"; sourceTree = "<group>"; };
+		14B364B51E27389D00D1FB05 /* sidebar.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = sidebar.styl; sourceTree = "<group>"; };
+		14B364B71E27389D00D1FB05 /* grid.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = grid.styl; sourceTree = "<group>"; };
+		14B364B81E27389D00D1FB05 /* mixin.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = mixin.styl; sourceTree = "<group>"; };
+		14B364B91E27389D00D1FB05 /* _variables.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = _variables.styl; sourceTree = "<group>"; };
+		14B364BB1E27389D00D1FB05 /* fontawesome-webfont.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.eot"; sourceTree = "<group>"; };
+		14B364BC1E27389D00D1FB05 /* fontawesome-webfont.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "fontawesome-webfont.svg"; sourceTree = "<group>"; };
+		14B364BD1E27389D00D1FB05 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		14B364BE1E27389D00D1FB05 /* fontawesome-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.woff"; sourceTree = "<group>"; };
+		14B364BF1E27389D00D1FB05 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		14B364C11E27389D00D1FB05 /* banner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner.jpg; sourceTree = "<group>"; };
+		14B364C21E27389D00D1FB05 /* style.styl */ = {isa = PBXFileReference; lastKnownFileType = text; path = style.styl; sourceTree = "<group>"; };
+		14B364C41E27389D00D1FB05 /* blank.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = blank.gif; sourceTree = "<group>"; };
+		14B364C51E27389D00D1FB05 /* fancybox_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fancybox_loading.gif; sourceTree = "<group>"; };
+		14B364C61E27389D00D1FB05 /* fancybox_loading@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fancybox_loading@2x.gif"; sourceTree = "<group>"; };
+		14B364C71E27389D00D1FB05 /* fancybox_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fancybox_overlay.png; sourceTree = "<group>"; };
+		14B364C81E27389D00D1FB05 /* fancybox_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fancybox_sprite.png; sourceTree = "<group>"; };
+		14B364C91E27389D00D1FB05 /* fancybox_sprite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fancybox_sprite@2x.png"; sourceTree = "<group>"; };
+		14B364CB1E27389D00D1FB05 /* fancybox_buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fancybox_buttons.png; sourceTree = "<group>"; };
+		14B364CC1E27389D00D1FB05 /* jquery.fancybox-buttons.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "jquery.fancybox-buttons.css"; sourceTree = "<group>"; };
+		14B364CD1E27389D00D1FB05 /* jquery.fancybox-buttons.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery.fancybox-buttons.js"; sourceTree = "<group>"; };
+		14B364CE1E27389D00D1FB05 /* jquery.fancybox-media.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery.fancybox-media.js"; sourceTree = "<group>"; };
+		14B364CF1E27389D00D1FB05 /* jquery.fancybox-thumbs.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "jquery.fancybox-thumbs.css"; sourceTree = "<group>"; };
+		14B364D01E27389D00D1FB05 /* jquery.fancybox-thumbs.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery.fancybox-thumbs.js"; sourceTree = "<group>"; };
+		14B364D11E27389D00D1FB05 /* jquery.fancybox.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = jquery.fancybox.css; sourceTree = "<group>"; };
+		14B364D21E27389D00D1FB05 /* jquery.fancybox.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.fancybox.js; sourceTree = "<group>"; };
+		14B364D31E27389D00D1FB05 /* jquery.fancybox.pack.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.fancybox.pack.js; sourceTree = "<group>"; };
+		14B364D51E27389D00D1FB05 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 		84EC55EE1E0D645E004F71A4 /* daoshell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daoshell.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				149F334E1E0A767600AAC556 /* _config.yml */,
+				14B364D61E2738FC00D1FB05 /* 主题 */,
 				149F33D71E0A767600AAC556 /* SUMMARY.md */,
 				1407ACAE1E0B8464001D4D65 /* tool */,
 				1407ACA91E0B7547001D4D65 /* CodeSnippets */,
@@ -204,6 +396,7 @@
 				149F33821E0A767600AAC556 /* images */,
 				149F33D81E0A767600AAC556 /* tags */,
 				149F33D61E0A767600AAC556 /* README.md */,
+				14B363F61E27389D00D1FB05 /* 主题 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -387,8 +580,478 @@
 				14B363F21E26399400D1FB05 /* 2015-12-15-zong-jie.markdown */,
 				14B363F31E26399400D1FB05 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */,
 				14B363F41E26399400D1FB05 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */,
+				14B363F51E27374700D1FB05 /* 2015-01-20-iapkai-fa-bu-zou.md */,
 			);
 			path = _drafts;
+			sourceTree = "<group>";
+		};
+		14B363F61E27389D00D1FB05 /* 主题 */ = {
+			isa = PBXGroup;
+			children = (
+				14B363F71E27389D00D1FB05 /* jacman */,
+				14B364771E27389D00D1FB05 /* landscape */,
+			);
+			name = "主题";
+			path = ../themes;
+			sourceTree = "<group>";
+		};
+		14B363F71E27389D00D1FB05 /* jacman */ = {
+			isa = PBXGroup;
+			children = (
+				14B363F81E27389D00D1FB05 /* .gitignore */,
+				14B363FA1E27389D00D1FB05 /* languages */,
+				14B363FE1E27389D00D1FB05 /* layout */,
+				14B3642A1E27389D00D1FB05 /* LICENSE */,
+				14B3642B1E27389D00D1FB05 /* README.md */,
+				14B3642C1E27389D00D1FB05 /* README_zh.md */,
+				14B3642D1E27389D00D1FB05 /* scripts */,
+				14B3642F1E27389D00D1FB05 /* source */,
+			);
+			path = jacman;
+			sourceTree = "<group>";
+		};
+		14B363FA1E27389D00D1FB05 /* languages */ = {
+			isa = PBXGroup;
+			children = (
+				14B363FB1E27389D00D1FB05 /* default.yml */,
+				14B363FC1E27389D00D1FB05 /* zh-CN.yml */,
+				14B363FD1E27389D00D1FB05 /* zh-TW.yml */,
+			);
+			path = languages;
+			sourceTree = "<group>";
+		};
+		14B363FE1E27389D00D1FB05 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				14B363FF1E27389D00D1FB05 /* _partial */,
+				14B364191E27389D00D1FB05 /* _widget */,
+				14B364231E27389D00D1FB05 /* archive.ejs */,
+				14B364241E27389D00D1FB05 /* category.ejs */,
+				14B364251E27389D00D1FB05 /* index.ejs */,
+				14B364261E27389D00D1FB05 /* layout.ejs */,
+				14B364271E27389D00D1FB05 /* page.ejs */,
+				14B364281E27389D00D1FB05 /* post.ejs */,
+				14B364291E27389D00D1FB05 /* tag.ejs */,
+			);
+			path = layout;
+			sourceTree = "<group>";
+		};
+		14B363FF1E27389D00D1FB05 /* _partial */ = {
+			isa = PBXGroup;
+			children = (
+				14B364001E27389D00D1FB05 /* after_footer.ejs */,
+				14B364011E27389D00D1FB05 /* analytics.ejs */,
+				14B364021E27389D00D1FB05 /* archive.ejs */,
+				14B364031E27389D00D1FB05 /* article.ejs */,
+				14B364041E27389D00D1FB05 /* article_row.ejs */,
+				14B364051E27389D00D1FB05 /* categories.ejs */,
+				14B364061E27389D00D1FB05 /* footer.ejs */,
+				14B364071E27389D00D1FB05 /* head.ejs */,
+				14B364081E27389D00D1FB05 /* header.ejs */,
+				14B364091E27389D00D1FB05 /* mathjax.ejs */,
+				14B3640A1E27389D00D1FB05 /* pagination.ejs */,
+				14B3640B1E27389D00D1FB05 /* post */,
+				14B364141E27389D00D1FB05 /* search.ejs */,
+				14B364151E27389D00D1FB05 /* sidebar.ejs */,
+				14B364161E27389D00D1FB05 /* tags.ejs */,
+				14B364171E27389D00D1FB05 /* tinysou_search.ejs */,
+				14B364181E27389D00D1FB05 /* totop.ejs */,
+			);
+			path = _partial;
+			sourceTree = "<group>";
+		};
+		14B3640B1E27389D00D1FB05 /* post */ = {
+			isa = PBXGroup;
+			children = (
+				14B3640C1E27389D00D1FB05 /* article.ejs */,
+				14B3640D1E27389D00D1FB05 /* catetags.ejs */,
+				14B3640E1E27389D00D1FB05 /* comment.ejs */,
+				14B3640F1E27389D00D1FB05 /* footer.ejs */,
+				14B364101E27389D00D1FB05 /* gallery.ejs */,
+				14B364111E27389D00D1FB05 /* header.ejs */,
+				14B364121E27389D00D1FB05 /* jiathis.ejs */,
+				14B364131E27389D00D1FB05 /* pagination.ejs */,
+			);
+			path = post;
+			sourceTree = "<group>";
+		};
+		14B364191E27389D00D1FB05 /* _widget */ = {
+			isa = PBXGroup;
+			children = (
+				14B3641A1E27389D00D1FB05 /* archive.ejs */,
+				14B3641B1E27389D00D1FB05 /* category.ejs */,
+				14B3641C1E27389D00D1FB05 /* douban.ejs */,
+				14B3641D1E27389D00D1FB05 /* github-card.ejs */,
+				14B3641E1E27389D00D1FB05 /* links.ejs */,
+				14B3641F1E27389D00D1FB05 /* rss.ejs */,
+				14B364201E27389D00D1FB05 /* tag.ejs */,
+				14B364211E27389D00D1FB05 /* tagcloud.ejs */,
+				14B364221E27389D00D1FB05 /* weibo.ejs */,
+			);
+			path = _widget;
+			sourceTree = "<group>";
+		};
+		14B3642D1E27389D00D1FB05 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				14B3642E1E27389D00D1FB05 /* fancybox.js */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		14B3642F1E27389D00D1FB05 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				14B364301E27389D00D1FB05 /* css */,
+				14B364431E27389D00D1FB05 /* fancybox */,
+				14B364541E27389D00D1FB05 /* font */,
+				14B364621E27389D00D1FB05 /* img */,
+				14B364711E27389D00D1FB05 /* js */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		14B364301E27389D00D1FB05 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				14B364311E27389D00D1FB05 /* _base */,
+				14B364381E27389D00D1FB05 /* _partial */,
+				14B364421E27389D00D1FB05 /* style.styl */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		14B364311E27389D00D1FB05 /* _base */ = {
+			isa = PBXGroup;
+			children = (
+				14B364321E27389D00D1FB05 /* font.styl */,
+				14B364331E27389D00D1FB05 /* highlight */,
+				14B364361E27389D00D1FB05 /* public.styl */,
+				14B364371E27389D00D1FB05 /* variable.styl */,
+			);
+			path = _base;
+			sourceTree = "<group>";
+		};
+		14B364331E27389D00D1FB05 /* highlight */ = {
+			isa = PBXGroup;
+			children = (
+				14B364341E27389D00D1FB05 /* highlight.styl */,
+				14B364351E27389D00D1FB05 /* theme.styl */,
+			);
+			path = highlight;
+			sourceTree = "<group>";
+		};
+		14B364381E27389D00D1FB05 /* _partial */ = {
+			isa = PBXGroup;
+			children = (
+				14B364391E27389D00D1FB05 /* article.styl */,
+				14B3643A1E27389D00D1FB05 /* aside.styl */,
+				14B3643B1E27389D00D1FB05 /* duoshuo.styl */,
+				14B3643C1E27389D00D1FB05 /* footer.styl */,
+				14B3643D1E27389D00D1FB05 /* gallery.styl */,
+				14B3643E1E27389D00D1FB05 /* header.styl */,
+				14B3643F1E27389D00D1FB05 /* helper.styl */,
+				14B364401E27389D00D1FB05 /* index.styl */,
+				14B364411E27389D00D1FB05 /* totop.styl */,
+			);
+			path = _partial;
+			sourceTree = "<group>";
+		};
+		14B364431E27389D00D1FB05 /* fancybox */ = {
+			isa = PBXGroup;
+			children = (
+				14B364441E27389D00D1FB05 /* blank.gif */,
+				14B364451E27389D00D1FB05 /* fancybox_loading.gif */,
+				14B364461E27389D00D1FB05 /* fancybox_loading@2x.gif */,
+				14B364471E27389D00D1FB05 /* fancybox_overlay.png */,
+				14B364481E27389D00D1FB05 /* fancybox_sprite.png */,
+				14B364491E27389D00D1FB05 /* fancybox_sprite@2x.png */,
+				14B3644A1E27389D00D1FB05 /* helpers */,
+				14B364511E27389D00D1FB05 /* jquery.fancybox.css */,
+				14B364521E27389D00D1FB05 /* jquery.fancybox.js */,
+				14B364531E27389D00D1FB05 /* jquery.fancybox.pack.js */,
+			);
+			path = fancybox;
+			sourceTree = "<group>";
+		};
+		14B3644A1E27389D00D1FB05 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				14B3644B1E27389D00D1FB05 /* fancybox_buttons.png */,
+				14B3644C1E27389D00D1FB05 /* jquery.fancybox-buttons.css */,
+				14B3644D1E27389D00D1FB05 /* jquery.fancybox-buttons.js */,
+				14B3644E1E27389D00D1FB05 /* jquery.fancybox-media.js */,
+				14B3644F1E27389D00D1FB05 /* jquery.fancybox-thumbs.css */,
+				14B364501E27389D00D1FB05 /* jquery.fancybox-thumbs.js */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		14B364541E27389D00D1FB05 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				14B364551E27389D00D1FB05 /* coveredbyyourgrace-webfont.eot */,
+				14B364561E27389D00D1FB05 /* coveredbyyourgrace-webfont.svg */,
+				14B364571E27389D00D1FB05 /* coveredbyyourgrace-webfont.ttf */,
+				14B364581E27389D00D1FB05 /* coveredbyyourgrace-webfont.woff */,
+				14B364591E27389D00D1FB05 /* fontawesome-webfont.eot */,
+				14B3645A1E27389D00D1FB05 /* fontawesome-webfont.svg */,
+				14B3645B1E27389D00D1FB05 /* fontawesome-webfont.ttf */,
+				14B3645C1E27389D00D1FB05 /* fontawesome-webfont.woff */,
+				14B3645D1E27389D00D1FB05 /* FontAwesome.otf */,
+				14B3645E1E27389D00D1FB05 /* fontdiao.eot */,
+				14B3645F1E27389D00D1FB05 /* fontdiao.svg */,
+				14B364601E27389D00D1FB05 /* fontdiao.ttf */,
+				14B364611E27389D00D1FB05 /* fontdiao.woff */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
+		14B364621E27389D00D1FB05 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				14B364631E27389D00D1FB05 /* author.jpg */,
+				14B364641E27389D00D1FB05 /* banner.jpg */,
+				14B364651E27389D00D1FB05 /* cc-by-nc-nd.svg */,
+				14B364661E27389D00D1FB05 /* cc-by-nc-sa.svg */,
+				14B364671E27389D00D1FB05 /* cc-by-nc.svg */,
+				14B364681E27389D00D1FB05 /* cc-by-nd.svg */,
+				14B364691E27389D00D1FB05 /* cc-by-sa.svg */,
+				14B3646A1E27389D00D1FB05 /* cc-by.svg */,
+				14B3646B1E27389D00D1FB05 /* cc-zero.svg */,
+				14B3646C1E27389D00D1FB05 /* favicon.ico */,
+				14B3646D1E27389D00D1FB05 /* jacman.jpg */,
+				14B3646E1E27389D00D1FB05 /* logo.png */,
+				14B3646F1E27389D00D1FB05 /* logo.svg */,
+				14B364701E27389D00D1FB05 /* scrollup.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		14B364711E27389D00D1FB05 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				14B364721E27389D00D1FB05 /* gallery.js */,
+				14B364731E27389D00D1FB05 /* jquery-2.0.3.min.js */,
+				14B364741E27389D00D1FB05 /* jquery.imagesloaded.min.js */,
+				14B364751E27389D00D1FB05 /* jquery.qrcode-0.12.0.min.js */,
+				14B364761E27389D00D1FB05 /* totop.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		14B364771E27389D00D1FB05 /* landscape */ = {
+			isa = PBXGroup;
+			children = (
+				14B364781E27389D00D1FB05 /* .gitignore */,
+				14B364791E27389D00D1FB05 /* _config.yml */,
+				14B3647A1E27389D00D1FB05 /* Gruntfile.js */,
+				14B3647B1E27389D00D1FB05 /* languages */,
+				14B364831E27389D00D1FB05 /* layout */,
+				14B364A31E27389D00D1FB05 /* LICENSE */,
+				14B364A41E27389D00D1FB05 /* package.json */,
+				14B364A51E27389D00D1FB05 /* README.md */,
+				14B364A61E27389D00D1FB05 /* scripts */,
+				14B364A81E27389D00D1FB05 /* source */,
+			);
+			path = landscape;
+			sourceTree = "<group>";
+		};
+		14B3647B1E27389D00D1FB05 /* languages */ = {
+			isa = PBXGroup;
+			children = (
+				14B3647C1E27389D00D1FB05 /* default.yml */,
+				14B3647D1E27389D00D1FB05 /* fr.yml */,
+				14B3647E1E27389D00D1FB05 /* nl.yml */,
+				14B3647F1E27389D00D1FB05 /* no.yml */,
+				14B364801E27389D00D1FB05 /* ru.yml */,
+				14B364811E27389D00D1FB05 /* zh-CN.yml */,
+				14B364821E27389D00D1FB05 /* zh-TW.yml */,
+			);
+			path = languages;
+			sourceTree = "<group>";
+		};
+		14B364831E27389D00D1FB05 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				14B364841E27389D00D1FB05 /* _partial */,
+				14B364961E27389D00D1FB05 /* _widget */,
+				14B3649C1E27389D00D1FB05 /* archive.ejs */,
+				14B3649D1E27389D00D1FB05 /* category.ejs */,
+				14B3649E1E27389D00D1FB05 /* index.ejs */,
+				14B3649F1E27389D00D1FB05 /* layout.ejs */,
+				14B364A01E27389D00D1FB05 /* page.ejs */,
+				14B364A11E27389D00D1FB05 /* post.ejs */,
+				14B364A21E27389D00D1FB05 /* tag.ejs */,
+			);
+			path = layout;
+			sourceTree = "<group>";
+		};
+		14B364841E27389D00D1FB05 /* _partial */ = {
+			isa = PBXGroup;
+			children = (
+				14B364851E27389D00D1FB05 /* after-footer.ejs */,
+				14B364861E27389D00D1FB05 /* archive-post.ejs */,
+				14B364871E27389D00D1FB05 /* archive.ejs */,
+				14B364881E27389D00D1FB05 /* article.ejs */,
+				14B364891E27389D00D1FB05 /* footer.ejs */,
+				14B3648A1E27389D00D1FB05 /* google-analytics.ejs */,
+				14B3648B1E27389D00D1FB05 /* head.ejs */,
+				14B3648C1E27389D00D1FB05 /* header.ejs */,
+				14B3648D1E27389D00D1FB05 /* mobile-nav.ejs */,
+				14B3648E1E27389D00D1FB05 /* post */,
+				14B364951E27389D00D1FB05 /* sidebar.ejs */,
+			);
+			path = _partial;
+			sourceTree = "<group>";
+		};
+		14B3648E1E27389D00D1FB05 /* post */ = {
+			isa = PBXGroup;
+			children = (
+				14B3648F1E27389D00D1FB05 /* category.ejs */,
+				14B364901E27389D00D1FB05 /* date.ejs */,
+				14B364911E27389D00D1FB05 /* gallery.ejs */,
+				14B364921E27389D00D1FB05 /* nav.ejs */,
+				14B364931E27389D00D1FB05 /* tag.ejs */,
+				14B364941E27389D00D1FB05 /* title.ejs */,
+			);
+			path = post;
+			sourceTree = "<group>";
+		};
+		14B364961E27389D00D1FB05 /* _widget */ = {
+			isa = PBXGroup;
+			children = (
+				14B364971E27389D00D1FB05 /* archive.ejs */,
+				14B364981E27389D00D1FB05 /* category.ejs */,
+				14B364991E27389D00D1FB05 /* recent_posts.ejs */,
+				14B3649A1E27389D00D1FB05 /* tag.ejs */,
+				14B3649B1E27389D00D1FB05 /* tagcloud.ejs */,
+			);
+			path = _widget;
+			sourceTree = "<group>";
+		};
+		14B364A61E27389D00D1FB05 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				14B364A71E27389D00D1FB05 /* fancybox.js */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		14B364A81E27389D00D1FB05 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				14B364A91E27389D00D1FB05 /* css */,
+				14B364C31E27389D00D1FB05 /* fancybox */,
+				14B364D41E27389D00D1FB05 /* js */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		14B364A91E27389D00D1FB05 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				14B364AA1E27389D00D1FB05 /* _extend.styl */,
+				14B364AB1E27389D00D1FB05 /* _partial */,
+				14B364B61E27389D00D1FB05 /* _util */,
+				14B364B91E27389D00D1FB05 /* _variables.styl */,
+				14B364BA1E27389D00D1FB05 /* fonts */,
+				14B364C01E27389D00D1FB05 /* images */,
+				14B364C21E27389D00D1FB05 /* style.styl */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		14B364AB1E27389D00D1FB05 /* _partial */ = {
+			isa = PBXGroup;
+			children = (
+				14B364AC1E27389D00D1FB05 /* archive.styl */,
+				14B364AD1E27389D00D1FB05 /* article.styl */,
+				14B364AE1E27389D00D1FB05 /* comment.styl */,
+				14B364AF1E27389D00D1FB05 /* footer.styl */,
+				14B364B01E27389D00D1FB05 /* header.styl */,
+				14B364B11E27389D00D1FB05 /* highlight.styl */,
+				14B364B21E27389D00D1FB05 /* mobile.styl */,
+				14B364B31E27389D00D1FB05 /* sidebar-aside.styl */,
+				14B364B41E27389D00D1FB05 /* sidebar-bottom.styl */,
+				14B364B51E27389D00D1FB05 /* sidebar.styl */,
+			);
+			path = _partial;
+			sourceTree = "<group>";
+		};
+		14B364B61E27389D00D1FB05 /* _util */ = {
+			isa = PBXGroup;
+			children = (
+				14B364B71E27389D00D1FB05 /* grid.styl */,
+				14B364B81E27389D00D1FB05 /* mixin.styl */,
+			);
+			path = _util;
+			sourceTree = "<group>";
+		};
+		14B364BA1E27389D00D1FB05 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				14B364BB1E27389D00D1FB05 /* fontawesome-webfont.eot */,
+				14B364BC1E27389D00D1FB05 /* fontawesome-webfont.svg */,
+				14B364BD1E27389D00D1FB05 /* fontawesome-webfont.ttf */,
+				14B364BE1E27389D00D1FB05 /* fontawesome-webfont.woff */,
+				14B364BF1E27389D00D1FB05 /* FontAwesome.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		14B364C01E27389D00D1FB05 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				14B364C11E27389D00D1FB05 /* banner.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		14B364C31E27389D00D1FB05 /* fancybox */ = {
+			isa = PBXGroup;
+			children = (
+				14B364C41E27389D00D1FB05 /* blank.gif */,
+				14B364C51E27389D00D1FB05 /* fancybox_loading.gif */,
+				14B364C61E27389D00D1FB05 /* fancybox_loading@2x.gif */,
+				14B364C71E27389D00D1FB05 /* fancybox_overlay.png */,
+				14B364C81E27389D00D1FB05 /* fancybox_sprite.png */,
+				14B364C91E27389D00D1FB05 /* fancybox_sprite@2x.png */,
+				14B364CA1E27389D00D1FB05 /* helpers */,
+				14B364D11E27389D00D1FB05 /* jquery.fancybox.css */,
+				14B364D21E27389D00D1FB05 /* jquery.fancybox.js */,
+				14B364D31E27389D00D1FB05 /* jquery.fancybox.pack.js */,
+			);
+			path = fancybox;
+			sourceTree = "<group>";
+		};
+		14B364CA1E27389D00D1FB05 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				14B364CB1E27389D00D1FB05 /* fancybox_buttons.png */,
+				14B364CC1E27389D00D1FB05 /* jquery.fancybox-buttons.css */,
+				14B364CD1E27389D00D1FB05 /* jquery.fancybox-buttons.js */,
+				14B364CE1E27389D00D1FB05 /* jquery.fancybox-media.js */,
+				14B364CF1E27389D00D1FB05 /* jquery.fancybox-thumbs.css */,
+				14B364D01E27389D00D1FB05 /* jquery.fancybox-thumbs.js */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		14B364D41E27389D00D1FB05 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				14B364D51E27389D00D1FB05 /* script.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		14B364D61E2738FC00D1FB05 /* 主题 */ = {
+			isa = PBXGroup;
+			children = (
+				14B363F91E27389D00D1FB05 /* _config.yml */,
+			);
+			name = "主题";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
