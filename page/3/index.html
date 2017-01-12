@@ -91,35 +91,38 @@
     <div class="article-content">
         
         <p><a href="https://github.com/schwa/Swift-Community-Best-Practices" target="_blank" rel="external">英文</a></p>
-<h3 id="黄金法则"><a href="#黄金法则" class="headerlink" title="黄金法则"></a>黄金法则</h3><ul>
+<h2 id="黄金法则"><a href="#黄金法则" class="headerlink" title="黄金法则"></a>黄金法则</h2><ul>
 <li>Apple 通常是对的。应紧随苹果所推荐的或他的 Demo 中所展示的方式。您应该尽可能地遵守 Apple 在 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 一书中所定义的代码风格。但我们还是可以看到他们的示例代码中有不符合这些规则的地方，毕竟 Apple 是一家大公司嘛。</li>
 <li>不要仅仅为了减少字符的键入数量而使用模棱两可的简短命名，较长的命名都可以依赖自动完成、自我暗示、复制粘贴来减低键入的难度。命名的详细程度往往对代码维护者很有帮助。但过于冗长的命名却会绕过Swift的主要特性之一: 类型推导,所以命名的原则应该是简洁明了。</li>
 </ul>
-<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><p>按照 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 所推荐的命名法则，类型名称应该使用<a href="http://www.wikiwand.com/en/Studly_caps" target="_blank" rel="external">首字母大写的驼峰命名法</a> (例如: “VehicleController”)。</p>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><p>按照 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 所推荐的命名法则，类型名称应该使用[首字母大写的驼峰命名法][uppercamelcaseURL] (例如: “VehicleController”)。</p>
 <p>变量与常量应该使用首字母小写的驼峰命名法(例如: “ vehicleName “ )。</p>
 <p>推荐使用 Swift 模块来定义代码的命名空间，而非在 Swift 代码上使用 Objective-C 样式的类前缀(除非接口要与 Objective-C 交互)。</p>
 <p>不推荐使用任何形式的<a href="http://www.wikiwand.com/en/Hungarian_notation" target="_blank" rel="external">匈牙利命名法</a>（比如：k 代表常量，m 代表方法）,取代代之我们应该使用短而简洁的名字并使用 Xcode 的类型快速帮助 (⌥ + 左击)。同样我们也不要使用类似 <code>SNAKE_CASE</code> 这样的名字。</p>
 <p>这些法则之上，唯一例外的情况就是枚举值了，枚举值在这里应该首字母大写(这是 Apple 的 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 中的规范)：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Planet</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">Mercury</span>, <span class="type">Venus</span>, <span class="type">Earth</span>, <span class="type">Mars</span>, <span class="type">Jupiter</span>, <span class="type">Saturn</span>, <span class="type">Uranus</span>, <span class="type">Nepture</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>有必要的话命名不要缩写，实际上在 Xcode 的”文本自动补全”功能下你可以轻而易举地键入 类似 <code>ViewController</code> 的长命名。极为常见的缩写，例如: URL， 是很好的。缩写应该是全部大写 ( “URL” )或者酌情全部小写( “url” )。URL 的类型和变量命名推荐的规则： 如果 url 是一个类型，它应该被大写，如果是一个变量，那么应该小写。</p>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>不应该使用注释来禁用代码。被注释掉的代码会污染你的源代码。如果你当前想要删除一段代码，但将来又可能会用到，推荐你依赖 git 或你的 bug 追踪系统来管理。</p>
+<ol>
+<li>有必要的话命名不要缩写<br>实际上在 Xcode 的”文本自动补全”功能下你可以轻而易举地键入 类似 <code>ViewController</code> 的长命名。</li>
+<li>极为常见的缩写<br>例如: <code>URL</code> 缩写应该是全部大写 ( “URL” )或者酌情全部小写( “url” )。<blockquote>
+<p>URL 的类型和变量命名推荐的规则： 如果 url 是一个类型，它应该被大写，如果是一个变量，那么应该小写。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>不应该使用注释来禁用代码,被注释掉的代码会污染你的源代码。<br>如果你当前想要删除一段代码，但将来又可能会用到，推荐你依赖 git 或你的 bug 追踪系统来管理。</p>
 <p>(TODO: 追加一个关于文档注释的小节，使用 nshipster 的链接)</p>
-<h3 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h3><p>如果可能的话，使用 Swift 的类型推导，以避免冗余的类型信息。例如：</p>
-<p>推荐：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currentLocation = <span class="type">Location</span>()</div></pre></td></tr></table></figure>
+<h3 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h3><p>如果可能的话，使用 Swift 的类型推导，以避免冗余的类型信息。例如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currentLocation = <span class="type">Location</span>()</div></pre></td></tr></table></figure></p>
 <p>而非：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currentLocation: <span class="type">Location</span> = <span class="type">Location</span>()</div></pre></td></tr></table></figure>
-<h3 id="内省"><a href="#内省" class="headerlink" title="内省"></a>内省</h3><p>让编译器自动推断所有的情况，这是可以做到的。在一些领域 self 应该被显式地使用，包括在 init 中设置参数，或者 <code>non-escaping</code>闭包。例如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Example</span></span>&#123;</div><div class="line"> 	  <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">	   <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line"> 	      <span class="keyword">self</span>.name = name</div><div class="line"> 	  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="内省"><a href="#内省" class="headerlink" title="内省"></a>内省</h3><p>让编译器自动推断所有的情况，这是可以做到的。在一些领域 <code>self</code> 应该被显式地使用，包括在 init 中设置参数，或者 <code>non-escaping</code>闭包。<br>例如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Example</span></span>&#123;</div><div class="line"> 	  <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">	   <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line"> 	      <span class="keyword">self</span>.name = name</div><div class="line"> 	  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="捕获列表的类型推导"><a href="#捕获列表的类型推导" class="headerlink" title="捕获列表的类型推导"></a>捕获列表的类型推导</h3><p>在一个捕获列表( capture list )中指定参数类型会导致代码冗余。如果需要的话，仅指定类型即可。  </p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> people = [</div><div class="line">    (<span class="string">"Mary"</span>, <span class="number">42</span>),</div><div class="line">    (<span class="string">"Susan"</span>, <span class="number">27</span>),</div><div class="line">    (<span class="string">"Charlie"</span>, <span class="number">18</span>),</div><div class="line">]	</div><div class="line"></div><div class="line"><span class="keyword">let</span> strings = people.<span class="built_in">map</span>() &#123;</div><div class="line">    (name: <span class="type">String</span>, age: <span class="type">Int</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> <span class="string">"\(name) is \(age) years old"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果编译器可以推导出来的话，完全可以把类型删掉：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> strings = people.<span class="built_in">map</span>() &#123;</div><div class="line">    (name, age) <span class="keyword">in</span> </div><div class="line">    <span class="keyword">return</span> <span class="string">"\(name) is \(age) years old"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果编译器可以推导出来的话，完全可以把类型删掉：<br><code>(name: String, age: Int) -&gt; String</code><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> strings = people.<span class="built_in">map</span>() &#123;</div><div class="line">    (name, age) <span class="keyword">in</span> </div><div class="line">    <span class="keyword">return</span> <span class="string">"\(name) is \(age) years old"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>使用编号的参数名 (“$0”) 进一步降低冗长，往往能彻底消除捕获列表的代码冗余。在闭包中当参数名没有附带任何更多信息时仅使用编号形式即可( 如非常简单的映射和过滤器 )。</p>
-<p>Apple 能够并且将会改变闭包的参数类型，通过他们的 Objective-C 框架的 Swift 变种提供出来。例如，<code>optionals</code> 被删除或更改为 <code>auto-unwrapping</code> 等。故意 under-specifying 可选并依赖 Swift 来推导类型，可以减少在这些情况下代码被破译的风险。</p>
+<p>Apple 能够并且将会改变闭包的参数类型，通过他们的 Objective-C 框架的 Swift 变种提供出来。<br>例如，<code>optionals</code> 被删除或更改为 <code>auto-unwrapping</code> 等。故意 under-specifying 可选并依赖 Swift 来推导类型，可以减少在这些情况下代码被破译的风险。</p>
 <p>你应该避免指定返回类型，例如这个捕获列表( capture list )就是完全多余的:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dispatch_async(queue) &#123;</div><div class="line">    ()-&gt;<span class="type">Void</span> <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(<span class="string">"Fired."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>(以上内容也可以参考:<a href="http://www.russbishop.net/swift-capture-lists" target="_blank" rel="external">这里</a>)</p>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>类型定义中使用的常量应当被申明成静态类型。例如:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PhysicsModel</span> </span>&#123;</div><div class="line">   <span class="keyword">static</span> <span class="keyword">var</span> speedOfLightInAVacuum = <span class="number">299_792_458</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Spaceship</span> </span>&#123;</div><div class="line">  		 <span class="keyword">static</span> <span class="keyword">let</span> topSpeed = <span class="type">PhysicsModel</span>.speedOfLightInAVacuum</div><div class="line"> 	     <span class="keyword">var</span> speed: <span class="type">Double</span></div><div class="line">  		 <span class="function"><span class="keyword">func</span> <span class="title">fullSpeedAhead</span><span class="params">()</span></span> &#123;</div><div class="line">      		 speed = <span class="type">Spaceship</span>.topSpeed</div><div class="line">   	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>将常量标示为 static ，允许它们可以被无类型的实例引用。</p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>类型定义中使用的常量应当被申明成静态类型。例如:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PhysicsModel</span> </span>&#123;</div><div class="line">   <span class="keyword">static</span> <span class="keyword">var</span> speedOfLightInAVacuum = <span class="number">299_792_458</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Spaceship</span> </span>&#123;</div><div class="line">  		 <span class="keyword">static</span> <span class="keyword">let</span> topSpeed = <span class="type">PhysicsModel</span>.speedOfLightInAVacuum</div><div class="line"> 	     <span class="keyword">var</span> speed: <span class="type">Double</span></div><div class="line">  		 <span class="function"><span class="keyword">func</span> <span class="title">fullSpeedAhead</span><span class="params">()</span></span> &#123;</div><div class="line">      		 speed = <span class="type">Spaceship</span>.topSpeed</div><div class="line">   	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>将常量标示为 <code>static</code> ，允许它们可以被无类型的实例引用。</p>
 <p>一般应该避免生成全局范围的常量，单例除外。</p>
 
         
@@ -281,7 +284,7 @@ $ vim sshd_config
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/搭建/">搭建</a><a href="/tags/gitLab/">gitLab</a>
+  <span></span> <a href="/tags/gitLab/">gitLab</a><a href="/tags/搭建/">搭建</a>
   </div>
 
 </div>
@@ -1039,6 +1042,10 @@ sh /etc/getIP.sh
 			
 		
 			
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
 			
 		
@@ -1047,7 +1054,7 @@ sh /etc/getIP.sh
 			
 		
 			
-				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+				<li><a href="/tags/管理/" title="管理">管理<sup>2</sup></a></li>
 			
 		
 			
@@ -1055,11 +1062,7 @@ sh /etc/getIP.sh
 			
 		
 			
-				<li><a href="/tags/管理/" title="管理">管理<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/指南/" title="指南">指南<sup>1</sup></a></li>
+				<li><a href="/tags/加密/" title="加密">加密<sup>1</sup></a></li>
 			
 		
 			
@@ -1071,7 +1074,7 @@ sh /etc/getIP.sh
 			
 		
 			
-				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
+				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
 			
 		
 			
