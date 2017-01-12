@@ -12,7 +12,6 @@
 			buildConfigurationList = 149F33491E0A74B000AAC556 /* Build configuration list for PBXAggregateTarget "HexoDeploy" */;
 			buildPhases = (
 				149F334C1E0A74BD00AAC556 /* 发布 */,
-				149F334D1E0A74E200AAC556 /* server调试 */,
 			);
 			dependencies = (
 			);
@@ -51,7 +50,6 @@
 		149F335C1E0A767600AAC556 /* 2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing.markdown"; sourceTree = "<group>"; };
 		149F335D1E0A767600AAC556 /* 2015-01-06-xmppjian-dan-yan-jiu-zhuan.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-01-06-xmppjian-dan-yan-jiu-zhuan.md"; sourceTree = "<group>"; };
 		149F335E1E0A767600AAC556 /* 2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md"; sourceTree = "<group>"; };
-		149F335F1E0A767600AAC556 /* 2015-01-20-iapkai-fa-bu-zou.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-01-20-iapkai-fa-bu-zou.md"; sourceTree = "<group>"; };
 		149F33601E0A767600AAC556 /* 2015-01-21-rubygemsxue-xi.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-01-21-rubygemsxue-xi.md"; sourceTree = "<group>"; };
 		149F33611E0A767600AAC556 /* 2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md"; sourceTree = "<group>"; };
 		149F33621E0A767600AAC556 /* 2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa.md"; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 		149F33661E0A767600AAC556 /* 2015-09-27-macan-zhuang-gitlabfu-wu-qi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-09-27-macan-zhuang-gitlabfu-wu-qi.markdown"; sourceTree = "<group>"; };
 		149F33671E0A767600AAC556 /* 2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown"; sourceTree = "<group>"; };
 		149F33681E0A767600AAC556 /* 2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku.markdown"; sourceTree = "<group>"; };
-		149F33691E0A767600AAC556 /* 2015-10-06-calabash[ */ = {isa = PBXFileReference; lastKnownFileType = text; path = "2015-10-06-calabash["; sourceTree = "<group>"; };
 		149F336A1E0A767600AAC556 /* 2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown"; sourceTree = "<group>"; };
 		149F336B1E0A767600AAC556 /* 2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd.markdown"; sourceTree = "<group>"; };
 		149F336C1E0A767600AAC556 /* 2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg.markdown"; sourceTree = "<group>"; };
@@ -75,7 +72,7 @@
 		149F33761E0A767600AAC556 /* 2016-01-07-gtdru-men.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-07-gtdru-men.markdown"; sourceTree = "<group>"; };
 		149F33781E0A767600AAC556 /* hackmd使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "hackmd使用.md"; sourceTree = "<group>"; };
 		149F33791E0A767600AAC556 /* gitbook+Hexo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "gitbook+Hexo.md"; sourceTree = "<group>"; };
-		149F337A1E0A767600AAC556 /* hello-world.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "hello-world.md"; sourceTree = "<group>"; };
+		149F337A1E0A767600AAC556 /* Hexo-hello-world.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Hexo-hello-world.md"; sourceTree = "<group>"; };
 		149F337B1E0A767600AAC556 /* Hexo标签插件.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Hexo标签插件.md"; sourceTree = "<group>"; };
 		149F337C1E0A767600AAC556 /* 微信小程序开发-一.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "微信小程序开发-一.md"; sourceTree = "<group>"; };
 		149F337E1E0A767600AAC556 /* index.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = index.md; sourceTree = "<group>"; };
@@ -173,6 +170,7 @@
 		14B363F31E26399400D1FB05 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown"; sourceTree = "<group>"; };
 		14B363F41E26399400D1FB05 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown"; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
+		84EC55EE1E0D645E004F71A4 /* daoshell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daoshell.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -215,7 +213,7 @@
 				14B363E91E25F9D800D1FB05 /* old */,
 				149F33781E0A767600AAC556 /* hackmd使用.md */,
 				149F33791E0A767600AAC556 /* gitbook+Hexo.md */,
-				149F337A1E0A767600AAC556 /* hello-world.md */,
+				149F337A1E0A767600AAC556 /* Hexo-hello-world.md */,
 				149F337B1E0A767600AAC556 /* Hexo标签插件.md */,
 				149F337C1E0A767600AAC556 /* 微信小程序开发-一.md */,
 				843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */,
@@ -256,6 +254,7 @@
 				149F338C1E0A767600AAC556 /* code_bg.png */,
 				149F338D1E0A767600AAC556 /* codesnippet.jpg */,
 				149F338E1E0A767600AAC556 /* ContentHuggingPriority.png */,
+				84EC55EE1E0D645E004F71A4 /* daoshell.png */,
 				149F338F1E0A767600AAC556 /* dotted-border.png */,
 				149F33901E0A767600AAC556 /* driveCar.jpg */,
 				149F33911E0A767600AAC556 /* DynamicTextExample.png */,
@@ -357,7 +356,6 @@
 				149F335C1E0A767600AAC556 /* 2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing.markdown */,
 				149F335D1E0A767600AAC556 /* 2015-01-06-xmppjian-dan-yan-jiu-zhuan.md */,
 				149F335E1E0A767600AAC556 /* 2015-01-19-yong-gitjin-xing-xie-tong-kai-fa.md */,
-				149F335F1E0A767600AAC556 /* 2015-01-20-iapkai-fa-bu-zou.md */,
 				149F33601E0A767600AAC556 /* 2015-01-21-rubygemsxue-xi.md */,
 				149F33611E0A767600AAC556 /* 2015-08-11-ru-he-shi-yong-gitbookxie-zuo-octopresstong-shi-wan-cheng-bo-ke-he-shu-ji.md */,
 				149F33621E0A767600AAC556 /* 2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa.md */,
@@ -367,7 +365,6 @@
 				149F33661E0A767600AAC556 /* 2015-09-27-macan-zhuang-gitlabfu-wu-qi.markdown */,
 				149F33671E0A767600AAC556 /* 2015-09-29-zhuan-swiftzui-jia-shi-jian.markdown */,
 				149F33681E0A767600AAC556 /* 2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku.markdown */,
-				149F33691E0A767600AAC556 /* 2015-10-06-calabash[ */,
 				149F336A1E0A767600AAC556 /* 2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan.markdown */,
 				149F336B1E0A767600AAC556 /* 2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd.markdown */,
 				149F336C1E0A767600AAC556 /* 2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg.markdown */,
@@ -444,20 +441,6 @@
 			shellPath = /bin/sh;
 			shellScript = "#修改更新时间\nsh tool/postsUpdated.sh\n#执行发布操作\nhexo g\nhexo d\n";
 		};
-		149F334D1E0A74E200AAC556 /* server调试 */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "server调试";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-		};
 		843D6AD21E0AE20B004A5FB0 /* server调试 */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -470,7 +453,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "hexo g\nhexo s\nopen http:\\/\\/localhost:4000/\n\n\n";
+			shellScript = "hexo g\nhexo s\n#open http:\\/\\/localhost:4000/\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

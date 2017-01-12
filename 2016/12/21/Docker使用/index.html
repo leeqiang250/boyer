@@ -19,7 +19,7 @@
 <meta property="og:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &apos;下载dmg...&apos;curl -o Docker.dmg https://dn-dao-github-mirror.qbox.m">
 <meta property="og:image" content="http://docs.daocloud.io/user/pages/03.faq/08.install-docker-daocloud/DashboardDaoCloudInstall.png">
 <meta property="og:image" content="https://huos3203.github.io/images/daoshell.png">
-<meta property="og:updated_time" content="2016-12-23T09:28:43.000Z">
+<meta property="og:updated_time" content="2017-01-12T03:32:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker安装使用">
 <meta name="twitter:description" content="安装Docker for Mac在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。1234567echo &apos;下载dmg...&apos;curl -o Docker.dmg https://dn-dao-github-mirror.qbox.m">
@@ -98,7 +98,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Docker-加速器镜像源"><span class="toc-number">1.1.</span> <span class="toc-text">配置 Docker 加速器镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.2.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.3.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-命令创建管理容器"><span class="toc-number">2.</span> <span class="toc-text">Docker 命令创建管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取镜像的两种方式"><span class="toc-number">2.1.</span> <span class="toc-text">获取镜像的两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-docker-pull命令"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. docker pull命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-docker-import命令"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. docker import命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过镜像创建容器的几个样例"><span class="toc-number">2.2.</span> <span class="toc-text">通过镜像创建容器的几个样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-run命令"><span class="toc-number">2.2.1.</span> <span class="toc-text">docker run命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从KitematicGUI进入容器环境"><span class="toc-number">2.2.2.</span> <span class="toc-text">从KitematicGUI进入容器环境</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.3.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.4.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-容器"><span class="toc-number">2.5.</span> <span class="toc-text">启动/退出 容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过Dockerfile创建镜像"><span class="toc-number">3.2.1.</span> <span class="toc-text">通过Dockerfile创建镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.2.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.3.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Docker-加速器镜像源"><span class="toc-number">1.1.</span> <span class="toc-text">配置 Docker 加速器镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.2.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.3.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-命令创建管理容器"><span class="toc-number">2.</span> <span class="toc-text">Docker 命令创建管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取镜像的两种方式"><span class="toc-number">2.1.</span> <span class="toc-text">获取镜像的两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-docker-pull命令"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. docker pull命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-docker-import命令"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. docker import命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过镜像创建容器"><span class="toc-number">2.2.</span> <span class="toc-text">通过镜像创建容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-run-images命令"><span class="toc-number">2.2.1.</span> <span class="toc-text">docker run images命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从KitematicGUI进入容器环境"><span class="toc-number">2.2.2.</span> <span class="toc-text">从KitematicGUI进入容器环境</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.3.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.4.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-移除容器"><span class="toc-number">2.5.</span> <span class="toc-text">启动/退出/移除容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过Dockerfile创建镜像"><span class="toc-number">3.2.1.</span> <span class="toc-text">通过Dockerfile创建镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.2.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.3.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
@@ -128,15 +128,15 @@
 <h3 id="获取镜像的两种方式"><a href="#获取镜像的两种方式" class="headerlink" title="获取镜像的两种方式"></a>获取镜像的两种方式</h3><hr>
 <h4 id="1-docker-pull命令"><a href="#1-docker-pull命令" class="headerlink" title="1. docker pull命令"></a>1. <code>docker pull</code>命令</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker search perfectlysoft/ubuntu</div><div class="line">docker pull perfectlysoft/ubuntu</div></pre></td></tr></table></figure>
 <h4 id="2-docker-import命令"><a href="#2-docker-import命令" class="headerlink" title="2. docker import命令"></a>2. <code>docker import</code>命令</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker import myubuntu.tar.gz</div></pre></td></tr></table></figure>
-<h3 id="通过镜像创建容器的几个样例"><a href="#通过镜像创建容器的几个样例" class="headerlink" title="通过镜像创建容器的几个样例"></a>通过镜像创建容器的几个样例</h3><hr>
-<p>创建一个容器有两种方式：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker create [--name]</div><div class="line">docker run      /<span class="regexp">/立即启动容器</span></div></pre></td></tr></table></figure></p>
-<p>容器终端控制台如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root@ec72dc76502e:/# ls</div><div class="line">app  boot  etc   lib    media  opt   root  sbin  sys  usr</div><div class="line">bin  dev   home  lib64  mnt    proc  run   srv   tmp  var</div></pre></td></tr></table></figure></p>
-<h4 id="docker-run命令"><a href="#docker-run命令" class="headerlink" title="docker run命令"></a><code>docker run</code>命令</h4><ol>
-<li><p>样例1<br>执行<code>run</code>，并将 Ubuntu 的 Shell 作为入口，进入Docker容器环境操作</p>
+<h3 id="通过镜像创建容器"><a href="#通过镜像创建容器" class="headerlink" title="通过镜像创建容器"></a>通过镜像创建容器</h3><hr>
+<p>创建一个容器有两种方式：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker create 镜像名</div><div class="line">docker run   镜像名   /<span class="regexp">/立即启动容器 等价于：create + start 命令组合</span></div></pre></td></tr></table></figure></p>
+<p>进入容器终端控制台如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root@ec72dc76502e:/# ls</div><div class="line">app  boot  etc   lib    media  opt   root  sbin  sys  usr</div><div class="line">bin  dev   home  lib64  mnt    proc  run   srv   tmp  var</div></pre></td></tr></table></figure></p>
+<h4 id="docker-run-images命令"><a href="#docker-run-images命令" class="headerlink" title="docker run images命令"></a><code>docker run images</code>命令</h4><ol>
+<li><p>样例1<br>执行<code>run images</code>，并将 Ubuntu 的 Shell 作为入口，进入Docker容器环境操作</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it <span class="symbol">ubuntu:</span>latest sh -c <span class="string">'/bin/bash'</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>样例2<br>执行<code>docker run</code>命令进入容器环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it -p 8000:8181 perfectlysoft/ubuntu:latest</div></pre></td></tr></table></figure>
+<li><p>样例2<br>执行<code>docker start -i 容器</code>命令进入容器环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker start -i 容器ID/容器名</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="从KitematicGUI进入容器环境"><a href="#从KitematicGUI进入容器环境" class="headerlink" title="从KitematicGUI进入容器环境"></a>从<code>Kitematic</code>GUI进入容器环境</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash -c <span class="string">"clear &amp;&amp; docker exec -it perfectswift sh"</span></div></pre></td></tr></table></figure>
@@ -148,12 +148,14 @@
 <p>在容器运行期间，我们可以通过 <code>docker ps</code> 命令看到所有当前正在运行的容器。<br>添加-a参数可以看到所有创建的容器：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure></p>
 <h3 id="容器ID标识"><a href="#容器ID标识" class="headerlink" title="容器ID标识"></a>容器ID标识</h3><hr>
 <p>每个容器都有一个唯一的 ID 标识，通过 ID 可以对这个容器进行管理和操作。在创建容器时，我们可以通过 –name 参数指定一个容器名称，如果没有指定系统将会分配一个，就像这里的「trusting_morse」。</p>
-<h3 id="启动-退出-容器"><a href="#启动-退出-容器" class="headerlink" title="启动/退出 容器"></a>启动/退出 容器</h3><hr>
-<p>启动：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker start -i trusting_morse</div></pre></td></tr></table></figure></p>
+<h3 id="启动-退出-移除容器"><a href="#启动-退出-移除容器" class="headerlink" title="启动/退出/移除容器"></a>启动/退出/移除容器</h3><hr>
+<p>启动：<code>start</code><br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker start -i trusting_morse</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注意：每次执行 docker run 命令都会创建新的容器，建议一次创建后，使用 docker start/stop 来启动和停用容器。</p>
 </blockquote>
 <p>退出：<br>按 <code>Ctrl+D</code> 退出</p>
+<p>移除：<code>rm</code>ID/name<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rm [CONTAINER ID/NAMES]</div></pre></td></tr></table></figure></p>
+<p>重命名：<code>rename</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rename 容器ID newName</div></pre></td></tr></table></figure></p>
 <h2 id="创建管理镜像"><a href="#创建管理镜像" class="headerlink" title="创建管理镜像"></a>创建管理镜像</h2><hr>
 <p>Docker 强大的威力在于可以把自己开发的应用随同各种依赖环境一起打包、分发、运行。要创建一个新的 Docker 镜像，通常基于一个已有的 Docker 镜像来创建。<br>Docker 提供了两种方式来创建镜像：</p>
 <ol>
@@ -214,8 +216,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x73;&#111;&#109;&#x65;&#45;&#111;&#x6e;&#x65;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;">&#x73;&#111;&#109;&#x65;&#45;&#111;&#x6e;&#x65;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#115;&#x6f;&#109;&#101;&#x2d;&#111;&#x6e;&#101;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#x63;&#111;&#x6d;">&#115;&#x6f;&#109;&#101;&#x2d;&#111;&#x6e;&#101;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#x63;&#111;&#x6d;</a></td>
+<td style="text-align:right">Author <a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#115;&#111;&#x6d;&#101;&#x2d;&#x6f;&#x6e;&#101;&#64;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#109;">&#115;&#111;&#x6d;&#101;&#x2d;&#x6f;&#x6e;&#101;&#64;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#109;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x73;&#111;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#x40;&#x65;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x73;&#111;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#x40;&#x65;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -269,6 +271,16 @@
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/docker/">docker</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/搭建/">搭建</a><a href="/tags/语法/">语法</a>
+  </div>
 
 </div>
 
@@ -343,7 +355,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Docker-加速器镜像源"><span class="toc-number">1.1.</span> <span class="toc-text">配置 Docker 加速器镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.2.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.3.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-命令创建管理容器"><span class="toc-number">2.</span> <span class="toc-text">Docker 命令创建管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取镜像的两种方式"><span class="toc-number">2.1.</span> <span class="toc-text">获取镜像的两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-docker-pull命令"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. docker pull命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-docker-import命令"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. docker import命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过镜像创建容器的几个样例"><span class="toc-number">2.2.</span> <span class="toc-text">通过镜像创建容器的几个样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-run命令"><span class="toc-number">2.2.1.</span> <span class="toc-text">docker run命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从KitematicGUI进入容器环境"><span class="toc-number">2.2.2.</span> <span class="toc-text">从KitematicGUI进入容器环境</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.3.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.4.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-容器"><span class="toc-number">2.5.</span> <span class="toc-text">启动/退出 容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过Dockerfile创建镜像"><span class="toc-number">3.2.1.</span> <span class="toc-text">通过Dockerfile创建镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.2.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.3.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">安装Docker for Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Docker-加速器镜像源"><span class="toc-number">1.1.</span> <span class="toc-text">配置 Docker 加速器镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主机监控程序加速器"><span class="toc-number">1.2.</span> <span class="toc-text">安装主机监控程序加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从Docker-Hub-仓库中获取一个镜像"><span class="toc-number">1.3.</span> <span class="toc-text">从Docker Hub 仓库中获取一个镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-命令创建管理容器"><span class="toc-number">2.</span> <span class="toc-text">Docker 命令创建管理容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取镜像的两种方式"><span class="toc-number">2.1.</span> <span class="toc-text">获取镜像的两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-docker-pull命令"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. docker pull命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-docker-import命令"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. docker import命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过镜像创建容器"><span class="toc-number">2.2.</span> <span class="toc-text">通过镜像创建容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-run-images命令"><span class="toc-number">2.2.1.</span> <span class="toc-text">docker run images命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从KitematicGUI进入容器环境"><span class="toc-number">2.2.2.</span> <span class="toc-text">从KitematicGUI进入容器环境</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-查看容器状态"><span class="toc-number">2.3.</span> <span class="toc-text">ps 查看容器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器ID标识"><span class="toc-number">2.4.</span> <span class="toc-text">容器ID标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-退出-移除容器"><span class="toc-number">2.5.</span> <span class="toc-text">启动/退出/移除容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建管理镜像"><span class="toc-number">3.</span> <span class="toc-text">创建管理镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将容器创建为镜像"><span class="toc-number">3.1.</span> <span class="toc-text">将容器创建为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-number">3.2.</span> <span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过Dockerfile创建镜像"><span class="toc-number">3.2.1.</span> <span class="toc-text">通过Dockerfile创建镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Dockerfile"><span class="toc-number">3.2.2.</span> <span class="toc-text">配置Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CMD命令"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">CMD命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ENTRYPOINT命令"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">ENTRYPOINT命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建镜像"><span class="toc-number">3.2.3.</span> <span class="toc-text">创建镜像</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -367,11 +379,11 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+			<li><a href="/categories/CI/" title="CI">CI<sup>4</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/IOS基础/" title="IOS基础">IOS基础<sup>1</sup></a></li>
+			<li><a href="/categories/IOS/" title="IOS">IOS<sup>1</sup></a></li>
 		  
 		
 		  
@@ -379,51 +391,47 @@
 		  
 		
 		  
-			<li><a href="/categories/Swift/" title="Swift">Swift<sup>1</sup></a></li>
+			<li><a href="/categories/Scrum/" title="Scrum">Scrum<sup>2</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/Swift-IOS/" title="Swift,IOS">Swift,IOS<sup>1</sup></a></li>
+			<li><a href="/categories/Swift/" title="Swift">Swift<sup>4</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
+			<li><a href="/categories/Xcode/" title="Xcode">Xcode<sup>4</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/gitBook/" title="gitBook">gitBook<sup>1</sup></a></li>
+			<li><a href="/categories/docker/" title="docker">docker<sup>1</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/instrument/" title="instrument">instrument<sup>1</sup></a></li>
+			<li><a href="/categories/git/" title="git">git<sup>6</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/swift/" title="swift">swift<sup>1</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>10</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/持续集成/" title="持续集成">持续集成<sup>3</sup></a></li>
+			<li><a href="/categories/ruby/" title="ruby">ruby<sup>2</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/效率/" title="效率">效率<sup>1</sup></a></li>
+			<li><a href="/categories/swift/" title="swift">swift<sup>2</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/版本库管理/" title="版本库管理">版本库管理<sup>1</sup></a></li>
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/管理/" title="管理">管理<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/网络/" title="网络">网络<sup>1</sup></a></li>
+			<li><a href="/categories/微信/" title="微信">微信<sup>1</sup></a></li>
 		  
 		
 		  
@@ -438,27 +446,43 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/持续集成/" title="持续集成">持续集成<sup>3</sup></a></li>
+				<li><a href="/tags/语法/" title="语法">语法<sup>7</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/TDD/" title="TDD">TDD<sup>3</sup></a></li>
+				<li><a href="/tags/工具/" title="工具">工具<sup>6</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/BDD/" title="BDD">BDD<sup>3</sup></a></li>
+				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/swift/" title="swift">swift<sup>3</sup></a></li>
+				<li><a href="/tags/搭建/" title="搭建">搭建<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/octopress/" title="octopress">octopress<sup>2</sup></a></li>
+				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/管理/" title="管理">管理<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/screenshot/" title="screenshot">screenshot<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
 			
 		
 			
@@ -470,15 +494,23 @@
 			
 		
 			
-				<li><a href="/tags/混编/" title="混编">混编<sup>2</sup></a></li>
+				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/电量/" title="电量">电量<sup>1</sup></a></li>
+				<li><a href="/tags/经历/" title="经历">经历<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/语法/" title="语法">语法<sup>1</sup></a></li>
+				<li><a href="/tags/安装/" title="安装">安装<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/指南/" title="指南">指南<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
 			
 		
 			
@@ -486,35 +518,11 @@
 			
 		
 			
-				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/变革/" title="变革">变革<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/huos/" title="huos">huos<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/instrument/" title="instrument">instrument<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Zombie/" title="Zombie">Zombie<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/UIDevice/" title="UIDevice">UIDevice<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Invalid-Swift-Support/" title="Invalid Swift Support">Invalid Swift Support<sup>1</sup></a></li>
+				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
 			
 		
 		</ul>
