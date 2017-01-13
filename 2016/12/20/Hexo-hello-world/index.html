@@ -19,7 +19,7 @@ Quick">
 <meta property="og:site_name" content="布衣男儿">
 <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
 Quick">
-<meta property="og:updated_time" content="2017-01-12T08:45:56.000Z">
+<meta property="og:updated_time" content="2017-01-13T06:17:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo Hello World">
 <meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
@@ -98,7 +98,7 @@ Quick">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装插件"><span class="toc-number">1.5.</span> <span class="toc-text">安装插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装同步到git-插件"><span class="toc-number">1.5.1.</span> <span class="toc-text">安装同步到git 插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装生成RSS支持插件"><span class="toc-number">1.5.2.</span> <span class="toc-text">安装生成RSS支持插件</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
@@ -112,6 +112,12 @@ Quick">
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>在我们开始之前,你必须在 <code>_config.yml</code> 修改设置。一个有效的部署设置必须有 <code>type</code> 字段。例如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    <span class="built_in">type</span>: git</div></pre></td></tr></table></figure></p>
+<p>你可用同时部署到多个type，Hexo将依次执行每个部署。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    - <span class="built_in">type</span>: git</div><div class="line">      repo:</div><div class="line">    - <span class="built_in">type</span>: heroku</div><div class="line">      repo:</div></pre></td></tr></table></figure></p>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><h4 id="安装同步到git-插件"><a href="#安装同步到git-插件" class="headerlink" title="安装同步到git 插件"></a>安装同步到git 插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<p>编辑<code>_config.yml</code>设置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    <span class="built_in">type</span>: git</div><div class="line">    repo: &lt;repository url&gt;</div><div class="line">    branch: [branch]</div><div class="line">    message: [message]</div></pre></td></tr></table></figure></p>
+<h4 id="安装生成RSS支持插件"><a href="#安装生成RSS支持插件" class="headerlink" title="安装生成RSS支持插件"></a>安装生成RSS支持插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install  hexo-generator-feed --save</div></pre></td></tr></table></figure>
+<p>编辑<code>_config.yml</code>设置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">feed:</div><div class="line">    <span class="built_in">type</span>: atom</div><div class="line">    path: atom.xml</div><div class="line">    <span class="built_in">limit</span>: 20</div><div class="line">    hub:</div></pre></td></tr></table></figure></p>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
   
 	</div>
@@ -202,7 +208,7 @@ Quick">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装插件"><span class="toc-number">1.5.</span> <span class="toc-text">安装插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装同步到git-插件"><span class="toc-number">1.5.1.</span> <span class="toc-text">安装同步到git 插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装生成RSS支持插件"><span class="toc-number">1.5.2.</span> <span class="toc-text">安装生成RSS支持插件</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -281,15 +287,15 @@ Quick">
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/工具/" title="工具">工具<sup>7</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/语法/" title="语法">语法<sup>7</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
+				<li><a href="/tags/工具/" title="工具">工具<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/搭建/" title="搭建">搭建<sup>3</sup></a></li>
 			
 		
 			
@@ -297,11 +303,11 @@ Quick">
 			
 		
 			
-				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
+				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/搭建/" title="搭建">搭建<sup>3</sup></a></li>
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
 			
 		
 			
@@ -313,6 +319,10 @@ Quick">
 			
 		
 			
+				<li><a href="/tags/管理/" title="管理">管理<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
 			
 		
@@ -321,31 +331,15 @@ Quick">
 			
 		
 			
-				<li><a href="/tags/管理/" title="管理">管理<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/设备/" title="设备">设备<sup>1</sup></a></li>
+				<li><a href="/tags/socket/" title="socket">socket<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/概念/" title="概念">概念<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
+				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
 			
 		
 			
@@ -353,11 +347,23 @@ Quick">
 			
 		
 			
+				<li><a href="/tags/octopress/" title="octopress">octopress<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/版本控制/" title="版本控制">版本控制<sup>1</sup></a></li>
+				<li><a href="/tags/blog/" title="blog">blog<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AutoLayout/" title="AutoLayout">AutoLayout<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/布局/" title="布局">布局<sup>1</sup></a></li>
 			
 		
 		</ul>
