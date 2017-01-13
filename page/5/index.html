@@ -77,146 +77,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/06/16/2014-06-16-ios7xin-chong-text-kit/" title="IOS7新宠Text Kit" itemprop="url">IOS7新宠Text Kit</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2014-06-16T14:24:48.000Z" itemprop="datePublished"> Published 2014-06-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <ul>
-<li>##Text Kit<br><strong><code>Text Kit</code></strong>：是个庞大的framework，继承了<code>Core Text</code>的全部功能，构建了快速、先进的文本排版和渲染引擎，更让开发者们高兴的是，设计者把它封装在了一个面向对象的API中。并且与UIKit框架很好的集成，它让程序能够通过<strong>NSTextStorage</strong>对象存储文本排版和显示文本等主要信息，并支持排版所需要的所有特性，包括字距调整、连写、换行和对齐等。  <blockquote>
-<font size=3>更直观的理解，<strong>UITextView</strong>，<strong>UITextField</strong>、<strong>UILabel</strong>等UIKit控件都已经基于<strong>Text Kit</strong>重新构建，是为UIKit框架提供高质量排版服务而扩展的一些类和协议.<br>例如：NSTextStorage对象，它本身是<strong>NSMutableAttributedString</strong>的子类，支持分批编辑，这就意味着在改变一个范围内的字符样式时，不用整体替换文本内容，就能完成排版效果。其中支持分页文本、文本包装、富文本编辑、交互式文本着色、文本折叠和自定义截取等特性。</font>  
-
-</blockquote>
-</li>
-</ul>
-<p>IOS6之前，想实现一些丰富的文本排版，例如在textView中显示不同样式的文本，或者图片和文字混排等，就需要借助于UIWebView或者深入研究一下<code>Core Text</code>。后来iOS6，增加一个很棒的属性:<code>NSAttributedString</code>，主要用于支持UILabel、UITextField、UITextView等UIKit控件自主排版的功能。很显然，IOS7并没有满足于这一改进，同时推出一款功能更为齐全，易用的<code>Text Kit</code>新宠。<br>在iOS 6中, 用于文本的UIKit控件是基于WebKit和Core Graphics的字符串绘制方法来实现的。如下面层级体系图所示：<br><img src="/images/TextRenderingArchitecture-iOS6.png" alt="image"><br>iOS 7的整体构架要更清晰，所有基于文本的UIKit控件（除了UIWebView）现在都可以使用Text Kit，如下图所示：<br><img src="/images/TextRenderingArchitecture-iOS7.png" alt="image">  </p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/06/16/2014-06-16-ios7xin-chong-text-kit/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/TextKit/">TextKit</a><a href="/tags/概念/">概念</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2014/06/16/2014-06-16-ios7xin-chong-text-kit/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/06/16/2014-06-16-ios7xin-chong-text-kit/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/06/11/2014-06-11-ios7de-bian-ge/" title="IOS7的变革" itemprop="url">IOS7的变革</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2014-06-11T02:17:19.000Z" itemprop="datePublished"> Published 2014-06-11</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>##性能提高以及被遗弃的功能  </p>
-<p>###1.新增截屏通知:<code>UIApplicationUserDidTakeScreenshotNotification</code></p>
-<p>在IOS 7之前，开发者使用了一种<strong><a href="http://dlj.bz/XflV">很赞的方法</a></strong>，来<strong>拦截</strong>截屏事件的.<br>比如，Snapchat的实现原理: 用户通过<strong>Snapchat</strong>发送的照片将会在数秒内自动被删除，而且在浏览照片时，必须将手指按在屏幕上，否则会立即关闭。然而，在 iOS 6 中，<font color=red><strong>截屏将打断触控操作</strong></font>，开发者就利用这个功能点，在恰当时机捕捉到了截屏事件。  </p>
-<p>在iOS 7中，专门为<font color=red><strong>截屏完成后</strong></font>提供了一个通知:<br>  <code>UIApplicationUserDidTakeScreenshotNotification</code>.同时，也规避了IOS 6中<font color=red><strong>截屏将打断触控操作</strong></font>的关键功能点。以至于在截屏之前，无法拦截用户的截屏操作。<br>注册<font color=red><strong>截屏完成后</strong></font>通知:<br><figure class="highlight objc"><figcaption><span>注册监听事件，接收截屏完成后的通知</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter]  addObserver:<span class="keyword">self</span> </div><div class="line">										  selector:<span class="keyword">@selector</span>(mymethod:)</div><div class="line">										  	    name:<span class="built_in">UIApplicationUserDidTakeScreenshotNotification</span> </div><div class="line">										    object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure></p>
-<p>Note:<br>    1.This notification is posted after the screenshot is taken.<br>    2.This notification does not contain a userInfo dictionary.</p>
-<p>###2.新增手势: UIScreenEdgePanGestureRecognizer<br><code>UIScreenEdgePanGestureRecognizer</code> inherits from <code>UIPanGestureRecognizer</code> and lets you <strong>detect gestures starting near the edge of the screen</strong>.<br>Using this new gesture recognizer is quite simple, as shown below:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIScreenEdgePanGestureRecognizer</span> *recognizer = [[<span class="built_in">UIScreenEdgePanGestureRecognizer</span> alloc] </div><div class="line">													initWithTarget:<span class="keyword">self</span> </div><div class="line">														action:<span class="keyword">@selector</span>(handleScreenEdgeRecognizer:)];</div><div class="line"><span class="comment">// accept gestures that start from the left; we're probably building another hamburger menu!</span></div><div class="line">recognizer.edges = <span class="built_in">UIRectEdgeLeft</span>; </div><div class="line">[<span class="keyword">self</span>.view addGestureRecognizer:recognizer];</div></pre></td></tr></table></figure></p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/06/11/2014-06-11-ios7de-bian-ge/#more">更多-&gt;</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/IOS7/">IOS7</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2014/06/11/2014-06-11-ios7de-bian-ge/#comments" class="ds-thread-count comments-count-link" data-thread-key="2014/06/11/2014-06-11-ios7de-bian-ge/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" title="在IOS中像SnapChat一样监控screenshots" itemprop="url">在IOS中像SnapChat一样监控screenshots</a>
   </h1>
   <p class="article-author">By
@@ -444,15 +304,7 @@
 		  
 		
 		  
-		
-		  
-		
-		  
-		
-		  
 			<li><a href="/categories/Octopress/" title="Octopress">Octopress<sup>1</sup></a></li>
-		  
-		
 		  
 		
 		  
@@ -503,15 +355,15 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/工具/" title="工具">工具<sup>7</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/语法/" title="语法">语法<sup>7</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
+				<li><a href="/tags/工具/" title="工具">工具<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/搭建/" title="搭建">搭建<sup>3</sup></a></li>
 			
 		
 			
@@ -523,19 +375,11 @@
 			
 		
 			
-				<li><a href="/tags/搭建/" title="搭建">搭建<sup>3</sup></a></li>
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/管理/" title="管理">管理<sup>2</sup></a></li>
 			
 		
 			
@@ -547,15 +391,23 @@
 			
 		
 			
+				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/管理/" title="管理">管理<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/脚本/" title="脚本">脚本<sup>1</sup></a></li>
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+				<li><a href="/tags/概念/" title="概念">概念<sup>1</sup></a></li>
 			
 		
 			
@@ -563,11 +415,15 @@
 			
 		
 			
-				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
+				<li><a href="/tags/设备/" title="设备">设备<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
 			
 		
 			
@@ -575,11 +431,7 @@
 			
 		
 			
-				<li><a href="/tags/octopress/" title="octopress">octopress<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/scheme/" title="scheme">scheme<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -650,16 +502,6 @@
   
 
 
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
-</div>
-
-  <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1791281385&verifier=&dpc=1"></iframe>
-</div>
-
-
 </aside>
 </div>
     </div>
@@ -692,6 +534,8 @@
 		<a href="https://www.linkedin.com/in/boyerswift" target="_blank" class="icon-linkedin" title="linkedin"></a>
 		
 		
+		
+		<a href="http://www.zhihu.com/people/boyers" target="_blank" class="icon-zhihu" title="知乎"></a>
 		
 		
 		
