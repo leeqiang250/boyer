@@ -44,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,7 +60,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -71,228 +71,894 @@
     <div id="container">
       <div id="main">
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/12/16/2015-12-16-realmshu-ju-ku-yin-qing-swift/" title="Realm数据库引擎-swift" itemprop="url">
-  
-    <h1 itemprop="name">Realm数据库引擎-swift</h1>
+   
     
-     
-           <p itemprop="description" >中心思想：继承RLMObject新建数据模型，添加相应属性，即可使用realm数据库引擎，对用户数据创建持久化，更新，删除等操作。
-####简介：Realm 是一个跨平台的移动数据库引擎，于 2014 年 7 月发布，准确来说，它是专门为移动应用所设计的数据持久化解决方案之一。
-</p>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/16/2015-12-16-realmshu-ju-ku-yin-qing-swift/" title="Realm数据库引擎-swift" itemprop="url">Realm数据库引擎-swift</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-15T21:56:15.000Z" itemprop="datePublished"> 发表于 2015-12-16</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2015-12-15T21:56:15.000Z" itemprop="datePublished">2015-12-16</time>
-  </a>
-</section>
+        <p>中心思想：<br>继承RLMObject新建数据模型，添加相应属性，即可使用realm数据库引擎，对用户数据创建持久化，更新，删除等操作。</p>
+<p>####简介：<br><a href="http://realm.io/" target="_blank" rel="external">Realm</a> 是一个跨平台的移动数据库引擎，于 2014 年 7 月发布，准确来说，它是专门为移动应用所设计的数据持久化解决方案之一。</p>
+<ul>
+<li>特点：它拥有自己的数据库存储引擎<br>  Realm 并不是对 Core Data 的简单封装，相反地， Realm 并不是基于 Core Data ，也不是基于 SQLite 所构建的。它拥有自己的数据库存储引擎，可以高效且快速地完成数据库的构建操作。</li>
+<li>Realm 支持 Swift 、 Objective-C 以及 Java 语言来编写（ Android 平台和 iOS 平台使用不同的 SDK ）。</li>
+<li>Realm 比使用 SQLite 以及 Core Data 要快很多。</li>
+<li>可视化工具<a href="https://itunes.apple.com/cn/app/realm-browser/id1007457278?mt=12" target="_blank" rel="external">Realm Browser</a> ：可以让您轻松地读写 Realm 数据库的逻辑结构以及其中的数据（以 .realm 结尾），虽然 Realm Browser 的功能还十分简陋，真的只能读写而已。</li>
+<li>RealmPlugin：是 Xcode 建模插件，通过 <a href="http://alcatraz.io/" target="_blank" rel="external">Alcatraz</a>安装“RealmPlugin”<br>####目的：<br>学习如何导入 Realm 框架、创建数据模型，实现 Swift 执行查询以及插入、更新和删除记录，以及使用既有的数据库。<br>####实例学习：<br>测试APP<a href="https://github.com/SemperIdem/SISpeciesNotes/tree/master" target="_blank" rel="external">物种监测</a><br>用于记录这个 “ 动植物王国 ” 当中所发现物种的相关信息，包括种群数量、发现区域、年龄结构等等。</li>
+</ul>
+<p>在 Xcode 当中打开我们的起始项目。此时， <a href="http://www.raywenderlich.com/81615/www.raywenderlich.com/21365/introduction-to-mapkit-in-ios-6-tutorial" target="_blank" rel="external">MapKit</a><br>已经在项目当中建立好了，而且项目已经拥有了一些简单的创建、更新和删除物种信息的功能.</p>
+<p>####cocoapods安装（Swift 2.1）：<br>在项目中创建Podfile配置文件，添加RealmSwift支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">use_frameworks!   //</div><div class="line">pod &apos;RealmSwift&apos;</div></pre></td></tr></table></figure></p>
+<p>执行 <code>pod install</code>下载realmSwift框架，生成<strong>.xcworkspace</strong>文件，自动重启原始项目。<br>设置Xcode项目在git版本控制中的忽略配置：详见<a href="http://stackoverflow.com/questions/49478/git-ignore-file-for-xcode-projects" target="_blank" rel="external">.gitignore</a></p>
+<p><a href="http://blog.csdn.net/remote_roamer/article/details/47835347" target="_blank" rel="external">use_frameworks!</a>   </p>
+<pre><code>如果在cocoapods 里面不使用 use_frameworks!,则是通过static libraries 这个方式来管理pod的代码。这样就需要在app-Bridging-Header.h 文件里面去import相应的.h 文件。而如果使用了use_frameworks!,则cocoapods 使用了frameworks 来取代static libraries 方式。 
+</code></pre><p>####开始使用：<br>编译并运行这个应用，然后尝试定位到某个您感兴趣的位置（使用模拟器的位置模拟），然后点击右上角的 “+” 按钮创建一个新的标记点。点选地图上的这个标记点，然后点击其弹出来的气泡，接下来会弹出这个标记点的详细信息。随后，点击类别文本框，就可以看到如下图所示的类别列表了:<br><img src="http://cc.cocimg.com/api/uploads/20150505/1430807925718367.jpg" alt=""></p>
+<ol>
+<li><p>使用Realm数据库将类别列表持久化</p>
+<ul>
+<li><p>打开<strong>CategoriesTableViewController.swift </strong>文件添加方法：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">populateDefaultCategories</span><span class="params">()</span></span> &#123;</div><div class="line"><span class="keyword">self</span>.results = <span class="type">CategoryModel</span>.allObjects() <span class="comment">// 1 查询数据返回包含类别对象的RLMResults数组</span></div><div class="line"><span class="keyword">if</span> results.<span class="built_in">count</span> == <span class="number">0</span> &#123; <span class="comment">// 2   通过返回结果的个数，初始化本地realm数据库</span></div><div class="line"><span class="keyword">let</span> realm = <span class="type">RLMRealm</span>.defaultRealm() <span class="comment">// 3 访问默认的 realm 单例对象</span></div><div class="line">realm.beginWriteTransaction() <span class="comment">// 4   在默认 realm 数据库中启动一个事务</span></div><div class="line"><span class="keyword">let</span> defaultCategories = <span class="type">Categories</span>.allValues <span class="comment">// 5 使用Categories 枚举来创建一个含有全部默认类别的数组</span></div><div class="line"><span class="keyword">for</span> category <span class="keyword">in</span> defaultCategories &#123;</div><div class="line"><span class="comment">// 6 初始化类别实例对象，设置其 name 属性，加入realm中</span></div><div class="line"><span class="keyword">let</span> newCategory = <span class="type">CategoryModel</span>()</div><div class="line">newCategory.name = category</div><div class="line">realm.addObject(newCategory)</div><div class="line">&#125;</div><div class="line">realm.commitWriteTransaction() <span class="comment">// 7    调用 commitWriteTransaction() 方法来关闭事务，并且向数据库提交数据</span></div><div class="line"><span class="keyword">self</span>.results = <span class="type">CategoryModel</span>.allObjects()</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 viewDidLoad() 方法的底部加入以下代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">populateDefaultCategories()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
 
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/12/01/2015-12-01-ocyu-swiftxiang-hu-diao-yong/" title="OC与swift相互调用" itemprop="url">
-  
-    <h1 itemprop="name">OC与swift相互调用</h1>
-    
-     
-           <p itemprop="description" >####Swift中使用OC的类声明  – 实现配置 桥接的头文件
-######方式一：自动添加桥接头文件
-
-在一个全新的Swift，利用第一次新建提示的方式自动添加桥接头文件。
-点确定这后就会生成一个以的头文件。
-在targets-&amp;gt;build settings -&amp;gt</p>
         
-    
-    <time datetime="2015-12-01T03:42:18.000Z" itemprop="datePublished">2015-12-01</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/11/27/2015-11-27-swiftru-men/" title="Swift入门" itemprop="url">
-  
-    <h1 itemprop="name">Swift入门</h1>
-    
-     
-           <p itemprop="description" >苹果官方  
-中文版####背景Apple基于已有的编译器、调试器、框架作为其基础架构。通过ARC(Automatic Reference Counting，自动引用计数)来简化内存管理。我们的框架栈则一直基于Cocoa，且Objective-C进化支持了块、collection</p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Swift/">Swift</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/数据库/">数据库</a><a href="/tags/realm/">realm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/16/2015-12-16-realmshu-ju-ku-yin-qing-swift/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/16/2015-12-16-realmshu-ju-ku-yin-qing-swift/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2015-11-27T09:18:21.000Z" itemprop="datePublished">2015-11-27</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/11/27/2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi/" title="产品领导者的五种特质" itemprop="url">
-  
-    <h1 itemprop="name">产品领导者的五种特质</h1>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-       <p itemprop="description" >####1.善于观察他们一直在观察用户，不仅仅是借助指标和仪表盘。他们对每件小事情感到好奇：
-
-用户正尝试完成什么？  
-为什么用户选择这款产品而非其它产品？  
-他们在和这款产品交互之前、之中和之后，做了什么。  
-
-他们查看收到的每一条反馈，对每个客户问题做出响应。他们创建让</p>
-      
+      <a href="/2015/12/01/2015-12-01-ocyu-swiftxiang-hu-diao-yong/" title="OC与swift相互调用" itemprop="url">OC与swift相互调用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-01T03:42:18.000Z" itemprop="datePublished"> 发表于 2015-12-01</time>
     
-    <time datetime="2015-11-27T02:24:44.000Z" itemprop="datePublished">2015-11-27</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/11/26/2015-11-26-uiimagede-xuan-ran-mo-shi/" title="UIImage的渲染模式" itemprop="url">
-  
-    <h1 itemprop="name">UIImage的渲染模式</h1>
-    
-     
-           <p itemprop="description" >设置UIImage的渲染模式：UIImage.renderingMode在 iOS 7 中 UIImage 添加了一个 renderingMode 属性。我们可以使用 imageWithRenderingMode:并传入一个合适的UIImageRenderingMode 来指定这</p>
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2015-11-26T08:15:11.000Z" itemprop="datePublished">2015-11-26</time>
-  </a>
-</section>
+        <p>####Swift中使用OC的类声明  – 实现配置 桥接的头文件</p>
+<p>######方式一：自动添加桥接头文件</p>
+<ol>
+<li>在一个全新的Swift，利用第一次新建提示的方式自动添加桥接头文件。</li>
+<li>点确定这后就会生成一个以<producename-bridging-header.h>的头文件。</producename-bridging-header.h></li>
+<li>在targets-&gt;build settings -&gt;Object-C Bridging Header 设为生成的个桥接的头文件即可。</li>
+<li>把想要在swift类中调用的OC头文件放使用import “” 写到这个桥接文件中：<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Use this file to import your target's public headers that you would like to expose to Swift.  </span></div><div class="line"><span class="comment">//MixDemo/MixDemo-Bridging-Header.h    </span></div><div class="line"><span class="meta">#import <span class="meta-string">"OCChannel.h"</span></span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>######方式二：手动添加桥接头文件<br>同样的，当你知道这个swift搜索头文件的关系后，就不需要再理会这个-Bridging-Header.h的文件了。<br>完全可以手工建一个并取自己喜欢的名字：</p>
+<ol>
+<li>新建一个头文件，名为:OCContainerHeader.h</li>
+<li>在targets-&gt;build settings -&gt;Object-C Bridging Header 设为生成的个桥接的头文件即可。</li>
+<li>把想要在swift类中调用的OC头文件放使用import “” 写到这个桥接文件中：<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Use this file to import your target's public headers that you would like to expose to Swift.  	</span></div><div class="line"><span class="comment">//MixDemo/MixDemo-Bridging-Header.h    </span></div><div class="line"><span class="meta">#import <span class="meta-string">"OCChannel.h"</span></span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>####OC如何调用Swift写的类  –     为了在 Objective-C 中可用， Swift 类必须是 Objective-C 类的子类，或者用 @Objective-C 标记；</p>
+<ol>
+<li>选中targets-&gt;build settings -&gt;packing-&gt;Product Module Name 中设置模块名（可以自定义），这个名称很重要 swift 的头文件就是根据这个来命名的，例如：SwiftModule。</li>
+<li>在OC头文件类中，添加import “SwiftModule-swift.h”但你在整个工程中是找不到这个文件的，但可以使用CMD+ 鼠标点击可看这个头文件中的内容。  </li>
+</ol>
+<p>####总结：<br>这样，工程中如查Swift要使用OC,则把需要使用的OC类的头文件，全写在MixDemo-Bridging-Header.h里。同样如果OC中所使用的swift类，只需要Clean一把，再编就可以了，但不要忘了导入SwiftModule-swift.h哦（名称自取，但-swift.h是固定的），另外还有一个需要读者注意的。</p>
+<p>注：<br>    凡是用Swift写的类，如果不继成自NSObject或NSObject 的派生类，哪么编译后将不会生成对应的转换类。从而使得OC 中找不到相应的声明。<br>如我的例子中 class Act 这样不会被编译到SwiftModule-swift.h中，但写为 class Act : NSObject，就可以编译出相应的声明。另外可以使用@objc加以声明，但这个还是一样，类最好继承NSObject下来。</p>
 
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/11/20/2015-11-20-min-jie-kai-fa-zong-jie/" title="敏捷开发总结" itemprop="url">
-  
-    <h1 itemprop="name">敏捷开发总结</h1>
-    
-     
-           <p itemprop="description" >传统开发模型的局限性什么是敏捷软件开发Scrum概述Scrum角色Scrum活动Scrum实践Scrum工具和模板Scrum常见问题推荐书籍敏捷方法强调以人为本，专注于交付对客户有价值的软件。在高度协作的开发环境中，使用迭代式的方式进行增量开发，经常使用反馈进行思考、反省和总结，</p>
         
-    
-    <time datetime="2015-11-20T02:06:38.000Z" itemprop="datePublished">2015-11-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/20/2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg/" title="清除git历史记录大文件bfg" itemprop="url">
-  
-    <h1 itemprop="name">清除git历史记录大文件bfg</h1>
-    
-     
-           <p itemprop="description" >下载bfg 到本地soft/bfg目录下。
-sudo vi ~/.bash_profile  添加如下：
-
-1alias bfg=&amp;quot;java -jar ~/Downloads/soft/bfg/bfg.jar&amp;quot;
-
-cd 到库目录，执行bfg命令： bfg官网 </p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Swift/">Swift</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/混编/">混编</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/01/2015-12-01-ocyu-swiftxiang-hu-diao-yong/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/01/2015-12-01-ocyu-swiftxiang-hu-diao-yong/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2015-10-20T03:17:27.000Z" itemprop="datePublished">2015-10-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/06/2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd/" title="[转]敏捷杂谈之TDD与BDD" itemprop="url">
-  
-    <h1 itemprop="name">[转]敏捷杂谈之TDD与BDD</h1>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-       <p itemprop="description" >敏捷开发有许多种方法，但不管采用任何一种，测试都是实施敏捷的基础，及时的验证代码的正确性，系统功能的健全与否，及时的反馈，及时的叫停……都是保证敏捷的基础。所以大量的快速的自动化测试，才能保证敏捷开发在快速迭代中仍然不怎么丢失软件的质量。
-所以，在敏捷开发里一直都有一种说法叫“代</p>
-      
+      <a href="/2015/11/27/2015-11-27-swiftru-men/" title="Swift入门" itemprop="url">Swift入门</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-27T09:18:21.000Z" itemprop="datePublished"> 发表于 2015-11-27</time>
     
-    <time datetime="2015-10-06T02:18:02.000Z" itemprop="datePublished">2015-10-06</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/06/2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan/" title="calabash一款跨平台UI测试工具初探" itemprop="url">
-  
-    <h1 itemprop="name">calabash一款跨平台UI测试工具初探</h1>
-    
-     
-           <p itemprop="description" >参考：使用jenkins+calabash+cocoapods搭建ios持续集成环境
-
-calabash  是一款开源的跨平台UI测试工具，目前支持iOS和Android。它使用Cucumber作为测试核心，Cucumber是一个在敏捷团队十分流行的自动化的功能测试工具，它使用接</p>
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2015-10-06T00:32:41.000Z" itemprop="datePublished">2015-10-06</time>
-  </a>
-</section>
+        <ul>
+<li><a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-XID_1" target="_blank" rel="external">苹果官方</a>  </li>
+<li><a href="http://wiki.jikexueyuan.com/project/swift/" target="_blank" rel="external">中文版</a><br>####背景<br>Apple基于已有的编译器、调试器、框架作为其基础架构。通过ARC(Automatic Reference Counting，自动引用计数)来简化内存管理。我们的框架栈则一直基于Cocoa，且Objective-C进化支持了块、collection literal和模块，允许现代语言的框架无需深入即可使用。<br>(by gashero)感谢这些基础工作，才使得可以在Apple软件开发中引入新的编程语言Swift。</li>
+</ul>
+<p>####swift有点</p>
+<p>编译器是按照性能优化的，而语言是为开发优化的</p>
+<p>Swift采用了Objective-C的命名参数和动态对象模型。提供了对Cocoa框架和mix-and-match的互操作性。基于这些基础，Swift引入了很多新功能和结合面向过程和面向对象的功能。<br>Swift对新的程序员也是友好的：</p>
+<ol>
+<li>它是工业级品质的系统编程语言，却又像脚本语言一样的友好。</li>
+<li>它支持playground，允许程序员实验一段Swift代码功能并立即看到结果，而无需麻烦的构建和运行一个应用。<br>Swift集成了现代编程语言思想，以及Apple工程文化的智慧，编译器是按照性能优化的，而语言是为开发优化的，无需互相折中。</li>
+</ol>
+<p>####swift语法<br>Playground允许你编辑代码并立即看到结果,可以从”Hello, world”开始学起并过渡到整个系统。<br>在Xcode的playground中打开:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">println(<span class="string">"Hello, world"</span>)</div></pre></td></tr></table></figure></p>
+<p>在Swift，这就是完整的程序:</p>
+<ol>
+<li>无需导入(import)输入输出和字符串处理的系统库。</li>
+<li>全局范围的代码就是用于程序的入口，所以你无需编写一个 main() 函数。也无需在每个语句后写分号。</li>
+</ol>
+<p>所有这些使得Swift成为Apple软件开发者创新的源泉。</p>
+<p>####简单值  – 使用 let 来定义常量， var 定义变量<br>提供一个值就可以创建常量或变量，并让编译器推断其类型,一个常量或变量必须与赋值时拥有相同的类型。因此你不用严格定义类型。<br>常量定义类似于函数式编程语言中的变量,常量的值无需在编译时指定，但是至少要赋值一次,赋值后就无法修改。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myVariable = <span class="number">42</span></div><div class="line">myVariable = <span class="number">50</span></div><div class="line"><span class="keyword">let</span> myConstant = <span class="number">42</span></div></pre></td></tr></table></figure></p>
+<p>在上面例子中，编译其会推断myVariable是一个整数类型，因为其初始化值就是个整数。</p>
+<p>######1. 显示/隐式 初始化数据类型 —   类型与变量名绑定，属于静态类型语言<br>类型与变量名绑定，属于静态类型语言。有助于静态优化。与Python、JavaScript等有所区别。<br>例如：初始化值没有提供足够的信息(或没有初始化值)，可以在变量名后写类型，以冒号分隔。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> imlicitInteger = <span class="number">70</span></div><div class="line"><span class="keyword">let</span> imlicitDouble = <span class="number">70.0</span></div><div class="line"><span class="keyword">let</span> explicitDouble: <span class="type">Double</span> = <span class="number">70</span></div></pre></td></tr></table></figure></p>
+<p>######2. 变量  拼接到字符串  – 变量值永远不会隐含转换到其他类型</p>
+<ul>
+<li><p>String(变量名)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> label = <span class="string">"The width is "</span></div><div class="line"><span class="keyword">let</span> width = <span class="number">94</span></div><div class="line"><span class="keyword">let</span> widthLabel = label + <span class="type">String</span>(width)</div></pre></td></tr></table></figure>
+</li>
+<li><p>以小括号来写值，并用反斜线(“”)放在小括号之前</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> apples = <span class="number">3</span></div><div class="line"><span class="keyword">let</span> oranges = <span class="number">5</span>     <span class="comment">//by gashero</span></div><div class="line"><span class="keyword">let</span> appleSummary = <span class="string">"I have \(apples) apples."</span></div><div class="line"><span class="keyword">let</span> fruitSummary = <span class="string">"I have \(apples + oranges) pieces of fruit."</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>####数组和字典的用法</p>
+<ol>
+<li>声明并初始化<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> emptyArray = <span class="type">String</span>[]()</div><div class="line"><span class="keyword">let</span> emptyDictionary = <span class="type">Dictionary</span>&lt;<span class="type">String</span>, <span class="type">Float</span>&gt;()</div><div class="line">shoppingList = [] <span class="comment">//去购物并买些东西</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果数组类型无法推断，你可以写空的数组为 “[]” 和空的字典为 “[:]“。</p>
+<ol>
+<li>访问<br>创建一个数组和字典使用方括号 “[]”，访问其元素则是通过方括号中的索引或键。                      <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> shoppingList = [<span class="string">"catfish"</span>, <span class="string">"water"</span>, <span class="string">"tulips"</span>, <span class="string">"blue paint"</span>]</div><div class="line">shoppingList[<span class="number">1</span>] = <span class="string">"bottle of water"</span></div><div class="line"><span class="keyword">var</span> occupations = [</div><div class="line">   <span class="string">"Malcolm"</span>: <span class="string">"Captain"</span>,</div><div class="line">   <span class="string">"Kaylee"</span>: <span class="string">"Mechanic"</span>,</div><div class="line">]</div><div class="line">occupations[<span class="string">"Jayne"</span>] = <span class="string">"Public Relations"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>####控制流  –  条件控制，循环控制</p>
+<p>######1. 条件控制</p>
+<ul>
+<li><p>if  条件必须是布尔表达式<br>在 if 语句中，条件必须是布尔表达式，这意味着 if score { … } 是错误的，不能隐含的与0比较。<br>你可以一起使用 if 和 let 来防止值的丢失。这些值是可选的。<br>可选值可以包含一个值或包含一个 nil 来指定值还不存在。写一个问号 “?” 在类型后表示值是可选的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> optionalString: <span class="type">String</span>? = <span class="string">"Hello"</span></div><div class="line">optionalString == <span class="literal">nil</span></div><div class="line"><span class="keyword">var</span> optionalName: <span class="type">String</span>? = <span class="string">"John Appleseed"</span></div><div class="line"><span class="keyword">var</span> greeting = <span class="string">"Hello!"</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> name = optionalName &#123;</div><div class="line">    greeting = <span class="string">"Hello, \(name)"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>switch 支持多种数据以及多种比较，不限制必须是整数和测试相等  </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> vegetable = <span class="string">"red pepper"</span></div><div class="line"><span class="keyword">switch</span> vegetable &#123;</div><div class="line"><span class="keyword">case</span> <span class="string">"celery"</span>:</div><div class="line">    <span class="keyword">let</span> vegetableComment = <span class="string">"Add some raisins and make ants on a log."</span></div><div class="line"><span class="keyword">case</span> <span class="string">"cucumber"</span>, <span class="string">"watercress"</span>:</div><div class="line">    <span class="keyword">let</span> vegetableComment = <span class="string">"That would make a good tea sandwich."</span></div><div class="line"><span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasSuffix(<span class="string">"pepper"</span>):</div><div class="line">    <span class="keyword">let</span> vegetableComment = <span class="string">"Is it a spicy \(x)?"</span></div><div class="line"><span class="keyword">default</span>:    <span class="comment">//by gashero</span></div><div class="line">    <span class="keyword">let</span> vegetableComment = <span class="string">"Everything tastes good in soup."</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在执行匹配的情况后，程序会从 switch 跳出，而不是继续执行下一个情况。所以不再需要 break 跳出 switch 。</p>
+<p>######2. 循环控制</p>
+<ul>
+<li>for-in 来迭代字典中的每个元素<br>可使用 for-in 来迭代字典中的每个元素，提供一对名字来使用每个键值对。<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> interestingNumbers = [</div><div class="line">    <span class="string">"Prime"</span>: [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>],</div><div class="line">    <span class="string">"Fibonacci"</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>],</div><div class="line">    <span class="string">"Square"</span>: [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>],</div><div class="line">]</div><div class="line"><span class="keyword">var</span> largest = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> (kind, numbers) <span class="keyword">in</span> interestingNumbers &#123;</div><div class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</div><div class="line">        <span class="keyword">if</span> number &gt; largest &#123;</div><div class="line">            largest = number</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```  </div><div class="line">你可以在循环中保持一个索引，通过“..”来表示索引范围或明确声明一个初始值、条件、增量。   </div><div class="line">这两个循环做相同的事情:  </div><div class="line">```swift</div><div class="line"><span class="keyword">var</span> firstForLoop = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..<span class="number">3</span> &#123;</div><div class="line">    firstForLoop += i</div><div class="line">&#125;</div><div class="line">firstForLoop</div><div class="line"><span class="keyword">var</span> secondForLoop = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i &#123;</div><div class="line">    secondForLoop += <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用 .. 构造范围忽略最高值，而用 … 构造的范围则包含两个值。</p>
+<ul>
+<li>while 来重复执行代码块直到条件改变<br>使用 while 来重复执行代码块直到条件改变。循环的条件可以放在末尾来确保循环至少执行一次。<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> n = <span class="number">2</span></div><div class="line"><span class="keyword">while</span> n &lt; <span class="number">100</span> &#123;</div><div class="line">    n = n * <span class="number">2</span></div><div class="line">&#125;</div><div class="line">n</div><div class="line"><span class="keyword">var</span> m = <span class="number">2</span></div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">    m = m * <span class="number">2</span></div><div class="line">&#125; <span class="keyword">while</span> m &lt; <span class="number">100</span></div><div class="line">m</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>####函数与闭包  – 函数是闭包的特殊情况</p>
+<p>######1. 闭包 无需名字，只需要放在大括号中即可<br>编写闭包时有多种选项:</p>
+<ol>
+<li><p>使用 in 到特定参数和主体的返回值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">numbers.<span class="built_in">map</span>(&#123;</div><div class="line">    (number: <span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">let</span> result = <span class="number">3</span> * number</div><div class="line">    <span class="keyword">return</span> result</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>单一语句的闭包可以直接返回值<br>例如：当一个闭包的类型是已知时，例如代表回调，你可以忽略其参数和返回值，或两者</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">numbers.<span class="built_in">map</span>(&#123;number <span class="keyword">in</span> <span class="number">3</span> * number&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过数字而不是名字来引用一个参数，这对于很短的闭包很有用。<br>例如：一个闭包传递其最后一个参数到函数作为返回值。  </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sort</span>([<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">12</span>, <span class="number">2</span>]) &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>######2. 函数</p>
+<ul>
+<li><p>函数的声明   –  使用func 声明一个函数  使用 -&gt;分隔参数的名字和返回值类型,<br>调用函数使用他的名字加上小括号中的参数列表</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">greet</span><span class="params">(name: String, day: String)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hello \(name), today is \(day)."</span></div><div class="line">&#125;</div><div class="line">greet(<span class="string">"Bob"</span>, <span class="string">"Tuesday"</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数的嵌套<br>内嵌函数可以访问其定义所在函数的变量。<br>你可以使用内嵌函数来组织代码，避免过长和过于复杂：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">returnFifteen</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">var</span> y = <span class="number">10</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">()</span></span> &#123;</div><div class="line">        y += <span class="number">5</span></div><div class="line">    &#125;</div><div class="line">    add()</div><div class="line">    <span class="keyword">return</span> y</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数接收的参数</p>
+<ol>
+<li><p>可变参数的个数  sumOf(numbers: Int…) -&gt; Int{}<br>函数可以接受可变参数个数，收集到一个数组中</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sumOf</span><span class="params">(numbers: Int...)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">var</span> sum = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</div><div class="line">        sum += number</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sum</div><div class="line">&#125;</div><div class="line"><span class="comment">//例子</span></div><div class="line">sumOf(<span class="number">42</span>, <span class="number">597</span>, <span class="number">12</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>其他函数作为参数  func hasAnyMatches(list: Int[], condition: Int -&gt; Bool) -&gt; Bool{}</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">func</span> <span class="title">hasAnyMatches</span><span class="params">(list: Int[], condition: Int -&gt; Bool)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> list &#123;</div><div class="line">        <span class="keyword">if</span> condition(item) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">lessThanTen</span><span class="params">(number: Int)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">return</span> number &lt; <span class="number">10</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> numbers = [<span class="number">20</span>, <span class="number">19</span>, <span class="number">7</span>, <span class="number">12</span>]</div><div class="line">hasAnyMatches(numbers, lessThanTen)</div></pre></td></tr></table></figure>
+<p>函数实际是闭包的特殊情况。你可以写一个闭包而无需名字，只需要放在大括号中即可。使用 in 到特定参数和主体的返回值。</p>
+</li>
+</ol>
+</li>
+<li><p>函数的返回值</p>
+<ol>
+<li><p>返回多个值 ： getGasPrices() -&gt; (Double, Double, Double)<br>使用元组(tuple)来返回多个值                           </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getGasPrices</span><span class="params">()</span></span> -&gt; (<span class="type">Double</span>, <span class="type">Double</span>, <span class="type">Double</span>) &#123;</div><div class="line">    <span class="keyword">return</span> (<span class="number">3.59</span>, <span class="number">3.69</span>, <span class="number">3.79</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>返回另一个函数  ： makeIncrementer() -&gt; (Int -&gt; Int)<br>函数是第一类型的</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeIncrementer</span><span class="params">()</span></span> -&gt; (<span class="type">Int</span> -&gt; <span class="type">Int</span>) &#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addOne</span><span class="params">(number: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span> + number</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> addOne</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> increment = makeIncrementer()</div><div class="line">increment(<span class="number">7</span>)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<p>####对象与类</p>
+<p>######1. 类的创建  ：class 类名 {}</p>
+<ol>
+<li><p>使用 class 可以创建一个类。<br>一个属性的声明则是在类里作为常量或变量声明的，除了是在类的上下文中。方法和函数也是这么写的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> numberOfSides = <span class="number">0</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"A shape with \(numberOfSides) sides."</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>类的构造器  ： 构造器来在创建实例时设置类，使用 init 来创建</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NamedShape</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> numberOfSides: <span class="type">Int</span> = <span class="number">0</span></div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line"></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;   <span class="comment">//by gashero</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"A Shape with \(numberOfSides) sides."</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>self 用来区分 name 属性和 name 参数。<br>构造器的声明跟函数一样，除了会创建类的实例。每个属性都需要赋值，无论在声明里还是在构造器里。</p>
+<ol>
+<li>类的析构器，来执行对象销毁时的清理工作，使用 deinit 来创建<br>使用 deinit 来创建一个析构器，来执行对象销毁时的清理工作。</li>
+<li>超类的继承    <ul>
+<li>子类包括其超类的名字，以冒号分隔。在继承标准根类时无需声明，所以你可以忽略超类。  </li>
+<li>子类的方法可以通过标记 override 重载超类中的实现，而没有 override 的会被编译器看作是错误,编译器也会检查那些没有被重载的方法。<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span>: <span class="title">NamedShape</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> sideLength: <span class="type">Double</span></div><div class="line"></div><div class="line">    <span class="keyword">init</span>(sideLength: <span class="type">Double</span>, name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.sideLength = sideLength</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">        numberOfSides = <span class="number">4</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">area</span><span class="params">()</span></span> -&gt; <span class="type">Double</span> &#123;</div><div class="line">        <span class="keyword">return</span> sideLength * sideLength</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"A square with sides of length \(sideLength)."</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> test = <span class="type">Square</span>(sideLength: <span class="number">5.2</span>, name: <span class="string">"my test square"</span>)</div><div class="line">test.area()</div><div class="line">test.simpleDescription()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<p>######2. 类的实例创建   :  类名()  ,点语法来访问实例的属性和方法<br>通过在类名后加小括号来创建类的实例。使用点语法来访问实例的属性和方法。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> shape = <span class="type">Shape</span>()</div><div class="line">shape.numberOfSides = <span class="number">7</span></div><div class="line"><span class="keyword">var</span> shapeDescription = shape.simpleDescription()</div></pre></td></tr></table></figure></p>
+<p>可选类型 Int?<br>可选绑定 if while</p>
+<p>强制取值表达式 expression!<br>可选链表达式   expression?</p>
+<p>类型转换运算符 is , as, is?, as!</p>
+<p>标示符模式<br>值绑定模式<br>可选模式<br>类型转换模式</p>
+<p>实例方法  func<br>类型方法 class func</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Swift/">Swift</a>
+</div>
 
 
-
-
-
-
+  <div class="article-tags">
   
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/" title="使用SmartSVN创建版本库" itemprop="url">
-  
-    <h1 itemprop="name">使用SmartSVN创建版本库</h1>
+  <span></span> <a href="/tags/语法/">语法</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/11/27/2015-11-27-swiftru-men/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/11/27/2015-11-27-swiftru-men/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-     
-       <p itemprop="description" >SmartSVN有以下版本：
-
-SmartSVN enterprise 9 企业版
-SmartSVN foundation 8 基础版
-
-由于企业版只能建立本地的版本库，无法创建&amp;amp;使用svn://localhost方式。
-####用基础版来说明创建版本库。参考：Creat</p>
-      
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-    <time datetime="2015-10-05T11:16:47.000Z" itemprop="datePublished">2015-10-05</time>
-  </a>
-</section>
+      <a href="/2015/11/27/2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi/" title="产品领导者的五种特质" itemprop="url">产品领导者的五种特质</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-27T02:24:44.000Z" itemprop="datePublished"> 发表于 2015-11-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>####1.善于观察<br>他们一直在观察用户，不仅仅是借助指标和仪表盘。他们对每件小事情感到好奇：</p>
+<ul>
+<li>用户正尝试完成什么？  </li>
+<li>为什么用户选择这款产品而非其它产品？  </li>
+<li>他们在和这款产品交互之前、之中和之后，做了什么。  </li>
+</ul>
+<p>他们查看收到的每一条反馈，对每个客户问题做出响应。他们创建让人愉悦的调查，知道该问什么，什么时候该倾听或无视。他们在 Facebook 上和用户交朋友——他们能叫得出用户名字。他们深知，核心用户会成为产品本身的一部分。</p>
+<p>他们痴迷于研究。他们知道市场的运作方式、未来走向以及竞争要做什么。他们密切注视着一切，除了没有创建一个显而易见的版本。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/11/27/2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi/#more">更多...</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/管理/">管理</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/管理/">管理</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/11/27/2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/11/27/2015-11-27-chan-pin-ling-dao-zhe-de-wu-chong-te-zhi/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/26/2015-11-26-uiimagede-xuan-ran-mo-shi/" title="UIImage的渲染模式" itemprop="url">UIImage的渲染模式</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-26T08:15:11.000Z" itemprop="datePublished"> 发表于 2015-11-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>设置UIImage的渲染模式：UIImage.renderingMode<br>在 iOS 7 中 UIImage 添加了一个 <code>renderingMode</code> 属性。我们可以使用 <code>imageWithRenderingMode:</code>并传入一个合适的<code>UIImageRenderingMode</code> 来指定这个 image 要不要以 Template 的方式进行渲染。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIImageRenderingModeAutomatic</span> <span class="comment">// 根据图片的使用环境和所处的绘图上下文自动调整渲染模式。</span></div><div class="line"><span class="built_in">UIImageRenderingModeAlwaysOriginal</span> <span class="comment">// 始终绘制图片原始状态，不使用Tint Color。</span></div><div class="line"><span class="built_in">UIImageRenderingModeAlwaysTemplate</span> <span class="comment">// 始终根据Tint Color绘制图片，忽略图片的颜色信息。</span></div><div class="line"></div><div class="line"><span class="built_in">UIImage</span> *img = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"myimage"</span>];</div><div class="line">img = [img imageWithRenderingMode:<span class="built_in">UIImageRenderingModeAlwaysTemplate</span>];</div><div class="line"><span class="comment">//实际效果，效果依旧显示为baritem的Tint Color</span></div><div class="line"><span class="built_in">UIBarButtonItem</span> *barButtonItem = [[<span class="built_in">UIBarButtonItem</span> alloc] initWithImage:setImage</div><div class="line">                                                   style:<span class="built_in">UIBarButtonItemStylePlain</span></div><div class="line">                                                  target:<span class="keyword">self</span></div><div class="line">                                                  action:<span class="keyword">@selector</span>(setAction:)];</div><div class="line">```    </div><div class="line">在新的 Xcode 中，我们可以直接在 Image Asset 里的 Render As 选项来指定是不是需要作为 template 使用。相应的，在`<span class="built_in">UIApperance</span>`中，Apple 也为我们对于 `Size Classes` 添加了相应的方法。使用 `+appearanceForTraitCollection:` 方法，我们就可以针对不同 trait 下的应用的 apperance 进行很简单的设定。</div><div class="line"></div><div class="line">```objc</div><div class="line"><span class="built_in">UIView</span>.appearanceForTraitCollection(<span class="built_in">UITraitCollection</span>(verticalSizeClass:.Compact)).tintColor = <span class="built_in">UIColor</span>.redColor()  </div><div class="line"><span class="built_in">UIView</span>.appearanceForTraitCollection(<span class="built_in">UITraitCollection</span>(verticalSizeClass:.Regular)).tintColor = <span class="built_in">UIColor</span>.greenColor()</div></pre></td></tr></table></figure></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/坑/">坑</a><a href="/tags/UI/">UI</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/11/26/2015-11-26-uiimagede-xuan-ran-mo-shi/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/11/26/2015-11-26-uiimagede-xuan-ran-mo-shi/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/20/2015-11-20-min-jie-kai-fa-zong-jie/" title="敏捷开发总结" itemprop="url">敏捷开发总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-20T02:06:38.000Z" itemprop="datePublished"> 发表于 2015-11-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>传统开发模型的局限性<br>什么是敏捷软件开发<br>Scrum概述<br>Scrum角色<br>Scrum活动<br>Scrum实践<br>Scrum工具和模板<br>Scrum常见问题<br>推荐书籍<br>敏捷方法强调以人为本，专注于交付对客户有价值的软件。在高度协作的开发环境中，使用迭代式的方式进行增量开发，经常使用反馈进行思考、反省和总结，不停的进行自我调整和完善。</p>
+<p>Scrum Team中的三种角色</p>
+<p>Product Owner- 产品所有者<br>个人：代表所有的干系人</p>
+<p>Scrum Master:<br>个人：负责指导过程的执行</p>
+<p>Scrum Team – Scrum团队:<br>承诺完成工作，向干系人交付产品价值</p>
+<p>Product Owner- 产品所有者：</p>
+<p>1 利益相关方的代表,重点是产品方面，与Scrum Master和Team合作</p>
+<p>2 从业务角度出发对需求进行排序</p>
+<p>3 合理的调整产品功能和迭代顺序</p>
+<p>4 侧重于投资回报</p>
+<p>Scrum Master职责:<br>1 为Scrum Team服务,确保每个成员都认同Scrum价值观和游戏规则</p>
+<p>2 帮助Scrum Team规划Sprit计划</p>
+<p>3 组织每天的Daily Scrum会议</p>
+<p>4 负责保证Scrum Team 高效持续运转</p>
+<p>5 决策和免除障碍，保证团队不受外来无端的影响</p>
+<p>Scrum Team – Scrum团队:  </p>
+<p>1 尽一切可能去完成任务-发布产品</p>
+<p>2 充分理解产品负责人的产品愿景</p>
+<p>3 合作完成冲刺(Sprint)中每一个目标</p>
+<p>4 更好的支持可能需要进一步开发的产品发布</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/管理/">管理</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Scrum/">Scrum</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/11/20/2015-11-20-min-jie-kai-fa-zong-jie/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/11/20/2015-11-20-min-jie-kai-fa-zong-jie/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/20/2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg/" title="清除git历史记录大文件bfg" itemprop="url">清除git历史记录大文件bfg</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-20T03:17:27.000Z" itemprop="datePublished"> 发表于 2015-10-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol>
+<li><a href="https://search.maven.org/remote_content?g=com.madgag&amp;a=bfg&amp;v=LATEST" target="_blank" rel="external">下载bfg</a> 到本地soft/bfg目录下。</li>
+<li>sudo vi ~/.bash_profile  添加如下：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias bfg=&quot;java -jar ~/Downloads/soft/bfg/bfg.jar&quot;</div></pre></td></tr></table></figure>
+<ol>
+<li>cd 到库目录，执行bfg命令： <a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="external">bfg官网</a> </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ cd PBB_SSH所属目录下</div><div class="line">$ bfg --delete-folders universal --no-blob-protection  PBB_SSH</div><div class="line">$ cd PBB_SSH</div><div class="line">$ git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</div><div class="line">$ git push</div></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/git/">git</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/坑/">坑</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/20/2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/20/2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/06/2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd/" title="[转]敏捷杂谈之TDD与BDD" itemprop="url">[转]敏捷杂谈之TDD与BDD</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-06T02:18:02.000Z" itemprop="datePublished"> 发表于 2015-10-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>敏捷开发有许多种方法，但不管采用任何一种，测试都是实施敏捷的基础，及时的验证代码的正确性，系统功能的健全与否，及时的反馈，及时的叫停……都是保证敏捷的基础。所以大量的快速的自动化测试，才能保证敏捷开发在快速迭代中仍然不怎么丢失软件的质量。</p>
+<p>所以，在敏捷开发里一直都有一种说法叫“代码即文档”，而且测试代码也成了功能代码的使用文档。敏捷里强调的TDD(Test-driven developmenet, 测试驱动开发)，就主要体现了这种思想：根据设计编写测试-&gt; 实现设计的功能 -&gt; 用测试代码验证 -&gt; 重构实现代码 -&gt; 改善设计 -&gt; 再次回到根据改善的设计编写测试。反复循环下去，就是TDD所倡导的流程。<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/10/06/2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd/#more">更多...</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CI/">CI</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/TDD/">TDD</a><a href="/tags/BDD/">BDD</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/06/2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/06/2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/06/2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan/" title="calabash一款跨平台UI测试工具初探" itemprop="url">calabash一款跨平台UI测试工具初探</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-06T00:32:41.000Z" itemprop="datePublished"> 发表于 2015-10-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>参考：<a href="http://blog.csdn.net/zangcw/article/details/25299243" target="_blank" rel="external">使用jenkins+calabash+cocoapods搭建ios持续集成环境</a></p>
+<ol>
+<li>calabash  是一款开源的跨平台UI测试工具，目前支持iOS和Android。它使用Cucumber作为测试核心，Cucumber是一个在敏捷团队十分流行的自动化的功能测试工具，它使用接近于自然语言的特性文档进行用例的书写和测试，支持多语言和多平台。</li>
+<li><p>安装Calabash  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install calabash-cucumber</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装Calabash中文支持包  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install calabash-cucumber-cn</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>####For automatic setup:      </p>
+<ol>
+<li><p>In a terminal, go to your iOS project  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	cd path-to-my-ios-project (i.e. directory containing .xcodeproj file)</div><div class="line">	```  </div><div class="line">2. Install calabash-cucumber gem (this make take some time because of dependencies)</div></pre></td></tr></table></figure>
+<p> gem install calabash-cucumber</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">3. Setup your project for Calabash-iOS.</div></pre></td></tr></table></figure>
+<p> calabash-ios setup  //Answer the questions and read the output :)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4. Generate a skeleton features folder for your tests</div></pre></td></tr></table></figure>
+<p> calabash-ios gen</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">5. In Xcode, build your project using the -cal scheme</div><div class="line"></div><div class="line">6. Run the generated test!</div></pre></td></tr></table></figure>
+<p> cucumber</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">If all goes well, you are now ready to write your first test. Start by editing the file features/my_first.feature.</div><div class="line">&lt;!--more--&gt;</div><div class="line">####[cucumber官网](https://cukes.info/)   </div><div class="line"></div><div class="line">		* Feature（功能）  </div><div class="line">		* Scenario（情景）  </div><div class="line">		*  Given（给定）  </div><div class="line">		*  When（当）  </div><div class="line">		*  Then（则） </div><div class="line">#####[运行原理](http://www.educity.cn/se/619226.html)  </div><div class="line">![image](http://img.educity.cn/img_7/262/2013122000/125005907.jpg)  </div><div class="line">cucumber是一种BDD测试框架，核心为cucumber的calabash的脚本在运行测试的时候会在虚拟机/真机上预装一个web服务器，这个web服务器就是解释calabash的脚本，将其解释为robotium的脚本，然后这个web服务器会想测试app发送robotium的脚本，测试app拿到robotium脚本后，将其解释为instumentation命令向被测试的app发送这些命令，被测试的app执行这些命令，然后将结果返回给测试app，然后一级一级返得到最后的测试结果。    </div><div class="line">#####结构框架</div><div class="line">calabash完全采用了cucumber的结构模式，calabash是脚本与TC分离设计，在业务变化的情况下，只要功能存在基本只需要修改TC逻辑，在业务不变，功能变化的情况下，基本只需要修改脚本。   </div><div class="line">![image](http://img.educity.cn/img_7/262/2013122000/126005907.jpg)  </div><div class="line">feature为主件夹，step_definitions目录内是你封装的脚本，my_first.feature文件就是你的TC逻辑。  </div><div class="line">再看一下其中的内容：</div><div class="line"></div><div class="line">	　　my_first.feature</div><div class="line">	</div><div class="line">	　　Feature： 登陆</div><div class="line">	</div><div class="line">	　　Scenario： 输入正确的用户名密码能够正常登陆</div><div class="line">	</div><div class="line">	　　When 打开登陆页面</div><div class="line">	</div><div class="line">	　　And    输入用户名XXX输入密码XXX</div><div class="line">	</div><div class="line">	　　And   点击登陆</div><div class="line">	</div><div class="line">	　　Then  验证登陆成功</div><div class="line"></div><div class="line">　　看起来很简单吧，想要验证其他功能也是类似的语言描述即可。  </div><div class="line">如果你没有用过cucumber或者calabash那么你肯定现在有一个疑问，计算机怎么能识别汉字来进行测试的呢，  </div><div class="line">那么看一下step_definition，以 输入用户名XXX输入密码XXX为例：</div><div class="line"></div><div class="line">		When /^ 输入用户名\&quot;([^\\\&quot;]*)\&quot; 输入密码\&quot;([^\\\&quot;]*)\&quot;  $/ do |username，password|</div><div class="line">		performAction(&apos;enter_text_into_numbered_field&apos;，username，1)</div><div class="line">		performAction(&apos;enter_text_into_numbered_field&apos;，password，2)</div><div class="line">		end</div><div class="line">现在应该能明白为什么你需要写汉字的脚本就可以了吧。  </div><div class="line">在这里解释一下为什么如果业务存在功能修改这种情况，自动化脚本的修改量会小。  </div><div class="line">还是以这个登录脚本为例：</div><div class="line"></div><div class="line">	假如现在输入用户名和密码的输入框顺序变了，在你的页面显示上，可能是从左下角移到中间了，这种变化，那么feature文件你不用改，只需要改step_definition脚本就好了</div><div class="line">#####运行报告</div><div class="line">alabash-android支持很多报告生成模式，支持html，json，junit等等报告模式，只需要你在run的时候添加-f参数-o参数就可以了。</div><div class="line"></div><div class="line">　　例如 calabash-android run xxxx.apk -f html -o l，上图展示一下强大html报告  </div><div class="line">　　![image](http://img.educity.cn/img_7/262/2013122000/127005907.jpg)</div><div class="line"></div><div class="line">[【cucumber解析features文件】](http://blog.csdn.net/qs_csu/article/details/9000262) 		</div><div class="line">1. my_first.feature: 描述在这个条件下需要做什么事情；</div><div class="line"></div><div class="line">		Feature: Running a test  </div><div class="line">		  As an iOS developer  </div><div class="line">		  I want to have a sample feature file  </div><div class="line">		  So I can begin testing quickly  </div><div class="line">		  </div><div class="line">		Scenario: Example steps1  </div><div class="line">		  Given I am on the Welcome Screen  </div><div class="line">		  Then I swipe left  </div><div class="line">		  And I wait until I don&apos;t see &quot;Please swipe left&quot;  </div><div class="line">		  And take picture  </div><div class="line">		  </div><div class="line">		Scenario: Example steps2  </div><div class="line">		  Given I am on the Welcome Screen  </div><div class="line">		 #ASSERTION  </div><div class="line">		  Then I should see a &quot;login&quot; button  </div><div class="line">		 #INPUT TEXT  </div><div class="line">		  Then I enter &quot;my_username&quot; into text field number 1  </div><div class="line">		#  Then I touch &quot;Return&quot;  </div><div class="line">		  </div><div class="line">		 #TOGGLE SWITCH  </div><div class="line">		  Then I toggle the switch  </div><div class="line">		  Then I touch &quot;Login&quot;  </div><div class="line">		  And I touch &quot;Second&quot;  </div><div class="line">		  And take picture  </div><div class="line">	该文件描述了在“on the Welcome Screen”这个Step中需要做的事情，两个场景:steps1 和 steps2. </div><div class="line"></div><div class="line">2. my_first_step.rb: 解释了Given的具体条件</div><div class="line"></div><div class="line">		Given /^I am on the Welcome Screen$/ do  </div><div class="line">		  element_exists(&quot;view&quot;)  </div><div class="line">		  check_element_exists(&quot;label text:&apos;First View&apos;&quot;)  </div><div class="line">		  sleep(STEP_PSEAU)  </div><div class="line">		end</div><div class="line">	这个语句，判定了当前条件&quot;on the Welcome Screen&quot;是否满足，如果element存在，则就在&quot;Welcome Screen&quot;</div><div class="line">	</div><div class="line">[更多的测试框架](http://www.infoq.com/cn/articles/build-ios-continuous-integration-platform-part2)</div><div class="line"></div><div class="line">UIAutomation</div><div class="line"></div><div class="line">UIAutomation是随着iOS SDK 4.0引入，帮助开发者在真实设备和模拟器上执行自动化的UI测试。其本质上是一个Javascript的类库，通过 界面上的标签和值的访问性来获得UI元素，完成相应的交互操作，从而达到测试的目的，类似于Web世界的Selenium。</div><div class="line"></div><div class="line">通过上面的描述，可以得知，使用UIAutomation做测试时，开发者必须掌握两件事：</div><div class="line"></div><div class="line">- 如何找到界面上的一个UI元素</div><div class="line">- 如何指定针对一个UI元素的操作</div><div class="line"></div><div class="line">在UIAutomation中，界面就是由一堆UI元素构建的层级结构，所有UI元素都继承对象UIAElement ，该对象提供了每个UI元素必须具备的一些属性：</div><div class="line"></div><div class="line">- name</div><div class="line">- value</div><div class="line">- elements</div><div class="line">- parent</div><div class="line">- …</div><div class="line"></div><div class="line">而整个界面的层级结构如下：</div><div class="line"></div><div class="line">	arget（设备级别的UI，用于支持晃动，屏幕方向变动等操作）</div><div class="line">	    Application（设备上的应用，比方说Status Bar，keyboard等）</div><div class="line">	      Main window（应用的界面，比方说导航条）</div><div class="line">	        View（界面下的View，比方说UITableView）</div><div class="line">	           Element（View下的一个元素）</div><div class="line">	              Child element(元素下的一个子元素)</div><div class="line">下面是一个访问到Child element的例子：</div><div class="line"></div><div class="line">	UIATarget.localTarget().HamcrestDemo().tableViews()[0].cells()[0].elements()</div><div class="line">开发者还可以通过“UIATarget.localTarget().logElementTree()”在控制台打印出该target下所有的的elements。</div><div class="line"></div><div class="line">找到UI元素之后，开发者可以基于该UI元素做期望的操作，UIAutomation作为原生的UI测试框架，基本上支持iOS上的所有UI元素和操作，比方说：</div><div class="line"></div><div class="line">- 点击按钮，例: ***.buttons[“add”].tap()</div><div class="line">- 输入文本, 例:***.textfields[0].setValue(“new”)</div><div class="line">- 滚动屏幕，例:***.scrollToElementWithPredicate(“name begin with ’test’”)</div><div class="line">- ……</div><div class="line">关于使用UIAutomation做UI测试，推荐大家一定要看一下2010的WWDC的Session 306：[Automating User Interface Testing with Instruments](https://developer.apple.com/videos/wwdc/2010/?id=306)。 另外，这儿还有一篇很好的博客，详细的讲解了[如何使用UIAutomation做UI自动化测试](http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation)  </div><div class="line">Apple通过Instruments为UIAutomation测试用例的命令行运行提供了支持，这样就为UIAutomation和CI服务器的集成提供了便利。开发者可以通过如下的步骤在命令行中运行UIAutomation测试脚本:</div><div class="line">1. 指定目标设备，构建被测应用，该应用会被安装到指定的DSTROOT目录下</div><div class="line">```ruby</div><div class="line">xcodebuild</div><div class="line">-project &quot;/Users/twer/Documents/xcodeworkspace/AudioDemo/AudioDemo.xcodeproj&quot; </div><div class="line">-schemeAudioDemo</div><div class="line">-sdk iphonesimulator6.1 </div><div class="line">-configuration Release SYMROOT=&quot;/Users/twer/Documents/xcodeworkspace/</div><div class="line">AudioDemo/build&quot; DSTROOT=&quot;/Users/twer/Documents/xcodeworkspace/AudioDemo/</div><div class="line">build&quot; TARGETED_DEVICE_FAMILY=&quot;1&quot; </div><div class="line">install</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动Instruments，基于第一步生成的应用运行UIAutomation测试</p>
+<pre><code class="ruby">instruments
+-t  <span class="string">"/Applications/Xcode.app/Contents/Applications/Instruments.app/
+Contents/PlugIns/AutomationInstrument.bundle/Contents/Resources/
+Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xcodeworkspace/AudioDemo
+/build/Applications/TestExample.app"</span>
+-e UIASCRIPT &lt;absolute_path_to_the_test_file&gt;
+</code></pre>
+<p>为了更好的展示测试效果以及与CI服务器集成，活跃的社区开发者们还尝试把UIAutomation和Jasmine集成: <a href="https://github.com/shaune/jasmine-ios-acceptance-tests" target="_blank" rel="external">https://github.com/shaune/jasmine-ios-acceptance-tests</a></p>
+</li>
+</ol>
+<p>UIAutomation因其原生支持，并且通过和Instruments的绝佳配合，开发者可以非常方便的使用录制操作自动生成测试脚本，赢得了很多开发者的支持，但是因苹果公司的基因，其系统非常封闭，导致开发者难以扩展，于是活跃的社区开发者们开始制造自己的轮子，<a href="https://gorillalogic.com/fonemonkey-0-7-1-released/" target="_blank" rel="external">Fone Monkey,最新版本更新于2010年，估计过时</a>就是其中的一个优秀成果。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CI/">CI</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/工具/">工具</a><a href="/tags/UI/">UI</a><a href="/tags/测试/">测试</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/06/2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/06/2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/" title="使用SmartSVN创建版本库" itemprop="url">使用SmartSVN创建版本库</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-05T11:16:47.000Z" itemprop="datePublished"> 发表于 2015-10-05</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>SmartSVN有以下版本：</p>
+<ol>
+<li>SmartSVN enterprise 9 企业版</li>
+<li>SmartSVN foundation 8 基础版</li>
+</ol>
+<p>由于企业版只能建立本地的版本库，无法创建&amp;使用svn://localhost方式。</p>
+<p>####用基础版来说明创建版本库。<br>参考：<a href="http://hammadk.com/how-to-create-repository-in-smartsvn-tutorial/">Create Repository in SmartSVN – Tutorial</a>  </p>
+<ol>
+<li>启动SmartSVN SmartSVN foundation 8 基础版  </li>
+<li>菜单栏Project-&gt; set up Local Repository…<br>需要设置如下两个参数：  <ol>
+<li>svnadmin 在终端执行： whereis svnadmin  </li>
+<li>svnserve 在终端执行： whereis svnserve<br>￼<img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/adeb039a-b429-481a-ac25-2044b871e45e/screenshot.png?resizeSmall&amp;width=832" alt="image">  </li>
+</ol>
+</li>
+<li>指定版本库的目录位置：<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/a3f00903-101c-4848-a10a-3479643baea7/screenshot.png?resizeSmall&amp;width=832" alt="image">  </li>
+<li>初始化账户密码：<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/140f257e-e452-47ea-8317-34a5ed8d6c7f/screenshot.png?resizeSmall&amp;width=832" alt="image">  </li>
+<li>完成。<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/ed975623-72bb-4132-8d04-ac9a7b1d2fc9/screenshot.png?resizeSmall&amp;width=832" alt="image"><br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/53306789-9d97-485c-a54d-a143e7b078f1/screenshot.png?resizeSmall&amp;width=832" alt="image">
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/#more">更多...</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/git/">git</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/工具/">工具</a><a href="/tags/搭建/">搭建</a><a href="/tags/svn/">svn</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
 
 
 
@@ -300,20 +966,20 @@ SmartSVN foundation 8 基础版
 
 
 
-  <nav id="page-nav" class="clearfix unexpand">
+  <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -323,7 +989,7 @@ SmartSVN foundation 8 基础版
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -378,7 +1044,7 @@ SmartSVN foundation 8 基础版
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -390,7 +1056,7 @@ SmartSVN foundation 8 基础版
 			
 		
 			
-				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
+				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
 			
 		
 			
@@ -398,7 +1064,7 @@ SmartSVN foundation 8 基础版
 			
 		
 			
-				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
 			
 		
 			
@@ -430,27 +1096,11 @@ SmartSVN foundation 8 基础版
 			
 		
 			
+				<li><a href="/tags/安装/" title="安装">安装<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/概念/" title="概念">概念<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/targets/" title="targets">targets<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/指南/" title="指南">指南<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
 			
 		
 			
@@ -458,7 +1108,23 @@ SmartSVN foundation 8 基础版
 			
 		
 			
-				<li><a href="/tags/scheme/" title="scheme">scheme<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/指南/" title="指南">指南<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设备/" title="设备">设备<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -467,7 +1133,7 @@ SmartSVN foundation 8 基础版
 
   
   <div class="tagcloudlist">
-    <p class="asidetitle">Tag Cloud</p>
+    <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
        <a href="/tags/AutoLayout/" style="font-size: 10px;">AutoLayout</a> <a href="/tags/BDD/" style="font-size: 13.33px;">BDD</a> <a href="/tags/IOS7/" style="font-size: 10px;">IOS7</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Scrum/" style="font-size: 10px;">Scrum</a> <a href="/tags/Storyboard/" style="font-size: 16.67px;">Storyboard</a> <a href="/tags/TDD/" style="font-size: 13.33px;">TDD</a> <a href="/tags/TextKit/" style="font-size: 13.33px;">TextKit</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/gitBook/" style="font-size: 10px;">gitBook</a> <a href="/tags/gitLab/" style="font-size: 10px;">gitLab</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/mou/" style="font-size: 10px;">mou</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/realm/" style="font-size: 10px;">realm</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/scheme/" style="font-size: 10px;">scheme</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/targets/" style="font-size: 10px;">targets</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/协议/" style="font-size: 16.67px;">协议</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/坑/" style="font-size: 16.67px;">坑</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/小米路由/" style="font-size: 10px;">小米路由</a> <a href="/tags/工具/" style="font-size: 20px;">工具</a> <a href="/tags/布局/" style="font-size: 10px;">布局</a> <a href="/tags/截屏/" style="font-size: 13.33px;">截屏</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/搭建/" style="font-size: 16.67px;">搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/混编/" style="font-size: 10px;">混编</a> <a href="/tags/版本控制/" style="font-size: 10px;">版本控制</a> <a href="/tags/管理/" style="font-size: 13.33px;">管理</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/设备/" style="font-size: 10px;">设备</a> <a href="/tags/语法/" style="font-size: 20px;">语法</a> <a href="/tags/转场/" style="font-size: 10px;">转场</a>
     </div>
@@ -481,7 +1147,7 @@ SmartSVN foundation 8 基础版
 
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
 <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=1&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1791281385&verifier=8c6f2d1f&dpc=1"></iframe>
 </div>
 
@@ -493,12 +1159,12 @@ SmartSVN foundation 8 基础版
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -715,7 +1381,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
