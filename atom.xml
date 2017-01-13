@@ -249,8 +249,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#x73;&#x6f;&#x6d;&#x65;&#x2d;&#111;&#110;&#101;&#x40;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#x6f;&#x6d;">&#x73;&#x6f;&#x6d;&#x65;&#x2d;&#111;&#110;&#101;&#x40;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#x6f;&#x6d;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x73;&#111;&#x6d;&#101;&#45;&#x6f;&#110;&#x65;&#64;&#101;&#120;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#109;">&#x73;&#111;&#x6d;&#101;&#45;&#x6f;&#110;&#x65;&#64;&#101;&#120;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#109;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x73;&#111;&#109;&#x65;&#x2d;&#x6f;&#x6e;&#x65;&#64;&#101;&#x78;&#x61;&#x6d;&#112;&#x6c;&#101;&#46;&#99;&#x6f;&#109;">&#x73;&#111;&#109;&#x65;&#x2d;&#x6f;&#x6e;&#x65;&#64;&#101;&#x78;&#x61;&#x6d;&#112;&#x6c;&#101;&#46;&#99;&#x6f;&#109;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#115;&#x6f;&#109;&#x65;&#45;&#111;&#x6e;&#101;&#64;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#111;&#x6d;">&#115;&#x6f;&#109;&#x65;&#45;&#111;&#x6e;&#101;&#64;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#111;&#x6d;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -642,7 +642,7 @@ line 3 of code
     <link href="https://huos3203.github.io/2016/12/20/Hexo-hello-world/"/>
     <id>https://huos3203.github.io/2016/12/20/Hexo-hello-world/</id>
     <published>2016-12-20T10:02:13.000Z</published>
-    <updated>2017-01-13T08:23:45.000Z</updated>
+    <updated>2017-01-13T08:28:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
@@ -1725,9 +1725,9 @@ kill -9 pid 将pid替换为上面查到的进程id可以杀掉svn进程
     
       <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
-    
       <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
     
   </entry>
   
