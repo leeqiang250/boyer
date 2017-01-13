@@ -60,7 +60,7 @@ calabash  是一款开源的跨平台UI测试工具，目前支持iOS和Android�
 				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
 				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -76,7 +76,7 @@ calabash  是一款开源的跨平台UI测试工具，目前支持iOS和Android�
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -98,14 +98,14 @@ calabash  是一款开源的跨平台UI测试工具，目前支持iOS和Android�
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-06T00:32:41.000Z" itemprop="datePublished"> 发表于 2015-10-06</time>
+    <time datetime="2015-10-06T00:32:41.000Z" itemprop="datePublished"> Published 2015-10-06</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			
 		
@@ -159,7 +159,7 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/工具/">工具</a><a href="/tags/UI/">UI</a><a href="/tags/测试/">测试</a>
+  <span></span> <a href="/tags/工具/">工具</a><a href="/tags/测试/">测试</a><a href="/tags/UI/">UI</a>
   </div>
 
 </div>
@@ -230,28 +230,28 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
-  <p></p>
-<div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+  <div class="rsspart">
+<p></p>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
 
   
 <div class="github-card">
-<p class="asidetitle">Github 名片</p>
+<p class="asidetitle">Github Card</p>
 <div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -261,7 +261,7 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -316,19 +316,19 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>7</sup></a></li>
-			
 		
 			
 				<li><a href="/tags/语法/" title="语法">语法<sup>7</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
+				<li><a href="/tags/工具/" title="工具">工具<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/搭建/" title="搭建">搭建<sup>3</sup></a></li>
 			
 		
 			
@@ -340,7 +340,7 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 			
 		
 			
-				<li><a href="/tags/搭建/" title="搭建">搭建<sup>3</sup></a></li>
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
 			
 		
 			
@@ -368,15 +368,15 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 			
 		
 			
-				<li><a href="/tags/版本控制/" title="版本控制">版本控制<sup>1</sup></a></li>
+				<li><a href="/tags/安装/" title="安装">安装<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/概念/" title="概念">概念<sup>1</sup></a></li>
+				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
+				<li><a href="/tags/ruby/" title="ruby">ruby<sup>1</sup></a></li>
 			
 		
 			
@@ -384,15 +384,15 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 			
 		
 			
-				<li><a href="/tags/octopress/" title="octopress">octopress<sup>1</sup></a></li>
+				<li><a href="/tags/混编/" title="混编">混编<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/指南/" title="指南">指南<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
 			
 		
 			
@@ -405,7 +405,7 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 
   
   <div class="tagcloudlist">
-    <p class="asidetitle">标签云</p>
+    <p class="asidetitle">Tag Cloud</p>
     <div class="tagcloudlist clearfix">
        <a href="/tags/AutoLayout/" style="font-size: 10px;">AutoLayout</a> <a href="/tags/BDD/" style="font-size: 13.33px;">BDD</a> <a href="/tags/IOS7/" style="font-size: 10px;">IOS7</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Scrum/" style="font-size: 10px;">Scrum</a> <a href="/tags/Storyboard/" style="font-size: 16.67px;">Storyboard</a> <a href="/tags/TDD/" style="font-size: 13.33px;">TDD</a> <a href="/tags/TextKit/" style="font-size: 13.33px;">TextKit</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/gitBook/" style="font-size: 10px;">gitBook</a> <a href="/tags/gitLab/" style="font-size: 10px;">gitLab</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/mou/" style="font-size: 10px;">mou</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/realm/" style="font-size: 10px;">realm</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/scheme/" style="font-size: 10px;">scheme</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/targets/" style="font-size: 10px;">targets</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/协议/" style="font-size: 16.67px;">协议</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/坑/" style="font-size: 16.67px;">坑</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/小米路由/" style="font-size: 10px;">小米路由</a> <a href="/tags/工具/" style="font-size: 20px;">工具</a> <a href="/tags/布局/" style="font-size: 10px;">布局</a> <a href="/tags/截屏/" style="font-size: 13.33px;">截屏</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/搭建/" style="font-size: 16.67px;">搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/混编/" style="font-size: 10px;">混编</a> <a href="/tags/版本控制/" style="font-size: 10px;">版本控制</a> <a href="/tags/管理/" style="font-size: 13.33px;">管理</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/设备/" style="font-size: 10px;">设备</a> <a href="/tags/语法/" style="font-size: 20px;">语法</a> <a href="/tags/转场/" style="font-size: 10px;">转场</a>
     </div>
@@ -420,7 +420,7 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
 <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=1&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1791281385&verifier=8c6f2d1f&dpc=1"></iframe>
 </div>
 
@@ -432,7 +432,7 @@ Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xco
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -689,7 +689,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
