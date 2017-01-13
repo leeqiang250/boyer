@@ -149,6 +149,7 @@
 		145273FA1E28B09A00671F2A /* weixin.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = weixin.ejs; sourceTree = "<group>"; };
 		145273FB1E28B3C500671F2A /* weixinimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = weixinimg.jpg; sourceTree = "<group>"; };
 		145273FD1E28B7BC00671F2A /* earth.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = earth.ejs; sourceTree = "<group>"; };
+		145273FE1E28C57700671F2A /* tongji.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = tongji.ejs; sourceTree = "<group>"; };
 		149F334E1E0A767600AAC556 /* _config.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = _config.yml; sourceTree = "<group>"; };
 		149F33501E0A767600AAC556 /* 2014-06-09-chu-bu-da-jian-octopress.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-09-chu-bu-da-jian-octopress.md"; sourceTree = "<group>"; };
 		149F33511E0A767600AAC556 /* 2014-06-10-ios7jie-ping-wen-ti.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-10-ios7jie-ping-wen-ti.markdown"; sourceTree = "<group>"; };
@@ -1053,6 +1054,7 @@
 				14B364221E27389D00D1FB05 /* weibo.ejs */,
 				145273FA1E28B09A00671F2A /* weixin.ejs */,
 				145273FD1E28B7BC00671F2A /* earth.ejs */,
+				145273FE1E28C57700671F2A /* tongji.ejs */,
 			);
 			path = _widget;
 			sourceTree = "<group>";

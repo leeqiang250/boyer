@@ -12,7 +12,7 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "5D13B55CADE06A075FE8782BB68A1BAB556C8B27" : "..\/..\/git\/xcode_tool",
     "2DF26A42E50C900C1EECC82B653F1975A26B4F03" : "source\/",
-    "77ABD6735A9CA348E72C202AA7E0D9DAE578CB04" : "..\/..\/jacman"
+    "77ABD6735A9CA348E72C202AA7E0D9DAE578CB04" : "themes\/jacman\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "HexoDeploy",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
