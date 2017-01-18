@@ -1,0 +1,958 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo标签插件 | 布衣男儿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="boyer">
+    
+
+    
+    <meta name="description" content="标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。
+引用块
+在文章中插入引言，可包含作者、来源和标题。
+别号： quote
+123&amp;#123;% blockquote [author[, source]] [link] [source_link_title] %&amp;#125;content&amp;#123;% endblockquote %&amp;#125;
+样例
+无">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo标签插件">
+<meta property="og:url" content="https://huos3203.github.io/2016/12/20/Hexo标签插件/index.html">
+<meta property="og:site_name" content="布衣男儿">
+<meta property="og:description" content="标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。
+引用块
+在文章中插入引言，可包含作者、来源和标题。
+别号： quote
+123&amp;#123;% blockquote [author[, source]] [link] [source_link_title] %&amp;#125;content&amp;#123;% endblockquote %&amp;#125;
+样例
+无">
+<meta property="og:image" content="http://boyers.coding.me/img/logo.png">
+<meta property="og:image" content="http://boyers.coding.me/img/logo.png">
+<meta property="og:image" content="http://boyers.coding.me/img/logo.png [200] [200]">
+<meta property="og:updated_time" content="2017-01-12T08:45:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo标签插件">
+<meta name="twitter:description" content="标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。
+引用块
+在文章中插入引言，可包含作者、来源和标题。
+别号： quote
+123&amp;#123;% blockquote [author[, source]] [link] [source_link_title] %&amp;#125;content&amp;#123;% endblockquote %&amp;#125;
+样例
+无">
+<meta name="twitter:image" content="http://boyers.coding.me/img/logo.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="布衣男儿" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="布衣男儿" title="布衣男儿"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
+				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= SE_zzsearchcode_shhzc78w ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/12/20/Hexo标签插件/" title="Hexo标签插件" itemprop="url">Hexo标签插件</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-20T10:01:13.000Z" itemprop="datePublished"> 发表于 2016-12-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引用块"><span class="toc-number">1.</span> <span class="toc-text">引用块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#别号：-quote"><span class="toc-number">1.1.</span> <span class="toc-text">别号： quote</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#样例"><span class="toc-number">1.1.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#无参普通blockquote"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">无参普通blockquote</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#引用书上的句子"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">引用书上的句子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#引用-Twitter"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">引用 Twitter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#引用网络上的文章"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">引用网络上的文章</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码块"><span class="toc-number">2.</span> <span class="toc-text">代码块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#别名-code"><span class="toc-number">2.1.</span> <span class="toc-text">别名:code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#样例-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#普通的代码块"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">普通的代码块</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指定语言"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">指定语言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#附加说明"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">附加说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#附加说明和网址"><span class="toc-number">2.1.1.4.</span> <span class="toc-text">附加说明和网址</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反引号代码块-MD语法"><span class="toc-number">3.</span> <span class="toc-text">反引号代码块 (MD语法)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例-2"><span class="toc-number">3.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#行内代码块"><span class="toc-number">3.1.1.</span> <span class="toc-text">行内代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缩进代码块"><span class="toc-number">3.1.2.</span> <span class="toc-text">缩进代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多行代码块"><span class="toc-number">3.1.3.</span> <span class="toc-text">多行代码块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格"><span class="toc-number">4.</span> <span class="toc-text">表格</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例-3"><span class="toc-number">4.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认左对齐"><span class="toc-number">4.1.1.</span> <span class="toc-text">默认左对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向右对齐"><span class="toc-number">4.1.2.</span> <span class="toc-text">向右对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向左对齐"><span class="toc-number">4.1.3.</span> <span class="toc-text">向左对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#居中对齐"><span class="toc-number">4.1.4.</span> <span class="toc-text">居中对齐</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pull-Quote"><span class="toc-number">5.</span> <span class="toc-text">Pull Quote</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jsFiddle"><span class="toc-number">6.</span> <span class="toc-text">jsFiddle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gist"><span class="toc-number">7.</span> <span class="toc-text">Gist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iframe"><span class="toc-number">8.</span> <span class="toc-text">iframe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入图片"><span class="toc-number">9.</span> <span class="toc-text">插入图片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例-4"><span class="toc-number">9.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo语法"><span class="toc-number">9.1.1.</span> <span class="toc-text">Hexo语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MD语法"><span class="toc-number">9.1.2.</span> <span class="toc-text">MD语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#原图-toolTip"><span class="toc-number">9.1.2.1.</span> <span class="toc-text">原图+toolTip</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注脚语法"><span class="toc-number">9.1.2.2.</span> <span class="toc-text">注脚语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指定图片大小"><span class="toc-number">9.1.2.3.</span> <span class="toc-text">指定图片大小</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#超链接"><span class="toc-number">10.</span> <span class="toc-text">超链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例-5"><span class="toc-number">10.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo语法-1"><span class="toc-number">10.1.1.</span> <span class="toc-text">Hexo语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MD语法-1"><span class="toc-number">10.1.2.</span> <span class="toc-text">MD语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#智能识别超链接"><span class="toc-number">10.1.2.1.</span> <span class="toc-text">智能识别超链接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#文本式"><span class="toc-number">10.1.2.2.</span> <span class="toc-text">文本式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#toolTip式"><span class="toc-number">10.1.2.3.</span> <span class="toc-text">toolTip式</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Include-Code"><span class="toc-number">11.</span> <span class="toc-text">Include Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Youtube"><span class="toc-number">12.</span> <span class="toc-text">Youtube</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vimeo"><span class="toc-number">13.</span> <span class="toc-text">Vimeo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用文章"><span class="toc-number">14.</span> <span class="toc-text">引用文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用资源"><span class="toc-number">15.</span> <span class="toc-text">引用资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Raw"><span class="toc-number">16.</span> <span class="toc-text">Raw</span></a></li></ol>
+		
+		</div>
+		
+		<p>标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。</p>
+<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><hr>
+<p>在文章中插入引言，可包含作者、来源和标题。</p>
+<h3 id="别号：-quote"><a href="#别号：-quote" class="headerlink" title="别号： quote"></a>别号： quote</h3><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</div><div class="line">content</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><hr>
+<h5 id="无参普通blockquote"><a href="#无参普通blockquote" class="headerlink" title="无参普通blockquote"></a>无参普通blockquote</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote %&#125;</div><div class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="引用书上的句子"><a href="#引用书上的句子" class="headerlink" title="引用书上的句子"></a>引用书上的句子</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote David Levithan, Wide Awake %&#125;</div><div class="line">Do not just seek happiness <span class="keyword">for</span> yourself. Seek happiness <span class="keyword">for</span> all. Through kindness. Through mercy.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
+<footer><strong>boyer huo </strong><cite>Wide Awake</cite></footer></blockquote>
+<h5 id="引用-Twitter"><a href="#引用-Twitter" class="headerlink" title="引用 Twitter"></a>引用 Twitter</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote @DevDocs https:<span class="comment">//twitter.com/devdocs/status/356095192085962752 %&#125;</span></div><div class="line">NEW: DevDocs now comes <span class="keyword">with</span> syntax highlighting. http:<span class="comment">//devdocs.io</span></div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="external">http://devdocs.io</a></p>
+<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="external">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
+<h5 id="引用网络上的文章"><a href="#引用网络上的文章" class="headerlink" title="引用网络上的文章"></a>引用网络上的文章</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote Seth Godin http:<span class="comment">//sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %&#125;</span></div><div class="line">Every interaction is both precious and an opportunity to delight.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
+<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="external">Welcome to Island Marketing</a></cite></footer></blockquote>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><hr>
+<p>在文章中插入代码。</p>
+<h3 id="别名-code"><a href="#别名-code" class="headerlink" title="别名:code"></a>别名:code</h3><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock [title] [lang:language] [url] [link text] %&#125;</div><div class="line">code snippet</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<h4 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h4><hr>
+<h5 id="普通的代码块"><a href="#普通的代码块" class="headerlink" title="普通的代码块"></a>普通的代码块</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock %&#125;</div><div class="line">alert(<span class="string">'Hello World!'</span>);</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(&apos;Hello World!&apos;);</div></pre></td></tr></table></figure>
+<h5 id="指定语言"><a href="#指定语言" class="headerlink" title="指定语言"></a>指定语言</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock lang:objc %&#125;</div><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div></pre></td></tr></table></figure>
+<h5 id="附加说明"><a href="#附加说明" class="headerlink" title="附加说明"></a>附加说明</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock <span class="built_in">Array</span>.map %&#125;</div><div class="line">array.map(callback[, thisArg])</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>Array.map</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Array.map</div><div class="line">array.map(callback[, thisArg])</div></pre></td></tr></table></figure>
+<h5 id="附加说明和网址"><a href="#附加说明和网址" class="headerlink" title="附加说明和网址"></a>附加说明和网址</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock _.compact http:<span class="comment">//underscorejs.org/#compact Underscore.js %&#125;</span></div><div class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="literal">false</span>, <span class="number">2</span>, <span class="string">''</span>, <span class="number">3</span>]);</div><div class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_.compactUnderscore.js</div><div class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</div><div class="line">=&gt; [1, 2, 3]</div></pre></td></tr></table></figure>
+<h2 id="反引号代码块-MD语法"><a href="#反引号代码块-MD语法" class="headerlink" title="反引号代码块 (MD语法)"></a>反引号代码块 (MD语法)</h2><hr>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="行内代码块"><a href="#行内代码块" class="headerlink" title="行内代码块"></a>行内代码块</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">行内 <span class="code">`code 块 `</span></div></pre></td></tr></table></figure>
+<h4 id="缩进代码块"><a href="#缩进代码块" class="headerlink" title="缩进代码块"></a>缩进代码块</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// Some comments</div><div class="line">line 1 of code</div><div class="line">line 2 of code</div><div class="line">line 3 of code</div></pre></td></tr></table></figure>
+<h4 id="多行代码块"><a href="#多行代码块" class="headerlink" title="多行代码块"></a>多行代码块</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="code">``` [language] [title] [url] [link text] </span></div><div class="line"></div><div class="line">    代码块</div><div class="line"></div><div class="line"> `` `</div></pre></td></tr></table></figure>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><hr>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="默认左对齐"><a href="#默认左对齐" class="headerlink" title="默认左对齐"></a>默认左对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------|-------|----------|</div><div class="line">|文本内容 |文本内容| 文本内容  |</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>layout</td>
+<td>布局</td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td>建立日期</td>
+<td>文件建立日期</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>更新日期</td>
+<td>文件更新日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>开启文章的评论功能</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>覆盖文章网址</td>
+</tr>
+</tbody>
+</table>
+<h4 id="向右对齐"><a href="#向右对齐" class="headerlink" title="向右对齐"></a>向右对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------:|-------:|-------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">三种布局</th>
+<th style="text-align:right">路径:(储存到路径文件夹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">post</td>
+<td style="text-align:right">source/_posts</td>
+</tr>
+<tr>
+<td style="text-align:right">page</td>
+<td style="text-align:right">source</td>
+</tr>
+<tr>
+<td style="text-align:right">draft</td>
+<td style="text-align:right">source/_drafts</td>
+</tr>
+</tbody>
+</table>
+<h4 id="向左对齐"><a href="#向左对齐" class="headerlink" title="向左对齐"></a>向左对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------|:------|:------|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">日期变量</th>
+<th style="text-align:left">描述:（可以通过日期来管理文章）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">:title</td>
+<td style="text-align:left">标题（小写，空格将会被替换为短杠）</td>
+</tr>
+<tr>
+<td style="text-align:left">:year</td>
+<td style="text-align:left">建立的年份，比如， 2015</td>
+</tr>
+<tr>
+<td style="text-align:left">:month</td>
+<td style="text-align:left">建立的月份（有前导零），比如， 04</td>
+</tr>
+<tr>
+<td style="text-align:left">:i_month</td>
+<td style="text-align:left">建立的月份（无前导零），比如， 4</td>
+</tr>
+<tr>
+<td style="text-align:left">:day</td>
+<td style="text-align:left">建立的日期（有前导零），比如， 07</td>
+</tr>
+<tr>
+<td style="text-align:left">:i_day</td>
+<td style="text-align:left">建立的日期（无前导零），比如， 7</td>
+</tr>
+</tbody>
+</table>
+<h4 id="居中对齐"><a href="#居中对齐" class="headerlink" title="居中对齐"></a>居中对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------:|:------:|:------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">变量</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">layout</td>
+<td style="text-align:center">布局</td>
+</tr>
+<tr>
+<td style="text-align:center">title</td>
+<td style="text-align:center">标题</td>
+</tr>
+<tr>
+<td style="text-align:center">date</td>
+<td style="text-align:center">文件建立日期</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Pull-Quote"><a href="#Pull-Quote" class="headerlink" title="Pull Quote"></a>Pull Quote</h2><hr>
+<p>在文章中插入 Pull quote。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% pullquote [class] %&#125;</div><div class="line">content</div><div class="line">&#123;% endpullquote %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="jsFiddle"><a href="#jsFiddle" class="headerlink" title="jsFiddle"></a>jsFiddle</h2><hr>
+<p>在文章中嵌入 jsFiddle。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% jsfiddle shorttag [tabs] [skin] [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><hr>
+<p>在文章中嵌入 Gist。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist gist_id [filename] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><hr>
+<p>在文章中插入 iframe。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% iframe url [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><hr>
+<h3 id="样例-4"><a href="#样例-4" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="Hexo语法"><a href="#Hexo语法" class="headerlink" title="Hexo语法"></a>Hexo语法</h4><hr>
+<p>在文章中插入指定大小的图片。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% img [class names] /path/to/image [width] [height] [title text [alt text]] %&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="MD语法"><a href="#MD语法" class="headerlink" title="MD语法"></a>MD语法</h4><hr>
+<h5 id="原图-toolTip"><a href="#原图-toolTip" class="headerlink" title="原图+toolTip"></a>原图+toolTip</h5><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![boyer logo](http://boyers.coding.me/img/logo.png &quot;这是我的logo图片&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://boyers.coding.me/img/logo.png" alt="boyer logo" title="这是我的logo图片"></p>
+<h5 id="注脚语法"><a href="#注脚语法" class="headerlink" title="注脚语法"></a>注脚语法</h5><hr>
+<p>可以在稍後的文件中再定义图片地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![boyer logo][logo]</div><div class="line">[logo]: http://boyers.coding.me/img/logo.png  &quot;这是我的logo图片&quot;</div></pre></td></tr></table></figure></p>
+<p><img src="http://boyers.coding.me/img/logo.png" alt="boyer logo" title="这是我的logo图片"></p>
+<h5 id="指定图片大小"><a href="#指定图片大小" class="headerlink" title="指定图片大小"></a>指定图片大小</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![boyer logo](http://boyers.coding.me/img/logo.png [200] [200] &quot;这是我的logo图片&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://boyers.coding.me/img/logo.png [200] [200]" alt="boyer logo" title="这是我的logo图片"></p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><hr>
+<h3 id="样例-5"><a href="#样例-5" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="Hexo语法-1"><a href="#Hexo语法-1" class="headerlink" title="Hexo语法"></a>Hexo语法</h4><hr>
+<p>在文章中插入链接，并自动给外部链接添加 target=”_blank” 属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% link text url [external] [title] %&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="MD语法-1"><a href="#MD语法-1" class="headerlink" title="MD语法"></a>MD语法</h4><hr>
+<h5 id="智能识别超链接"><a href="#智能识别超链接" class="headerlink" title="智能识别超链接"></a>智能识别超链接</h5><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://boyers.coding.me</div></pre></td></tr></table></figure>
+<p><a href="http://boyers.coding.me" target="_blank" rel="external">http://boyers.coding.me</a></p>
+<h5 id="文本式"><a href="#文本式" class="headerlink" title="文本式"></a>文本式</h5><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">boyer Blog</span>](<span class="link">http://boyers.coding.me</span>)</div></pre></td></tr></table></figure>
+<p><a href="http://boyers.coding.me" target="_blank" rel="external">boyer Blog</a></p>
+<h5 id="toolTip式"><a href="#toolTip式" class="headerlink" title="toolTip式"></a>toolTip式</h5><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">boyer Blog</span>](<span class="link">http://boyers.coding.me "这是我的博客首页"</span>)</div></pre></td></tr></table></figure>
+<p><a href="http://boyers.coding.me" title="这是我的博客首页" target="_blank" rel="external">boyer Blog</a></p>
+<h2 id="Include-Code"><a href="#Include-Code" class="headerlink" title="Include Code"></a>Include Code</h2><hr>
+<p>插入 source 文件夹内的代码文件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube"></a>Youtube</h2><hr>
+<p>在文章中插入 Youtube 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% youtube video_id %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Vimeo"><a href="#Vimeo" class="headerlink" title="Vimeo"></a>Vimeo</h2><hr>
+<p>在文章中插入 Vimeo 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% vimeo video_id %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><hr>
+<p>引用其他文章的链接。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% post_path slug %&#125;</div><div class="line">&#123;% post_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h2><hr>
+<p>引用文章的资源。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% asset_path slug %&#125;</div><div class="line">&#123;% asset_img slug [title] %&#125;</div><div class="line">&#123;% asset_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Raw"><a href="#Raw" class="headerlink" title="Raw"></a>Raw</h2><hr>
+<p>如果您想在文章中插入 Swig 标签，可以尝试使用 Raw 标签，以免发生解析异常。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% raw %&#125;</div><div class="line">content</div><div class="line">&#123;% endraw %&#125;</div></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/hexo/">hexo</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/语法/">语法</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"1791281385"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/12/20/Hexo-hello-world/" title="Hexo Hello World">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Hexo Hello World</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/12/19/微信小程序开发-一/"  title="微信小程序开发(一)">
+ <strong>下一篇：</strong><br/> 
+ <span>微信小程序开发(一)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/12/20/Hexo标签插件/" data-title="Hexo标签插件" data-url="https://huos3203.github.io/2016/12/20/Hexo标签插件/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引用块"><span class="toc-number">1.</span> <span class="toc-text">引用块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#别号：-quote"><span class="toc-number">1.1.</span> <span class="toc-text">别号： quote</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#样例"><span class="toc-number">1.1.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#无参普通blockquote"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">无参普通blockquote</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#引用书上的句子"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">引用书上的句子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#引用-Twitter"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">引用 Twitter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#引用网络上的文章"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">引用网络上的文章</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码块"><span class="toc-number">2.</span> <span class="toc-text">代码块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#别名-code"><span class="toc-number">2.1.</span> <span class="toc-text">别名:code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#样例-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#普通的代码块"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">普通的代码块</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指定语言"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">指定语言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#附加说明"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">附加说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#附加说明和网址"><span class="toc-number">2.1.1.4.</span> <span class="toc-text">附加说明和网址</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反引号代码块-MD语法"><span class="toc-number">3.</span> <span class="toc-text">反引号代码块 (MD语法)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例-2"><span class="toc-number">3.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#行内代码块"><span class="toc-number">3.1.1.</span> <span class="toc-text">行内代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缩进代码块"><span class="toc-number">3.1.2.</span> <span class="toc-text">缩进代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多行代码块"><span class="toc-number">3.1.3.</span> <span class="toc-text">多行代码块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格"><span class="toc-number">4.</span> <span class="toc-text">表格</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例-3"><span class="toc-number">4.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认左对齐"><span class="toc-number">4.1.1.</span> <span class="toc-text">默认左对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向右对齐"><span class="toc-number">4.1.2.</span> <span class="toc-text">向右对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向左对齐"><span class="toc-number">4.1.3.</span> <span class="toc-text">向左对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#居中对齐"><span class="toc-number">4.1.4.</span> <span class="toc-text">居中对齐</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pull-Quote"><span class="toc-number">5.</span> <span class="toc-text">Pull Quote</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jsFiddle"><span class="toc-number">6.</span> <span class="toc-text">jsFiddle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gist"><span class="toc-number">7.</span> <span class="toc-text">Gist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iframe"><span class="toc-number">8.</span> <span class="toc-text">iframe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入图片"><span class="toc-number">9.</span> <span class="toc-text">插入图片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例-4"><span class="toc-number">9.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo语法"><span class="toc-number">9.1.1.</span> <span class="toc-text">Hexo语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MD语法"><span class="toc-number">9.1.2.</span> <span class="toc-text">MD语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#原图-toolTip"><span class="toc-number">9.1.2.1.</span> <span class="toc-text">原图+toolTip</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注脚语法"><span class="toc-number">9.1.2.2.</span> <span class="toc-text">注脚语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指定图片大小"><span class="toc-number">9.1.2.3.</span> <span class="toc-text">指定图片大小</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#超链接"><span class="toc-number">10.</span> <span class="toc-text">超链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例-5"><span class="toc-number">10.1.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo语法-1"><span class="toc-number">10.1.1.</span> <span class="toc-text">Hexo语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MD语法-1"><span class="toc-number">10.1.2.</span> <span class="toc-text">MD语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#智能识别超链接"><span class="toc-number">10.1.2.1.</span> <span class="toc-text">智能识别超链接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#文本式"><span class="toc-number">10.1.2.2.</span> <span class="toc-text">文本式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#toolTip式"><span class="toc-number">10.1.2.3.</span> <span class="toc-text">toolTip式</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Include-Code"><span class="toc-number">11.</span> <span class="toc-text">Include Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Youtube"><span class="toc-number">12.</span> <span class="toc-text">Youtube</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vimeo"><span class="toc-number">13.</span> <span class="toc-text">Vimeo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用文章"><span class="toc-number">14.</span> <span class="toc-text">引用文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用资源"><span class="toc-number">15.</span> <span class="toc-text">引用资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Raw"><span class="toc-number">16.</span> <span class="toc-text">Raw</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CI/" title="CI">CI<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Octopress/" title="Octopress">Octopress<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Swift/" title="Swift">Swift<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Xcode/" title="Xcode">Xcode<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/dockerer/" title="dockerer">dockerer<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ruby/" title="ruby">ruby<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/微信/" title="微信">微信<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/管理/" title="管理">管理<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/骗局/" title="骗局">骗局<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/语法/" title="语法">语法<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/搭建/" title="搭建">搭建<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/管理/" title="管理">管理<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/svn/" title="svn">svn<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/加密/" title="加密">加密<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/指南/" title="指南">指南<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/AutoLayout/" style="font-size: 10px;">AutoLayout</a> <a href="/tags/BDD/" style="font-size: 12.5px;">BDD</a> <a href="/tags/IOS7/" style="font-size: 10px;">IOS7</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Scrum/" style="font-size: 10px;">Scrum</a> <a href="/tags/Storyboard/" style="font-size: 15px;">Storyboard</a> <a href="/tags/TDD/" style="font-size: 12.5px;">TDD</a> <a href="/tags/TextKit/" style="font-size: 12.5px;">TextKit</a> <a href="/tags/UI/" style="font-size: 12.5px;">UI</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/git-svn/" style="font-size: 10px;">git-svn</a> <a href="/tags/gitBook/" style="font-size: 10px;">gitBook</a> <a href="/tags/gitLab/" style="font-size: 10px;">gitLab</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/iPhone5s/" style="font-size: 10px;">iPhone5s</a> <a href="/tags/iPhone6/" style="font-size: 10px;">iPhone6</a> <a href="/tags/mou/" style="font-size: 10px;">mou</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/realm/" style="font-size: 10px;">realm</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/scheme/" style="font-size: 10px;">scheme</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/svn/" style="font-size: 12.5px;">svn</a> <a href="/tags/targets/" style="font-size: 10px;">targets</a> <a href="/tags/中关村/" style="font-size: 10px;">中关村</a> <a href="/tags/内购/" style="font-size: 10px;">内购</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/协议/" style="font-size: 15px;">协议</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/坑/" style="font-size: 15px;">坑</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/小米路由/" style="font-size: 10px;">小米路由</a> <a href="/tags/工具/" style="font-size: 17.5px;">工具</a> <a href="/tags/布局/" style="font-size: 10px;">布局</a> <a href="/tags/截屏/" style="font-size: 12.5px;">截屏</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/搭建/" style="font-size: 15px;">搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/混编/" style="font-size: 10px;">混编</a> <a href="/tags/版本控制/" style="font-size: 10px;">版本控制</a> <a href="/tags/管理/" style="font-size: 15px;">管理</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/被骗/" style="font-size: 10px;">被骗</a> <a href="/tags/设备/" style="font-size: 10px;">设备</a> <a href="/tags/语法/" style="font-size: 20px;">语法</a> <a href="/tags/转场/" style="font-size: 10px;">转场</a>
+    </div>
+  </div>
+
+
+  <div class="weixin">
+<p class="asidetitle">微信公众号</p>
+<img src=img/weixinimg.jpg width="230px" />
+</div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+<iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=1&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1791281385&verifier=8c6f2d1f&dpc=1"></iframe>
+</div>
+
+
+  <div class="earth">
+<p class="asidetitle">访客地图</p>
+<script type="text/javascript" src="http://jg.revolvermaps.com/2/4.js?i=6j7ij8f0xzy&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=35" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" target="_blank" title="swift文档">swift文档</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.objccn.io" target="_blank" title="objc中国">objc中国</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://nshipster.cn" target="_blank" title="NSHipster">NSHipster</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" title="动画">动画</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://git-scm.com/book/zh" target="_blank" title="Git Pro">Git Pro</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kaopu.so/pan" target="_blank" title="全盘搜">全盘搜</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://mp.weixin.qq.com" target="_blank" title="小程序官方">小程序官方</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://onevcat.com" target="_blank" title="王维">王维</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.devtang.com" target="_blank" title="唐巧">唐巧</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 嗨，见文如晤，多多指教. <br/>
+			粗浅见解，修葺成文，盼广交同道中人.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1791281385" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/huos3203" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/6211905" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		<a href="https://www.linkedin.com/in/boyerswift" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/boyers" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/boyers" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:724987481@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="boyer">boyer</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"huo3203"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+
+<!--百度统计 coding-->
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+
+<!--百度统计 github-->
+  var hmgit = document.createElement("script");
+  hmgit.src = "//hm.baidu.com/hm.js?cda1b75e08a0a3e897aa6f92112910b4";
+  var sgit = document.getElementsByTagName("script")[0];
+  sgit.parentNode.insertBefore(hmgit, sgit);
+
+})();
+
+
+</script>
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

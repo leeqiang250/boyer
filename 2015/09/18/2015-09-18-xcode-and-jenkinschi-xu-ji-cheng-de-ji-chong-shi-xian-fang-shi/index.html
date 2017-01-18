@@ -1,0 +1,873 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Xcode&amp;amp;Jenkins持续集成的几种实现方式 | 布衣男儿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="boyer">
+    
+
+    <meta name="keywords" content="持续集成,TDD,BDD">
+    <meta name="description" content="####CI服务器
+写到这儿，对于iOS开发者来说，需要准备好：
+
+一个比较容易获取的源代码仓库(包含源代码)
+一套自动化构建脚本
+一系列围绕构建的可执行测试  
+
+接下来就需要一个CI服务器来根据源代码的变更触发构建，监控测试结果。
+目前，业界比较流行的，支持iOS构建的CI服务器有
+
+Travis CI：是一个免费的云服务平台，基本上支持所有目前主流的语言，Object-C自然也在其中，但是只">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xcode&amp;Jenkins持续集成的几种实现方式">
+<meta property="og:url" content="https://huos3203.github.io/2015/09/18/2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi/index.html">
+<meta property="og:site_name" content="布衣男儿">
+<meta property="og:description" content="####CI服务器
+写到这儿，对于iOS开发者来说，需要准备好：
+
+一个比较容易获取的源代码仓库(包含源代码)
+一套自动化构建脚本
+一系列围绕构建的可执行测试  
+
+接下来就需要一个CI服务器来根据源代码的变更触发构建，监控测试结果。
+目前，业界比较流行的，支持iOS构建的CI服务器有
+
+Travis CI：是一个免费的云服务平台，基本上支持所有目前主流的语言，Object-C自然也在其中，但是只">
+<meta property="og:image" content="http://img.educity.cn/img_7/262/2013122000/125005907.jpg">
+<meta property="og:image" content="http://img.educity.cn/img_7/262/2013122000/126005907.jpg">
+<meta property="og:image" content="http://img.educity.cn/img_7/262/2013122000/127005907.jpg">
+<meta property="og:updated_time" content="2017-01-12T02:26:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xcode&amp;Jenkins持续集成的几种实现方式">
+<meta name="twitter:description" content="####CI服务器
+写到这儿，对于iOS开发者来说，需要准备好：
+
+一个比较容易获取的源代码仓库(包含源代码)
+一套自动化构建脚本
+一系列围绕构建的可执行测试  
+
+接下来就需要一个CI服务器来根据源代码的变更触发构建，监控测试结果。
+目前，业界比较流行的，支持iOS构建的CI服务器有
+
+Travis CI：是一个免费的云服务平台，基本上支持所有目前主流的语言，Object-C自然也在其中，但是只">
+<meta name="twitter:image" content="http://img.educity.cn/img_7/262/2013122000/125005907.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="布衣男儿" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="布衣男儿" title="布衣男儿"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
+				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= SE_zzsearchcode_shhzc78w ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/18/2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi/" title="Xcode&amp;amp;Jenkins持续集成的几种实现方式" itemprop="url">Xcode&amp;amp;Jenkins持续集成的几种实现方式</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-18T15:52:06.000Z" itemprop="datePublished"> 发表于 2015-09-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#xcode-持续集成的实现"><span class="toc-number">1.</span> <span class="toc-text">xcode 持续集成的实现</span></a></li></ol>
+		
+		</div>
+		
+		<p>####CI服务器</p>
+<p>写到这儿，对于iOS开发者来说，需要准备好：</p>
+<ul>
+<li>一个比较容易获取的源代码仓库(包含源代码)</li>
+<li>一套自动化构建脚本</li>
+<li>一系列围绕构建的可执行测试  </li>
+</ul>
+<p>接下来就需要一个CI服务器来根据源代码的变更触发构建，监控测试结果。</p>
+<p>目前，业界比较流行的，支持iOS构建的CI服务器有</p>
+<ul>
+<li><a href="https://travis-ci.org" target="_blank" rel="external">Travis CI</a>：是一个免费的云服务平台，基本上支持所有目前主流的语言，Object-C自然也在其中，但是只支持github极大的限制了其应用场景。目前国内无法访问，<a href="http://www.infoq.com/cn/articles/build-ios-continuous-integration-platform-part3" target="_blank" rel="external">详见</a></li>
+<li><strong>Jenkins</strong>：经过多年的发展，其活跃的社区和丰富的插件让其成为了业界最受欢迎的CI服务器。通过使用Xcode插件，可以非常方便在Jenkins中运行iOS项目的构建脚本。</li>
+</ul>
+<a id="more"></a>
+<h2 id="xcode-持续集成的实现"><a href="#xcode-持续集成的实现" class="headerlink" title="xcode 持续集成的实现"></a>xcode 持续集成的实现</h2><p><a href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/adopt_continuous_integration.html#//apple_ref/doc/uid/TP40013292-CH3-SW1" target="_blank" rel="external">Setting Up Xcode Server</a></p>
+<p>jenkins使用配置：  </p>
+<ol>
+<li>下载：<a href="http://mirrors.jenkins-ci.org/war/lastest/jenkins.war" target="_blank" rel="external">http://mirrors.jenkins-ci.org/war/lastest/jenkins.war</a>  </li>
+<li><p>运行命令行：  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> 	 nohup java -jar ~/Downloads/jenkins.war —httpPort=8081 —ajp13Port=8010 &gt; /tmp/jenkins.log 2&gt;&amp;1 &amp;</div><div class="line">	```  </div><div class="line">3. 写入启动文件中，起别名</div></pre></td></tr></table></figure>
+<p> vi /Users/(username)/.bash_profile<br> 输入:alias jenkins=”nohup java -jar ~/Downloads/SVNRepos/jenkins.war –httpPort=8081 –ajp13Port=8010 &gt; /tmp/jenkins.log 2&gt;&amp;1 &amp;”  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line">4. 启动时，在命令行中输入：**`jenkins`** 回车  即可启动</div><div class="line">5. 访问：http://127.0.0.1:8081/</div><div class="line">6. 重启：http://[jenkins-server]/[command] exit推出，restart重启，reload重载。</div><div class="line"></div><div class="line">####方法二：</div><div class="line">安装jenkins还是使用brew</div><div class="line"></div><div class="line">brew install jenkins</div><div class="line">安装好之后，可以通过使用命令行启动</div><div class="line"></div><div class="line">	java -jar /usr/local/opt/jenkins/libexec/jenkins.war</div><div class="line">如果想**开机自动启动**，需要先执行以下命令，创建启动项：</div><div class="line"></div><div class="line">	ln -sfv /usr/local/opt/jenkins/*.plist ~/Library/LaunchAgents</div><div class="line">可以编辑一下~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist这个文件</div><div class="line"></div><div class="line">	open ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist</div><div class="line">	</div><div class="line">具体内容：</div><div class="line"></div><div class="line">	&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">	&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</div><div class="line">	&lt;plist version=&quot;1.0&quot;&gt;</div><div class="line">	  &lt;dict&gt;</div><div class="line">	    &lt;key&gt;Label&lt;/key&gt;</div><div class="line">	    &lt;string&gt;homebrew.mxcl.jenkins&lt;/string&gt;</div><div class="line">	    &lt;key&gt;ProgramArguments&lt;/key&gt;</div><div class="line">	    &lt;array&gt;</div><div class="line">	      &lt;string&gt;/usr/bin/java&lt;/string&gt;</div><div class="line">	      &lt;string&gt;-Dmail.smtp.starttls.enable=true&lt;/string&gt;</div><div class="line">	      &lt;string&gt;-jar&lt;/string&gt;</div><div class="line">	      &lt;string&gt;/usr/local/opt/jenkins/libexec/jenkins.war&lt;/string&gt;</div><div class="line">	      &lt;string&gt;--httpListenAddress=127.0.0.1&lt;/string&gt;</div><div class="line">	      &lt;string&gt;--httpPort=8088&lt;/string&gt;</div><div class="line">	    &lt;/array&gt;</div><div class="line">	    &lt;key&gt;RunAtLoad&lt;/key&gt;</div><div class="line">	    &lt;true/&gt;</div><div class="line">	  &lt;/dict&gt;</div><div class="line">	&lt;/plist&gt;</div><div class="line">	</div><div class="line">想要让局域网都可以访问或修改端口号，需要把—httpListenAddress=127.0.0.1改成自己的局域网IP  </div><div class="line"></div><div class="line">手动启动启动项可以执行,制作替身：</div><div class="line"></div><div class="line">	launchctl load ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist  </div><div class="line">之后用浏览器就可以访问 **http://localhost:8088/** 来登录jenkins了</div><div class="line"></div><div class="line">####方法三：</div><div class="line">使用tomcat</div><div class="line">制作替身：</div><div class="line"></div><div class="line">	cd ~/Downloads/soft/Tomcat/</div><div class="line">	ln -sfv apache-tomcat-8.0.27 tomcat</div><div class="line">	</div><div class="line">将jenkins.war拷贝到 $tomcat/webapp下面。  </div><div class="line">	</div><div class="line">	 $tomcat/bin/start.sh  </div><div class="line">用浏览器打开 **localhost:8080/jenkins** tomcat默认端口号为8080，就可以看到 jenkin运行了。</div><div class="line"></div><div class="line">####自动化构建和依赖管理[参考](http://www.infoq.com/cn/articles/build-ios-continuous-integration-platform-part1/)</div><div class="line">作为以GUI和命令行操作结合的完美性著称的苹果公司来说，当然也不会忘记为自己的封闭的iOS系统提供开发环境下命令行编译工具：xcodebuild</div><div class="line">在介绍xcodebuild之前，需要先弄清楚一些在XCode环境下的一些概念【4】：</div><div class="line"></div><div class="line">- **Workspace**：简单来说，Workspace就是一个容器，在该容器中可以存放多个你创建的Xcode Project， 以及其他的项目中需要使用到的文件。使用Workspace的好处有，1),扩展项目的可视域，即可以在多个项目之间跳转，重构，一个项目可以使用另一个项目的输出。Workspace会负责各个Project之间提供各种相互依赖的关系;2),多个项目之间共享Build目录。</div><div class="line">- **Project**：指一个项目，该项目会负责管理生成一个或者多个软件产品的全部文件和配置，一个Project可以包含多个Target。</div><div class="line">- **Target**：一个Target是指在一个Project中构建的一个产品，它包含了构建该产品的所有文件，以及如何构建该产品的配置。</div><div class="line">- **Scheme**：一个定义好构建过程的Target成为一个Scheme。可在Scheme中定义的Target的构建过程有：Build/Run/Test/Profile/Analyze/Archive</div><div class="line">- **BuildSetting**：配置产品的Build设置，比方说，使用哪个Architectures？使用哪个版本的SDK？。在Xcode Project中，有Project级别的Build Setting，也有Target级别的Build Setting。Build一个产品时一定是针对某个Target的，因此，XCode中总是优先选择Target的Build Setting，如果Target没有配置，则会使用Project的Build Setting。</div><div class="line"></div><div class="line">xcodebuild就是用了构建产品的命令行工具，其用法可以归结为3个部分：</div><div class="line"></div><div class="line">- 可构建的对象</div><div class="line">- 构建行为</div><div class="line">- 一些其他的辅助命令</div><div class="line"></div><div class="line">可以构建的对象有，默认情况下会运行project下的第一个target：</div><div class="line"></div><div class="line">- workspace：必须和“-scheme”一起使用，构建该workspace下的一个scheme。</div><div class="line">- project：当根目录下有多个Project的时候，必须使用“-project”指定project，然后会运行</div><div class="line">- target：构建某个Target</div><div class="line">- scheme：和“-workspace”一起使用，指定构建的scheme。</div><div class="line">- ……</div><div class="line"></div><div class="line">构建行为包括：</div><div class="line"></div><div class="line">- clean:清除build目录下的</div><div class="line">- build: 构建</div><div class="line">- test: 测试某个scheme，必须和&quot;-scheme&quot;一起使用</div><div class="line">- archive:打包，必须和“-scheme”一起使用</div><div class="line">- ……</div><div class="line">辅助命令包括：</div><div class="line"></div><div class="line">- -sdk：指定构建使用的SDK</div><div class="line">- -list：列出当前项目下所有的Target和scheme。</div><div class="line">- -version：版本信息</div><div class="line">- …...</div><div class="line">关于xcodebuild更多详细的命令行请参见：[点击](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html)</div><div class="line"></div><div class="line">xcodebuild的主要缺陷：</div><div class="line"></div><div class="line">- 其脚本输出的可读性极差，</div><div class="line">- 只能要么完整的运行一个target或者scheme，要么全部不运行。不能指定运行Target中特定的测试。</div><div class="line"></div><div class="line">**安装xctool** </div><div class="line"></div><div class="line">xctool的安装非常简单，只需要clone xctool的repository到项目根目录就可以使用， 如果你的机器上安装有Homebrew，可以通过“brew install xctool”命令直接安装。（**注意：使用xctool前一定要首先确认xcodebuild已安装且能正确工作**）。</div><div class="line"></div><div class="line">**用法**</div><div class="line"></div><div class="line">关于xctool的用法就更加人性化了，几乎可以重用所有的xcodebuild的指令，配置。只需要注意一下几点：</div><div class="line"></div><div class="line">- xctool不支持target构建，只能使用scheme构建。</div><div class="line">- 支持“-only”指令运行指定的测试。</div><div class="line">- 支持多种格式的build报告。</div><div class="line">例子：</div><div class="line">```ruby</div><div class="line">path/to/xctool.sh </div><div class="line">  -workspaceYourWorkspace.xcworkspace</div><div class="line">  -schemeYourScheme</div><div class="line">test -only SomeTestTarget:SomeTestClass/testSomeMethod</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>####自动化部署</p>
+<p>这儿的想谈的“部署”不是传统意义上的直接部署到产品环境的部署，而是指如何把最新版本的应用快速的部署到测试用户的机器上以收集反馈，或者做一些探索性的测试。  </p>
+<p>在我写第一个iOS应用的时候，我想把应用安装到多个机器上测试的时候，需要非常繁琐的步骤：</p>
+<ul>
+<li>需要申请到苹果开发者账号，获得开发者证书。</li>
+<li>需要在苹果的开发者网站上注册我想使用的设备。</li>
+<li>使用开发者证书打包应用，使用Ad-HOC部署模式，生成ipa文件。</li>
+<li>通过ipa文件把应用安装到iTunes上。</li>
+<li>通过iTunes把应用同步到多台测试机器上。</li>
+</ul>
+<p>如果是测试机器在多个地理位置的时候，还需要把ipa文件发送到对应的地点，每个地点都需要重复的做第4，5步。 这样一个繁琐，且低效的过程让开发者非常痛苦，直到TestFlight的出现。</p>
+<p>####TestFlight</p>
+<p>TestFlight：就是一个专门解决上面提到的痛点的云服务方案，它可以帮助开发者：</p>
+<ul>
+<li>轻松采集测试用户的UDID和iOS 版本、硬件版本，并发送给开发者。</li>
+<li>实时反馈应用是否成功安装到测试机器</li>
+<li>轻松部署最新版本应用到测试用机上。</li>
+<li>开发者可以灵活选择部署哪个版本到哪部分测试机器上。</li>
+</ul>
+<p>使用使用Test Flight服务非常简单，只需要到Test Flight注册一个账号。然后把链接发送给测试设备，测试设备只要打开该链接，并授权给Test Flight，在Test Flight的设备中心就可以看到这些设备。</p>
+<p>####<a href="http://blog.csdn.net/zangcw/article/details/25299243" target="_blank" rel="external">使用jenkins+calabash+cocoapods搭建ios持续集成环境</a></p>
+<ol>
+<li>calabash  是一款开源的跨平台UI测试工具，目前支持iOS和Android。它使用Cucumber作为测试核心，Cucumber是一个在敏捷团队十分流行的自动化的功能测试工具，它使用接近于自然语言的特性文档进行用例的书写和测试，支持多语言和多平台。</li>
+<li><p>安装Calabash  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install calabash-cucumber</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装Calabash中文支持包  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install calabash-cucumber-cn</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>####For automatic setup:      </p>
+<ol>
+<li><p>In a terminal, go to your iOS project  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	cd path-to-my-ios-project (i.e. directory containing .xcodeproj file)</div><div class="line">	```  </div><div class="line">2. Install calabash-cucumber gem (this make take some time because of dependencies)</div></pre></td></tr></table></figure>
+<p> gem install calabash-cucumber</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">3. Setup your project for Calabash-iOS.</div></pre></td></tr></table></figure>
+<p> calabash-ios setup  //Answer the questions and read the output :)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4. Generate a skeleton features folder for your tests</div></pre></td></tr></table></figure>
+<p> calabash-ios gen</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">5. In Xcode, build your project using the -cal scheme</div><div class="line"></div><div class="line">6. Run the generated test!</div></pre></td></tr></table></figure>
+<p> cucumber<br> ```</p>
+</li>
+</ol>
+<p>If all goes well, you are now ready to write your first test. Start by editing the file features/my_first.feature.</p>
+<p>####<a href="https://cukes.info/" target="_blank" rel="external">cucumber官网</a>   </p>
+<pre><code>* Feature（功能）  
+* Scenario（情景）  
+*  Given（给定）  
+*  When（当）  
+*  Then（则） 
+</code></pre><p>#####<a href="http://www.educity.cn/se/619226.html" target="_blank" rel="external">运行原理</a><br><img src="http://img.educity.cn/img_7/262/2013122000/125005907.jpg" alt="image"><br>cucumber是一种BDD测试框架，核心为cucumber的calabash的脚本在运行测试的时候会在虚拟机/真机上预装一个web服务器，这个web服务器就是解释calabash的脚本，将其解释为robotium的脚本，然后这个web服务器会想测试app发送robotium的脚本，测试app拿到robotium脚本后，将其解释为instumentation命令向被测试的app发送这些命令，被测试的app执行这些命令，然后将结果返回给测试app，然后一级一级返得到最后的测试结果。    </p>
+<p>#####结构框架<br>calabash完全采用了cucumber的结构模式，calabash是脚本与TC分离设计，在业务变化的情况下，只要功能存在基本只需要修改TC逻辑，在业务不变，功能变化的情况下，基本只需要修改脚本。<br><img src="http://img.educity.cn/img_7/262/2013122000/126005907.jpg" alt="image"><br>feature为主件夹，step_definitions目录内是你封装的脚本，my_first.feature文件就是你的TC逻辑。<br>再看一下其中的内容：</p>
+<pre><code>　　my_first.feature
+
+　　Feature： 登陆
+
+　　Scenario： 输入正确的用户名密码能够正常登陆
+
+　　When 打开登陆页面
+
+　　And    输入用户名XXX输入密码XXX
+
+　　And   点击登陆
+
+　　Then  验证登陆成功
+</code></pre><p>　　看起来很简单吧，想要验证其他功能也是类似的语言描述即可。<br>如果你没有用过cucumber或者calabash那么你肯定现在有一个疑问，计算机怎么能识别汉字来进行测试的呢，<br>那么看一下step_definition，以 输入用户名XXX输入密码XXX为例：</p>
+<pre><code>When /^ 输入用户名\&quot;([^\\\&quot;]*)\&quot; 输入密码\&quot;([^\\\&quot;]*)\&quot;  $/ do |username，password|
+performAction(&apos;enter_text_into_numbered_field&apos;，username，1)
+performAction(&apos;enter_text_into_numbered_field&apos;，password，2)
+end
+</code></pre><p>现在应该能明白为什么你需要写汉字的脚本就可以了吧。<br>在这里解释一下为什么如果业务存在功能修改这种情况，自动化脚本的修改量会小。<br>还是以这个登录脚本为例：</p>
+<pre><code>假如现在输入用户名和密码的输入框顺序变了，在你的页面显示上，可能是从左下角移到中间了，这种变化，那么feature文件你不用改，只需要改step_definition脚本就好了
+</code></pre><p>#####运行报告<br>alabash-android支持很多报告生成模式，支持html，json，junit等等报告模式，只需要你在run的时候添加-f参数-o参数就可以了。</p>
+<p>　　例如 calabash-android run xxxx.apk -f html -o l，上图展示一下强大html报告<br>　　<img src="http://img.educity.cn/img_7/262/2013122000/127005907.jpg" alt="image"></p>
+<p><a href="http://blog.csdn.net/qs_csu/article/details/9000262" target="_blank" rel="external">【cucumber解析features文件】</a>         </p>
+<ol>
+<li><p>my_first.feature: 描述在这个条件下需要做什么事情；</p>
+<pre><code>Feature: Running a test  
+  As an iOS developer  
+  I want to have a sample feature file  
+  So I can begin testing quickly  
+
+Scenario: Example steps1  
+  Given I am on the Welcome Screen  
+  Then I swipe left  
+  And I wait until I don&apos;t see &quot;Please swipe left&quot;  
+  And take picture  
+
+Scenario: Example steps2  
+  Given I am on the Welcome Screen  
+ #ASSERTION  
+  Then I should see a &quot;login&quot; button  
+ #INPUT TEXT  
+  Then I enter &quot;my_username&quot; into text field number 1  
+#  Then I touch &quot;Return&quot;  
+
+ #TOGGLE SWITCH  
+  Then I toggle the switch  
+  Then I touch &quot;Login&quot;  
+  And I touch &quot;Second&quot;  
+  And take picture  
+</code></pre><p> 该文件描述了在“on the Welcome Screen”这个Step中需要做的事情，两个场景:steps1 和 steps2. </p>
+</li>
+<li><p>my_first_step.rb: 解释了Given的具体条件</p>
+<pre><code>Given /^I am on the Welcome Screen$/ do  
+  element_exists(&quot;view&quot;)  
+  check_element_exists(&quot;label text:&apos;First View&apos;&quot;)  
+  sleep(STEP_PSEAU)  
+end
+</code></pre><p> 这个语句，判定了当前条件”on the Welcome Screen”是否满足，如果element存在，则就在”Welcome Screen”；</p>
+</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CI/">CI</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/TDD/">TDD</a><a href="/tags/BDD/">BDD</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"1791281385"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/09/25/2015-09-25-xcode7bian-yi-fa-bu-wen-ti/" title="Xcode7编译发布问题">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Xcode7编译发布问题</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/08/14/2015-08-14-mupdfji-cheng-pycjia-mi-suan-fa/"  title="mupdf集成pyc加密算法">
+ <strong>下一篇：</strong><br/> 
+ <span>mupdf集成pyc加密算法
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/09/18/2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi/" data-title="Xcode&amp;Jenkins持续集成的几种实现方式" data-url="https://huos3203.github.io/2015/09/18/2015-09-18-xcode-and-jenkinschi-xu-ji-cheng-de-ji-chong-shi-xian-fang-shi/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#xcode-持续集成的实现"><span class="toc-number">1.</span> <span class="toc-text">xcode 持续集成的实现</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CI/" title="CI">CI<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Octopress/" title="Octopress">Octopress<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Swift/" title="Swift">Swift<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Xcode/" title="Xcode">Xcode<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/dockerer/" title="dockerer">dockerer<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ruby/" title="ruby">ruby<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/微信/" title="微信">微信<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/管理/" title="管理">管理<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/骗局/" title="骗局">骗局<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/语法/" title="语法">语法<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/搭建/" title="搭建">搭建<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/管理/" title="管理">管理<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/svn/" title="svn">svn<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/加密/" title="加密">加密<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iPhone5s/" title="iPhone5s">iPhone5s<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mou/" title="mou">mou<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/指南/" title="指南">指南<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/AutoLayout/" style="font-size: 10px;">AutoLayout</a> <a href="/tags/BDD/" style="font-size: 12.5px;">BDD</a> <a href="/tags/IOS7/" style="font-size: 10px;">IOS7</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Scrum/" style="font-size: 10px;">Scrum</a> <a href="/tags/Storyboard/" style="font-size: 15px;">Storyboard</a> <a href="/tags/TDD/" style="font-size: 12.5px;">TDD</a> <a href="/tags/TextKit/" style="font-size: 12.5px;">TextKit</a> <a href="/tags/UI/" style="font-size: 12.5px;">UI</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/git-svn/" style="font-size: 10px;">git-svn</a> <a href="/tags/gitBook/" style="font-size: 10px;">gitBook</a> <a href="/tags/gitLab/" style="font-size: 10px;">gitLab</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/iPhone5s/" style="font-size: 10px;">iPhone5s</a> <a href="/tags/iPhone6/" style="font-size: 10px;">iPhone6</a> <a href="/tags/mou/" style="font-size: 10px;">mou</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/realm/" style="font-size: 10px;">realm</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/scheme/" style="font-size: 10px;">scheme</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/svn/" style="font-size: 12.5px;">svn</a> <a href="/tags/targets/" style="font-size: 10px;">targets</a> <a href="/tags/中关村/" style="font-size: 10px;">中关村</a> <a href="/tags/内购/" style="font-size: 10px;">内购</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/协议/" style="font-size: 15px;">协议</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/坑/" style="font-size: 15px;">坑</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/小米路由/" style="font-size: 10px;">小米路由</a> <a href="/tags/工具/" style="font-size: 17.5px;">工具</a> <a href="/tags/布局/" style="font-size: 10px;">布局</a> <a href="/tags/截屏/" style="font-size: 12.5px;">截屏</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/搭建/" style="font-size: 15px;">搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/混编/" style="font-size: 10px;">混编</a> <a href="/tags/版本控制/" style="font-size: 10px;">版本控制</a> <a href="/tags/管理/" style="font-size: 15px;">管理</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/被骗/" style="font-size: 10px;">被骗</a> <a href="/tags/设备/" style="font-size: 10px;">设备</a> <a href="/tags/语法/" style="font-size: 20px;">语法</a> <a href="/tags/转场/" style="font-size: 10px;">转场</a>
+    </div>
+  </div>
+
+
+  <div class="weixin">
+<p class="asidetitle">微信公众号</p>
+<img src=img/weixinimg.jpg width="230px" />
+</div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+<iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=1&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1791281385&verifier=8c6f2d1f&dpc=1"></iframe>
+</div>
+
+
+  <div class="earth">
+<p class="asidetitle">访客地图</p>
+<script type="text/javascript" src="http://jg.revolvermaps.com/2/4.js?i=6j7ij8f0xzy&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=35" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" target="_blank" title="swift文档">swift文档</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.objccn.io" target="_blank" title="objc中国">objc中国</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://nshipster.cn" target="_blank" title="NSHipster">NSHipster</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" title="动画">动画</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://git-scm.com/book/zh" target="_blank" title="Git Pro">Git Pro</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kaopu.so/pan" target="_blank" title="全盘搜">全盘搜</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://mp.weixin.qq.com" target="_blank" title="小程序官方">小程序官方</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://onevcat.com" target="_blank" title="王维">王维</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.devtang.com" target="_blank" title="唐巧">唐巧</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 嗨，见文如晤，多多指教. <br/>
+			粗浅见解，修葺成文，盼广交同道中人.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1791281385" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/huos3203" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/6211905" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		<a href="https://www.linkedin.com/in/boyerswift" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/boyers" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/boyers" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:724987481@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="boyer">boyer</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"huo3203"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+
+<!--百度统计 coding-->
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+
+<!--百度统计 github-->
+  var hmgit = document.createElement("script");
+  hmgit.src = "//hm.baidu.com/hm.js?cda1b75e08a0a3e897aa6f92112910b4";
+  var sgit = document.getElementsByTagName("script")[0];
+  sgit.parentNode.insertBefore(hmgit, sgit);
+
+})();
+
+
+</script>
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
