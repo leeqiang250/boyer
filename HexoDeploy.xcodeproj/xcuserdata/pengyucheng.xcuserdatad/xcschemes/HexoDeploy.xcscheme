@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "149F33481E0A74AE00AAC556"
-               BuildableName = "HexoDeploy"
-               BlueprintName = "HexoDeploy"
+               BuildableName = "DeployCoding"
+               BlueprintName = "DeployCoding"
                ReferencedContainer = "container:HexoDeploy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "149F33481E0A74AE00AAC556"
-            BuildableName = "HexoDeploy"
-            BlueprintName = "HexoDeploy"
+            BuildableName = "DeployCoding"
+            BlueprintName = "DeployCoding"
             ReferencedContainer = "container:HexoDeploy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "149F33481E0A74AE00AAC556"
-            BuildableName = "HexoDeploy"
-            BlueprintName = "HexoDeploy"
+            BuildableName = "DeployCoding"
+            BlueprintName = "DeployCoding"
             ReferencedContainer = "container:HexoDeploy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

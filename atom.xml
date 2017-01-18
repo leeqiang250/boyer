@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huos3203.github.io/"/>
-  <updated>2017-01-12T03:57:41.000Z</updated>
+  <updated>2017-01-18T04:21:46.000Z</updated>
   <id>https://huos3203.github.io/</id>
   
   <author>
@@ -14,6 +14,77 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>迁移SVN库到git库保留branchs和tags</title>
+    <link href="https://huos3203.github.io/2017/01/18/%E8%BF%81%E7%A7%BBSVN%E5%BA%93%E5%88%B0git%E5%BA%93%E4%BF%9D%E7%95%99branchs%E5%92%8Ctags/"/>
+    <id>https://huos3203.github.io/2017/01/18/迁移SVN库到git库保留branchs和tags/</id>
+    <published>2017-01-18T04:21:46.000Z</published>
+    <updated>2017-01-18T04:21:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>SVN was a great advance in its day, but it’s now clear that distributed version control systems are the way forward and that Git is the de facto standard. Having helped many clients migrate from SVN to Git, here are my notes for a pain-free transition that will preserve the tags and branches in your SVN repository.</p>
+<h1 id="First-import-to-a-local-staging-repo"><a href="#First-import-to-a-local-staging-repo" class="headerlink" title="First import to a local staging repo"></a>First import to a local staging repo</h1><h1 id="首先导入一个本地存储库"><a href="#首先导入一个本地存储库" class="headerlink" title="首先导入一个本地存储库"></a>首先导入一个本地存储库</h1><h2 id="在本地创建一个存储库的目录"><a href="#在本地创建一个存储库的目录" class="headerlink" title="在本地创建一个存储库的目录"></a>在本地创建一个存储库的目录</h2><figure class="highlight bash"><figcaption><span>新建目录</span><a href="http://www.sailmaker.co.uk/blog/2013/05/05/migrating-from-svn-to-git-preserving-branches-and-tags-3/#import-staging" target="_blank" rel="external">Create a local staging directory</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line">mkdir staging</div><div class="line"><span class="built_in">cd</span> staging</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：staging 可以用任何你喜欢的字符串命名，也可以放在本地的任何目录中。</p>
+</blockquote>
+<h2 id="初始化git-svn"><a href="#初始化git-svn" class="headerlink" title="初始化git svn"></a>初始化git svn</h2><h3 id="For-a-standard-SVN-layout"><a href="#For-a-standard-SVN-layout" class="headerlink" title="For a standard SVN layout"></a>For a standard SVN layout</h3><figure class="highlight bash"><figcaption><span>标准初始化</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git svn init SVNRepo_ROOT_URL --stdlayout --prefix=svn/</div></pre></td></tr></table></figure>
+<blockquote>
+<p>SVNRepo_ROOT_URL: 这里svn_url是完全限定的URL下的标准目录，其目录下包括三个目录：<code>trunk，branches， tags</code>。<br>–prefix: 强烈建议使用<code>svn/</code>作为分支和标签的前缀：设置为 <code>--prefix=svn/</code>. 这样有助于防止Git用户混淆原声的Git分支和标签。</p>
+<h3 id="For-a-non-standard-SVN-layout"><a href="#For-a-non-standard-SVN-layout" class="headerlink" title="For a non-standard SVN layout"></a>For a non-standard SVN layout</h3><p>使用非标准的svn layout 来新建svn库，即可以根据自己喜好来自定义分支，标签目录：<br><figure class="highlight bash"><figcaption><span>非标准化</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git svn init SVN_URL -T Trunk -b Branches -t Tags --prefix=svn/</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h2><figure class="highlight bash"><figcaption><span>review</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">review the config</div></pre></td></tr></table></figure>
+<p>会有以下信息输入：<br><figure class="highlight bash"><figcaption><span>输入内容</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">svn-remote.svn.url=svn://svn.example.com</div><div class="line">svn-remote.svn.fetch=some/path/trunk:refs/remotes/svn/trunk</div><div class="line">svn-remote.svn.tags=some/path/tags/*:refs/remotes/svn/tags/*</div></pre></td></tr></table></figure><br>高级用户可以在执行之前，修改相关配置。</p>
+<h2 id="从远程SVN服务器拉取代码到新建的本地存储库"><a href="#从远程SVN服务器拉取代码到新建的本地存储库" class="headerlink" title="从远程SVN服务器拉取代码到新建的本地存储库"></a>从远程SVN服务器拉取代码到新建的本地存储库</h2><figure class="highlight plain"><figcaption><span>拉取</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git svn fetch</div></pre></td></tr></table></figure>
+<h1 id="查看本地库状态"><a href="#查看本地库状态" class="headerlink" title="查看本地库状态"></a>查看本地库状态</h1><h2 id="status"><a href="#status" class="headerlink" title="status"></a>status</h2><figure class="highlight plain"><figcaption><span>status</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><figcaption><span>内容</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># On branch master</div><div class="line">nothing to commit (working directory clean)</div></pre></td></tr></table></figure></p>
+<h2 id="查看分支信息"><a href="#查看分支信息" class="headerlink" title="查看分支信息"></a>查看分支信息</h2><figure class="highlight plain"><figcaption><span>branch</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
+<p>输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">* master</div><div class="line">remotes/svn/tags/0.1.0</div><div class="line">remotes/svn/tags/0.2.0</div><div class="line">remotes/svn/tags/0.3.0</div><div class="line">remotes/svn/tags/0.4.0</div><div class="line">remotes/svn/trunk</div></pre></td></tr></table></figure><br>注意：SVN标记和分支（在这种情况下，没有任何分支机构）仅作为远程引用存在。</p>
+<h2 id="SVN分支和标签转为本地git仓库中的标签和分支"><a href="#SVN分支和标签转为本地git仓库中的标签和分支" class="headerlink" title="SVN分支和标签转为本地git仓库中的标签和分支"></a>SVN分支和标签转为本地git仓库中的标签和分支</h2><h3 id="SVN-branches"><a href="#SVN-branches" class="headerlink" title="SVN branches"></a>SVN branches</h3><p>把远程svn分支转换为本地git仓库中的分支：<br><figure class="highlight plain"><figcaption><span>分支转分支</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for branch in `git branch -r | grep &quot;branches/&quot; | sed &apos;s/ branches\///&apos;`; do</div><div class="line">git branch $branch refs/remotes/$branch</div><div class="line">done</div></pre></td></tr></table></figure></p>
+<h3 id="SVN-tags"><a href="#SVN-tags" class="headerlink" title="SVN tags"></a>SVN tags</h3><ol>
+<li><p>把远程svn标签转换为本地git仓库中的标签 :</p>
+<figure class="highlight plain"><figcaption><span>tags转换tags</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for tag in `git branch -r | grep &quot;tags/&quot; | sed &apos;s/ tags\///&apos;`; do</div><div class="line">git tag -a -m&quot;Converting SVN tags&quot; $tag refs/remotes/$tag</div><div class="line">done</div></pre></td></tr></table></figure>
+</li>
+<li><p>把远程svn标签转换为本地git仓库中的分支:</p>
+<figure class="highlight plain"><figcaption><span>标签转分支</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for tag in `git branch -r | grep &quot;tags/&quot; | sed &apos;s/ tags\///&apos;`; do</div><div class="line">git branch $tag refs/remotes/$tag</div><div class="line">done</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Test-pushing-and-cloning-locally"><a href="#Test-pushing-and-cloning-locally" class="headerlink" title="Test pushing and cloning locally"></a>Test pushing and cloning locally</h1><p>Before pushing to the real host, it would be wise to test things by pushing to a local Git repo and then cloning the result.<br>在推送到正式远程库之前，可以通过向本地git库中推送测试信息。</p>
+<h2 id="Make-a-local-bare-Git-repo"><a href="#Make-a-local-bare-Git-repo" class="headerlink" title="Make a local bare Git repo"></a>Make a local bare Git repo</h2><p>在git中的说法，<code>bare</code>库是一个不存在工作空间备份的库。<br><figure class="highlight plain"><figcaption><span>bare创建</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">mkdir test</div><div class="line">cd test</div><div class="line">git init --bare</div></pre></td></tr></table></figure><br>这样，在<code>~/test</code>就生成了一个<code>bare</code>git库。</p>
+<h2 id="Push-to-the-test-Git-repo"><a href="#Push-to-the-test-Git-repo" class="headerlink" title="Push to the test Git repo"></a>Push to the test Git repo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/staging</div><div class="line">git remote add test `~/test`</div><div class="line">git push --all test</div><div class="line">git push --tags test</div></pre></td></tr></table></figure>
+<p>把<code>~/test</code>的放在反引号中，反引号在命令行中会<code>~</code>自动补全为一个绝对路径。如果你给一个绝对路径或URL，可以省略反引号。<br>尽管它的名字，<code>--all</code>选项不推送<code>tags</code>，所以需要对标签单独push操作。</p>
+<h2 id="Clone-from-the-test-Git-repo"><a href="#Clone-from-the-test-Git-repo" class="headerlink" title="Clone from the test Git repo"></a>Clone from the test Git repo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">mkdir aclone</div><div class="line">cd aclone</div><div class="line">git clone ~/test</div></pre></td></tr></table></figure>
+<p>There should now be a clone with a working copy in ~/aclone/test.<br>在<code>~/aclone/test</code>目录中将会clone出一个工作空间备份，检查确保一切OK，这样就可以向正式服务器上推送。</p>
+<h2 id="Push-your-staging-repo-to-the-real-host"><a href="#Push-your-staging-repo-to-the-real-host" class="headerlink" title="Push your staging repo to the real host"></a>Push your staging repo to the real host</h2><p>如果你是正式库服务器（github，coding）的管理员，为本地git库设置一个空的git库。<br>以<code>Unfuddle</code>为例,路径如下：<br><code>git@example.unfuddle.com:example/blah.git</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/staging</div><div class="line">git remote add unfuddle REAL_HOST_URL</div><div class="line">git push --all unfuddle</div><div class="line">git push --tags unfuddle</div></pre></td></tr></table></figure><br>在上面的例子中，制定了远程名：<code>unfuddle</code>而不是默认的<code>origin</code>。当然，你可以使用任何你喜欢的名字。</p>
+<h1 id="Cleanup"><a href="#Cleanup" class="headerlink" title="Cleanup"></a>Cleanup</h1><h2 id="Remove-the-test-remote"><a href="#Remove-the-test-remote" class="headerlink" title="Remove the test remote"></a>Remove the test remote</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/staging</div><div class="line">git remote rm test</div></pre></td></tr></table></figure>
+<p><code>staging</code>库忽略<code>test</code>远程仓库.</p>
+<h2 id="Discard-the-test-and-clone-repos"><a href="#Discard-the-test-and-clone-repos" class="headerlink" title="Discard the test and clone repos"></a>Discard the test and clone repos</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">rm -rf aclone</div><div class="line">rm -rf test</div></pre></td></tr></table></figure>
+<h2 id="Either-keep-or-delete-the-staging-repo"><a href="#Either-keep-or-delete-the-staging-repo" class="headerlink" title="Either keep or delete the staging repo"></a>Either keep or delete the staging repo</h2><ol>
+<li>如果需要Git和SVN之间频繁交互，建议保留<code>staging</code>库这会节省你非常耗时的初始化：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git svn fetch</div></pre></td></tr></table></figure></li>
+<li>另一方面如果你确信svn是报废的，你可以删除分期回购：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line">rm -rf staging</div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;SVN was a great advance in its day, but it’s now clear that distributed version control systems are the way forward and that Git is the d
+    
+    </summary>
+    
+      <category term="git" scheme="https://huos3203.github.io/categories/git/"/>
+    
+    
+      <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="git" scheme="https://huos3203.github.io/tags/git/"/>
+    
+      <category term="git-svn" scheme="https://huos3203.github.io/tags/git-svn/"/>
+    
+  </entry>
   
   <entry>
     <title>Error Handling for Swift</title>
@@ -249,8 +320,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x73;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#64;&#x65;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#x73;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#64;&#x65;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x73;&#111;&#109;&#x65;&#x2d;&#x6f;&#110;&#x65;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#x65;&#46;&#99;&#111;&#109;">&#x73;&#111;&#109;&#x65;&#x2d;&#x6f;&#110;&#x65;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#x65;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align:right">Author <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#115;&#x6f;&#x6d;&#101;&#x2d;&#111;&#110;&#101;&#x40;&#101;&#120;&#97;&#109;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;">&#115;&#x6f;&#x6d;&#101;&#x2d;&#111;&#110;&#101;&#x40;&#101;&#120;&#97;&#109;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#x73;&#x6f;&#109;&#101;&#x2d;&#111;&#110;&#x65;&#x40;&#101;&#x78;&#97;&#109;&#112;&#108;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#x73;&#x6f;&#109;&#101;&#x2d;&#111;&#110;&#x65;&#x40;&#101;&#x78;&#97;&#109;&#112;&#108;&#x65;&#46;&#x63;&#x6f;&#x6d;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -1050,6 +1121,20 @@ line 3 of code
   </entry>
   
   <entry>
+    <title>猿题库架构学习</title>
+    <link href="https://huos3203.github.io/2016/01/13/2016-01-13-yuan-ti-ku-jia-gou-xue-xi/"/>
+    <id>https://huos3203.github.io/2016/01/13/2016-01-13-yuan-ti-ku-jia-gou-xue-xi/</id>
+    <published>2016-01-13T08:41:36.000Z</published>
+    <updated>2016-12-19T07:15:00.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>GTD入门</title>
     <link href="https://huos3203.github.io/2016/01/07/2016-01-07-gtdru-men/"/>
     <id>https://huos3203.github.io/2016/01/07/2016-01-07-gtdru-men/</id>
@@ -1119,6 +1204,38 @@ line 3 of code
   </entry>
   
   <entry>
+    <title>2015年12月22日冬至-圣诞节最新中关村骗术</title>
+    <link href="https://huos3203.github.io/2015/12/25/2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li/"/>
+    <id>https://huos3203.github.io/2015/12/25/2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li/</id>
+    <published>2015-12-25T12:46:23.000Z</published>
+    <updated>2016-12-19T07:15:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>被骗经过:<br>12月22号，本人午饭后拿着64G苹果6去中关村解锁，维修师傅说因为是日版内置卡贴机，加上系统已经升级ios9.2，就算拆机去除卡贴，再配上市面上的卡贴卡托也只能使用移动2G网络而且网络很不稳定的说法，再检测我手机质量后，开始让我以旧换新，并承诺加五百元就换一台他们店售卖的全新64G国行苹果6，我信以为真，在他们带领下，仅仅看到他们提供的白色包装盒，她们只说是国行全新机，其他没做任何说明，便刷去我500元整，并写下小条让我签字，我当时要求当场拆封查看真机，他们推辞说还需办理其它手续，就差人把白色包装盒拿走了，让我耐心等候便带我到另一间休息室里，她说需要我手机卡去帮我激活他们所说的全新苹果6，让我拔卡给她，没有争取我的同意，就要伸手帮我拔卡，只能拔卡给她，接着安排了一人陪我，拿着我的卡离开了休息室。</p>
+<p>和这人闲聊一会便要看我刚才换机的小票，当他看到“专网”字样，起初对我说只能用4G网络，没有4G信号的话手机会自动进入休眠状态，无法接打电话，必须用他们所说的4G卡否则手机就无法开机使用。听到这，我就要求取消交易，在他打了一通电话百般为难的说，工作人员在排队等待办理激活手续了，已经无法取消，只能等。一番焦急等待后，仍不见人拿手机过来，已经意识到被骗，本想报案，手机卡已经被他们拿走，一个人没底没落完全崩溃，后来又听他说在专网手机上下载应用还必须绑定银行账号，每下载一个APP就要收取高额费用，一个QQ就要扣除70多元，估算一年下来最低消费就要达万元，我追问到如果办理不使用这部手机会怎么样，他说和服务商绑定后，达不到最低消费，手机号就会被锁定，火车票都买不到，我完全慌了，只能央求他任何条件帮忙。</p>
+<p>他就让购买他的苹果5s，否则不会打电话让他们取消上一个被蒙骗的交易，拿不到我的手机卡，并承诺说购买他提供的机型是国行全新iPhone5s，支持全网，系统随便升级，下载APP不收任何费用，如果发现有任何问题，全额退款。当场就在先前的小票背面写了字据作保证。换购就让我把日版苹果6抵算1500元再加1900元，换购他所说的全新国行iPhone5s，当时心理已经感受到威胁恐吓，急于脱身，只想早点拿回手机卡，不得不任他们摆布，威逼利诱再次被刷走1900元整。</p>
+<p>当拿到他拿到我的日版苹果6之后，又私自拆卸说我手机为翻新机，机壳和主板完全不是一套，非得让我再加200元，才肯归还手机卡和全新iPhone5s。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;被骗经过:&lt;br&gt;12月22号，本人午饭后拿着64G苹果6去中关村解锁，维修师傅说因为是日版内置卡贴机，加上系统已经升级ios9.2，就算拆机去除卡贴，再配上市面上的卡贴卡托也只能使用移动2G网络而且网络很不稳定的说法，再检测我手机质量后，开始让我以旧换新，并承诺加五百元就
+    
+    </summary>
+    
+      <category term="骗局" scheme="https://huos3203.github.io/categories/%E9%AA%97%E5%B1%80/"/>
+    
+    
+      <category term="中关村" scheme="https://huos3203.github.io/tags/%E4%B8%AD%E5%85%B3%E6%9D%91/"/>
+    
+      <category term="被骗" scheme="https://huos3203.github.io/tags/%E8%A2%AB%E9%AA%97/"/>
+    
+      <category term="iPhone6" scheme="https://huos3203.github.io/tags/iPhone6/"/>
+    
+      <category term="iPhone5s" scheme="https://huos3203.github.io/tags/iPhone5s/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Realm数据库引擎-swift</title>
     <link href="https://huos3203.github.io/2015/12/16/2015-12-16-realmshu-ju-ku-yin-qing-swift/"/>
     <id>https://huos3203.github.io/2015/12/16/2015-12-16-realmshu-ju-ku-yin-qing-swift/</id>
@@ -1166,6 +1283,193 @@ line 3 of code
       <category term="数据库" scheme="https://huos3203.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="realm" scheme="https://huos3203.github.io/tags/realm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>总结</title>
+    <link href="https://huos3203.github.io/2015/12/15/2015-12-15-zong-jie/"/>
+    <id>https://huos3203.github.io/2015/12/15/2015-12-15-zong-jie/</id>
+    <published>2015-12-14T21:39:20.000Z</published>
+    <updated>2016-12-20T06:39:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>####联系方式</p>
+<ul>
+<li>手机：13522834108</li>
+<li>Email：huos3203@gmail.com </li>
+<li>QQ：724987481</li>
+</ul>
+<hr>
+<h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul>
+<li>霍曙光/男/1988 </li>
+<li>本科/郑州轻工业学院 计算机网络技术 </li>
+<li>工作年限：5年</li>
+<li>QQ：724987481</li>
+<li>技术博客：<a href="http://huos3203.github.io/MyBlog/">布衣男儿</a></li>
+<li>Github：<a href="https://github.com/huos3203/" target="_blank" rel="external">https://github.com/huos3203/</a> </li>
+<li><p>GitBook：<a href="https://huoshuguang.gitbooks.io" target="_blank" rel="external">https://huoshuguang.gitbooks.io</a></p>
+</li>
+<li><p>期望职位：iOS高级程序员，应用架构师</p>
+</li>
+<li>期望薪资：税前月薪20k~25k</li>
+<li>期望城市：北京</li>
+</ul>
+<hr>
+<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><p>##北京创世泰克科技有限公司 (2013年11月~至今)</p>
+<p>###工作描述：  </p>
+<ol>
+<li>负责iPhone/iPad应用软件设计与开发；  </li>
+<li>参与项目需求分析，产品模块的概要设计；  </li>
+<li>优化软件性能，提高用户体验；  </li>
+<li>scrum分解任务控制开发进度；</li>
+<li>管理itunes，搭建fastlane自动化部署Appstore</li>
+</ol>
+<hr>
+<p>###<a href="https://itunes.apple.com/cn/app/peng-bao-bao/id794859712?mt=8" target="_blank" rel="external">鹏保宝</a></p>
+<p>鹏保宝是一款用于为数字内容的传播及销售环节保价护航，确保受保护的视频、文档、图纸等内容不被二次传播或转售，广泛用于在教育培训、淘宝数字内容销售、设计企业、印刷、电子书出版等领域，建立起了很好的用户基础。</p>
+<p>####技术描述：</p>
+<p>四人项目，担任IOS组组长</p>
+<p>主要负责：任务分解和分配，每天了解开发进度更新燃尽图，讨论和跟进各种具体的技术问题，协调一些产品需求的变更，响应一些市场同事的需求，跟进相关功能上线。</p>
+<ul>
+<li>使用<a href="https://cocoapods.org" target="_blank" rel="external">cocoaPods</a>工具管理第三方类库，<a href="http://git-scm.com/book/zh/v2" target="_blank" rel="external">Git</a>控制版本迭代协作开发；</li>
+<li>定制<a href="https://github.com/FFmpeg/FFmpeg" target="_blank" rel="external">ffmpeg</a>,<a href="http://mupdf.com/repos/mupdf" target="_blank" rel="external">mupdf</a>阅读器底层业务,集成IJKPlayer支持鹏保宝加密阅读；</li>
+<li>使用storyboard/xib，AutoLayout与Size Class技术适配iPad/iPhone；</li>
+<li>使用<a href="https://github.com/robbiehanson/CocoaAsyncSocket" target="_blank" rel="external">CocoaAsyncSocket</a>开源包实现socket传输协议封装；</li>
+<li>使用<a href="https://github.com/RestKit/RestKit" target="_blank" rel="external">RestKit</a>处理web服务api,解析JSON映射响应对象；</li>
+<li>通过<a href="https://github.com/marcuswestin/WebViewJavascriptBridge" target="_blank" rel="external">WebViewJavascriptBridge</a>/<a href="http://nshipster.cn/javascriptcore/" target="_blank" rel="external">JavaScriptCore</a>实现In-APP Purchase内购；</li>
+<li>封装<a href="https://github.com/ccgus/fmdb" target="_blank" rel="external">FMDB</a>接口，SQLite数据库设计及<a href="http://www.sqlcipher.net" target="_blank" rel="external">SQLCipher</a>数据库加密；</li>
+<li><a href="https://github.com/scalessec/Toast" target="_blank" rel="external">Toast</a>Android风格的Toast控件,用户提示便捷得体；</li>
+<li>集成微信SDK,腾讯SDK，ShareSDK，JpushSDK；</li>
+</ul>
+<p>#####项目管理成长：<br>由周期长、响应速度慢、维护修改困难，以文档为核心的传统开发模式到敏捷开发以人为本，专注于交付对客户有价值的软件，在高度协作的开环境中，使用迭代式的方式进行增量开发，经常使用反馈进行思考、反省和总结，不停的进行自我调整和完善。</p>
+<p>#####技术突破：<br>在阅读鹏保宝视频文件时，MediaPlayer.framework仅支持普通视频播放，如何在保证鹏保宝文件不被解密的情况下，实现用户正常阅读。我通过google发现ffmpeg是基于C开发的开源程序，能够通过编译源码支持多平台，在此基础上，我们对ffmpeg定制开发，在底层代码中加入解密算法，传入文件秘钥，实现了ffmpeg支持鹏保宝视频文件的阅读。<br>  雷同，对于鹏保宝PDF加密文件时，我们对mupdf开源程序，进行二次开发，实现了mupdf支持鹏保宝PDF文件的阅读。</p>
+<p>###<a href="https://itunes.apple.com/cn/app/pbb-reader/id954969456?mt=8" target="_blank" rel="external">PBB Reader</a><br><code>Pbb Reader</code>是鹏保宝加密文件的阅读器，使用此软件可以打开被鹏保宝加密后的文件，最新版本集成了<code>开会APP</code>的相关功能，并支持绥知文件的阅读。</p>
+<p>四人项目，担任IOS组组长  </p>
+<p>主要负责：任务分解，了解开发进度，更新燃尽图，讨论和跟进各种具体的技术问题，协调一些产品需求的变更，响应一些市场同事的需求，跟进相关功能上线。</p>
+<p>#####技术描述：</p>
+<ul>
+<li>作为<code>鹏保宝</code>lite阅读器，使用<code>URL Schemes</code>实现文件共享；</li>
+<li>使用一个target对应一个新的product方案，创建<code>PBB Reader</code>阅读器；</li>
+<li>使用扫描二维码技术登录<code>开会</code>APP；</li>
+<li>AutoLayout与Size Class技术适配iPad机型；</li>
+</ul>
+<p>#####项目收获：</p>
+<ol>
+<li>使用target功能充分利用代码，开发新产品，以最小的代价产出lite版应用；</li>
+<li>使用autolayout和size class重构界面实现，去除机型判断，坐标硬适配的冗长代码；</li>
+<li>学习自动化部署工具包<code>fastlane</code>部署Appstore；</li>
+</ol>
+<p>###<a href="https://itunes.apple.com/cn/app/sui-zhi/id848758969?mt=8" target="_blank" rel="external">绥知</a><br>绥知是一款可加强保护这些数字化的音视频节目内容的版权，涉及的技术就是数字权限管理技术。本应用现可支持在PC端进行图书，音乐，视频加密后买卖交易，在移动端可进行解密查看。</p>
+<p>###<a href="https://itunes.apple.com/cn/app/kai-hui/id1063916218?mt=8" target="_blank" rel="external">开会</a><br>开会是一款会议管理系统，主要功能包括创建会议、发布会议通知、管理会议资料、管理会务等相关功能，通过该系统可实现无纸化会议办公，使得企业可以环保高效的开展会议。本APP为该系统的移动客户端，主要为参会人员提供了会议资料的领取、使用、收藏、管理等功能。</p>
+<hr>
+<p>#个人作品： </p>
+<p>###<a href="https://itunes.apple.com/cn/app/iresearcher/id1048834926?mt=8" target="_blank" rel="external">iResearcher</a><br>iResearcher是一款科研/研发领域大数据分析系统+应用。旨在为科研/技术研发工作者提供 资源直达服务，iResearcher计划提供的资源服务既包括论文，方法，数据集，也包括人，资金等。最终建立，人与人，人与资金，人与技术方法之间的互联。为科研/研发工作者，提供一站式科研服务平台。</p>
+<p>#####工作描述：</p>
+<p>本项目包含IOS端，安卓端，<a href="http://www.iresearch.xyz" target="_blank" rel="external">PC端</a>，担任项目Scrum Master</p>
+<ul>
+<li>和业务方沟通确定产品需求和流程，形成文档和原型设计，敲定开发方案；</li>
+<li>在<code>worktile</code>平台分配任务，监控项目进度，处理客户反馈；</li>
+<li>负责IOS项目架构设计，UI界面和功能实现；</li>
+<li>android端APP发布（友盟，应用宝，小米应用商店）；</li>
+<li>IOS端自动化部署发布appstore；</li>
+</ul>
+<p>#####技术描述：</p>
+<ul>
+<li>使用<a href="https://cocoapods.org" target="_blank" rel="external">cocoaPods</a>工具管理第三方类库，<a href="http://git-scm.com/book/zh/v2" target="_blank" rel="external">Git</a>控制版本迭代协作开发；</li>
+<li><a href="https://github.com/romaonthego/RESideMenu" target="_blank" rel="external">RESideMenu</a>侧滑布局类库,支持左右滑动，滑动距离;</li>
+<li><a href="https://github.com/hackiftekhar/IQKeyboardManager" target="_blank" rel="external">IQKeyboardManager</a>易于集成，支持设备的方向，可通过类的方法来启用和禁用键盘管理器；</li>
+<li><a href="https://github.com/antoniocasero/ACPDownload" target="_blank" rel="external">ACPDownload</a>实现类似AppStore下载状态样式；</li>
+<li><a href="https://github.com/thibaultCha/TCBlobDownload" target="_blank" rel="external">TCBlobDownload</a>支持后台线程执行大文件下载任务，暂停和重新恢复下载；</li>
+<li><a href="https://github.com/shingwasix/MobShareSDK" target="_blank" rel="external">MobShareSDK</a>实现微信朋友，朋友圈分享;</li>
+<li><a href="https://zwaldowski.github.io/BlocksKit" target="_blank" rel="external">BlocksKit</a>没有创建新的宏，函数，方法和类，仅对Cocoa基础类的一个扩展，是取代了通常的delegate用法;</li>
+<li><a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">SDWebImage</a>图片缓存的框架; <!--点点滴滴--></li>
+<li><a href="https://github.com/CoderMJLee/MJRefresh" target="_blank" rel="external">MJRefresh</a>下拉刷新上拉加载更多MJRefresh类库;</li>
+<li><a href="https://github.com/scalessec/Toast" target="_blank" rel="external">Toast</a>Android风格的Toast控件,用户提示便捷得体；</li>
+<li><a href="https://github.com/kcandr/IQLabelView" target="_blank" rel="external">IQLabelView</a>对文本控件覆盖，缩放和旋转；</li>
+<li><a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">AFNetworking</a></li>
+<li><a href="https://github.com/RestKit/RestKit" target="_blank" rel="external">RestKit</a>处理web服务api,解析JSON映射响应对象；</li>
+<li><a href="https://github.com/Masonry/Masonry" target="_blank" rel="external">Masonry</a>一个轻量级的布局框架,拥有自己的描述语法，采用更优雅的链式语法封装自动布局；</li>
+<li>BaiduMobStat使用百度统计，统计用户使用时长、使用频率、访问页面、使用间隔等数据；</li>
+</ul>
+<p>#####能力提高：<br>Scrum开发的认识与学习：强调团队需要是“自组织”的，需要群体进行决策而不是领导，Scrum强调的是信息的透明化，定期地查看自己和团队的状态，保证大家信息充分共享，透明的方法，即有了信息的透明，这样团队成员就能共同发现项目执行中的问题，进而一起寻找解决办法，从而达到“自组织”的团队。在开发时间上也保持着一周一次的Sprint评审会议，保证项目开发进度和质量。</p>
+<p>###爱跑</p>
+<p><code>爱跑</code>是一款鼓励用户多运动的APP社区应用，能安排运动日程，统计每日运动量，统计圈子排行榜，支持圈子好友即时通讯，提供穿戴设备购买的入口。</p>
+<p>######工作描述：<br>四人项目，项目负责人  </p>
+<ul>
+<li>沟通需求，敲定开发方案，组织人员开发；</li>
+<li>在<code>worktile</code>平台分配任务，监控项目进度，处理客户反馈；</li>
+<li>android端APP发布；</li>
+<li>部署后台服务器；</li>
+</ul>
+<p>######技术描述：</p>
+<ul>
+<li>集成融云IMKit组件，嵌入到现有代码框架中，实现圈子好友聊天功能；</li>
+<li>日历控件上的日程和提醒；</li>
+</ul>
+<p>#####能力提高：<br>组织能力，协作沟通能力。</p>
+<hr>
+<p>##北京鼎晟中天科技有限公司（2011年3月~2013年11月）</p>
+<p>###工作描述：</p>
+<ol>
+<li>负责公司IOS平台的iPhone应用程序的软件设计及开发；  </li>
+<li>参与项目需求分析，产品模块的概要和详细设计；  </li>
+<li>优化软件性能，提高用户体验；  </li>
+</ol>
+<p>###会议通<br>本项目以蓝牙技术为基础，进行近距离的人员搜索，结合移动互联网技术让参展人员可以方便的进行进行电子名片的交换和管理。同时系统通过对参展人员交换名片的行为进行多维度的分析，使得会展组织者可以及时准确的了解展会效果，为组织者指定下一步工作计划提供数据基础。</p>
+<p>#####技术描述：</p>
+<ul>
+<li>sqlite数据库工具FMDB开发</li>
+<li>ABAddressBook通讯录数据库开发</li>
+<li>CoreBluetooth蓝牙开发</li>
+<li>ASIHTTPRequest实现了图片上传下载</li>
+<li>JavaPNS服务器推送工具，IOS推送技术推送</li>
+</ul>
+<p>###<a href="https://itunes.apple.com/cn/app/yi-gou8/id663698075?mt=8" target="_blank" rel="external">易购8</a>(已下架)<br><code>易购8</code>是一款简易的口袋购物软件，支持通过输入关键字直接在淘宝查询商品，支持用户选择“商品价格分段”、“商家信誉分段”、“商品销量分段”以及其他条件对商品进行过滤。</p>
+<p>###众信旅游ERP客户端（Java）</p>
+<p>本系统通过对旅行社关键业务的分析，将旅行社业务中需要移动处理的部分抽取出来，通过与企业内部业务管理系统协作，既能够与企业现有的流程一致，又保持一定的独立性，避免影响核心业务系统的运转。<br>系统用户群定位：旅行社的销售人员、管理人员、导游！<br>具体实现:是以移动互联网技术为基础，结合当前主流的移动终端技术，将企业内部的ERP延伸到移动终端，可以让旅行社工作人员随时随地高效、安全的进行业务操作！  </p>
+<p>###淘宝信息搜集工具（Java）<br>实现了定时爬取指定商品的基本信息包括:商品原价，实价，评价数量，评价星级，运费，和店铺等级，店铺信誉度，以及商品连接，店铺连接，和缩略图获取。</p>
+<p>###<a href="http://www.jgbw.cn/" target="_blank" rel="external">今古博文</a>（java）<br>作为公司的企业文化，地理位置，招聘信息，等最新信息的展示平台….</p>
+<hr>
+<p>#技能清单：  </p>
+<ol>
+<li>熟练掌握Object C/swift/java，ruby脚本，Linux 命令，regex</li>
+<li>熟练掌握MVC，MVVM，MVP，单例，观察者，代理，工厂等设计模式</li>
+<li>熟悉socket通信，HTTP协议，xmpp框架，Restful框架，json/xml解析</li>
+<li>熟悉cocoa，uikit，block,多线程,disptach</li>
+<li>熟练interface builder，Playground，autolayout，SizeClass</li>
+<li>熟悉IOS内购，QQ登录，极光推送，融云等第三方SDK</li>
+<li>熟悉ffmpeg视频播放器，mupdf阅读器，实现密文阅读</li>
+<li>熟悉Pods，Alcatraz，Xvim，VVDocumenter，Dash等</li>
+<li>Scrum开发：Jira/worklite/Trello/OmniPlan</li>
+<li>自动化部署工具:fastlane/jenkins/Docker</li>
+<li>数据库：MySQL/SQLServer/SQLite/Realm</li>
+<li>测试平台：蒲公英，HockeyApp，Crashlytics，OXServer</li>
+<li>异常分析：instruments，dsym，友盟，百度统计，Crashlytics</li>
+<li>版本管理：Svn/Git GUI:cornerstone/smartSVN/sourceTree</li>
+<li>文档工具：appleDoc/jazzy/GistBox/MOU/GitBook/Snippets</li>
+<li>前端工具：PhoneGap/PaintCode/Photoshop/flash/dreamweaver</li>
+<li>Web开发：PHP/JSP/ASP</li>
+<li>Web框架：Nutz、Octopress</li>
+<li>云和开放平台：SAE/AWS/微信应用开发</li>
+</ol>
+<hr>
+<p>##致谢</p>
+<p>感谢您花时间阅读我的简历，期待能有机会和您共事。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####联系方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;手机：13522834108&lt;/li&gt;
+&lt;li&gt;Email：huos3203@gmail.com &lt;/li&gt;
+&lt;li&gt;QQ：724987481&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;个人信息&quot;&gt;&lt;a href=&quot;#个人信
+    
+    </summary>
+    
     
   </entry>
   
@@ -1488,246 +1792,6 @@ line 3 of code
     
     
       <category term="Scrum" scheme="https://huos3203.github.io/tags/Scrum/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>清除git历史记录大文件bfg</title>
-    <link href="https://huos3203.github.io/2015/10/20/2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg/"/>
-    <id>https://huos3203.github.io/2015/10/20/2015-10-20-qing-chu-gitli-shi-ji-lu-da-wen-jian-bfg/</id>
-    <published>2015-10-20T03:17:27.000Z</published>
-    <updated>2017-01-12T08:43:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li><a href="https://search.maven.org/remote_content?g=com.madgag&amp;a=bfg&amp;v=LATEST" target="_blank" rel="external">下载bfg</a> 到本地soft/bfg目录下。</li>
-<li>sudo vi ~/.bash_profile  添加如下：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias bfg=&quot;java -jar ~/Downloads/soft/bfg/bfg.jar&quot;</div></pre></td></tr></table></figure>
-<ol>
-<li>cd 到库目录，执行bfg命令： <a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="external">bfg官网</a> </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ cd PBB_SSH所属目录下</div><div class="line">$ bfg --delete-folders universal --no-blob-protection  PBB_SSH</div><div class="line">$ cd PBB_SSH</div><div class="line">$ git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</div><div class="line">$ git push</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://search.maven.org/remote_content?g=com.madgag&amp;amp;a=bfg&amp;amp;v=LATEST&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;下载bfg&lt;/a&gt; 到本地s
-    
-    </summary>
-    
-      <category term="git" scheme="https://huos3203.github.io/categories/git/"/>
-    
-    
-      <category term="坑" scheme="https://huos3203.github.io/tags/%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[转]敏捷杂谈之TDD与BDD</title>
-    <link href="https://huos3203.github.io/2015/10/06/2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd/"/>
-    <id>https://huos3203.github.io/2015/10/06/2015-10-06-zhuan-min-jie-za-tan-zhi-tddyu-bdd/</id>
-    <published>2015-10-06T02:18:02.000Z</published>
-    <updated>2017-01-12T02:34:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>敏捷开发有许多种方法，但不管采用任何一种，测试都是实施敏捷的基础，及时的验证代码的正确性，系统功能的健全与否，及时的反馈，及时的叫停……都是保证敏捷的基础。所以大量的快速的自动化测试，才能保证敏捷开发在快速迭代中仍然不怎么丢失软件的质量。</p>
-<p>所以，在敏捷开发里一直都有一种说法叫“代码即文档”，而且测试代码也成了功能代码的使用文档。敏捷里强调的TDD(Test-driven developmenet, 测试驱动开发)，就主要体现了这种思想：根据设计编写测试-&gt; 实现设计的功能 -&gt; 用测试代码验证 -&gt; 重构实现代码 -&gt; 改善设计 -&gt; 再次回到根据改善的设计编写测试。反复循环下去，就是TDD所倡导的流程。<br><a id="more"></a><br>TDD的好处：1. 能驱使系统最终的实现代码，都可以被测试代码所覆盖到，也即“每一行代码都可测”。2. 测试代码作为实现代码的正确导向，最终演变为正确系统的行为，能让整个开发过程更加高效。TDD的不足之处或者说还不够完善的地方，是对设计和测试的编写没有一个明确的方针。作为整个循环中的向导部分，如何保证根据设计编写的测试就是最终用户所期望的系统行为？如果这一部分模糊了，那么后续所有环节几乎都要受到影响。所以，再次基础上，敏捷社区又有人提出了BDD的概念，即“行为驱动开发”。</p>
-<p>BDD(Behavior-driven development)把TDD中模糊的那一部分给明确了，强调开发、测试、BA、客户等所有项目相关人员都用自然语言来描述系统的行为。大家看到的描述一致，读到的内容一致，于是最终测试驱动开发产出的结果也应该是最符合用户期望的。所以在BDD的倡导下，介绍了一种简洁的类似自然语言叫Gherkin Language。下面看一个用Gherkin Language描述系统行为的例子：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[plain] view plaincopyprint?</div><div class="line">As a xxx [Role]  </div><div class="line">I want to xxx [Feature]  </div><div class="line">So that I can xxx[Benefit]  </div><div class="line"></div><div class="line">Scenario <span class="number">1</span>: create user  </div><div class="line">Given a admin log into the system  </div><div class="line"><span class="keyword">when</span> he create a user with name <span class="string">'mike'</span>  </div><div class="line"><span class="keyword">then</span> mike should be able to log into the system</div></pre></td></tr></table></figure></p>
-<p>随着BDD的出现和发展，使用大家都能轻易理解和认知的语言来描述系统的行为并创建User Story，TDD的反复循环的流程也就能更顺利的进行下去了。BDD的核心价值是体现在正确的对系统行为进行设计，所以它并非一种行之有效的测试方法。它强调的是系统最终的实现与用户期望的行为是一致的、验证代码实现是否符合设计目标。但是它本身并不强调对系统功能、性能以及边界值等的健全性做保证，无法像完整的测试一样发现系统的各种问题。</p>
-<p>有种说法是BDD是TDD的进化，其实笔者看来，没有孰优孰劣，它们的本质和目标都是一致的。只是在实施方法上，进行了不同的探讨来完善整个敏捷开发的体系。如果BDD书写的User Story或者叫测试用例，不能作为开发、测试和客户等人共同参与和看到的一致性内容的话，那么它的价值也几乎得不到体现。另外一点，由于BDD不能代替完整的测试，旨在描述系统的行为，所以就像Gherkin Language的例子所体现的那样，关键是“简洁”，切忌啰嗦的想把每一步操作和任何情况都说得很清楚。</p>
-<p>最后总结：TDD的迭代反复验证是敏捷开发的保障，但没有明确如何根据设计产生测试，并保障测试用例的质量，而BDD倡导大家都用简洁的自然语言描述系统行为的理念，恰好弥补了测试用例（即系统行为）的准确性。（不管以上理念是否先进，切忌盲从和滥用）</p>
-<p>更多：<br><a href="http://www.cnblogs.com/wangshenhe/archive/2013/02/16/2913431.html" target="_blank" rel="external">关于TDD、BDD和DDD的一些看法</a><br><a href="http://cache.baiducontent.com/c?m=9f65cb4a8c8507ed4fece763105392230e54f73860838d5668d4e419ce3b46101b7bb0fb6179415a848461235aef0f1bb9ae2172414173ebcc969f4aabfdc47e38885164264a92044f934fa09b1073d621e04d99db0e94c9e74296b9a1d3c85523dd22036df3f19c2b7303ba19&amp;p=c4769a46d6951ff41cf6c4710e10d70a&amp;newp=9c64d70d85cc42af08e297780d52bb705c5bc4387ebad0157f&amp;user=baidu&amp;fm=sc&amp;query=BDD%BF%AA%B7%A2%C4%A3%CA%BD&amp;qid=a08e02971812c57c&amp;p1=13" target="_blank" rel="external">虚拟座谈会：代码测试比率、测试驱动开发及行为驱动开发</a><br><a href="http://yangzb.iteye.com/blog/309354" target="_blank" rel="external">亲身体验行为驱动开发</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;敏捷开发有许多种方法，但不管采用任何一种，测试都是实施敏捷的基础，及时的验证代码的正确性，系统功能的健全与否，及时的反馈，及时的叫停……都是保证敏捷的基础。所以大量的快速的自动化测试，才能保证敏捷开发在快速迭代中仍然不怎么丢失软件的质量。&lt;/p&gt;
-&lt;p&gt;所以，在敏捷开发里一直都有一种说法叫“代码即文档”，而且测试代码也成了功能代码的使用文档。敏捷里强调的TDD(Test-driven developmenet, 测试驱动开发)，就主要体现了这种思想：根据设计编写测试-&amp;gt; 实现设计的功能 -&amp;gt; 用测试代码验证 -&amp;gt; 重构实现代码 -&amp;gt; 改善设计 -&amp;gt; 再次回到根据改善的设计编写测试。反复循环下去，就是TDD所倡导的流程。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="CI" scheme="https://huos3203.github.io/categories/CI/"/>
-    
-    
-      <category term="TDD" scheme="https://huos3203.github.io/tags/TDD/"/>
-    
-      <category term="BDD" scheme="https://huos3203.github.io/tags/BDD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>calabash一款跨平台UI测试工具初探</title>
-    <link href="https://huos3203.github.io/2015/10/06/2015-10-06-calabash%5B?%5D-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan/"/>
-    <id>https://huos3203.github.io/2015/10/06/2015-10-06-calabash[?]-kuan-kua-ping-tai-uice-shi-gong-ju-chu-tan/</id>
-    <published>2015-10-06T00:32:41.000Z</published>
-    <updated>2017-01-12T02:34:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>参考：<a href="http://blog.csdn.net/zangcw/article/details/25299243" target="_blank" rel="external">使用jenkins+calabash+cocoapods搭建ios持续集成环境</a></p>
-<ol>
-<li>calabash  是一款开源的跨平台UI测试工具，目前支持iOS和Android。它使用Cucumber作为测试核心，Cucumber是一个在敏捷团队十分流行的自动化的功能测试工具，它使用接近于自然语言的特性文档进行用例的书写和测试，支持多语言和多平台。</li>
-<li><p>安装Calabash  </p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install calabash-cucumber</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装Calabash中文支持包  </p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install calabash-cucumber-cn</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>####For automatic setup:      </p>
-<ol>
-<li><p>In a terminal, go to your iOS project  </p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	cd path-to-my-ios-project (i.e. directory containing .xcodeproj file)</div><div class="line">	```  </div><div class="line">2. Install calabash-cucumber gem (this make take some time because of dependencies)</div></pre></td></tr></table></figure>
-<p> gem install calabash-cucumber</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">3. Setup your project for Calabash-iOS.</div></pre></td></tr></table></figure>
-<p> calabash-ios setup  //Answer the questions and read the output :)</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4. Generate a skeleton features folder for your tests</div></pre></td></tr></table></figure>
-<p> calabash-ios gen</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">5. In Xcode, build your project using the -cal scheme</div><div class="line"></div><div class="line">6. Run the generated test!</div></pre></td></tr></table></figure>
-<p> cucumber</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">If all goes well, you are now ready to write your first test. Start by editing the file features/my_first.feature.</div><div class="line">&lt;!--more--&gt;</div><div class="line">####[cucumber官网](https://cukes.info/)   </div><div class="line"></div><div class="line">		* Feature（功能）  </div><div class="line">		* Scenario（情景）  </div><div class="line">		*  Given（给定）  </div><div class="line">		*  When（当）  </div><div class="line">		*  Then（则） </div><div class="line">#####[运行原理](http://www.educity.cn/se/619226.html)  </div><div class="line">![image](http://img.educity.cn/img_7/262/2013122000/125005907.jpg)  </div><div class="line">cucumber是一种BDD测试框架，核心为cucumber的calabash的脚本在运行测试的时候会在虚拟机/真机上预装一个web服务器，这个web服务器就是解释calabash的脚本，将其解释为robotium的脚本，然后这个web服务器会想测试app发送robotium的脚本，测试app拿到robotium脚本后，将其解释为instumentation命令向被测试的app发送这些命令，被测试的app执行这些命令，然后将结果返回给测试app，然后一级一级返得到最后的测试结果。    </div><div class="line">#####结构框架</div><div class="line">calabash完全采用了cucumber的结构模式，calabash是脚本与TC分离设计，在业务变化的情况下，只要功能存在基本只需要修改TC逻辑，在业务不变，功能变化的情况下，基本只需要修改脚本。   </div><div class="line">![image](http://img.educity.cn/img_7/262/2013122000/126005907.jpg)  </div><div class="line">feature为主件夹，step_definitions目录内是你封装的脚本，my_first.feature文件就是你的TC逻辑。  </div><div class="line">再看一下其中的内容：</div><div class="line"></div><div class="line">	　　my_first.feature</div><div class="line">	</div><div class="line">	　　Feature： 登陆</div><div class="line">	</div><div class="line">	　　Scenario： 输入正确的用户名密码能够正常登陆</div><div class="line">	</div><div class="line">	　　When 打开登陆页面</div><div class="line">	</div><div class="line">	　　And    输入用户名XXX输入密码XXX</div><div class="line">	</div><div class="line">	　　And   点击登陆</div><div class="line">	</div><div class="line">	　　Then  验证登陆成功</div><div class="line"></div><div class="line">　　看起来很简单吧，想要验证其他功能也是类似的语言描述即可。  </div><div class="line">如果你没有用过cucumber或者calabash那么你肯定现在有一个疑问，计算机怎么能识别汉字来进行测试的呢，  </div><div class="line">那么看一下step_definition，以 输入用户名XXX输入密码XXX为例：</div><div class="line"></div><div class="line">		When /^ 输入用户名\&quot;([^\\\&quot;]*)\&quot; 输入密码\&quot;([^\\\&quot;]*)\&quot;  $/ do |username，password|</div><div class="line">		performAction(&apos;enter_text_into_numbered_field&apos;，username，1)</div><div class="line">		performAction(&apos;enter_text_into_numbered_field&apos;，password，2)</div><div class="line">		end</div><div class="line">现在应该能明白为什么你需要写汉字的脚本就可以了吧。  </div><div class="line">在这里解释一下为什么如果业务存在功能修改这种情况，自动化脚本的修改量会小。  </div><div class="line">还是以这个登录脚本为例：</div><div class="line"></div><div class="line">	假如现在输入用户名和密码的输入框顺序变了，在你的页面显示上，可能是从左下角移到中间了，这种变化，那么feature文件你不用改，只需要改step_definition脚本就好了</div><div class="line">#####运行报告</div><div class="line">alabash-android支持很多报告生成模式，支持html，json，junit等等报告模式，只需要你在run的时候添加-f参数-o参数就可以了。</div><div class="line"></div><div class="line">　　例如 calabash-android run xxxx.apk -f html -o l，上图展示一下强大html报告  </div><div class="line">　　![image](http://img.educity.cn/img_7/262/2013122000/127005907.jpg)</div><div class="line"></div><div class="line">[【cucumber解析features文件】](http://blog.csdn.net/qs_csu/article/details/9000262) 		</div><div class="line">1. my_first.feature: 描述在这个条件下需要做什么事情；</div><div class="line"></div><div class="line">		Feature: Running a test  </div><div class="line">		  As an iOS developer  </div><div class="line">		  I want to have a sample feature file  </div><div class="line">		  So I can begin testing quickly  </div><div class="line">		  </div><div class="line">		Scenario: Example steps1  </div><div class="line">		  Given I am on the Welcome Screen  </div><div class="line">		  Then I swipe left  </div><div class="line">		  And I wait until I don&apos;t see &quot;Please swipe left&quot;  </div><div class="line">		  And take picture  </div><div class="line">		  </div><div class="line">		Scenario: Example steps2  </div><div class="line">		  Given I am on the Welcome Screen  </div><div class="line">		 #ASSERTION  </div><div class="line">		  Then I should see a &quot;login&quot; button  </div><div class="line">		 #INPUT TEXT  </div><div class="line">		  Then I enter &quot;my_username&quot; into text field number 1  </div><div class="line">		#  Then I touch &quot;Return&quot;  </div><div class="line">		  </div><div class="line">		 #TOGGLE SWITCH  </div><div class="line">		  Then I toggle the switch  </div><div class="line">		  Then I touch &quot;Login&quot;  </div><div class="line">		  And I touch &quot;Second&quot;  </div><div class="line">		  And take picture  </div><div class="line">	该文件描述了在“on the Welcome Screen”这个Step中需要做的事情，两个场景:steps1 和 steps2. </div><div class="line"></div><div class="line">2. my_first_step.rb: 解释了Given的具体条件</div><div class="line"></div><div class="line">		Given /^I am on the Welcome Screen$/ do  </div><div class="line">		  element_exists(&quot;view&quot;)  </div><div class="line">		  check_element_exists(&quot;label text:&apos;First View&apos;&quot;)  </div><div class="line">		  sleep(STEP_PSEAU)  </div><div class="line">		end</div><div class="line">	这个语句，判定了当前条件&quot;on the Welcome Screen&quot;是否满足，如果element存在，则就在&quot;Welcome Screen&quot;</div><div class="line">	</div><div class="line">[更多的测试框架](http://www.infoq.com/cn/articles/build-ios-continuous-integration-platform-part2)</div><div class="line"></div><div class="line">UIAutomation</div><div class="line"></div><div class="line">UIAutomation是随着iOS SDK 4.0引入，帮助开发者在真实设备和模拟器上执行自动化的UI测试。其本质上是一个Javascript的类库，通过 界面上的标签和值的访问性来获得UI元素，完成相应的交互操作，从而达到测试的目的，类似于Web世界的Selenium。</div><div class="line"></div><div class="line">通过上面的描述，可以得知，使用UIAutomation做测试时，开发者必须掌握两件事：</div><div class="line"></div><div class="line">- 如何找到界面上的一个UI元素</div><div class="line">- 如何指定针对一个UI元素的操作</div><div class="line"></div><div class="line">在UIAutomation中，界面就是由一堆UI元素构建的层级结构，所有UI元素都继承对象UIAElement ，该对象提供了每个UI元素必须具备的一些属性：</div><div class="line"></div><div class="line">- name</div><div class="line">- value</div><div class="line">- elements</div><div class="line">- parent</div><div class="line">- …</div><div class="line"></div><div class="line">而整个界面的层级结构如下：</div><div class="line"></div><div class="line">	arget（设备级别的UI，用于支持晃动，屏幕方向变动等操作）</div><div class="line">	    Application（设备上的应用，比方说Status Bar，keyboard等）</div><div class="line">	      Main window（应用的界面，比方说导航条）</div><div class="line">	        View（界面下的View，比方说UITableView）</div><div class="line">	           Element（View下的一个元素）</div><div class="line">	              Child element(元素下的一个子元素)</div><div class="line">下面是一个访问到Child element的例子：</div><div class="line"></div><div class="line">	UIATarget.localTarget().HamcrestDemo().tableViews()[0].cells()[0].elements()</div><div class="line">开发者还可以通过“UIATarget.localTarget().logElementTree()”在控制台打印出该target下所有的的elements。</div><div class="line"></div><div class="line">找到UI元素之后，开发者可以基于该UI元素做期望的操作，UIAutomation作为原生的UI测试框架，基本上支持iOS上的所有UI元素和操作，比方说：</div><div class="line"></div><div class="line">- 点击按钮，例: ***.buttons[“add”].tap()</div><div class="line">- 输入文本, 例:***.textfields[0].setValue(“new”)</div><div class="line">- 滚动屏幕，例:***.scrollToElementWithPredicate(“name begin with ’test’”)</div><div class="line">- ……</div><div class="line">关于使用UIAutomation做UI测试，推荐大家一定要看一下2010的WWDC的Session 306：[Automating User Interface Testing with Instruments](https://developer.apple.com/videos/wwdc/2010/?id=306)。 另外，这儿还有一篇很好的博客，详细的讲解了[如何使用UIAutomation做UI自动化测试](http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation)  </div><div class="line">Apple通过Instruments为UIAutomation测试用例的命令行运行提供了支持，这样就为UIAutomation和CI服务器的集成提供了便利。开发者可以通过如下的步骤在命令行中运行UIAutomation测试脚本:</div><div class="line">1. 指定目标设备，构建被测应用，该应用会被安装到指定的DSTROOT目录下</div><div class="line">```ruby</div><div class="line">xcodebuild</div><div class="line">-project &quot;/Users/twer/Documents/xcodeworkspace/AudioDemo/AudioDemo.xcodeproj&quot; </div><div class="line">-schemeAudioDemo</div><div class="line">-sdk iphonesimulator6.1 </div><div class="line">-configuration Release SYMROOT=&quot;/Users/twer/Documents/xcodeworkspace/</div><div class="line">AudioDemo/build&quot; DSTROOT=&quot;/Users/twer/Documents/xcodeworkspace/AudioDemo/</div><div class="line">build&quot; TARGETED_DEVICE_FAMILY=&quot;1&quot; </div><div class="line">install</div></pre></td></tr></table></figure>
-</li>
-<li><p>启动Instruments，基于第一步生成的应用运行UIAutomation测试</p>
-<pre><code class="ruby">instruments
--t  <span class="string">"/Applications/Xcode.app/Contents/Applications/Instruments.app/
-Contents/PlugIns/AutomationInstrument.bundle/Contents/Resources/
-Automation.tracetemplate"</span> <span class="string">"/Users/twer/Documents/xcodeworkspace/AudioDemo
-/build/Applications/TestExample.app"</span>
--e UIASCRIPT &lt;absolute_path_to_the_test_file&gt;
-</code></pre>
-<p>为了更好的展示测试效果以及与CI服务器集成，活跃的社区开发者们还尝试把UIAutomation和Jasmine集成: <a href="https://github.com/shaune/jasmine-ios-acceptance-tests" target="_blank" rel="external">https://github.com/shaune/jasmine-ios-acceptance-tests</a></p>
-</li>
-</ol>
-<p>UIAutomation因其原生支持，并且通过和Instruments的绝佳配合，开发者可以非常方便的使用录制操作自动生成测试脚本，赢得了很多开发者的支持，但是因苹果公司的基因，其系统非常封闭，导致开发者难以扩展，于是活跃的社区开发者们开始制造自己的轮子，<a href="https://gorillalogic.com/fonemonkey-0-7-1-released/" target="_blank" rel="external">Fone Monkey,最新版本更新于2010年，估计过时</a>就是其中的一个优秀成果。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;参考：&lt;a href=&quot;http://blog.csdn.net/zangcw/article/details/25299243&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;使用jenkins+calabash+cocoapods搭建ios持续集成环境&lt;
-    
-    </summary>
-    
-      <category term="CI" scheme="https://huos3203.github.io/categories/CI/"/>
-    
-    
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-      <category term="UI" scheme="https://huos3203.github.io/tags/UI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用SmartSVN创建版本库</title>
-    <link href="https://huos3203.github.io/2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/"/>
-    <id>https://huos3203.github.io/2015/10/05/2015-10-05-shi-yong-smartsvnchuang-jian-ban-ben-ku/</id>
-    <published>2015-10-05T11:16:47.000Z</published>
-    <updated>2017-01-12T08:43:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>SmartSVN有以下版本：</p>
-<ol>
-<li>SmartSVN enterprise 9 企业版</li>
-<li>SmartSVN foundation 8 基础版</li>
-</ol>
-<p>由于企业版只能建立本地的版本库，无法创建&amp;使用svn://localhost方式。</p>
-<p>####用基础版来说明创建版本库。<br>参考：<a href="http://hammadk.com/how-to-create-repository-in-smartsvn-tutorial/" target="_blank" rel="external">Create Repository in SmartSVN – Tutorial</a>  </p>
-<ol>
-<li>启动SmartSVN SmartSVN foundation 8 基础版  </li>
-<li>菜单栏Project-&gt; set up Local Repository…<br>需要设置如下两个参数：  <ol>
-<li>svnadmin 在终端执行： whereis svnadmin  </li>
-<li>svnserve 在终端执行： whereis svnserve<br>￼<img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/adeb039a-b429-481a-ac25-2044b871e45e/screenshot.png?resizeSmall&amp;width=832" alt="image">  </li>
-</ol>
-</li>
-<li>指定版本库的目录位置：<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/a3f00903-101c-4848-a10a-3479643baea7/screenshot.png?resizeSmall&amp;width=832" alt="image">  </li>
-<li>初始化账户密码：<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/140f257e-e452-47ea-8317-34a5ed8d6c7f/screenshot.png?resizeSmall&amp;width=832" alt="image">  </li>
-<li>完成。<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/ed975623-72bb-4132-8d04-ac9a7b1d2fc9/screenshot.png?resizeSmall&amp;width=832" alt="image"><br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/53306789-9d97-485c-a54d-a143e7b078f1/screenshot.png?resizeSmall&amp;width=832" alt="image"><a id="more"></a>    
-#####开始导入项目源码，来跟踪版本变化，实现版本控制。  </li>
-<li>新建SmartSVNRepos目录，存放APP源码，用于导入版本库的原始目录。导入后，该目录源码就被版本跟踪了，在开发时，不用再从版本库导出，可以用该目录的代码直接在版本上开发了。<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/ee02bf65-27e3-435a-8300-8189bc087eb8/screenshot.png?resizeSmall&amp;width=832" alt="image"></li>
-<li>菜单栏Project -&gt; Import Into Repository…<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/eccc10f0-4c5a-435c-8397-062028d0d4f4.png?resizeSmall&amp;width=832" alt="image"></li>
-<li>选择以上新建的SmartSVN版本库：svn://localhost<br><img src="https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/ecfe16b4-17ac-4fc1-a64f-1ce259d77b3b/screenshot.png?resizeSmall&amp;width=832" alt="image"> </li>
-</ol>
-<p>查看是否安装SVN服务：</p>
-<pre><code>svnserve —version
-</code></pre><p>SVN随系统一起启动：</p>
-<pre><code>vi /etc/rc.local   //(此文件Mac系统中默认是不存在的，需手动创建)
-
-添加启动SVN服务： 
-svnserve -d -r /data/svn/repos  
-</code></pre><p>关闭svn服务:</p>
-<pre><code>直接ps aux | grep svn，然后kill -9 进程号
-</code></pre><ol>
-<li><p>创建库:<br> 打印应用目录命令：</p>
-<pre><code>whereis svn
-</code></pre><p> 新建版本库目录：</p>
-<pre><code>sudo mkdir -p /data/svn/repos/local    
-chmod u+w 文件名
-</code></pre><p> 创建：</p>
-<pre><code>sudo svnadmin create /data/svn/repos/local
-查看文件权限： ls -l
-</code></pre></li>
-<li><p>配置版本库的访问权限</p>
-<pre><code>cd conf/ 
-</code></pre><ol>
-<li><p>开启密码权限，普通用户/匿名用户</p>
-<pre><code>sudo vi svnserve.conf
-</code></pre></li>
-<li><p>设置用户：密码</p>
-<pre><code>sudo vi passwd
-</code></pre></li>
-<li><p>分组设置，组权限</p>
-<pre><code>sudo vi authz
-</code></pre></li>
-</ol>
-</li>
-<li><p>启动svnserve服务  </p>
-<pre><code>sudo svnserve -d -r /data/svn/repos —log-file=/var/log/svn.log
-</code></pre></li>
-<li><p>测试端口：</p>
-<pre><code>telnet localhost 3690
-</code></pre></li>
-<li><p>重启必先kill ：</p>
-<pre><code>sudo kill PID
-</code></pre></li>
-<li><p>版本库路径：</p>
-<pre><code>svn://localhost/local
-</code></pre><p>其他：</p>
-<pre><code>svn ls svn://svnpath 可以查询snv仓库内容  
-lsof -i :3690 查看svn是否启动  
-ps aux | grep ‘svn’ 查找所有svn启动的进程id  
-kill -9 pid 将pid替换为上面查到的进程id可以杀掉svn进程  
-</code></pre></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;SmartSVN有以下版本：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;SmartSVN enterprise 9 企业版&lt;/li&gt;
-&lt;li&gt;SmartSVN foundation 8 基础版&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;由于企业版只能建立本地的版本库，无法创建&amp;amp;使用svn://localhost方式。&lt;/p&gt;
-&lt;p&gt;####用基础版来说明创建版本库。&lt;br&gt;参考：&lt;a href=&quot;http://hammadk.com/how-to-create-repository-in-smartsvn-tutorial/&quot;&gt;Create Repository in SmartSVN – Tutorial&lt;/a&gt;  &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;启动SmartSVN SmartSVN foundation 8 基础版  &lt;/li&gt;
-&lt;li&gt;菜单栏Project-&amp;gt; set up Local Repository…&lt;br&gt;需要设置如下两个参数：  &lt;ol&gt;
-&lt;li&gt;svnadmin 在终端执行： whereis svnadmin  &lt;/li&gt;
-&lt;li&gt;svnserve 在终端执行： whereis svnserve&lt;br&gt;￼&lt;img src=&quot;https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/adeb039a-b429-481a-ac25-2044b871e45e/screenshot.png?resizeSmall&amp;amp;width=832&quot; alt=&quot;image&quot;&gt;  &lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;指定版本库的目录位置：&lt;br&gt;&lt;img src=&quot;https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/a3f00903-101c-4848-a10a-3479643baea7/screenshot.png?resizeSmall&amp;amp;width=832&quot; alt=&quot;image&quot;&gt;  &lt;/li&gt;
-&lt;li&gt;初始化账户密码：&lt;br&gt;&lt;img src=&quot;https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/140f257e-e452-47ea-8317-34a5ed8d6c7f/screenshot.png?resizeSmall&amp;amp;width=832&quot; alt=&quot;image&quot;&gt;  &lt;/li&gt;
-&lt;li&gt;完成。&lt;br&gt;&lt;img src=&quot;https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/ed975623-72bb-4132-8d04-ac9a7b1d2fc9/screenshot.png?resizeSmall&amp;amp;width=832&quot; alt=&quot;image&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://app.yinxiang.com/shard/s33/nl/2147483647/59a78b5d-81de-48f1-afe9-2fb2bde72da2//res/53306789-9d97-485c-a54d-a143e7b078f1/screenshot.png?resizeSmall&amp;amp;width=832&quot; alt=&quot;image&quot;&gt;
-    
-    </summary>
-    
-      <category term="git" scheme="https://huos3203.github.io/categories/git/"/>
-    
-    
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
     
   </entry>
   
