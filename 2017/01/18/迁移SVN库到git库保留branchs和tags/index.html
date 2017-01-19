@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://huos3203.github.io/2017/01/18/迁移SVN库到git库保留branchs和tags/index.html">
 <meta property="og:site_name" content="布衣男儿">
 <meta property="og:description" content="SVN was a great advance in its day, but it’s now clear that distributed version control systems are the way forward and that Git is the de facto standard. Having helped many clients migrate from SVN t">
-<meta property="og:updated_time" content="2017-01-19T07:13:15.000Z">
+<meta property="og:updated_time" content="2017-01-19T07:17:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="迁移SVN库到git库保留branchs和tags">
 <meta name="twitter:description" content="SVN was a great advance in its day, but it’s now clear that distributed version control systems are the way forward and that Git is the de facto standard. Having helped many clients migrate from SVN t">
@@ -138,7 +138,7 @@
 <li>另一方面如果你确信svn是报废的，你可以删除分期回购：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line">rm -rf staging</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="题外小贴士"><a href="#题外小贴士" class="headerlink" title="题外小贴士"></a>题外小贴士</h1><p>在局域网内访问server搭建服务器提供的git服务：<br><figure class="highlight bash"><figcaption><span>小贴士</span><a href="https://confluence.atlassian.com/fishkb/unable-to-clone-git-repository-due-to-self-signed-certificate-376838977.html" target="_blank" rel="external">SSL证书问题</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://.../git/mupdf.git</div><div class="line"></div><div class="line">错误：fatal: unable to access <span class="string">'https://..../git/mupdf.git/'</span>: SSL certificate problem: Invalid certificate chain</div></pre></td></tr></table></figure><br>解决：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global http.sslVerify <span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<h1 id="题外小贴士"><a href="#题外小贴士" class="headerlink" title="题外小贴士"></a>题外小贴士</h1><p>在局域网内访问server搭建服务器提供的git服务：<br><figure class="highlight bash"><figcaption><span>小贴士</span><a href="https://confluence.atlassian.com/fishkb/unable-to-clone-git-repository-due-to-self-signed-certificate-376838977.html" target="_blank" rel="external">SSL证书问题</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://.../git/mupdf.git</div><div class="line">错误：fatal: unable to access <span class="string">'https://..../git/mupdf.git/'</span>: SSL certificate problem: Invalid certificate chain</div></pre></td></tr></table></figure><br>解决：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global http.sslVerify <span class="literal">false</span></div></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -152,7 +152,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/语法/">语法</a><a href="/tags/svn/">svn</a><a href="/tags/管理/">管理</a><a href="/tags/git/">git</a><a href="/tags/git-svn/">git-svn</a>
+  <span></span> <a href="/tags/svn/">svn</a><a href="/tags/语法/">语法</a><a href="/tags/管理/">管理</a><a href="/tags/git/">git</a><a href="/tags/git-svn/">git-svn</a>
   </div>
 
 </div>
@@ -325,11 +325,11 @@
 			
 		
 			
-				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
+				<li><a href="/tags/管理/" title="管理">管理<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/管理/" title="管理">管理<sup>3</sup></a></li>
+				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
 			
 		
 			
@@ -341,15 +341,19 @@
 			
 		
 			
-				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/svn/" title="svn">svn<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
 			
 		
 			
@@ -361,11 +365,7 @@
 			
 		
 			
-				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/脚本/" title="脚本">脚本<sup>1</sup></a></li>
+				<li><a href="/tags/gitBook/" title="gitBook">gitBook<sup>1</sup></a></li>
 			
 		
 			
