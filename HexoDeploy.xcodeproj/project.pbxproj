@@ -48,6 +48,7 @@
 		145273FA1E28B09A00671F2A /* weixin.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = weixin.ejs; sourceTree = "<group>"; };
 		145273FB1E28B3C500671F2A /* weixinimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = weixinimg.jpg; sourceTree = "<group>"; };
 		145273FD1E28B7BC00671F2A /* earth.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = earth.ejs; sourceTree = "<group>"; };
+		146454B21E2F4E8700ADBC4B /* 腾讯云之小直播开发.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "腾讯云之小直播开发.md"; sourceTree = "<group>"; };
 		1486CB7F1E2EF562005886C5 /* 迁移SVN库到git库保留branchs和tags.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "迁移SVN库到git库保留branchs和tags.md"; sourceTree = "<group>"; };
 		149F334E1E0A767600AAC556 /* _config.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = _config.yml; sourceTree = "<group>"; };
 		149F33501E0A767600AAC556 /* 2014-06-09-chu-bu-da-jian-octopress.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-09-chu-bu-da-jian-octopress.md"; sourceTree = "<group>"; };
@@ -699,6 +700,7 @@
 				14B363EA1E25FA6A00D1FB05 /* 在OC和swift中区分多个targets.md */,
 				14B363F11E262CB300D1FB05 /* ErrorHandlingForSwift.md */,
 				1486CB7F1E2EF562005886C5 /* 迁移SVN库到git库保留branchs和tags.md */,
+				146454B21E2F4E8700ADBC4B /* 腾讯云之小直播开发.md */,
 			);
 			path = _posts;
 			sourceTree = "<group>";
