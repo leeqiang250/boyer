@@ -21,8 +21,8 @@ do
     echo "$postPath"
     if [ -f "${postPath}" ]; then
         #直接修改文件内容(危险动作) updated:值
-        createdLine=$(cat ${postPath} | grep 'date: 创建时间')
-        updatedLine=$(cat ${postPath} | grep 'updated:')
+        createdLine=$(cat ${postPath} | grep 'date: ')
+        updatedLine=$(cat ${postPath} | grep 'updated: ')
         time=`date '+%Y-%m-%d %H:%M:%S'`
         #替换创建时间
         if [ "$createdLine" != "" ]; then
