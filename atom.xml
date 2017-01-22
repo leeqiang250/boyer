@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huos3203.github.io/"/>
-  <updated>2017-01-22T07:21:20.000Z</updated>
+  <updated>2017-01-22T07:22:24.000Z</updated>
   <id>https://huos3203.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://huos3203.github.io/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
     <id>https://huos3203.github.io/2017/01/22/iOS面试题大集合/</id>
     <published>2017-01-22T06:20:52.000Z</published>
-    <updated>2017-01-22T07:21:20.000Z</updated>
+    <updated>2017-01-22T07:22:24.000Z</updated>
     
     <content type="html"><![CDATA[<h1 align="center">iOS有用的面试题大集合</h1>
 
@@ -117,22 +117,9 @@
 <li>使用<code>drawRect</code>有什么影响<br><code>drawRect</code>方法依赖<code>Core Graphics</code>框架来进行自定义的绘制，但这种方法主要的缺点就是它处理<code>touch</code>事件的方式：每次按钮被点击后，都会用<code>setNeddsDisplay</code>进行强制重绘；而且不止一次，每次单点事件触发两次执行。这样的话从性能的角度来说，对<code>CPU</code>和内存来说都是欠佳的。</li>
 <li>SDWebImage里面给UIImageView加载图片的逻辑是什么样的<br>详情看<a href="http://www.cnblogs.com/6duxz/p/4159572.html" target="_blank" rel="external">最新版SDWebImage的使用</a></li>
 <li>麻烦你设计个简单的图片内存缓存器<br>图片的内存缓存，可以考虑将图片数据保存到一个数据模型中，所以在程序运行时这个模型都存在内存中，一定要具备移除策略，即释放数据模型。</li>
-<li>讲讲你用<code>Instrument</code>优化动画性能的经历</li>
-</ol>
-<p><a href="http://www.hrchen.com/2013/05/performance-with-instruments/" target="_blank" rel="external">怎么使用instrument</a></p>
-<ol>
-<li><code>loadView</code>是干嘛用的</li>
-</ol>
-<p>当你访问一个<code>ViewController</code>的<code>view</code>属性时，如果此时<code>view</code>的值是<code>nil</code>，那么，<code>ViewController</code>就会自动调用<code>loadView</code>这个方法。这个方法就会加载或者创建一个<code>view</code>对象，赋值给<code>view</code>属性。</p>
-<p><code>loadView</code>默认做的事情是：如果此<code>ViewController</code>存在一个对应的<code>nib</code>文件，那么就加载这个<code>nib</code>。否则，就创建一个<code>UIView</code>对象。</p>
-<p>如果你用<code>Interface Builder</code>来创建界面，那么不应该重载这个方法。</p>
-<p>如果你想自己创建<code>view</code>对象，那么可以重载这个方法。此时你需要自己给<code>view</code>属性赋值。你自定义的方法不应该调用<code>super</code>。如果你需要对<code>view</code>做一些其他的定制操作，在<code>viewDidLoad</code>里面去做。</p>
-<p><a href="http://www.cnblogs.com/dyllove98/archive/2013/06/06/3123005.html" target="_blank" rel="external">iOS 的loadView 及使用loadView中初始化View注意的问题</a></p>
-<ol>
-<li>用过<code>CoreData</code>或者<code>SQLite</code>吗？读写是分线程的吗？遇到过死锁没？咋解决的</li>
-</ol>
-<p>参考<a href="http://blog.csdn.net/hanangellove/article/details/44966769" target="_blank" rel="external">CoreData与SQLite的线程安全</a></p>
-<ol>
+<li>讲讲你用<code>Instrument</code>优化动画性能的经历<br><a href="http://www.hrchen.com/2013/05/performance-with-instruments/" target="_blank" rel="external">怎么使用instrument</a></li>
+<li><code>loadView</code>是干嘛用的<br>当你访问一个<code>ViewController</code>的<code>view</code>属性时，如果此时<code>view</code>的值是<code>nil</code>，那么，<code>ViewController</code>就会自动调用<code>loadView</code>这个方法。这个方法就会加载或者创建一个<code>view</code>对象，赋值给<code>view</code>属性。<br><code>loadView</code>默认做的事情是：如果此<code>ViewController</code>存在一个对应的<code>nib</code>文件，那么就加载这个<code>nib</code>。否则，就创建一个<code>UIView</code>对象。<br>如果你用<code>Interface Builder</code>来创建界面，那么不应该重载这个方法。<br>如果你想自己创建<code>view</code>对象，那么可以重载这个方法。此时你需要自己给<code>view</code>属性赋值。你自定义的方法不应该调用<code>super</code>。如果你需要对<code>view</code>做一些其他的定制操作，在<code>viewDidLoad</code>里面去做。<br><a href="http://www.cnblogs.com/dyllove98/archive/2013/06/06/3123005.html" target="_blank" rel="external">iOS 的loadView 及使用loadView中初始化View注意的问题</a></li>
+<li>用过<code>CoreData</code>或者<code>SQLite</code>吗？读写是分线程的吗？遇到过死锁没？咋解决的<br>参考<a href="http://blog.csdn.net/hanangellove/article/details/44966769" target="_blank" rel="external">CoreData与SQLite的线程安全</a></li>
 <li><code>GCD</code>里面有哪几种<code>Queue</code>？你自己建立过串行<code>queue</code>吗？背后的线程模型是什么样的</li>
 </ol>
 <ul>
@@ -141,21 +128,11 @@
 <li>自定义队列 <code>dispatch_queue_t queue;</code> 可以自定义是并行：<code>DISPATCH_QUEUE_CONCURRENT</code>或者串行<code>DISPATCH_QUEUE_SERIAL</code></li>
 </ul>
 <ol>
-<li>为什么其他语言里叫函数调用， <code>Objective-C</code>里则是给对象发消息（或者谈下对<code>runtime</code>的理解）</li>
-</ol>
-<p>网上关于<code>runtime</code>的资料非常多，其实这方面在平时的开发中使用非常非常之少，底层的黑魔法。</p>
-<p><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a></p>
-<p><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></p>
-<ol>
-<li>什么是<code>method swizzling</code></li>
-</ol>
-<p>在Objective-C中调用一个方法，其实是向一个对象发送消息，查找消息的唯一依据是<code>selector</code>的名字。利用<code>Objective-C</code>的动态特性，可以实现在运行时偷换<code>selector</code>对应的方法实现，达到给方法挂钩的目的。</p>
-<p><a href="http://blog.csdn.net/yiyaaixuexi/article/details/9374411" target="_blank" rel="external">详细的案例</a></p>
-<ol>
+<li>为什么其他语言里叫函数调用， <code>Objective-C</code>里则是给对象发消息（或者谈下对<code>runtime</code>的理解）<br>网上关于<code>runtime</code>的资料非常多，其实这方面在平时的开发中使用非常非常之少，底层的黑魔法。<br><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a><br><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></li>
+<li>什么是<code>method swizzling</code><br>在Objective-C中调用一个方法，其实是向一个对象发送消息，查找消息的唯一依据是<code>selector</code>的名字。利用<code>Objective-C</code>的动态特性，可以实现在运行时偷换<code>selector</code>对应的方法实现，达到给方法挂钩的目的。<br><a href="http://blog.csdn.net/yiyaaixuexi/article/details/9374411" target="_blank" rel="external">详细的案例</a></li>
 <li>runtime 如何实现 weak 属性 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">OBJC_ASSOCIATION_ASSIGN</div><div class="line">OBJC_ASSOCIATION_RETAIN_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_COPY_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_RETAIN</div><div class="line">OBJC_ASSOCIATION_COPY</div><div class="line">objc_setAssociatedObject(<span class="keyword">self</span>, &amp;myKey, anObject, OBJC_ASSOCIATION_RETAIN);</div></pre></td></tr></table></figure>
-</li>
+可以自定义<code>weak</code>来实现内存管理，Apple已经为我们准备了常量。<br>参考<br><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a></li>
 </ol>
-<p>可以自定义<code>weak</code>来实现内存管理，Apple已经为我们准备了常量。<br>参考<br><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a></p>
 <p><a href="http://southpeak.github.io/blog/2014/10/30/objective-c-runtime-yun-xing-shi-zhi-er-:cheng-yuan-bian-liang-yu-shu-xing/" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a></p>
 <ol>
 <li><code>objc</code>中向一个<code>nil</code>对象发送消息将会发生什么</li>
@@ -407,7 +384,7 @@
     <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
     <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
     <published>2017-01-22T02:55:38.000Z</published>
-    <updated>2017-01-22T07:21:20.000Z</updated>
+    <updated>2017-01-22T07:22:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
 <hr>
@@ -460,7 +437,7 @@
     <link href="https://huos3203.github.io/2017/01/19/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
     <id>https://huos3203.github.io/2017/01/19/腾讯云之小直播开发/</id>
     <published>2017-01-19T04:30:09.000Z</published>
-    <updated>2017-01-22T07:21:20.000Z</updated>
+    <updated>2017-01-22T07:22:24.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="视频服务"><a href="#视频服务" class="headerlink" title="视频服务"></a>视频服务</h1><ol>
 <li><p><a href="https://www.qcloud.com/product/LVB" target="_blank" rel="external">直播LVB</a> </p>
@@ -814,8 +791,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#115;&#111;&#109;&#x65;&#x2d;&#111;&#x6e;&#x65;&#x40;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#115;&#111;&#109;&#x65;&#x2d;&#111;&#x6e;&#x65;&#x40;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#115;&#x6f;&#x6d;&#101;&#45;&#111;&#110;&#x65;&#x40;&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;">&#115;&#x6f;&#x6d;&#101;&#45;&#111;&#110;&#x65;&#x40;&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td style="text-align:right">Author <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#x6f;&#109;&#101;&#x2d;&#111;&#110;&#101;&#64;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#115;&#x6f;&#109;&#101;&#x2d;&#111;&#110;&#101;&#64;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#x73;&#x6f;&#109;&#101;&#45;&#111;&#x6e;&#101;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">&#x73;&#x6f;&#109;&#101;&#45;&#111;&#x6e;&#101;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
