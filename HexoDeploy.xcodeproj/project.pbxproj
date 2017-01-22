@@ -45,6 +45,7 @@
 /* Begin PBXFileReference section */
 		1407ACAB1E0B7547001D4D65 /* setup_snippets.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_snippets.sh; sourceTree = "<group>"; };
 		1407ACAF1E0B8464001D4D65 /* postsUpdated.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postsUpdated.sh; sourceTree = "<group>"; };
+		145012011E3455C200BBDEBB /* AR开发资料汇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AR开发资料汇.md"; sourceTree = "<group>"; };
 		145273FA1E28B09A00671F2A /* weixin.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = weixin.ejs; sourceTree = "<group>"; };
 		145273FB1E28B3C500671F2A /* weixinimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = weixinimg.jpg; sourceTree = "<group>"; };
 		145273FD1E28B7BC00671F2A /* earth.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = earth.ejs; sourceTree = "<group>"; };
@@ -701,6 +702,7 @@
 				14B363F11E262CB300D1FB05 /* ErrorHandlingForSwift.md */,
 				1486CB7F1E2EF562005886C5 /* 迁移SVN库到git库保留branchs和tags.md */,
 				146454B21E2F4E8700ADBC4B /* 腾讯云之小直播开发.md */,
+				145012011E3455C200BBDEBB /* AR开发资料汇.md */,
 			);
 			path = _posts;
 			sourceTree = "<group>";

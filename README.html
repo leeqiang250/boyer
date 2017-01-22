@@ -26,7 +26,7 @@
 申请账户，体验5天，搭建一个jira服务，还有微信小程序服务
 需要在服务器上安装docker （腾讯服务器提供了一款支持docker的Ubuntu系统）
 想使用daocloud加速器，就要更新docker版本docker run –detach –publish 8080:8080 cptactionhank/atlassian-jira:latesthtt">
-<meta property="og:updated_time" content="2017-01-19T06:33:20.000Z">
+<meta property="og:updated_time" content="2017-01-19T10:05:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="布衣男儿">
 <meta name="twitter:description" content="Introduction腾讯云服务器
@@ -99,7 +99,7 @@
 		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
 		
   <p class="article-time">
-    <time datetime="2017-01-19T06:33:20.000Z" itemprop="datePublished"> 发表于 2017-01-19</time>
+    <time datetime="2017-01-19T10:05:44.000Z" itemprop="datePublished"> 发表于 2017-01-19</time>
     
   </p>
 </header>
@@ -109,9 +109,10 @@
 <ol>
 <li>申请账户，体验5天，搭建一个jira服务，还有微信小程序服务</li>
 <li>需要在服务器上安装docker （腾讯服务器提供了一款支持docker的Ubuntu系统）</li>
-<li>想使用daocloud加速器，就要更新docker版本<br>docker run –detach –publish 8080:8080 cptactionhank/atlassian-jira:latest<br><a href="http://[dockerhost]:8080" target="_blank" rel="external">http://[dockerhost]:8080</a> and finish the configuration.<br>AAABTg0ODAoPeNp1UctugzAQvPsrLPXSHkAYgfKQLDUFH6BAIqA99eI6m8YVMcSYqPn7EmjU9JHjr<br>GfHM7M3RadwzBUmPna8uePOXR8HRYldh0xQ1u1eQS83Ty3olloEvUvN7UbX604Y+wQsUWuw/+f9m<br>a46Lba8hZAboKcPLIdYxEeJFKBaKI8NZHwHNFimKcuDaJGcn9hHI/XxYs+1iIeCWhkuDEu5rOjE9<br>WbTiTcl9/u9LeodKkAfQEchffAfZz09daxk5WdWHJfBtSCF4dqAphtetTCSzg7W0shaUZaVLF/lU<br>cGuafSO5AGo0R2g3pkyoLgSVyJ8qfcukygsWGYlM+J6xPdQD+iPwVK/cSVbPtjYdnXLFQo0DPh3o<br>9Uo+9wXf2K7KIRWaNkMu3GUL3DQW8W3Y0d3L3PMDrzqBq0x12WKyx7+O9L37sj/BA6xxBQwLQIUH<br>umSMpcPa7Q9X9QJA+Rrbl7m0SQCFQCMrIeSGYHgoGh/RFuPYbAaaW1Log==X02gk<br>#登录云服务器<br>ssh ubuntu@123.<strong><em>.</em>.<em>6   5<em>*</em></em></strong>RtH<br>sudo docker pull cptactionhank/atlassian-jira</li>
+<li>想使用daocloud加速器，就要更新docker版本<br>docker run –detach –publish 8080:8080 cptactionhank/atlassian-jira:latest<br><a href="http://[dockerhost]:8080" target="_blank" rel="external">http://[dockerhost]:8080</a> and finish the configuration.<br>AAABTg0ODAoPeNp1UctugzAQvPsrLPXSHkAYgfKQLDUFH6BAIqA99eI6m8YVMcSYqPn7EmjU9JHjr<br>GfHM7M3RadwzBUmPna8uePOXR8HRYldh0xQ1u1eQS83Ty3olloEvUvN7UbX604Y+wQsUWuw/+f9m<br>a46Lba8hZAboKcPLIdYxEeJFKBaKI8NZHwHNFimKcuDaJGcn9hHI/XxYs+1iIeCWhkuDEu5rOjE9<br>WbTiTcl9/u9LeodKkAfQEchffAfZz09daxk5WdWHJfBtSCF4dqAphtetTCSzg7W0shaUZaVLF/lU<br>cGuafSO5AGo0R2g3pkyoLgSVyJ8qfcukygsWGYlM+J6xPdQD+iPwVK/cSVbPtjYdnXLFQo0DPh3o<br>9Uo+9wXf2K7KIRWaNkMu3GUL3DQW8W3Y0d3L3PMDrzqBq0x12WKyx7+O9L37sj/BA6xxBQwLQIUH<br>umSMpcPa7Q9X9QJA+Rrbl7m0SQCFQCMrIeSGYHgoGh/RFuPYbAaaW1Log==X02gk<h1 id="登录云服务器"><a href="#登录云服务器" class="headerlink" title="登录云服务器"></a>登录云服务器</h1>ssh ubuntu@123.<strong><em>.</em>.<em>6   5<em>*</em></em></strong>RtH<br>sudo docker pull cptactionhank/atlassian-jira</li>
 </ol>
-<p>#登录server 服务器<br>ssh -l username 服务ip／域名</p>
+<h1 id="登录server-服务器"><a href="#登录server-服务器" class="headerlink" title="登录server 服务器"></a>登录server 服务器</h1><p>ssh -l username 服务ip／域名</p>
+<h1 id="服务器端拷贝文件目录"><a href="#服务器端拷贝文件目录" class="headerlink" title="服务器端拷贝文件目录"></a>服务器端拷贝文件目录</h1><p>scp -i localDir serveruser@serverip:serverDir</p>
 <p>###mysql数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo docker pull mysql </div><div class="line">sudo docker run --name jiradb -e MYSQL_ROOT_PASSWORD=jiradb -d mysql/mysql-server:latest</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>-name : 容器名<br>MYSQL_ROOT_PASSWORD : 数据库密码<br>-d : 镜像名:tag 版本</p>
