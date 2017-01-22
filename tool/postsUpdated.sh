@@ -11,7 +11,7 @@ echo "执行 postsUpdated.sh 文件"
 git config --global core.quotepath false
 git status -s > modified.txt
 #shell命令过滤文件路径，写入到postfile.txt临时文件中
-cat modified.txt | grep 'M _posts' | sed 's/^.*M.*_posts//g' > postfile.txt
+cat modified.txt | grep 'M.*_posts' | sed 's/^.*M.*_posts//g' > postfile.txt
 #"重定向法 管道法: cat $FILENAME | while read LINE"
 #读取文件路径，找到文件替换文件内容
 cat postfile.txt | while read line

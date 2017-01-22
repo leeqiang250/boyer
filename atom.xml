@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huos3203.github.io/"/>
-  <updated>2017-01-22T07:29:12.000Z</updated>
+  <updated>2017-01-22T09:56:02.000Z</updated>
   <id>https://huos3203.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://huos3203.github.io/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
     <id>https://huos3203.github.io/2017/01/22/iOS面试题大集合/</id>
     <published>2017-01-22T06:20:52.000Z</published>
-    <updated>2017-01-22T07:29:12.000Z</updated>
+    <updated>2017-01-22T09:56:02.000Z</updated>
     
     <content type="html"><![CDATA[<h1 align="center">iOS有用的面试题大集合</h1>
 
@@ -162,7 +162,7 @@
     <link href="https://huos3203.github.io/2017/01/22/Awsome%20Apple%20Develop%20Guide/"/>
     <id>https://huos3203.github.io/2017/01/22/Awsome Apple Develop Guide/</id>
     <published>2017-01-22T03:03:30.000Z</published>
-    <updated>2017-01-22T06:54:01.000Z</updated>
+    <updated>2017-01-22T08:57:33.000Z</updated>
     
     <content type="html"><![CDATA[<p>此文档是Apple平台开发所使用语言的主流学习资源</p>
 <h1 id="iOS开发者博客"><a href="#iOS开发者博客" class="headerlink" title="iOS开发者博客"></a>iOS开发者博客</h1><ul>
@@ -202,8 +202,7 @@
 <p><a href="https://github.com/6david9/WWDC2015" target="_blank" rel="external">WWDC2015下载链接</a></p>
 <h2 id="精粹"><a href="#精粹" class="headerlink" title="精粹"></a>精粹</h2><p><a href="https://github.com/nixzhu/dev-blog" target="_blank" rel="external">一些 iOS / Web 开发相关的翻译或原创博客文章</a></p>
 <p><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" rel="external">iOS-Core-Animation-Advanced-Techniques</a></p>
-<p><a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">中文 iOS/Mac 开发博客列表</a></p>
-<p><a href="https://github.com/objccn/articles" target="_blank" rel="external">Articles for objccn.io. objc.io的完整、准确、优雅的中文翻译版本</a></p>
+<p><a href="https://github.com/objccn/articles" target="_blank" rel="external">objc.io中文翻译版本</a></p>
 <p><a href="https://github.com/ipader/SwiftGuide" target="_blank" rel="external">这份指南汇集了Swift语言主流学习资源，并以开发者的视角整理编排</a></p>
 <p><a href="https://github.com/cjwirth/awesome-ios-ui" target="_blank" rel="external">A curated list of awesome iOS UI/UX libraries</a></p>
 <p><a href="https://github.com/shinobicontrols/iOS8-day-by-day" target="_blank" rel="external">iOS8-Day-by-Day blog series</a></p>
@@ -352,7 +351,7 @@
     <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
     <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
     <published>2017-01-22T02:55:38.000Z</published>
-    <updated>2017-01-22T07:29:12.000Z</updated>
+    <updated>2017-01-22T09:56:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
 <hr>
@@ -405,7 +404,7 @@
     <link href="https://huos3203.github.io/2017/01/19/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
     <id>https://huos3203.github.io/2017/01/19/腾讯云之小直播开发/</id>
     <published>2017-01-19T04:30:09.000Z</published>
-    <updated>2017-01-22T07:29:12.000Z</updated>
+    <updated>2017-01-22T09:56:02.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="视频服务"><a href="#视频服务" class="headerlink" title="视频服务"></a>视频服务</h1><ol>
 <li><p><a href="https://www.qcloud.com/product/LVB" target="_blank" rel="external">直播LVB</a> </p>
@@ -515,9 +514,9 @@
     
       <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
     
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
       <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
       <category term="git" scheme="https://huos3203.github.io/tags/git/"/>
     
@@ -759,8 +758,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#58;&#x73;&#111;&#109;&#101;&#x2d;&#x6f;&#x6e;&#101;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#111;&#109;">&#x73;&#111;&#109;&#101;&#x2d;&#x6f;&#x6e;&#101;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#111;&#109;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#115;&#111;&#x6d;&#x65;&#45;&#111;&#110;&#x65;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;">&#115;&#111;&#x6d;&#x65;&#45;&#111;&#110;&#x65;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#x73;&#x6f;&#109;&#x65;&#x2d;&#x6f;&#x6e;&#x65;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">&#x73;&#x6f;&#109;&#x65;&#x2d;&#x6f;&#x6e;&#x65;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#x3a;&#x73;&#x6f;&#x6d;&#101;&#x2d;&#111;&#x6e;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#46;&#99;&#111;&#109;">&#x73;&#x6f;&#x6d;&#101;&#x2d;&#111;&#x6e;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#46;&#99;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
