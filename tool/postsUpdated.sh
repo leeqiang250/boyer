@@ -27,7 +27,7 @@ do
         #替换创建时间
         if [ "$createdLine" != "" ]; then
             echo "--开始替换 date: --"
-            sed -i '' "s/${createdLine}/date: ${time}/g" "${postPath}"
+            sed -i '' "s/${createdLine}/date: ${time}/g" "'${postPath}'"
         else
             echo "date: 不存在"
         fi

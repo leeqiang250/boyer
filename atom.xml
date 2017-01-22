@@ -514,9 +514,9 @@
     
       <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
     
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
-    
       <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
       <category term="git" scheme="https://huos3203.github.io/tags/git/"/>
     
@@ -758,8 +758,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x73;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#x40;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#x6d;">&#x73;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#x40;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#x6d;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#115;&#111;&#x6d;&#101;&#45;&#111;&#110;&#101;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#x6f;&#x6d;">&#115;&#111;&#x6d;&#101;&#45;&#111;&#110;&#101;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x73;&#x6f;&#109;&#101;&#x2d;&#x6f;&#x6e;&#101;&#x40;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#109;">&#x73;&#x6f;&#109;&#101;&#x2d;&#x6f;&#x6e;&#101;&#x40;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#109;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x73;&#x6f;&#109;&#x65;&#45;&#111;&#x6e;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#109;">&#x73;&#x6f;&#109;&#x65;&#45;&#111;&#x6e;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
