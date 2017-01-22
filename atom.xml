@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huos3203.github.io/"/>
-  <updated>2017-01-22T07:22:24.000Z</updated>
+  <updated>2017-01-22T07:23:51.000Z</updated>
   <id>https://huos3203.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://huos3203.github.io/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
     <id>https://huos3203.github.io/2017/01/22/iOS面试题大集合/</id>
     <published>2017-01-22T06:20:52.000Z</published>
-    <updated>2017-01-22T07:22:24.000Z</updated>
+    <updated>2017-01-22T07:23:51.000Z</updated>
     
     <content type="html"><![CDATA[<h1 align="center">iOS有用的面试题大集合</h1>
 
@@ -131,42 +131,16 @@
 <li>为什么其他语言里叫函数调用， <code>Objective-C</code>里则是给对象发消息（或者谈下对<code>runtime</code>的理解）<br>网上关于<code>runtime</code>的资料非常多，其实这方面在平时的开发中使用非常非常之少，底层的黑魔法。<br><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a><br><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></li>
 <li>什么是<code>method swizzling</code><br>在Objective-C中调用一个方法，其实是向一个对象发送消息，查找消息的唯一依据是<code>selector</code>的名字。利用<code>Objective-C</code>的动态特性，可以实现在运行时偷换<code>selector</code>对应的方法实现，达到给方法挂钩的目的。<br><a href="http://blog.csdn.net/yiyaaixuexi/article/details/9374411" target="_blank" rel="external">详细的案例</a></li>
 <li>runtime 如何实现 weak 属性 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">OBJC_ASSOCIATION_ASSIGN</div><div class="line">OBJC_ASSOCIATION_RETAIN_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_COPY_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_RETAIN</div><div class="line">OBJC_ASSOCIATION_COPY</div><div class="line">objc_setAssociatedObject(<span class="keyword">self</span>, &amp;myKey, anObject, OBJC_ASSOCIATION_RETAIN);</div></pre></td></tr></table></figure>
-可以自定义<code>weak</code>来实现内存管理，Apple已经为我们准备了常量。<br>参考<br><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a></li>
-</ol>
-<p><a href="http://southpeak.github.io/blog/2014/10/30/objective-c-runtime-yun-xing-shi-zhi-er-:cheng-yuan-bian-liang-yu-shu-xing/" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a></p>
-<ol>
-<li><code>objc</code>中向一个<code>nil</code>对象发送消息将会发生什么</li>
-</ol>
-<p><code>objc</code>的特性是允许对一个 <code>nil</code> 对象发送消息不会 Crash，因为会被忽略掉。</p>
-<ol>
-<li>什么时候会报<code>unrecognized selector</code>的异常</li>
-</ol>
-<p>调用一个不存在的方法</p>
-<ol>
-<li><code>objc</code>中向一个对象发送消息<code>[obj foo]</code>和<code>objc_msgSend()</code>函数之间有什么关系<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[obj foo];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo));</div><div class="line"></div><div class="line">[obj foo:parameter];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo:),parameter);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li>一个objc对象如何进行内存布局</li>
-</ol>
-<p>可参考<a href="http://www.cnblogs.com/csutanyu/archive/2011/12/12/objective-c_memory_layout.html" target="_blank" rel="external">Objective-C内存布局</a></p>
-<ol>
-<li>一个objc对象的isa的指针指向什么？有什么作用？</li>
-</ol>
-<p>isa是一个Class 类型的指针. 每个实例对象有个isa的指针,他指向对象的类，而Class里也有个isa的指针, 指向meteClass(元类)。元类保存了类方法的列表。当类方法被调用时，先会从本身查找类方法的实现，如果没有，元类会向他父类查找该方法。同时注意的是：元类（meteClass）也是类，它也是对象。元类也有isa指针,它的isa指针最终指向的是一个根元类(root meteClass).根元类的isa指针指向本身，这样形成了一个封闭的内循环。</p>
-<ol>
+可以自定义<code>weak</code>来实现内存管理，Apple已经为我们准备了常量。<br>参考<br><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a><br><a href="http://southpeak.github.io/blog/2014/10/30/objective-c-runtime-yun-xing-shi-zhi-er-:cheng-yuan-bian-liang-yu-shu-xing/" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a></li>
+<li><code>objc</code>中向一个<code>nil</code>对象发送消息将会发生什么<br><code>objc</code>的特性是允许对一个 <code>nil</code> 对象发送消息不会 Crash，因为会被忽略掉。</li>
+<li>什么时候会报<code>unrecognized selector</code>的异常<br>调用一个不存在的方法</li>
+<li><code>objc</code>中向一个对象发送消息<code>[obj foo]</code>和<code>objc_msgSend()</code>函数之间有什么关系<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[obj foo];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo));</div><div class="line"></div><div class="line">[obj foo:parameter];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo:),parameter);</div></pre></td></tr></table></figure></li>
+<li>一个objc对象如何进行内存布局<br>可参考<a href="http://www.cnblogs.com/csutanyu/archive/2011/12/12/objective-c_memory_layout.html" target="_blank" rel="external">Objective-C内存布局</a></li>
+<li>一个objc对象的isa的指针指向什么？有什么作用？<br>isa是一个Class 类型的指针. 每个实例对象有个isa的指针,他指向对象的类，而Class里也有个isa的指针, 指向meteClass(元类)。元类保存了类方法的列表。当类方法被调用时，先会从本身查找类方法的实现，如果没有，元类会向他父类查找该方法。同时注意的是：元类（meteClass）也是类，它也是对象。元类也有isa指针,它的isa指针最终指向的是一个根元类(root meteClass).根元类的isa指针指向本身，这样形成了一个封闭的内循环。</li>
 <li>下面的代码输出什么<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Son</span> : <span class="title">Father</span></span></div><div class="line">- (<span class="keyword">id</span>)init</div><div class="line">&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">super</span> <span class="keyword">class</span>]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-</li>
+输出Son</li>
+<li>runtime如何通过selector找到对应的IMP地址<br>id (*IMP)(id, SEL, …)<br>这个函数使用当前CPU架构实现的标准的C调用约定。第一个参数是指向self的指针(如果是实例方法，则是类实例的内存地址；如果是类方法，则是指向元类的指针)，第二个参数是方法选择器(selector)，接下来是方法的实际参数列表。<br>前面介绍过的SEL就是为了查找方法的最终实现IMP的。由于每个方法对应唯一的SEL，因此我们可以通过SEL方便快速准确地获得它所对应的IMP，查找过程将在下面讨论。取得IMP后，我们就获得了执行这个方法代码的入口点，此时，我们就可以像调用普通的C语言函数一样来使用这个函数指针了。<br>通过取得IMP，我们可以跳过Runtime的消息传递机制，直接执行IMP指向的函数实现，这样省去了Runtime消息传递过程中所做的一系列查找操作，会比直接向对象发送消息高效一些。</li>
 </ol>
-<p>输出Son</p>
-<ol>
-<li><p>runtime如何通过selector找到对应的IMP地址</p>
-<p>id (*IMP)(id, SEL, …)</p>
-</li>
-</ol>
-<p>这个函数使用当前CPU架构实现的标准的C调用约定。第一个参数是指向self的指针(如果是实例方法，则是类实例的内存地址；如果是类方法，则是指向元类的指针)，第二个参数是方法选择器(selector)，接下来是方法的实际参数列表。</p>
-<p>前面介绍过的SEL就是为了查找方法的最终实现IMP的。由于每个方法对应唯一的SEL，因此我们可以通过SEL方便快速准确地获得它所对应的IMP，查找过程将在下面讨论。取得IMP后，我们就获得了执行这个方法代码的入口点，此时，我们就可以像调用普通的C语言函数一样来使用这个函数指针了。</p>
-<p>通过取得IMP，我们可以跳过Runtime的消息传递机制，直接执行IMP指向的函数实现，这样省去了Runtime消息传递过程中所做的一系列查找操作，会比直接向对象发送消息高效一些。</p>
 <h2 id="Hybrid-混合开发"><a href="#Hybrid-混合开发" class="headerlink" title="Hybrid 混合开发"></a>Hybrid 混合开发</h2>]]></content>
     
     <summary type="html">
@@ -384,7 +358,7 @@
     <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
     <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
     <published>2017-01-22T02:55:38.000Z</published>
-    <updated>2017-01-22T07:22:24.000Z</updated>
+    <updated>2017-01-22T07:23:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
 <hr>
@@ -437,7 +411,7 @@
     <link href="https://huos3203.github.io/2017/01/19/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
     <id>https://huos3203.github.io/2017/01/19/腾讯云之小直播开发/</id>
     <published>2017-01-19T04:30:09.000Z</published>
-    <updated>2017-01-22T07:22:24.000Z</updated>
+    <updated>2017-01-22T07:23:51.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="视频服务"><a href="#视频服务" class="headerlink" title="视频服务"></a>视频服务</h1><ol>
 <li><p><a href="https://www.qcloud.com/product/LVB" target="_blank" rel="external">直播LVB</a> </p>
@@ -791,8 +765,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#x6f;&#109;&#101;&#x2d;&#111;&#110;&#101;&#64;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#115;&#x6f;&#109;&#101;&#x2d;&#111;&#110;&#101;&#64;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#x73;&#x6f;&#109;&#101;&#45;&#111;&#x6e;&#101;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">&#x73;&#x6f;&#109;&#101;&#45;&#111;&#x6e;&#101;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">Author <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x73;&#x6f;&#109;&#x65;&#x2d;&#111;&#110;&#x65;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#111;&#109;">&#x73;&#x6f;&#109;&#x65;&#x2d;&#111;&#110;&#x65;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#111;&#109;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#115;&#111;&#109;&#x65;&#x2d;&#111;&#110;&#x65;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#x6f;&#x6d;">&#115;&#111;&#109;&#x65;&#x2d;&#111;&#110;&#x65;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#x6f;&#x6d;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
