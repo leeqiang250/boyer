@@ -1,0 +1,1374 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="语法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="布衣男儿" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。
+引用块
+在文章中插入引言，可包含作者、来源和标题。
+别号： quote
+123&amp;#123;% blockquote [author[, source]] [link] [source_link_title] %&amp;#125;content&amp;#123;% endblockquote %&amp;#125;
+样例
+无">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo标签插件">
+<meta property="og:url" content="https://huos3203.github.io/2017/01/23/Hexo标签插件/index.html">
+<meta property="og:site_name" content="布衣男儿">
+<meta property="og:description" content="标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。
+引用块
+在文章中插入引言，可包含作者、来源和标题。
+别号： quote
+123&amp;#123;% blockquote [author[, source]] [link] [source_link_title] %&amp;#125;content&amp;#123;% endblockquote %&amp;#125;
+样例
+无">
+<meta property="og:image" content="http://boyers.coding.me/img/logo.png">
+<meta property="og:image" content="http://boyers.coding.me/img/logo.png">
+<meta property="og:image" content="http://boyers.coding.me/img/logo.png [200] [200]">
+<meta property="og:updated_time" content="2017-01-23T07:16:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo标签插件">
+<meta name="twitter:description" content="标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。
+引用块
+在文章中插入引言，可包含作者、来源和标题。
+别号： quote
+123&amp;#123;% blockquote [author[, source]] [link] [source_link_title] %&amp;#125;content&amp;#123;% endblockquote %&amp;#125;
+样例
+无">
+<meta name="twitter:image" content="http://boyers.coding.me/img/logo.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '7069931',
+      author: '布衣男儿'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huos3203.github.io/2017/01/23/Hexo标签插件/"/>
+
+
+
+
+
+  <title> Hexo标签插件 | 布衣男儿 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">布衣男儿</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">不物喜，不己悲，善假物，易参行！</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'dazsKTijnsz_zi-bXB3t','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2017/01/23/Hexo标签插件/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo标签插件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T15:16:15+08:00">
+                2017-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/23/Hexo标签插件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/23/Hexo标签插件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/23/Hexo标签插件/" class="leancloud_visitors" data-flag-title="Hexo标签插件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。</p>
+<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><hr>
+<p>在文章中插入引言，可包含作者、来源和标题。</p>
+<h3 id="别号：-quote"><a href="#别号：-quote" class="headerlink" title="别号： quote"></a>别号： quote</h3><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</div><div class="line">content</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><hr>
+<h5 id="无参普通blockquote"><a href="#无参普通blockquote" class="headerlink" title="无参普通blockquote"></a>无参普通blockquote</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote %&#125;</div><div class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="引用书上的句子"><a href="#引用书上的句子" class="headerlink" title="引用书上的句子"></a>引用书上的句子</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote David Levithan, Wide Awake %&#125;</div><div class="line">Do not just seek happiness <span class="keyword">for</span> yourself. Seek happiness <span class="keyword">for</span> all. Through kindness. Through mercy.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
+<footer><strong>boyer huo </strong><cite>Wide Awake</cite></footer></blockquote>
+<h5 id="引用-Twitter"><a href="#引用-Twitter" class="headerlink" title="引用 Twitter"></a>引用 Twitter</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote @DevDocs https:<span class="comment">//twitter.com/devdocs/status/356095192085962752 %&#125;</span></div><div class="line">NEW: DevDocs now comes <span class="keyword">with</span> syntax highlighting. http:<span class="comment">//devdocs.io</span></div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="external">http://devdocs.io</a></p>
+<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="external">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
+<h5 id="引用网络上的文章"><a href="#引用网络上的文章" class="headerlink" title="引用网络上的文章"></a>引用网络上的文章</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote Seth Godin http:<span class="comment">//sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %&#125;</span></div><div class="line">Every interaction is both precious and an opportunity to delight.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
+<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="external">Welcome to Island Marketing</a></cite></footer></blockquote>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><hr>
+<p>在文章中插入代码。</p>
+<h3 id="别名-code"><a href="#别名-code" class="headerlink" title="别名:code"></a>别名:code</h3><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock [title] [lang:language] [url] [link text] %&#125;</div><div class="line">code snippet</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<h4 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h4><hr>
+<h5 id="普通的代码块"><a href="#普通的代码块" class="headerlink" title="普通的代码块"></a>普通的代码块</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock %&#125;</div><div class="line">alert(<span class="string">'Hello World!'</span>);</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(&apos;Hello World!&apos;);</div></pre></td></tr></table></figure>
+<h5 id="指定语言"><a href="#指定语言" class="headerlink" title="指定语言"></a>指定语言</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock lang:objc %&#125;</div><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div></pre></td></tr></table></figure>
+<h5 id="附加说明"><a href="#附加说明" class="headerlink" title="附加说明"></a>附加说明</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock <span class="built_in">Array</span>.map %&#125;</div><div class="line">array.map(callback[, thisArg])</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>Array.map</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Array.map</div><div class="line">array.map(callback[, thisArg])</div></pre></td></tr></table></figure>
+<h5 id="附加说明和网址"><a href="#附加说明和网址" class="headerlink" title="附加说明和网址"></a>附加说明和网址</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock _.compact http:<span class="comment">//underscorejs.org/#compact Underscore.js %&#125;</span></div><div class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="literal">false</span>, <span class="number">2</span>, <span class="string">''</span>, <span class="number">3</span>]);</div><div class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_.compactUnderscore.js</div><div class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</div><div class="line">=&gt; [1, 2, 3]</div></pre></td></tr></table></figure>
+<h2 id="反引号代码块-MD语法"><a href="#反引号代码块-MD语法" class="headerlink" title="反引号代码块 (MD语法)"></a>反引号代码块 (MD语法)</h2><hr>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="行内代码块"><a href="#行内代码块" class="headerlink" title="行内代码块"></a>行内代码块</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">行内 <span class="code">`code 块 `</span></div></pre></td></tr></table></figure>
+<h4 id="缩进代码块"><a href="#缩进代码块" class="headerlink" title="缩进代码块"></a>缩进代码块</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// Some comments</div><div class="line">line 1 of code</div><div class="line">line 2 of code</div><div class="line">line 3 of code</div></pre></td></tr></table></figure>
+<h4 id="多行代码块"><a href="#多行代码块" class="headerlink" title="多行代码块"></a>多行代码块</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="code">``` [language] [title] [url] [link text] </span></div><div class="line"></div><div class="line">    代码块</div><div class="line"></div><div class="line"> `` `</div></pre></td></tr></table></figure>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><hr>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="默认左对齐"><a href="#默认左对齐" class="headerlink" title="默认左对齐"></a>默认左对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------|-------|----------|</div><div class="line">|文本内容 |文本内容| 文本内容  |</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>layout</td>
+<td>布局</td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td>建立日期</td>
+<td>文件建立日期</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>更新日期</td>
+<td>文件更新日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>开启文章的评论功能</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>覆盖文章网址</td>
+</tr>
+</tbody>
+</table>
+<h4 id="向右对齐"><a href="#向右对齐" class="headerlink" title="向右对齐"></a>向右对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------:|-------:|-------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">三种布局</th>
+<th style="text-align:right">路径:(储存到路径文件夹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">post</td>
+<td style="text-align:right">source/_posts</td>
+</tr>
+<tr>
+<td style="text-align:right">page</td>
+<td style="text-align:right">source</td>
+</tr>
+<tr>
+<td style="text-align:right">draft</td>
+<td style="text-align:right">source/_drafts</td>
+</tr>
+</tbody>
+</table>
+<h4 id="向左对齐"><a href="#向左对齐" class="headerlink" title="向左对齐"></a>向左对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------|:------|:------|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">日期变量</th>
+<th style="text-align:left">描述:（可以通过日期来管理文章）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">:title</td>
+<td style="text-align:left">标题（小写，空格将会被替换为短杠）</td>
+</tr>
+<tr>
+<td style="text-align:left">:year</td>
+<td style="text-align:left">建立的年份，比如， 2015</td>
+</tr>
+<tr>
+<td style="text-align:left">:month</td>
+<td style="text-align:left">建立的月份（有前导零），比如， 04</td>
+</tr>
+<tr>
+<td style="text-align:left">:i_month</td>
+<td style="text-align:left">建立的月份（无前导零），比如， 4</td>
+</tr>
+<tr>
+<td style="text-align:left">:day</td>
+<td style="text-align:left">建立的日期（有前导零），比如， 07</td>
+</tr>
+<tr>
+<td style="text-align:left">:i_day</td>
+<td style="text-align:left">建立的日期（无前导零），比如， 7</td>
+</tr>
+</tbody>
+</table>
+<h4 id="居中对齐"><a href="#居中对齐" class="headerlink" title="居中对齐"></a>居中对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------:|:------:|:------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">变量</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">layout</td>
+<td style="text-align:center">布局当:false不加任何布局样式</td>
+</tr>
+<tr>
+<td style="text-align:center">title</td>
+<td style="text-align:center">标题</td>
+</tr>
+<tr>
+<td style="text-align:center">date</td>
+<td style="text-align:center">文件建立日期</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Pull-Quote"><a href="#Pull-Quote" class="headerlink" title="Pull Quote"></a>Pull Quote</h2><hr>
+<p>在文章中插入 Pull quote。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% pullquote [class] %&#125;</div><div class="line">content</div><div class="line">&#123;% endpullquote %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="jsFiddle"><a href="#jsFiddle" class="headerlink" title="jsFiddle"></a>jsFiddle</h2><hr>
+<p>在文章中嵌入 jsFiddle。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% jsfiddle shorttag [tabs] [skin] [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><hr>
+<p>在文章中嵌入 Gist。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist gist_id [filename] %&#125;</div></pre></td></tr></table></figure></p>
+<p>例如嵌入：[mysql语法]<a href="https://gist.github.com/dergachev/4627207#file-gif-screencast-osx-md" target="_blank" rel="external">https://gist.github.com/dergachev/4627207#file-gif-screencast-osx-md</a><br><script src="//gist.github.com/4627207.js?file=mysql语法"></script></p>
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><hr>
+<p>在文章中插入 iframe。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% iframe url [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><hr>
+<h3 id="样例-4"><a href="#样例-4" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="Hexo语法"><a href="#Hexo语法" class="headerlink" title="Hexo语法"></a>Hexo语法</h4><hr>
+<p>在文章中插入指定大小的图片。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% img [class names] /path/to/image [width] [height] [title text [alt text]] %&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="MD语法"><a href="#MD语法" class="headerlink" title="MD语法"></a>MD语法</h4><hr>
+<h5 id="原图-toolTip"><a href="#原图-toolTip" class="headerlink" title="原图+toolTip"></a>原图+toolTip</h5><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![boyer logo](http://boyers.coding.me/img/logo.png &quot;这是我的logo图片&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://boyers.coding.me/img/logo.png" alt="boyer logo" title="这是我的logo图片"></p>
+<h5 id="注脚语法"><a href="#注脚语法" class="headerlink" title="注脚语法"></a>注脚语法</h5><hr>
+<p>可以在稍後的文件中再定义图片地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![boyer logo][logo]</div><div class="line">[logo]: http://boyers.coding.me/img/logo.png  &quot;这是我的logo图片&quot;</div></pre></td></tr></table></figure></p>
+<p><img src="http://boyers.coding.me/img/logo.png" alt="boyer logo" title="这是我的logo图片"></p>
+<h5 id="指定图片大小"><a href="#指定图片大小" class="headerlink" title="指定图片大小"></a>指定图片大小</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![boyer logo](http://boyers.coding.me/img/logo.png [200] [200] &quot;这是我的logo图片&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://boyers.coding.me/img/logo.png [200] [200]" alt="boyer logo" title="这是我的logo图片"></p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><hr>
+<h3 id="样例-5"><a href="#样例-5" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="Hexo语法-1"><a href="#Hexo语法-1" class="headerlink" title="Hexo语法"></a>Hexo语法</h4><hr>
+<p>在文章中插入链接，并自动给外部链接添加 target=”_blank” 属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% link text url [external] [title] %&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="MD语法-1"><a href="#MD语法-1" class="headerlink" title="MD语法"></a>MD语法</h4><hr>
+<h5 id="智能识别超链接"><a href="#智能识别超链接" class="headerlink" title="智能识别超链接"></a>智能识别超链接</h5><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://boyers.coding.me</div></pre></td></tr></table></figure>
+<p><a href="http://boyers.coding.me" target="_blank" rel="external">http://boyers.coding.me</a></p>
+<h5 id="文本式"><a href="#文本式" class="headerlink" title="文本式"></a>文本式</h5><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">boyer Blog</span>](<span class="link">http://boyers.coding.me</span>)</div></pre></td></tr></table></figure>
+<p><a href="http://boyers.coding.me" target="_blank" rel="external">boyer Blog</a></p>
+<h5 id="toolTip式"><a href="#toolTip式" class="headerlink" title="toolTip式"></a>toolTip式</h5><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">boyer Blog</span>](<span class="link">http://boyers.coding.me "这是我的博客首页"</span>)</div></pre></td></tr></table></figure>
+<p><a href="http://boyers.coding.me" title="这是我的博客首页" target="_blank" rel="external">boyer Blog</a></p>
+<h2 id="Include-Code"><a href="#Include-Code" class="headerlink" title="Include Code"></a>Include Code</h2><hr>
+<p>插入 source 文件夹内的代码文件(.m/json/xml等)。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube"></a>Youtube</h2><hr>
+<p>在文章中插入 Youtube 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% youtube video_id %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Vimeo"><a href="#Vimeo" class="headerlink" title="Vimeo"></a>Vimeo</h2><hr>
+<p>在文章中插入 Vimeo 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% vimeo video_id %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><hr>
+<p>根据服务器根目录分为两种方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% post_path slug %&#125;</div><div class="line">&#123;% post_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
+<p>以<code>Docker使用</code>博客为例<br>1.相对路径<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% post_path Docker使用 %&#125;</div></pre></td></tr></table></figure></p>
+<p>相对于服务器根目录的位置：<br>/2016/12/21/Docker使用/</p>
+<ol>
+<li>绝对路径<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% post_link Docker使用 Docker使用 %&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>本博中其他文章的超链接：<br><a href="/2016/12/21/Docker使用/" title="Docker使用">Docker使用</a></p>
+<h2 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h2><hr>
+<p>引用文章的资源。<br>Assets指的是那些不在source目录下的资源，比如图片、CSS文件或者Javascript文件。Hexo提供一种更方便的方法来管理这些资源（Assets）。想使其生效，首先修改 post_asset_folder 字段的设置，将其值改为 true 。<br>当生效后，在你创建文章的时候，Hexo会创建一个同名目录，你可以将该文章关联的资源全部放到该目录下。这样就可以更加方便的使用它们了。<br>使用方法就是上面介绍过的标签插件。<br><figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% asset_path slug %&#125;</div><div class="line">&#123;% asset_img slug [title] %&#125;</div><div class="line">&#123;% asset_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Raw"><a href="#Raw" class="headerlink" title="Raw"></a>Raw</h2><hr>
+<p>一些内容不想被主题渲染，可以使用该插件呈现原始状态。<br>如果您想在文章中插入 Swig 标签，可以尝试使用 Raw 标签，以免发生解析异常。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% raw %&#125;</div><div class="line">content</div><div class="line">&#123;% endraw %&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/weixinimg.jpg" alt="boyer wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/weixin.jpg" alt="boyer WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/zhifubao.jpg" alt="boyer Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/语法/" rel="tag"># 语法</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/23/SwiftGuide/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/23/Hexo标签插件/"
+           data-title="Hexo标签插件" data-url="https://huos3203.github.io/2017/01/23/Hexo标签插件/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="boyer" />
+          <p class="site-author-name" itemprop="name">boyer</p>
+          <p class="site-description motion-element" itemprop="description">不物喜，不己悲，善假物，易参行！</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huos3203" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1791281385" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/boyers" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/boyers" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" title="swift文档" target="_blank">swift文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.objccn.io" title="objc中国" target="_blank">objc中国</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nshipster.cn" title="NSHipster" target="_blank">NSHipster</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" title="动画" target="_blank">动画</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://git-scm.com/book/zh" title="Git Pro" target="_blank">Git Pro</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://kaopu.so/pan" title="全盘搜" target="_blank">全盘搜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://mp.weixin.qq.com" title="小程序官方" target="_blank">小程序官方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://onevcat.com" title="王维" target="_blank">王维</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.devtang.com" title="唐巧" target="_blank">唐巧</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引用块"><span class="nav-number">1.</span> <span class="nav-text">引用块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#别号：-quote"><span class="nav-number">1.1.</span> <span class="nav-text">别号： quote</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#样例"><span class="nav-number">1.1.1.</span> <span class="nav-text">样例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#无参普通blockquote"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">无参普通blockquote</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引用书上的句子"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">引用书上的句子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引用-Twitter"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">引用 Twitter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引用网络上的文章"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">引用网络上的文章</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码块"><span class="nav-number">2.</span> <span class="nav-text">代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#别名-code"><span class="nav-number">2.1.</span> <span class="nav-text">别名:code</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#样例-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">样例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#普通的代码块"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">普通的代码块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指定语言"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">指定语言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#附加说明"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">附加说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#附加说明和网址"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">附加说明和网址</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反引号代码块-MD语法"><span class="nav-number">3.</span> <span class="nav-text">反引号代码块 (MD语法)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-2"><span class="nav-number">3.1.</span> <span class="nav-text">样例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#行内代码块"><span class="nav-number">3.1.1.</span> <span class="nav-text">行内代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缩进代码块"><span class="nav-number">3.1.2.</span> <span class="nav-text">缩进代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多行代码块"><span class="nav-number">3.1.3.</span> <span class="nav-text">多行代码块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">4.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-3"><span class="nav-number">4.1.</span> <span class="nav-text">样例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#默认左对齐"><span class="nav-number">4.1.1.</span> <span class="nav-text">默认左对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向右对齐"><span class="nav-number">4.1.2.</span> <span class="nav-text">向右对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向左对齐"><span class="nav-number">4.1.3.</span> <span class="nav-text">向左对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#居中对齐"><span class="nav-number">4.1.4.</span> <span class="nav-text">居中对齐</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pull-Quote"><span class="nav-number">5.</span> <span class="nav-text">Pull Quote</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsFiddle"><span class="nav-number">6.</span> <span class="nav-text">jsFiddle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gist"><span class="nav-number">7.</span> <span class="nav-text">Gist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe"><span class="nav-number">8.</span> <span class="nav-text">iframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入图片"><span class="nav-number">9.</span> <span class="nav-text">插入图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-4"><span class="nav-number">9.1.</span> <span class="nav-text">样例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo语法"><span class="nav-number">9.1.1.</span> <span class="nav-text">Hexo语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MD语法"><span class="nav-number">9.1.2.</span> <span class="nav-text">MD语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原图-toolTip"><span class="nav-number">9.1.2.1.</span> <span class="nav-text">原图+toolTip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注脚语法"><span class="nav-number">9.1.2.2.</span> <span class="nav-text">注脚语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指定图片大小"><span class="nav-number">9.1.2.3.</span> <span class="nav-text">指定图片大小</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超链接"><span class="nav-number">10.</span> <span class="nav-text">超链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-5"><span class="nav-number">10.1.</span> <span class="nav-text">样例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo语法-1"><span class="nav-number">10.1.1.</span> <span class="nav-text">Hexo语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MD语法-1"><span class="nav-number">10.1.2.</span> <span class="nav-text">MD语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#智能识别超链接"><span class="nav-number">10.1.2.1.</span> <span class="nav-text">智能识别超链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文本式"><span class="nav-number">10.1.2.2.</span> <span class="nav-text">文本式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#toolTip式"><span class="nav-number">10.1.2.3.</span> <span class="nav-text">toolTip式</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Include-Code"><span class="nav-number">11.</span> <span class="nav-text">Include Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Youtube"><span class="nav-number">12.</span> <span class="nav-text">Youtube</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vimeo"><span class="nav-number">13.</span> <span class="nav-text">Vimeo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用文章"><span class="nav-number">14.</span> <span class="nav-text">引用文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用资源"><span class="nav-number">15.</span> <span class="nav-text">引用资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Raw"><span class="nav-number">16.</span> <span class="nav-text">Raw</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boyer</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huo3203"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("ue8PI3eFeweMAjNgpAAIfiRi-gzGzoHsz", "2kHl2CEoDUKiHcVvz0dhu5rF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

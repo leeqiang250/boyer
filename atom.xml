@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huos3203.github.io/"/>
-  <updated>2017-01-23T04:49:49.000Z</updated>
+  <updated>2017-01-23T07:16:15.000Z</updated>
   <id>https://huos3203.github.io/</id>
   
   <author>
@@ -14,6 +14,292 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo标签插件</title>
+    <link href="https://huos3203.github.io/2017/01/23/Hexo%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6/"/>
+    <id>https://huos3203.github.io/2017/01/23/Hexo标签插件/</id>
+    <published>2017-01-23T07:16:15.000Z</published>
+    <updated>2017-01-23T07:16:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。</p>
+<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><hr>
+<p>在文章中插入引言，可包含作者、来源和标题。</p>
+<h3 id="别号：-quote"><a href="#别号：-quote" class="headerlink" title="别号： quote"></a>别号： quote</h3><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</div><div class="line">content</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><hr>
+<h5 id="无参普通blockquote"><a href="#无参普通blockquote" class="headerlink" title="无参普通blockquote"></a>无参普通blockquote</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote %&#125;</div><div class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="引用书上的句子"><a href="#引用书上的句子" class="headerlink" title="引用书上的句子"></a>引用书上的句子</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote David Levithan, Wide Awake %&#125;</div><div class="line">Do not just seek happiness <span class="keyword">for</span> yourself. Seek happiness <span class="keyword">for</span> all. Through kindness. Through mercy.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
+<footer><strong>boyer huo </strong><cite>Wide Awake</cite></footer></blockquote>
+<h5 id="引用-Twitter"><a href="#引用-Twitter" class="headerlink" title="引用 Twitter"></a>引用 Twitter</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote @DevDocs https:<span class="comment">//twitter.com/devdocs/status/356095192085962752 %&#125;</span></div><div class="line">NEW: DevDocs now comes <span class="keyword">with</span> syntax highlighting. http:<span class="comment">//devdocs.io</span></div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="external">http://devdocs.io</a></p>
+<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="external">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
+<h5 id="引用网络上的文章"><a href="#引用网络上的文章" class="headerlink" title="引用网络上的文章"></a>引用网络上的文章</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote Seth Godin http:<span class="comment">//sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %&#125;</span></div><div class="line">Every interaction is both precious and an opportunity to delight.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
+<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
+<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="external">Welcome to Island Marketing</a></cite></footer></blockquote>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><hr>
+<p>在文章中插入代码。</p>
+<h3 id="别名-code"><a href="#别名-code" class="headerlink" title="别名:code"></a>别名:code</h3><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock [title] [lang:language] [url] [link text] %&#125;</div><div class="line">code snippet</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<h4 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h4><hr>
+<h5 id="普通的代码块"><a href="#普通的代码块" class="headerlink" title="普通的代码块"></a>普通的代码块</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock %&#125;</div><div class="line">alert(<span class="string">'Hello World!'</span>);</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(&apos;Hello World!&apos;);</div></pre></td></tr></table></figure>
+<h5 id="指定语言"><a href="#指定语言" class="headerlink" title="指定语言"></a>指定语言</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock lang:objc %&#125;</div><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div></pre></td></tr></table></figure>
+<h5 id="附加说明"><a href="#附加说明" class="headerlink" title="附加说明"></a>附加说明</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock <span class="built_in">Array</span>.map %&#125;</div><div class="line">array.map(callback[, thisArg])</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>Array.map</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Array.map</div><div class="line">array.map(callback[, thisArg])</div></pre></td></tr></table></figure>
+<h5 id="附加说明和网址"><a href="#附加说明和网址" class="headerlink" title="附加说明和网址"></a>附加说明和网址</h5><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock _.compact http:<span class="comment">//underscorejs.org/#compact Underscore.js %&#125;</span></div><div class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="literal">false</span>, <span class="number">2</span>, <span class="string">''</span>, <span class="number">3</span>]);</div><div class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_.compactUnderscore.js</div><div class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</div><div class="line">=&gt; [1, 2, 3]</div></pre></td></tr></table></figure>
+<h2 id="反引号代码块-MD语法"><a href="#反引号代码块-MD语法" class="headerlink" title="反引号代码块 (MD语法)"></a>反引号代码块 (MD语法)</h2><hr>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="行内代码块"><a href="#行内代码块" class="headerlink" title="行内代码块"></a>行内代码块</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">行内 <span class="code">`code 块 `</span></div></pre></td></tr></table></figure>
+<h4 id="缩进代码块"><a href="#缩进代码块" class="headerlink" title="缩进代码块"></a>缩进代码块</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// Some comments</div><div class="line">line 1 of code</div><div class="line">line 2 of code</div><div class="line">line 3 of code</div></pre></td></tr></table></figure>
+<h4 id="多行代码块"><a href="#多行代码块" class="headerlink" title="多行代码块"></a>多行代码块</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="code">``` [language] [title] [url] [link text] </span></div><div class="line"></div><div class="line">    代码块</div><div class="line"></div><div class="line"> `` `</div></pre></td></tr></table></figure>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><hr>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="默认左对齐"><a href="#默认左对齐" class="headerlink" title="默认左对齐"></a>默认左对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------|-------|----------|</div><div class="line">|文本内容 |文本内容| 文本内容  |</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>layout</td>
+<td>布局</td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td>建立日期</td>
+<td>文件建立日期</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>更新日期</td>
+<td>文件更新日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>开启文章的评论功能</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>覆盖文章网址</td>
+</tr>
+</tbody>
+</table>
+<h4 id="向右对齐"><a href="#向右对齐" class="headerlink" title="向右对齐"></a>向右对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------:|-------:|-------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">三种布局</th>
+<th style="text-align:right">路径:(储存到路径文件夹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">post</td>
+<td style="text-align:right">source/_posts</td>
+</tr>
+<tr>
+<td style="text-align:right">page</td>
+<td style="text-align:right">source</td>
+</tr>
+<tr>
+<td style="text-align:right">draft</td>
+<td style="text-align:right">source/_drafts</td>
+</tr>
+</tbody>
+</table>
+<h4 id="向左对齐"><a href="#向左对齐" class="headerlink" title="向左对齐"></a>向左对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------|:------|:------|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">日期变量</th>
+<th style="text-align:left">描述:（可以通过日期来管理文章）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">:title</td>
+<td style="text-align:left">标题（小写，空格将会被替换为短杠）</td>
+</tr>
+<tr>
+<td style="text-align:left">:year</td>
+<td style="text-align:left">建立的年份，比如， 2015</td>
+</tr>
+<tr>
+<td style="text-align:left">:month</td>
+<td style="text-align:left">建立的月份（有前导零），比如， 04</td>
+</tr>
+<tr>
+<td style="text-align:left">:i_month</td>
+<td style="text-align:left">建立的月份（无前导零），比如， 4</td>
+</tr>
+<tr>
+<td style="text-align:left">:day</td>
+<td style="text-align:left">建立的日期（有前导零），比如， 07</td>
+</tr>
+<tr>
+<td style="text-align:left">:i_day</td>
+<td style="text-align:left">建立的日期（无前导零），比如， 7</td>
+</tr>
+</tbody>
+</table>
+<h4 id="居中对齐"><a href="#居中对齐" class="headerlink" title="居中对齐"></a>居中对齐</h4><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------:|:------:|:------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">变量</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">layout</td>
+<td style="text-align:center">布局当:false不加任何布局样式</td>
+</tr>
+<tr>
+<td style="text-align:center">title</td>
+<td style="text-align:center">标题</td>
+</tr>
+<tr>
+<td style="text-align:center">date</td>
+<td style="text-align:center">文件建立日期</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Pull-Quote"><a href="#Pull-Quote" class="headerlink" title="Pull Quote"></a>Pull Quote</h2><hr>
+<p>在文章中插入 Pull quote。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% pullquote [class] %&#125;</div><div class="line">content</div><div class="line">&#123;% endpullquote %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="jsFiddle"><a href="#jsFiddle" class="headerlink" title="jsFiddle"></a>jsFiddle</h2><hr>
+<p>在文章中嵌入 jsFiddle。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% jsfiddle shorttag [tabs] [skin] [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><hr>
+<p>在文章中嵌入 Gist。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist gist_id [filename] %&#125;</div></pre></td></tr></table></figure></p>
+<p>例如嵌入：[mysql语法]<a href="https://gist.github.com/dergachev/4627207#file-gif-screencast-osx-md" target="_blank" rel="external">https://gist.github.com/dergachev/4627207#file-gif-screencast-osx-md</a><br><script src="//gist.github.com/4627207.js?file=mysql语法"></script></p>
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><hr>
+<p>在文章中插入 iframe。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% iframe url [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><hr>
+<h3 id="样例-4"><a href="#样例-4" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="Hexo语法"><a href="#Hexo语法" class="headerlink" title="Hexo语法"></a>Hexo语法</h4><hr>
+<p>在文章中插入指定大小的图片。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% img [class names] /path/to/image [width] [height] [title text [alt text]] %&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="MD语法"><a href="#MD语法" class="headerlink" title="MD语法"></a>MD语法</h4><hr>
+<h5 id="原图-toolTip"><a href="#原图-toolTip" class="headerlink" title="原图+toolTip"></a>原图+toolTip</h5><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![boyer logo](http://boyers.coding.me/img/logo.png &quot;这是我的logo图片&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://boyers.coding.me/img/logo.png" alt="boyer logo" title="这是我的logo图片"></p>
+<h5 id="注脚语法"><a href="#注脚语法" class="headerlink" title="注脚语法"></a>注脚语法</h5><hr>
+<p>可以在稍後的文件中再定义图片地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![boyer logo][logo]</div><div class="line">[logo]: http://boyers.coding.me/img/logo.png  &quot;这是我的logo图片&quot;</div></pre></td></tr></table></figure></p>
+<p><img src="http://boyers.coding.me/img/logo.png" alt="boyer logo" title="这是我的logo图片"></p>
+<h5 id="指定图片大小"><a href="#指定图片大小" class="headerlink" title="指定图片大小"></a>指定图片大小</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![boyer logo](http://boyers.coding.me/img/logo.png [200] [200] &quot;这是我的logo图片&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://boyers.coding.me/img/logo.png [200] [200]" alt="boyer logo" title="这是我的logo图片"></p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><hr>
+<h3 id="样例-5"><a href="#样例-5" class="headerlink" title="样例"></a>样例</h3><hr>
+<h4 id="Hexo语法-1"><a href="#Hexo语法-1" class="headerlink" title="Hexo语法"></a>Hexo语法</h4><hr>
+<p>在文章中插入链接，并自动给外部链接添加 target=”_blank” 属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% link text url [external] [title] %&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="MD语法-1"><a href="#MD语法-1" class="headerlink" title="MD语法"></a>MD语法</h4><hr>
+<h5 id="智能识别超链接"><a href="#智能识别超链接" class="headerlink" title="智能识别超链接"></a>智能识别超链接</h5><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://boyers.coding.me</div></pre></td></tr></table></figure>
+<p><a href="http://boyers.coding.me" target="_blank" rel="external">http://boyers.coding.me</a></p>
+<h5 id="文本式"><a href="#文本式" class="headerlink" title="文本式"></a>文本式</h5><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">boyer Blog</span>](<span class="link">http://boyers.coding.me</span>)</div></pre></td></tr></table></figure>
+<p><a href="http://boyers.coding.me" target="_blank" rel="external">boyer Blog</a></p>
+<h5 id="toolTip式"><a href="#toolTip式" class="headerlink" title="toolTip式"></a>toolTip式</h5><hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">boyer Blog</span>](<span class="link">http://boyers.coding.me "这是我的博客首页"</span>)</div></pre></td></tr></table></figure>
+<p><a href="http://boyers.coding.me" title="这是我的博客首页" target="_blank" rel="external">boyer Blog</a></p>
+<h2 id="Include-Code"><a href="#Include-Code" class="headerlink" title="Include Code"></a>Include Code</h2><hr>
+<p>插入 source 文件夹内的代码文件(.m/json/xml等)。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube"></a>Youtube</h2><hr>
+<p>在文章中插入 Youtube 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% youtube video_id %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Vimeo"><a href="#Vimeo" class="headerlink" title="Vimeo"></a>Vimeo</h2><hr>
+<p>在文章中插入 Vimeo 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% vimeo video_id %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><hr>
+<p>根据服务器根目录分为两种方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% post_path slug %&#125;</div><div class="line">&#123;% post_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
+<p>以<code>Docker使用</code>博客为例<br>1.相对路径<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% post_path Docker使用 %&#125;</div></pre></td></tr></table></figure></p>
+<p>相对于服务器根目录的位置：<br>/2016/12/21/Docker使用/</p>
+<ol>
+<li>绝对路径<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% post_link Docker使用 Docker使用 %&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>本博中其他文章的超链接：<br><a href="/2016/12/21/Docker使用/" title="Docker使用">Docker使用</a></p>
+<h2 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h2><hr>
+<p>引用文章的资源。<br>Assets指的是那些不在source目录下的资源，比如图片、CSS文件或者Javascript文件。Hexo提供一种更方便的方法来管理这些资源（Assets）。想使其生效，首先修改 post_asset_folder 字段的设置，将其值改为 true 。<br>当生效后，在你创建文章的时候，Hexo会创建一个同名目录，你可以将该文章关联的资源全部放到该目录下。这样就可以更加方便的使用它们了。<br>使用方法就是上面介绍过的标签插件。<br><figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% asset_path slug %&#125;</div><div class="line">&#123;% asset_img slug [title] %&#125;</div><div class="line">&#123;% asset_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Raw"><a href="#Raw" class="headerlink" title="Raw"></a>Raw</h2><hr>
+<p>一些内容不想被主题渲染，可以使用该插件呈现原始状态。<br>如果您想在文章中插入 Swig 标签，可以尝试使用 Raw 标签，以免发生解析异常。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% raw %&#125;</div><div class="line">content</div><div class="line">&#123;% endraw %&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。&lt;/p&gt;
+&lt;h2 id=&quot;引用块&quot;&gt;&lt;a href=&quot;#引用块&quot; class=&quot;headerlink&quot; title=&quot;引用块&quot;&gt;&lt;/a&gt;引用块&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;在文章中插入引言，可包含作者、来源和标题。&lt;/p&gt;
+&lt;h3 id=&quot;别号：-quote&quot;&gt;&lt;a href=&quot;#别号：-quote&quot; class=&quot;headerlink&quot; title=&quot;别号： quote&quot;&gt;&lt;/a&gt;别号： quote&lt;/h3&gt;&lt;hr&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% blockquote [author[, source]] [link] [source_link_title] %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;content&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% endblockquote %&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;样例&quot;&gt;&lt;a href=&quot;#样例&quot; class=&quot;headerlink&quot; title=&quot;样例&quot;&gt;&lt;/a&gt;样例&lt;/h4&gt;&lt;hr&gt;
+&lt;h5 id=&quot;无参普通blockquote&quot;&gt;&lt;a href=&quot;#无参普通blockquote&quot; class=&quot;headerlink&quot; title=&quot;无参普通blockquote&quot;&gt;&lt;/a&gt;无参普通blockquote&lt;/h5&gt;&lt;hr&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% blockquote %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% endblockquote %&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://huos3203.github.io/categories/hexo/"/>
+    
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://huos3203.github.io/2017/01/23/SwiftGuide/"/>
+    <id>https://huos3203.github.io/2017/01/23/SwiftGuide/</id>
+    <published>2017-01-23T04:59:52.000Z</published>
+    <updated>2017-01-23T04:59:52.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Kindle114 资源集</title>
@@ -332,59 +618,6 @@
   </entry>
   
   <entry>
-    <title>AR 开发资料汇[转]</title>
-    <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
-    <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
-    <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
-<hr>
-<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
-<hr>
-<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
-<hr>
-<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
-<hr>
-<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
-<hr>
-<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
-<hr>
-<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
-<hr>
-<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
-<hr>
-<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
-<hr>
-<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
-<hr>
-<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
-<hr>
-<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
-<hr>
-<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
-    
-    </summary>
-    
-      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="AR" scheme="https://huos3203.github.io/tags/AR/"/>
-    
-      <category term="LBS+AR" scheme="https://huos3203.github.io/tags/LBS-AR/"/>
-    
-      <category term="QQ红包" scheme="https://huos3203.github.io/tags/QQ%E7%BA%A2%E5%8C%85/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Awsome Apple Develop Guide</title>
     <link href="https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/"/>
     <id>https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/</id>
@@ -570,6 +803,59 @@
       <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
     
       <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AR 开发资料汇[转]</title>
+    <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
+    <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
+    <published>2017-01-22T10:55:21.000Z</published>
+    <updated>2017-01-22T10:55:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
+<hr>
+<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
+<hr>
+<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
+<hr>
+<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
+<hr>
+<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
+<hr>
+<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
+<hr>
+<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
+<hr>
+<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
+<hr>
+<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
+<hr>
+<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
+<hr>
+<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
+<hr>
+<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
+<hr>
+<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
+    
+    </summary>
+    
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="AR" scheme="https://huos3203.github.io/tags/AR/"/>
+    
+      <category term="LBS+AR" scheme="https://huos3203.github.io/tags/LBS-AR/"/>
+    
+      <category term="QQ红包" scheme="https://huos3203.github.io/tags/QQ%E7%BA%A2%E5%8C%85/"/>
     
   </entry>
   
@@ -1074,8 +1360,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#115;&#111;&#x6d;&#101;&#45;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;">&#115;&#111;&#x6d;&#101;&#45;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#x73;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#110;&#101;&#64;&#x65;&#120;&#x61;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#x73;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#110;&#101;&#64;&#x65;&#120;&#x61;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#115;&#x6f;&#109;&#101;&#45;&#x6f;&#x6e;&#x65;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;">&#115;&#x6f;&#109;&#101;&#45;&#x6f;&#x6e;&#x65;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x73;&#111;&#109;&#x65;&#45;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">&#x73;&#111;&#109;&#x65;&#45;&#x6f;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -1502,270 +1788,6 @@ line 3 of code
   </entry>
   
   <entry>
-    <title>Hexo标签插件</title>
-    <link href="https://huos3203.github.io/2016/12/20/Hexo%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6/"/>
-    <id>https://huos3203.github.io/2016/12/20/Hexo标签插件/</id>
-    <published>2016-12-20T10:01:13.000Z</published>
-    <updated>2017-01-19T04:39:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。</p>
-<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><hr>
-<p>在文章中插入引言，可包含作者、来源和标题。</p>
-<h3 id="别号：-quote"><a href="#别号：-quote" class="headerlink" title="别号： quote"></a>别号： quote</h3><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</div><div class="line">content</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><hr>
-<h5 id="无参普通blockquote"><a href="#无参普通blockquote" class="headerlink" title="无参普通blockquote"></a>无参普通blockquote</h5><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote %&#125;</div><div class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
-</blockquote>
-<a id="more"></a>
-<h5 id="引用书上的句子"><a href="#引用书上的句子" class="headerlink" title="引用书上的句子"></a>引用书上的句子</h5><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote David Levithan, Wide Awake %&#125;</div><div class="line">Do not just seek happiness <span class="keyword">for</span> yourself. Seek happiness <span class="keyword">for</span> all. Through kindness. Through mercy.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
-<footer><strong>boyer huo </strong><cite>Wide Awake</cite></footer></blockquote>
-<h5 id="引用-Twitter"><a href="#引用-Twitter" class="headerlink" title="引用 Twitter"></a>引用 Twitter</h5><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote @DevDocs https:<span class="comment">//twitter.com/devdocs/status/356095192085962752 %&#125;</span></div><div class="line">NEW: DevDocs now comes <span class="keyword">with</span> syntax highlighting. http:<span class="comment">//devdocs.io</span></div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="external">http://devdocs.io</a></p>
-<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="external">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
-<h5 id="引用网络上的文章"><a href="#引用网络上的文章" class="headerlink" title="引用网络上的文章"></a>引用网络上的文章</h5><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote Seth Godin http:<span class="comment">//sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %&#125;</span></div><div class="line">Every interaction is both precious and an opportunity to delight.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
-<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="external">Welcome to Island Marketing</a></cite></footer></blockquote>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><hr>
-<p>在文章中插入代码。</p>
-<h3 id="别名-code"><a href="#别名-code" class="headerlink" title="别名:code"></a>别名:code</h3><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock [title] [lang:language] [url] [link text] %&#125;</div><div class="line">code snippet</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<h4 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h4><hr>
-<h5 id="普通的代码块"><a href="#普通的代码块" class="headerlink" title="普通的代码块"></a>普通的代码块</h5><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock %&#125;</div><div class="line">alert(<span class="string">'Hello World!'</span>);</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(&apos;Hello World!&apos;);</div></pre></td></tr></table></figure>
-<h5 id="指定语言"><a href="#指定语言" class="headerlink" title="指定语言"></a>指定语言</h5><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock lang:objc %&#125;</div><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</div></pre></td></tr></table></figure>
-<h5 id="附加说明"><a href="#附加说明" class="headerlink" title="附加说明"></a>附加说明</h5><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock <span class="built_in">Array</span>.map %&#125;</div><div class="line">array.map(callback[, thisArg])</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>Array.map</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Array.map</div><div class="line">array.map(callback[, thisArg])</div></pre></td></tr></table></figure>
-<h5 id="附加说明和网址"><a href="#附加说明和网址" class="headerlink" title="附加说明和网址"></a>附加说明和网址</h5><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock _.compact http:<span class="comment">//underscorejs.org/#compact Underscore.js %&#125;</span></div><div class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="literal">false</span>, <span class="number">2</span>, <span class="string">''</span>, <span class="number">3</span>]);</div><div class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_.compactUnderscore.js</div><div class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</div><div class="line">=&gt; [1, 2, 3]</div></pre></td></tr></table></figure>
-<h2 id="反引号代码块-MD语法"><a href="#反引号代码块-MD语法" class="headerlink" title="反引号代码块 (MD语法)"></a>反引号代码块 (MD语法)</h2><hr>
-<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h3><hr>
-<h4 id="行内代码块"><a href="#行内代码块" class="headerlink" title="行内代码块"></a>行内代码块</h4><hr>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">行内 <span class="code">`code 块 `</span></div></pre></td></tr></table></figure>
-<h4 id="缩进代码块"><a href="#缩进代码块" class="headerlink" title="缩进代码块"></a>缩进代码块</h4><hr>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// Some comments</div><div class="line">line 1 of code</div><div class="line">line 2 of code</div><div class="line">line 3 of code</div></pre></td></tr></table></figure>
-<h4 id="多行代码块"><a href="#多行代码块" class="headerlink" title="多行代码块"></a>多行代码块</h4><hr>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="code">``` [language] [title] [url] [link text] </span></div><div class="line"></div><div class="line">    代码块</div><div class="line"></div><div class="line"> `` `</div></pre></td></tr></table></figure>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><hr>
-<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例"></a>样例</h3><hr>
-<h4 id="默认左对齐"><a href="#默认左对齐" class="headerlink" title="默认左对齐"></a>默认左对齐</h4><hr>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------|-------|----------|</div><div class="line">|文本内容 |文本内容| 文本内容  |</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>layout</td>
-<td>布局</td>
-<td></td>
-</tr>
-<tr>
-<td>title</td>
-<td>标题</td>
-<td></td>
-</tr>
-<tr>
-<td>date</td>
-<td>建立日期</td>
-<td>文件建立日期</td>
-</tr>
-<tr>
-<td>updated</td>
-<td>更新日期</td>
-<td>文件更新日期</td>
-</tr>
-<tr>
-<td>comments</td>
-<td>开启文章的评论功能</td>
-<td>true</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>标签（不适用于分页）</td>
-<td></td>
-</tr>
-<tr>
-<td>categories</td>
-<td>分类（不适用于分页）</td>
-<td></td>
-</tr>
-<tr>
-<td>permalink</td>
-<td>覆盖文章网址</td>
-</tr>
-</tbody>
-</table>
-<h4 id="向右对齐"><a href="#向右对齐" class="headerlink" title="向右对齐"></a>向右对齐</h4><hr>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|-------:|-------:|-------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">三种布局</th>
-<th style="text-align:right">路径:(储存到路径文件夹)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">post</td>
-<td style="text-align:right">source/_posts</td>
-</tr>
-<tr>
-<td style="text-align:right">page</td>
-<td style="text-align:right">source</td>
-</tr>
-<tr>
-<td style="text-align:right">draft</td>
-<td style="text-align:right">source/_drafts</td>
-</tr>
-</tbody>
-</table>
-<h4 id="向左对齐"><a href="#向左对齐" class="headerlink" title="向左对齐"></a>向左对齐</h4><hr>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------|:------|:------|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">日期变量</th>
-<th style="text-align:left">描述:（可以通过日期来管理文章）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">:title</td>
-<td style="text-align:left">标题（小写，空格将会被替换为短杠）</td>
-</tr>
-<tr>
-<td style="text-align:left">:year</td>
-<td style="text-align:left">建立的年份，比如， 2015</td>
-</tr>
-<tr>
-<td style="text-align:left">:month</td>
-<td style="text-align:left">建立的月份（有前导零），比如， 04</td>
-</tr>
-<tr>
-<td style="text-align:left">:i_month</td>
-<td style="text-align:left">建立的月份（无前导零），比如， 4</td>
-</tr>
-<tr>
-<td style="text-align:left">:day</td>
-<td style="text-align:left">建立的日期（有前导零），比如， 07</td>
-</tr>
-<tr>
-<td style="text-align:left">:i_day</td>
-<td style="text-align:left">建立的日期（无前导零），比如， 7</td>
-</tr>
-</tbody>
-</table>
-<h4 id="居中对齐"><a href="#居中对齐" class="headerlink" title="居中对齐"></a>居中对齐</h4><hr>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">|参数|描述|默认值|</div><div class="line">|:------:|:------:|:------:|</div><div class="line">| 文本内容 | 文本内容 | 文本内容|</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">变量</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">layout</td>
-<td style="text-align:center">布局当:false不加任何布局样式</td>
-</tr>
-<tr>
-<td style="text-align:center">title</td>
-<td style="text-align:center">标题</td>
-</tr>
-<tr>
-<td style="text-align:center">date</td>
-<td style="text-align:center">文件建立日期</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Pull-Quote"><a href="#Pull-Quote" class="headerlink" title="Pull Quote"></a>Pull Quote</h2><hr>
-<p>在文章中插入 Pull quote。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% pullquote [class] %&#125;</div><div class="line">content</div><div class="line">&#123;% endpullquote %&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="jsFiddle"><a href="#jsFiddle" class="headerlink" title="jsFiddle"></a>jsFiddle</h2><hr>
-<p>在文章中嵌入 jsFiddle。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% jsfiddle shorttag [tabs] [skin] [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><hr>
-<p>在文章中嵌入 Gist。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist gist_id [filename] %&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><hr>
-<p>在文章中插入 iframe。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% iframe url [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><hr>
-<h3 id="样例-4"><a href="#样例-4" class="headerlink" title="样例"></a>样例</h3><hr>
-<h4 id="Hexo语法"><a href="#Hexo语法" class="headerlink" title="Hexo语法"></a>Hexo语法</h4><hr>
-<p>在文章中插入指定大小的图片。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% img [class names] /path/to/image [width] [height] [title text [alt text]] %&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="MD语法"><a href="#MD语法" class="headerlink" title="MD语法"></a>MD语法</h4><hr>
-<h5 id="原图-toolTip"><a href="#原图-toolTip" class="headerlink" title="原图+toolTip"></a>原图+toolTip</h5><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![boyer logo](http://boyers.coding.me/img/logo.png &quot;这是我的logo图片&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://boyers.coding.me/img/logo.png" alt="boyer logo" title="这是我的logo图片"></p>
-<h5 id="注脚语法"><a href="#注脚语法" class="headerlink" title="注脚语法"></a>注脚语法</h5><hr>
-<p>可以在稍後的文件中再定义图片地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![boyer logo][logo]</div><div class="line">[logo]: http://boyers.coding.me/img/logo.png  &quot;这是我的logo图片&quot;</div></pre></td></tr></table></figure></p>
-<p><img src="http://boyers.coding.me/img/logo.png" alt="boyer logo" title="这是我的logo图片"></p>
-<h5 id="指定图片大小"><a href="#指定图片大小" class="headerlink" title="指定图片大小"></a>指定图片大小</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![boyer logo](http://boyers.coding.me/img/logo.png [200] [200] &quot;这是我的logo图片&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://boyers.coding.me/img/logo.png [200] [200]" alt="boyer logo" title="这是我的logo图片"></p>
-<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><hr>
-<h3 id="样例-5"><a href="#样例-5" class="headerlink" title="样例"></a>样例</h3><hr>
-<h4 id="Hexo语法-1"><a href="#Hexo语法-1" class="headerlink" title="Hexo语法"></a>Hexo语法</h4><hr>
-<p>在文章中插入链接，并自动给外部链接添加 target=”_blank” 属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% link text url [external] [title] %&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="MD语法-1"><a href="#MD语法-1" class="headerlink" title="MD语法"></a>MD语法</h4><hr>
-<h5 id="智能识别超链接"><a href="#智能识别超链接" class="headerlink" title="智能识别超链接"></a>智能识别超链接</h5><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://boyers.coding.me</div></pre></td></tr></table></figure>
-<p><a href="http://boyers.coding.me" target="_blank" rel="external">http://boyers.coding.me</a></p>
-<h5 id="文本式"><a href="#文本式" class="headerlink" title="文本式"></a>文本式</h5><hr>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">boyer Blog</span>](<span class="link">http://boyers.coding.me</span>)</div></pre></td></tr></table></figure>
-<p><a href="http://boyers.coding.me" target="_blank" rel="external">boyer Blog</a></p>
-<h5 id="toolTip式"><a href="#toolTip式" class="headerlink" title="toolTip式"></a>toolTip式</h5><hr>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">boyer Blog</span>](<span class="link">http://boyers.coding.me "这是我的博客首页"</span>)</div></pre></td></tr></table></figure>
-<p><a href="http://boyers.coding.me" title="这是我的博客首页" target="_blank" rel="external">boyer Blog</a></p>
-<h2 id="Include-Code"><a href="#Include-Code" class="headerlink" title="Include Code"></a>Include Code</h2><hr>
-<p>插入 source 文件夹内的代码文件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube"></a>Youtube</h2><hr>
-<p>在文章中插入 Youtube 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% youtube video_id %&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Vimeo"><a href="#Vimeo" class="headerlink" title="Vimeo"></a>Vimeo</h2><hr>
-<p>在文章中插入 Vimeo 视频。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% vimeo video_id %&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><hr>
-<p>引用其他文章的链接。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% post_path slug %&#125;</div><div class="line">&#123;% post_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h2><hr>
-<p>引用文章的资源。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% asset_path slug %&#125;</div><div class="line">&#123;% asset_img slug [title] %&#125;</div><div class="line">&#123;% asset_link slug [title] %&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Raw"><a href="#Raw" class="headerlink" title="Raw"></a>Raw</h2><hr>
-<p>如果您想在文章中插入 Swig 标签，可以尝试使用 Raw 标签，以免发生解析异常。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% raw %&#125;</div><div class="line">content</div><div class="line">&#123;% endraw %&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。&lt;/p&gt;
-&lt;h2 id=&quot;引用块&quot;&gt;&lt;a href=&quot;#引用块&quot; class=&quot;headerlink&quot; title=&quot;引用块&quot;&gt;&lt;/a&gt;引用块&lt;/h2&gt;&lt;hr&gt;
-&lt;p&gt;在文章中插入引言，可包含作者、来源和标题。&lt;/p&gt;
-&lt;h3 id=&quot;别号：-quote&quot;&gt;&lt;a href=&quot;#别号：-quote&quot; class=&quot;headerlink&quot; title=&quot;别号： quote&quot;&gt;&lt;/a&gt;别号： quote&lt;/h3&gt;&lt;hr&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% blockquote [author[, source]] [link] [source_link_title] %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;content&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% endblockquote %&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;样例&quot;&gt;&lt;a href=&quot;#样例&quot; class=&quot;headerlink&quot; title=&quot;样例&quot;&gt;&lt;/a&gt;样例&lt;/h4&gt;&lt;hr&gt;
-&lt;h5 id=&quot;无参普通blockquote&quot;&gt;&lt;a href=&quot;#无参普通blockquote&quot; class=&quot;headerlink&quot; title=&quot;无参普通blockquote&quot;&gt;&lt;/a&gt;无参普通blockquote&lt;/h5&gt;&lt;hr&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% blockquote %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% endblockquote %&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="hexo" scheme="https://huos3203.github.io/categories/hexo/"/>
-    
-    
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>微信小程序开发(一)</title>
     <link href="https://huos3203.github.io/2016/12/19/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91-%E4%B8%80/"/>
     <id>https://huos3203.github.io/2016/12/19/微信小程序开发-一/</id>
@@ -1986,57 +2008,6 @@ line 3 of code
       <category term="iPhone6" scheme="https://huos3203.github.io/tags/iPhone6/"/>
     
       <category term="iPhone5s" scheme="https://huos3203.github.io/tags/iPhone5s/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Realm数据库引擎-swift</title>
-    <link href="https://huos3203.github.io/2015/12/16/2015-12-16-realmshu-ju-ku-yin-qing-swift/"/>
-    <id>https://huos3203.github.io/2015/12/16/2015-12-16-realmshu-ju-ku-yin-qing-swift/</id>
-    <published>2015-12-15T21:56:15.000Z</published>
-    <updated>2017-01-12T02:44:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>中心思想：<br>继承RLMObject新建数据模型，添加相应属性，即可使用realm数据库引擎，对用户数据创建持久化，更新，删除等操作。</p>
-<p>####简介：<br><a href="http://realm.io/" target="_blank" rel="external">Realm</a> 是一个跨平台的移动数据库引擎，于 2014 年 7 月发布，准确来说，它是专门为移动应用所设计的数据持久化解决方案之一。</p>
-<ul>
-<li>特点：它拥有自己的数据库存储引擎<br>  Realm 并不是对 Core Data 的简单封装，相反地， Realm 并不是基于 Core Data ，也不是基于 SQLite 所构建的。它拥有自己的数据库存储引擎，可以高效且快速地完成数据库的构建操作。</li>
-<li>Realm 支持 Swift 、 Objective-C 以及 Java 语言来编写（ Android 平台和 iOS 平台使用不同的 SDK ）。</li>
-<li>Realm 比使用 SQLite 以及 Core Data 要快很多。</li>
-<li>可视化工具<a href="https://itunes.apple.com/cn/app/realm-browser/id1007457278?mt=12" target="_blank" rel="external">Realm Browser</a> ：可以让您轻松地读写 Realm 数据库的逻辑结构以及其中的数据（以 .realm 结尾），虽然 Realm Browser 的功能还十分简陋，真的只能读写而已。</li>
-<li>RealmPlugin：是 Xcode 建模插件，通过 <a href="http://alcatraz.io/" target="_blank" rel="external">Alcatraz</a>安装“RealmPlugin”<br>####目的：<br>学习如何导入 Realm 框架、创建数据模型，实现 Swift 执行查询以及插入、更新和删除记录，以及使用既有的数据库。<br>####实例学习：<br>测试APP<a href="https://github.com/SemperIdem/SISpeciesNotes/tree/master" target="_blank" rel="external">物种监测</a><br>用于记录这个 “ 动植物王国 ” 当中所发现物种的相关信息，包括种群数量、发现区域、年龄结构等等。</li>
-</ul>
-<p>在 Xcode 当中打开我们的起始项目。此时， <a href="http://www.raywenderlich.com/81615/www.raywenderlich.com/21365/introduction-to-mapkit-in-ios-6-tutorial" target="_blank" rel="external">MapKit</a><br>已经在项目当中建立好了，而且项目已经拥有了一些简单的创建、更新和删除物种信息的功能.</p>
-<p>####cocoapods安装（Swift 2.1）：<br>在项目中创建Podfile配置文件，添加RealmSwift支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">use_frameworks!   //</div><div class="line">pod &apos;RealmSwift&apos;</div></pre></td></tr></table></figure></p>
-<p>执行 <code>pod install</code>下载realmSwift框架，生成<strong>.xcworkspace</strong>文件，自动重启原始项目。<br>设置Xcode项目在git版本控制中的忽略配置：详见<a href="http://stackoverflow.com/questions/49478/git-ignore-file-for-xcode-projects" target="_blank" rel="external">.gitignore</a></p>
-<p><a href="http://blog.csdn.net/remote_roamer/article/details/47835347" target="_blank" rel="external">use_frameworks!</a>   </p>
-<pre><code>如果在cocoapods 里面不使用 use_frameworks!,则是通过static libraries 这个方式来管理pod的代码。这样就需要在app-Bridging-Header.h 文件里面去import相应的.h 文件。而如果使用了use_frameworks!,则cocoapods 使用了frameworks 来取代static libraries 方式。 
-</code></pre><p>####开始使用：<br>编译并运行这个应用，然后尝试定位到某个您感兴趣的位置（使用模拟器的位置模拟），然后点击右上角的 “+” 按钮创建一个新的标记点。点选地图上的这个标记点，然后点击其弹出来的气泡，接下来会弹出这个标记点的详细信息。随后，点击类别文本框，就可以看到如下图所示的类别列表了:<br><img src="http://cc.cocimg.com/api/uploads/20150505/1430807925718367.jpg" alt=""></p>
-<ol>
-<li><p>使用Realm数据库将类别列表持久化</p>
-<ul>
-<li><p>打开<strong>CategoriesTableViewController.swift </strong>文件添加方法：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">populateDefaultCategories</span><span class="params">()</span></span> &#123;</div><div class="line"><span class="keyword">self</span>.results = <span class="type">CategoryModel</span>.allObjects() <span class="comment">// 1 查询数据返回包含类别对象的RLMResults数组</span></div><div class="line"><span class="keyword">if</span> results.<span class="built_in">count</span> == <span class="number">0</span> &#123; <span class="comment">// 2   通过返回结果的个数，初始化本地realm数据库</span></div><div class="line"><span class="keyword">let</span> realm = <span class="type">RLMRealm</span>.defaultRealm() <span class="comment">// 3 访问默认的 realm 单例对象</span></div><div class="line">realm.beginWriteTransaction() <span class="comment">// 4   在默认 realm 数据库中启动一个事务</span></div><div class="line"><span class="keyword">let</span> defaultCategories = <span class="type">Categories</span>.allValues <span class="comment">// 5 使用Categories 枚举来创建一个含有全部默认类别的数组</span></div><div class="line"><span class="keyword">for</span> category <span class="keyword">in</span> defaultCategories &#123;</div><div class="line"><span class="comment">// 6 初始化类别实例对象，设置其 name 属性，加入realm中</span></div><div class="line"><span class="keyword">let</span> newCategory = <span class="type">CategoryModel</span>()</div><div class="line">newCategory.name = category</div><div class="line">realm.addObject(newCategory)</div><div class="line">&#125;</div><div class="line">realm.commitWriteTransaction() <span class="comment">// 7    调用 commitWriteTransaction() 方法来关闭事务，并且向数据库提交数据</span></div><div class="line"><span class="keyword">self</span>.results = <span class="type">CategoryModel</span>.allObjects()</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 viewDidLoad() 方法的底部加入以下代码：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">populateDefaultCategories()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;中心思想：&lt;br&gt;继承RLMObject新建数据模型，添加相应属性，即可使用realm数据库引擎，对用户数据创建持久化，更新，删除等操作。&lt;/p&gt;
-&lt;p&gt;####简介：&lt;br&gt;&lt;a href=&quot;http://realm.io/&quot; target=&quot;_blank&quot; rel=&quot;e
-    
-    </summary>
-    
-      <category term="Swift" scheme="https://huos3203.github.io/categories/Swift/"/>
-    
-    
-      <category term="数据库" scheme="https://huos3203.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="realm" scheme="https://huos3203.github.io/tags/realm/"/>
     
   </entry>
   

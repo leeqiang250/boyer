@@ -50,6 +50,7 @@
 		145012031E345AA100BBDEBB /* iOS面试题大集合.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "iOS面试题大集合.md"; sourceTree = "<group>"; };
 		145012041E35A3A300BBDEBB /* Kindle资源.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Kindle资源.md"; sourceTree = "<group>"; };
 		145012051E35A64100BBDEBB /* Kindle之ResilioSync索引.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Kindle之ResilioSync索引.md"; sourceTree = "<group>"; };
+		145012061E35C54800BBDEBB /* SwiftGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SwiftGuide.md; sourceTree = "<group>"; };
 		145273FA1E28B09A00671F2A /* weixin.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = weixin.ejs; sourceTree = "<group>"; };
 		145273FB1E28B3C500671F2A /* weixinimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = weixinimg.jpg; sourceTree = "<group>"; };
 		145273FD1E28B7BC00671F2A /* earth.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = earth.ejs; sourceTree = "<group>"; };
@@ -711,6 +712,7 @@
 				145012031E345AA100BBDEBB /* iOS面试题大集合.md */,
 				145012041E35A3A300BBDEBB /* Kindle资源.md */,
 				145012051E35A64100BBDEBB /* Kindle之ResilioSync索引.md */,
+				145012061E35C54800BBDEBB /* SwiftGuide.md */,
 			);
 			path = _posts;
 			sourceTree = "<group>";
