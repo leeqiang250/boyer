@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huos3203.github.io/"/>
-  <updated>2017-01-23T09:06:18.000Z</updated>
+  <updated>2017-01-23T08:54:47.000Z</updated>
   <id>https://huos3203.github.io/</id>
   
   <author>
@@ -14,152 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Swift 语言指南</title>
-    <link href="https://huos3203.github.io/2017/01/23/SwiftGuide/"/>
-    <id>https://huos3203.github.io/2017/01/23/SwiftGuide/</id>
-    <published>2017-01-23T09:05:20.000Z</published>
-    <updated>2017-01-23T09:06:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Swift-语言指南"><a href="#Swift-语言指南" class="headerlink" title="Swift 语言指南"></a>Swift 语言指南</h1><blockquote>
-<p><span style="color:lightgray;font-size:12px"><a href="http://weibo.com/swiftlanguage" target="_blank" rel="external">@SwiftLanguage</a> 更新于 2016-6-6，更新内容详见 <a href="https://github.com/ipader/SwiftGuide/blob/master/weekly/Issue-55.md" target="_blank" rel="external">Issue 55</a>。往期更新回顾详见《<a href="https://github.com/ipader/SwiftGuide/blob/master/weekly/README.md" target="_blank" rel="external">收录周报</a>》</span></p>
-</blockquote>
-<p>　　<a href="https://github.com/ipader/SwiftGuide/blob/master/2014%20letter.md" target="_blank" rel="external">这份指南</a>汇集了 Swift 语言主流学习资源，并以开发者的视角整理编排。对于精选项目及文章，可直接访问《<a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">Swift 项目精选</a>》和《<a href="https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md" target="_blank" rel="external">Swift 文章精选</a>》。还有开发者们自己维护的《<a href="https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E3%80%81%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5" target="_blank" rel="external">开发者、项目、最佳实践</a>》。当然也不能错过那些活跃、优秀的《<a href="https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99%E9%A1%B5" target="_blank" rel="external">开发者个人资料页</a>》。</p>
-<h2 id="入门指引"><a href="#入门指引" class="headerlink" title="入门指引"></a>入门指引</h2><p>苹果为 <a href="http://www.apple.com/swift/" target="_blank" rel="external">Swift</a>（<a href="http://www.apple.com/cn/swift/" target="_blank" rel="external">中文介绍</a>）开发者提供的<a href="https://developer.apple.com/swift/" target="_blank" rel="external">官方文档入口</a>，包括 <a href="https://developer.apple.com/swift/" target="_blank" rel="external">概述</a>，<a href="https://developer.apple.com/swift/blog/" target="_blank" rel="external">博客</a>（<a href="https://github.com/ipader/SwiftGuide/tree/master/mirror/Swift%20Blog%20-%20Apple%20Developer" target="_blank" rel="external">中文镜像</a>）及 <a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">开发资源</a>。其中以下几份文档（Swift 2.1）为入门级必备（<a href="https://itunes.apple.com/us/book-series/swift-programming-series/id888896989?mt=11" target="_blank" rel="external">iBooks 版</a>）：</p>
-<ul>
-<li><p><a href="https://developer.apple.com/swift/" target="_blank" rel="external">Swift Programming Language</a>（<a href="http://gg.swiftguide.cn" target="_blank" rel="external">中文版</a>｜<a href="http://wiki.jikexueyuan.com/download/swift/pdf/" target="_blank" rel="external">PDF 版</a> By <a href="http://weibo.com/swiftguide" target="_blank" rel="external">SwiftGG翻译组</a>）</p>
-</li>
-<li><p><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">Start Developing iOS Apps</a> </p>
-</li>
-<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html" target="_blank" rel="external">Using Swift with Cocoa and Objective-C</a>（<a href="https://github.com/CocoaChina-editors/Welcome-to-Swift/blob/master/UsingSwiftwithCocoaandObjective-C%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C.md" target="_blank" rel="external">中文版</a> By <a href="http://weibo.com/cocoachina" target="_blank" rel="external">@CocoaChina</a>）</li>
-</ul>
-<p><em>苹果同时也维护着相应 Beta 版（Swift 2.2）文档：<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">Swift Programming Language</a>，<a href="https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html" target="_blank" rel="external">Start Developing iOS Apps</a>，<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html" target="_blank" rel="external">Using Swift with Cocoa and Objective-C</a>。</em></p>
-<p>学习实践的角度，标准库示例代码 <a href="https://developer.apple.com/sample-code/swift/downloads/Standard-Library.zip" target="_blank" rel="external">Swift Standard Library.playground</a> 是很棒的学习伴侣。</p>
-<p>教程方面，苹果力荐了斯坦福课程 <a href="https://itunes.com/StanfordSwift" target="_blank" rel="external">Stanford University: Developing iOS 8 Apps with Swift</a>（<a href="http://open.163.com/special/opencourse/ios8.html" target="_blank" rel="external">中文字幕版</a> By <a href="http://weibo.com/163open" target="_blank" rel="external">@网易公开课</a>）</p>
-<p>除以上所涉及入门级文档，<a href="https://developer.apple.com/library/ios/navigation/" target="_blank" rel="external">iOS Developer Library</a> 还为开发者提供了更庞大、系统化的开发文档支持。</p>
-<p>以下列举了几份已有第三方中文翻译文档：</p>
-<ul>
-<li><a href="https://swift.org/documentation/api-design-guidelines/" target="_blank" rel="external">API Design Guidelines</a>（<a href="http://swift.gg/2016/05/18/api-design-guidelines/" target="_blank" rel="external">中文版</a> By <a href="http://weibo.com/u/5174822990" target="_blank" rel="external">@SwiftGG翻译组</a>）</li>
-<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html" target="_blank" rel="external">App Extension Programming Guide</a>（<a href="https://github.com/ipader/SwiftGuide/tree/master/mirror/App%20Extension%20Programming%20Guide" target="_blank" rel="external">中译镜像</a>）</li>
-<li><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html" target="_blank" rel="external">iOS Human Interface Guidelines</a>（<a href="https://isux.tencent.com/?s=iOS+9+%E4%BA%BA%E6%9C%BA%E7%95%8C%E9%9D%A2%E6%8C%87%E5%8D%97" target="_blank" rel="external">中文版</a>｜<a href="http://ixdc.org/2016/files/ISUX[%E8%AF%91]iOS9%20human%20Interface%20Guideline.pdf" target="_blank" rel="external">PDF 版</a> By <a href="http://weibo.com/txisux" target="_blank" rel="external">@腾讯ISUX</a>）</li>
-<li><a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/HomeKitDeveloperGuide/Introduction/Introduction.html" target="_blank" rel="external">HomeKit Developer Guide</a>（<a href="http://www.cocoachina.com/ios/20150324/11411.html" target="_blank" rel="external">中文版</a> By <a href="http://weibo.com/cocoachina" target="_blank" rel="external">@CocoaChina</a>）</li>
-</ul>
-<p>值得称道的还有：苹果为 <a href="https://developer.apple.com/videos/" target="_blank" rel="external">Apple TV Tech Talks</a> 和 <a href="https://developer.apple.com/videos/wwdc2015/" target="_blank" rel="external">WWDC 2015</a> 的视频添加简体中文字幕，从而方便中国开发者观看来自官方的权威技术分享。</p>
-<p>有关于 Swift 开源及跨平台开发，可以关注 <a href="https://swift.org/" target="_blank" rel="external">swift.org</a></p>
-<h2 id="教程文章"><a href="#教程文章" class="headerlink" title="教程文章"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md" target="_blank" rel="external">教程文章</a></h2><h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">开源项目</a></h2><h2 id="推荐网站"><a href="#推荐网站" class="headerlink" title="推荐网站"></a>推荐网站</h2><ul>
-<li><strong>苹果官方</strong></li>
-<li><a href="https://developer.apple.com/swift/" target="_blank" rel="external">Swift</a>：Swift 概述、博客以及开发资源。</li>
-<li><a href="https://swift.org/" target="_blank" rel="external">swift.org</a>：开源后独立出来的 Swift 开源社区。</li>
-<li><a href="https://github.com/apple" target="_blank" rel="external">GitHub:apple</a>：苹果在 GitHub 上的开源项目。</li>
-<li><a href="https://github.com/apple/swift" target="_blank" rel="external">GitHub:apple/swift</a>：swift 语言在 GitHub 上的开源项目。</li>
-<li><a href="https://github.com/ksm/SwiftInFlux" target="_blank" rel="external">ksm/SwiftInFlux</a>：作者（Karol Mazur）将 Apple Developer Forums 上有关 Swift 特性、缺陷及变更讨论分类汇总并更新到 GitHub，具有很好的可读性。从中可以一窥 Swift 缺陷及未来潜在地变化。最关键地是有 Chris Lattner 及核心团队答疑解惑。</li>
-<li><a href="https://www.raywenderlich.com/" target="_blank" rel="external">raywenderlich.com</a>(<a href="https://www.raywenderlich.com/zh-hans/" target="_blank" rel="external">中文版</a>)：由Ray Wenderlich创建，专注于开发高质量编程指南（近期优质Swift文章及视频教程不断），著名的iOS/OS X博客及开发教程网站，非常适合新手学习。近期第一时间出了<a href="https://www.raywenderlich.com/74832/three-new-swift-books" target="_blank" rel="external">三本 Swift 新书</a>。</li>
-<li><a href="http://www.natashatherobot.com/" target="_blank" rel="external">Natasha The Robot</a>： 时髦码农不容错过的 Swift 开发实战教程类网站。为了简化学习复杂性，每一篇文章涵盖技术点单一又独立，配以开发步骤、运行结果以及代码等标准方式教授。难能可贵的是，它往往出品“追剧式”（最新开发特性或API跟进式）教程，实在是开发者必藏精品网站。</li>
-<li><a href="http://nshipster.com/" target="_blank" rel="external">NShipster</a> (<a href="http://nshipster.cn/" target="_blank" rel="external">中译版</a>：<a href="http://weibo.com/croath" target="_blank" rel="external">@刘镇夫</a>，<a href="http://nshipster.cn/translators/april-peng/" target="_blank" rel="external">April Peng</a>，<a href="http://weibo.com/leelejia" target="_blank" rel="external">@李乐佳</a>，<a href="http://weibo.com/fallhunter" target="_blank" rel="external">@程序员付恒</a> 等翻译)：著名开源作者 <a href="https://github.com/mattt" target="_blank" rel="external">Matt Thompson</a> 创建的开发技术博客网站，他开发了 <a href="https://github.com/afnetworking/afnetworking" target="_blank" rel="external">AFNetworking</a> 网络库，也是非常多产的开源作者。更多了解参考：<a href="http://www.fallhunter.com/p/10709" target="_blank" rel="external">《COCOA 潮人 MATTT THOMPSON》</a> By <a href="http://weibo.com/fallhunter" target="_blank" rel="external">@程序员付恒</a></li>
-<li><a href="http://jamesonquave.com/blog/" target="_blank" rel="external">jamesonquave.com</a>：移动开发者，优秀个人博客（近期文章同样关注于Swift 语言，写得很优质）。同时他将于8/30发布一本新书<a href="http://jamesonquave.com/swiftebook/" target="_blank" rel="external">《Developing iOS 8 Apps in Swift》</a> (Learn To Make Real World iOS 8 Apps)及视频教程。</li>
-<li><a href="https://www.objc.io/" target="_blank" rel="external">objc.io</a>(<a href="http://objccn.io" target="_blank" rel="external">中译版 By @onevcat 及其朋友们</a>)：”关于 Objective-C 最佳实践和先进技术的期刊。 由 Chris Eidhof, Daniel Eggert 和 Florian Kugler 成立于柏林。我们成立 objc.io 的目的是针对深入的、跟所有 iOS 和 OS X 开发者相关的技术话题创造一个正式的平台。“</li>
-<li><a href="http://www.ioscreator.com/" target="_blank" rel="external">iOSCreator</a>：这类开发指引式教程对于初学者来讲，是直接明了的有效学习资源。推荐者<a href="http://weibo.com/qq184675420" target="_blank" rel="external">@荧星诉语</a></li>
-<li><a href="https://iosdevweekly.com/" target="_blank" rel="external">iOS Dev Weekly</a>：收录一周以来 iOS 开发资讯链接，并于周五发布。由 <a href="https://twitter.com/daveverwer" target="_blank" rel="external">Dave Verwer</a> 创办，他是一位 iPhone 和 iPad 开发者以及培训师。</li>
-<li><a href="http://www.appcoda.com/" target="_blank" rel="external">Appcoda.com</a>：质量很高的一个 iOS 开发教程站，其中<a href="http://www.appcoda.com/ios-programming-course/" target="_blank" rel="external">iOS Programming Course</a>这个专题很适合刚接触 iOS 开发的新手学习。</li>
-<li><a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">中文 iOS/Mac 开发博客列表</a>：By <a href="http://weibo.com/tangqiaoboy" target="_blank" rel="external">@唐巧_body</a></li>
-<li><a href="http://www.devtalking.com/" target="_blank" rel="external">devtalking.com</a>：高产的中译博客。翻译了官方博客 Swift Blog - Apple Developer,《App Extension Programming Guide》。参与翻译了《Swift Programming Language》等。</li>
-<li><a href="http://swift.gg/" target="_blank" rel="external">SwiftGG</a>：一个走心的 Swift 翻译组，由《The Swift Programming Language》中文版翻译团队原班人马组成， 翻译的文章来源于国外的优秀 Swift 网站和博客，且全部获得作者和网站授权。</li>
-<li><a href="http://www.jessesquires.com" target="_blank" rel="external">Swift Weekly Brief</a>：“这个博客现在每周会将Swift开源中的重要讨论和提交整理成Open source Swift weekly brief，这对一线开发者尽早了解这门语言的动态情报很有帮助。By <a href="http://weibo.com/cuikang82" target="_blank" rel="external">@崔康总编</a> ”。来源：<a href="http://www.jessesquires.com" target="_blank" rel="external">Jesse Squires</a></li>
-<li><a href="http://swiftdevweekly.co/" target="_blank" rel="external">Swift Developer Weekly</a>:这个网站每周推送最新的技术文章和书本推荐到你的email，由Phil Wright创办。</li>
-<li><p><a href="http://iosdevtips.co" target="_blank" rel="external">iosdevtips.co</a>：iOS Development Tips</p>
-</li>
-<li><p><strong><a id="recomm_resources"></a>资源合集</strong></p>
-<blockquote>
-<p>以下是其它开发者社区或 Swift 爱好者整理的有关 Swift 语言学习的资源列表。</p>
-</blockquote>
-</li>
-<li><p><a href="https://github.com/SwiftEducation" target="_blank" rel="external">SwiftEducation</a>：“这是建立在 GitHub 上的一个 Swift 学习资料汇集，包括了有关幻灯和多个练手的应用程序源码。By @极客头条”。的确有不少基础实用的好<a href="https://github.com/SwiftEducation/presentations" target="_blank" rel="external">教程</a>。这对于基础学起的同学有福了。</p>
-</li>
-<li><a href="https://github.com/hsavit1/Awesome-Swift-Education" target="_blank" rel="external">Awesome-Swift-Education</a>：整理地如此美妙的学习资源，实在让人太欢喜了。</li>
-<li><a href="http://www.ioscookies.com/" target="_blank" rel="external">iOS Cookies</a>：分类合理、排序靠谱的 Swift 开源类库集合。</li>
-<li><a href="https://github.com/matteocrippa/awesome-swift" target="_blank" rel="external">matteocrippa/awesome-swift</a>：这个版本的 Swift 资源集合内容丰富，分类也不错。作者：<a href="https://github.com/matteocrippa" target="_blank" rel="external">Matteo Crippa</a></li>
-<li><a href="http://www.csdn.net/article/2015-03-04/2824108-ios-developers-sites/1" target="_blank" rel="external">适合iOS开发者的 15 大网站推荐</a>：的确很全、很主流的国外 iOS 开发者网站。</li>
-<li><a href="http://gold.xitu.io/#/tag/Swift" target="_blank" rel="external">掘金 Swift 版块</a></li>
-<li><a href="http://weekly.manong.io/issues/33?ref=swift" target="_blank" rel="external">码农周刊 －《Swift 特刊》</a></li>
-<li><a href="http://www.cocoachina.com/bbs/read.php?tid=204512" target="_blank" rel="external">CocoaChina －《Swift 新手入门汇集帖》</a></li>
-<li><a href="http://code.csdn.net/news/2820075" target="_blank" rel="external">CSDN_CODE －《Swift 编程语言资料大合集》</a></li>
-<li><a href="http://www.infoq.com/cn/news/2014/06/apple-swift-learning-resources" target="_blank" rel="external">InfoQ －《学习苹果 Swift 语言的一些在线资源（英文）》</a></li>
-<li><a href="https://github.com/Lax/iOS-Swift-Demos/wiki" target="_blank" rel="external">刘兰涛 －《Swift 学习资源》</a> By <a href="http://weibo.com/u/1653644220" target="_blank" rel="external">@懒桃儿吃桃儿</a></li>
-<li><a href="http://www.learnswift.tips/" target="_blank" rel="external">learnswift.tips</a>：国外主流 Swift 学习资源集合。</li>
-<li><a href="https://github.com/vsouza/awesome-ios" target="_blank" rel="external">Awesome iOS</a>：一个 iOS 的各类优秀的开源项目集合。真不错！可惜Swift开源项目资源不足。</li>
-<li><a href="http://iosdevelopertips.com/" target="_blank" rel="external">iOS Developer Tips</a>：还是有关 iOS 的开发资源及文章合集。</li>
-<li><a href="https://github.com/Wolg/awesome-swift" target="_blank" rel="external">Wolg/awesome-swift</a>：一位俄罗斯朋友分类整理的 Swift 资源列表（有持续更新）。</li>
-<li><a href="https://github.com/Aufree/trip-to-iOS" target="_blank" rel="external">Aufree/trip-to-iOS</a>：显然作者很用心的做了非常深入的整理。它对于开发者拓展学习范围及开发知识面非常有益。</li>
-<li><a href="https://swift.zeef.com/robin.eggenkamp" target="_blank" rel="external">Robin Eggenkamp - Awesome Swift</a>：“一个收集了很多 Swift 开发资源的网站”。</li>
-<li><a href="https://github.com/hehonghui/iOS-tech-frontier" target="_blank" rel="external">iOS 开发技术前线</a>：“一个定期翻译、发布国内外iOS优质的技术、开源库、软件架构设计、测试等文章的开源项目”。主要翻译来源 Ray Wenderlich，App Coda，Medium。来源：<a href="http://weibo.com/u/5589212242" target="_blank" rel="external">@开发技术前线</a></li>
-<li><a href="http://www.cocoachina.com/ios/20150626/11348.html" target="_blank" rel="external">11个超棒的 iOS 开发学习网站</a>：还算比较主流的归纳。不过，缺了raywenderlich.com 和 ioscreator.com 这两个重量级教程网站实在是不应该啊。</li>
-</ul>
-<hr>
-<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="1-编程工具"><a href="#1-编程工具" class="headerlink" title="1. 编程工具"></a>1. 编程工具</h3><ul>
-<li><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">Xcode 下载</a>：苹果应用集成开发环境。支持 C/C++, Objective C, Swift 等。不用购买开发者计划，直接下载。</li>
-<li><a href="http://macromates.com/" target="_blank" rel="external">Textmate</a>：Mac OS X 上一个可高度自定义的编辑器，尤其在我想做出一个快速改变但又不想等待 Xcode 加载的时候。该工具目前已经<a href="https://github.com/textmate/textmate" target="_blank" rel="external">开源</a></li>
-<li><a href="http://mouapp.com/" target="_blank" rel="external">Mou</a>：OS X 上一款 Markdown 的编辑器。非常适用于编写自述文件、变更日志以及其他方面的内容。作者：<a href="http://chenluois.com/" target="_blank" rel="external">罗晨</a></li>
-<li><a href="http://www.sublimetext.com/" target="_blank" rel="external">Sublime Text ($)</a>：Mac OS X 上另一款非常受欢迎的轻量级，可高度自定义的编辑器。</li>
-<li><a href="http://www.runswiftlang.com/" target="_blank" rel="external">RunSwift</a>:正在犹豫是否入手苹果电脑开始一段 Swift 编程旅程的同学们，或仅仅为了试验一段简单 Swift 代码又懒得打开 Xcode，可以试试这款 Web 版 Swift 编译环境 RunSwift。</li>
-<li><a href="http://infinitapps.com/bezel/" target="_blank" rel="external">InfinitApps - Bezel</a>：“嫌 Xcode 6 目前提供的 Watch 模拟器不够直观？Bezel 是一个用于视觉预览 WatchKit 所开发程序效果的小工具，前提是你安装了 xScope 软件（Mac端）或 xScopeMirror（iPhone端）。 By <a href="http://weibo.com/twios" target="_blank" rel="external">@WatchKit开发</a>”</li>
-<li><a href="https://github.com/jas/playground" target="_blank" rel="external">Markdown -&gt; Playground</a>：该开源项目可将内含有 Swift 代码的 Markdown 自动转换为 Xcode Playgrounds 文件。喜欢用 Markdown 编辑的同学很激动吧。P.S. 这款工具写于 NodeJS，原因作者有交待。</li>
-<li><a href="https://autolayoutconstraints.com" target="_blank" rel="external">iOS/Mac Autolayout Constraints</a>：这个工具不错，很直观，布局时可以省不少工夫。推荐者：<a href="http://weibo.com/qq184675420" target="_blank" rel="external">@荧星诉语</a></li>
-<li><a href="https://appscreens.io/yK7cLuBNij" target="_blank" rel="external">在线生成 AppStore 审核用截图</a>：便捷的生产力工具。免费，易操作，可自定义。</li>
-<li><a href="https://swiftlang.ng.bluemix.net/#/repl" target="_blank" rel="external">IBM Swift Sandbox</a>：IBM的在线Swift网站，需要翻墙。</li>
-<li><a href="http://swiftstub.com/" target="_blank" rel="external">SwiftStub</a>：另外一个Swift在线练习网站。</li>
-</ul>
-<h3 id="2-代码管理"><a href="#2-代码管理" class="headerlink" title="2. 代码管理"></a>2. 代码管理</h3><ul>
-<li><a href="https://github.com/" target="_blank" rel="external">GitHub</a>：声望日盛的资源分享之地。</li>
-<li><a href="https://desktop.github.com/" target="_blank" rel="external">GitHub for Mac</a>：一个设计的非常美观的 git 客户端，不能取代你从命令行获得的所有功能，但使用起来非常简单。</li>
-<li><a href="https://gitcafe.com/" target="_blank" rel="external">GitCafe</a>：GitCafe is a source code hosting service based on version control system Git。国内的代码托管服务，基于 Git，值得一提的是最近也推出了和 GitHub Pages 类似的服务 Gitcafe Pages。因为是在国内，所以相比较 GitHub 有速度优势，在网络环境差的情况下也许可以作为 GitHub 的备用。</li>
-<li><a href="https://bitbucket.org/" target="_blank" rel="external">Bitbucket</a>：国外的代码托管服务，不同于 GitHub 的是，Bitbucket 可以免费建立 private 项目。</li>
-<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a>：分布式版本控制系统和源码管理系统，其优点是：快和简单易用。对于新手来说，可在此查看免费电子书籍。</li>
-<li><a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">SourceTree</a>：A free Git &amp; Mercurial client for Windows or Mac.免费的Git和Mercurial客户端，当然也可以配合Bitbucket使用。</li>
-</ul>
-<h3 id="3-Xcode-插件"><a href="#3-Xcode-插件" class="headerlink" title="3. Xcode 插件"></a>3. Xcode 插件</h3><ul>
-<li><a href="http://beta.cocoapods.org/" target="_blank" rel="external">CocoaPods</a>：第三方库的管理利器，允许你简单地把第三方库整合进自己的应用中。对我个人来说，我基本上每个项目都使用 CocoaPods。</li>
-<li><a href="https://github.com/kattrali/cocoapods-xcode-plugin" target="_blank" rel="external">CocoaPods Xcode Plugin</a>：一款 Xcode 插件，允许你直接从 Xcode 管理 CocoaPod 依赖。</li>
-<li><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external">onevcat/VVDocumenter-Xcode</a>：快捷注释 Xcode 插件。By <a href="http://weibo.com/onevcat" target="_blank" rel="external">@onevcat</a></li>
-<li><a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">ColorSense</a>：一款显示颜色数值的插件，还可以直接通过系统的ColorPicker来自动生成对应颜色代码</li>
-<li><a href="https://github.com/sopig/DeepIniOS" target="_blank" rel="external">Xcode 优秀插件整理</a>:持续保持整理更新的 Xcode 插件整理 By <a href="https://github.com/ddapps" target="_blank" rel="external">@ddapps</a></li>
-<li><a href="https://github.com/CodeEagle/SwiftCodeSnippets" target="_blank" rel="external">CodeEagle/SwiftCodeSnippets</a>：自动下载指定 Xcode Snippet 源的 Xcode Plugin。项目缺省提供 Snippet 代码源 <a href="https://github.com/burczyk/XcodeSwiftSnippets/tree/master/plist" target="_blank" rel="external">burczyk/XcodeSwiftSnippets</a> 。</li>
-<li><a href="https://github.com/realm/SwiftLint" target="_blank" rel="external">realm/SwiftLint</a>：Realm 采用 Swift 编写的基于 GitHub’s Swift Style Guide 规则的检查工具。除了命令行运行方式，也提供集成 Xcode 的方法。对于新团队，这样的工具可以自动约束大家遵循编程规范。</li>
-<li><a href="http://joeshang.github.io/2015/04/10/fix-xcode-upgrade-plugin-invalid/" target="_blank" rel="external">XCode 升级后插件失效的原理与修复办法</a>：由一条命令引发的分析文章。<a href="http://weibo.com/u/2068840121" target="_blank" rel="external">@_TongJZ</a></li>
-<li><a href="https://github.com/feinstruktur/CoPilot" target="_blank" rel="external">feinstruktur/CoPilot</a>：通过此插件，Xcode 可以协同编程了（采用 WebSocket 通讯）。如此强大的“黑工具”，不爱它能行吗。<a href="https://vimeo.com/128713880" target="_blank" rel="external">演示视频</a></li>
-<li><a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">Carthage</a>：新兴起的去中心化的依赖管理器，目标是用最简单的方式来管理Cocoa第三方框架。优势很明显，但是也有不足，看后面的发展吧。</li>
-</ul>
-<h3 id="4-管理工具"><a href="#4-管理工具" class="headerlink" title="4. 管理工具"></a>4. 管理工具</h3><ul>
-<li><a href="https://github.com/kylef/swiftenv" target="_blank" rel="external">swiftenv</a>：Swift 版本管理器。类似 rvm（Ruby）, nvm（Node.js）。</li>
-<li><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">HomeBrew</a>：OS X 上非常出色的包管理工具。</li>
-<li><a href="http://panic.com/transmit/" target="_blank" rel="external">Transmit ($)</a>：一个Mac OS X 上 FTP 客户端，有着非常漂亮的用户界面和有用的功能。</li>
-</ul>
-<h3 id="5-调试工具"><a href="#5-调试工具" class="headerlink" title="5. 调试工具"></a>5. 调试工具</h3><ul>
-<li><a href="http://fuckingclangwarnings.com/" target="_blank" rel="external">mattt/fuckingclangwarnings.com</a>：警告与语义对照表。以后再也不用为 Xcode 各种警告纠结啦！By <a href="http://weibo.com/foogry" target="_blank" rel="external">@foogry</a></li>
-</ul>
-<h3 id="6-设计工具"><a href="#6-设计工具" class="headerlink" title="6. 设计工具"></a>6. 设计工具</h3><ul>
-<li><a href="http://www.sketchapp.com/" target="_blank" rel="external">sketch</a>：更适合开发应用的矢量设计工具。通过插件还支持与代码协同工作。推荐书籍：<a href="https://designcode.io/sketch" target="_blank" rel="external">Learn Sketch 3</a></li>
-<li><a href="http://www.paintcodeapp.com/" target="_blank" rel="external">PaintCode</a><br>:PaintCode是Apple Designer入门APP开发最合适的辅助工具之一，她可以把你绘制的矢量UI自动转化为适用于iOS/OS X的Objective-C代码。</li>
-</ul>
-<h2 id="媒体报道"><a href="#媒体报道" class="headerlink" title="媒体报道"></a><a href="https://github.com/ipader/SwiftGuide/tree/master/archive/news.md" target="_blank" rel="external">媒体报道</a></h2><h2 id="开放平台"><a href="#开放平台" class="headerlink" title="开放平台"></a><a href="https://github.com/ipader/SwiftGuide/tree/master/archive/platforms.md" target="_blank" rel="external">开放平台</a></h2><h2 id="Apple-Watch-指南"><a href="#Apple-Watch-指南" class="headerlink" title="Apple Watch 指南"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Apple%20Watch/README.md" target="_blank" rel="external">Apple Watch 指南</a></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Swift-语言指南&quot;&gt;&lt;a href=&quot;#Swift-语言指南&quot; class=&quot;headerlink&quot; title=&quot;Swift 语言指南&quot;&gt;&lt;/a&gt;Swift 语言指南&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;span style=&quot;color:lightg
-    
-    </summary>
-    
-      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
-    
-      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
-    
-      <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
-    
-  </entry>
   
   <entry>
     <title>Hexo标签插件</title>
@@ -868,6 +722,148 @@
   </entry>
   
   <entry>
+    <title>iOS面试题大集合[转]</title>
+    <link href="https://huos3203.github.io/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
+    <id>https://huos3203.github.io/2017/01/22/iOS面试题大集合/</id>
+    <published>2017-01-22T10:55:21.000Z</published>
+    <updated>2017-01-22T10:55:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 align="center">iOS有用的面试题大集合</h1>
+
+<h2 id="面试题从何处得来"><a href="#面试题从何处得来" class="headerlink" title="面试题从何处得来"></a>面试题从何处得来</h2><ul>
+<li><a href="http://blog.sunnyxx.com/2015/07/04/ios-interview/" target="_blank" rel="external">招聘一个靠谱的 iOS</a></li>
+<li><a href="http://www.zhihu.com/question/19604641" target="_blank" rel="external">知乎－如何面试 iOS 工程师？</a></li>
+</ul>
+<h2 id="阅读面试题之前"><a href="#阅读面试题之前" class="headerlink" title="阅读面试题之前"></a>阅读面试题之前</h2><p>在正式开始之前，我期望你能对iOS/Mac OS X平台开发有所了解，在iOS开发中已经很少需要自己写复杂的算法了，一般情况下很少会在面试中出现算法的考核，如果你了解一些基础的算法，还是有帮助的。</p>
+<p>Now！！请使用ARC</p>
+<h3 id="什么是iOS开发"><a href="#什么是iOS开发" class="headerlink" title="什么是iOS开发"></a>什么是iOS开发</h3><p>iOS是iPhone iPad等手持设备的操作系统，所谓的iOS开发就是开发运行在iOS系统上的应用或者游戏，比如支付宝，微信，微博等，当然这也包括了iPad版的应用，iOS开发可以归纳到<strong>移动开发</strong>领域。</p>
+<p><strong>有时候面试官是那种’脑残粉’，了解一下Apple的发展历史，可能比较聊的开。</strong></p>
+<p><a href="http://digi.tech.qq.com/a/20150127/021898.htm" target="_blank" rel="external">苹果Mac计算机31年发展历程回顾</a></p>
+<p><a href="http://baike.baidu.com/link?url=68F4Bl4llkNvdFJ1Md0fkZDDudN-NS46JeZoLrgPeqEbZmm8oBKG92Ocyd983yNQU6FVuDTFZOnjjPjfUHnuoePdfh6zJJ973pXFKYcbIKp5bCnQy_WvUVNJ6P84s8HE1xAlRaGdLVuoCb2p_8uaMa" target="_blank" rel="external">苹果公司</a></p>
+<p><a href="http://www.zhihu.com/topic/19551762" target="_blank" rel="external">苹果公司在知乎上的话题</a></p>
+<p><a href="http://www.amazon.cn/%E5%8F%B2%E8%92%82%E5%A4%AB%C2%B7%E4%B9%94%E5%B8%83%E6%96%AF%E4%BC%A0-%E6%B2%83%E5%B0%94%E7%89%B9%C2%B7%E8%89%BE%E8%90%A8%E5%85%8B%E6%A3%AE/dp/B00IM4IFL2/ref=sr_1_1?ie=UTF8&amp;qid=1436592631&amp;sr=8-1&amp;keywords=%E4%B9%94%E5%B8%83%E6%96%AF" target="_blank" rel="external">乔布斯个人传记</a></p>
+<h3 id="拼写正确的重要性"><a href="#拼写正确的重要性" class="headerlink" title="拼写正确的重要性"></a>拼写正确的重要性</h3><p>有些面试官可能更注重细节，所以，拼写的单词一定要对，比如iOS，Xcode，iPhone，Objective-C，JSON等，良好的拼写习惯，会让面试官觉得你细心靠谱。</p>
+<h3 id="Swift和Objective-C的比较"><a href="#Swift和Objective-C的比较" class="headerlink" title="Swift和Objective-C的比较"></a>Swift和Objective-C的比较</h3><p>仁者见仁智者见智，从个人的使用角度上来看，Swift在某些情况上比Objective-C更加的严谨了，入门非常简单，但是想开发应用，还是需要学习cocoa框架，这玩意路子还是Objective-C的，所以有基础可能更好的理解Swift在iOS/Mac OS X 中的开发和应用。</p>
+<p><a href="http://www.zhihu.com/question/24002984" target="_blank" rel="external">知乎原文</a></p>
+<h3 id="了解Watch-OS"><a href="#了解Watch-OS" class="headerlink" title="了解Watch OS"></a>了解Watch OS</h3><p><code>Watch OS</code>是苹果公司推出的应用在手表上的一个操作系统，<code>Watch OS 1.0</code>需要跟iPhone相结合才能工作。</p>
+<p><a href="https://stratechery.com/2014/apple-watch-asking-saying/" target="_blank" rel="external">Apple Watch</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&amp;mid=208847424&amp;idx=1&amp;sn=fac57c5da8136b07fe9cdf53d1ec9f4c#rd" target="_blank" rel="external">Watch OS 2.0 开发概述</a></p>
+<hr>
+<h2 id="iOS面试"><a href="#iOS面试" class="headerlink" title="iOS面试"></a>iOS面试</h2><h5>property 后面可以有哪些修饰符</h5>
+
+<ol>
+<li><p>读写修饰符 <code>readwrite</code> | <code>readonly</code></p>
+<p> <code>readwrite</code> Xcode会帮助我们创建<code>setter</code>，<code>getter</code>方法，<code>readonly</code> Xcode只会帮助我们创建<code>getter</code>方法，不会创建<code>setter</code>方法。</p>
+</li>
+<li><p><code>setter</code>相关的修饰符 <code>assign</code> | <code>retain</code> | <code>copy</code></p>
+<p> 2.1 <code>setter</code>相关的修饰符表明了<code>setter</code>方法该如何实现，<code>assign</code>用于基本数据类型<code>NSInteger</code>，<code>CGFloat</code>，C数据类型<code>int</code>，<code>float</code>，<code>id</code>类型等，这个符号不会涉及内存管理，但是如果是对象类使用了它，可能会导致内存泄漏或者<code>EXC_BAD_ACCESS</code>错误。</p>
+<p> 2.2 <code>retain</code>用于对象类的内存管理，如果基本数据类型使用它，<code>Xcode</code>会直接报错。当对象类使用此修饰符时，<code>setter</code>方法的实现是先<code>release</code>一次，然后再对新的对象做一次<code>retain</code>操作。</p>
+<p> 2.3 <code>copy</code>主要用于<code>NSString</code>，用于内容复制。</p>
+</li>
+<li><p>原子性修饰符 <code>atomic</code> | <code>nonatomic</code></p>
+<p> <code>atomic</code> 表示线程安全</p>
+<p> <code>nonatomic</code> 表示非线程安全，使用此修饰符会提高性能</p>
+</li>
+<li><p><code>getter</code>，<code>setter</code>修饰符</p>
+<p> 这两个修饰符用于设置生成的getter，setter的方法名</p>
+</li>
+<li><p><code>strong</code>，<code>weak</code>修饰符（ARC）<br>在ARC中内存管理都只需要使用这两个修饰符，而且<code>strong</code>是默认全局的，只要你写了<code>Objective-C</code>的对象，不自己添加<code>weak</code>的话，默认就是<code>strong</code>。<br> 5.1 <code>strong</code>表示这个对象的拥有者<br> 一个对象可以有多个拥有者，<code>strong</code>就是用来表示对这个对象的拥有。比如在往<code>NSMutableArray</code>中添加<code>Objective-C</code>对象，当你从数组中删除时，这个对象并不会释放。需要你手动设置为<code>nil</code>，或者在控制器的生命周期内，由系统来释放。<br> 5.2 <code>weak</code>指针变量仍然可以指向一个对象，但不是这个对象的拥有者<br> <code>weak</code>修饰的指针变量也可以指向对象，但不是这个对象的实际拥有者，也就是说<code>weak</code>修饰的指针变量如果想要释放，需要<code>strong</code>修饰的指针变量设置为<code>nil</code>，<code>weak</code>修饰的指针变量也会是一个<code>nil</code>，它指向的对象已经没有了，还需要设置<code>weak</code>修饰的指针变量为<code>nil</code>。</p>
+</li>
+<li><code>nonnull</code> <code>nullable</code> <code>null_resettable</code></li>
+</ol>
+<p>Xcode 6.3推出的<code>nullability annotations</code>，主要是为了更好的Swift与Objective-C混编，在Swift中有可选型的概念<code>!</code>,<code>?</code>，但是Objective-C中木有这玩意，于是Xcode 6.3中才有了这个，<br>从字面可以看出:<br>    <code>nonnull</code> 表示对象不应该为空，如果是这个修饰符对应的就是Swift中已经解包的对象或者<code>!</code><br>    <code>nullable</code>表示可以为<code>nil</code>或者<code>NULL</code>,对应是Swift中的可选<code>?</code><br>    <code>null_resettable</code>则是表达属性的空属性，该属性<code>setter</code>访问器允许将其设置为<code>nil</code>（设置该属性为默认值），但是它的<code>getter</code>访问器不会提供一个<code>nil</code>值（因为它提供了默认值），有一个这样的属性如UIView’s tintColor，如果没有tint颜色指定时它会提供一个默认的tint颜色值，对应的Swift使用是var tintColor:UIColor!</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><ol>
+<li>使用 <code>weak</code> 关键字，相比 <code>assign</code> 有什么不同<br> 一般情况下使用<code>weak</code>是避免循环引用，因为它不是对象的拥有者。而<code>assign</code>则是用于基本数据类型，或者C类型，而且<code>assign</code>是直接赋值，可能会导致一个问题。比如我想a和b共用一块内存，a是用<code>assign</code>修饰的，<code>a = b</code>，现在a使用的目的已经完成，我想释放这个内存，但是a并不知道b到底用没用完，如果此时a释放内存，而b还在使用，那么会导致应用程序crash，使用<code>weak</code>就能避免这样的问题。</li>
+<li>怎么用 copy 关键字<br> <code>copy</code>拷贝的是内容,<code>retain</code>是拷贝的指针<pre><code>* 以`string`为例,如果`string`的属性为`copy`的话,那么传入参数为`NSString`的话,即为不可变`string`,`retain`,`copy`效果一样.
+* 如果传入参数是`mutable`的话,那么`copy`拷贝内容,源随意变化不影响该属性的值.`retain`拷贝指针,源变化则属性值着变化,因为属性和源指向如何使用呢,通常在需要拷贝内容,但是副本和源不要互相影响的情况下使用.`*` 同一内存地址.
+* 例如`array/dictionary`中,可能会需要一个副本来做一些操作(筛选,排序等),但是并不希望影响原始值,则可以使用`copy`
+</code></pre></li>
+<li>@property (copy) NSMutableArray *array; 这样写有什么问题吗<br> 因为用了<code>copy</code>, 内部会深拷贝一次, 指针实际指向的是<code>NSArray</code>, 所以如果调用<code>removeObject</code>和<code>addObject</code>方法的话, 会<code>unRecognized selector</code></li>
+<li>如何让自己的类用 copy 修饰符？如何重写带 copy 关键字的 setter？<br> 当一个对象发生改变时不影响另外一个对象，这里就需要使用<code>copy</code>关键字了，实现<code>NSCopying</code>协议，重写- <code>(id)copyWithZone:(NSZone *)zone</code>方法。<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(_name != name)</div><div class="line">    &#123;</div><div class="line">        _name = [name <span class="keyword">copy</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li>@protocol 和 category 中如何使用 @property<br> <code>@protocol</code>可以通过关键字:<code>@synthesize</code>或者在继承的类里面重新定义一次该属性(<code>extension</code>里面定义是不行的)<br> <code>category</code>通过关联:<code>objc_setAssociatedObject</code>/<code>objc_getAssociatedObject</code></li>
+<li><code>@property</code> 的本质是什么？<code>ivar</code>、<code>getter</code>、<code>setter</code> 是如何生成并添加到这个类中的<br> <code>@property</code>本质是定义一个<code>objc_property</code>结构体<br><strong>如何生成目前不清楚</strong></li>
+<li><code>weak</code>属性需要在<code>dealloc</code>中置<code>nil</code>么<br> 不需要，因为weak会自动设置nil</li>
+<li><code>@synthesize</code>和@<code>dynamic</code>分别有什么作用<br> 关于@synthesize（现在已经不需要在写这个属性了，它是用来生成getter和setter方法）<br> <code>@dynamic</code> 就是要告诉编译器<code>getter</code>和<code>setter</code>方法会在程序运行或者用到动态绑定的方式，以便让编译器通过编译，这个主要要在<code>NSManagerObject</code>上。</li>
+<li><code>ARC</code>下，不显式指定任何属性关键字时，默认的关键字都有哪些<br> 在默认情况下，所有的实例变量和局部变量都是<code>strong</code>类型的。</li>
+<li>用<code>@property</code>声明的<code>NSString</code>（或<code>NSArray</code>，<code>NSDictionary</code>）经常使用<code>copy</code>关键字，为什么？如果改用strong关键字，可能造成什么问题<br>因为不想改变了其中的值后把原来的值也跟着改变了，用了<code>strong</code>后会出现这样的状况。</li>
+<li>什么是ARC<br>请阅读，然后随便谈谈你的理解即可。<br>ARC是为了解决下面几个问题<ul>
+<li>当我们要释放一个堆内存时，首先要确定指向这个堆空间的指针都被<code>release</code>了。（避免提前释放）</li>
+<li>释放指针指向的堆空间，首先要确定哪些指针指向同一个堆，这些指针只能释放一次。（<code>MRC</code>下即谁创建，谁释放，避免重复释放）</li>
+<li>模块化操作时，对象可能被多个模块创建和使用，不能确定最后由谁去释放。</li>
+<li>多线程操作时，不确定哪个线程最后使用完毕<br><a href="http://onevcat.com/2012/06/arc-hand-by-hand/" target="_blank" rel="external">手把手教你ARC——iOS/Mac开发ARC入门和使用</a><br><a href="http://www.oschina.net/translate/objc-automatic-reference-counting-in-xcode-explained" target="_blank" rel="external">理解 Objective-C 的 ARC</a></li>
+</ul>
+</li>
+<li>请解释以下keywords的区别： <code>assign</code> vs <code>weak</code>, <code>block</code> vs <code>weak</code><br><code>assign</code>适用于基本数据类型，<code>weak</code>是适用于<code>NSObject</code>对象，并且是一个弱引用。<ul>
+<li><code>assign</code>其实也可以用来修饰对象，那么我们为什么不用它呢？<br>因为被<code>assign</code>修饰的对象在释放之后，指针的地址还是存在的，也就是说指针并没有被置为<code>nil</code>。如果在后续的内存分配中，刚好分到了这块地址，程序就会崩溃掉。</li>
+<li><code>weak</code>修饰的对象在释放之后，指针地址会被置为<code>nil</code>。所以现在一般弱引用就是用<code>weak</code>。</li>
+<li><code>block</code>是用来修饰一个变量，这个变量就可以在<code>block</code>中被修改，使用<code>block</code>修饰的变量在<code>block</code>代码快中会被<code>retain</code>（<code>ARC</code>下，<code>MRC</code>下不会<code>retain</code>） </li>
+<li><code>weak</code>：使用<code>weak</code>修饰的变量不会在<code>block</code>代码块中被<code>retain</code>同时，在ARC下，要避免<code>block</code>出现循环引用 <code>weak typedof(self)weakSelf = self</code></li>
+</ul>
+</li>
+<li><code>__block</code>在<code>arc</code>和<code>非arc</code>下含义一样吗<br>是不一样的，ARC会retain，非ARC不会。</li>
+<li>描述一个你遇到过的<code>retain</code> cycle例子<br>在<code>viewController</code>中避免循环引用<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    _data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>  
+解决办法<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">__<span class="keyword">weak</span> ViewController *weakSelf = <span class="keyword">self</span>;</div><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    weakSelf.data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure></li>
+<li><code>+(void)load;</code> <code>+(void)initialize;</code>有什么用处<br>在Objective-C中，<code>runtime</code>会自动调用每个类的两个方法。<code>+load</code>会在类初始加载时调用，<code>+initialize</code>会在第一次调用类的类方法或实例方法之前被调用。这两个方法是可选的，且只有在实现了它们时才会被调用。<br>共同点：两个方法都只会被调用一次。</li>
+<li><code>UIView</code>和<code>CALayer</code>有什么关系<ul>
+<li><code>UIView</code>是iOS界面元素的基础，所有的界面元素都继承于它。它本身是由<code>CoreAnimation</code>来实现的，它真正绘图的部分是由一个<code>CALayer</code>的类来管理的，<code>UIView</code>本身更像是一个<code>CALayer</code>的管理器。</li>
+<li><code>UIView</code>都存在一个<code>layer</code>属性，可以访问到<code>CALayer</code>的实例。</li>
+<li><code>UIView</code>的<code>CALayer</code>类也存在一个<code>view</code>树结构，可以像<code>UIView</code>一样进行添加</li>
+<li><code>UIView</code>的<code>layer</code>树在系统内部，由系统来维护，它存在着三棵树，分别是逻辑树，动画树，显示树</li>
+</ul>
+</li>
+<li>如何高性能的给<code>UIImageView</code>加个圆角<ul>
+<li>使用贝塞尔曲线来切割图片</li>
+<li>使用<code>Quartz2D</code>直接绘制图片</li>
+</ul>
+</li>
+<li>使用<code>drawRect</code>有什么影响<br><code>drawRect</code>方法依赖<code>Core Graphics</code>框架来进行自定义的绘制，但这种方法主要的缺点就是它处理<code>touch</code>事件的方式：每次按钮被点击后，都会用<code>setNeddsDisplay</code>进行强制重绘；而且不止一次，每次单点事件触发两次执行。这样的话从性能的角度来说，对<code>CPU</code>和内存来说都是欠佳的。</li>
+<li>SDWebImage里面给UIImageView加载图片的逻辑是什么样的<br>详情看<a href="http://www.cnblogs.com/6duxz/p/4159572.html" target="_blank" rel="external">最新版SDWebImage的使用</a></li>
+<li>麻烦你设计个简单的图片内存缓存器<br>图片的内存缓存，可以考虑将图片数据保存到一个数据模型中，所以在程序运行时这个模型都存在内存中，一定要具备移除策略，即释放数据模型。</li>
+<li>讲讲你用<code>Instrument</code>优化动画性能的经历<br><a href="http://www.hrchen.com/2013/05/performance-with-instruments/" target="_blank" rel="external">怎么使用instrument</a></li>
+<li><code>loadView</code>是干嘛用的<br>当你访问一个<code>ViewController</code>的<code>view</code>属性时，如果此时<code>view</code>的值是<code>nil</code>，那么，<code>ViewController</code>就会自动调用<code>loadView</code>这个方法。这个方法就会加载或者创建一个<code>view</code>对象，赋值给<code>view</code>属性。<br><code>loadView</code>默认做的事情是：如果此<code>ViewController</code>存在一个对应的<code>nib</code>文件，那么就加载这个<code>nib</code>。否则，就创建一个<code>UIView</code>对象。<br>如果你用<code>Interface Builder</code>来创建界面，那么不应该重载这个方法。<br>如果你想自己创建<code>view</code>对象，那么可以重载这个方法。此时你需要自己给<code>view</code>属性赋值。你自定义的方法不应该调用<code>super</code>。如果你需要对<code>view</code>做一些其他的定制操作，在<code>viewDidLoad</code>里面去做。<br><a href="http://www.cnblogs.com/dyllove98/archive/2013/06/06/3123005.html" target="_blank" rel="external">iOS 的loadView 及使用loadView中初始化View注意的问题</a></li>
+<li>用过<code>CoreData</code>或者<code>SQLite</code>吗？读写是分线程的吗？遇到过死锁没？咋解决的<br>参考<a href="http://blog.csdn.net/hanangellove/article/details/44966769" target="_blank" rel="external">CoreData与SQLite的线程安全</a></li>
+<li><code>GCD</code>里面有哪几种<code>Queue</code>？你自己建立过串行<code>queue</code>吗？背后的线程模型是什么样的<ul>
+<li>主队列 <code>dispatch_main_queue();</code> 串行 ，更新UI</li>
+<li>全局队列 <code>dispatch_global_queue();</code> 并行，四个优先级：<code>background</code>，<code>low</code>，<code>default</code>，<code>high</code></li>
+<li>自定义队列 <code>dispatch_queue_t queue;</code> 可以自定义是并行：<code>DISPATCH_QUEUE_CONCURRENT</code>或者串行<code>DISPATCH_QUEUE_SERIAL</code></li>
+</ul>
+</li>
+<li>为什么其他语言里叫函数调用， <code>Objective-C</code>里则是给对象发消息（或者谈下对<code>runtime</code>的理解）<br>网上关于<code>runtime</code>的资料非常多，其实这方面在平时的开发中使用非常非常之少，底层的黑魔法。<br><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a><br><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></li>
+<li>什么是<code>method swizzling</code><br>在Objective-C中调用一个方法，其实是向一个对象发送消息，查找消息的唯一依据是<code>selector</code>的名字。利用<code>Objective-C</code>的动态特性，可以实现在运行时偷换<code>selector</code>对应的方法实现，达到给方法挂钩的目的。<br><a href="http://blog.csdn.net/yiyaaixuexi/article/details/9374411" target="_blank" rel="external">详细的案例</a></li>
+<li>runtime 如何实现 weak 属性 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">OBJC_ASSOCIATION_ASSIGN</div><div class="line">OBJC_ASSOCIATION_RETAIN_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_COPY_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_RETAIN</div><div class="line">OBJC_ASSOCIATION_COPY</div><div class="line">objc_setAssociatedObject(<span class="keyword">self</span>, &amp;myKey, anObject, OBJC_ASSOCIATION_RETAIN);</div></pre></td></tr></table></figure>
+可以自定义<code>weak</code>来实现内存管理，Apple已经为我们准备了常量。<br>参考<br><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a><br><a href="http://southpeak.github.io/blog/2014/10/30/objective-c-runtime-yun-xing-shi-zhi-er-:cheng-yuan-bian-liang-yu-shu-xing/" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a></li>
+<li><code>objc</code>中向一个<code>nil</code>对象发送消息将会发生什么<br><code>objc</code>的特性是允许对一个 <code>nil</code> 对象发送消息不会 Crash，因为会被忽略掉。</li>
+<li>什么时候会报<code>unrecognized selector</code>的异常<br>调用一个不存在的方法</li>
+<li><code>objc</code>中向一个对象发送消息<code>[obj foo]</code>和<code>objc_msgSend()</code>函数之间有什么关系<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[obj foo];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo));</div><div class="line"></div><div class="line">[obj foo:parameter];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo:),parameter);</div></pre></td></tr></table></figure></li>
+<li>一个objc对象如何进行内存布局<br>可参考<a href="http://www.cnblogs.com/csutanyu/archive/2011/12/12/objective-c_memory_layout.html" target="_blank" rel="external">Objective-C内存布局</a></li>
+<li>一个objc对象的isa的指针指向什么？有什么作用？<br>isa是一个Class 类型的指针. 每个实例对象有个isa的指针,他指向对象的类，而Class里也有个isa的指针, 指向meteClass(元类)。元类保存了类方法的列表。当类方法被调用时，先会从本身查找类方法的实现，如果没有，元类会向他父类查找该方法。同时注意的是：元类（meteClass）也是类，它也是对象。元类也有isa指针,它的isa指针最终指向的是一个根元类(root meteClass).根元类的isa指针指向本身，这样形成了一个封闭的内循环。</li>
+<li>下面的代码输出什么<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Son</span> : <span class="title">Father</span></span></div><div class="line">- (<span class="keyword">id</span>)init</div><div class="line">&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">super</span> <span class="keyword">class</span>]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+输出Son</li>
+<li>runtime如何通过selector找到对应的IMP地址<br>id (*IMP)(id, SEL, …)<br>这个函数使用当前CPU架构实现的标准的C调用约定。第一个参数是指向self的指针(如果是实例方法，则是类实例的内存地址；如果是类方法，则是指向元类的指针)，第二个参数是方法选择器(selector)，接下来是方法的实际参数列表。<br>前面介绍过的SEL就是为了查找方法的最终实现IMP的。由于每个方法对应唯一的SEL，因此我们可以通过SEL方便快速准确地获得它所对应的IMP，查找过程将在下面讨论。取得IMP后，我们就获得了执行这个方法代码的入口点，此时，我们就可以像调用普通的C语言函数一样来使用这个函数指针了。<br>通过取得IMP，我们可以跳过Runtime的消息传递机制，直接执行IMP指向的函数实现，这样省去了Runtime消息传递过程中所做的一系列查找操作，会比直接向对象发送消息高效一些。</li>
+</ol>
+<h2 id="Hybrid-混合开发"><a href="#Hybrid-混合开发" class="headerlink" title="Hybrid 混合开发"></a>Hybrid 混合开发</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 align=&quot;center&quot;&gt;iOS有用的面试题大集合&lt;/h1&gt;
+
+&lt;h2 id=&quot;面试题从何处得来&quot;&gt;&lt;a href=&quot;#面试题从何处得来&quot; class=&quot;headerlink&quot; title=&quot;面试题从何处得来&quot;&gt;&lt;/a&gt;面试题从何处得来&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a
+    
+    </summary>
+    
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
+    
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
+    
+      <category term="面试" scheme="https://huos3203.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Awsome Apple Develop Guide</title>
     <link href="https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/"/>
     <id>https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/</id>
@@ -1057,148 +1053,6 @@
   </entry>
   
   <entry>
-    <title>iOS面试题大集合[转]</title>
-    <link href="https://huos3203.github.io/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
-    <id>https://huos3203.github.io/2017/01/22/iOS面试题大集合/</id>
-    <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 align="center">iOS有用的面试题大集合</h1>
-
-<h2 id="面试题从何处得来"><a href="#面试题从何处得来" class="headerlink" title="面试题从何处得来"></a>面试题从何处得来</h2><ul>
-<li><a href="http://blog.sunnyxx.com/2015/07/04/ios-interview/" target="_blank" rel="external">招聘一个靠谱的 iOS</a></li>
-<li><a href="http://www.zhihu.com/question/19604641" target="_blank" rel="external">知乎－如何面试 iOS 工程师？</a></li>
-</ul>
-<h2 id="阅读面试题之前"><a href="#阅读面试题之前" class="headerlink" title="阅读面试题之前"></a>阅读面试题之前</h2><p>在正式开始之前，我期望你能对iOS/Mac OS X平台开发有所了解，在iOS开发中已经很少需要自己写复杂的算法了，一般情况下很少会在面试中出现算法的考核，如果你了解一些基础的算法，还是有帮助的。</p>
-<p>Now！！请使用ARC</p>
-<h3 id="什么是iOS开发"><a href="#什么是iOS开发" class="headerlink" title="什么是iOS开发"></a>什么是iOS开发</h3><p>iOS是iPhone iPad等手持设备的操作系统，所谓的iOS开发就是开发运行在iOS系统上的应用或者游戏，比如支付宝，微信，微博等，当然这也包括了iPad版的应用，iOS开发可以归纳到<strong>移动开发</strong>领域。</p>
-<p><strong>有时候面试官是那种’脑残粉’，了解一下Apple的发展历史，可能比较聊的开。</strong></p>
-<p><a href="http://digi.tech.qq.com/a/20150127/021898.htm" target="_blank" rel="external">苹果Mac计算机31年发展历程回顾</a></p>
-<p><a href="http://baike.baidu.com/link?url=68F4Bl4llkNvdFJ1Md0fkZDDudN-NS46JeZoLrgPeqEbZmm8oBKG92Ocyd983yNQU6FVuDTFZOnjjPjfUHnuoePdfh6zJJ973pXFKYcbIKp5bCnQy_WvUVNJ6P84s8HE1xAlRaGdLVuoCb2p_8uaMa" target="_blank" rel="external">苹果公司</a></p>
-<p><a href="http://www.zhihu.com/topic/19551762" target="_blank" rel="external">苹果公司在知乎上的话题</a></p>
-<p><a href="http://www.amazon.cn/%E5%8F%B2%E8%92%82%E5%A4%AB%C2%B7%E4%B9%94%E5%B8%83%E6%96%AF%E4%BC%A0-%E6%B2%83%E5%B0%94%E7%89%B9%C2%B7%E8%89%BE%E8%90%A8%E5%85%8B%E6%A3%AE/dp/B00IM4IFL2/ref=sr_1_1?ie=UTF8&amp;qid=1436592631&amp;sr=8-1&amp;keywords=%E4%B9%94%E5%B8%83%E6%96%AF" target="_blank" rel="external">乔布斯个人传记</a></p>
-<h3 id="拼写正确的重要性"><a href="#拼写正确的重要性" class="headerlink" title="拼写正确的重要性"></a>拼写正确的重要性</h3><p>有些面试官可能更注重细节，所以，拼写的单词一定要对，比如iOS，Xcode，iPhone，Objective-C，JSON等，良好的拼写习惯，会让面试官觉得你细心靠谱。</p>
-<h3 id="Swift和Objective-C的比较"><a href="#Swift和Objective-C的比较" class="headerlink" title="Swift和Objective-C的比较"></a>Swift和Objective-C的比较</h3><p>仁者见仁智者见智，从个人的使用角度上来看，Swift在某些情况上比Objective-C更加的严谨了，入门非常简单，但是想开发应用，还是需要学习cocoa框架，这玩意路子还是Objective-C的，所以有基础可能更好的理解Swift在iOS/Mac OS X 中的开发和应用。</p>
-<p><a href="http://www.zhihu.com/question/24002984" target="_blank" rel="external">知乎原文</a></p>
-<h3 id="了解Watch-OS"><a href="#了解Watch-OS" class="headerlink" title="了解Watch OS"></a>了解Watch OS</h3><p><code>Watch OS</code>是苹果公司推出的应用在手表上的一个操作系统，<code>Watch OS 1.0</code>需要跟iPhone相结合才能工作。</p>
-<p><a href="https://stratechery.com/2014/apple-watch-asking-saying/" target="_blank" rel="external">Apple Watch</a></p>
-<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&amp;mid=208847424&amp;idx=1&amp;sn=fac57c5da8136b07fe9cdf53d1ec9f4c#rd" target="_blank" rel="external">Watch OS 2.0 开发概述</a></p>
-<hr>
-<h2 id="iOS面试"><a href="#iOS面试" class="headerlink" title="iOS面试"></a>iOS面试</h2><h5>property 后面可以有哪些修饰符</h5>
-
-<ol>
-<li><p>读写修饰符 <code>readwrite</code> | <code>readonly</code></p>
-<p> <code>readwrite</code> Xcode会帮助我们创建<code>setter</code>，<code>getter</code>方法，<code>readonly</code> Xcode只会帮助我们创建<code>getter</code>方法，不会创建<code>setter</code>方法。</p>
-</li>
-<li><p><code>setter</code>相关的修饰符 <code>assign</code> | <code>retain</code> | <code>copy</code></p>
-<p> 2.1 <code>setter</code>相关的修饰符表明了<code>setter</code>方法该如何实现，<code>assign</code>用于基本数据类型<code>NSInteger</code>，<code>CGFloat</code>，C数据类型<code>int</code>，<code>float</code>，<code>id</code>类型等，这个符号不会涉及内存管理，但是如果是对象类使用了它，可能会导致内存泄漏或者<code>EXC_BAD_ACCESS</code>错误。</p>
-<p> 2.2 <code>retain</code>用于对象类的内存管理，如果基本数据类型使用它，<code>Xcode</code>会直接报错。当对象类使用此修饰符时，<code>setter</code>方法的实现是先<code>release</code>一次，然后再对新的对象做一次<code>retain</code>操作。</p>
-<p> 2.3 <code>copy</code>主要用于<code>NSString</code>，用于内容复制。</p>
-</li>
-<li><p>原子性修饰符 <code>atomic</code> | <code>nonatomic</code></p>
-<p> <code>atomic</code> 表示线程安全</p>
-<p> <code>nonatomic</code> 表示非线程安全，使用此修饰符会提高性能</p>
-</li>
-<li><p><code>getter</code>，<code>setter</code>修饰符</p>
-<p> 这两个修饰符用于设置生成的getter，setter的方法名</p>
-</li>
-<li><p><code>strong</code>，<code>weak</code>修饰符（ARC）<br>在ARC中内存管理都只需要使用这两个修饰符，而且<code>strong</code>是默认全局的，只要你写了<code>Objective-C</code>的对象，不自己添加<code>weak</code>的话，默认就是<code>strong</code>。<br> 5.1 <code>strong</code>表示这个对象的拥有者<br> 一个对象可以有多个拥有者，<code>strong</code>就是用来表示对这个对象的拥有。比如在往<code>NSMutableArray</code>中添加<code>Objective-C</code>对象，当你从数组中删除时，这个对象并不会释放。需要你手动设置为<code>nil</code>，或者在控制器的生命周期内，由系统来释放。<br> 5.2 <code>weak</code>指针变量仍然可以指向一个对象，但不是这个对象的拥有者<br> <code>weak</code>修饰的指针变量也可以指向对象，但不是这个对象的实际拥有者，也就是说<code>weak</code>修饰的指针变量如果想要释放，需要<code>strong</code>修饰的指针变量设置为<code>nil</code>，<code>weak</code>修饰的指针变量也会是一个<code>nil</code>，它指向的对象已经没有了，还需要设置<code>weak</code>修饰的指针变量为<code>nil</code>。</p>
-</li>
-<li><code>nonnull</code> <code>nullable</code> <code>null_resettable</code></li>
-</ol>
-<p>Xcode 6.3推出的<code>nullability annotations</code>，主要是为了更好的Swift与Objective-C混编，在Swift中有可选型的概念<code>!</code>,<code>?</code>，但是Objective-C中木有这玩意，于是Xcode 6.3中才有了这个，<br>从字面可以看出:<br>    <code>nonnull</code> 表示对象不应该为空，如果是这个修饰符对应的就是Swift中已经解包的对象或者<code>!</code><br>    <code>nullable</code>表示可以为<code>nil</code>或者<code>NULL</code>,对应是Swift中的可选<code>?</code><br>    <code>null_resettable</code>则是表达属性的空属性，该属性<code>setter</code>访问器允许将其设置为<code>nil</code>（设置该属性为默认值），但是它的<code>getter</code>访问器不会提供一个<code>nil</code>值（因为它提供了默认值），有一个这样的属性如UIView’s tintColor，如果没有tint颜色指定时它会提供一个默认的tint颜色值，对应的Swift使用是var tintColor:UIColor!</p>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><ol>
-<li>使用 <code>weak</code> 关键字，相比 <code>assign</code> 有什么不同<br> 一般情况下使用<code>weak</code>是避免循环引用，因为它不是对象的拥有者。而<code>assign</code>则是用于基本数据类型，或者C类型，而且<code>assign</code>是直接赋值，可能会导致一个问题。比如我想a和b共用一块内存，a是用<code>assign</code>修饰的，<code>a = b</code>，现在a使用的目的已经完成，我想释放这个内存，但是a并不知道b到底用没用完，如果此时a释放内存，而b还在使用，那么会导致应用程序crash，使用<code>weak</code>就能避免这样的问题。</li>
-<li>怎么用 copy 关键字<br> <code>copy</code>拷贝的是内容,<code>retain</code>是拷贝的指针<pre><code>* 以`string`为例,如果`string`的属性为`copy`的话,那么传入参数为`NSString`的话,即为不可变`string`,`retain`,`copy`效果一样.
-* 如果传入参数是`mutable`的话,那么`copy`拷贝内容,源随意变化不影响该属性的值.`retain`拷贝指针,源变化则属性值着变化,因为属性和源指向如何使用呢,通常在需要拷贝内容,但是副本和源不要互相影响的情况下使用.`*` 同一内存地址.
-* 例如`array/dictionary`中,可能会需要一个副本来做一些操作(筛选,排序等),但是并不希望影响原始值,则可以使用`copy`
-</code></pre></li>
-<li>@property (copy) NSMutableArray *array; 这样写有什么问题吗<br> 因为用了<code>copy</code>, 内部会深拷贝一次, 指针实际指向的是<code>NSArray</code>, 所以如果调用<code>removeObject</code>和<code>addObject</code>方法的话, 会<code>unRecognized selector</code></li>
-<li>如何让自己的类用 copy 修饰符？如何重写带 copy 关键字的 setter？<br> 当一个对象发生改变时不影响另外一个对象，这里就需要使用<code>copy</code>关键字了，实现<code>NSCopying</code>协议，重写- <code>(id)copyWithZone:(NSZone *)zone</code>方法。<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(_name != name)</div><div class="line">    &#123;</div><div class="line">        _name = [name <span class="keyword">copy</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-<li>@protocol 和 category 中如何使用 @property<br> <code>@protocol</code>可以通过关键字:<code>@synthesize</code>或者在继承的类里面重新定义一次该属性(<code>extension</code>里面定义是不行的)<br> <code>category</code>通过关联:<code>objc_setAssociatedObject</code>/<code>objc_getAssociatedObject</code></li>
-<li><code>@property</code> 的本质是什么？<code>ivar</code>、<code>getter</code>、<code>setter</code> 是如何生成并添加到这个类中的<br> <code>@property</code>本质是定义一个<code>objc_property</code>结构体<br><strong>如何生成目前不清楚</strong></li>
-<li><code>weak</code>属性需要在<code>dealloc</code>中置<code>nil</code>么<br> 不需要，因为weak会自动设置nil</li>
-<li><code>@synthesize</code>和@<code>dynamic</code>分别有什么作用<br> 关于@synthesize（现在已经不需要在写这个属性了，它是用来生成getter和setter方法）<br> <code>@dynamic</code> 就是要告诉编译器<code>getter</code>和<code>setter</code>方法会在程序运行或者用到动态绑定的方式，以便让编译器通过编译，这个主要要在<code>NSManagerObject</code>上。</li>
-<li><code>ARC</code>下，不显式指定任何属性关键字时，默认的关键字都有哪些<br> 在默认情况下，所有的实例变量和局部变量都是<code>strong</code>类型的。</li>
-<li>用<code>@property</code>声明的<code>NSString</code>（或<code>NSArray</code>，<code>NSDictionary</code>）经常使用<code>copy</code>关键字，为什么？如果改用strong关键字，可能造成什么问题<br>因为不想改变了其中的值后把原来的值也跟着改变了，用了<code>strong</code>后会出现这样的状况。</li>
-<li>什么是ARC<br>请阅读，然后随便谈谈你的理解即可。<br>ARC是为了解决下面几个问题<ul>
-<li>当我们要释放一个堆内存时，首先要确定指向这个堆空间的指针都被<code>release</code>了。（避免提前释放）</li>
-<li>释放指针指向的堆空间，首先要确定哪些指针指向同一个堆，这些指针只能释放一次。（<code>MRC</code>下即谁创建，谁释放，避免重复释放）</li>
-<li>模块化操作时，对象可能被多个模块创建和使用，不能确定最后由谁去释放。</li>
-<li>多线程操作时，不确定哪个线程最后使用完毕<br><a href="http://onevcat.com/2012/06/arc-hand-by-hand/" target="_blank" rel="external">手把手教你ARC——iOS/Mac开发ARC入门和使用</a><br><a href="http://www.oschina.net/translate/objc-automatic-reference-counting-in-xcode-explained" target="_blank" rel="external">理解 Objective-C 的 ARC</a></li>
-</ul>
-</li>
-<li>请解释以下keywords的区别： <code>assign</code> vs <code>weak</code>, <code>block</code> vs <code>weak</code><br><code>assign</code>适用于基本数据类型，<code>weak</code>是适用于<code>NSObject</code>对象，并且是一个弱引用。<ul>
-<li><code>assign</code>其实也可以用来修饰对象，那么我们为什么不用它呢？<br>因为被<code>assign</code>修饰的对象在释放之后，指针的地址还是存在的，也就是说指针并没有被置为<code>nil</code>。如果在后续的内存分配中，刚好分到了这块地址，程序就会崩溃掉。</li>
-<li><code>weak</code>修饰的对象在释放之后，指针地址会被置为<code>nil</code>。所以现在一般弱引用就是用<code>weak</code>。</li>
-<li><code>block</code>是用来修饰一个变量，这个变量就可以在<code>block</code>中被修改，使用<code>block</code>修饰的变量在<code>block</code>代码快中会被<code>retain</code>（<code>ARC</code>下，<code>MRC</code>下不会<code>retain</code>） </li>
-<li><code>weak</code>：使用<code>weak</code>修饰的变量不会在<code>block</code>代码块中被<code>retain</code>同时，在ARC下，要避免<code>block</code>出现循环引用 <code>weak typedof(self)weakSelf = self</code></li>
-</ul>
-</li>
-<li><code>__block</code>在<code>arc</code>和<code>非arc</code>下含义一样吗<br>是不一样的，ARC会retain，非ARC不会。</li>
-<li>描述一个你遇到过的<code>retain</code> cycle例子<br>在<code>viewController</code>中避免循环引用<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    _data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>  
-解决办法<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">__<span class="keyword">weak</span> ViewController *weakSelf = <span class="keyword">self</span>;</div><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    weakSelf.data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure></li>
-<li><code>+(void)load;</code> <code>+(void)initialize;</code>有什么用处<br>在Objective-C中，<code>runtime</code>会自动调用每个类的两个方法。<code>+load</code>会在类初始加载时调用，<code>+initialize</code>会在第一次调用类的类方法或实例方法之前被调用。这两个方法是可选的，且只有在实现了它们时才会被调用。<br>共同点：两个方法都只会被调用一次。</li>
-<li><code>UIView</code>和<code>CALayer</code>有什么关系<ul>
-<li><code>UIView</code>是iOS界面元素的基础，所有的界面元素都继承于它。它本身是由<code>CoreAnimation</code>来实现的，它真正绘图的部分是由一个<code>CALayer</code>的类来管理的，<code>UIView</code>本身更像是一个<code>CALayer</code>的管理器。</li>
-<li><code>UIView</code>都存在一个<code>layer</code>属性，可以访问到<code>CALayer</code>的实例。</li>
-<li><code>UIView</code>的<code>CALayer</code>类也存在一个<code>view</code>树结构，可以像<code>UIView</code>一样进行添加</li>
-<li><code>UIView</code>的<code>layer</code>树在系统内部，由系统来维护，它存在着三棵树，分别是逻辑树，动画树，显示树</li>
-</ul>
-</li>
-<li>如何高性能的给<code>UIImageView</code>加个圆角<ul>
-<li>使用贝塞尔曲线来切割图片</li>
-<li>使用<code>Quartz2D</code>直接绘制图片</li>
-</ul>
-</li>
-<li>使用<code>drawRect</code>有什么影响<br><code>drawRect</code>方法依赖<code>Core Graphics</code>框架来进行自定义的绘制，但这种方法主要的缺点就是它处理<code>touch</code>事件的方式：每次按钮被点击后，都会用<code>setNeddsDisplay</code>进行强制重绘；而且不止一次，每次单点事件触发两次执行。这样的话从性能的角度来说，对<code>CPU</code>和内存来说都是欠佳的。</li>
-<li>SDWebImage里面给UIImageView加载图片的逻辑是什么样的<br>详情看<a href="http://www.cnblogs.com/6duxz/p/4159572.html" target="_blank" rel="external">最新版SDWebImage的使用</a></li>
-<li>麻烦你设计个简单的图片内存缓存器<br>图片的内存缓存，可以考虑将图片数据保存到一个数据模型中，所以在程序运行时这个模型都存在内存中，一定要具备移除策略，即释放数据模型。</li>
-<li>讲讲你用<code>Instrument</code>优化动画性能的经历<br><a href="http://www.hrchen.com/2013/05/performance-with-instruments/" target="_blank" rel="external">怎么使用instrument</a></li>
-<li><code>loadView</code>是干嘛用的<br>当你访问一个<code>ViewController</code>的<code>view</code>属性时，如果此时<code>view</code>的值是<code>nil</code>，那么，<code>ViewController</code>就会自动调用<code>loadView</code>这个方法。这个方法就会加载或者创建一个<code>view</code>对象，赋值给<code>view</code>属性。<br><code>loadView</code>默认做的事情是：如果此<code>ViewController</code>存在一个对应的<code>nib</code>文件，那么就加载这个<code>nib</code>。否则，就创建一个<code>UIView</code>对象。<br>如果你用<code>Interface Builder</code>来创建界面，那么不应该重载这个方法。<br>如果你想自己创建<code>view</code>对象，那么可以重载这个方法。此时你需要自己给<code>view</code>属性赋值。你自定义的方法不应该调用<code>super</code>。如果你需要对<code>view</code>做一些其他的定制操作，在<code>viewDidLoad</code>里面去做。<br><a href="http://www.cnblogs.com/dyllove98/archive/2013/06/06/3123005.html" target="_blank" rel="external">iOS 的loadView 及使用loadView中初始化View注意的问题</a></li>
-<li>用过<code>CoreData</code>或者<code>SQLite</code>吗？读写是分线程的吗？遇到过死锁没？咋解决的<br>参考<a href="http://blog.csdn.net/hanangellove/article/details/44966769" target="_blank" rel="external">CoreData与SQLite的线程安全</a></li>
-<li><code>GCD</code>里面有哪几种<code>Queue</code>？你自己建立过串行<code>queue</code>吗？背后的线程模型是什么样的<ul>
-<li>主队列 <code>dispatch_main_queue();</code> 串行 ，更新UI</li>
-<li>全局队列 <code>dispatch_global_queue();</code> 并行，四个优先级：<code>background</code>，<code>low</code>，<code>default</code>，<code>high</code></li>
-<li>自定义队列 <code>dispatch_queue_t queue;</code> 可以自定义是并行：<code>DISPATCH_QUEUE_CONCURRENT</code>或者串行<code>DISPATCH_QUEUE_SERIAL</code></li>
-</ul>
-</li>
-<li>为什么其他语言里叫函数调用， <code>Objective-C</code>里则是给对象发消息（或者谈下对<code>runtime</code>的理解）<br>网上关于<code>runtime</code>的资料非常多，其实这方面在平时的开发中使用非常非常之少，底层的黑魔法。<br><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a><br><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></li>
-<li>什么是<code>method swizzling</code><br>在Objective-C中调用一个方法，其实是向一个对象发送消息，查找消息的唯一依据是<code>selector</code>的名字。利用<code>Objective-C</code>的动态特性，可以实现在运行时偷换<code>selector</code>对应的方法实现，达到给方法挂钩的目的。<br><a href="http://blog.csdn.net/yiyaaixuexi/article/details/9374411" target="_blank" rel="external">详细的案例</a></li>
-<li>runtime 如何实现 weak 属性 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">OBJC_ASSOCIATION_ASSIGN</div><div class="line">OBJC_ASSOCIATION_RETAIN_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_COPY_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_RETAIN</div><div class="line">OBJC_ASSOCIATION_COPY</div><div class="line">objc_setAssociatedObject(<span class="keyword">self</span>, &amp;myKey, anObject, OBJC_ASSOCIATION_RETAIN);</div></pre></td></tr></table></figure>
-可以自定义<code>weak</code>来实现内存管理，Apple已经为我们准备了常量。<br>参考<br><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a><br><a href="http://southpeak.github.io/blog/2014/10/30/objective-c-runtime-yun-xing-shi-zhi-er-:cheng-yuan-bian-liang-yu-shu-xing/" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a></li>
-<li><code>objc</code>中向一个<code>nil</code>对象发送消息将会发生什么<br><code>objc</code>的特性是允许对一个 <code>nil</code> 对象发送消息不会 Crash，因为会被忽略掉。</li>
-<li>什么时候会报<code>unrecognized selector</code>的异常<br>调用一个不存在的方法</li>
-<li><code>objc</code>中向一个对象发送消息<code>[obj foo]</code>和<code>objc_msgSend()</code>函数之间有什么关系<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[obj foo];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo));</div><div class="line"></div><div class="line">[obj foo:parameter];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo:),parameter);</div></pre></td></tr></table></figure></li>
-<li>一个objc对象如何进行内存布局<br>可参考<a href="http://www.cnblogs.com/csutanyu/archive/2011/12/12/objective-c_memory_layout.html" target="_blank" rel="external">Objective-C内存布局</a></li>
-<li>一个objc对象的isa的指针指向什么？有什么作用？<br>isa是一个Class 类型的指针. 每个实例对象有个isa的指针,他指向对象的类，而Class里也有个isa的指针, 指向meteClass(元类)。元类保存了类方法的列表。当类方法被调用时，先会从本身查找类方法的实现，如果没有，元类会向他父类查找该方法。同时注意的是：元类（meteClass）也是类，它也是对象。元类也有isa指针,它的isa指针最终指向的是一个根元类(root meteClass).根元类的isa指针指向本身，这样形成了一个封闭的内循环。</li>
-<li>下面的代码输出什么<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Son</span> : <span class="title">Father</span></span></div><div class="line">- (<span class="keyword">id</span>)init</div><div class="line">&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">super</span> <span class="keyword">class</span>]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-输出Son</li>
-<li>runtime如何通过selector找到对应的IMP地址<br>id (*IMP)(id, SEL, …)<br>这个函数使用当前CPU架构实现的标准的C调用约定。第一个参数是指向self的指针(如果是实例方法，则是类实例的内存地址；如果是类方法，则是指向元类的指针)，第二个参数是方法选择器(selector)，接下来是方法的实际参数列表。<br>前面介绍过的SEL就是为了查找方法的最终实现IMP的。由于每个方法对应唯一的SEL，因此我们可以通过SEL方便快速准确地获得它所对应的IMP，查找过程将在下面讨论。取得IMP后，我们就获得了执行这个方法代码的入口点，此时，我们就可以像调用普通的C语言函数一样来使用这个函数指针了。<br>通过取得IMP，我们可以跳过Runtime的消息传递机制，直接执行IMP指向的函数实现，这样省去了Runtime消息传递过程中所做的一系列查找操作，会比直接向对象发送消息高效一些。</li>
-</ol>
-<h2 id="Hybrid-混合开发"><a href="#Hybrid-混合开发" class="headerlink" title="Hybrid 混合开发"></a>Hybrid 混合开发</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 align=&quot;center&quot;&gt;iOS有用的面试题大集合&lt;/h1&gt;
-
-&lt;h2 id=&quot;面试题从何处得来&quot;&gt;&lt;a href=&quot;#面试题从何处得来&quot; class=&quot;headerlink&quot; title=&quot;面试题从何处得来&quot;&gt;&lt;/a&gt;面试题从何处得来&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a
-    
-    </summary>
-    
-      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
-    
-      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
-    
-      <category term="面试" scheme="https://huos3203.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>迁移SVN库到git库保留branchs和tags</title>
     <link href="https://huos3203.github.io/2017/01/18/%E8%BF%81%E7%A7%BBSVN%E5%BA%93%E5%88%B0git%E5%BA%93%E4%BF%9D%E7%95%99branchs%E5%92%8Ctags/"/>
     <id>https://huos3203.github.io/2017/01/18/迁移SVN库到git库保留branchs和tags/</id>
@@ -1382,6 +1236,152 @@
   </entry>
   
   <entry>
+    <title>Swift 语言指南</title>
+    <link href="https://huos3203.github.io/2017/01/03/SwiftGuide/"/>
+    <id>https://huos3203.github.io/2017/01/03/SwiftGuide/</id>
+    <published>2017-01-03T09:05:20.000Z</published>
+    <updated>2017-01-23T09:13:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Swift-语言指南-转"><a href="#Swift-语言指南-转" class="headerlink" title="Swift 语言指南[转]"></a>Swift 语言指南[转]</h1><blockquote>
+<p><span style="color:lightgray;font-size:12px"><a href="http://weibo.com/swiftlanguage" target="_blank" rel="external">@SwiftLanguage</a> 更新于 2016-6-6，更新内容详见 <a href="https://github.com/ipader/SwiftGuide/blob/master/weekly/Issue-55.md" target="_blank" rel="external">Issue 55</a>。往期更新回顾详见《<a href="https://github.com/ipader/SwiftGuide/blob/master/weekly/README.md" target="_blank" rel="external">收录周报</a>》</span></p>
+</blockquote>
+<p>　　<a href="https://github.com/ipader/SwiftGuide/blob/master/2014%20letter.md" target="_blank" rel="external">这份指南</a>汇集了 Swift 语言主流学习资源，并以开发者的视角整理编排。对于精选项目及文章，可直接访问《<a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">Swift 项目精选</a>》和《<a href="https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md" target="_blank" rel="external">Swift 文章精选</a>》。还有开发者们自己维护的《<a href="https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E3%80%81%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5" target="_blank" rel="external">开发者、项目、最佳实践</a>》。当然也不能错过那些活跃、优秀的《<a href="https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99%E9%A1%B5" target="_blank" rel="external">开发者个人资料页</a>》。</p>
+<h2 id="入门指引"><a href="#入门指引" class="headerlink" title="入门指引"></a>入门指引</h2><p>苹果为 <a href="http://www.apple.com/swift/" target="_blank" rel="external">Swift</a>（<a href="http://www.apple.com/cn/swift/" target="_blank" rel="external">中文介绍</a>）开发者提供的<a href="https://developer.apple.com/swift/" target="_blank" rel="external">官方文档入口</a>，包括 <a href="https://developer.apple.com/swift/" target="_blank" rel="external">概述</a>，<a href="https://developer.apple.com/swift/blog/" target="_blank" rel="external">博客</a>（<a href="https://github.com/ipader/SwiftGuide/tree/master/mirror/Swift%20Blog%20-%20Apple%20Developer" target="_blank" rel="external">中文镜像</a>）及 <a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">开发资源</a>。其中以下几份文档（Swift 2.1）为入门级必备（<a href="https://itunes.apple.com/us/book-series/swift-programming-series/id888896989?mt=11" target="_blank" rel="external">iBooks 版</a>）：</p>
+<ul>
+<li><p><a href="https://developer.apple.com/swift/" target="_blank" rel="external">Swift Programming Language</a>（<a href="http://gg.swiftguide.cn" target="_blank" rel="external">中文版</a>｜<a href="http://wiki.jikexueyuan.com/download/swift/pdf/" target="_blank" rel="external">PDF 版</a> By <a href="http://weibo.com/swiftguide" target="_blank" rel="external">SwiftGG翻译组</a>）</p>
+</li>
+<li><p><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">Start Developing iOS Apps</a> </p>
+</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html" target="_blank" rel="external">Using Swift with Cocoa and Objective-C</a>（<a href="https://github.com/CocoaChina-editors/Welcome-to-Swift/blob/master/UsingSwiftwithCocoaandObjective-C%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C.md" target="_blank" rel="external">中文版</a> By <a href="http://weibo.com/cocoachina" target="_blank" rel="external">@CocoaChina</a>）</li>
+</ul>
+<p><em>苹果同时也维护着相应 Beta 版（Swift 2.2）文档：<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">Swift Programming Language</a>，<a href="https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html" target="_blank" rel="external">Start Developing iOS Apps</a>，<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html" target="_blank" rel="external">Using Swift with Cocoa and Objective-C</a>。</em></p>
+<p>学习实践的角度，标准库示例代码 <a href="https://developer.apple.com/sample-code/swift/downloads/Standard-Library.zip" target="_blank" rel="external">Swift Standard Library.playground</a> 是很棒的学习伴侣。</p>
+<p>教程方面，苹果力荐了斯坦福课程 <a href="https://itunes.com/StanfordSwift" target="_blank" rel="external">Stanford University: Developing iOS 8 Apps with Swift</a>（<a href="http://open.163.com/special/opencourse/ios8.html" target="_blank" rel="external">中文字幕版</a> By <a href="http://weibo.com/163open" target="_blank" rel="external">@网易公开课</a>）</p>
+<p>除以上所涉及入门级文档，<a href="https://developer.apple.com/library/ios/navigation/" target="_blank" rel="external">iOS Developer Library</a> 还为开发者提供了更庞大、系统化的开发文档支持。</p>
+<p>以下列举了几份已有第三方中文翻译文档：</p>
+<ul>
+<li><a href="https://swift.org/documentation/api-design-guidelines/" target="_blank" rel="external">API Design Guidelines</a>（<a href="http://swift.gg/2016/05/18/api-design-guidelines/" target="_blank" rel="external">中文版</a> By <a href="http://weibo.com/u/5174822990" target="_blank" rel="external">@SwiftGG翻译组</a>）</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html" target="_blank" rel="external">App Extension Programming Guide</a>（<a href="https://github.com/ipader/SwiftGuide/tree/master/mirror/App%20Extension%20Programming%20Guide" target="_blank" rel="external">中译镜像</a>）</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html" target="_blank" rel="external">iOS Human Interface Guidelines</a>（<a href="https://isux.tencent.com/?s=iOS+9+%E4%BA%BA%E6%9C%BA%E7%95%8C%E9%9D%A2%E6%8C%87%E5%8D%97" target="_blank" rel="external">中文版</a>｜<a href="http://ixdc.org/2016/files/ISUX[%E8%AF%91]iOS9%20human%20Interface%20Guideline.pdf" target="_blank" rel="external">PDF 版</a> By <a href="http://weibo.com/txisux" target="_blank" rel="external">@腾讯ISUX</a>）</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/HomeKitDeveloperGuide/Introduction/Introduction.html" target="_blank" rel="external">HomeKit Developer Guide</a>（<a href="http://www.cocoachina.com/ios/20150324/11411.html" target="_blank" rel="external">中文版</a> By <a href="http://weibo.com/cocoachina" target="_blank" rel="external">@CocoaChina</a>）</li>
+</ul>
+<p>值得称道的还有：苹果为 <a href="https://developer.apple.com/videos/" target="_blank" rel="external">Apple TV Tech Talks</a> 和 <a href="https://developer.apple.com/videos/wwdc2015/" target="_blank" rel="external">WWDC 2015</a> 的视频添加简体中文字幕，从而方便中国开发者观看来自官方的权威技术分享。</p>
+<p>有关于 Swift 开源及跨平台开发，可以关注 <a href="https://swift.org/" target="_blank" rel="external">swift.org</a></p>
+<h2 id="教程文章"><a href="#教程文章" class="headerlink" title="教程文章"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md" target="_blank" rel="external">教程文章</a></h2><h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">开源项目</a></h2><h2 id="推荐网站"><a href="#推荐网站" class="headerlink" title="推荐网站"></a>推荐网站</h2><ul>
+<li><strong>苹果官方</strong></li>
+<li><a href="https://developer.apple.com/swift/" target="_blank" rel="external">Swift</a>：Swift 概述、博客以及开发资源。</li>
+<li><a href="https://swift.org/" target="_blank" rel="external">swift.org</a>：开源后独立出来的 Swift 开源社区。</li>
+<li><a href="https://github.com/apple" target="_blank" rel="external">GitHub:apple</a>：苹果在 GitHub 上的开源项目。</li>
+<li><a href="https://github.com/apple/swift" target="_blank" rel="external">GitHub:apple/swift</a>：swift 语言在 GitHub 上的开源项目。</li>
+<li><a href="https://github.com/ksm/SwiftInFlux" target="_blank" rel="external">ksm/SwiftInFlux</a>：作者（Karol Mazur）将 Apple Developer Forums 上有关 Swift 特性、缺陷及变更讨论分类汇总并更新到 GitHub，具有很好的可读性。从中可以一窥 Swift 缺陷及未来潜在地变化。最关键地是有 Chris Lattner 及核心团队答疑解惑。</li>
+<li><a href="https://www.raywenderlich.com/" target="_blank" rel="external">raywenderlich.com</a>(<a href="https://www.raywenderlich.com/zh-hans/" target="_blank" rel="external">中文版</a>)：由Ray Wenderlich创建，专注于开发高质量编程指南（近期优质Swift文章及视频教程不断），著名的iOS/OS X博客及开发教程网站，非常适合新手学习。近期第一时间出了<a href="https://www.raywenderlich.com/74832/three-new-swift-books" target="_blank" rel="external">三本 Swift 新书</a>。</li>
+<li><a href="http://www.natashatherobot.com/" target="_blank" rel="external">Natasha The Robot</a>： 时髦码农不容错过的 Swift 开发实战教程类网站。为了简化学习复杂性，每一篇文章涵盖技术点单一又独立，配以开发步骤、运行结果以及代码等标准方式教授。难能可贵的是，它往往出品“追剧式”（最新开发特性或API跟进式）教程，实在是开发者必藏精品网站。</li>
+<li><a href="http://nshipster.com/" target="_blank" rel="external">NShipster</a> (<a href="http://nshipster.cn/" target="_blank" rel="external">中译版</a>：<a href="http://weibo.com/croath" target="_blank" rel="external">@刘镇夫</a>，<a href="http://nshipster.cn/translators/april-peng/" target="_blank" rel="external">April Peng</a>，<a href="http://weibo.com/leelejia" target="_blank" rel="external">@李乐佳</a>，<a href="http://weibo.com/fallhunter" target="_blank" rel="external">@程序员付恒</a> 等翻译)：著名开源作者 <a href="https://github.com/mattt" target="_blank" rel="external">Matt Thompson</a> 创建的开发技术博客网站，他开发了 <a href="https://github.com/afnetworking/afnetworking" target="_blank" rel="external">AFNetworking</a> 网络库，也是非常多产的开源作者。更多了解参考：<a href="http://www.fallhunter.com/p/10709" target="_blank" rel="external">《COCOA 潮人 MATTT THOMPSON》</a> By <a href="http://weibo.com/fallhunter" target="_blank" rel="external">@程序员付恒</a></li>
+<li><a href="http://jamesonquave.com/blog/" target="_blank" rel="external">jamesonquave.com</a>：移动开发者，优秀个人博客（近期文章同样关注于Swift 语言，写得很优质）。同时他将于8/30发布一本新书<a href="http://jamesonquave.com/swiftebook/" target="_blank" rel="external">《Developing iOS 8 Apps in Swift》</a> (Learn To Make Real World iOS 8 Apps)及视频教程。</li>
+<li><a href="https://www.objc.io/" target="_blank" rel="external">objc.io</a>(<a href="http://objccn.io" target="_blank" rel="external">中译版 By @onevcat 及其朋友们</a>)：”关于 Objective-C 最佳实践和先进技术的期刊。 由 Chris Eidhof, Daniel Eggert 和 Florian Kugler 成立于柏林。我们成立 objc.io 的目的是针对深入的、跟所有 iOS 和 OS X 开发者相关的技术话题创造一个正式的平台。“</li>
+<li><a href="http://www.ioscreator.com/" target="_blank" rel="external">iOSCreator</a>：这类开发指引式教程对于初学者来讲，是直接明了的有效学习资源。推荐者<a href="http://weibo.com/qq184675420" target="_blank" rel="external">@荧星诉语</a></li>
+<li><a href="https://iosdevweekly.com/" target="_blank" rel="external">iOS Dev Weekly</a>：收录一周以来 iOS 开发资讯链接，并于周五发布。由 <a href="https://twitter.com/daveverwer" target="_blank" rel="external">Dave Verwer</a> 创办，他是一位 iPhone 和 iPad 开发者以及培训师。</li>
+<li><a href="http://www.appcoda.com/" target="_blank" rel="external">Appcoda.com</a>：质量很高的一个 iOS 开发教程站，其中<a href="http://www.appcoda.com/ios-programming-course/" target="_blank" rel="external">iOS Programming Course</a>这个专题很适合刚接触 iOS 开发的新手学习。</li>
+<li><a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">中文 iOS/Mac 开发博客列表</a>：By <a href="http://weibo.com/tangqiaoboy" target="_blank" rel="external">@唐巧_body</a></li>
+<li><a href="http://www.devtalking.com/" target="_blank" rel="external">devtalking.com</a>：高产的中译博客。翻译了官方博客 Swift Blog - Apple Developer,《App Extension Programming Guide》。参与翻译了《Swift Programming Language》等。</li>
+<li><a href="http://swift.gg/" target="_blank" rel="external">SwiftGG</a>：一个走心的 Swift 翻译组，由《The Swift Programming Language》中文版翻译团队原班人马组成， 翻译的文章来源于国外的优秀 Swift 网站和博客，且全部获得作者和网站授权。</li>
+<li><a href="http://www.jessesquires.com" target="_blank" rel="external">Swift Weekly Brief</a>：“这个博客现在每周会将Swift开源中的重要讨论和提交整理成Open source Swift weekly brief，这对一线开发者尽早了解这门语言的动态情报很有帮助。By <a href="http://weibo.com/cuikang82" target="_blank" rel="external">@崔康总编</a> ”。来源：<a href="http://www.jessesquires.com" target="_blank" rel="external">Jesse Squires</a></li>
+<li><a href="http://swiftdevweekly.co/" target="_blank" rel="external">Swift Developer Weekly</a>:这个网站每周推送最新的技术文章和书本推荐到你的email，由Phil Wright创办。</li>
+<li><p><a href="http://iosdevtips.co" target="_blank" rel="external">iosdevtips.co</a>：iOS Development Tips</p>
+</li>
+<li><p><strong><a id="recomm_resources"></a>资源合集</strong></p>
+<blockquote>
+<p>以下是其它开发者社区或 Swift 爱好者整理的有关 Swift 语言学习的资源列表。</p>
+</blockquote>
+</li>
+<li><p><a href="https://github.com/SwiftEducation" target="_blank" rel="external">SwiftEducation</a>：“这是建立在 GitHub 上的一个 Swift 学习资料汇集，包括了有关幻灯和多个练手的应用程序源码。By @极客头条”。的确有不少基础实用的好<a href="https://github.com/SwiftEducation/presentations" target="_blank" rel="external">教程</a>。这对于基础学起的同学有福了。</p>
+</li>
+<li><a href="https://github.com/hsavit1/Awesome-Swift-Education" target="_blank" rel="external">Awesome-Swift-Education</a>：整理地如此美妙的学习资源，实在让人太欢喜了。</li>
+<li><a href="http://www.ioscookies.com/" target="_blank" rel="external">iOS Cookies</a>：分类合理、排序靠谱的 Swift 开源类库集合。</li>
+<li><a href="https://github.com/matteocrippa/awesome-swift" target="_blank" rel="external">matteocrippa/awesome-swift</a>：这个版本的 Swift 资源集合内容丰富，分类也不错。作者：<a href="https://github.com/matteocrippa" target="_blank" rel="external">Matteo Crippa</a></li>
+<li><a href="http://www.csdn.net/article/2015-03-04/2824108-ios-developers-sites/1" target="_blank" rel="external">适合iOS开发者的 15 大网站推荐</a>：的确很全、很主流的国外 iOS 开发者网站。</li>
+<li><a href="http://gold.xitu.io/#/tag/Swift" target="_blank" rel="external">掘金 Swift 版块</a></li>
+<li><a href="http://weekly.manong.io/issues/33?ref=swift" target="_blank" rel="external">码农周刊 －《Swift 特刊》</a></li>
+<li><a href="http://www.cocoachina.com/bbs/read.php?tid=204512" target="_blank" rel="external">CocoaChina －《Swift 新手入门汇集帖》</a></li>
+<li><a href="http://code.csdn.net/news/2820075" target="_blank" rel="external">CSDN_CODE －《Swift 编程语言资料大合集》</a></li>
+<li><a href="http://www.infoq.com/cn/news/2014/06/apple-swift-learning-resources" target="_blank" rel="external">InfoQ －《学习苹果 Swift 语言的一些在线资源（英文）》</a></li>
+<li><a href="https://github.com/Lax/iOS-Swift-Demos/wiki" target="_blank" rel="external">刘兰涛 －《Swift 学习资源》</a> By <a href="http://weibo.com/u/1653644220" target="_blank" rel="external">@懒桃儿吃桃儿</a></li>
+<li><a href="http://www.learnswift.tips/" target="_blank" rel="external">learnswift.tips</a>：国外主流 Swift 学习资源集合。</li>
+<li><a href="https://github.com/vsouza/awesome-ios" target="_blank" rel="external">Awesome iOS</a>：一个 iOS 的各类优秀的开源项目集合。真不错！可惜Swift开源项目资源不足。</li>
+<li><a href="http://iosdevelopertips.com/" target="_blank" rel="external">iOS Developer Tips</a>：还是有关 iOS 的开发资源及文章合集。</li>
+<li><a href="https://github.com/Wolg/awesome-swift" target="_blank" rel="external">Wolg/awesome-swift</a>：一位俄罗斯朋友分类整理的 Swift 资源列表（有持续更新）。</li>
+<li><a href="https://github.com/Aufree/trip-to-iOS" target="_blank" rel="external">Aufree/trip-to-iOS</a>：显然作者很用心的做了非常深入的整理。它对于开发者拓展学习范围及开发知识面非常有益。</li>
+<li><a href="https://swift.zeef.com/robin.eggenkamp" target="_blank" rel="external">Robin Eggenkamp - Awesome Swift</a>：“一个收集了很多 Swift 开发资源的网站”。</li>
+<li><a href="https://github.com/hehonghui/iOS-tech-frontier" target="_blank" rel="external">iOS 开发技术前线</a>：“一个定期翻译、发布国内外iOS优质的技术、开源库、软件架构设计、测试等文章的开源项目”。主要翻译来源 Ray Wenderlich，App Coda，Medium。来源：<a href="http://weibo.com/u/5589212242" target="_blank" rel="external">@开发技术前线</a></li>
+<li><a href="http://www.cocoachina.com/ios/20150626/11348.html" target="_blank" rel="external">11个超棒的 iOS 开发学习网站</a>：还算比较主流的归纳。不过，缺了raywenderlich.com 和 ioscreator.com 这两个重量级教程网站实在是不应该啊。</li>
+</ul>
+<hr>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="1-编程工具"><a href="#1-编程工具" class="headerlink" title="1. 编程工具"></a>1. 编程工具</h3><ul>
+<li><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">Xcode 下载</a>：苹果应用集成开发环境。支持 C/C++, Objective C, Swift 等。不用购买开发者计划，直接下载。</li>
+<li><a href="http://macromates.com/" target="_blank" rel="external">Textmate</a>：Mac OS X 上一个可高度自定义的编辑器，尤其在我想做出一个快速改变但又不想等待 Xcode 加载的时候。该工具目前已经<a href="https://github.com/textmate/textmate" target="_blank" rel="external">开源</a></li>
+<li><a href="http://mouapp.com/" target="_blank" rel="external">Mou</a>：OS X 上一款 Markdown 的编辑器。非常适用于编写自述文件、变更日志以及其他方面的内容。作者：<a href="http://chenluois.com/" target="_blank" rel="external">罗晨</a></li>
+<li><a href="http://www.sublimetext.com/" target="_blank" rel="external">Sublime Text ($)</a>：Mac OS X 上另一款非常受欢迎的轻量级，可高度自定义的编辑器。</li>
+<li><a href="http://www.runswiftlang.com/" target="_blank" rel="external">RunSwift</a>:正在犹豫是否入手苹果电脑开始一段 Swift 编程旅程的同学们，或仅仅为了试验一段简单 Swift 代码又懒得打开 Xcode，可以试试这款 Web 版 Swift 编译环境 RunSwift。</li>
+<li><a href="http://infinitapps.com/bezel/" target="_blank" rel="external">InfinitApps - Bezel</a>：“嫌 Xcode 6 目前提供的 Watch 模拟器不够直观？Bezel 是一个用于视觉预览 WatchKit 所开发程序效果的小工具，前提是你安装了 xScope 软件（Mac端）或 xScopeMirror（iPhone端）。 By <a href="http://weibo.com/twios" target="_blank" rel="external">@WatchKit开发</a>”</li>
+<li><a href="https://github.com/jas/playground" target="_blank" rel="external">Markdown -&gt; Playground</a>：该开源项目可将内含有 Swift 代码的 Markdown 自动转换为 Xcode Playgrounds 文件。喜欢用 Markdown 编辑的同学很激动吧。P.S. 这款工具写于 NodeJS，原因作者有交待。</li>
+<li><a href="https://autolayoutconstraints.com" target="_blank" rel="external">iOS/Mac Autolayout Constraints</a>：这个工具不错，很直观，布局时可以省不少工夫。推荐者：<a href="http://weibo.com/qq184675420" target="_blank" rel="external">@荧星诉语</a></li>
+<li><a href="https://appscreens.io/yK7cLuBNij" target="_blank" rel="external">在线生成 AppStore 审核用截图</a>：便捷的生产力工具。免费，易操作，可自定义。</li>
+<li><a href="https://swiftlang.ng.bluemix.net/#/repl" target="_blank" rel="external">IBM Swift Sandbox</a>：IBM的在线Swift网站，需要翻墙。</li>
+<li><a href="http://swiftstub.com/" target="_blank" rel="external">SwiftStub</a>：另外一个Swift在线练习网站。</li>
+</ul>
+<h3 id="2-代码管理"><a href="#2-代码管理" class="headerlink" title="2. 代码管理"></a>2. 代码管理</h3><ul>
+<li><a href="https://github.com/" target="_blank" rel="external">GitHub</a>：声望日盛的资源分享之地。</li>
+<li><a href="https://desktop.github.com/" target="_blank" rel="external">GitHub for Mac</a>：一个设计的非常美观的 git 客户端，不能取代你从命令行获得的所有功能，但使用起来非常简单。</li>
+<li><a href="https://gitcafe.com/" target="_blank" rel="external">GitCafe</a>：GitCafe is a source code hosting service based on version control system Git。国内的代码托管服务，基于 Git，值得一提的是最近也推出了和 GitHub Pages 类似的服务 Gitcafe Pages。因为是在国内，所以相比较 GitHub 有速度优势，在网络环境差的情况下也许可以作为 GitHub 的备用。</li>
+<li><a href="https://bitbucket.org/" target="_blank" rel="external">Bitbucket</a>：国外的代码托管服务，不同于 GitHub 的是，Bitbucket 可以免费建立 private 项目。</li>
+<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a>：分布式版本控制系统和源码管理系统，其优点是：快和简单易用。对于新手来说，可在此查看免费电子书籍。</li>
+<li><a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">SourceTree</a>：A free Git &amp; Mercurial client for Windows or Mac.免费的Git和Mercurial客户端，当然也可以配合Bitbucket使用。</li>
+</ul>
+<h3 id="3-Xcode-插件"><a href="#3-Xcode-插件" class="headerlink" title="3. Xcode 插件"></a>3. Xcode 插件</h3><ul>
+<li><a href="http://beta.cocoapods.org/" target="_blank" rel="external">CocoaPods</a>：第三方库的管理利器，允许你简单地把第三方库整合进自己的应用中。对我个人来说，我基本上每个项目都使用 CocoaPods。</li>
+<li><a href="https://github.com/kattrali/cocoapods-xcode-plugin" target="_blank" rel="external">CocoaPods Xcode Plugin</a>：一款 Xcode 插件，允许你直接从 Xcode 管理 CocoaPod 依赖。</li>
+<li><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external">onevcat/VVDocumenter-Xcode</a>：快捷注释 Xcode 插件。By <a href="http://weibo.com/onevcat" target="_blank" rel="external">@onevcat</a></li>
+<li><a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">ColorSense</a>：一款显示颜色数值的插件，还可以直接通过系统的ColorPicker来自动生成对应颜色代码</li>
+<li><a href="https://github.com/sopig/DeepIniOS" target="_blank" rel="external">Xcode 优秀插件整理</a>:持续保持整理更新的 Xcode 插件整理 By <a href="https://github.com/ddapps" target="_blank" rel="external">@ddapps</a></li>
+<li><a href="https://github.com/CodeEagle/SwiftCodeSnippets" target="_blank" rel="external">CodeEagle/SwiftCodeSnippets</a>：自动下载指定 Xcode Snippet 源的 Xcode Plugin。项目缺省提供 Snippet 代码源 <a href="https://github.com/burczyk/XcodeSwiftSnippets/tree/master/plist" target="_blank" rel="external">burczyk/XcodeSwiftSnippets</a> 。</li>
+<li><a href="https://github.com/realm/SwiftLint" target="_blank" rel="external">realm/SwiftLint</a>：Realm 采用 Swift 编写的基于 GitHub’s Swift Style Guide 规则的检查工具。除了命令行运行方式，也提供集成 Xcode 的方法。对于新团队，这样的工具可以自动约束大家遵循编程规范。</li>
+<li><a href="http://joeshang.github.io/2015/04/10/fix-xcode-upgrade-plugin-invalid/" target="_blank" rel="external">XCode 升级后插件失效的原理与修复办法</a>：由一条命令引发的分析文章。<a href="http://weibo.com/u/2068840121" target="_blank" rel="external">@_TongJZ</a></li>
+<li><a href="https://github.com/feinstruktur/CoPilot" target="_blank" rel="external">feinstruktur/CoPilot</a>：通过此插件，Xcode 可以协同编程了（采用 WebSocket 通讯）。如此强大的“黑工具”，不爱它能行吗。<a href="https://vimeo.com/128713880" target="_blank" rel="external">演示视频</a></li>
+<li><a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">Carthage</a>：新兴起的去中心化的依赖管理器，目标是用最简单的方式来管理Cocoa第三方框架。优势很明显，但是也有不足，看后面的发展吧。</li>
+</ul>
+<h3 id="4-管理工具"><a href="#4-管理工具" class="headerlink" title="4. 管理工具"></a>4. 管理工具</h3><ul>
+<li><a href="https://github.com/kylef/swiftenv" target="_blank" rel="external">swiftenv</a>：Swift 版本管理器。类似 rvm（Ruby）, nvm（Node.js）。</li>
+<li><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">HomeBrew</a>：OS X 上非常出色的包管理工具。</li>
+<li><a href="http://panic.com/transmit/" target="_blank" rel="external">Transmit ($)</a>：一个Mac OS X 上 FTP 客户端，有着非常漂亮的用户界面和有用的功能。</li>
+</ul>
+<h3 id="5-调试工具"><a href="#5-调试工具" class="headerlink" title="5. 调试工具"></a>5. 调试工具</h3><ul>
+<li><a href="http://fuckingclangwarnings.com/" target="_blank" rel="external">mattt/fuckingclangwarnings.com</a>：警告与语义对照表。以后再也不用为 Xcode 各种警告纠结啦！By <a href="http://weibo.com/foogry" target="_blank" rel="external">@foogry</a></li>
+</ul>
+<h3 id="6-设计工具"><a href="#6-设计工具" class="headerlink" title="6. 设计工具"></a>6. 设计工具</h3><ul>
+<li><a href="http://www.sketchapp.com/" target="_blank" rel="external">sketch</a>：更适合开发应用的矢量设计工具。通过插件还支持与代码协同工作。推荐书籍：<a href="https://designcode.io/sketch" target="_blank" rel="external">Learn Sketch 3</a></li>
+<li><a href="http://www.paintcodeapp.com/" target="_blank" rel="external">PaintCode</a><br>:PaintCode是Apple Designer入门APP开发最合适的辅助工具之一，她可以把你绘制的矢量UI自动转化为适用于iOS/OS X的Objective-C代码。</li>
+</ul>
+<h2 id="媒体报道"><a href="#媒体报道" class="headerlink" title="媒体报道"></a><a href="https://github.com/ipader/SwiftGuide/tree/master/archive/news.md" target="_blank" rel="external">媒体报道</a></h2><h2 id="开放平台"><a href="#开放平台" class="headerlink" title="开放平台"></a><a href="https://github.com/ipader/SwiftGuide/tree/master/archive/platforms.md" target="_blank" rel="external">开放平台</a></h2><h2 id="Apple-Watch-指南"><a href="#Apple-Watch-指南" class="headerlink" title="Apple Watch 指南"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Apple%20Watch/README.md" target="_blank" rel="external">Apple Watch 指南</a></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Swift-语言指南-转&quot;&gt;&lt;a href=&quot;#Swift-语言指南-转&quot; class=&quot;headerlink&quot; title=&quot;Swift 语言指南[转]&quot;&gt;&lt;/a&gt;Swift 语言指南[转]&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;span style=&quot;co
+    
+    </summary>
+    
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
+    
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
+    
+      <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Docker安装使用</title>
     <link href="https://huos3203.github.io/2016/12/21/Docker%E4%BD%BF%E7%94%A8/"/>
     <id>https://huos3203.github.io/2016/12/21/Docker使用/</id>
@@ -1502,8 +1502,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#115;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#110;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#111;&#109;">&#115;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#110;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#111;&#109;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#115;&#111;&#109;&#101;&#45;&#111;&#x6e;&#101;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;">&#115;&#111;&#109;&#101;&#45;&#111;&#x6e;&#101;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;</a></td>
+<td style="text-align:right">Author <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#x3a;&#x73;&#111;&#109;&#101;&#x2d;&#111;&#x6e;&#x65;&#x40;&#101;&#120;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#109;">&#x73;&#111;&#109;&#101;&#x2d;&#111;&#x6e;&#x65;&#x40;&#101;&#120;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#109;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#115;&#111;&#109;&#x65;&#45;&#111;&#110;&#101;&#x40;&#101;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#46;&#x63;&#111;&#109;">&#115;&#111;&#109;&#x65;&#45;&#111;&#110;&#101;&#x40;&#101;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#46;&#x63;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
