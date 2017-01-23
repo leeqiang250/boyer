@@ -17,7 +17,7 @@ cat modified.txt | grep 'M.*_posts' | sed 's/^.*M.*_posts//g' | sed 's/md"/md/g'
 cat postfile.txt | while read line
 do
     #逐行循环开始
-    postPath="_posts${line}"
+    postPath="\"_posts${line}\""
     echo "$postPath"
     if [ -f "${postPath}" ]; then
         #直接修改文件内容(危险动作) updated:值
