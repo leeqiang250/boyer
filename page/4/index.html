@@ -283,6 +283,442 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2015/09/29/2015-09-29-zhuan-swiftzui-jia-shi-jian/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/29/2015-09-29-zhuan-swiftzui-jia-shi-jian/" itemprop="url">
+                  [转]Swift最佳实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-29T17:05:21+08:00">
+                2015-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/09/29/2015-09-29-zhuan-swiftzui-jia-shi-jian/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/29/2015-09-29-zhuan-swiftzui-jia-shi-jian/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/09/29/2015-09-29-zhuan-swiftzui-jia-shi-jian/" class="leancloud_visitors" data-flag-title="[转]Swift最佳实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/schwa/Swift-Community-Best-Practices" target="_blank" rel="external">英文</a></p>
+<h2 id="黄金法则"><a href="#黄金法则" class="headerlink" title="黄金法则"></a>黄金法则</h2><ul>
+<li>Apple 通常是对的。应紧随苹果所推荐的或他的 Demo 中所展示的方式。您应该尽可能地遵守 Apple 在 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 一书中所定义的代码风格。但我们还是可以看到他们的示例代码中有不符合这些规则的地方，毕竟 Apple 是一家大公司嘛。</li>
+<li>不要仅仅为了减少字符的键入数量而使用模棱两可的简短命名，较长的命名都可以依赖自动完成、自我暗示、复制粘贴来减低键入的难度。命名的详细程度往往对代码维护者很有帮助。但过于冗长的命名却会绕过Swift的主要特性之一: 类型推导,所以命名的原则应该是简洁明了。</li>
+</ul>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><p>按照 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 所推荐的命名法则，类型名称应该使用[首字母大写的驼峰命名法][uppercamelcaseURL] (例如: “VehicleController”)。</p>
+<p>变量与常量应该使用首字母小写的驼峰命名法(例如: “ vehicleName “ )。</p>
+<p>推荐使用 Swift 模块来定义代码的命名空间，而非在 Swift 代码上使用 Objective-C 样式的类前缀(除非接口要与 Objective-C 交互)。</p>
+<p>不推荐使用任何形式的<a href="http://www.wikiwand.com/en/Hungarian_notation" target="_blank" rel="external">匈牙利命名法</a>（比如：k 代表常量，m 代表方法）,取代代之我们应该使用短而简洁的名字并使用 Xcode 的类型快速帮助 (⌥ + 左击)。同样我们也不要使用类似 <code>SNAKE_CASE</code> 这样的名字。</p>
+<p>这些法则之上，唯一例外的情况就是枚举值了，枚举值在这里应该首字母大写(这是 Apple 的 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">The Swift Programming Language</a> 中的规范)：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Planet</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">Mercury</span>, <span class="type">Venus</span>, <span class="type">Earth</span>, <span class="type">Mars</span>, <span class="type">Jupiter</span>, <span class="type">Saturn</span>, <span class="type">Uranus</span>, <span class="type">Nepture</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>有必要的话命名不要缩写<br>实际上在 Xcode 的”文本自动补全”功能下你可以轻而易举地键入 类似 <code>ViewController</code> 的长命名。</li>
+<li>极为常见的缩写<br>例如: <code>URL</code> 缩写应该是全部大写 ( “URL” )或者酌情全部小写( “url” )。<blockquote>
+<p>URL 的类型和变量命名推荐的规则： 如果 url 是一个类型，它应该被大写，如果是一个变量，那么应该小写。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>不应该使用注释来禁用代码,被注释掉的代码会污染你的源代码。<br>如果你当前想要删除一段代码，但将来又可能会用到，推荐你依赖 git 或你的 bug 追踪系统来管理。</p>
+<p>(TODO: 追加一个关于文档注释的小节，使用 nshipster 的链接)</p>
+<h3 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h3><p>如果可能的话，使用 Swift 的类型推导，以避免冗余的类型信息。例如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currentLocation = <span class="type">Location</span>()</div></pre></td></tr></table></figure></p>
+<p>而非：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currentLocation: <span class="type">Location</span> = <span class="type">Location</span>()</div></pre></td></tr></table></figure>
+<h3 id="内省"><a href="#内省" class="headerlink" title="内省"></a>内省</h3><p>让编译器自动推断所有的情况，这是可以做到的。在一些领域 <code>self</code> 应该被显式地使用，包括在 init 中设置参数，或者 <code>non-escaping</code>闭包。<br>例如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Example</span></span>&#123;</div><div class="line"> 	  <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">	   <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line"> 	      <span class="keyword">self</span>.name = name</div><div class="line"> 	  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="捕获列表的类型推导"><a href="#捕获列表的类型推导" class="headerlink" title="捕获列表的类型推导"></a>捕获列表的类型推导</h3><p>在一个捕获列表( capture list )中指定参数类型会导致代码冗余。如果需要的话，仅指定类型即可。  </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> people = [</div><div class="line">    (<span class="string">"Mary"</span>, <span class="number">42</span>),</div><div class="line">    (<span class="string">"Susan"</span>, <span class="number">27</span>),</div><div class="line">    (<span class="string">"Charlie"</span>, <span class="number">18</span>),</div><div class="line">]	</div><div class="line"></div><div class="line"><span class="keyword">let</span> strings = people.<span class="built_in">map</span>() &#123;</div><div class="line">    (name: <span class="type">String</span>, age: <span class="type">Int</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> <span class="string">"\(name) is \(age) years old"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果编译器可以推导出来的话，完全可以把类型删掉：<br><code>(name: String, age: Int) -&gt; String</code><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> strings = people.<span class="built_in">map</span>() &#123;</div><div class="line">    (name, age) <span class="keyword">in</span> </div><div class="line">    <span class="keyword">return</span> <span class="string">"\(name) is \(age) years old"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用编号的参数名 (“$0”) 进一步降低冗长，往往能彻底消除捕获列表的代码冗余。在闭包中当参数名没有附带任何更多信息时仅使用编号形式即可( 如非常简单的映射和过滤器 )。</p>
+<p>Apple 能够并且将会改变闭包的参数类型，通过他们的 Objective-C 框架的 Swift 变种提供出来。<br>例如，<code>optionals</code> 被删除或更改为 <code>auto-unwrapping</code> 等。故意 under-specifying 可选并依赖 Swift 来推导类型，可以减少在这些情况下代码被破译的风险。</p>
+<p>你应该避免指定返回类型，例如这个捕获列表( capture list )就是完全多余的:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dispatch_async(queue) &#123;</div><div class="line">    ()-&gt;<span class="type">Void</span> <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(<span class="string">"Fired."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(以上内容也可以参考:<a href="http://www.russbishop.net/swift-capture-lists" target="_blank" rel="external">这里</a>)</p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>类型定义中使用的常量应当被申明成静态类型。例如:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PhysicsModel</span> </span>&#123;</div><div class="line">   <span class="keyword">static</span> <span class="keyword">var</span> speedOfLightInAVacuum = <span class="number">299_792_458</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Spaceship</span> </span>&#123;</div><div class="line">  		 <span class="keyword">static</span> <span class="keyword">let</span> topSpeed = <span class="type">PhysicsModel</span>.speedOfLightInAVacuum</div><div class="line"> 	     <span class="keyword">var</span> speed: <span class="type">Double</span></div><div class="line">  		 <span class="function"><span class="keyword">func</span> <span class="title">fullSpeedAhead</span><span class="params">()</span></span> &#123;</div><div class="line">      		 speed = <span class="type">Spaceship</span>.topSpeed</div><div class="line">   	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>将常量标示为 <code>static</code> ，允许它们可以被无类型的实例引用。</p>
+<p>一般应该避免生成全局范围的常量，单例除外。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/" itemprop="url">
+                  Mac安装gitLab服务器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-27T19:25:38+08:00">
+                2015-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/09/27/2015-09-27-macan-zhuang-gitlabfu-wu-qi/" class="leancloud_visitors" data-flag-title="Mac安装gitLab服务器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####必要配置</p>
+<pre><code>*创建一个名称为&quot;gitlab&quot;管理员用户，然后再创建一个名称为&quot;gitlab&quot;的群组
+*开启gitlab用户的远程登录
+</code></pre><p>在系统启动界面:<br>隐藏gitlab用户 </p>
+<pre><code>sudo defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add gitlab
+</code></pre><p>显示git用户</p>
+<pre><code>sudo defaults delete /Library/Preferences/com.apple.loginwindow HiddenUsersList
+</code></pre><p>####添加系统账户gitlab</p>
+<p>######生成gitlab服务器目录，即用户根目录<br>进入<strong>系统偏好设置…</strong>,在管理<strong>用户与群组</strong>中，添加其他用户，暂时定为：gitlab ，登录密码假设为：gitlab，添加完成后，会自动在/Users目录下，生成用户根目录gitlab.</p>
+<p>######安装 Gitlab Shell</p>
+<pre><code>cd /Users/gitlab
+sudo -u gitlab git clone https://github.com/gitlabhq/gitlab-shell.git
+cd gitlab-shell
+sudo -u gitlab git checkout v1.9.1
+sudo -u gitlab cp config.yml.example config.yml
+</code></pre><p>打开 config.yml,然后进行编辑<br>设置  gitlab_url. 把 gitlab.example.com 替换成你自己的域名 （如果本地就不用了）<br>把所有的/home 替换成 /Users</p>
+<pre><code>sudo -u gitlab sed -i &quot;&quot; &quot;s/\/home\//\/Users\//g&quot; config.yml
+sudo -u gitlab sed -i &quot;&quot; &quot;s/\/usr\/bin\/redis-cli/\/usr\/local\/bin\/redis-cli/&quot; config.yml
+</code></pre><p>然后执行安装脚本：<code>sudo -u gitlab -H ./bin/install</code>  <strong>//需在gitlab-shell目录下载执行</strong></p>
+<p>######安装gitlab<br>先下载gitlab</p>
+<pre><code>cd /Users/gitlab
+sudo -u gitlab git clone https://github.com/gitlabhq/gitlabhq.git
+cd gitlab
+sudo -u gitlab git checkout 6-7-stable
+</code></pre><p>配置gitlab</p>
+<pre><code>sudo -u gitlab cp config/gitlab.yml.example config/gitlab.yml
+sudo -u gitlab sed -i &quot;&quot; &quot;s/\/usr\/bin\/git/\/usr\/local\/bin\/git/g&quot; config/gitlab.yml
+sudo -u gitlab sed -i &quot;&quot; &quot;s/\/home/\/Users/g&quot; config/gitlab.yml
+sudo -u gitlab sed -i &quot;&quot; &quot;s/localhost/domain.com/g&quot; config/gitlab.yml
+</code></pre><p>配置MySQL数据库，创建gitlab用户，数据库，和gitlab用户的管理权限</p>
+<pre><code># Login to MySQL
+$ mysql -u root -p
+
+# Create the GitLab production database
+mysql&gt; CREATE DATABASE IF NOT EXISTS `gitlabhq_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`;
+
+# Create the MySQL User change $password to a real password
+mysql&gt; CREATE USER &apos;gitlab&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;$password&apos;;
+
+# Grant proper permissions to the MySQL User
+mysql&gt; GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON `gitlabhq_production`.* TO &apos;gitlab&apos;@&apos;localhost&apos;;
+</code></pre><p>######安装 Gitolite帮助管理git内部用户</p>
+<p>克隆gitlab的gitolite分支源代码：</p>
+<pre><code>sudo -H -u gitlab git clone -b gl-v304 https://github.com/gitlabhq/gitolite.git /Users/gitlab/gitolite
+</code></pre><p>安装：</p>
+<pre><code>cd /Users/gitlab
+sudo -u gitlab -H mkdir bin
+sudo -u gitlab sh -c &apos;echo -e &quot;PATH=\$PATH:/Users/gitlab/bin\nexport PATH&quot; &gt;&gt; /Users/gitlab/.profile&apos;
+sudo -u gitlab sh -c &apos;gitolite/install -ln /Users/gitlab/bin&apos;
+
+sudo cp ~/.ssh/id_rsa.pub /Users/gitlab/gitlab.pub
+sudo chmod 0444 /Users/gitlab/gitlab.pub
+
+sudo -u gitlab -H sh -c &quot;PATH=/Users/gitlab/bin:$PATH; gitolite setup -pk /Users/gitlab/gitlab.pub&quot;
+</code></pre><p>为 Git 创建用户：    </p>
+<pre><code>sudo adduser \
+  --system \
+  --shell /bin/sh \
+  --gecos &apos;git version control&apos; \
+  --group \
+  --disabled-password \
+  --home /home/git \
+  git
+</code></pre><p>若干问题解决办法：<a href="http://www.cnblogs.com/whj198579/archive/2013/04/09/3009350.html" target="_blank" rel="external">Mac搭建Git服务器—开启SSH</a></p>
+<pre><code>Cloning into &apos;/tmp/gitolite-admin&apos;...
+ssh: connect to host localhost port 22: Connection refused
+fatal: Could not read from remote repository.
+</code></pre><p>SSH无密码登陆设置：</p>
+<pre><code>$ cd /etc
+$ chmod 666 sshd_config
+$ vim sshd_config
+
+#PermitRootLogin yes  改为：PermitRootLogin no
+#UsePAM yes             改为: UsePAM no
+</code></pre><p>Remove the # from the following</p>
+<pre><code>#RSAAuthentication yes
+#PubkeyAuthentication yes
+#AuthorizedKeysFile     .ssh/authorized_keys    
+#PasswordAuthentication no
+#PermitEmptyPasswords no
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2015/09/25/2015-09-25-xiao-mi-lu-you-chang-yong-cao-zuo/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1706,351 +2142,6 @@ sh /etc/getIP.sh
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="boyer">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="布衣男儿">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" itemprop="url">
-                  XMPP简单研究[转]
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-06T14:36:06+08:00">
-                2015-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" class="leancloud_visitors" data-flag-title="XMPP简单研究[转]">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近想做一个游戏服务器和 IM 互通的服务。最初的想法是可以增进游戏帐号的安全，比如游戏用户可以通过绑定一个 IM 帐号，从而不用登陆游戏就向游戏服务器发一些指令。这些指定通常是用来冻结一些帐号的功能。而游戏服务器也可以通过 IM 帐号向离线用户发送一些关键消息。这样，只需要解除绑定 IM 帐号需要一定的时间，或使用更安全的途径，即可以让游戏帐号更加安全。（至少，游戏用户可以从 IM 上获知他的游戏帐号每次登陆登出的时间、IP 等等）</p>
-<p>后来细想，这里面可以做的东西还有许多。玩家会因为多一个信息通道，而更轻松的去玩那些需要长期驻留的游戏。游戏厂商也可以多一个挽留玩家的渠道，甚至用来宣传新游戏或游戏的增值服务，等等。好处不再列举。</p>
-<p>其实、绑定 IM 帐号和绑定手机号本质上区别不大。只不过，IM 帐号几乎是零费用，又不像 SMS ，控制权掌控在移动手里。IM 更适合做双向交流（SMS 的双向交流不那么方便，而且对用户和游戏运营商都有经济负担）。独立提供一个 Game2IM 的服务供众多游戏运营商使用也是个有趣的主意。和 SMS 一样，只要给出一个简单接口让游戏运营商调用，把游戏网络和 IM 网络互联就可以了。</p>
-<p>实现这个想法有两个方案。其一是制作各种 IM 的机器人，通过机器人和用户 IM 沟通。这个方案技术门槛稍低，有许多现成的机器人可以使用。缺点是，受 IM 提供商的限制（比如好友数量限制）。无法使用机器人的签名针对性的向用户传递特有的消息。除非你为每个游戏用户定制一个机器人，但那样，每个机器人都需要单独一个连接，对资源消耗过大。<br>￼<!--显示文章缩略部分的标记方法--><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="boyer">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="布衣男儿">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" itemprop="url">
-                  代码实现AutoLayout相关特性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-02T15:53:11+08:00">
-                2014-09-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Xcode/" itemprop="url" rel="index">
-                    <span itemprop="name">Xcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" class="leancloud_visitors" data-flag-title="代码实现AutoLayout相关特性">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>##按比例缩放<br>按比例缩放，这是在Interface Builder中无法设置的内容。<br>而在代码中，有如下两种实现方式:</p>
-<ol>
-<li>使用<code>NSLayoutConstraint</code>类型的初始化函数中的<code>multiplier</code>参数就可以非常简单的设置按比例缩放。  </li>
-<li>同时也可以设置不同<code>NSLayoutAttribute</code>参数来达到意想不到的效果，比如“A的Width等于B的Height的2倍”这样的效果。  </li>
-</ol>
-<p>现在就拿一个简单的<strong><code>UIButton</code></strong>做示例，在ViewController中创建一个UIButton字段：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIButton</span> *btn;  </div></pre></td></tr></table></figure>  </p>
-<p>####需求 1：  </p>
-<ol>
-<li>要求<strong><code>UIButton</code></strong>水平居中，始终距离父View底部<strong>20</strong>单位，其高度是父View高度的三分之一。</li>
-<li>使用<strong>KVO</strong>来监控<strong><code>UIButton</code></strong>的大小并实时输出到屏幕上。  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    </div><div class="line">    <span class="comment">//创建UIButton，不需要设置frame</span></div><div class="line">    btn = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeRoundedRect</span>];</div><div class="line">    [btn setTitle:<span class="string">@"mgen"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    btn.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</div><div class="line">    [<span class="keyword">self</span>.view addSubview:btn];</div><div class="line"></div><div class="line">    <span class="comment">//禁止自动转换AutoresizingMask</span></div><div class="line">    btn.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//居中</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                              multiplier:<span class="number">1</span></div><div class="line">                              constant:<span class="number">0</span>]];</div><div class="line">    </div><div class="line">    <span class="comment">//距离底部20单位</span></div><div class="line">    <span class="comment">//注意NSLayoutConstraint创建的constant是加在toItem参数的，所以需要-20。</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                              multiplier:<span class="number">1</span></div><div class="line">                              constant:<span class="number">-20</span>]];</div><div class="line">    </div><div class="line">    <span class="comment">//定义高度是父View的三分之一</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeHeight</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeHeight</span></div><div class="line">                              multiplier:<span class="number">0.3</span></div><div class="line">                              constant:<span class="number">0</span>]];</div><div class="line"></div><div class="line">    <span class="comment">//注册KVO方法</span></div><div class="line">    [btn addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"bounds"</span> options:<span class="built_in">NSKeyValueObservingOptionNew</span> | <span class="built_in">NSKeyValueObservingOptionInitial</span> context:<span class="literal">nil</span>];    </div><div class="line">&#125;</div><div class="line">&lt;!--more--&gt;</div><div class="line"><span class="comment">//KVO回调</span></div><div class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span> *)change context:(<span class="keyword">void</span> *)context</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (object == btn &amp;&amp; [keyPath isEqualToString:<span class="string">@"bounds"</span>])</div><div class="line">    &#123;</div><div class="line">        [btn setTitle:<span class="built_in">NSStringFromCGSize</span>(btn.bounds.size) forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
-运行结果：<br><img src="/images/runbtn1.png" alt="image"><img src="/images/runbtn2.png" alt="image">
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2098,7 +2189,7 @@ sh /etc/getIP.sh
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
@@ -2116,7 +2207,7 @@ sh /etc/getIP.sh
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>

@@ -283,6 +283,343 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/06/11/2014-06-11-ios7de-bian-ge/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/06/11/2014-06-11-ios7de-bian-ge/" itemprop="url">
+                  IOS7的变革
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-06-11T10:17:19+08:00">
+                2014-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/06/11/2014-06-11-ios7de-bian-ge/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/11/2014-06-11-ios7de-bian-ge/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/06/11/2014-06-11-ios7de-bian-ge/" class="leancloud_visitors" data-flag-title="IOS7的变革">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##性能提高以及被遗弃的功能  </p>
+<p>###1.新增截屏通知:<code>UIApplicationUserDidTakeScreenshotNotification</code></p>
+<p>在IOS 7之前，开发者使用了一种<strong><a href="http://dlj.bz/XflV">很赞的方法</a></strong>，来<strong>拦截</strong>截屏事件的.<br>比如，Snapchat的实现原理: 用户通过<strong>Snapchat</strong>发送的照片将会在数秒内自动被删除，而且在浏览照片时，必须将手指按在屏幕上，否则会立即关闭。然而，在 iOS 6 中，<font color=red><strong>截屏将打断触控操作</strong></font>，开发者就利用这个功能点，在恰当时机捕捉到了截屏事件。  </p>
+<p>在iOS 7中，专门为<font color=red><strong>截屏完成后</strong></font>提供了一个通知:<br>  <code>UIApplicationUserDidTakeScreenshotNotification</code>.同时，也规避了IOS 6中<font color=red><strong>截屏将打断触控操作</strong></font>的关键功能点。以至于在截屏之前，无法拦截用户的截屏操作。<br>注册<font color=red><strong>截屏完成后</strong></font>通知:<br><figure class="highlight objc"><figcaption><span>注册监听事件，接收截屏完成后的通知</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter]  addObserver:<span class="keyword">self</span> </div><div class="line">										  selector:<span class="keyword">@selector</span>(mymethod:)</div><div class="line">										  	    name:<span class="built_in">UIApplicationUserDidTakeScreenshotNotification</span> </div><div class="line">										    object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure></p>
+<p>Note:<br>    1.This notification is posted after the screenshot is taken.<br>    2.This notification does not contain a userInfo dictionary.</p>
+<p>###2.新增手势: UIScreenEdgePanGestureRecognizer<br><code>UIScreenEdgePanGestureRecognizer</code> inherits from <code>UIPanGestureRecognizer</code> and lets you <strong>detect gestures starting near the edge of the screen</strong>.<br>Using this new gesture recognizer is quite simple, as shown below:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIScreenEdgePanGestureRecognizer</span> *recognizer = [[<span class="built_in">UIScreenEdgePanGestureRecognizer</span> alloc] </div><div class="line">													initWithTarget:<span class="keyword">self</span> </div><div class="line">														action:<span class="keyword">@selector</span>(handleScreenEdgeRecognizer:)];</div><div class="line"><span class="comment">// accept gestures that start from the left; we're probably building another hamburger menu!</span></div><div class="line">recognizer.edges = <span class="built_in">UIRectEdgeLeft</span>; </div><div class="line">[<span class="keyword">self</span>.view addGestureRecognizer:recognizer];</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/06/11/2014-06-11-ios7de-bian-ge/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" itemprop="url">
+                  在IOS中像SnapChat一样监控screenshots
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-06-10T18:45:37+08:00">
+                2014-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" class="leancloud_visitors" data-flag-title="在IOS中像SnapChat一样监控screenshots">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>A <a href="http://stackoverflow.com/questions/2121970/notification-of-or-detecting-screenshot-being-taken/2122117">number</a> of <a href="http://stackoverflow.com/questions/13484516/ios-detection-of-screenshot">Stack</a>  <a href="http://stackoverflow.com/questions/10122212/iphone-screenshot">Overflow</a>questions were having issues with this, so I figured I’d explain. From reverse engineering, this is the exact method used by SnapChat, but it’s also pretty much what I’d have done myself.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/06/10/2014-06-10-ios7jie-ping-wen-ti/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -654,7 +991,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
@@ -672,7 +1009,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>

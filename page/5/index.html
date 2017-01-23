@@ -283,6 +283,351 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" itemprop="url">
+                  XMPP简单研究[转]
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-06T14:36:06+08:00">
+                2015-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" class="leancloud_visitors" data-flag-title="XMPP简单研究[转]">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>最近想做一个游戏服务器和 IM 互通的服务。最初的想法是可以增进游戏帐号的安全，比如游戏用户可以通过绑定一个 IM 帐号，从而不用登陆游戏就向游戏服务器发一些指令。这些指定通常是用来冻结一些帐号的功能。而游戏服务器也可以通过 IM 帐号向离线用户发送一些关键消息。这样，只需要解除绑定 IM 帐号需要一定的时间，或使用更安全的途径，即可以让游戏帐号更加安全。（至少，游戏用户可以从 IM 上获知他的游戏帐号每次登陆登出的时间、IP 等等）</p>
+<p>后来细想，这里面可以做的东西还有许多。玩家会因为多一个信息通道，而更轻松的去玩那些需要长期驻留的游戏。游戏厂商也可以多一个挽留玩家的渠道，甚至用来宣传新游戏或游戏的增值服务，等等。好处不再列举。</p>
+<p>其实、绑定 IM 帐号和绑定手机号本质上区别不大。只不过，IM 帐号几乎是零费用，又不像 SMS ，控制权掌控在移动手里。IM 更适合做双向交流（SMS 的双向交流不那么方便，而且对用户和游戏运营商都有经济负担）。独立提供一个 Game2IM 的服务供众多游戏运营商使用也是个有趣的主意。和 SMS 一样，只要给出一个简单接口让游戏运营商调用，把游戏网络和 IM 网络互联就可以了。</p>
+<p>实现这个想法有两个方案。其一是制作各种 IM 的机器人，通过机器人和用户 IM 沟通。这个方案技术门槛稍低，有许多现成的机器人可以使用。缺点是，受 IM 提供商的限制（比如好友数量限制）。无法使用机器人的签名针对性的向用户传递特有的消息。除非你为每个游戏用户定制一个机器人，但那样，每个机器人都需要单独一个连接，对资源消耗过大。<br>￼<!--显示文章缩略部分的标记方法--><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" itemprop="url">
+                  代码实现AutoLayout相关特性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-02T15:53:11+08:00">
+                2014-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Xcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/" class="leancloud_visitors" data-flag-title="代码实现AutoLayout相关特性">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##按比例缩放<br>按比例缩放，这是在Interface Builder中无法设置的内容。<br>而在代码中，有如下两种实现方式:</p>
+<ol>
+<li>使用<code>NSLayoutConstraint</code>类型的初始化函数中的<code>multiplier</code>参数就可以非常简单的设置按比例缩放。  </li>
+<li>同时也可以设置不同<code>NSLayoutAttribute</code>参数来达到意想不到的效果，比如“A的Width等于B的Height的2倍”这样的效果。  </li>
+</ol>
+<p>现在就拿一个简单的<strong><code>UIButton</code></strong>做示例，在ViewController中创建一个UIButton字段：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIButton</span> *btn;  </div></pre></td></tr></table></figure>  </p>
+<p>####需求 1：  </p>
+<ol>
+<li>要求<strong><code>UIButton</code></strong>水平居中，始终距离父View底部<strong>20</strong>单位，其高度是父View高度的三分之一。</li>
+<li>使用<strong>KVO</strong>来监控<strong><code>UIButton</code></strong>的大小并实时输出到屏幕上。  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    </div><div class="line">    <span class="comment">//创建UIButton，不需要设置frame</span></div><div class="line">    btn = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeRoundedRect</span>];</div><div class="line">    [btn setTitle:<span class="string">@"mgen"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    btn.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</div><div class="line">    [<span class="keyword">self</span>.view addSubview:btn];</div><div class="line"></div><div class="line">    <span class="comment">//禁止自动转换AutoresizingMask</span></div><div class="line">    btn.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//居中</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                              multiplier:<span class="number">1</span></div><div class="line">                              constant:<span class="number">0</span>]];</div><div class="line">    </div><div class="line">    <span class="comment">//距离底部20单位</span></div><div class="line">    <span class="comment">//注意NSLayoutConstraint创建的constant是加在toItem参数的，所以需要-20。</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                              multiplier:<span class="number">1</span></div><div class="line">                              constant:<span class="number">-20</span>]];</div><div class="line">    </div><div class="line">    <span class="comment">//定义高度是父View的三分之一</span></div><div class="line">    [<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span></div><div class="line">                              constraintWithItem:btn</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeHeight</span></div><div class="line">                              relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                              toItem:<span class="keyword">self</span>.view</div><div class="line">                              attribute:<span class="built_in">NSLayoutAttributeHeight</span></div><div class="line">                              multiplier:<span class="number">0.3</span></div><div class="line">                              constant:<span class="number">0</span>]];</div><div class="line"></div><div class="line">    <span class="comment">//注册KVO方法</span></div><div class="line">    [btn addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"bounds"</span> options:<span class="built_in">NSKeyValueObservingOptionNew</span> | <span class="built_in">NSKeyValueObservingOptionInitial</span> context:<span class="literal">nil</span>];    </div><div class="line">&#125;</div><div class="line">&lt;!--more--&gt;</div><div class="line"><span class="comment">//KVO回调</span></div><div class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span> *)change context:(<span class="keyword">void</span> *)context</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (object == btn &amp;&amp; [keyPath isEqualToString:<span class="string">@"bounds"</span>])</div><div class="line">    &#123;</div><div class="line">        [btn setTitle:<span class="built_in">NSStringFromCGSize</span>(btn.bounds.size) forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+运行结果：<br><img src="/images/runbtn1.png" alt="image"><img src="/images/runbtn2.png" alt="image">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/02/2014-09-02-dai-ma-shi-xian-autolayoutxiang-guan-te-xing/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1722,343 +2067,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/06/11/2014-06-11-ios7de-bian-ge/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="boyer">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="布衣男儿">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/06/11/2014-06-11-ios7de-bian-ge/" itemprop="url">
-                  IOS7的变革
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-06-11T10:17:19+08:00">
-                2014-06-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/06/11/2014-06-11-ios7de-bian-ge/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/11/2014-06-11-ios7de-bian-ge/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/06/11/2014-06-11-ios7de-bian-ge/" class="leancloud_visitors" data-flag-title="IOS7的变革">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>##性能提高以及被遗弃的功能  </p>
-<p>###1.新增截屏通知:<code>UIApplicationUserDidTakeScreenshotNotification</code></p>
-<p>在IOS 7之前，开发者使用了一种<strong><a href="http://dlj.bz/XflV">很赞的方法</a></strong>，来<strong>拦截</strong>截屏事件的.<br>比如，Snapchat的实现原理: 用户通过<strong>Snapchat</strong>发送的照片将会在数秒内自动被删除，而且在浏览照片时，必须将手指按在屏幕上，否则会立即关闭。然而，在 iOS 6 中，<font color=red><strong>截屏将打断触控操作</strong></font>，开发者就利用这个功能点，在恰当时机捕捉到了截屏事件。  </p>
-<p>在iOS 7中，专门为<font color=red><strong>截屏完成后</strong></font>提供了一个通知:<br>  <code>UIApplicationUserDidTakeScreenshotNotification</code>.同时，也规避了IOS 6中<font color=red><strong>截屏将打断触控操作</strong></font>的关键功能点。以至于在截屏之前，无法拦截用户的截屏操作。<br>注册<font color=red><strong>截屏完成后</strong></font>通知:<br><figure class="highlight objc"><figcaption><span>注册监听事件，接收截屏完成后的通知</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter]  addObserver:<span class="keyword">self</span> </div><div class="line">										  selector:<span class="keyword">@selector</span>(mymethod:)</div><div class="line">										  	    name:<span class="built_in">UIApplicationUserDidTakeScreenshotNotification</span> </div><div class="line">										    object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure></p>
-<p>Note:<br>    1.This notification is posted after the screenshot is taken.<br>    2.This notification does not contain a userInfo dictionary.</p>
-<p>###2.新增手势: UIScreenEdgePanGestureRecognizer<br><code>UIScreenEdgePanGestureRecognizer</code> inherits from <code>UIPanGestureRecognizer</code> and lets you <strong>detect gestures starting near the edge of the screen</strong>.<br>Using this new gesture recognizer is quite simple, as shown below:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIScreenEdgePanGestureRecognizer</span> *recognizer = [[<span class="built_in">UIScreenEdgePanGestureRecognizer</span> alloc] </div><div class="line">													initWithTarget:<span class="keyword">self</span> </div><div class="line">														action:<span class="keyword">@selector</span>(handleScreenEdgeRecognizer:)];</div><div class="line"><span class="comment">// accept gestures that start from the left; we're probably building another hamburger menu!</span></div><div class="line">recognizer.edges = <span class="built_in">UIRectEdgeLeft</span>; </div><div class="line">[<span class="keyword">self</span>.view addGestureRecognizer:recognizer];</div></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/06/11/2014-06-11-ios7de-bian-ge/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="boyer">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="布衣男儿">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" itemprop="url">
-                  在IOS中像SnapChat一样监控screenshots
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-06-10T18:45:37+08:00">
-                2014-06-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" class="leancloud_visitors" data-flag-title="在IOS中像SnapChat一样监控screenshots">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>A <a href="http://stackoverflow.com/questions/2121970/notification-of-or-detecting-screenshot-being-taken/2122117">number</a> of <a href="http://stackoverflow.com/questions/13484516/ios-detection-of-screenshot">Stack</a>  <a href="http://stackoverflow.com/questions/10122212/iphone-screenshot">Overflow</a>questions were having issues with this, so I figured I’d explain. From reverse engineering, this is the exact method used by SnapChat, but it’s also pretty much what I’d have done myself.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2106,7 +2114,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
@@ -2124,7 +2132,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
