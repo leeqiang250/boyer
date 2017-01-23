@@ -1,701 +1,1243 @@
+<!doctype html>
 
- <!DOCTYPE HTML>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
+
+
   
-    <title>布衣男儿</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="boyer">
-    
 
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-    <meta name="description" content="不物喜，不己悲，善假物，易参行！">
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift,iOS,swift" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="布衣男儿" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Swift 语言指南
+@SwiftLanguage 更新于 2016-6-6，更新内容详见 Issue 55。往期更新回顾详见《收录周报》
+
+　　这份指南汇集了 Swift 语言主流学习资源，并以开发者的视角整理编排。对于精选项目及文章，可直接访问《Swift 项目精选》和《Swift 文章精选》。还有开发者们自己维护的《开发者、项目、最佳实践》。当然也不能错过那些活跃、优秀的《开发者个人资料页》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="布衣男儿">
+<meta property="og:title" content="Swift 语言指南">
 <meta property="og:url" content="https://huos3203.github.io/2017/01/23/SwiftGuide/index.html">
 <meta property="og:site_name" content="布衣男儿">
-<meta property="og:description" content="不物喜，不己悲，善假物，易参行！">
-<meta property="og:updated_time" content="2017-01-23T04:59:52.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="布衣男儿">
-<meta name="twitter:description" content="不物喜，不己悲，善假物，易参行！">
+<meta property="og:description" content="Swift 语言指南
+@SwiftLanguage 更新于 2016-6-6，更新内容详见 Issue 55。往期更新回顾详见《收录周报》
 
-    
-    <link rel="alternative" href="/atom.xml" title="布衣男儿" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+　　这份指南汇集了 Swift 语言主流学习资源，并以开发者的视角整理编排。对于精选项目及文章，可直接访问《Swift 项目精选》和《Swift 文章精选》。还有开发者们自己维护的《开发者、项目、最佳实践》。当然也不能错过那些活跃、优秀的《开发者个人资料页》">
+<meta property="og:updated_time" content="2017-01-23T09:05:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift 语言指南">
+<meta name="twitter:description" content="Swift 语言指南
+@SwiftLanguage 更新于 2016-6-6，更新内容详见 Issue 55。往期更新回顾详见《收录周报》
+
+　　这份指南汇集了 Swift 语言主流学习资源，并以开发者的视角整理编排。对于精选项目及文章，可直接访问《Swift 项目精选》和《Swift 文章精选》。还有开发者们自己维护的《开发者、项目、最佳实践》。当然也不能错过那些活跃、优秀的《开发者个人资料页》">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '7069931',
+      author: '布衣男儿'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huos3203.github.io/2017/01/23/SwiftGuide/"/>
+
+
+
+
+
+  <title> Swift 语言指南 | 布衣男儿 </title>
 </head>
 
-  <body>
-    <header>
-      
-<div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="布衣男儿" title="布衣男儿"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
-				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">首页</a></li>
-					
-						<li><a href="/archives">归档</a></li>
-					
-						<li><a href="/about">关于</a></li>
-					
-					<li>
- 					
-						<form class="search" action="" target="_blank">
-							<label>Search</label>
-						<input name="s" type="hidden" value= SE_zzsearchcode_shhzc78w ><input type="text" name="q" size="30" placeholder="搜索"><br>
-						</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
   
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
     
-      <a href="/2017/01/23/SwiftGuide/" title="" itemprop="url"></a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
-		
-  <p class="article-time">
-    <time datetime="2017-01-23T04:59:52.000Z" itemprop="datePublished"> 发表于 2017-01-23</time>
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">布衣男儿</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
     
-  </p>
-</header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			
-		
-		</div>
-		
-		  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-	<div class="article-share" id="share">
-	
-	<div class="share-jiathis">
-	  
-<div class="jiathis_style_24x24">
-	<a class="jiathis_button_tsina"></a>
-	<a class="jiathis_button_weixin"></a>
-	<a class="jiathis_button_renren"></a>
-	<a class="jiathis_button_qzone"></a>
-	<a class="jiathis_button_googleplus"></a>
-	<a class="jiathis_button_douban"></a>
-	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	<a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-    var jiathis_config={
-    data_track_clickback:true,
-    sm:"copy,renren,cqq",
-    pic:"",
-    summary:"",
-     ralateuid:{"tsina":"1791281385"},hideMore:false}
+      <p class="site-subtitle">不物喜，不己悲，善假物，易参行！</p>
     
-  </script> 
-<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
-" charset="utf-8"></script>      
-
-	 </div>
-	
-	</div>
-
-
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2017/01/23/Hexo标签插件/" title="Hexo标签插件">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Hexo标签插件</span>
-</a>
 </div>
 
-
-<div class="next">
-<a href="/2017/01/23/Kindle资源/"  title="Kindle114 资源集">
- <strong>下一篇：</strong><br/> 
- <span>Kindle114 资源集
-</span>
-</a>
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
 </div>
 
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'dazsKTijnsz_zi-bXB3t','2.0.0');
+</script>
+
+
+
+    </div>
+  
 </nav>
 
-	
-<section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/01/23/SwiftGuide/" data-title="" data-url="https://huos3203.github.io/2017/01/23/SwiftGuide/"></div>
-</section>
 
 
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+ </div>
+    </header>
 
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- 
- 
-  </div>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
+  <div id="posts" class="posts-expand">
+    
 
   
-<div class="github-card">
-<p class="asidetitle">Github 名片</p>
-<div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
-<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
-</div>
-  </div>
-
-
 
   
-<div class="categorieslist">
-	<p class="asidetitle">分类</p>
-		<ul>
-		
-		  
-			<li><a href="/categories/CI/" title="CI">CI<sup>4</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Octopress/" title="Octopress">Octopress<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Swift/" title="Swift">Swift<sup>6</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Xcode/" title="Xcode">Xcode<sup>5</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/dockerer/" title="dockerer">dockerer<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/git/" title="git">git<sup>7</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>12</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/ruby/" title="ruby">ruby<sup>2</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/小程序/" title="小程序">小程序<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/直播/" title="直播">直播<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/管理/" title="管理">管理<sup>2</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/资源/" title="资源">资源<sup>5</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/骗局/" title="骗局">骗局<sup>1</sup></a></li>
-		  
-		
-		</ul>
-</div>
-
-
   
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/语法/" title="语法">语法<sup>8</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>7</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/搭建/" title="搭建">搭建<sup>4</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/资源/" title="资源">资源<sup>4</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/管理/" title="管理">管理<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/书籍/" title="书籍">书籍<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/svn/" title="svn">svn<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/汇总/" title="汇总">汇总<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/kindle/" title="kindle">kindle<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/内购/" title="内购">内购<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/AutoLayout/" title="AutoLayout">AutoLayout<sup>1</sup></a></li>
-			
-		
-		</ul>
-</div>
-
-
   
-  <div class="tagcloudlist">
-    <p class="asidetitle">标签云</p>
-    <div class="tagcloudlist clearfix">
-       <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/AutoLayout/" style="font-size: 10px;">AutoLayout</a> <a href="/tags/BDD/" style="font-size: 12px;">BDD</a> <a href="/tags/IOS7/" style="font-size: 10px;">IOS7</a> <a href="/tags/LBS-AR/" style="font-size: 10px;">LBS+AR</a> <a href="/tags/QQ红包/" style="font-size: 10px;">QQ红包</a> <a href="/tags/ResilioSync/" style="font-size: 10px;">ResilioSync</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Scrum/" style="font-size: 10px;">Scrum</a> <a href="/tags/Storyboard/" style="font-size: 14px;">Storyboard</a> <a href="/tags/TDD/" style="font-size: 12px;">TDD</a> <a href="/tags/TextKit/" style="font-size: 12px;">TextKit</a> <a href="/tags/UI/" style="font-size: 12px;">UI</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/git-svn/" style="font-size: 10px;">git-svn</a> <a href="/tags/gitBook/" style="font-size: 10px;">gitBook</a> <a href="/tags/gitLab/" style="font-size: 10px;">gitLab</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iPhone5s/" style="font-size: 10px;">iPhone5s</a> <a href="/tags/iPhone6/" style="font-size: 10px;">iPhone6</a> <a href="/tags/kindle/" style="font-size: 12px;">kindle</a> <a href="/tags/mou/" style="font-size: 10px;">mou</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/realm/" style="font-size: 10px;">realm</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/scheme/" style="font-size: 10px;">scheme</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/svn/" style="font-size: 12px;">svn</a> <a href="/tags/targets/" style="font-size: 10px;">targets</a> <a href="/tags/中关村/" style="font-size: 10px;">中关村</a> <a href="/tags/书籍/" style="font-size: 12px;">书籍</a> <a href="/tags/内购/" style="font-size: 10px;">内购</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/协议/" style="font-size: 14px;">协议</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/坑/" style="font-size: 14px;">坑</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/小米路由/" style="font-size: 10px;">小米路由</a> <a href="/tags/工具/" style="font-size: 18px;">工具</a> <a href="/tags/布局/" style="font-size: 10px;">布局</a> <a href="/tags/截屏/" style="font-size: 12px;">截屏</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/搭建/" style="font-size: 16px;">搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/汇总/" style="font-size: 12px;">汇总</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/混编/" style="font-size: 10px;">混编</a> <a href="/tags/版本控制/" style="font-size: 10px;">版本控制</a> <a href="/tags/直播/" style="font-size: 10px;">直播</a> <a href="/tags/管理/" style="font-size: 14px;">管理</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/腾讯云/" style="font-size: 10px;">腾讯云</a> <a href="/tags/被骗/" style="font-size: 10px;">被骗</a> <a href="/tags/设备/" style="font-size: 10px;">设备</a> <a href="/tags/语法/" style="font-size: 20px;">语法</a> <a href="/tags/资源/" style="font-size: 16px;">资源</a> <a href="/tags/转场/" style="font-size: 10px;">转场</a> <a href="/tags/集成/" style="font-size: 10px;">集成</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
-    </div>
-  </div>
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2017/01/23/SwiftGuide/">
 
-  <div class="weixin">
-<p class="asidetitle">微信公众号</p>
-<img src=/img/weixinimg.jpg width="230px" />
-</div>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
 
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
 
-  <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
-<iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=1&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1791281385&verifier=8c6f2d1f&dpc=1"></iframe>
-</div>
+    
+      <header class="post-header">
 
-
-  <div class="earth">
-<p class="asidetitle">访客地图</p>
-<script type="text/javascript" src="http://jg.revolvermaps.com/2/4.js?i=6j7ij8f0xzy&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=35" async="async"></script>
-</div>
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
-</div>
-
-
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
         
-          <li>
-            
-            	<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" target="_blank" title="swift文档">swift文档</a>
-            
-          </li>
         
-          <li>
+          <h1 class="post-title" itemprop="name headline">
             
-            	<a href="https://www.objccn.io" target="_blank" title="objc中国">objc中国</a>
             
-          </li>
+              
+                Swift 语言指南
+              
+            
+          </h1>
         
-          <li>
-            
-            	<a href="http://nshipster.cn" target="_blank" title="NSHipster">NSHipster</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" title="动画">动画</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="https://git-scm.com/book/zh" target="_blank" title="Git Pro">Git Pro</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://kaopu.so/pan" target="_blank" title="全盘搜">全盘搜</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="https://mp.weixin.qq.com" target="_blank" title="小程序官方">小程序官方</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="https://onevcat.com" target="_blank" title="王维">王维</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://blog.devtang.com" target="_blank" title="唐巧">唐巧</a>
-            
-          </li>
-        
-    </ul>
-</div>
 
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> 嗨，见文如晤，多多指教. <br/>
-			粗浅见解，修葺成文，盼广交同道中人.</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/1791281385" target="_blank" class="icon-weibo" title="微博"></a>
-		
-		
-		<a href="https://github.com/huos3203" target="_blank" class="icon-github" title="github"></a>
-		
-		
-		<a href="http://stackoverflow.com/users/6211905" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
-		
-		
-		
-		
-		<a href="https://www.linkedin.com/in/boyerswift" target="_blank" class="icon-linkedin" title="linkedin"></a>
-		
-		
-		<a href="https://www.douban.com/people/boyers" target="_blank" class="icon-douban" title="豆瓣"></a>
-		
-		
-		<a href="http://www.zhihu.com/people/boyers" target="_blank" class="icon-zhihu" title="知乎"></a>
-		
-		
-		
-		<a href="mailto:724987481@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
-		
-	</div>
-			
-		
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T17:05:20+08:00">
+                2017-01-23
+              </time>
+            
 
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
-		
-		<a href="/about" target="_blank" title="boyer">boyer</a>
-		
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+            
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/资源/" itemprop="url" rel="index">
+                    <span itemprop="name">资源</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/23/SwiftGuide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/23/SwiftGuide/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/23/SwiftGuide/" class="leancloud_visitors" data-flag-title="Swift 语言指南">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-      $('#toc.toc-aside').css('display', 'none');
+      
+
+      
+        <h1 id="Swift-语言指南"><a href="#Swift-语言指南" class="headerlink" title="Swift 语言指南"></a>Swift 语言指南</h1><blockquote>
+<p><span style="color:lightgray;font-size:12px"><a href="http://weibo.com/swiftlanguage" target="_blank" rel="external">@SwiftLanguage</a> 更新于 2016-6-6，更新内容详见 <a href="https://github.com/ipader/SwiftGuide/blob/master/weekly/Issue-55.md" target="_blank" rel="external">Issue 55</a>。往期更新回顾详见《<a href="https://github.com/ipader/SwiftGuide/blob/master/weekly/README.md" target="_blank" rel="external">收录周报</a>》</span></p>
+</blockquote>
+<p>　　<a href="https://github.com/ipader/SwiftGuide/blob/master/2014%20letter.md" target="_blank" rel="external">这份指南</a>汇集了 Swift 语言主流学习资源，并以开发者的视角整理编排。对于精选项目及文章，可直接访问《<a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">Swift 项目精选</a>》和《<a href="https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md" target="_blank" rel="external">Swift 文章精选</a>》。还有开发者们自己维护的《<a href="https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E3%80%81%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5" target="_blank" rel="external">开发者、项目、最佳实践</a>》。当然也不能错过那些活跃、优秀的《<a href="https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99%E9%A1%B5" target="_blank" rel="external">开发者个人资料页</a>》。</p>
+<h2 id="入门指引"><a href="#入门指引" class="headerlink" title="入门指引"></a>入门指引</h2><p>苹果为 <a href="http://www.apple.com/swift/" target="_blank" rel="external">Swift</a>（<a href="http://www.apple.com/cn/swift/" target="_blank" rel="external">中文介绍</a>）开发者提供的<a href="https://developer.apple.com/swift/" target="_blank" rel="external">官方文档入口</a>，包括 <a href="https://developer.apple.com/swift/" target="_blank" rel="external">概述</a>，<a href="https://developer.apple.com/swift/blog/" target="_blank" rel="external">博客</a>（<a href="https://github.com/ipader/SwiftGuide/tree/master/mirror/Swift%20Blog%20-%20Apple%20Developer" target="_blank" rel="external">中文镜像</a>）及 <a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">开发资源</a>。其中以下几份文档（Swift 2.1）为入门级必备（<a href="https://itunes.apple.com/us/book-series/swift-programming-series/id888896989?mt=11" target="_blank" rel="external">iBooks 版</a>）：</p>
+<ul>
+<li><p><a href="https://developer.apple.com/swift/" target="_blank" rel="external">Swift Programming Language</a>（<a href="http://gg.swiftguide.cn" target="_blank" rel="external">中文版</a>｜<a href="http://wiki.jikexueyuan.com/download/swift/pdf/" target="_blank" rel="external">PDF 版</a> By <a href="http://weibo.com/swiftguide" target="_blank" rel="external">SwiftGG翻译组</a>）</p>
+</li>
+<li><p><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">Start Developing iOS Apps</a> </p>
+</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html" target="_blank" rel="external">Using Swift with Cocoa and Objective-C</a>（<a href="https://github.com/CocoaChina-editors/Welcome-to-Swift/blob/master/UsingSwiftwithCocoaandObjective-C%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C.md" target="_blank" rel="external">中文版</a> By <a href="http://weibo.com/cocoachina" target="_blank" rel="external">@CocoaChina</a>）</li>
+</ul>
+<p><em>苹果同时也维护着相应 Beta 版（Swift 2.2）文档：<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html" target="_blank" rel="external">Swift Programming Language</a>，<a href="https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html" target="_blank" rel="external">Start Developing iOS Apps</a>，<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html" target="_blank" rel="external">Using Swift with Cocoa and Objective-C</a>。</em></p>
+<p>学习实践的角度，标准库示例代码 <a href="https://developer.apple.com/sample-code/swift/downloads/Standard-Library.zip" target="_blank" rel="external">Swift Standard Library.playground</a> 是很棒的学习伴侣。</p>
+<p>教程方面，苹果力荐了斯坦福课程 <a href="https://itunes.com/StanfordSwift" target="_blank" rel="external">Stanford University: Developing iOS 8 Apps with Swift</a>（<a href="http://open.163.com/special/opencourse/ios8.html" target="_blank" rel="external">中文字幕版</a> By <a href="http://weibo.com/163open" target="_blank" rel="external">@网易公开课</a>）</p>
+<p>除以上所涉及入门级文档，<a href="https://developer.apple.com/library/ios/navigation/" target="_blank" rel="external">iOS Developer Library</a> 还为开发者提供了更庞大、系统化的开发文档支持。</p>
+<p>以下列举了几份已有第三方中文翻译文档：</p>
+<ul>
+<li><a href="https://swift.org/documentation/api-design-guidelines/" target="_blank" rel="external">API Design Guidelines</a>（<a href="http://swift.gg/2016/05/18/api-design-guidelines/" target="_blank" rel="external">中文版</a> By <a href="http://weibo.com/u/5174822990" target="_blank" rel="external">@SwiftGG翻译组</a>）</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html" target="_blank" rel="external">App Extension Programming Guide</a>（<a href="https://github.com/ipader/SwiftGuide/tree/master/mirror/App%20Extension%20Programming%20Guide" target="_blank" rel="external">中译镜像</a>）</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html" target="_blank" rel="external">iOS Human Interface Guidelines</a>（<a href="https://isux.tencent.com/?s=iOS+9+%E4%BA%BA%E6%9C%BA%E7%95%8C%E9%9D%A2%E6%8C%87%E5%8D%97" target="_blank" rel="external">中文版</a>｜<a href="http://ixdc.org/2016/files/ISUX[%E8%AF%91]iOS9%20human%20Interface%20Guideline.pdf" target="_blank" rel="external">PDF 版</a> By <a href="http://weibo.com/txisux" target="_blank" rel="external">@腾讯ISUX</a>）</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/HomeKitDeveloperGuide/Introduction/Introduction.html" target="_blank" rel="external">HomeKit Developer Guide</a>（<a href="http://www.cocoachina.com/ios/20150324/11411.html" target="_blank" rel="external">中文版</a> By <a href="http://weibo.com/cocoachina" target="_blank" rel="external">@CocoaChina</a>）</li>
+</ul>
+<p>值得称道的还有：苹果为 <a href="https://developer.apple.com/videos/" target="_blank" rel="external">Apple TV Tech Talks</a> 和 <a href="https://developer.apple.com/videos/wwdc2015/" target="_blank" rel="external">WWDC 2015</a> 的视频添加简体中文字幕，从而方便中国开发者观看来自官方的权威技术分享。</p>
+<p>有关于 Swift 开源及跨平台开发，可以关注 <a href="https://swift.org/" target="_blank" rel="external">swift.org</a></p>
+<h2 id="教程文章"><a href="#教程文章" class="headerlink" title="教程文章"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured-Articles.md" target="_blank" rel="external">教程文章</a></h2><h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">开源项目</a></h2><h2 id="推荐网站"><a href="#推荐网站" class="headerlink" title="推荐网站"></a>推荐网站</h2><ul>
+<li><strong>苹果官方</strong></li>
+<li><a href="https://developer.apple.com/swift/" target="_blank" rel="external">Swift</a>：Swift 概述、博客以及开发资源。</li>
+<li><a href="https://swift.org/" target="_blank" rel="external">swift.org</a>：开源后独立出来的 Swift 开源社区。</li>
+<li><a href="https://github.com/apple" target="_blank" rel="external">GitHub:apple</a>：苹果在 GitHub 上的开源项目。</li>
+<li><a href="https://github.com/apple/swift" target="_blank" rel="external">GitHub:apple/swift</a>：swift 语言在 GitHub 上的开源项目。</li>
+<li><a href="https://github.com/ksm/SwiftInFlux" target="_blank" rel="external">ksm/SwiftInFlux</a>：作者（Karol Mazur）将 Apple Developer Forums 上有关 Swift 特性、缺陷及变更讨论分类汇总并更新到 GitHub，具有很好的可读性。从中可以一窥 Swift 缺陷及未来潜在地变化。最关键地是有 Chris Lattner 及核心团队答疑解惑。</li>
+<li><a href="https://www.raywenderlich.com/" target="_blank" rel="external">raywenderlich.com</a>(<a href="https://www.raywenderlich.com/zh-hans/" target="_blank" rel="external">中文版</a>)：由Ray Wenderlich创建，专注于开发高质量编程指南（近期优质Swift文章及视频教程不断），著名的iOS/OS X博客及开发教程网站，非常适合新手学习。近期第一时间出了<a href="https://www.raywenderlich.com/74832/three-new-swift-books" target="_blank" rel="external">三本 Swift 新书</a>。</li>
+<li><a href="http://www.natashatherobot.com/" target="_blank" rel="external">Natasha The Robot</a>： 时髦码农不容错过的 Swift 开发实战教程类网站。为了简化学习复杂性，每一篇文章涵盖技术点单一又独立，配以开发步骤、运行结果以及代码等标准方式教授。难能可贵的是，它往往出品“追剧式”（最新开发特性或API跟进式）教程，实在是开发者必藏精品网站。</li>
+<li><a href="http://nshipster.com/" target="_blank" rel="external">NShipster</a> (<a href="http://nshipster.cn/" target="_blank" rel="external">中译版</a>：<a href="http://weibo.com/croath" target="_blank" rel="external">@刘镇夫</a>，<a href="http://nshipster.cn/translators/april-peng/" target="_blank" rel="external">April Peng</a>，<a href="http://weibo.com/leelejia" target="_blank" rel="external">@李乐佳</a>，<a href="http://weibo.com/fallhunter" target="_blank" rel="external">@程序员付恒</a> 等翻译)：著名开源作者 <a href="https://github.com/mattt" target="_blank" rel="external">Matt Thompson</a> 创建的开发技术博客网站，他开发了 <a href="https://github.com/afnetworking/afnetworking" target="_blank" rel="external">AFNetworking</a> 网络库，也是非常多产的开源作者。更多了解参考：<a href="http://www.fallhunter.com/p/10709" target="_blank" rel="external">《COCOA 潮人 MATTT THOMPSON》</a> By <a href="http://weibo.com/fallhunter" target="_blank" rel="external">@程序员付恒</a></li>
+<li><a href="http://jamesonquave.com/blog/" target="_blank" rel="external">jamesonquave.com</a>：移动开发者，优秀个人博客（近期文章同样关注于Swift 语言，写得很优质）。同时他将于8/30发布一本新书<a href="http://jamesonquave.com/swiftebook/" target="_blank" rel="external">《Developing iOS 8 Apps in Swift》</a> (Learn To Make Real World iOS 8 Apps)及视频教程。</li>
+<li><a href="https://www.objc.io/" target="_blank" rel="external">objc.io</a>(<a href="http://objccn.io" target="_blank" rel="external">中译版 By @onevcat 及其朋友们</a>)：”关于 Objective-C 最佳实践和先进技术的期刊。 由 Chris Eidhof, Daniel Eggert 和 Florian Kugler 成立于柏林。我们成立 objc.io 的目的是针对深入的、跟所有 iOS 和 OS X 开发者相关的技术话题创造一个正式的平台。“</li>
+<li><a href="http://www.ioscreator.com/" target="_blank" rel="external">iOSCreator</a>：这类开发指引式教程对于初学者来讲，是直接明了的有效学习资源。推荐者<a href="http://weibo.com/qq184675420" target="_blank" rel="external">@荧星诉语</a></li>
+<li><a href="https://iosdevweekly.com/" target="_blank" rel="external">iOS Dev Weekly</a>：收录一周以来 iOS 开发资讯链接，并于周五发布。由 <a href="https://twitter.com/daveverwer" target="_blank" rel="external">Dave Verwer</a> 创办，他是一位 iPhone 和 iPad 开发者以及培训师。</li>
+<li><a href="http://www.appcoda.com/" target="_blank" rel="external">Appcoda.com</a>：质量很高的一个 iOS 开发教程站，其中<a href="http://www.appcoda.com/ios-programming-course/" target="_blank" rel="external">iOS Programming Course</a>这个专题很适合刚接触 iOS 开发的新手学习。</li>
+<li><a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">中文 iOS/Mac 开发博客列表</a>：By <a href="http://weibo.com/tangqiaoboy" target="_blank" rel="external">@唐巧_body</a></li>
+<li><a href="http://www.devtalking.com/" target="_blank" rel="external">devtalking.com</a>：高产的中译博客。翻译了官方博客 Swift Blog - Apple Developer,《App Extension Programming Guide》。参与翻译了《Swift Programming Language》等。</li>
+<li><a href="http://swift.gg/" target="_blank" rel="external">SwiftGG</a>：一个走心的 Swift 翻译组，由《The Swift Programming Language》中文版翻译团队原班人马组成， 翻译的文章来源于国外的优秀 Swift 网站和博客，且全部获得作者和网站授权。</li>
+<li><a href="http://www.jessesquires.com" target="_blank" rel="external">Swift Weekly Brief</a>：“这个博客现在每周会将Swift开源中的重要讨论和提交整理成Open source Swift weekly brief，这对一线开发者尽早了解这门语言的动态情报很有帮助。By <a href="http://weibo.com/cuikang82" target="_blank" rel="external">@崔康总编</a> ”。来源：<a href="http://www.jessesquires.com" target="_blank" rel="external">Jesse Squires</a></li>
+<li><a href="http://swiftdevweekly.co/" target="_blank" rel="external">Swift Developer Weekly</a>:这个网站每周推送最新的技术文章和书本推荐到你的email，由Phil Wright创办。</li>
+<li><p><a href="http://iosdevtips.co" target="_blank" rel="external">iosdevtips.co</a>：iOS Development Tips</p>
+</li>
+<li><p><strong><a id="recomm_resources"></a>资源合集</strong></p>
+<blockquote>
+<p>以下是其它开发者社区或 Swift 爱好者整理的有关 Swift 语言学习的资源列表。</p>
+</blockquote>
+</li>
+<li><p><a href="https://github.com/SwiftEducation" target="_blank" rel="external">SwiftEducation</a>：“这是建立在 GitHub 上的一个 Swift 学习资料汇集，包括了有关幻灯和多个练手的应用程序源码。By @极客头条”。的确有不少基础实用的好<a href="https://github.com/SwiftEducation/presentations" target="_blank" rel="external">教程</a>。这对于基础学起的同学有福了。</p>
+</li>
+<li><a href="https://github.com/hsavit1/Awesome-Swift-Education" target="_blank" rel="external">Awesome-Swift-Education</a>：整理地如此美妙的学习资源，实在让人太欢喜了。</li>
+<li><a href="http://www.ioscookies.com/" target="_blank" rel="external">iOS Cookies</a>：分类合理、排序靠谱的 Swift 开源类库集合。</li>
+<li><a href="https://github.com/matteocrippa/awesome-swift" target="_blank" rel="external">matteocrippa/awesome-swift</a>：这个版本的 Swift 资源集合内容丰富，分类也不错。作者：<a href="https://github.com/matteocrippa" target="_blank" rel="external">Matteo Crippa</a></li>
+<li><a href="http://www.csdn.net/article/2015-03-04/2824108-ios-developers-sites/1" target="_blank" rel="external">适合iOS开发者的 15 大网站推荐</a>：的确很全、很主流的国外 iOS 开发者网站。</li>
+<li><a href="http://gold.xitu.io/#/tag/Swift" target="_blank" rel="external">掘金 Swift 版块</a></li>
+<li><a href="http://weekly.manong.io/issues/33?ref=swift" target="_blank" rel="external">码农周刊 －《Swift 特刊》</a></li>
+<li><a href="http://www.cocoachina.com/bbs/read.php?tid=204512" target="_blank" rel="external">CocoaChina －《Swift 新手入门汇集帖》</a></li>
+<li><a href="http://code.csdn.net/news/2820075" target="_blank" rel="external">CSDN_CODE －《Swift 编程语言资料大合集》</a></li>
+<li><a href="http://www.infoq.com/cn/news/2014/06/apple-swift-learning-resources" target="_blank" rel="external">InfoQ －《学习苹果 Swift 语言的一些在线资源（英文）》</a></li>
+<li><a href="https://github.com/Lax/iOS-Swift-Demos/wiki" target="_blank" rel="external">刘兰涛 －《Swift 学习资源》</a> By <a href="http://weibo.com/u/1653644220" target="_blank" rel="external">@懒桃儿吃桃儿</a></li>
+<li><a href="http://www.learnswift.tips/" target="_blank" rel="external">learnswift.tips</a>：国外主流 Swift 学习资源集合。</li>
+<li><a href="https://github.com/vsouza/awesome-ios" target="_blank" rel="external">Awesome iOS</a>：一个 iOS 的各类优秀的开源项目集合。真不错！可惜Swift开源项目资源不足。</li>
+<li><a href="http://iosdevelopertips.com/" target="_blank" rel="external">iOS Developer Tips</a>：还是有关 iOS 的开发资源及文章合集。</li>
+<li><a href="https://github.com/Wolg/awesome-swift" target="_blank" rel="external">Wolg/awesome-swift</a>：一位俄罗斯朋友分类整理的 Swift 资源列表（有持续更新）。</li>
+<li><a href="https://github.com/Aufree/trip-to-iOS" target="_blank" rel="external">Aufree/trip-to-iOS</a>：显然作者很用心的做了非常深入的整理。它对于开发者拓展学习范围及开发知识面非常有益。</li>
+<li><a href="https://swift.zeef.com/robin.eggenkamp" target="_blank" rel="external">Robin Eggenkamp - Awesome Swift</a>：“一个收集了很多 Swift 开发资源的网站”。</li>
+<li><a href="https://github.com/hehonghui/iOS-tech-frontier" target="_blank" rel="external">iOS 开发技术前线</a>：“一个定期翻译、发布国内外iOS优质的技术、开源库、软件架构设计、测试等文章的开源项目”。主要翻译来源 Ray Wenderlich，App Coda，Medium。来源：<a href="http://weibo.com/u/5589212242" target="_blank" rel="external">@开发技术前线</a></li>
+<li><a href="http://www.cocoachina.com/ios/20150626/11348.html" target="_blank" rel="external">11个超棒的 iOS 开发学习网站</a>：还算比较主流的归纳。不过，缺了raywenderlich.com 和 ioscreator.com 这两个重量级教程网站实在是不应该啊。</li>
+</ul>
+<hr>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="1-编程工具"><a href="#1-编程工具" class="headerlink" title="1. 编程工具"></a>1. 编程工具</h3><ul>
+<li><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">Xcode 下载</a>：苹果应用集成开发环境。支持 C/C++, Objective C, Swift 等。不用购买开发者计划，直接下载。</li>
+<li><a href="http://macromates.com/" target="_blank" rel="external">Textmate</a>：Mac OS X 上一个可高度自定义的编辑器，尤其在我想做出一个快速改变但又不想等待 Xcode 加载的时候。该工具目前已经<a href="https://github.com/textmate/textmate" target="_blank" rel="external">开源</a></li>
+<li><a href="http://mouapp.com/" target="_blank" rel="external">Mou</a>：OS X 上一款 Markdown 的编辑器。非常适用于编写自述文件、变更日志以及其他方面的内容。作者：<a href="http://chenluois.com/" target="_blank" rel="external">罗晨</a></li>
+<li><a href="http://www.sublimetext.com/" target="_blank" rel="external">Sublime Text ($)</a>：Mac OS X 上另一款非常受欢迎的轻量级，可高度自定义的编辑器。</li>
+<li><a href="http://www.runswiftlang.com/" target="_blank" rel="external">RunSwift</a>:正在犹豫是否入手苹果电脑开始一段 Swift 编程旅程的同学们，或仅仅为了试验一段简单 Swift 代码又懒得打开 Xcode，可以试试这款 Web 版 Swift 编译环境 RunSwift。</li>
+<li><a href="http://infinitapps.com/bezel/" target="_blank" rel="external">InfinitApps - Bezel</a>：“嫌 Xcode 6 目前提供的 Watch 模拟器不够直观？Bezel 是一个用于视觉预览 WatchKit 所开发程序效果的小工具，前提是你安装了 xScope 软件（Mac端）或 xScopeMirror（iPhone端）。 By <a href="http://weibo.com/twios" target="_blank" rel="external">@WatchKit开发</a>”</li>
+<li><a href="https://github.com/jas/playground" target="_blank" rel="external">Markdown -&gt; Playground</a>：该开源项目可将内含有 Swift 代码的 Markdown 自动转换为 Xcode Playgrounds 文件。喜欢用 Markdown 编辑的同学很激动吧。P.S. 这款工具写于 NodeJS，原因作者有交待。</li>
+<li><a href="https://autolayoutconstraints.com" target="_blank" rel="external">iOS/Mac Autolayout Constraints</a>：这个工具不错，很直观，布局时可以省不少工夫。推荐者：<a href="http://weibo.com/qq184675420" target="_blank" rel="external">@荧星诉语</a></li>
+<li><a href="https://appscreens.io/yK7cLuBNij" target="_blank" rel="external">在线生成 AppStore 审核用截图</a>：便捷的生产力工具。免费，易操作，可自定义。</li>
+<li><a href="https://swiftlang.ng.bluemix.net/#/repl" target="_blank" rel="external">IBM Swift Sandbox</a>：IBM的在线Swift网站，需要翻墙。</li>
+<li><a href="http://swiftstub.com/" target="_blank" rel="external">SwiftStub</a>：另外一个Swift在线练习网站。</li>
+</ul>
+<h3 id="2-代码管理"><a href="#2-代码管理" class="headerlink" title="2. 代码管理"></a>2. 代码管理</h3><ul>
+<li><a href="https://github.com/" target="_blank" rel="external">GitHub</a>：声望日盛的资源分享之地。</li>
+<li><a href="https://desktop.github.com/" target="_blank" rel="external">GitHub for Mac</a>：一个设计的非常美观的 git 客户端，不能取代你从命令行获得的所有功能，但使用起来非常简单。</li>
+<li><a href="https://gitcafe.com/" target="_blank" rel="external">GitCafe</a>：GitCafe is a source code hosting service based on version control system Git。国内的代码托管服务，基于 Git，值得一提的是最近也推出了和 GitHub Pages 类似的服务 Gitcafe Pages。因为是在国内，所以相比较 GitHub 有速度优势，在网络环境差的情况下也许可以作为 GitHub 的备用。</li>
+<li><a href="https://bitbucket.org/" target="_blank" rel="external">Bitbucket</a>：国外的代码托管服务，不同于 GitHub 的是，Bitbucket 可以免费建立 private 项目。</li>
+<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a>：分布式版本控制系统和源码管理系统，其优点是：快和简单易用。对于新手来说，可在此查看免费电子书籍。</li>
+<li><a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">SourceTree</a>：A free Git &amp; Mercurial client for Windows or Mac.免费的Git和Mercurial客户端，当然也可以配合Bitbucket使用。</li>
+</ul>
+<h3 id="3-Xcode-插件"><a href="#3-Xcode-插件" class="headerlink" title="3. Xcode 插件"></a>3. Xcode 插件</h3><ul>
+<li><a href="http://beta.cocoapods.org/" target="_blank" rel="external">CocoaPods</a>：第三方库的管理利器，允许你简单地把第三方库整合进自己的应用中。对我个人来说，我基本上每个项目都使用 CocoaPods。</li>
+<li><a href="https://github.com/kattrali/cocoapods-xcode-plugin" target="_blank" rel="external">CocoaPods Xcode Plugin</a>：一款 Xcode 插件，允许你直接从 Xcode 管理 CocoaPod 依赖。</li>
+<li><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external">onevcat/VVDocumenter-Xcode</a>：快捷注释 Xcode 插件。By <a href="http://weibo.com/onevcat" target="_blank" rel="external">@onevcat</a></li>
+<li><a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">ColorSense</a>：一款显示颜色数值的插件，还可以直接通过系统的ColorPicker来自动生成对应颜色代码</li>
+<li><a href="https://github.com/sopig/DeepIniOS" target="_blank" rel="external">Xcode 优秀插件整理</a>:持续保持整理更新的 Xcode 插件整理 By <a href="https://github.com/ddapps" target="_blank" rel="external">@ddapps</a></li>
+<li><a href="https://github.com/CodeEagle/SwiftCodeSnippets" target="_blank" rel="external">CodeEagle/SwiftCodeSnippets</a>：自动下载指定 Xcode Snippet 源的 Xcode Plugin。项目缺省提供 Snippet 代码源 <a href="https://github.com/burczyk/XcodeSwiftSnippets/tree/master/plist" target="_blank" rel="external">burczyk/XcodeSwiftSnippets</a> 。</li>
+<li><a href="https://github.com/realm/SwiftLint" target="_blank" rel="external">realm/SwiftLint</a>：Realm 采用 Swift 编写的基于 GitHub’s Swift Style Guide 规则的检查工具。除了命令行运行方式，也提供集成 Xcode 的方法。对于新团队，这样的工具可以自动约束大家遵循编程规范。</li>
+<li><a href="http://joeshang.github.io/2015/04/10/fix-xcode-upgrade-plugin-invalid/" target="_blank" rel="external">XCode 升级后插件失效的原理与修复办法</a>：由一条命令引发的分析文章。<a href="http://weibo.com/u/2068840121" target="_blank" rel="external">@_TongJZ</a></li>
+<li><a href="https://github.com/feinstruktur/CoPilot" target="_blank" rel="external">feinstruktur/CoPilot</a>：通过此插件，Xcode 可以协同编程了（采用 WebSocket 通讯）。如此强大的“黑工具”，不爱它能行吗。<a href="https://vimeo.com/128713880" target="_blank" rel="external">演示视频</a></li>
+<li><a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">Carthage</a>：新兴起的去中心化的依赖管理器，目标是用最简单的方式来管理Cocoa第三方框架。优势很明显，但是也有不足，看后面的发展吧。</li>
+</ul>
+<h3 id="4-管理工具"><a href="#4-管理工具" class="headerlink" title="4. 管理工具"></a>4. 管理工具</h3><ul>
+<li><a href="https://github.com/kylef/swiftenv" target="_blank" rel="external">swiftenv</a>：Swift 版本管理器。类似 rvm（Ruby）, nvm（Node.js）。</li>
+<li><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">HomeBrew</a>：OS X 上非常出色的包管理工具。</li>
+<li><a href="http://panic.com/transmit/" target="_blank" rel="external">Transmit ($)</a>：一个Mac OS X 上 FTP 客户端，有着非常漂亮的用户界面和有用的功能。</li>
+</ul>
+<h3 id="5-调试工具"><a href="#5-调试工具" class="headerlink" title="5. 调试工具"></a>5. 调试工具</h3><ul>
+<li><a href="http://fuckingclangwarnings.com/" target="_blank" rel="external">mattt/fuckingclangwarnings.com</a>：警告与语义对照表。以后再也不用为 Xcode 各种警告纠结啦！By <a href="http://weibo.com/foogry" target="_blank" rel="external">@foogry</a></li>
+</ul>
+<h3 id="6-设计工具"><a href="#6-设计工具" class="headerlink" title="6. 设计工具"></a>6. 设计工具</h3><ul>
+<li><a href="http://www.sketchapp.com/" target="_blank" rel="external">sketch</a>：更适合开发应用的矢量设计工具。通过插件还支持与代码协同工作。推荐书籍：<a href="https://designcode.io/sketch" target="_blank" rel="external">Learn Sketch 3</a></li>
+<li><a href="http://www.paintcodeapp.com/" target="_blank" rel="external">PaintCode</a><br>:PaintCode是Apple Designer入门APP开发最合适的辅助工具之一，她可以把你绘制的矢量UI自动转化为适用于iOS/OS X的Objective-C代码。</li>
+</ul>
+<h2 id="媒体报道"><a href="#媒体报道" class="headerlink" title="媒体报道"></a><a href="https://github.com/ipader/SwiftGuide/tree/master/archive/news.md" target="_blank" rel="external">媒体报道</a></h2><h2 id="开放平台"><a href="#开放平台" class="headerlink" title="开放平台"></a><a href="https://github.com/ipader/SwiftGuide/tree/master/archive/platforms.md" target="_blank" rel="external">开放平台</a></h2><h2 id="Apple-Watch-指南"><a href="#Apple-Watch-指南" class="headerlink" title="Apple Watch 指南"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Apple%20Watch/README.md" target="_blank" rel="external">Apple Watch 指南</a></h2>
+      
+    </div>
+
+    <div>
+      
         
-    }
-  });
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/weixinimg.jpg" alt="boyer wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
 
 
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/weixin.jpg" alt="boyer WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/zhifubao.jpg" alt="boyer Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
 
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"huo3203"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script> 
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/汇总/" rel="tag"># 汇总</a>
+          
+            <a href="/tags/资源/" rel="tag"># 资源</a>
+          
+            <a href="/tags/swift/" rel="tag"># swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/23/Hexo标签插件/" rel="next" title="Hexo标签插件">
+                <i class="fa fa-chevron-left"></i> Hexo标签插件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
 
 
 
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
   }
-}); 
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/23/SwiftGuide/"
+           data-title="Swift 语言指南" data-url="https://huos3203.github.io/2017/01/23/SwiftGuide/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="boyer" />
+          <p class="site-author-name" itemprop="name">boyer</p>
+          <p class="site-description motion-element" itemprop="description">不物喜，不己悲，善假物，易参行！</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huos3203" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1791281385" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/boyers" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/boyers" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" title="swift文档" target="_blank">swift文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.objccn.io" title="objc中国" target="_blank">objc中国</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nshipster.cn" title="NSHipster" target="_blank">NSHipster</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" title="动画" target="_blank">动画</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://git-scm.com/book/zh" title="Git Pro" target="_blank">Git Pro</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://kaopu.so/pan" title="全盘搜" target="_blank">全盘搜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://mp.weixin.qq.com" title="小程序官方" target="_blank">小程序官方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://onevcat.com" title="王维" target="_blank">王维</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.devtang.com" title="唐巧" target="_blank">唐巧</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Swift-语言指南"><span class="nav-number">1.</span> <span class="nav-text">Swift 语言指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#入门指引"><span class="nav-number">1.1.</span> <span class="nav-text">入门指引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程文章"><span class="nav-number">1.2.</span> <span class="nav-text">教程文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源项目"><span class="nav-number">1.3.</span> <span class="nav-text">开源项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐网站"><span class="nav-number">1.4.</span> <span class="nav-text">推荐网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发工具"><span class="nav-number">1.5.</span> <span class="nav-text">开发工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-编程工具"><span class="nav-number">1.5.1.</span> <span class="nav-text">1. 编程工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-代码管理"><span class="nav-number">1.5.2.</span> <span class="nav-text">2. 代码管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Xcode-插件"><span class="nav-number">1.5.3.</span> <span class="nav-text">3. Xcode 插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-管理工具"><span class="nav-number">1.5.4.</span> <span class="nav-text">4. 管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-调试工具"><span class="nav-number">1.5.5.</span> <span class="nav-text">5. 调试工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-设计工具"><span class="nav-number">1.5.6.</span> <span class="nav-text">6. 设计工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体报道"><span class="nav-number">1.6.</span> <span class="nav-text">媒体报道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开放平台"><span class="nav-number">1.7.</span> <span class="nav-text">开放平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apple-Watch-指南"><span class="nav-number">1.8.</span> <span class="nav-text">Apple Watch 指南</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boyer</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
 
-<!-- Analytics Begin -->
-
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-
-<!--百度统计 coding-->
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-
-<!--百度统计 github-->
-  var hmgit = document.createElement("script");
-  hmgit.src = "//hm.baidu.com/hm.js?cda1b75e08a0a3e897aa6f92112910b4";
-  var sgit = document.getElementsByTagName("script")[0];
-  sgit.parentNode.insertBefore(hmgit, sgit);
-
-})();
-
-
-</script>
 
 
 
 
-<!-- Analytics End -->
 
-<!-- Totop Begin -->
 
-	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
+  
 
-<!-- Totop End -->
 
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huo3203"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
     }
-  });
-</script>
+    var path = "/" + search_path;
+    // monitor main search box;
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("ue8PI3eFeweMAjNgpAAIfiRi-gzGzoHsz", "2kHl2CEoDUKiHcVvz0dhu5rF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
       }
     });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+  </script>
 
 
-<!-- MathJax End -->
 
-<!-- Tiny_search Begin -->
+  
 
-<!-- Tiny_search End -->
+  
 
-  </body>
+
+</body>
 </html>
