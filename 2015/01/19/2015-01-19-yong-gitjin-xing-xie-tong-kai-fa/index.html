@@ -1,0 +1,1187 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="版本控制,坑," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="布衣男儿" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Stashing
+储藏工作
+应用储藏
+被暂存的文件重新暂存
+应用后，移除储藏的内容
+取消储藏(Un-applying a Stash)
+新建stash-unapply别名
+从储藏中创建分支
+
+惨痛经历
+ 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果： 查看本地的索引的提交日志：123456789$ git reflog 		a1d09fd HEAD@&amp;#123;0&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git协议介绍">
+<meta property="og:url" content="https://huos3203.github.io/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/index.html">
+<meta property="og:site_name" content="布衣男儿">
+<meta property="og:description" content="Stashing
+储藏工作
+应用储藏
+被暂存的文件重新暂存
+应用后，移除储藏的内容
+取消储藏(Un-applying a Stash)
+新建stash-unapply别名
+从储藏中创建分支
+
+惨痛经历
+ 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果： 查看本地的索引的提交日志：123456789$ git reflog 		a1d09fd HEAD@&amp;#123;0&amp;#">
+<meta property="og:updated_time" content="2017-01-12T09:30:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git协议介绍">
+<meta name="twitter:description" content="Stashing
+储藏工作
+应用储藏
+被暂存的文件重新暂存
+应用后，移除储藏的内容
+取消储藏(Un-applying a Stash)
+新建stash-unapply别名
+从储藏中创建分支
+
+惨痛经历
+ 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果： 查看本地的索引的提交日志：123456789$ git reflog 		a1d09fd HEAD@&amp;#123;0&amp;#">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '7069931',
+      author: '布衣男儿'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huos3203.github.io/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/"/>
+
+
+
+
+
+  <title> Git协议介绍 | 布衣男儿 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">布衣男儿</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">不物喜，不己悲，善假物，易参行！</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'dazsKTijnsz_zi-bXB3t','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Git协议介绍
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-19T19:57:04+08:00">
+                2015-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/" class="leancloud_visitors" data-flag-title="Git协议介绍">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li><a href="#Stashing">Stashing</a></li>
+<li><a href="#work">储藏工作</a></li>
+<li><a href="#apply">应用储藏</a></li>
+<li><a href="#applyIndex">被暂存的文件重新暂存</a></li>
+<li><a href="#drop">应用后，移除储藏的内容</a></li>
+<li><a href="#unapply">取消储藏(Un-applying a Stash)</a></li>
+<li><a href="#stash-unapply">新建stash-unapply别名</a></li>
+<li><a href="#stashBranch">从储藏中创建分支</a></li>
+</ol>
+<h3 id="惨痛经历"><a href="#惨痛经历" class="headerlink" title="惨痛经历"></a>惨痛经历</h3><hr>
+<p> 将代码全提交值 默认的head分支中，切换分支后，无法找到分支的严重后果：<br> 查看本地的索引的提交日志：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git reflog 		</div><div class="line">a1d09fd HEAD@&#123;0&#125;: checkout: moving from all to master</div><div class="line">a1d09fd HEAD@&#123;1&#125;: checkout: moving from master to all</div><div class="line">a1d09fd HEAD@&#123;2&#125;: checkout: moving from HEAD to master</div><div class="line">a1d09fd HEAD@&#123;3&#125;: checkout: moving from all to HEAD</div><div class="line">``` </div><div class="line">根据上面的sh2值，回滚：</div><div class="line">```bash</div><div class="line">git reset  —hard  a1d09fd</div></pre></td></tr></table></figure></p>
+<p>这样就可以找回代码.</p>
+<h3 id="Git工具-储藏（Stashing）git"><a href="#Git工具-储藏（Stashing）git" class="headerlink" title="Git工具 - 储藏（Stashing）git"></a><a name="Stashing">Git工具 - 储藏（Stashing）</a>git</h3><hr>
+<p><a href="https://git-scm.com/book/zh/v2/Git-工具-储藏与清理" target="_blank" rel="external">原文</a><br>场景：当项目中某一部分正在编码中，突然接到新任务，又必须换至其他分支去完成。</p>
+<p>问题：你不想提交进行了一半的工作，否则以后你无法回到这个工作点。</p>
+<p>解决：<strong><font color="red">git stash </font></strong>命令。</p>
+<p>“Stashing”可以获取工作目录的中间状态，即：将修改过的被追踪的文件和暂存的变更，保存到一个未完结变更的堆栈中，随时可以重新应用。</p>
+<h3 id="储藏工作"><a href="#储藏工作" class="headerlink" title="储藏工作"></a><a name="work">储藏工作</a></h3><hr>
+<ol>
+<li>进入项目目录，修改某个文件，有可能还暂存其中的一个变更。</li>
+<li><strong><font color="red">git status </font></strong>命令,查看中间状态：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes to be committed:</span></div><div class="line"><span class="comment">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure></li>
+<li>切换分支，但不提交step 1 中的变更，所以储藏这些变更。<br>执行<strong><font color="red">git stash </font></strong>命令，往堆栈中推送一个新的储藏：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git stash</div><div class="line">Saved working directory and index state \</div><div class="line">  <span class="string">"WIP on master: 049d078 added the index file"</span></div><div class="line">HEAD is now at 049d078 added the index file</div><div class="line">(To restore them <span class="built_in">type</span> <span class="string">"git stash apply"</span>)</div></pre></td></tr></table></figure></li>
+<li>执行step 2查看目录库，中间状态就不见了：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line"><span class="comment">#######On branch master</span></div><div class="line">nothing to commit, working directory clean</div></pre></td></tr></table></figure>
+这时，你可以方便地切换到其他分支工作；你的变更都保存在栈上。</li>
+<li>使用<strong><font color="red">git stash list</font></strong>要查看现有的储藏：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git stash list</div><div class="line">stash@&#123;0&#125;: WIP on master: 049d078 added the index file</div><div class="line">stash@&#123;1&#125;: WIP on master: c264051 Revert <span class="string">"added file_size"</span></div><div class="line">stash@&#123;2&#125;: WIP on master: 21d80a5 added number to <span class="built_in">log</span></div></pre></td></tr></table></figure>
+在这个案例中，之前已经进行了两次储藏，所以你可以访问到三个不同的储藏。<h3 id="应用储藏"><a href="#应用储藏" class="headerlink" title="应用储藏"></a><a name="apply">应用储藏</a></h3></li>
+</ol>
+<hr>
+<p>执行<strong><font color="red">git stash apply</font></strong>命令, 可以重新应用最近的一次储藏；<br>执行<strong><font color="red">git stash apply stash@{2}</font></strong>命令，即通过指定储藏的名字，来应用更早的储藏。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ git stash apply</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure><br><a id="more"></a><br>可以看到 Git 重新修改了你所储藏的那些当时尚未提交的文件。在这个案例里，你尝试应用储藏的工作目录是干净的，并且属于同一分支；但是一个干净的工作目录和应用到相同的分支上并不是应用储藏的必要条件。你可以在其中一个分支上保留一份储藏，随后切换到另外一个分支，再重新应用这些变更。在工作目录里包含已修改和未提交的文件时，你也可以应用储藏——Git 会给出归并冲突如果有任何变更无法干净地被应用。</p>
+<h3 id="被暂存的文件重新暂存"><a href="#被暂存的文件重新暂存" class="headerlink" title="被暂存的文件重新暂存"></a><a name="applyIndex">被暂存的文件重新暂存</a></h3><hr>
+<p>执行<strong><font color="red">git stash apply</font></strong>命令,虽然对文件的变更被重新应用，但是被暂存的文件没有重新被暂存。<br>执行<strong><font color="red">git stash apply –index</font></strong>命令,即可让被暂存的文件重新暂存。<br><strong>–index</strong>选项告诉命令重新应用被暂存的变更：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git stash apply --index</div><div class="line"><span class="comment"># On branch master</span></div><div class="line"><span class="comment"># Changes to be committed:</span></div><div class="line"><span class="comment">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<h3 id="应用后，移除储藏的内容"><a href="#应用后，移除储藏的内容" class="headerlink" title="应用后，移除储藏的内容"></a><a name="drop">应用后，移除储藏的内容</a></h3><hr>
+<p><strong>apply </strong>选项只尝试应用储藏的工作——储藏的内容仍然在栈上。<br>执行<strong><font color="red">git stash drop 储藏的名字</font></strong>命令，，即可从栈中彻底移除储藏内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git stash list</div><div class="line">stash@&#123;0&#125;: WIP on master: 049d078 added the index file</div><div class="line">stash@&#123;1&#125;: WIP on master: c264051 Revert <span class="string">"added file_size"</span></div><div class="line">stash@&#123;2&#125;: WIP on master: 21d80a5 added number to <span class="built_in">log</span></div><div class="line">$ git stash drop stash@&#123;0&#125;</div><div class="line">Dropped stash@&#123;0&#125; (364e91f3f268f0900bc3ee613f9f733e82aaed43)</div></pre></td></tr></table></figure><br>你也可以运行 <strong><font color="red">git stash pop</font></strong>命令，来重新应用储藏，同时立刻将其从堆栈中移走。</p>
+<h3 id="取消储藏-Un-applying-a-Stash"><a href="#取消储藏-Un-applying-a-Stash" class="headerlink" title="取消储藏(Un-applying a Stash)"></a><a name="unapply">取消储藏(Un-applying a Stash)</a></h3><hr>
+<p>在某些情况下，重新应用了之前的储藏的变更，进行了一些其他的修改后，又想要取消之前所应用储藏的修改。<br>Git没有提供类似于 <strong><font color="red">stash unapply</font></strong>的命令，但是可以通过取消该储藏的补丁达到同样的效果：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git stash show -p stash@&#123;0&#125; | git apply -R</div></pre></td></tr></table></figure><br>同样的，如果你沒有指定具体的某个储藏，Git 会选择最近的储藏：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git stash show -p | git apply -R</div></pre></td></tr></table></figure></p>
+<h4 id="新建stash-unapply别名"><a href="#新建stash-unapply别名" class="headerlink" title="新建stash-unapply别名"></a><a name="stash-unapply">新建stash-unapply别名</a></h4><hr>
+<p>你可能会想要新建一个別名，在你的 Git 里增加一个<strong><font color="red">stash-unapply</font></strong> 命，这样更有效率。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git config --global alias.stash-unapply <span class="string">'!git stash show -p | git apply -R'</span></div><div class="line">$ git stash apply</div><div class="line">$ <span class="comment">#... work work work</span></div><div class="line">$ git stash-unapply</div></pre></td></tr></table></figure></p>
+<h3 id="从储藏中创建分支"><a href="#从储藏中创建分支" class="headerlink" title="从储藏中创建分支"></a><a name="stashBranch">从储藏中创建分支</a></h3><hr>
+<p>如果你储藏了一些工作，暂时不去理会，然后继续在你储藏工作的分支上工作，你在重新应用工作时可能会碰到一些问题。如果尝试应用的变更是针对一个你那之后修改过的文件，你会碰到一个归并冲突并且必须去化解它。如果你想用更方便的方法来重新检验你储藏的变更，你可以运行 git stash branch，这会创建一个新的分支，检出你储藏工作时的所处的提交，重新应用你的工作，如果成功，将会丢弃储藏。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ git stash branch testchanges</div><div class="line">Switched to a new branch <span class="string">"testchanges"</span></div><div class="line"><span class="comment"># On branch testchanges</span></div><div class="line"><span class="comment"># Changes to be committed:</span></div><div class="line"><span class="comment">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   index.html</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Changes not staged for commit:</span></div><div class="line"><span class="comment">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#      modified:   lib/simplegit.rb</span></div><div class="line"><span class="comment">#</span></div><div class="line">Dropped refs/stash@&#123;0&#125; (f0dfc4d5dc332d1cee34a634182e168c4efc3359)</div></pre></td></tr></table></figure><br>这是一个很棒的捷径来恢复储藏的工作然后在新的分支上继续当时的工作。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/weixinimg.jpg" alt="boyer wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/weixin.jpg" alt="boyer WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/zhifubao.jpg" alt="boyer Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/版本控制/" rel="tag"># 版本控制</a>
+          
+            <a href="/tags/坑/" rel="tag"># 坑</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/06/2015-01-06-xmppjian-dan-yan-jiu-zhuan/" rel="next" title="XMPP简单研究[转]">
+                <i class="fa fa-chevron-left"></i> XMPP简单研究[转]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/20/2015-01-20-iapkai-fa-bu-zou/" rel="prev" title="IAP开发步骤">
+                IAP开发步骤 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/"
+           data-title="Git协议介绍" data-url="https://huos3203.github.io/2015/01/19/2015-01-19-yong-gitjin-xing-xie-tong-kai-fa/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="boyer" />
+          <p class="site-author-name" itemprop="name">boyer</p>
+          <p class="site-description motion-element" itemprop="description">不物喜，不己悲，善假物，易参行！</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huos3203" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1791281385" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/boyers" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/boyers" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" title="swift文档" target="_blank">swift文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.objccn.io" title="objc中国" target="_blank">objc中国</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nshipster.cn" title="NSHipster" target="_blank">NSHipster</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" title="动画" target="_blank">动画</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://git-scm.com/book/zh" title="Git Pro" target="_blank">Git Pro</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://kaopu.so/pan" title="全盘搜" target="_blank">全盘搜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://mp.weixin.qq.com" title="小程序官方" target="_blank">小程序官方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://onevcat.com" title="王维" target="_blank">王维</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.devtang.com" title="唐巧" target="_blank">唐巧</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#惨痛经历"><span class="nav-number">1.</span> <span class="nav-text">惨痛经历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git工具-储藏（Stashing）git"><span class="nav-number">2.</span> <span class="nav-text">Git工具 - 储藏（Stashing）git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#储藏工作"><span class="nav-number">3.</span> <span class="nav-text">储藏工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用储藏"><span class="nav-number">4.</span> <span class="nav-text">应用储藏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被暂存的文件重新暂存"><span class="nav-number">5.</span> <span class="nav-text">被暂存的文件重新暂存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用后，移除储藏的内容"><span class="nav-number">6.</span> <span class="nav-text">应用后，移除储藏的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消储藏-Un-applying-a-Stash"><span class="nav-number">7.</span> <span class="nav-text">取消储藏(Un-applying a Stash)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建stash-unapply别名"><span class="nav-number">7.1.</span> <span class="nav-text">新建stash-unapply别名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从储藏中创建分支"><span class="nav-number">8.</span> <span class="nav-text">从储藏中创建分支</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boyer</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huo3203"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("ue8PI3eFeweMAjNgpAAIfiRi-gzGzoHsz", "2kHl2CEoDUKiHcVvz0dhu5rF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

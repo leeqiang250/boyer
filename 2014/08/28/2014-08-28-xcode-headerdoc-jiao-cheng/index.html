@@ -1,0 +1,1369 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工具," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="布衣男儿" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="HeaderDoc 是在Xcode 5 和 iOS7 发布时，新增的一个命令行工具，功能：可以从代码中自动生成格式良好的HTML文档——当然，必须依赖于特定格式的注释来完成的。
+另外，Xcode 还会在 quick look 面板中以HeaderDoc风格显示你的注释。
+通过本教程，将学习如下几点：
+
+如何书写 HeaderDoc 风格的注释
+分如何在 Xcode 中预览文档
+如何生成 HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xcode HeaderDoc 教程">
+<meta property="og:url" content="https://huos3203.github.io/2014/08/28/2014-08-28-xcode-headerdoc-jiao-cheng/index.html">
+<meta property="og:site_name" content="布衣男儿">
+<meta property="og:description" content="HeaderDoc 是在Xcode 5 和 iOS7 发布时，新增的一个命令行工具，功能：可以从代码中自动生成格式良好的HTML文档——当然，必须依赖于特定格式的注释来完成的。
+另外，Xcode 还会在 quick look 面板中以HeaderDoc风格显示你的注释。
+通过本教程，将学习如下几点：
+
+如何书写 HeaderDoc 风格的注释
+分如何在 Xcode 中预览文档
+如何生成 HTML">
+<meta property="og:image" content="https://huos3203.github.io/images/car.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/carquickhelp.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/method.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/warning.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/token.png">
+<meta property="og:image" content="https://huos3203.github.io/images/codesnippet.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/snippetwindow.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/driveCar.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/buildsetting.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/RW_Documentation_WarningEx.png">
+<meta property="og:image" content="https://huos3203.github.io/images/RW_Documentation_JumpBar-700x151.png">
+<meta property="og:image" content="https://huos3203.github.io/images/RW_Documentation_JumpBarSelect-700x287.png">
+<meta property="og:image" content="https://huos3203.github.io/images/Screen-Shot-2014-04-05-at-5.58.18-PM.png">
+<meta property="og:image" content="https://huos3203.github.io/images/Screen-Shot-2014-04-05-at-6.01.35-PM.png">
+<meta property="og:image" content="https://huos3203.github.io/images/RW_Documentation_VVDocumentor-700x184.png">
+<meta property="og:image" content="https://huos3203.github.io/images/VW_Documentation_VVDocPrefs-700x410.png">
+<meta property="og:updated_time" content="2017-01-23T07:41:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xcode HeaderDoc 教程">
+<meta name="twitter:description" content="HeaderDoc 是在Xcode 5 和 iOS7 发布时，新增的一个命令行工具，功能：可以从代码中自动生成格式良好的HTML文档——当然，必须依赖于特定格式的注释来完成的。
+另外，Xcode 还会在 quick look 面板中以HeaderDoc风格显示你的注释。
+通过本教程，将学习如下几点：
+
+如何书写 HeaderDoc 风格的注释
+分如何在 Xcode 中预览文档
+如何生成 HTML">
+<meta name="twitter:image" content="https://huos3203.github.io/images/car.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '7069931',
+      author: '布衣男儿'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huos3203.github.io/2014/08/28/2014-08-28-xcode-headerdoc-jiao-cheng/"/>
+
+
+
+
+
+  <title> Xcode HeaderDoc 教程 | 布衣男儿 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">布衣男儿</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">不物喜，不己悲，善假物，易参行！</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'dazsKTijnsz_zi-bXB3t','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/08/28/2014-08-28-xcode-headerdoc-jiao-cheng/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Xcode HeaderDoc 教程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-08-28T15:18:41+08:00">
+                2014-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Xcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/08/28/2014-08-28-xcode-headerdoc-jiao-cheng/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/28/2014-08-28-xcode-headerdoc-jiao-cheng/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/08/28/2014-08-28-xcode-headerdoc-jiao-cheng/" class="leancloud_visitors" data-flag-title="Xcode HeaderDoc 教程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>HeaderDoc 是在Xcode 5 和 iOS7 发布时，新增的一个命令行工具，功能：可以从代码中自动生成格式良好的HTML文档——当然，必须依赖于特定格式的注释来完成的。</p>
+<p>另外，Xcode 还会在 quick look 面板中以<strong>HeaderDoc</strong>风格显示你的注释。</p>
+<p>通过本教程，将学习如下几点：</p>
+<ul>
+<li>如何书写 HeaderDoc 风格的注释</li>
+<li>分如何在 Xcode 中预览文档</li>
+<li>如何生成 HTML 文档</li>
+<li>如何使用 VVDocumenter-Xcode(一个易于使用的第3方文档制作工具)</li>
+</ul>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>下载本教程中用到的 <a href="http://cdn2.raywenderlich.com/wp-content/uploads/2014/03/DocumentationExamples_Starter.zip" target="_blank" rel="external">示例项目</a></p>
+<p>这个简单的示例程序只包含了两个类：</p>
+<ul>
+<li>Car: 包含几个属性及一个 “drive” 方法以及一个 completion 块。</li>
+<li>MathAPI: 包含了1个方法，用于累加两个数。<br>现在，这两个类还没有任何注释。以便演示如何通过 <strong>HeaderDoc</strong> 为这两个类创建文档。<a id="more"></a>
+<h4 id="HeaderDoc-注释"><a href="#HeaderDoc-注释" class="headerlink" title="HeaderDoc 注释"></a>HeaderDoc 注释</h4></li>
+</ul>
+<p><strong>HeaderDoc</strong> 可以从命令行中运行，也可以通过 Xcode 运行。它扫描文件中以某种格式书写的注释,包括这3种形式：<br>这3中语法在 Xcode 中产生同样效果的文档</p>
+<pre><code>注释 1. 一般用于单行注释
+    /// Your documentation comment will go here
+注释 2.
+    /**  * Your documentation comment will go here  */
+注释 3: 一般用于较长的注释块
+    /*!  * Your documentation comment will go here  */
+
+注意：在注释2和注释3中，在每一行开头都会有一个额外的*，直至结尾的 */。这仅仅是为了美观，而不是必须的。
+</code></pre><h4 id="HeaderDoc-标签"><a href="#HeaderDoc-标签" class="headerlink" title="HeaderDoc 标签"></a>HeaderDoc 标签</h4><p>当 <strong>HeaderDoc</strong> 发现上述3种注释，它就开始寻找其中的<strong>HeaderDoc 标签</strong>。<strong>HeaderDoc 标签</strong> 用来修饰<strong>HeaderDoc 注释</strong>。</p>
+<p><strong>HeaderDoc 标签</strong>以 <strong>@</strong> 符号开头，然后是关键字，然后是一个空格，最后才是相应的文本（例如 @param foo）。<br>HeaderDoc 标签可以分为两种：</p>
+<ol>
+<li><p>顶级标签: 这些标签声明所要注释的对象的类型（例如头部声明、类、方法等等）。</p>
+<ul>
+<li>顶级标签，例如 @typedef，用于表示 <strong>typedef</strong> 定义的类型，比如枚举、结构体和函数指针。</li>
+<li><strong>HeaderDoc</strong> 能够根据上下文自动产生顶级标签，因此通常不是必须的。</li>
+</ul>
+</li>
+<li><p>二级标签:这些标签才是具体的注释内容。</p>
+<ul>
+<li>@brief: 简单描述你准备文档化的数据的类型，方法等等。</li>
+<li>@abstract: 等于 @brief。<ul>
+<li>@discussion: 类似 @abstract 和 @brief，但允许多行。它不是必须的，仅仅是为了使描述更清晰。</li>
+<li>@param: 描述方法、回调或函数的参数名称。</li>
+<li>@return: 描述方法或函数的返回值。（等同于 @result）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<!-- More -->
+<h4 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h4><ul>
+<li><h6 id="属性的文档化"><a href="#属性的文档化" class="headerlink" title="属性的文档化"></a>属性的文档化</h6><p>用 Xcode 打开<strong>DocumentationExamples</strong> 项目, 打开<strong>ViewController.h</strong>,<br>在<strong> car </strong>属性的前面，加入一行注释:</p>
+<pre><code>/*!  * @brief The ViewController class&apos; car object.  */
+
+@property (nonatomic) Car *car;
+</code></pre></li>
+</ul>
+<p>编译项目。编译结束，按住 alt/option 键，点击<strong>car</strong> 变量名。你将看到<strong>pop菜单</strong>中显示了刚才的注释内容。<br> <img src="/images/car.jpg" alt="image"><br>另一种方法:切换到Utitlities 面板的<strong>Quick Help</strong> 检查器窗口。点击 <strong>car</strong> 变量名，通过<strong>Quick Help</strong>,你将看到如下效果：<br> <img src="/images/carquickhelp.jpg" alt="image"></p>
+<ul>
+<li><h6 id="方法的文档化"><a href="#方法的文档化" class="headerlink" title="方法的文档化"></a>方法的文档化</h6><p><strong>MathAPI</strong>包含一个方法需要文档化。打开<strong>MathAPI.h</strong>,找到<code>addNumber:toNumber:</code>。</p>
+</li>
+</ul>
+<p>这个方法有两个参数及一个返回值。因此需要一个 @description 标签、两个@param标签，以及一个@return 标签，如下面所示：</p>
+<pre><code>/*!  * @discussion A really simple way to calculate the sum of two numbers.
+
+      * @param firstNumber An NSInteger to be used in the summation of two numbers
+
+      * @param secondNumber The second half of the equation.
+
+       * @return The sum of the two numbers passed in.
+
+*/
+
++ (NSInteger)addNumber:(NSInteger)firstNumber toNumber:(NSInteger)secondNumber;
+</code></pre><p>编译，再 <strong>alt + 左键</strong>：<br> <img src="/images/method.jpg" alt="image"></p>
+<p> 问题: 在 Xcode 文本编辑窗口，很多地方都支持 <strong>alt+左键</strong>。请确保你点击在正确的地方。在上面的例子里，你应当在addNumber: 和 toNumber: 两处使用 alt+左键。</p>
+<p>你也许不知道，这个方法的实现真的很恶心。它只能使用非负数作为参数。为了让用户明白这一点，你应当在注释中添加更多的说明。因此，我们可以在 @return 前面加入一个 @warning 标签。</p>
+<pre><code>* @warning Please make note that this method is only good for adding non-negative numbers.
+</code></pre><p>编译项目，然后使用 alt+左键。我们添加的 @warning 标签效果如下：<br> <img src="/images/warning.jpg" alt="image"></p>
+<h4 id="Code-Snippets，让一切变得更简单"><a href="#Code-Snippets，让一切变得更简单" class="headerlink" title="Code Snippets，让一切变得更简单:"></a>Code Snippets，让一切变得更简单:</h4><p>一个<strong>snippet</strong> 是一个可以重用的代码块（存储在 snippet 库中）。<strong>Snippets</strong> 甚至可以包含一些需要你去填充的占位符。<br>这意味着, 可以用 <strong>snipppet</strong>来进行文档化。</p>
+<p>在 <strong>MathAPI.h</strong> 中，在原有的注释上面加入以下内容：</p>
+<pre><code>/*!  * @discussion &lt;#description#&gt;
+
+     * @param &lt;#param description#&gt;
+
+     * @return &lt;#return description#&gt;
+*/
+</code></pre><p> 注意，当粘贴上述代码时，“&lt;# #&gt;”之间的内容会变成一个<strong>token</strong>,意味着可以通过 <strong>tab 键</strong>在 <strong>token</strong> 之间来回切换。就像编写代码时的自动完成功能。<br> <img src="/images/token.png" alt="image"></p>
+<h6 id="学习使用Code-Snippets工具"><a href="#学习使用Code-Snippets工具" class="headerlink" title="学习使用Code Snippets工具"></a>学习使用Code Snippets工具</h6><p> 打开 <strong>Utilities 面板</strong>中的 <strong>CodeSnippets Library 检查器</strong>窗口，选中上述注释块，将它拖到该检查器窗口中（从某个 token 例如&lt;#description#&gt;开始拖）:<br> <img src="/images/codesnippet.jpg" alt="image"><br> 将会弹出一个编辑窗口让输入 snippet 的某些信息，并以此来创建一个<strong>自动完成快捷方式</strong>。要修改某个<strong>snippet</strong>时,直接点击 <strong>Code Snippet Library</strong> 中的 snippet，然后点 Edit 按钮。按照如下形式填写：<br> <img src="/images/snippetwindow.jpg" alt="image"></p>
+<p>要想让 <strong>snippet</strong> 生效，首先删除原有注释，然后将鼠标放到addNumber:toNumber: 方法的 + 号前面,输入<strong>doccomment</strong>，然后回车，该<strong>snippet</strong> 将自动生成。然后，通过 Tab 键在3个 token 间移动，并填充它们。最终完成的文档化结果如下:</p>
+<pre><code>/*!  * @discussion A really simple way to calculate the sum of two numbers.
+
+     * @param firstNumber An NSInteger to be used in the summation of two numbers.
+
+     * @param secondNumber The second half of the equation.
+
+     * @warning Please make note that this method is only good for adding non-negative numbers.
+
+     * @return The sum of the two numbers passed in.
+*/
+</code></pre><p><strong>@param 标签</strong>和 <strong>@warning 标签</strong>需要手动书写。</p>
+<h4 id="Typedefs的文档化"><a href="#Typedefs的文档化" class="headerlink" title="Typedefs的文档化"></a>Typedefs的文档化</h4><p> 打开 Car.h，在 class 之,有一个NS_ENUM，即 typedef enum，一个块，几个属性，一个空方法等，需要文档化。</p>
+<p>还记得 @typedef 标签吗？<br>这个顶级标签稍微特殊一点。它可以对<strong>typedef enum</strong> 或者 <strong>typedef struct</strong> 的类型进行注释。<br>根据注释的对象的不同，它会包含与定义的类型相关的二级标签。</p>
+<p>以 enum 为例，它会包含 @constant 标签，用于每个常量（对于struct，则会是 @field 标签）。</p>
+<p>找到 <strong>enum OldCarType</strong>。它包含两个常量，是用于古典汽车的。在<strong>typedef</strong> 声明之上，将原来的注释替换为：</p>
+<pre><code>/*!  * @typedef OldCarType
+
+     * @brief A list of older car types.
+
+     * @constant OldCarTypeModelT A cool old car.
+
+     * @constant OldCarTypeModelA A sophisticated old car.
+*/
+
+typedef enum {
+        /// A cool, old car.
+
+         OldCarTypeModelT,
+
+        /// A sophisticated older car.
+
+        OldCarTypeModelA
+
+} OldCarType;
+</code></pre><p> 编译，然后在 <strong>OldCarType</strong> 或上<strong>OldCarTypeModelT</strong>使用<strong>alt + 左键</strong>。</p>
+<p>在这个类中只有一个 <strong>NS_ENUM</strong>，因此接下来进行进行文档化。常量已经注释了，只要对整个<strong>NS_ENUM</strong> 进行一个总体的注释就可以了。</p>
+<pre><code>/*!  * @typedefCarType
+
+     * @brief Alist of newer car types.
+
+     * @constantCarTypeHatchback Hatchbacks are fun, but small.
+
+     * @constantCarTypeSedan Sedans should have enough room to put your kids, and your golfclubs
+
+     * @constantCarTypeEstate Estate cars should hold your kids, groceries, sport equipment,etc.
+
+     * @constantCarTypeSport Sport cars should be fast, fun, and hard on the back.
+*/
+</code></pre><p>注意:这个enum 是通过宏来声明的，悲催的 Xcode 不能完全支持和 <strong>typedef enum</strong> 一样的文档特性，虽然<strong>NS_ENUM</strong> 实际上是声明 enums 的推荐的方法。</p>
+<h4 id="typedef-block-文档化"><a href="#typedef-block-文档化" class="headerlink" title="typedef block 文档化"></a>typedef block 文档化</h4><pre><code>/*!  * @brief A block that makes the car drive.
+     * @param distance The distance is equal to a distance driven when the block is ready to execute. It could be miles, or kilometers, but not both. Just pick one and stick with it. ;]
+*/
+
+typedef void(^driveCompletion)(CGFloat distance);
+</code></pre><p><strong>typedef block</strong> 的文档化和之前的并无多少不同，它包含了：</p>
+<ul>
+<li>一个 @brief 标签，简单说明了一下这个块的作用。</li>
+<li>一个 @param 标签，说明调用块时需要传递的参数。</li>
+</ul>
+<h4 id="添加格式化代码到文档中"><a href="#添加格式化代码到文档中" class="headerlink" title="添加格式化代码到文档中"></a>添加格式化代码到文档中</h4><p>例如，Car 类的 <strong>driveCarWithComplete:</strong> 方法。</p>
+<p>这个方法以块作为参数，因为块对于新手来说一般比较困难，因此最好是告诉程序员如何使用这个方法。</p>
+<p>这需要使用 <strong>@code 标签</strong>。在 <strong>driveCarWithCompletion</strong>方法声明之前添加如下内容：</p>
+<pre><code>/*!  * @brief The car will drive, and then execute the drive block
+
+     * @param completion A driveCompletion block
+
+     * @code [car driveCarWithCompletion:^(CGFloat distance){
+
+                            NSLog(@&quot;Distance driven %f&quot;, distance);
+
+                         }];
+*/
+</code></pre><p>编译，在方法名上使用<strong>alt+左键</strong>。如下图所示：<br> <img src="/images/driveCar.jpg" alt="image"></p>
+<h4 id="检查文档"><a href="#检查文档" class="headerlink" title="检查文档"></a>检查文档</h4><p>学会了如何添加注释，如果 <strong>Xcode</strong> 能帮你检查你的工作，就像Xcode会自动检查代码中的语法错误，那岂不是更好？有一个好消息，Clang 有一个标志，叫做“<strong>CLANG_WARN_DOCUMENTATION_COMMENTS</strong>”,可以用于检查 <strong>HeaderDoc</strong> 格式的注释。</p>
+<p>打开 <strong>DocumentationExamples</strong>的项目设置，点击 <strong>Build Settings</strong>，找到 <strong>DocumentationComments</strong>, 将值设置为 <strong>YES</strong>。<br><img src="/images/buildsetting.jpg" alt="image"><br>如下，打开 <strong>MathAPI.h</strong>，将第一个 @param 标签的参数名由<strong>firstNumber</strong> 修改为 <strong>thirdNumber</strong>,然后编译。<br>有一个警告发生，甚至提出了修改建议。它不会影响任何事情，但有助于检查文档中的错误。<br> <img src="/images/RW_Documentation_WarningEx.png" alt="image"></p>
+<h4 id="特殊注释"><a href="#特殊注释" class="headerlink" title="特殊注释"></a>特殊注释</h4><p><strong>Xcode</strong> 还支持几种特殊注释，对于你或者使用你代码的人非常有用。</p>
+<p>打开 Car.m，在 <strong>driveCarWithCompletion:</strong> 方法中，在调用<strong>completion</strong> 块之前添加下列注释：</p>
+<pre><code>// FIXME: This is broken
+
+// !!!: Holy cow, it should be checked!
+
+// ???: Perhaps check if the block is not nil first?
+</code></pre><p>这里出现了3中注释：</p>
+<ul>
+<li>FIXME: 某个地方需要修正</li>
+<li>!!!: 某个地方需要注意。</li>
+<li>???: 代码中有问题，或者代码是可疑的。</li>
+</ul>
+<p>这些注释不但有助于浏览代码，而且 Xcode 绘制 <strong>Jump Bar</strong> 中显示它们。点击<strong>Jump Bar</strong>，如下图所示：</p>
+<p><img src="/images/RW_Documentation_JumpBar-700x151.png" alt="image"></p>
+<p> 你将看到这3个注释以粗体显示：</p>
+<p> <img src="/images/RW_Documentation_JumpBarSelect-700x287.png" alt="image"></p>
+<p> 到此，你已经完全掌握了如何对项目进行文档化。花一些时间对项目的其他属性和方法操作一番，并加入一些自己的东西。看看在注释块中改变一些东西或者删除某个标签会发生什么。这将让你明白注释格式如何对文档造成影响的。</p>
+<p>#用headerdoc2html 创建 HTML文档<br>文档化是由一个 <strong>HeaderDoc 工具</strong>完成的。当 Xcode 安装时，它就已经安装好了。<br>它除了解释已添加的注释，显示一个弹出菜单以及将注释在<strong>Quick Help</strong> 中显示之外，还可以在文档化之后创建 HTML、XML 以及联机帮助手册。</p>
+<p>本节介绍 HTML 文件的制作。如果你对用 HeaderDoc 如何创建在线文档感兴趣，请参考<a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/usage/usage.html" target="_blank" rel="external">HeaderDoc 用户指南</a>.</p>
+<p>打开终端，转到 DocumentationExamples 项目目录：</p>
+<pre><code>cd /path/to/your/folder
+
+确保该路径下包含了 Xcodeproject  文件(“DocumentationExamples.xcodeproj”)。
+</code></pre><p>然后用下列命令创建 HTML 文档：</p>
+<pre><code>headerdoc2html -o ~/Desktop/documentation DocumentationExamples/
+</code></pre><p>此时终端会有许多输出。当创建完毕，返回桌面，出现一个名为documentation 的目录。双击打开，找到 Car_h 目录，打开 index.html：<br><img src="/images/Screen-Shot-2014-04-05-at-5.58.18-PM.png" alt="image"></p>
+<p><strong>headerdoc2html 脚本</strong>有两个参数：</p>
+<p>So what justhappened? Well, you ran the headerdoc2htmlscript with 2 options:</p>
+<ul>
+<li>-o ~/Desktop/documentation – 这个参数指定输出的 Html 文件路径——即桌面的 documentation 目录。</li>
+<li>DocumentationExamples/ – 该参数指定要解析的源文件位于 DocumentationExamples 目录（不包含项目目录下的其他目录，因为它们并不包含源代码）</li>
+</ul>
+<p>问题:</p>
+<ol>
+<li>最新版本<strong>headerdoc2html</strong>有个问题，用 google chrome打开 index.html后，左边的目录显示不正常，但 Safari打开正常。</li>
+<li>最新版本的<strong>headerdoc2html</strong> 不能正确解析 /// 类的注释，可以使用 /*! 类型的注释代替。</li>
+</ol>
+<p>这很酷，但还可以更进一步。除了手动进入到输出目录中进行导航，<strong>HeaderDoc</strong>还会创建一个主目录索引。<br>返回终端，导航至新建的 <strong>documentation</strong> 目录，输入：</p>
+<pre><code>cd ~/Desktop/documentation
+</code></pre><p>然后输入命令，创建内容索引:</p>
+<pre><code>gatherheaderdoc .
+</code></pre><p><strong>gatherheaderdoc</strong>自动查找目录，为 <strong>.</strong> 目录（表示当前目录）创建索引。<br>用 Finder 打开 documentation  目录。你会发现多出一个 <strong>masterTOC.html</strong> 文件。打开它，它将列出所有已文档化的属性、方法、枚举和块的链接。<br><img src="/images/Screen-Shot-2014-04-05-at-6.01.35-PM.png" alt="image"><br>你可以将所有 HTML 文件放到 web 服务器上，然后所有人都可以访问你的文档！</p>
+<p>#VVDocumenter-Xcode</p>
+<p>最后的内容是 <strong>VVDocumenter-Xcode</strong>，一个第三方 Xcode插件，它能让你的文档化工作简单至比使用早先介绍的 <strong>Code Snippet</strong> 更容易。</p>
+<p>首先，从 <a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external">Github</a> 下载插件。</p>
+<p>你所需要做的全部工作就是打开项目，然后 <strong>Build</strong>。它会将插件自动安装到~/Library/ApplicationSupport/Developer/Shared/Xcode/Plug-ins 目录。</p>
+<p>然后重启 Xcode。再次打开 DocumentationExamples项目。在 MathAPI.h，删除 <strong><code>addNumber:toNumber</code></strong> 方法的注释块，然后在方法声明上面输入：</p>
+<pre><code>///
+</code></pre><p><strong>VVDocumenter-Xcode</strong> 将自动创建注释块，包括所有必要的 <strong>@param</strong> 标签以及自动完成 <strong>token</strong>。<br><img src="/images/RW_Documentation_VVDocumentor-700x184.png" alt="image"></p>
+<p>打开 Car.h，删除 <strong>NS_ENUM CarType</strong> 的注释，以及每个常量的注释。在<strong>NS_ENUM</strong> 声明之上，输入：</p>
+<pre><code>///
+</code></pre><p>这回，它会在 enum 之上创建 <strong>discussion</strong> 标签，甚至还每个常量上面放入了必要的注释！</p>
+<p><strong>VVDocumenter-Xcode</strong> 使你的生活更加轻松。如果你想定制<strong>VVDocumenter-Xcode</strong>，在Xcode中，使用 <strong>Window&gt;VVDocumenter菜单</strong>。<br><img src="/images/VW_Documentation_VVDocPrefs-700x410.png" alt="image"></p>
+<p>这里，你可以改变自动完成关键字、注释风格以及其他。你想怎样定制 VVDocumenter-Xcode都行。VVDocumenter-Xcode 为我省下了大量的时间！<br>接下来做什么？</p>
+<p>最终完成的示例项目在 这里<a href="http://cdn2.raywenderlich.com/wp-content/uploads/2014/03/DocumentationExamples_Final.zip" target="_blank" rel="external">下载</a>。</p>
+<p>在你自己的代码中进行文档化。尝试自己编写 <strong>code snippet</strong> 并使用<strong>VVDocumentor</strong>。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/weixinimg.jpg" alt="boyer wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/weixin.jpg" alt="boyer WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/zhifubao.jpg" alt="boyer Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/07/22/2014-07-22-storyboardzhi-segue/" rel="next" title="Storyboard之Segue">
+                <i class="fa fa-chevron-left"></i> Storyboard之Segue
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/28/2014-08-28-zai-ioszhong-zi-ding-yi-url-schemes-jiao-cheng/" rel="prev" title="在IOS中自定义URL Schemes 教程">
+                在IOS中自定义URL Schemes 教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2014/08/28/2014-08-28-xcode-headerdoc-jiao-cheng/"
+           data-title="Xcode HeaderDoc 教程" data-url="https://huos3203.github.io/2014/08/28/2014-08-28-xcode-headerdoc-jiao-cheng/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="boyer" />
+          <p class="site-author-name" itemprop="name">boyer</p>
+          <p class="site-description motion-element" itemprop="description">不物喜，不己悲，善假物，易参行！</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huos3203" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1791281385" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/boyers" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/boyers" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" title="swift文档" target="_blank">swift文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.objccn.io" title="objc中国" target="_blank">objc中国</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nshipster.cn" title="NSHipster" target="_blank">NSHipster</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" title="动画" target="_blank">动画</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://git-scm.com/book/zh" title="Git Pro" target="_blank">Git Pro</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://kaopu.so/pan" title="全盘搜" target="_blank">全盘搜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://mp.weixin.qq.com" title="小程序官方" target="_blank">小程序官方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://onevcat.com" title="王维" target="_blank">王维</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.devtang.com" title="唐巧" target="_blank">唐巧</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HeaderDoc-注释"><span class="nav-number">2.</span> <span class="nav-text">HeaderDoc 注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HeaderDoc-标签"><span class="nav-number">3.</span> <span class="nav-text">HeaderDoc 标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体实现"><span class="nav-number">4.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#属性的文档化"><span class="nav-number">4.0.1.</span> <span class="nav-text">属性的文档化</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#方法的文档化"><span class="nav-number">4.0.2.</span> <span class="nav-text">方法的文档化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-Snippets，让一切变得更简单"><span class="nav-number">5.</span> <span class="nav-text">Code Snippets，让一切变得更简单:</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#学习使用Code-Snippets工具"><span class="nav-number">5.0.1.</span> <span class="nav-text">学习使用Code Snippets工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Typedefs的文档化"><span class="nav-number">6.</span> <span class="nav-text">Typedefs的文档化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typedef-block-文档化"><span class="nav-number">7.</span> <span class="nav-text">typedef block 文档化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加格式化代码到文档中"><span class="nav-number">8.</span> <span class="nav-text">添加格式化代码到文档中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查文档"><span class="nav-number">9.</span> <span class="nav-text">检查文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊注释"><span class="nav-number">10.</span> <span class="nav-text">特殊注释</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boyer</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huo3203"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("ue8PI3eFeweMAjNgpAAIfiRi-gzGzoHsz", "2kHl2CEoDUKiHcVvz0dhu5rF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

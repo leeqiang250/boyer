@@ -1,0 +1,1148 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="新特性, IOS7,优化,废弃,优点" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="布衣男儿" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="性能提高以及被遗弃的功能新增截屏通知:UIApplicationUserDidTakeScreenshotNotification在IOS 7之前，开发者使用了一种很赞的方法，来拦截截屏事件的.比如，Snapchat的实现原理: 用户通过Snapchat发送的照片将会在数秒内自动被删除，而且在浏览照片时，必须将手指按在屏幕上，否则会立即关闭。然而，在 iOS 6 中，截屏将打断触控操作，开发者就利">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS7的变革">
+<meta property="og:url" content="https://huos3203.github.io/2014/06/11/2014-06-11-ios7de-bian-ge/index.html">
+<meta property="og:site_name" content="布衣男儿">
+<meta property="og:description" content="性能提高以及被遗弃的功能新增截屏通知:UIApplicationUserDidTakeScreenshotNotification在IOS 7之前，开发者使用了一种很赞的方法，来拦截截屏事件的.比如，Snapchat的实现原理: 用户通过Snapchat发送的照片将会在数秒内自动被删除，而且在浏览照片时，必须将手指按在屏幕上，否则会立即关闭。然而，在 iOS 6 中，截屏将打断触控操作，开发者就利">
+<meta property="og:image" content="https://huos3203.github.io/images/uiimagerenderingmode.png">
+<meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2010/05/Rate.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/microphone.jpg">
+<meta property="og:updated_time" content="2017-01-23T07:37:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IOS7的变革">
+<meta name="twitter:description" content="性能提高以及被遗弃的功能新增截屏通知:UIApplicationUserDidTakeScreenshotNotification在IOS 7之前，开发者使用了一种很赞的方法，来拦截截屏事件的.比如，Snapchat的实现原理: 用户通过Snapchat发送的照片将会在数秒内自动被删除，而且在浏览照片时，必须将手指按在屏幕上，否则会立即关闭。然而，在 iOS 6 中，截屏将打断触控操作，开发者就利">
+<meta name="twitter:image" content="https://huos3203.github.io/images/uiimagerenderingmode.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '7069931',
+      author: '布衣男儿'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huos3203.github.io/2014/06/11/2014-06-11-ios7de-bian-ge/"/>
+
+
+
+
+
+  <title> IOS7的变革 | 布衣男儿 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">布衣男儿</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">不物喜，不己悲，善假物，易参行！</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'dazsKTijnsz_zi-bXB3t','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2014/06/11/2014-06-11-ios7de-bian-ge/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                IOS7的变革
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-06-11T10:17:19+08:00">
+                2014-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/06/11/2014-06-11-ios7de-bian-ge/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/11/2014-06-11-ios7de-bian-ge/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/06/11/2014-06-11-ios7de-bian-ge/" class="leancloud_visitors" data-flag-title="IOS7的变革">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="性能提高以及被遗弃的功能"><a href="#性能提高以及被遗弃的功能" class="headerlink" title="性能提高以及被遗弃的功能"></a>性能提高以及被遗弃的功能</h2><h3 id="新增截屏通知-UIApplicationUserDidTakeScreenshotNotification"><a href="#新增截屏通知-UIApplicationUserDidTakeScreenshotNotification" class="headerlink" title="新增截屏通知:UIApplicationUserDidTakeScreenshotNotification"></a>新增截屏通知:<code>UIApplicationUserDidTakeScreenshotNotification</code></h3><p>在IOS 7之前，开发者使用了一种<strong><a href="http://dlj.bz/XflV" target="_blank" rel="external">很赞的方法</a></strong>，来<strong>拦截</strong>截屏事件的.<br>比如，Snapchat的实现原理: 用户通过<strong>Snapchat</strong>发送的照片将会在数秒内自动被删除，而且在浏览照片时，必须将手指按在屏幕上，否则会立即关闭。然而，在 iOS 6 中，<font color="red"><strong>截屏将打断触控操作</strong></font>，开发者就利用这个功能点，在恰当时机捕捉到了截屏事件。  </p>
+<p>在iOS 7中，专门为<font color="red"><strong>截屏完成后</strong></font>提供了一个通知:<br>  <code>UIApplicationUserDidTakeScreenshotNotification</code>.同时，也规避了IOS 6中<font color="red"><strong>截屏将打断触控操作</strong></font>的关键功能点。以至于在截屏之前，无法拦截用户的截屏操作。<br>注册<font color="red"><strong>截屏完成后</strong></font>通知:<br><figure class="highlight objc"><figcaption><span>注册监听事件，接收截屏完成后的通知</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter]  addObserver:<span class="keyword">self</span> </div><div class="line">										  selector:<span class="keyword">@selector</span>(mymethod:)</div><div class="line">										  	    name:<span class="built_in">UIApplicationUserDidTakeScreenshotNotification</span> </div><div class="line">										    object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure></p>
+<p>Note:<br>    1.This notification is posted after the screenshot is taken.<br>    2.This notification does not contain a userInfo dictionary.</p>
+<h3 id="新增手势-UIScreenEdgePanGestureRecognizer"><a href="#新增手势-UIScreenEdgePanGestureRecognizer" class="headerlink" title="新增手势: UIScreenEdgePanGestureRecognizer"></a>新增手势: UIScreenEdgePanGestureRecognizer</h3><p><code>UIScreenEdgePanGestureRecognizer</code> inherits from <code>UIPanGestureRecognizer</code> and lets you <strong>detect gestures starting near the edge of the screen</strong>.<br>Using this new gesture recognizer is quite simple, as shown below:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIScreenEdgePanGestureRecognizer</span> *recognizer = [[<span class="built_in">UIScreenEdgePanGestureRecognizer</span> alloc] </div><div class="line">													initWithTarget:<span class="keyword">self</span> </div><div class="line">														action:<span class="keyword">@selector</span>(handleScreenEdgeRecognizer:)];</div><div class="line"><span class="comment">// accept gestures that start from the left; we're probably building another hamburger menu!</span></div><div class="line">recognizer.edges = <span class="built_in">UIRectEdgeLeft</span>; </div><div class="line">[<span class="keyword">self</span>.view addGestureRecognizer:recognizer];</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="新增返回类型-–-instancetype"><a href="#新增返回类型-–-instancetype" class="headerlink" title="新增返回类型 – instancetype"></a>新增返回类型 – <code>instancetype</code></h3><p>  苹果改变了大部分 initializer和简易构造函数（convenience constructors），<code>instancetype</code>可以代替<code>id</code>作返回类型。</p>
+<pre><code>instancetype 作用：
+        1.作为从Objective-C方法的返回类型。
+        2.在编译时，该方法的返回类型将是该方法所属的类的实例，编译器就会对返回的实例做一些检查，有bug及时发现及时解决。这一点优于id类型。
+        3.在调用子类方法时，就可以省去对返回值的强制类型转换。
+</code></pre><p>  举例:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDictionary</span> *d = [<span class="built_in">NSArray</span> arrayWithObjects:@(<span class="number">1</span>),@(<span class="number">2</span>), <span class="literal">nil</span>];</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"%i"</span>, d.count);</div><div class="line">```  </div><div class="line">这段代码显然有错误，但在Xcode4<span class="number">.6</span>上是可以编译通过的。是由于Objective-C是动态性语言。</div><div class="line">``` objc</div><div class="line">+ (<span class="keyword">id</span>)arrayWithObjects:(<span class="keyword">id</span>)firstObj, ...;</div></pre></td></tr></table></figure></p>
+<p>并且，arrayWithObjects:返回<code>id</code>类型：是运行时的动态类型，编译器无法知道它的真实类型，即使调用一个id类型没有的方法，也不会产生编译警告。</p>
+<p>那么，为什么<code>arrayWithObjects:</code>方法的返回类型还是<code>id</code>类型？来看看<code>NSArray</code>子类：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">MyArray</span> : <span class="title">NSArray</span></span></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure></p>
+<p>Now consider the use of your new subclass in the code below:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	MyArray *array = [MyArray arrayWithObjects:@(<span class="number">1</span>), @(<span class="number">2</span>), <span class="literal">nil</span>];</div><div class="line">```  </div><div class="line">如果方法`arrayWithObjects:`返回值的类型是`<span class="built_in">NSArray</span> *`，那么子类`MyArray`就需要被强制转换为所需的类`<span class="built_in">NSArray</span>`。这是正是`<span class="keyword">instancetype</span>`返回类型的用武之地。</div><div class="line">在iPhone <span class="number">7.0</span> SDK的<span class="built_in">NSArray</span>中的头文件，已更新为：</div><div class="line">``` objc</div><div class="line">	+ (<span class="keyword">instancetype</span>)arrayWithObjects:(<span class="keyword">id</span>)firstObj, ...;</div></pre></td></tr></table></figure></p>
+<p>唯一的区别是返回类<code>instancetype</code>取代<code>id</code>。这种新的返回类型会告知编译器，返回值是该方法所属的类的实例对象。<br>也就是说:当<code>NSArray</code>调用<code>arrayWithObjects:</code>时，返回类型推断为NSArray*;<br>当<code>MyArray</code>调用<code>arrayWithObjects:</code>时，返回类型推断为MyArray*。  </p>
+<p><code>instancetype</code>解决<code>id</code>类型的问题，同时也继承<code>id</code>类型功能。如果编译在Xcode 5的原代码，你会看到下面的警告：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">	warning: incompatible pointer types initializing 'NSDictionary *' with an expression of type 'NSArray *' [-Wincompatible-pointer-types]</div><div class="line">    NSDictionary *d = [NSArray arrayWithObjects:@(1), @(2), nil];</div><div class="line">                ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  </div><div class="line">```  </div><div class="line">  w00t — now that’s helpful! You now have the opportunity to fix the problem before it turns into a crash later down the line.  </div><div class="line"></div><div class="line">  Initializers are also candidates for using this new return type. The compiler has warned you for some time now if you set the return type of an initializer to that of an incompatible type. But presumably it’s just implicitly converting the id return type to instancetype under the hood. You should still use instancetype for initializers though, because it’s better to be explicit for habit’s sake.  </div><div class="line"></div><div class="line">  Strive to use instancetype as much as possible going forward; it’s become a standard for Apple — and you never know when it will save you some painful debugging time later on.</div><div class="line">  </div><div class="line">### UIScrollView新增属性：`UIScrollViewKeyboardDismissMode`</div><div class="line">像Messages app一样在滚动的时候，将键盘隐藏，是一种非常好的体验。  </div><div class="line">在以前，将这项功能整合到app很难，现在仅仅只需要在Storyboard中简单的改变一个属性值，或者增加一行代码即可。</div><div class="line"></div><div class="line">这个属性使用了新的`UIScrollViewKeyboardDismissMode` enum枚举类型。这个enum枚举类型可能的值如下：  </div><div class="line">``` objc  UIScrollViewKeyboardDismissMode枚举值</div><div class="line">	// the keyboard is not dismissed automatically when scrolling</div><div class="line">		UIScrollViewKeyboardDismissModeNone   </div><div class="line">    // dismisses the keyboard when a drag begins </div><div class="line">		UIScrollViewKeyboardDismissModeOnDrag  </div><div class="line">    // the keyboard follows the dragging touch off screen, and may be pulled upward again to cancel the dismiss </div><div class="line">		UIScrollViewKeyboardDismissModeInteractive  </div><div class="line">```  </div><div class="line">在storyboard中设置该属性值:  </div><div class="line">![UIScrollViewKeyboardDismissMode](/images/UIScrollViewKeyboardDismissMode.png)  </div><div class="line">### UIKit使用[NSAttributedString]((http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSAttributedString_Class/)显示HTML，[TextKit](http://)</div><div class="line">在app中使用Webviews有时会让人非常沮丧，即使只是显示少量的HTML内容 ,Webviews也会消耗大量的内存。</div><div class="line">现在提供了一种全新的简单易用的方式来展示HTML内容，适用于任意的`UIKit`控件，如`UILabel`或`UITextField`等。   </div><div class="line">1.用少量HTML片段，初始化`NSAttributedString`对象:</div><div class="line"></div><div class="line">&#123;% codeblock lang:objc Time to be Awesome - awesome.rb %&#125;</div><div class="line">	NSString *html = @"&lt;bold&gt;Wow!&lt;/bold&gt; Now &lt;em&gt;iOS&lt;/em&gt; can create &lt;h3&gt;NSAttributedString&lt;/h3&gt; from HTMLs!";</div><div class="line">NSDictionary *options = @&#123;NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType&#125;;</div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line">	</div><div class="line">``` objc 用少量HTML片段，初始化`NSAttributedString`对象 http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSAttributedString_Class/</div><div class="line">NSString *html = @"&lt;bold&gt;Wow!&lt;/bold&gt; Now &lt;em&gt;iOS&lt;/em&gt; can create &lt;h3&gt;NSAttributedString&lt;/h3&gt; from HTMLs!";</div><div class="line">NSDictionary *options = @&#123;NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType&#125;;</div><div class="line">NSData *htmlData = [html dataUsingEncoding:NSUTF8StringEncoding];</div><div class="line">NSAttributedString *attrString = [[NSAttributedString alloc] initWithData:htmlData</div><div class="line">												                      options:options </div><div class="line">									                       documentAttributes:nil </div><div class="line">									   			                        error:nil];</div><div class="line">```								   	</div><div class="line">NSDocumentTypeDocumentAttribute包括:</div><div class="line">&lt;!--https://gist.githubusercontent.com/huos3203/ecba275d5e4404678354/raw/1636f62209b056b4acbe07021f596e1ffd5ef301/%E8%A7%A3%E6%9E%90NSAttributedString%E5%AF%B9%E8%B1%A1%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%88%90HTML%E7%89%87%E6%AE%B5</div><div class="line">--&gt;</div><div class="line">	NSPlainTextDocumentType		//Plain text document.</div><div class="line">    NSRTFTextDocumentType		//Rich text format document.</div><div class="line">    NSRTFDTextDocumentType		//Rich text format with attachments document.</div><div class="line"></div><div class="line">2.相反，也可以将`NSAttributedString`对象，解析成HTML片段：</div><div class="line"></div><div class="line">&#123;% gist ecba275d5e4404678354 %E8%A7%A3%E6%9E%90NSAttributedString%E5%AF%B9%E8%B1%A1%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%88%90HTML%E7%89%87%E6%AE%B5.m %&#125;	</div><div class="line"></div><div class="line">### NSLinkAttributeName让标签（UILabel,UITextView）支持超链接</div><div class="line"> </div><div class="line">首先，创建一个`NSAttributedString`对象,然后，调用`addAttribute:value:range:`方法，添加 `NSLinkAttributeName`属性并赋值，如下：  </div><div class="line">``` objc UITextView支持超链接</div><div class="line">	NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"This is an example by @marcelofabri_"]; </div><div class="line">	[attributedString addAttribute:NSLinkAttributeName </div><div class="line">                         value:@"username://marcelofabri_" </div><div class="line">                         range:[[attributedString string] rangeOfString:@"@marcelofabri_"]]; </div><div class="line">	NSDictionary *linkAttributes = @&#123;NSForegroundColorAttributeName: [UIColor greenColor], </div><div class="line">                                 NSUnderlineColorAttributeName: [UIColor lightGrayColor], </div><div class="line">                                 NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)&#125;;  </div><div class="line">	// assume that textView is a UITextView previously created (either by code or Interface Builder) </div><div class="line">	textView.linkTextAttributes = linkAttributes; // customizes the appearance of links </div><div class="line">	textView.attributedText = attributedString; </div><div class="line">	textView.delegate = self;</div></pre></td></tr></table></figure></p>
+<p>当然，也可以使用<code>UITextViewDelegate</code>新增的协议方法<font color="red"><strong>shouldInteractWithURL</strong></font>，来自定义点击事件：<br><figure class="highlight objc"><figcaption><span>协议方法shouldInteractWithURL</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)textView:(<span class="built_in">UITextView</span> *)textView shouldInteractWithURL:(<span class="built_in">NSURL</span> *)URL </div><div class="line">										               inRange:(<span class="built_in">NSRange</span>)characterRange &#123; </div><div class="line">			    <span class="keyword">if</span> ([[URL scheme] isEqualToString:<span class="string">@"username"</span>]) &#123; </div><div class="line">			        <span class="built_in">NSString</span> *username = [URL host];  </div><div class="line">			        <span class="comment">// do something with this username </span></div><div class="line">			        <span class="comment">// ... </span></div><div class="line">			        <span class="keyword">return</span> <span class="literal">NO</span>; </div><div class="line">			    &#125; </div><div class="line">			    <span class="keyword">return</span> <span class="literal">YES</span>; <span class="comment">// let the system open this URL </span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Tint-images-with-UIImage-renderingMode"><a href="#Tint-images-with-UIImage-renderingMode" class="headerlink" title="Tint images with UIImage.renderingMode"></a>Tint images with <code>UIImage.renderingMode</code></h3><p>Tinting is a big part of the new look and feel of iOS 7, and you have control whether your image is tinted or not when rendered.<br>UIImage now has a read-only property named <code>renderingMode</code> as well as a new method <code>imageWithRenderingMode:</code> which uses the new enum <code>UIImageRenderingMode</code> containing the following possible values:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// Use the default rendering mode for the context where the image is used</div><div class="line">	UIImageRenderingModeAutomatic  </div><div class="line">// Always draw the original image, without treating it as a template</div><div class="line">	UIImageRenderingModeAlwaysOriginal  </div><div class="line">// Always draw the image as a template image, ignoring its color information</div><div class="line">	UIImageRenderingModeAlwaysTemplate</div></pre></td></tr></table></figure></p>
+<p>The code below shows how easy it is to create an image with a given rendering mode:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIImage</span> *img = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"myimage"</span>]; </div><div class="line">img = [img imageWithRenderingMode:<span class="built_in">UIImageRenderingModeAlwaysTemplate</span>];</div></pre></td></tr></table></figure></p>
+<p>The default value of renderingMode is UIImageRenderingModeAutomatic.<br>Whether the image will be tinted or not depends on where it’s being displayed as shown by the examples below:<br><img src="/images/uiimagerenderingmode.png" alt="image"></p>
+<h3 id="Usage-of-tintColor-vs-barTintColor"><a href="#Usage-of-tintColor-vs-barTintColor" class="headerlink" title="Usage of tintColor vs barTintColor"></a>Usage of tintColor vs barTintColor</h3><p>In iOS 7 you can tint your entire app with a given color or even implement color themes to help your app stand out from the rest.Setting the tint color of your app is as easy as using the new property <code>tintColor</code> of <code>UIView</code>.<br>Does that property sound familiar? it should — some classes such as <code>UINavigationBar</code>, <code>UISearchBar</code>, <code>UITabBar</code> and <code>UIToolbar</code> already had a property with this name. They now have a new property: <code>barTintColor</code>.<br>In order to avoid getting tripped up by the new property, you should perform the following check if your app needs to support iOS 6 or earlier:</p>
+<figure class="highlight objc"><figcaption><span>bar通过判断是否包含setBarTintColor:确定系统版本</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UINavigationBar</span> *bar = <span class="keyword">self</span>.navigationController.navigationBar;</div><div class="line"><span class="built_in">UIColor</span> *color = [<span class="built_in">UIColor</span> greenColor];</div><div class="line"></div><div class="line"><span class="keyword">if</span> ([bar respondsToSelector:<span class="keyword">@selector</span>(setBarTintColor:)]) &#123; </div><div class="line">		<span class="comment">// iOS 7+</span></div><div class="line">		    bar.barTintColor = color;</div><div class="line">&#125; <span class="keyword">else</span> &#123; </div><div class="line">		<span class="comment">// iOS 6 or earlier</span></div><div class="line">		    bar.tintColor = color;</div><div class="line">&#125;</div><div class="line">```	  </div><div class="line"></div><div class="line"><span class="meta">### Check which wireless routes are available</span></div><div class="line">The ability to customize a video player (and friends) has evolved throughout the past few iOS versions. As an example, prior to iOS <span class="number">6</span> you couldn’t change the AirPlay icon on a `<span class="built_in">MPVolumeView</span>`.  </div><div class="line">In iOS <span class="number">7</span>, you’re finally able to know <span class="keyword">if</span> a remote device is available via AirPlay, Bluetooth, or some other wireless mechanism. This allows your app to behave appropriately, such as hiding an AirPlay icon when that service isn’t available on other devices.  </div><div class="line">The following two new properties and notifications have been added to <span class="built_in">MPVolumeView</span>:  </div><div class="line"></div><div class="line">``` objc  </div><div class="line"><span class="comment">// is there a route that the device can connect to?</span></div><div class="line">	<span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">BOOL</span> wirelessRoutesAvailable;</div><div class="line">	</div><div class="line"><span class="comment">// is the device currently connected?</span></div><div class="line">	<span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">BOOL</span> wirelessRouteActive;   </div><div class="line">  <span class="built_in">NSString</span> *<span class="keyword">const</span> <span class="built_in">MPVolumeViewWirelessRoutesAvailableDidChangeNotification</span>;</div><div class="line">	<span class="built_in">NSString</span> *<span class="keyword">const</span> <span class="built_in">MPVolumeViewWirelessRouteActiveDidChangeNotification</span>;</div></pre></td></tr></table></figure>
+<h3 id="NSArray-firstObject-的实现"><a href="#NSArray-firstObject-的实现" class="headerlink" title="-[NSArray firstObject]的实现"></a><code>-[NSArray firstObject]</code>的实现</h3><p><code>-[NSArray firstObject]</code>可能是Objective-C中被调用做多的API。 在iOS4.0中<code>firstObject</code>已经被使用，但是那时仅仅是一个私有方法。在iOS7以前，常用方法：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *arr = @[]; </div><div class="line"><span class="keyword">id</span> item = [arr firstObject]; </div><div class="line"><span class="comment">// 前你需要做以下工作 </span></div><div class="line"><span class="keyword">id</span> item = [arr count] &gt; <span class="number">0</span> ? arr[<span class="number">0</span>] : <span class="literal">nil</span>;</div></pre></td></tr></table></figure></p>
+<p>因为上面的方式很常用，一般创建一个类别实现该方法<code>firstObject</code>增加到NSArray中。</p>
+<p>这个方法的问题:<code>方法名</code>必须是唯一的，否则,这个方法所引发的问题无法预估。所以在<code>NSArray</code>中最好不要重载<code>firstObject</code>方法，是有风险的。</p>
+<h3 id="UIButtonTypeRoundRect被UIButtonTypeSystem取代"><a href="#UIButtonTypeRoundRect被UIButtonTypeSystem取代" class="headerlink" title="UIButtonTypeRoundRect被UIButtonTypeSystem取代"></a>UIButtonTypeRoundRect被UIButtonTypeSystem取代</h3><p><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2010/05/Rate.jpg" alt="alt text" title="UIButtonTypeRoundRect被UIButtonTypeSystem取代"></p>
+<h4 id="UIPasteboard由共享变为沙盒化了"><a href="#UIPasteboard由共享变为沙盒化了" class="headerlink" title="UIPasteboard由共享变为沙盒化了"></a><code>UIPasteboard</code>由共享变为沙盒化了</h4><p>UIPasteboard过去是用来做app之间的数据分享的。开发者一般使用它来存储标识符，比如:OpenUDID。<br>但在在iOS7中，使用 <code>+[UIPasteboard pasteboardWithName:create:]</code>和 <code>+[UIPasteboard pasteboardWithUniqueName]</code>创建剪贴板，而且只对相同的app group可见，这样再和其他的相关app分享以前的OpenUDID等标识符时，就会出现问题。</p>
+<h4 id="MAC地址-被统一化"><a href="#MAC地址-被统一化" class="headerlink" title="MAC地址:被统一化"></a><code>MAC地址</code>:被统一化</h4><p>在IOS7之前，生成iOS设备唯一标示符的方法是使用iOS设备的Media Access Control（MAC）地址。 一个MAC地址是一个唯一的号码，它是物理网络层级方面分配给网络适配器的。<br>然而，苹果并不希望有人通过MAC地址来分辨用户，在iOS7以上，查询MAC地址，它现在只会返回02:00:00:00:00:00。<br>目前，苹果推荐开发者使用以下两种方式，来获取作为框架和应用的唯一标示符：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">	<span class="built_in">NSString</span> *identifierForVendor = [[<span class="built_in">UIDevice</span> currentDevice].identifierForVendor UUIDString]; </div><div class="line">	<span class="built_in">NSString</span> *identifierForAdvertising = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];</div><div class="line">``` </div><div class="line">`identifierForVendor`：由同一个公司发行的的app在相同的设备上运行的时候都会有这个相同的标识符。然而，如果用户删除了这个供应商的app然后再重新安装的话，这个标识符就会不一致。</div><div class="line">`advertisingIdentifier`：返回给在这个设备上所有软件供应商公用的唯一值，所以只能在广告的时候使用。这个值会因为很多情况而有所变化，比如说用户初始化设备的时候便会改变。</div><div class="line">  </div><div class="line"><span class="meta">####  app启动麦克风，需争征得用户同意  </span></div><div class="line">  </div><div class="line">  以前如果app需要使用用户的位置，通讯录，日历，提醒以及照片，接受推送消息，使用用户的社交网络的时候需要征得用户的同意。</div><div class="line">  现在在iOS7当中，使用麦克风也需要取得用户同意了。如果用户不允许app使用麦克风的话，那么需要使用麦克风的app就不能接收不到任何声音。</div><div class="line">  以下的代码是用来查询用户是否允许app使用麦克风：  </div><div class="line">```	objc		</div><div class="line">	<span class="comment">//第一次调用这个方法的时候，系统会提示用户让他同意你的app获取麦克风的数据 </span></div><div class="line">	<span class="comment">// 其他时候调用方法的时候，则不会提醒用户 </span></div><div class="line">	<span class="comment">// 而会传递之前的值来要求用户同意 </span></div><div class="line">	[[<span class="built_in">AVAudioSession</span> sharedInstance] requestRecordPermission:^(<span class="built_in">BOOL</span> granted) &#123; </div><div class="line">										    <span class="keyword">if</span> (granted) &#123; </div><div class="line">												        <span class="comment">// 用户同意获取数据 </span></div><div class="line">												    &#125; <span class="keyword">else</span> &#123; </div><div class="line">												        <span class="comment">// 可以显示一个提示框告诉用户这个app没有得到允许？ </span></div><div class="line">												    &#125; </div><div class="line">										    &#125;</div><div class="line">    ];</div></pre></td></tr></table></figure></p>
+<p>如果没有经过用户同意，就调用麦克风，iOS系统自动弹出以下警示栏：<br><img src="/images/microphone.jpg" alt="image"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/weixinimg.jpg" alt="boyer wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/weixin.jpg" alt="boyer WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/zhifubao.jpg" alt="boyer Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IOS7/" rel="tag"># IOS7</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/06/10/2014-06-10-zai-ioszhong-xiang-snapchat-yi-yang-jian-kong-screenshots/" rel="next" title="在IOS中像SnapChat一样监控screenshots">
+                <i class="fa fa-chevron-left"></i> 在IOS中像SnapChat一样监控screenshots
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/06/16/2014-06-16-ios7xin-chong-text-kit/" rel="prev" title="IOS7新宠Text Kit">
+                IOS7新宠Text Kit <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2014/06/11/2014-06-11-ios7de-bian-ge/"
+           data-title="IOS7的变革" data-url="https://huos3203.github.io/2014/06/11/2014-06-11-ios7de-bian-ge/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="boyer" />
+          <p class="site-author-name" itemprop="name">boyer</p>
+          <p class="site-description motion-element" itemprop="description">不物喜，不己悲，善假物，易参行！</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huos3203" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1791281385" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/boyers" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/boyers" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" title="swift文档" target="_blank">swift文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.objccn.io" title="objc中国" target="_blank">objc中国</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nshipster.cn" title="NSHipster" target="_blank">NSHipster</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" title="动画" target="_blank">动画</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://git-scm.com/book/zh" title="Git Pro" target="_blank">Git Pro</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://kaopu.so/pan" title="全盘搜" target="_blank">全盘搜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://mp.weixin.qq.com" title="小程序官方" target="_blank">小程序官方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://onevcat.com" title="王维" target="_blank">王维</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.devtang.com" title="唐巧" target="_blank">唐巧</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能提高以及被遗弃的功能"><span class="nav-number">1.</span> <span class="nav-text">性能提高以及被遗弃的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新增截屏通知-UIApplicationUserDidTakeScreenshotNotification"><span class="nav-number">1.1.</span> <span class="nav-text">新增截屏通知:UIApplicationUserDidTakeScreenshotNotification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新增手势-UIScreenEdgePanGestureRecognizer"><span class="nav-number">1.2.</span> <span class="nav-text">新增手势: UIScreenEdgePanGestureRecognizer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新增返回类型-–-instancetype"><span class="nav-number">1.3.</span> <span class="nav-text">新增返回类型 – instancetype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tint-images-with-UIImage-renderingMode"><span class="nav-number">1.4.</span> <span class="nav-text">Tint images with UIImage.renderingMode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Usage-of-tintColor-vs-barTintColor"><span class="nav-number">1.5.</span> <span class="nav-text">Usage of tintColor vs barTintColor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSArray-firstObject-的实现"><span class="nav-number">1.6.</span> <span class="nav-text">-[NSArray firstObject]的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIButtonTypeRoundRect被UIButtonTypeSystem取代"><span class="nav-number">1.7.</span> <span class="nav-text">UIButtonTypeRoundRect被UIButtonTypeSystem取代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UIPasteboard由共享变为沙盒化了"><span class="nav-number">1.7.1.</span> <span class="nav-text">UIPasteboard由共享变为沙盒化了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC地址-被统一化"><span class="nav-number">1.7.2.</span> <span class="nav-text">MAC地址:被统一化</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boyer</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huo3203"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("ue8PI3eFeweMAjNgpAAIfiRi-gzGzoHsz", "2kHl2CEoDUKiHcVvz0dhu5rF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
