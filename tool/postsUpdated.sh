@@ -19,7 +19,7 @@ do
     #逐行循环开始
     postPath="\"_posts${line}\""
     echo "$postPath"
-    if [ -f "${postPath}" ]; then
+    if [ -f ${postPath} ]; then
         #直接修改文件内容(危险动作) updated:值
         createdLine=$(cat ${postPath} | grep 'date: ')
         updatedLine=$(cat ${postPath} | grep 'updated: ')
