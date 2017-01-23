@@ -614,61 +614,6 @@
   </entry>
   
   <entry>
-    <title>腾讯云之小直播开发</title>
-    <link href="https://huos3203.github.io/2017/01/22/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
-    <id>https://huos3203.github.io/2017/01/22/腾讯云之小直播开发/</id>
-    <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="视频服务"><a href="#视频服务" class="headerlink" title="视频服务"></a>视频服务</h1><ol>
-<li><p><a href="https://www.qcloud.com/product/LVB" target="_blank" rel="external">直播LVB</a> </p>
-<ol>
-<li><a href="https://www.qcloud.com/document/product/267/7964" target="_blank" rel="external">开发指南</a></li>
-</ol>
-</li>
-<li><p><a href="https://www.qcloud.com/product/mlvb" target="_blank" rel="external">移动直播MLVB</a></p>
-<ol>
-<li><a href="https://www.qcloud.com/document/product/454/7876" target="_blank" rel="external">开发指南</a><br>移动直播是一套移动终端直播解决方案的<code>集合</code>，它以免费源码的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
-</ol>
-</li>
-</ol>
-<h2 id="快速集成方案"><a href="#快速集成方案" class="headerlink" title="快速集成方案"></a>快速集成方案</h2><img src="https://mc.qcloudimg.com/static/img/92a464fc26bbe52fea8816f8e6061ef3/image.jpg" class="导图" title="100% 200 集成导图 图片">
-<p>如果您想要在自己的 APP 里集成直播推流和播放功能，下面三步就能达成目标：</p>
-<ol>
-<li>开通直播服务<br><a href="https://console.qcloud.com/live" target="_blank" rel="external">文档</a></li>
-<li>集成 RTMP SDK<br><a href="https://www.qcloud.com/document/product/454/7880" target="_blank" rel="external">RTMP SDK - iOS 平台播放</a></li>
-<li>对接直播流管理<ol>
-<li><a href="https://www.qcloud.com/document/product/454/7915" target="_blank" rel="external">云端API - 如何获取推流URL？</a></li>
-<li><a href="https://www.qcloud.com/document/product/454/7916" target="_blank" rel="external">云端API - 如何构建房间列表？</a></li>
-<li><a href="https://www.qcloud.com/document/product/454/7920" target="_blank" rel="external">云端API - 如何管理直播流？</a><br>小直播是有腾讯云研发团队提供的一套开源源码集，致力于以 DEMO 的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
-</ol>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;视频服务&quot;&gt;&lt;a href=&quot;#视频服务&quot; class=&quot;headerlink&quot; title=&quot;视频服务&quot;&gt;&lt;/a&gt;视频服务&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.qcloud.com/product/LVB&quot; target=&quot;
-    
-    </summary>
-    
-      <category term="直播" scheme="https://huos3203.github.io/categories/%E7%9B%B4%E6%92%AD/"/>
-    
-    
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="直播" scheme="https://huos3203.github.io/tags/%E7%9B%B4%E6%92%AD/"/>
-    
-      <category term="腾讯云" scheme="https://huos3203.github.io/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
-    
-      <category term="集成" scheme="https://huos3203.github.io/tags/%E9%9B%86%E6%88%90/"/>
-    
-      <category term="SDK" scheme="https://huos3203.github.io/tags/SDK/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Awsome Apple Develop Guide</title>
     <link href="https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/"/>
     <id>https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/</id>
@@ -911,6 +856,61 @@
   </entry>
   
   <entry>
+    <title>腾讯云之小直播开发</title>
+    <link href="https://huos3203.github.io/2017/01/22/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
+    <id>https://huos3203.github.io/2017/01/22/腾讯云之小直播开发/</id>
+    <published>2017-01-22T10:55:21.000Z</published>
+    <updated>2017-01-22T10:55:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="视频服务"><a href="#视频服务" class="headerlink" title="视频服务"></a>视频服务</h1><ol>
+<li><p><a href="https://www.qcloud.com/product/LVB" target="_blank" rel="external">直播LVB</a> </p>
+<ol>
+<li><a href="https://www.qcloud.com/document/product/267/7964" target="_blank" rel="external">开发指南</a></li>
+</ol>
+</li>
+<li><p><a href="https://www.qcloud.com/product/mlvb" target="_blank" rel="external">移动直播MLVB</a></p>
+<ol>
+<li><a href="https://www.qcloud.com/document/product/454/7876" target="_blank" rel="external">开发指南</a><br>移动直播是一套移动终端直播解决方案的<code>集合</code>，它以免费源码的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
+</ol>
+</li>
+</ol>
+<h2 id="快速集成方案"><a href="#快速集成方案" class="headerlink" title="快速集成方案"></a>快速集成方案</h2><img src="https://mc.qcloudimg.com/static/img/92a464fc26bbe52fea8816f8e6061ef3/image.jpg" class="导图" title="100% 200 集成导图 图片">
+<p>如果您想要在自己的 APP 里集成直播推流和播放功能，下面三步就能达成目标：</p>
+<ol>
+<li>开通直播服务<br><a href="https://console.qcloud.com/live" target="_blank" rel="external">文档</a></li>
+<li>集成 RTMP SDK<br><a href="https://www.qcloud.com/document/product/454/7880" target="_blank" rel="external">RTMP SDK - iOS 平台播放</a></li>
+<li>对接直播流管理<ol>
+<li><a href="https://www.qcloud.com/document/product/454/7915" target="_blank" rel="external">云端API - 如何获取推流URL？</a></li>
+<li><a href="https://www.qcloud.com/document/product/454/7916" target="_blank" rel="external">云端API - 如何构建房间列表？</a></li>
+<li><a href="https://www.qcloud.com/document/product/454/7920" target="_blank" rel="external">云端API - 如何管理直播流？</a><br>小直播是有腾讯云研发团队提供的一套开源源码集，致力于以 DEMO 的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;视频服务&quot;&gt;&lt;a href=&quot;#视频服务&quot; class=&quot;headerlink&quot; title=&quot;视频服务&quot;&gt;&lt;/a&gt;视频服务&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.qcloud.com/product/LVB&quot; target=&quot;
+    
+    </summary>
+    
+      <category term="直播" scheme="https://huos3203.github.io/categories/%E7%9B%B4%E6%92%AD/"/>
+    
+    
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="直播" scheme="https://huos3203.github.io/tags/%E7%9B%B4%E6%92%AD/"/>
+    
+      <category term="腾讯云" scheme="https://huos3203.github.io/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
+    
+      <category term="集成" scheme="https://huos3203.github.io/tags/%E9%9B%86%E6%88%90/"/>
+    
+      <category term="SDK" scheme="https://huos3203.github.io/tags/SDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS面试题大集合[转]</title>
     <link href="https://huos3203.github.io/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
     <id>https://huos3203.github.io/2017/01/22/iOS面试题大集合/</id>
@@ -1110,9 +1110,9 @@
       <category term="git" scheme="https://huos3203.github.io/categories/git/"/>
     
     
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
       <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
       <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
@@ -1240,7 +1240,7 @@
     <link href="https://huos3203.github.io/2017/01/03/SwiftGuide/"/>
     <id>https://huos3203.github.io/2017/01/03/SwiftGuide/</id>
     <published>2017-01-03T09:05:20.000Z</published>
-    <updated>2017-01-23T09:13:51.000Z</updated>
+    <updated>2017-01-23T09:24:21.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Swift-语言指南-转"><a href="#Swift-语言指南-转" class="headerlink" title="Swift 语言指南[转]"></a>Swift 语言指南[转]</h1><blockquote>
 <p><span style="color:lightgray;font-size:12px"><a href="http://weibo.com/swiftlanguage" target="_blank" rel="external">@SwiftLanguage</a> 更新于 2016-6-6，更新内容详见 <a href="https://github.com/ipader/SwiftGuide/blob/master/weekly/Issue-55.md" target="_blank" rel="external">Issue 55</a>。往期更新回顾详见《<a href="https://github.com/ipader/SwiftGuide/blob/master/weekly/README.md" target="_blank" rel="external">收录周报</a>》</span></p>
@@ -1274,7 +1274,7 @@
 <li><a href="https://github.com/apple" target="_blank" rel="external">GitHub:apple</a>：苹果在 GitHub 上的开源项目。</li>
 <li><a href="https://github.com/apple/swift" target="_blank" rel="external">GitHub:apple/swift</a>：swift 语言在 GitHub 上的开源项目。</li>
 <li><a href="https://github.com/ksm/SwiftInFlux" target="_blank" rel="external">ksm/SwiftInFlux</a>：作者（Karol Mazur）将 Apple Developer Forums 上有关 Swift 特性、缺陷及变更讨论分类汇总并更新到 GitHub，具有很好的可读性。从中可以一窥 Swift 缺陷及未来潜在地变化。最关键地是有 Chris Lattner 及核心团队答疑解惑。</li>
-<li><a href="https://www.raywenderlich.com/" target="_blank" rel="external">raywenderlich.com</a>(<a href="https://www.raywenderlich.com/zh-hans/" target="_blank" rel="external">中文版</a>)：由Ray Wenderlich创建，专注于开发高质量编程指南（近期优质Swift文章及视频教程不断），著名的iOS/OS X博客及开发教程网站，非常适合新手学习。近期第一时间出了<a href="https://www.raywenderlich.com/74832/three-new-swift-books" target="_blank" rel="external">三本 Swift 新书</a>。</li>
+<li><del><a href="https://www.raywenderlich.com/" target="_blank" rel="external">raywenderlich.com</a>(<a href="https://www.raywenderlich.com/zh-hans/" target="_blank" rel="external">中文版</a>)：由Ray Wenderlich创建，专注于开发高质量编程指南（近期优质Swift文章及视频教程不断），著名的iOS/OS X博客及开发教程网站，非常适合新手学习。近期第一时间出了<a href="https://www.raywenderlich.com/74832/three-new-swift-books" target="_blank" rel="external">三本 Swift 新书</a>。</del></li>
 <li><a href="http://www.natashatherobot.com/" target="_blank" rel="external">Natasha The Robot</a>： 时髦码农不容错过的 Swift 开发实战教程类网站。为了简化学习复杂性，每一篇文章涵盖技术点单一又独立，配以开发步骤、运行结果以及代码等标准方式教授。难能可贵的是，它往往出品“追剧式”（最新开发特性或API跟进式）教程，实在是开发者必藏精品网站。</li>
 <li><a href="http://nshipster.com/" target="_blank" rel="external">NShipster</a> (<a href="http://nshipster.cn/" target="_blank" rel="external">中译版</a>：<a href="http://weibo.com/croath" target="_blank" rel="external">@刘镇夫</a>，<a href="http://nshipster.cn/translators/april-peng/" target="_blank" rel="external">April Peng</a>，<a href="http://weibo.com/leelejia" target="_blank" rel="external">@李乐佳</a>，<a href="http://weibo.com/fallhunter" target="_blank" rel="external">@程序员付恒</a> 等翻译)：著名开源作者 <a href="https://github.com/mattt" target="_blank" rel="external">Matt Thompson</a> 创建的开发技术博客网站，他开发了 <a href="https://github.com/afnetworking/afnetworking" target="_blank" rel="external">AFNetworking</a> 网络库，也是非常多产的开源作者。更多了解参考：<a href="http://www.fallhunter.com/p/10709" target="_blank" rel="external">《COCOA 潮人 MATTT THOMPSON》</a> By <a href="http://weibo.com/fallhunter" target="_blank" rel="external">@程序员付恒</a></li>
 <li><a href="http://jamesonquave.com/blog/" target="_blank" rel="external">jamesonquave.com</a>：移动开发者，优秀个人博客（近期文章同样关注于Swift 语言，写得很优质）。同时他将于8/30发布一本新书<a href="http://jamesonquave.com/swiftebook/" target="_blank" rel="external">《Developing iOS 8 Apps in Swift》</a> (Learn To Make Real World iOS 8 Apps)及视频教程。</li>
@@ -1289,7 +1289,7 @@
 <li><a href="http://swiftdevweekly.co/" target="_blank" rel="external">Swift Developer Weekly</a>:这个网站每周推送最新的技术文章和书本推荐到你的email，由Phil Wright创办。</li>
 <li><p><a href="http://iosdevtips.co" target="_blank" rel="external">iosdevtips.co</a>：iOS Development Tips</p>
 </li>
-<li><p><strong><a id="recomm_resources"></a>资源合集</strong></p>
+<li><p><strong>资源合集</strong></p>
 <blockquote>
 <p>以下是其它开发者社区或 Swift 爱好者整理的有关 Swift 语言学习的资源列表。</p>
 </blockquote>
@@ -1319,7 +1319,7 @@
 <h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="1-编程工具"><a href="#1-编程工具" class="headerlink" title="1. 编程工具"></a>1. 编程工具</h3><ul>
 <li><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">Xcode 下载</a>：苹果应用集成开发环境。支持 C/C++, Objective C, Swift 等。不用购买开发者计划，直接下载。</li>
 <li><a href="http://macromates.com/" target="_blank" rel="external">Textmate</a>：Mac OS X 上一个可高度自定义的编辑器，尤其在我想做出一个快速改变但又不想等待 Xcode 加载的时候。该工具目前已经<a href="https://github.com/textmate/textmate" target="_blank" rel="external">开源</a></li>
-<li><a href="http://mouapp.com/" target="_blank" rel="external">Mou</a>：OS X 上一款 Markdown 的编辑器。非常适用于编写自述文件、变更日志以及其他方面的内容。作者：<a href="http://chenluois.com/" target="_blank" rel="external">罗晨</a></li>
+<li><a href="http://mouapp.com/" target="_blank" rel="external">Mou ($)</a>：OS X 上一款 Markdown 的编辑器。非常适用于编写自述文件、变更日志以及其他方面的内容。作者：<a href="http://chenluois.com/" target="_blank" rel="external">罗晨</a></li>
 <li><a href="http://www.sublimetext.com/" target="_blank" rel="external">Sublime Text ($)</a>：Mac OS X 上另一款非常受欢迎的轻量级，可高度自定义的编辑器。</li>
 <li><a href="http://www.runswiftlang.com/" target="_blank" rel="external">RunSwift</a>:正在犹豫是否入手苹果电脑开始一段 Swift 编程旅程的同学们，或仅仅为了试验一段简单 Swift 代码又懒得打开 Xcode，可以试试这款 Web 版 Swift 编译环境 RunSwift。</li>
 <li><a href="http://infinitapps.com/bezel/" target="_blank" rel="external">InfinitApps - Bezel</a>：“嫌 Xcode 6 目前提供的 Watch 模拟器不够直观？Bezel 是一个用于视觉预览 WatchKit 所开发程序效果的小工具，前提是你安装了 xScope 软件（Mac端）或 xScopeMirror（iPhone端）。 By <a href="http://weibo.com/twios" target="_blank" rel="external">@WatchKit开发</a>”</li>
@@ -1360,6 +1360,22 @@
 <h3 id="6-设计工具"><a href="#6-设计工具" class="headerlink" title="6. 设计工具"></a>6. 设计工具</h3><ul>
 <li><a href="http://www.sketchapp.com/" target="_blank" rel="external">sketch</a>：更适合开发应用的矢量设计工具。通过插件还支持与代码协同工作。推荐书籍：<a href="https://designcode.io/sketch" target="_blank" rel="external">Learn Sketch 3</a></li>
 <li><a href="http://www.paintcodeapp.com/" target="_blank" rel="external">PaintCode</a><br>:PaintCode是Apple Designer入门APP开发最合适的辅助工具之一，她可以把你绘制的矢量UI自动转化为适用于iOS/OS X的Objective-C代码。</li>
+</ul>
+<h3 id="7-开源项目"><a href="#7-开源项目" class="headerlink" title="7. 开源项目"></a>7. 开源项目</h3><ul>
+<li>使用<a href="https://cocoapods.org" target="_blank" rel="external">cocoaPods</a>工具管理第三方类库，<a href="http://git-scm.com/book/zh/v2" target="_blank" rel="external">Git</a>控制版本迭代协作开发；</li>
+<li><a href="https://github.com/romaonthego/RESideMenu" target="_blank" rel="external">RESideMenu</a>侧滑布局类库,支持左右滑动，滑动距离;</li>
+<li><a href="https://github.com/hackiftekhar/IQKeyboardManager" target="_blank" rel="external">IQKeyboardManager</a>易于集成，支持设备的方向，可通过类的方法来启用和禁用键盘管理器；</li>
+<li><a href="https://github.com/antoniocasero/ACPDownload" target="_blank" rel="external">ACPDownload</a>实现类似AppStore下载状态样式；</li>
+<li><a href="https://github.com/thibaultCha/TCBlobDownload" target="_blank" rel="external">TCBlobDownload</a>支持后台线程执行大文件下载任务，暂停和重新恢复下载；</li>
+<li><a href="https://github.com/shingwasix/MobShareSDK" target="_blank" rel="external">MobShareSDK</a>实现微信朋友，朋友圈分享;</li>
+<li><a href="https://zwaldowski.github.io/BlocksKit" target="_blank" rel="external">BlocksKit</a>没有创建新的宏，函数，方法和类，仅对Cocoa基础类的一个扩展，是取代了通常的delegate用法;</li>
+<li><a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">SDWebImage</a>图片缓存的框架; <!--点点滴滴--></li>
+<li><a href="https://github.com/CoderMJLee/MJRefresh" target="_blank" rel="external">MJRefresh</a>下拉刷新上拉加载更多MJRefresh类库;</li>
+<li><a href="https://github.com/scalessec/Toast" target="_blank" rel="external">Toast</a>Android风格的Toast控件,用户提示便捷得体；</li>
+<li><a href="https://github.com/kcandr/IQLabelView" target="_blank" rel="external">IQLabelView</a>对文本控件覆盖，缩放和旋转；</li>
+<li><a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">AFNetworking</a></li>
+<li><a href="https://github.com/RestKit/RestKit" target="_blank" rel="external">RestKit</a>处理web服务api,解析JSON映射响应对象；</li>
+<li><a href="https://github.com/Masonry/Masonry" target="_blank" rel="external">Masonry</a>一个轻量级的布局框架,拥有自己的描述语法，采用更优雅的链式语法封装自动布局；</li>
 </ul>
 <h2 id="媒体报道"><a href="#媒体报道" class="headerlink" title="媒体报道"></a><a href="https://github.com/ipader/SwiftGuide/tree/master/archive/news.md" target="_blank" rel="external">媒体报道</a></h2><h2 id="开放平台"><a href="#开放平台" class="headerlink" title="开放平台"></a><a href="https://github.com/ipader/SwiftGuide/tree/master/archive/platforms.md" target="_blank" rel="external">开放平台</a></h2><h2 id="Apple-Watch-指南"><a href="#Apple-Watch-指南" class="headerlink" title="Apple Watch 指南"></a><a href="https://github.com/ipader/SwiftGuide/blob/master/Apple%20Watch/README.md" target="_blank" rel="external">Apple Watch 指南</a></h2>]]></content>
     
@@ -1502,8 +1518,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#115;&#111;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#64;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#109;">&#115;&#111;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#64;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#109;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x73;&#111;&#x6d;&#101;&#x2d;&#x6f;&#110;&#101;&#64;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;">&#x73;&#111;&#x6d;&#101;&#x2d;&#x6f;&#110;&#101;&#64;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#115;&#111;&#x6d;&#101;&#45;&#x6f;&#110;&#x65;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#109;">&#115;&#111;&#x6d;&#101;&#45;&#x6f;&#110;&#x65;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#109;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#115;&#111;&#109;&#101;&#x2d;&#111;&#110;&#101;&#64;&#x65;&#120;&#x61;&#x6d;&#112;&#108;&#x65;&#46;&#99;&#111;&#109;">&#115;&#111;&#109;&#101;&#x2d;&#111;&#110;&#101;&#64;&#x65;&#120;&#x61;&#x6d;&#112;&#108;&#x65;&#46;&#99;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
