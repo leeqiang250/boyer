@@ -27,14 +27,14 @@ do
         #替换创建时间
         if [ "$createdLine" != "" ]; then
             echo "--开始替换 date: --"
-            sed -i '' "s/${createdLine}/date: ${time}/g" "${postPath}"
+            sed -i '' "s/${createdLine}/date: ${time}/g" ${postPath}
         else
             echo "date: 不存在"
         fi
         #替换更新时间
         if [ "$updatedLine" != "" ]; then
             echo "--开始替换 updated: --"
-            sed -i '' "s/${updatedLine}/updated: ${time}/g" "${postPath}"
+            sed -i '' "s/${updatedLine}/updated: ${time}/g" ${postPath}
         else
             echo "updated: 不存在"
         fi
