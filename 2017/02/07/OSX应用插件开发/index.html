@@ -86,25 +86,22 @@
 
 
 
-<meta name="description" content="目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。
-Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这个是因为苹果解决xcode ghost，把插件屏蔽了。解决方法sudo /usr/libexec/xpccachectl然后必须重启电脑后生效.
-在以前的 OS X 系统中，给你">
+<meta name="description" content="在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过NSBundle和 plug-ins插件,可以很方便的向原有APP中添加新功能点。目的：在一个修改过的 TextEdit 里面加入加载 bundle 的功能
+包 (Bundles) 和接口 (Interfaces)如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OSX 应用插件">
 <meta property="og:url" content="https://huos3203.github.io/2017/02/07/OSX应用插件开发/index.html">
 <meta property="og:site_name" content="布衣男儿">
-<meta property="og:description" content="目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。
-Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这个是因为苹果解决xcode ghost，把插件屏蔽了。解决方法sudo /usr/libexec/xpccachectl然后必须重启电脑后生效.
-在以前的 OS X 系统中，给你">
-<meta property="og:image" content="https://huos3203.github.io/images/xcode6.jpg">
+<meta property="og:description" content="在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过NSBundle和 plug-ins插件,可以很方便的向原有APP中添加新功能点。目的：在一个修改过的 TextEdit 里面加入加载 bundle 的功能
+包 (Bundles) 和接口 (Interfaces)如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如">
 <meta property="og:image" content="https://huos3203.github.io/images/xcode8.png">
-<meta property="og:updated_time" content="2017-02-07T04:50:33.000Z">
+<meta property="og:image" content="https://huos3203.github.io/images/xcode6.jpg">
+<meta property="og:updated_time" content="2017-02-07T05:12:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OSX 应用插件">
-<meta name="twitter:description" content="目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。
-Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这个是因为苹果解决xcode ghost，把插件屏蔽了。解决方法sudo /usr/libexec/xpccachectl然后必须重启电脑后生效.
-在以前的 OS X 系统中，给你">
-<meta name="twitter:image" content="https://huos3203.github.io/images/xcode6.jpg">
+<meta name="twitter:description" content="在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过NSBundle和 plug-ins插件,可以很方便的向原有APP中添加新功能点。目的：在一个修改过的 TextEdit 里面加入加载 bundle 的功能
+包 (Bundles) 和接口 (Interfaces)如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如">
+<meta name="twitter:image" content="https://huos3203.github.io/images/xcode8.png">
 
 
 
@@ -208,7 +205,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -218,7 +215,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -241,7 +238,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            Search
+            Suche
           </a>
         </li>
       
@@ -328,7 +325,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-07T12:38:58+08:00">
                 2017-02-07
@@ -349,7 +346,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -409,9 +406,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
       
 
       
-        <p>目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。</p>
-<p>Xcode8 不再支持<code>Application Plug-in</code>插件<br><img src="/images/xcode6.jpg" class="xcode6" title="100% 300 项目创建模版"><br><a href="http://www.jianshu.com/p/39443429f71d" target="_blank" rel="external">XCode8.2.1继续使用xcode插件</a><br>这个是因为苹果解决xcode ghost，把插件屏蔽了。<br>解决方法<br><code>sudo /usr/libexec/xpccachectl</code><br>然后必须重启电脑后生效.</p>
-<p>在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过<code>NSBundle</code>和 <code>plug-ins</code>插件,可以很方便的向原有APP中添加新功能点。</p>
+        <p>在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过<code>NSBundle</code>和 <code>plug-ins</code>插件,可以很方便的向原有APP中添加新功能点。<br>目的：在一个修改过的 TextEdit 里面加入加载 bundle 的功能</p>
 <h2 id="包-Bundles-和接口-Interfaces"><a href="#包-Bundles-和接口-Interfaces" class="headerlink" title="包 (Bundles) 和接口 (Interfaces)"></a>包 (Bundles) 和接口 (Interfaces)</h2><p>如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如： <code>Screen Savers</code> 到 <code>Image Units</code>等。<br>在<code>Framework &amp; Library</code>中的 <code>Bundle</code> 条目。我会在今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。<br><img src="/images/xcode8.png" class="项目模版"></p>
 <p><code>bundle 模版</code>项目与APP项目比较<br>两者构建后的目录很像：</p>
 <ol>
@@ -424,15 +419,35 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
 <ol>
 <li>扫描 bundle</li>
 <li>加载 bundle</li>
-<li>调用 bundle 的 UI。<br>打开 <code>Controller.m</code>，你可以看见 <code>-(void)loadPlugins</code> 方法 (它在 <code>applicationDidFinishLaunching:</code> 中被调用)。<br><code>loadPlugins</code> 方法在你的界面菜单右侧加入了一个新的 <code>NSMenuItem</code>，来为你调用你的插件提供一个入口（通常你会在 <code>MainMenu.xib</code> 做这件事情并且链接 <code>outlets</code>，但是我们这次偷下懒）。然后获得你的插件目录（在 <code>~/Library/Application Support/Text Edit/Plug-Ins/</code> ）下，并且扫描这个目录。<figure class="highlight objc"><figcaption><span>bundle加载</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *pluginsFolder = [<span class="keyword">self</span> pluginsFolder];</div><div class="line"><span class="built_in">NSFileManager</span> *fm = [<span class="built_in">NSFileManager</span> defaultManager];</div><div class="line"><span class="built_in">NSError</span> *outErr;</div><div class="line"><span class="keyword">for</span> (<span class="built_in">NSString</span> *item <span class="keyword">in</span> [fm contentsOfDirectoryAtPath:pluginsFolder error:&amp;outErr]) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (![item hasSuffix:<span class="string">@".bundle"</span>])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">NSString</span> *bundlePath = [pluginsFolder stringByAppendingPathComponent:item];</div><div class="line">    <span class="built_in">NSBundle</span> *b = [<span class="built_in">NSBundle</span> bundleWithPath:bundlePath];</div><div class="line">    <span class="keyword">if</span> (!b) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Could not make a bundle from %@"</span>, bundlePath);</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">id</span> &lt;TextEditPlugin&gt; plugin = [[b principalClass] new];</div><div class="line">    <span class="built_in">NSMenuItem</span> *item = [pluginsMenu addItemWithTitle:[plugin menuItemTitle] action:<span class="keyword">@selector</span>(pluginMenuItemCalledAction:) keyEquivalent:<span class="string">@""</span>];</div><div class="line">    [item setRepresentedObject:plugin];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-扫描插件目录，确保得到的是一个 <code>.bundle</code> 文件，然后用 <code>NSBundle</code> 载入你找到的 <code>bundle</code> 并且实例化里面的类。<br>你会注意到一个 <code>TextEditPlugin</code> 的 <code>protocol</code> 的引用。在 <code>TextEditMisc.h</code> 能找它的定义:<figure class="highlight objc"><figcaption><span>声明代理协议</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">TextEditPlugin</span> &lt;<span class="title">NSObject</span>&gt;</span></div><div class="line">- (<span class="built_in">NSString</span>*)menuItemTitle;</div><div class="line">- (<span class="keyword">void</span>)actionCalledWithTextView:(<span class="built_in">NSTextView</span>*)textView inDocument:(<span class="keyword">id</span>)document;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-这说明你实例化的类需要响应这两个方法。你可以验证这个类是否响应这两个方法（这是一个好主意），但是简单起见，我们现在就不这样做了。</li>
+<li>调用 bundle 的 UI。<br>打开 <code>Controller.m</code>，你可以看见 <code>-(void)loadPlugins</code> 方法 (它在 <code>applicationDidFinishLaunching:</code> 中被调用)。<br><code>loadPlugins</code> 方法：</li>
+<li><p>扩展插件菜单：在界面菜单右侧加入了一个新的 <code>NSMenuItem</code>，为调用插件提供一个入口（通常你会在 <code>MainMenu.xib</code> 做这件事情并且链接 <code>outlets</code>，但是我们这次偷下懒）。</p>
+</li>
+<li><p>然后获得插件目录（在 <code>~/Library/Application Support/Text Edit/Plug-Ins/</code> ）下，并且扫描这个目录。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *pluginsFolder = [<span class="keyword">self</span> pluginsFolder];</div><div class="line"><span class="built_in">NSFileManager</span> *fm = [<span class="built_in">NSFileManager</span> defaultManager];</div><div class="line"><span class="built_in">NSError</span> *outErr;</div><div class="line"><span class="keyword">for</span> (<span class="built_in">NSString</span> *item <span class="keyword">in</span> [fm contentsOfDirectoryAtPath:pluginsFolder error:&amp;outErr]) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (![item hasSuffix:<span class="string">@".bundle"</span>])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">NSString</span> *bundlePath = [pluginsFolder stringByAppendingPathComponent:item];</div><div class="line">    <span class="built_in">NSBundle</span> *b = [<span class="built_in">NSBundle</span> bundleWithPath:bundlePath];</div><div class="line">    <span class="keyword">if</span> (!b) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Could not make a bundle from %@"</span>, bundlePath);</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">id</span> &lt;TextEditPlugin&gt; plugin = [[b principalClass] new];</div><div class="line">    <span class="built_in">NSMenuItem</span> *item = [pluginsMenu addItemWithTitle:[plugin menuItemTitle] action:<span class="keyword">@selector</span>(pluginMenuItemCalledAction:) keyEquivalent:<span class="string">@""</span>];</div><div class="line">    [item setRepresentedObject:plugin];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：扫描插件目录，确保得到的是一个 <code>.bundle</code> 文件，然后用 <code>NSBundle</code> 载入你找到的 <code>bundle</code> 并且实例化里面的类。</p>
+</blockquote>
+</li>
 </ol>
+<h3 id="插件代理"><a href="#插件代理" class="headerlink" title="插件代理"></a>插件代理</h3><p>你会注意到一个 <code>TextEditPlugin</code> 的 <code>protocol</code> 的引用。在 <code>TextEditMisc.h</code> 能找它的定义:<br><figure class="highlight objc"><figcaption><span>声明代理协议</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">TextEditPlugin</span> &lt;<span class="title">NSObject</span>&gt;</span></div><div class="line">- (<span class="built_in">NSString</span>*)menuItemTitle;</div><div class="line">- (<span class="keyword">void</span>)actionCalledWithTextView:(<span class="built_in">NSTextView</span>*)textView inDocument:(<span class="keyword">id</span>)document;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure><br>这说明你实例化的类需要响应这两个方法。你可以验证这个类是否响应这两个方法。</p>
 <h3 id="NSPrincipalClass键-值–插件方法的类名"><a href="#NSPrincipalClass键-值–插件方法的类名" class="headerlink" title="NSPrincipalClass键:值–插件方法的类名"></a>NSPrincipalClass键:值–插件方法的类名</h3><p>在 <code>bundle</code> 里面调用的 <code>principalClass</code> 方法是什么呢？<br>当你创建一个 <code>Bundle</code> 的时候，你可以在里面创建一个或者多个类，同时你需要让 <code>TextEdit</code> 知道哪一个类需要被实例化。为了帮助宿主 App 调用，你可以在 <code>Info.plist</code> 文件加入一个 <code>NSPrincipalClass</code> 的键，同时设置它的值为实现插件方法的类的名字。你可以用 <code>[NSBundle principalClass]</code> 方便地从 <code>NSPrincipalClass</code> 的值里面寻找并创建这个类。</p>
-<h3 id="扩展插件菜单"><a href="#扩展插件菜单" class="headerlink" title="扩展插件菜单"></a>扩展插件菜单</h3><p>在 <code>Plug-Ins</code> 菜单加入一个新的按钮，设置 <code>action</code> 为 <code>pluginMenuItemCalledAction:</code>，并且设置它表示你已经实例化的对象。<br>如果在 <code>menu item</code> 里面没有设置一个<code>target</code>，即目标是<code>nil</code>，那么它会寻找响应链，来寻找第一个实现 <code>pluginMenuItemCalledAction:</code> 方法的对象。如果它找不到，那么这个菜单选项将会不能用。<br>举一个例子，实现 <code>pluginMenuItemCalledAction</code> 的最好的地方是在 <code>Document</code> 的 <code>window controller</code> 类中。打开 <code>DocumentWindowController.m</code>，然后定位到<code>pluginMenuItemCalledAction</code><br><figure class="highlight objc"><figcaption><span>响应链</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)pluginMenuItemCalledAction:(<span class="keyword">id</span>)sender </div><div class="line">&#123;</div><div class="line">    <span class="keyword">id</span> &lt;TextEditPlugin&gt;plugin = [sender representedObject];</div><div class="line">    [plugin actionCalledWithTextView:[<span class="keyword">self</span> firstTextView] inDocument:[<span class="keyword">self</span> document]];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="添加扩展插件菜单的响应事件"><a href="#添加扩展插件菜单的响应事件" class="headerlink" title="添加扩展插件菜单的响应事件"></a>添加扩展插件菜单的响应事件</h3><p>在 <code>Plug-Ins</code> 菜单加入一个新的按钮，设置 <code>action</code> 为 <code>pluginMenuItemCalledAction:</code>，并且设置它表示你已经实例化的对象。</p>
+<blockquote>
+<p>如果在 <code>menu item</code> 里面没有设置一个<code>target</code>，即目标是<code>nil</code>，那么它会寻找响应链，来寻找第一个实现 <code>pluginMenuItemCalledAction:</code> 方法的对象。如果它找不到，那么这个菜单选项将会不能用。<br>举一个例子，实现 <code>pluginMenuItemCalledAction</code> 的最好的地方是在 <code>Document</code> 的 <code>window controller</code> 类中。打开 <code>DocumentWindowController.m</code>，然后定位到<code>pluginMenuItemCalledAction</code><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)pluginMenuItemCalledAction:(<span class="keyword">id</span>)sender </div><div class="line">&#123;</div><div class="line">    <span class="keyword">id</span> &lt;TextEditPlugin&gt;plugin = [sender representedObject];</div><div class="line">    [plugin actionCalledWithTextView:[<span class="keyword">self</span> firstTextView] inDocument:[<span class="keyword">self</span> document]];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
 <p>代码本身很清晰，搜集插件实例，调用 <code>actionCalledWithTextView:inDocument:</code> 方法（被定义在 <code>protocol</code> 里面的），运行你插件里面的代码。</p>
-<h2 id="制作插件"><a href="#制作插件" class="headerlink" title="制作插件"></a>制作插件</h2><p>打开 “01 MarkYellow” 工程看一下。这是一个 Xcode (通过<code>OS X ▸ Framework &amp; Library ▸ Bundle template</code> 建立) 的标准工程，里面只添加了一个类：<code>TEMarkYellow</code>。<br>如果你打开<code>MarkYellow-Info.plist</code>，你可以看到 <code>NSPrincipalClass</code> 的值设置成了上面提到的 <code>TEMarkYellow</code>。<br>接着，打开 <code>TEMarkYellow.m</code>，你将会看见定义在协议里面的方法。一个返回你插件的名字，就是在 <code>menu</code> 里面显示的那个，更有意思的是另外一个方法 (<code>actionCalledWithTextView:inDocument:</code>)，它把所有选中的文字变成黄色的背景。<br><figure class="highlight objc"><figcaption><span>改变字体颜色</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)actionCalledWithTextView:(<span class="built_in">NSTextView</span>*)textView inDocument:(<span class="keyword">id</span>)document </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> ([textView selectedRange].length) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSMutableAttributedString</span> *ats = [[[textView textStorage] attributedSubstringFromRange:[textView selectedRange]] mutableCopy];</div><div class="line">        [ats addAttribute:<span class="built_in">NSBackgroundColorAttributeName</span> value:[<span class="built_in">NSColor</span> yellowColor] range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, [ats length])];</div><div class="line">        <span class="comment">//  先测试text view是否能改变文字内容，这样可以自动做正确的撤销操作。</span></div><div class="line">        By asking the text view <span class="keyword">if</span> you can change the text first, it will automatically <span class="keyword">do</span> the right thing to enable undoing of attribute changes</div><div class="line">        <span class="keyword">if</span> ([textView shouldChangeTextInRange:[textView selectedRange] replacementString:[ats string]])</div><div class="line">        &#123;</div><div class="line">            [[textView textStorage] replaceCharactersInRange:[textView selectedRange] withAttributedString:ats];</div><div class="line">            [textView didChangeText];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="制作插件"><a href="#制作插件" class="headerlink" title="制作插件"></a>制作插件</h2><ol>
+<li>新建模版项目<br>打开 “01 MarkYellow” 工程看一下。这是一个 Xcode (通过<code>OS X ▸ Framework &amp; Library ▸ Bundle template</code> 建立) 的标准工程，里面只添加了一个类：<code>TEMarkYellow</code>。</li>
+<li>设置NSPrincipalClass键值<br>如果你打开<code>MarkYellow-Info.plist</code>，你可以看到 <code>NSPrincipalClass</code> 的值设置成了上面提到的 <code>TEMarkYellow</code>。</li>
+<li>实现协议代理<br>接着，打开 <code>TEMarkYellow.m</code>，你将会看见定义在协议里面的方法。<ul>
+<li>第一个方法（<code>menuItemTitle</code>）返回插件的名字，最为入口名显示在 <code>menu</code> 里面。</li>
+<li>第二个方法 (<code>actionCalledWithTextView:inDocument:</code>)，把所有选中的文字变成黄色的背景。<figure class="highlight objc"><figcaption><span>改变字体颜色</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)actionCalledWithTextView:(<span class="built_in">NSTextView</span>*)textView inDocument:(<span class="keyword">id</span>)document </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> ([textView selectedRange].length) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSMutableAttributedString</span> *ats = [[[textView textStorage] attributedSubstringFromRange:[textView selectedRange]] mutableCopy];</div><div class="line">        [ats addAttribute:<span class="built_in">NSBackgroundColorAttributeName</span> value:[<span class="built_in">NSColor</span> yellowColor] range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, [ats length])];</div><div class="line">        <span class="comment">//  先测试text view是否能改变文字内容，这样可以自动做正确的撤销操作。</span></div><div class="line">        By asking the text view <span class="keyword">if</span> you can change the text first, it will automatically <span class="keyword">do</span> the right thing to enable undoing of attribute changes</div><div class="line">        <span class="keyword">if</span> ([textView shouldChangeTextInRange:[textView selectedRange] replacementString:[ats string]])</div><div class="line">        &#123;</div><div class="line">            [[textView textStorage] replaceCharactersInRange:[textView selectedRange] withAttributedString:ats];</div><div class="line">            [textView didChangeText];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
 <h2 id="集成插件"><a href="#集成插件" class="headerlink" title="集成插件"></a>集成插件</h2><p>运行 <code>TextEdit</code> （它会创建<code>Plug-Ins</code>目录），然后构建 <code>MarkYellow</code> 工程。把 <code>MarkYellow.bundle</code> 丢到你的 <code>~/Library/Application Support/Text Edit/Plug-Ins/</code> 目录下面，重启你的 <code>TextEdit</code> 应用。<br>一切看起来都很好，扫描，加载，插入一个菜单，然后，当你使用菜单项的时候，传递到参数到插件里面。试一试，点击 <code>Plug-Ins ▸ Mark Selected Text Yellow</code>，选择的文字的背景颜色就变成黄色的了。</p>
+<h2 id="XCode8版本问题"><a href="#XCode8版本问题" class="headerlink" title="XCode8版本问题"></a>XCode8版本问题</h2><p>Xcode8 不再支持<code>Application Plug-in</code>插件<br><img src="/images/xcode6.jpg" class="xcode6" title="100% 300 项目创建模版"><br><a href="http://www.jianshu.com/p/39443429f71d" target="_blank" rel="external">XCode8.2.1继续使用xcode插件</a><br>这个是因为苹果解决xcode ghost，把插件屏蔽了。<br>解决方法<br><code>sudo /usr/libexec/xpccachectl</code><br>然后必须重启电脑后生效.</p>
 
       
     </div>
@@ -582,10 +597,10 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -604,7 +619,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -613,7 +628,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">15</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -622,7 +637,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">70</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -747,7 +762,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#包-Bundles-和接口-Interfaces"><span class="nav-number">1.</span> <span class="nav-text">包 (Bundles) 和接口 (Interfaces)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为-TextEdit-加入-Plugin-支持"><span class="nav-number">2.</span> <span class="nav-text">为 TextEdit 加入 Plugin 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-TextEdit-中扫描-Bundle"><span class="nav-number">2.1.</span> <span class="nav-text">在 TextEdit 中扫描 Bundle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSPrincipalClass键-值–插件方法的类名"><span class="nav-number">2.2.</span> <span class="nav-text">NSPrincipalClass键:值–插件方法的类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展插件菜单"><span class="nav-number">2.3.</span> <span class="nav-text">扩展插件菜单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作插件"><span class="nav-number">3.</span> <span class="nav-text">制作插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成插件"><span class="nav-number">4.</span> <span class="nav-text">集成插件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#包-Bundles-和接口-Interfaces"><span class="nav-number">1.</span> <span class="nav-text">包 (Bundles) 和接口 (Interfaces)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为-TextEdit-加入-Plugin-支持"><span class="nav-number">2.</span> <span class="nav-text">为 TextEdit 加入 Plugin 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-TextEdit-中扫描-Bundle"><span class="nav-number">2.1.</span> <span class="nav-text">在 TextEdit 中扫描 Bundle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件代理"><span class="nav-number">2.2.</span> <span class="nav-text">插件代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSPrincipalClass键-值–插件方法的类名"><span class="nav-number">2.3.</span> <span class="nav-text">NSPrincipalClass键:值–插件方法的类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加扩展插件菜单的响应事件"><span class="nav-number">2.4.</span> <span class="nav-text">添加扩展插件菜单的响应事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作插件"><span class="nav-number">3.</span> <span class="nav-text">制作插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成插件"><span class="nav-number">4.</span> <span class="nav-text">集成插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XCode8版本问题"><span class="nav-number">5.</span> <span class="nav-text">XCode8版本问题</span></a></li></ol></div>
             
 
           </div>
@@ -777,7 +792,7 @@ Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
