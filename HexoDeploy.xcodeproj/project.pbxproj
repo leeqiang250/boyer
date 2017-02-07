@@ -381,6 +381,9 @@
 		14B364D21E27389D00D1FB05 /* jquery.fancybox.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.fancybox.js; sourceTree = "<group>"; };
 		14B364D31E27389D00D1FB05 /* jquery.fancybox.pack.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.fancybox.pack.js; sourceTree = "<group>"; };
 		14B364D51E27389D00D1FB05 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		14D1C36C1E4969B600E3F905 /* OSX应用插件开发.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "OSX应用插件开发.md"; sourceTree = "<group>"; };
+		14D1C36D1E4971DB00E3F905 /* xcode6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xcode6.jpg; sourceTree = "<group>"; };
+		14D1C36E1E497BBC00E3F905 /* xcode8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xcode8.png; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 		8451A2711E28F1CF00301CE2 /* setup_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_config.sh; sourceTree = "<group>"; };
 		8451A2751E2908D000301CE2 /* .bowerrc */ = {isa = PBXFileReference; lastKnownFileType = text; path = .bowerrc; sourceTree = "<group>"; };
@@ -713,6 +716,7 @@
 				145012041E35A3A300BBDEBB /* Kindle资源.md */,
 				145012051E35A64100BBDEBB /* Kindle之ResilioSync索引.md */,
 				145012061E35C54800BBDEBB /* SwiftGuide.md */,
+				14D1C36C1E4969B600E3F905 /* OSX应用插件开发.md */,
 			);
 			path = _posts;
 			sourceTree = "<group>";
@@ -736,6 +740,8 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				14D1C36E1E497BBC00E3F905 /* xcode8.png */,
+				14D1C36D1E4971DB00E3F905 /* xcode6.jpg */,
 				149F33831E0A767600AAC556 /* 1430807925718367.png */,
 				149F33841E0A767600AAC556 /* bianqian.png */,
 				149F33851E0A767600AAC556 /* bird_32_gray.png */,

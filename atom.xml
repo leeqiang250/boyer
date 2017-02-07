@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huos3203.github.io/"/>
-  <updated>2017-01-23T08:54:47.000Z</updated>
+  <updated>2017-02-07T04:38:58.000Z</updated>
   <id>https://huos3203.github.io/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OSX 应用插件</title>
+    <link href="https://huos3203.github.io/2017/02/07/OSX%E5%BA%94%E7%94%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <id>https://huos3203.github.io/2017/02/07/OSX应用插件开发/</id>
+    <published>2017-02-07T04:38:58.000Z</published>
+    <updated>2017-02-07T04:38:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。</p>
+<p>Xcode8 不再支持<code>Application Plug-in</code>插件<br><img src="/images/xcode6.jpg" class="xcode6" title="100% 300 项目创建模版"><br><a href="http://www.jianshu.com/p/39443429f71d" target="_blank" rel="external">XCode8.2.1继续使用xcode插件</a><br>这个是因为苹果解决xcode ghost，把插件屏蔽了。<br>解决方法<br><code>sudo /usr/libexec/xpccachectl</code><br>然后必须重启电脑后生效.</p>
+<p>在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过<code>NSBundle</code>和 <code>plug-ins</code>插件,可以很方便的向原有APP中添加新功能点。</p>
+<h2 id="包-Bundles-和接口-Interfaces"><a href="#包-Bundles-和接口-Interfaces" class="headerlink" title="包 (Bundles) 和接口 (Interfaces)"></a>包 (Bundles) 和接口 (Interfaces)</h2><p>如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如： <code>Screen Savers</code> 到 <code>Image Units</code>等。<br>在<code>Framework &amp; Library</code>中的 <code>Bundle</code> 条目。我会在今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。<br><img src="/images/xcode8.png" class="项目模版"></p>
+<p><code>bundle 模版</code>项目与APP项目比较<br>两者构建后的目录很像：</p>
+<ol>
+<li>一个 <code>Contents</code> 目录，里面包含了 <code>Info.plist</code> 和 <code>Resource</code> 目录。</li>
+<li>如果你在你的项目下加入了新的类，你可以看见包含一个可执行文件的 <code>MacOS</code> 目录。</li>
+<li><code>Bundle</code> 工程里缺少的一个东西是 <code>main()</code> 函数。它是被宿主<code>App</code> 调用执行的。</li>
+</ol>
+<h2 id="为-TextEdit-加入-Plugin-支持"><a href="#为-TextEdit-加入-Plugin-支持" class="headerlink" title="为 TextEdit 加入 Plugin 支持"></a>为 TextEdit 加入 Plugin 支持</h2><p>两种插件的方式:<br>    第一个:用最少的工作来为你的 app 加入插件支持，希望让你知道实现这个有多简单。<br>    第二个:技术有点复杂，它展现来一个为你的 app 加入插件的合理的方式，这可以使你不会在未来陷入到被锁死在某一种实现的窘境中。<br>本文章的项目文件仍然会放在 <a href="https://github.com/objcio/issue-14-plugins" target="_blank" rel="external">GitHub</a> 供大家参考。</p>
+<h3 id="在-TextEdit-中扫描-Bundle"><a href="#在-TextEdit-中扫描-Bundle" class="headerlink" title="在 TextEdit 中扫描 Bundle"></a>在 TextEdit 中扫描 Bundle</h3><p>请打开 “01 TextEdit” 目录下面的 <code>TextEdit.xcodeproj</code> 工程，同时浏览它里面包含的代码。<br>这个改写过的 <code>TextEdit</code> 里面有三个简单的组成部分：</p>
+<ol>
+<li>扫描 bundle</li>
+<li>加载 bundle</li>
+<li>调用 bundle 的 UI。<br>打开 <code>Controller.m</code>，你可以看见 <code>-(void)loadPlugins</code> 方法 (它在 <code>applicationDidFinishLaunching:</code> 中被调用)。<br><code>loadPlugins</code> 方法在你的界面菜单右侧加入了一个新的 <code>NSMenuItem</code>，来为你调用你的插件提供一个入口（通常你会在 <code>MainMenu.xib</code> 做这件事情并且链接 <code>outlets</code>，但是我们这次偷下懒）。然后获得你的插件目录（在 <code>~/Library/Application Support/Text Edit/Plug-Ins/</code> ）下，并且扫描这个目录。<figure class="highlight objc"><figcaption><span>bundle加载</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *pluginsFolder = [<span class="keyword">self</span> pluginsFolder];</div><div class="line"><span class="built_in">NSFileManager</span> *fm = [<span class="built_in">NSFileManager</span> defaultManager];</div><div class="line"><span class="built_in">NSError</span> *outErr;</div><div class="line"><span class="keyword">for</span> (<span class="built_in">NSString</span> *item <span class="keyword">in</span> [fm contentsOfDirectoryAtPath:pluginsFolder error:&amp;outErr]) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (![item hasSuffix:<span class="string">@".bundle"</span>])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">NSString</span> *bundlePath = [pluginsFolder stringByAppendingPathComponent:item];</div><div class="line">    <span class="built_in">NSBundle</span> *b = [<span class="built_in">NSBundle</span> bundleWithPath:bundlePath];</div><div class="line">    <span class="keyword">if</span> (!b) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Could not make a bundle from %@"</span>, bundlePath);</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">id</span> &lt;TextEditPlugin&gt; plugin = [[b principalClass] new];</div><div class="line">    <span class="built_in">NSMenuItem</span> *item = [pluginsMenu addItemWithTitle:[plugin menuItemTitle] action:<span class="keyword">@selector</span>(pluginMenuItemCalledAction:) keyEquivalent:<span class="string">@""</span>];</div><div class="line">    [item setRepresentedObject:plugin];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+扫描插件目录，确保得到的是一个 <code>.bundle</code> 文件，然后用 <code>NSBundle</code> 载入你找到的 <code>bundle</code> 并且实例化里面的类。<br>你会注意到一个 <code>TextEditPlugin</code> 的 <code>protocol</code> 的引用。在 <code>TextEditMisc.h</code> 能找它的定义:<figure class="highlight objc"><figcaption><span>声明代理协议</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">TextEditPlugin</span> &lt;<span class="title">NSObject</span>&gt;</span></div><div class="line">- (<span class="built_in">NSString</span>*)menuItemTitle;</div><div class="line">- (<span class="keyword">void</span>)actionCalledWithTextView:(<span class="built_in">NSTextView</span>*)textView inDocument:(<span class="keyword">id</span>)document;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+这说明你实例化的类需要响应这两个方法。你可以验证这个类是否响应这两个方法（这是一个好主意），但是简单起见，我们现在就不这样做了。</li>
+</ol>
+<h3 id="NSPrincipalClass键-值–插件方法的类名"><a href="#NSPrincipalClass键-值–插件方法的类名" class="headerlink" title="NSPrincipalClass键:值–插件方法的类名"></a>NSPrincipalClass键:值–插件方法的类名</h3><p>在 <code>bundle</code> 里面调用的 <code>principalClass</code> 方法是什么呢？<br>当你创建一个 <code>Bundle</code> 的时候，你可以在里面创建一个或者多个类，同时你需要让 <code>TextEdit</code> 知道哪一个类需要被实例化。为了帮助宿主 App 调用，你可以在 <code>Info.plist</code> 文件加入一个 <code>NSPrincipalClass</code> 的键，同时设置它的值为实现插件方法的类的名字。你可以用 [NSBundle principalClass] 方便地从 <code>NSPrincipalClass</code> 的值里面寻找并创建这个类。</p>
+<h3 id="在插件中添加菜单按钮"><a href="#在插件中添加菜单按钮" class="headerlink" title="在插件中添加菜单按钮"></a>在插件中添加菜单按钮</h3><p>在 <code>Plug-Ins</code> 菜单加入一个新的按钮，设置 <code>action</code> 为 <code>pluginMenuItemCalledAction:</code>，并且设置它表示你已经实例化的对象。<br>如果在 <code>menu item</code> 里面没有设置一个<code>target</code>，即目标是<code>nil</code>，那么它会寻找响应链，来寻找第一个实现 <code>pluginMenuItemCalledAction:</code> 方法的对象。如果它找不到，那么这个菜单选项将会不能用。<br>举一个例子，实现 pluginMenuItemCalledAction 的最好的地方是在 Document 的 window controller 类中。打开 DocumentWindowController.m，然后定位到到 pluginMenuItemCalledAction<br><figure class="highlight objc"><figcaption><span>响应链</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)pluginMenuItemCalledAction:(<span class="keyword">id</span>)sender </div><div class="line">&#123;</div><div class="line">    <span class="keyword">id</span> &lt;TextEditPlugin&gt;plugin = [sender representedObject];</div><div class="line">    [plugin actionCalledWithTextView:[<span class="keyword">self</span> firstTextView] inDocument:[<span class="keyword">self</span> document]];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>代码本身很清晰，搜集插件实例，调用 <code>actionCalledWithTextView:inDocument:</code> 方法（被定义在 <code>protocol</code> 里面的），运行你插件里面的代码。</p>
+<h2 id="制作插件"><a href="#制作插件" class="headerlink" title="制作插件"></a>制作插件</h2><p>打开 “01 MarkYellow” 工程看一下。这是一个 Xcode (通过<code>OS X ▸ Framework &amp; Library ▸ Bundle template</code> 建立) 的标准工程，里面只添加了一个类：<code>TEMarkYellow</code>。<br>如果你打开<code>MarkYellow-Info.plist</code>，你可以看到 <code>NSPrincipalClass</code> 的值设置成了上面提到的 <code>TEMarkYellow</code>。<br>接着，打开 <code>TEMarkYellow.m</code>，你将会看见定义在协议里面的方法。一个返回你插件的名字，就是在 <code>menu</code> 里面显示的那个，更有意思的是另外一个方法 (<code>actionCalledWithTextView:inDocument:</code>)，它把所有选中的文字变成黄色的背景。<br><figure class="highlight objc"><figcaption><span>改变字体颜色</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)actionCalledWithTextView:(<span class="built_in">NSTextView</span>*)textView inDocument:(<span class="keyword">id</span>)document </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> ([textView selectedRange].length) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSMutableAttributedString</span> *ats = [[[textView textStorage] attributedSubstringFromRange:[textView selectedRange]] mutableCopy];</div><div class="line">        [ats addAttribute:<span class="built_in">NSBackgroundColorAttributeName</span> value:[<span class="built_in">NSColor</span> yellowColor] range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, [ats length])];</div><div class="line">        <span class="comment">//  先测试text view是否能改变文字内容，这样可以自动做正确的撤销操作。</span></div><div class="line">        By asking the text view <span class="keyword">if</span> you can change the text first, it will automatically <span class="keyword">do</span> the right thing to enable undoing of attribute changes</div><div class="line">        <span class="keyword">if</span> ([textView shouldChangeTextInRange:[textView selectedRange] replacementString:[ats string]])</div><div class="line">        &#123;</div><div class="line">            [[textView textStorage] replaceCharactersInRange:[textView selectedRange] withAttributedString:ats];</div><div class="line">            [textView didChangeText];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="集成插件"><a href="#集成插件" class="headerlink" title="集成插件"></a>集成插件</h2><p>运行 <code>TextEdit</code> （它会创建<code>Plug-Ins</code>目录），然后构建 <code>MarkYellow</code> 工程。把 <code>MarkYellow.bundle</code> 丢到你的 <code>~/Library/Application Support/Text Edit/Plug-Ins/</code> 目录下面，重启你的 <code>TextEdit</code> 应用。<br>一切看起来都很好，扫描，加载，插入一个菜单，然后，当你使用菜单项的时候，传递到参数到插件里面。试一试，点击 <code>Plug-Ins ▸ Mark Selected Text Yellow</code>，选择的文字的背景颜色就变成黄色的了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。&lt;/p&gt;
+&lt;p&gt;Xcode8 不再支持&lt;code&gt;Application Plug-in&lt;/code&gt;插件&lt;br&gt;&lt;img src=&quot;/images/xcode6
+    
+    </summary>
+    
+      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+    
+    
+      <category term="插件" scheme="https://huos3203.github.io/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
+    
+      <category term="objc" scheme="https://huos3203.github.io/tags/objc/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo标签插件</title>
@@ -614,6 +665,59 @@
   </entry>
   
   <entry>
+    <title>AR 开发资料汇[转]</title>
+    <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
+    <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
+    <published>2017-01-22T10:55:21.000Z</published>
+    <updated>2017-01-22T10:55:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
+<hr>
+<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
+<hr>
+<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
+<hr>
+<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
+<hr>
+<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
+<hr>
+<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
+<hr>
+<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
+<hr>
+<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
+<hr>
+<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
+<hr>
+<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
+<hr>
+<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
+<hr>
+<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
+<hr>
+<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
+    
+    </summary>
+    
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="AR" scheme="https://huos3203.github.io/tags/AR/"/>
+    
+      <category term="LBS+AR" scheme="https://huos3203.github.io/tags/LBS-AR/"/>
+    
+      <category term="QQ红包" scheme="https://huos3203.github.io/tags/QQ%E7%BA%A2%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Awsome Apple Develop Guide[转]</title>
     <link href="https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/"/>
     <id>https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/</id>
@@ -794,11 +898,11 @@
       <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
+      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
       <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
     
-      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
   </entry>
   
@@ -854,59 +958,6 @@
       <category term="集成" scheme="https://huos3203.github.io/tags/%E9%9B%86%E6%88%90/"/>
     
       <category term="SDK" scheme="https://huos3203.github.io/tags/SDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AR 开发资料汇[转]</title>
-    <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
-    <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
-    <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
-<hr>
-<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
-<hr>
-<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
-<hr>
-<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
-<hr>
-<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
-<hr>
-<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
-<hr>
-<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
-<hr>
-<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
-<hr>
-<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
-<hr>
-<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
-<hr>
-<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
-<hr>
-<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
-<hr>
-<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
-    
-    </summary>
-    
-      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="AR" scheme="https://huos3203.github.io/tags/AR/"/>
-    
-      <category term="LBS+AR" scheme="https://huos3203.github.io/tags/LBS-AR/"/>
-    
-      <category term="QQ红包" scheme="https://huos3203.github.io/tags/QQ%E7%BA%A2%E5%8C%85/"/>
     
   </entry>
   
@@ -1044,9 +1095,9 @@
       <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
-    
       <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
+    
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
       <category term="面试" scheme="https://huos3203.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
@@ -1110,9 +1161,9 @@
       <category term="git" scheme="https://huos3203.github.io/categories/git/"/>
     
     
-      <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
-    
       <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
     
       <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
@@ -1394,11 +1445,11 @@
       <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
+      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
     
       <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
-      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
+      <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
     
   </entry>
   
@@ -1407,7 +1458,7 @@
     <link href="https://huos3203.github.io/2016/12/21/Docker%E4%BD%BF%E7%94%A8/"/>
     <id>https://huos3203.github.io/2016/12/21/Docker使用/</id>
     <published>2016-12-21T13:25:29.000Z</published>
-    <updated>2017-01-12T08:45:56.000Z</updated>
+    <updated>2017-02-07T04:38:58.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="安装Docker-for-Mac"><a href="#安装Docker-for-Mac" class="headerlink" title="安装Docker for Mac"></a>安装<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">Docker for Mac</a></h2><p>在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">echo '下载dmg...'</div><div class="line">curl -o Docker.dmg https://dn-dao-github-mirror.qbox.me/docker/install/mac/Docker.dmg</div><div class="line">#安装Docker.dmg</div><div class="line">MOUNTDIR=$(echo `hdiutil mount Docker.dmg | tail -1 \</div><div class="line">| awk '&#123;$1=$2=""; print $0&#125;'` | xargs -0 echo) \</div><div class="line">&amp;&amp; cd $&#123;MOUNTDIR&#125; &amp;&amp; cp -R Docker.app /Applications/ \</div><div class="line">&amp;&amp; open /Applications/Docker.app</div></pre></td></tr></table></figure></p>
 <h3 id="配置-Docker-加速器镜像源"><a href="#配置-Docker-加速器镜像源" class="headerlink" title="配置 Docker 加速器镜像源"></a>配置 Docker 加速器镜像源</h3><p>右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Advanced 标签下的 Registry mirrors 列表中加入下面的镜像地址:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://142*****.m.daocloud.io</div></pre></td></tr></table></figure></p>
@@ -1523,8 +1574,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x73;&#111;&#109;&#x65;&#x2d;&#111;&#110;&#101;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x73;&#111;&#109;&#x65;&#x2d;&#111;&#110;&#101;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x73;&#111;&#x6d;&#101;&#x2d;&#111;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#109;">&#x73;&#111;&#x6d;&#101;&#x2d;&#111;&#x6e;&#x65;&#x40;&#x65;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x73;&#x6f;&#x6d;&#101;&#45;&#x6f;&#110;&#101;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;">&#x73;&#x6f;&#x6d;&#101;&#45;&#x6f;&#110;&#101;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#x73;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#46;&#99;&#111;&#x6d;">&#x73;&#x6f;&#x6d;&#x65;&#45;&#x6f;&#x6e;&#101;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#46;&#99;&#111;&#x6d;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -1589,14 +1640,14 @@
     
     </summary>
     
-      <category term="dockerer" scheme="https://huos3203.github.io/categories/dockerer/"/>
+      <category term="docker" scheme="https://huos3203.github.io/categories/docker/"/>
     
     
       <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
-    
       <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
@@ -2151,38 +2202,6 @@ line 3 of code
     
     
       <category term="命令" scheme="https://huos3203.github.io/tags/%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2015年12月22日冬至-圣诞节最新中关村骗术</title>
-    <link href="https://huos3203.github.io/2015/12/25/2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li/"/>
-    <id>https://huos3203.github.io/2015/12/25/2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li/</id>
-    <published>2015-12-25T12:46:23.000Z</published>
-    <updated>2016-12-19T07:15:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>被骗经过:<br>12月22号，本人午饭后拿着64G苹果6去中关村解锁，维修师傅说因为是日版内置卡贴机，加上系统已经升级ios9.2，就算拆机去除卡贴，再配上市面上的卡贴卡托也只能使用移动2G网络而且网络很不稳定的说法，再检测我手机质量后，开始让我以旧换新，并承诺加五百元就换一台他们店售卖的全新64G国行苹果6，我信以为真，在他们带领下，仅仅看到他们提供的白色包装盒，她们只说是国行全新机，其他没做任何说明，便刷去我500元整，并写下小条让我签字，我当时要求当场拆封查看真机，他们推辞说还需办理其它手续，就差人把白色包装盒拿走了，让我耐心等候便带我到另一间休息室里，她说需要我手机卡去帮我激活他们所说的全新苹果6，让我拔卡给她，没有争取我的同意，就要伸手帮我拔卡，只能拔卡给她，接着安排了一人陪我，拿着我的卡离开了休息室。</p>
-<p>和这人闲聊一会便要看我刚才换机的小票，当他看到“专网”字样，起初对我说只能用4G网络，没有4G信号的话手机会自动进入休眠状态，无法接打电话，必须用他们所说的4G卡否则手机就无法开机使用。听到这，我就要求取消交易，在他打了一通电话百般为难的说，工作人员在排队等待办理激活手续了，已经无法取消，只能等。一番焦急等待后，仍不见人拿手机过来，已经意识到被骗，本想报案，手机卡已经被他们拿走，一个人没底没落完全崩溃，后来又听他说在专网手机上下载应用还必须绑定银行账号，每下载一个APP就要收取高额费用，一个QQ就要扣除70多元，估算一年下来最低消费就要达万元，我追问到如果办理不使用这部手机会怎么样，他说和服务商绑定后，达不到最低消费，手机号就会被锁定，火车票都买不到，我完全慌了，只能央求他任何条件帮忙。</p>
-<p>他就让购买他的苹果5s，否则不会打电话让他们取消上一个被蒙骗的交易，拿不到我的手机卡，并承诺说购买他提供的机型是国行全新iPhone5s，支持全网，系统随便升级，下载APP不收任何费用，如果发现有任何问题，全额退款。当场就在先前的小票背面写了字据作保证。换购就让我把日版苹果6抵算1500元再加1900元，换购他所说的全新国行iPhone5s，当时心理已经感受到威胁恐吓，急于脱身，只想早点拿回手机卡，不得不任他们摆布，威逼利诱再次被刷走1900元整。</p>
-<p>当拿到他拿到我的日版苹果6之后，又私自拆卸说我手机为翻新机，机壳和主板完全不是一套，非得让我再加200元，才肯归还手机卡和全新iPhone5s。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;被骗经过:&lt;br&gt;12月22号，本人午饭后拿着64G苹果6去中关村解锁，维修师傅说因为是日版内置卡贴机，加上系统已经升级ios9.2，就算拆机去除卡贴，再配上市面上的卡贴卡托也只能使用移动2G网络而且网络很不稳定的说法，再检测我手机质量后，开始让我以旧换新，并承诺加五百元就
-    
-    </summary>
-    
-      <category term="骗局" scheme="https://huos3203.github.io/categories/%E9%AA%97%E5%B1%80/"/>
-    
-    
-      <category term="中关村" scheme="https://huos3203.github.io/tags/%E4%B8%AD%E5%85%B3%E6%9D%91/"/>
-    
-      <category term="被骗" scheme="https://huos3203.github.io/tags/%E8%A2%AB%E9%AA%97/"/>
-    
-      <category term="iPhone6" scheme="https://huos3203.github.io/tags/iPhone6/"/>
-    
-      <category term="iPhone5s" scheme="https://huos3203.github.io/tags/iPhone5s/"/>
     
   </entry>
   

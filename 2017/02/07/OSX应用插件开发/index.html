@@ -1,0 +1,1148 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="macOS,插件" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="布衣男儿" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。
+Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这个是因为苹果解决xcode ghost，把插件屏蔽了。解决方法sudo /usr/libexec/xpccachectl然后必须重启电脑后生效.
+在以前的 OS X 系统中，给你">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSX 应用插件">
+<meta property="og:url" content="https://huos3203.github.io/2017/02/07/OSX应用插件开发/index.html">
+<meta property="og:site_name" content="布衣男儿">
+<meta property="og:description" content="目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。
+Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这个是因为苹果解决xcode ghost，把插件屏蔽了。解决方法sudo /usr/libexec/xpccachectl然后必须重启电脑后生效.
+在以前的 OS X 系统中，给你">
+<meta property="og:image" content="https://huos3203.github.io/images/xcode6.jpg">
+<meta property="og:image" content="https://huos3203.github.io/images/xcode8.png">
+<meta property="og:updated_time" content="2017-02-07T04:38:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OSX 应用插件">
+<meta name="twitter:description" content="目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。
+Xcode8 不再支持Application Plug-in插件XCode8.2.1继续使用xcode插件这个是因为苹果解决xcode ghost，把插件屏蔽了。解决方法sudo /usr/libexec/xpccachectl然后必须重启电脑后生效.
+在以前的 OS X 系统中，给你">
+<meta name="twitter:image" content="https://huos3203.github.io/images/xcode6.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '7069931',
+      author: '布衣男儿'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huos3203.github.io/2017/02/07/OSX应用插件开发/"/>
+
+
+
+
+
+  <title> OSX 应用插件 | 布衣男儿 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">布衣男儿</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">不物喜，不己悲，善假物，易参行！</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'dazsKTijnsz_zi-bXB3t','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://huos3203.github.io/2017/02/07/OSX应用插件开发/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="boyer">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="布衣男儿">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="布衣男儿" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OSX 应用插件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-07T12:38:58+08:00">
+                2017-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/macOS/" itemprop="url" rel="index">
+                    <span itemprop="name">macOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/07/OSX应用插件开发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/07/OSX应用插件开发/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/02/07/OSX应用插件开发/" class="leancloud_visitors" data-flag-title="OSX 应用插件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>目的：今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。</p>
+<p>Xcode8 不再支持<code>Application Plug-in</code>插件<br><img src="/images/xcode6.jpg" class="xcode6" title="100% 300 项目创建模版"><br><a href="http://www.jianshu.com/p/39443429f71d" target="_blank" rel="external">XCode8.2.1继续使用xcode插件</a><br>这个是因为苹果解决xcode ghost，把插件屏蔽了。<br>解决方法<br><code>sudo /usr/libexec/xpccachectl</code><br>然后必须重启电脑后生效.</p>
+<p>在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过<code>NSBundle</code>和 <code>plug-ins</code>插件,可以很方便的向原有APP中添加新功能点。</p>
+<h2 id="包-Bundles-和接口-Interfaces"><a href="#包-Bundles-和接口-Interfaces" class="headerlink" title="包 (Bundles) 和接口 (Interfaces)"></a>包 (Bundles) 和接口 (Interfaces)</h2><p>如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如： <code>Screen Savers</code> 到 <code>Image Units</code>等。<br>在<code>Framework &amp; Library</code>中的 <code>Bundle</code> 条目。我会在今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。<br><img src="/images/xcode8.png" class="项目模版"></p>
+<p><code>bundle 模版</code>项目与APP项目比较<br>两者构建后的目录很像：</p>
+<ol>
+<li>一个 <code>Contents</code> 目录，里面包含了 <code>Info.plist</code> 和 <code>Resource</code> 目录。</li>
+<li>如果你在你的项目下加入了新的类，你可以看见包含一个可执行文件的 <code>MacOS</code> 目录。</li>
+<li><code>Bundle</code> 工程里缺少的一个东西是 <code>main()</code> 函数。它是被宿主<code>App</code> 调用执行的。</li>
+</ol>
+<h2 id="为-TextEdit-加入-Plugin-支持"><a href="#为-TextEdit-加入-Plugin-支持" class="headerlink" title="为 TextEdit 加入 Plugin 支持"></a>为 TextEdit 加入 Plugin 支持</h2><p>两种插件的方式:<br>    第一个:用最少的工作来为你的 app 加入插件支持，希望让你知道实现这个有多简单。<br>    第二个:技术有点复杂，它展现来一个为你的 app 加入插件的合理的方式，这可以使你不会在未来陷入到被锁死在某一种实现的窘境中。<br>本文章的项目文件仍然会放在 <a href="https://github.com/objcio/issue-14-plugins" target="_blank" rel="external">GitHub</a> 供大家参考。</p>
+<h3 id="在-TextEdit-中扫描-Bundle"><a href="#在-TextEdit-中扫描-Bundle" class="headerlink" title="在 TextEdit 中扫描 Bundle"></a>在 TextEdit 中扫描 Bundle</h3><p>请打开 “01 TextEdit” 目录下面的 <code>TextEdit.xcodeproj</code> 工程，同时浏览它里面包含的代码。<br>这个改写过的 <code>TextEdit</code> 里面有三个简单的组成部分：</p>
+<ol>
+<li>扫描 bundle</li>
+<li>加载 bundle</li>
+<li>调用 bundle 的 UI。<br>打开 <code>Controller.m</code>，你可以看见 <code>-(void)loadPlugins</code> 方法 (它在 <code>applicationDidFinishLaunching:</code> 中被调用)。<br><code>loadPlugins</code> 方法在你的界面菜单右侧加入了一个新的 <code>NSMenuItem</code>，来为你调用你的插件提供一个入口（通常你会在 <code>MainMenu.xib</code> 做这件事情并且链接 <code>outlets</code>，但是我们这次偷下懒）。然后获得你的插件目录（在 <code>~/Library/Application Support/Text Edit/Plug-Ins/</code> ）下，并且扫描这个目录。<figure class="highlight objc"><figcaption><span>bundle加载</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *pluginsFolder = [<span class="keyword">self</span> pluginsFolder];</div><div class="line"><span class="built_in">NSFileManager</span> *fm = [<span class="built_in">NSFileManager</span> defaultManager];</div><div class="line"><span class="built_in">NSError</span> *outErr;</div><div class="line"><span class="keyword">for</span> (<span class="built_in">NSString</span> *item <span class="keyword">in</span> [fm contentsOfDirectoryAtPath:pluginsFolder error:&amp;outErr]) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (![item hasSuffix:<span class="string">@".bundle"</span>])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">NSString</span> *bundlePath = [pluginsFolder stringByAppendingPathComponent:item];</div><div class="line">    <span class="built_in">NSBundle</span> *b = [<span class="built_in">NSBundle</span> bundleWithPath:bundlePath];</div><div class="line">    <span class="keyword">if</span> (!b) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Could not make a bundle from %@"</span>, bundlePath);</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">id</span> &lt;TextEditPlugin&gt; plugin = [[b principalClass] new];</div><div class="line">    <span class="built_in">NSMenuItem</span> *item = [pluginsMenu addItemWithTitle:[plugin menuItemTitle] action:<span class="keyword">@selector</span>(pluginMenuItemCalledAction:) keyEquivalent:<span class="string">@""</span>];</div><div class="line">    [item setRepresentedObject:plugin];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+扫描插件目录，确保得到的是一个 <code>.bundle</code> 文件，然后用 <code>NSBundle</code> 载入你找到的 <code>bundle</code> 并且实例化里面的类。<br>你会注意到一个 <code>TextEditPlugin</code> 的 <code>protocol</code> 的引用。在 <code>TextEditMisc.h</code> 能找它的定义:<figure class="highlight objc"><figcaption><span>声明代理协议</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">TextEditPlugin</span> &lt;<span class="title">NSObject</span>&gt;</span></div><div class="line">- (<span class="built_in">NSString</span>*)menuItemTitle;</div><div class="line">- (<span class="keyword">void</span>)actionCalledWithTextView:(<span class="built_in">NSTextView</span>*)textView inDocument:(<span class="keyword">id</span>)document;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+这说明你实例化的类需要响应这两个方法。你可以验证这个类是否响应这两个方法（这是一个好主意），但是简单起见，我们现在就不这样做了。</li>
+</ol>
+<h3 id="NSPrincipalClass键-值–插件方法的类名"><a href="#NSPrincipalClass键-值–插件方法的类名" class="headerlink" title="NSPrincipalClass键:值–插件方法的类名"></a>NSPrincipalClass键:值–插件方法的类名</h3><p>在 <code>bundle</code> 里面调用的 <code>principalClass</code> 方法是什么呢？<br>当你创建一个 <code>Bundle</code> 的时候，你可以在里面创建一个或者多个类，同时你需要让 <code>TextEdit</code> 知道哪一个类需要被实例化。为了帮助宿主 App 调用，你可以在 <code>Info.plist</code> 文件加入一个 <code>NSPrincipalClass</code> 的键，同时设置它的值为实现插件方法的类的名字。你可以用 [NSBundle principalClass] 方便地从 <code>NSPrincipalClass</code> 的值里面寻找并创建这个类。</p>
+<h3 id="在插件中添加菜单按钮"><a href="#在插件中添加菜单按钮" class="headerlink" title="在插件中添加菜单按钮"></a>在插件中添加菜单按钮</h3><p>在 <code>Plug-Ins</code> 菜单加入一个新的按钮，设置 <code>action</code> 为 <code>pluginMenuItemCalledAction:</code>，并且设置它表示你已经实例化的对象。<br>如果在 <code>menu item</code> 里面没有设置一个<code>target</code>，即目标是<code>nil</code>，那么它会寻找响应链，来寻找第一个实现 <code>pluginMenuItemCalledAction:</code> 方法的对象。如果它找不到，那么这个菜单选项将会不能用。<br>举一个例子，实现 pluginMenuItemCalledAction 的最好的地方是在 Document 的 window controller 类中。打开 DocumentWindowController.m，然后定位到到 pluginMenuItemCalledAction<br><figure class="highlight objc"><figcaption><span>响应链</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)pluginMenuItemCalledAction:(<span class="keyword">id</span>)sender </div><div class="line">&#123;</div><div class="line">    <span class="keyword">id</span> &lt;TextEditPlugin&gt;plugin = [sender representedObject];</div><div class="line">    [plugin actionCalledWithTextView:[<span class="keyword">self</span> firstTextView] inDocument:[<span class="keyword">self</span> document]];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>代码本身很清晰，搜集插件实例，调用 <code>actionCalledWithTextView:inDocument:</code> 方法（被定义在 <code>protocol</code> 里面的），运行你插件里面的代码。</p>
+<h2 id="制作插件"><a href="#制作插件" class="headerlink" title="制作插件"></a>制作插件</h2><p>打开 “01 MarkYellow” 工程看一下。这是一个 Xcode (通过<code>OS X ▸ Framework &amp; Library ▸ Bundle template</code> 建立) 的标准工程，里面只添加了一个类：<code>TEMarkYellow</code>。<br>如果你打开<code>MarkYellow-Info.plist</code>，你可以看到 <code>NSPrincipalClass</code> 的值设置成了上面提到的 <code>TEMarkYellow</code>。<br>接着，打开 <code>TEMarkYellow.m</code>，你将会看见定义在协议里面的方法。一个返回你插件的名字，就是在 <code>menu</code> 里面显示的那个，更有意思的是另外一个方法 (<code>actionCalledWithTextView:inDocument:</code>)，它把所有选中的文字变成黄色的背景。<br><figure class="highlight objc"><figcaption><span>改变字体颜色</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)actionCalledWithTextView:(<span class="built_in">NSTextView</span>*)textView inDocument:(<span class="keyword">id</span>)document </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> ([textView selectedRange].length) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSMutableAttributedString</span> *ats = [[[textView textStorage] attributedSubstringFromRange:[textView selectedRange]] mutableCopy];</div><div class="line">        [ats addAttribute:<span class="built_in">NSBackgroundColorAttributeName</span> value:[<span class="built_in">NSColor</span> yellowColor] range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, [ats length])];</div><div class="line">        <span class="comment">//  先测试text view是否能改变文字内容，这样可以自动做正确的撤销操作。</span></div><div class="line">        By asking the text view <span class="keyword">if</span> you can change the text first, it will automatically <span class="keyword">do</span> the right thing to enable undoing of attribute changes</div><div class="line">        <span class="keyword">if</span> ([textView shouldChangeTextInRange:[textView selectedRange] replacementString:[ats string]])</div><div class="line">        &#123;</div><div class="line">            [[textView textStorage] replaceCharactersInRange:[textView selectedRange] withAttributedString:ats];</div><div class="line">            [textView didChangeText];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="集成插件"><a href="#集成插件" class="headerlink" title="集成插件"></a>集成插件</h2><p>运行 <code>TextEdit</code> （它会创建<code>Plug-Ins</code>目录），然后构建 <code>MarkYellow</code> 工程。把 <code>MarkYellow.bundle</code> 丢到你的 <code>~/Library/Application Support/Text Edit/Plug-Ins/</code> 目录下面，重启你的 <code>TextEdit</code> 应用。<br>一切看起来都很好，扫描，加载，插入一个菜单，然后，当你使用菜单项的时候，传递到参数到插件里面。试一试，点击 <code>Plug-Ins ▸ Mark Selected Text Yellow</code>，选择的文字的背景颜色就变成黄色的了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/weixinimg.jpg" alt="boyer wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/weixin.jpg" alt="boyer WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/zhifubao.jpg" alt="boyer Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/插件/" rel="tag"># 插件</a>
+          
+            <a href="/tags/macOS/" rel="tag"># macOS</a>
+          
+            <a href="/tags/objc/" rel="tag"># objc</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/23/Hexo标签插件/" rel="next" title="Hexo标签插件">
+                <i class="fa fa-chevron-left"></i> Hexo标签插件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/07/OSX应用插件开发/"
+           data-title="OSX 应用插件" data-url="https://huos3203.github.io/2017/02/07/OSX应用插件开发/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="boyer" />
+          <p class="site-author-name" itemprop="name">boyer</p>
+          <p class="site-description motion-element" itemprop="description">不物喜，不己悲，善假物，易参行！</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huos3203" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1791281385" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/boyers" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/boyers" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" title="swift文档" target="_blank">swift文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.objccn.io" title="objc中国" target="_blank">objc中国</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nshipster.cn" title="NSHipster" target="_blank">NSHipster</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" title="动画" target="_blank">动画</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://git-scm.com/book/zh" title="Git Pro" target="_blank">Git Pro</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://kaopu.so/pan" title="全盘搜" target="_blank">全盘搜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://mp.weixin.qq.com" title="小程序官方" target="_blank">小程序官方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://onevcat.com" title="王维" target="_blank">王维</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.devtang.com" title="唐巧" target="_blank">唐巧</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#包-Bundles-和接口-Interfaces"><span class="nav-number">1.</span> <span class="nav-text">包 (Bundles) 和接口 (Interfaces)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为-TextEdit-加入-Plugin-支持"><span class="nav-number">2.</span> <span class="nav-text">为 TextEdit 加入 Plugin 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-TextEdit-中扫描-Bundle"><span class="nav-number">2.1.</span> <span class="nav-text">在 TextEdit 中扫描 Bundle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSPrincipalClass键-值–插件方法的类名"><span class="nav-number">2.2.</span> <span class="nav-text">NSPrincipalClass键:值–插件方法的类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在插件中添加菜单按钮"><span class="nav-number">2.3.</span> <span class="nav-text">在插件中添加菜单按钮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作插件"><span class="nav-number">3.</span> <span class="nav-text">制作插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成插件"><span class="nav-number">4.</span> <span class="nav-text">集成插件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boyer</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huo3203"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("ue8PI3eFeweMAjNgpAAIfiRi-gzGzoHsz", "2kHl2CEoDUKiHcVvz0dhu5rF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
