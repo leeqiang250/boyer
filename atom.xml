@@ -677,148 +677,6 @@
   </entry>
   
   <entry>
-    <title>iOS面试题大集合[转]</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/22/iOS面试题大集合/</id>
-    <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 align="center">iOS有用的面试题大集合</h1>
-
-<h2 id="面试题从何处得来"><a href="#面试题从何处得来" class="headerlink" title="面试题从何处得来"></a>面试题从何处得来</h2><ul>
-<li><a href="http://blog.sunnyxx.com/2015/07/04/ios-interview/" target="_blank" rel="external">招聘一个靠谱的 iOS</a></li>
-<li><a href="http://www.zhihu.com/question/19604641" target="_blank" rel="external">知乎－如何面试 iOS 工程师？</a></li>
-</ul>
-<h2 id="阅读面试题之前"><a href="#阅读面试题之前" class="headerlink" title="阅读面试题之前"></a>阅读面试题之前</h2><p>在正式开始之前，我期望你能对iOS/Mac OS X平台开发有所了解，在iOS开发中已经很少需要自己写复杂的算法了，一般情况下很少会在面试中出现算法的考核，如果你了解一些基础的算法，还是有帮助的。</p>
-<p>Now！！请使用ARC</p>
-<h3 id="什么是iOS开发"><a href="#什么是iOS开发" class="headerlink" title="什么是iOS开发"></a>什么是iOS开发</h3><p>iOS是iPhone iPad等手持设备的操作系统，所谓的iOS开发就是开发运行在iOS系统上的应用或者游戏，比如支付宝，微信，微博等，当然这也包括了iPad版的应用，iOS开发可以归纳到<strong>移动开发</strong>领域。</p>
-<p><strong>有时候面试官是那种’脑残粉’，了解一下Apple的发展历史，可能比较聊的开。</strong></p>
-<p><a href="http://digi.tech.qq.com/a/20150127/021898.htm" target="_blank" rel="external">苹果Mac计算机31年发展历程回顾</a></p>
-<p><a href="http://baike.baidu.com/link?url=68F4Bl4llkNvdFJ1Md0fkZDDudN-NS46JeZoLrgPeqEbZmm8oBKG92Ocyd983yNQU6FVuDTFZOnjjPjfUHnuoePdfh6zJJ973pXFKYcbIKp5bCnQy_WvUVNJ6P84s8HE1xAlRaGdLVuoCb2p_8uaMa" target="_blank" rel="external">苹果公司</a></p>
-<p><a href="http://www.zhihu.com/topic/19551762" target="_blank" rel="external">苹果公司在知乎上的话题</a></p>
-<p><a href="http://www.amazon.cn/%E5%8F%B2%E8%92%82%E5%A4%AB%C2%B7%E4%B9%94%E5%B8%83%E6%96%AF%E4%BC%A0-%E6%B2%83%E5%B0%94%E7%89%B9%C2%B7%E8%89%BE%E8%90%A8%E5%85%8B%E6%A3%AE/dp/B00IM4IFL2/ref=sr_1_1?ie=UTF8&amp;qid=1436592631&amp;sr=8-1&amp;keywords=%E4%B9%94%E5%B8%83%E6%96%AF" target="_blank" rel="external">乔布斯个人传记</a></p>
-<h3 id="拼写正确的重要性"><a href="#拼写正确的重要性" class="headerlink" title="拼写正确的重要性"></a>拼写正确的重要性</h3><p>有些面试官可能更注重细节，所以，拼写的单词一定要对，比如iOS，Xcode，iPhone，Objective-C，JSON等，良好的拼写习惯，会让面试官觉得你细心靠谱。</p>
-<h3 id="Swift和Objective-C的比较"><a href="#Swift和Objective-C的比较" class="headerlink" title="Swift和Objective-C的比较"></a>Swift和Objective-C的比较</h3><p>仁者见仁智者见智，从个人的使用角度上来看，Swift在某些情况上比Objective-C更加的严谨了，入门非常简单，但是想开发应用，还是需要学习cocoa框架，这玩意路子还是Objective-C的，所以有基础可能更好的理解Swift在iOS/Mac OS X 中的开发和应用。</p>
-<p><a href="http://www.zhihu.com/question/24002984" target="_blank" rel="external">知乎原文</a></p>
-<h3 id="了解Watch-OS"><a href="#了解Watch-OS" class="headerlink" title="了解Watch OS"></a>了解Watch OS</h3><p><code>Watch OS</code>是苹果公司推出的应用在手表上的一个操作系统，<code>Watch OS 1.0</code>需要跟iPhone相结合才能工作。</p>
-<p><a href="https://stratechery.com/2014/apple-watch-asking-saying/" target="_blank" rel="external">Apple Watch</a></p>
-<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&amp;mid=208847424&amp;idx=1&amp;sn=fac57c5da8136b07fe9cdf53d1ec9f4c#rd" target="_blank" rel="external">Watch OS 2.0 开发概述</a></p>
-<hr>
-<h2 id="iOS面试"><a href="#iOS面试" class="headerlink" title="iOS面试"></a>iOS面试</h2><h5>property 后面可以有哪些修饰符</h5>
-
-<ol>
-<li><p>读写修饰符 <code>readwrite</code> | <code>readonly</code></p>
-<p> <code>readwrite</code> Xcode会帮助我们创建<code>setter</code>，<code>getter</code>方法，<code>readonly</code> Xcode只会帮助我们创建<code>getter</code>方法，不会创建<code>setter</code>方法。</p>
-</li>
-<li><p><code>setter</code>相关的修饰符 <code>assign</code> | <code>retain</code> | <code>copy</code></p>
-<p> 2.1 <code>setter</code>相关的修饰符表明了<code>setter</code>方法该如何实现，<code>assign</code>用于基本数据类型<code>NSInteger</code>，<code>CGFloat</code>，C数据类型<code>int</code>，<code>float</code>，<code>id</code>类型等，这个符号不会涉及内存管理，但是如果是对象类使用了它，可能会导致内存泄漏或者<code>EXC_BAD_ACCESS</code>错误。</p>
-<p> 2.2 <code>retain</code>用于对象类的内存管理，如果基本数据类型使用它，<code>Xcode</code>会直接报错。当对象类使用此修饰符时，<code>setter</code>方法的实现是先<code>release</code>一次，然后再对新的对象做一次<code>retain</code>操作。</p>
-<p> 2.3 <code>copy</code>主要用于<code>NSString</code>，用于内容复制。</p>
-</li>
-<li><p>原子性修饰符 <code>atomic</code> | <code>nonatomic</code></p>
-<p> <code>atomic</code> 表示线程安全</p>
-<p> <code>nonatomic</code> 表示非线程安全，使用此修饰符会提高性能</p>
-</li>
-<li><p><code>getter</code>，<code>setter</code>修饰符</p>
-<p> 这两个修饰符用于设置生成的getter，setter的方法名</p>
-</li>
-<li><p><code>strong</code>，<code>weak</code>修饰符（ARC）<br>在ARC中内存管理都只需要使用这两个修饰符，而且<code>strong</code>是默认全局的，只要你写了<code>Objective-C</code>的对象，不自己添加<code>weak</code>的话，默认就是<code>strong</code>。<br> 5.1 <code>strong</code>表示这个对象的拥有者<br> 一个对象可以有多个拥有者，<code>strong</code>就是用来表示对这个对象的拥有。比如在往<code>NSMutableArray</code>中添加<code>Objective-C</code>对象，当你从数组中删除时，这个对象并不会释放。需要你手动设置为<code>nil</code>，或者在控制器的生命周期内，由系统来释放。<br> 5.2 <code>weak</code>指针变量仍然可以指向一个对象，但不是这个对象的拥有者<br> <code>weak</code>修饰的指针变量也可以指向对象，但不是这个对象的实际拥有者，也就是说<code>weak</code>修饰的指针变量如果想要释放，需要<code>strong</code>修饰的指针变量设置为<code>nil</code>，<code>weak</code>修饰的指针变量也会是一个<code>nil</code>，它指向的对象已经没有了，还需要设置<code>weak</code>修饰的指针变量为<code>nil</code>。</p>
-</li>
-<li><code>nonnull</code> <code>nullable</code> <code>null_resettable</code></li>
-</ol>
-<p>Xcode 6.3推出的<code>nullability annotations</code>，主要是为了更好的Swift与Objective-C混编，在Swift中有可选型的概念<code>!</code>,<code>?</code>，但是Objective-C中木有这玩意，于是Xcode 6.3中才有了这个，<br>从字面可以看出:<br>    <code>nonnull</code> 表示对象不应该为空，如果是这个修饰符对应的就是Swift中已经解包的对象或者<code>!</code><br>    <code>nullable</code>表示可以为<code>nil</code>或者<code>NULL</code>,对应是Swift中的可选<code>?</code><br>    <code>null_resettable</code>则是表达属性的空属性，该属性<code>setter</code>访问器允许将其设置为<code>nil</code>（设置该属性为默认值），但是它的<code>getter</code>访问器不会提供一个<code>nil</code>值（因为它提供了默认值），有一个这样的属性如UIView’s tintColor，如果没有tint颜色指定时它会提供一个默认的tint颜色值，对应的Swift使用是var tintColor:UIColor!</p>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><ol>
-<li>使用 <code>weak</code> 关键字，相比 <code>assign</code> 有什么不同<br> 一般情况下使用<code>weak</code>是避免循环引用，因为它不是对象的拥有者。而<code>assign</code>则是用于基本数据类型，或者C类型，而且<code>assign</code>是直接赋值，可能会导致一个问题。比如我想a和b共用一块内存，a是用<code>assign</code>修饰的，<code>a = b</code>，现在a使用的目的已经完成，我想释放这个内存，但是a并不知道b到底用没用完，如果此时a释放内存，而b还在使用，那么会导致应用程序crash，使用<code>weak</code>就能避免这样的问题。</li>
-<li>怎么用 copy 关键字<br> <code>copy</code>拷贝的是内容,<code>retain</code>是拷贝的指针<pre><code>* 以`string`为例,如果`string`的属性为`copy`的话,那么传入参数为`NSString`的话,即为不可变`string`,`retain`,`copy`效果一样.
-* 如果传入参数是`mutable`的话,那么`copy`拷贝内容,源随意变化不影响该属性的值.`retain`拷贝指针,源变化则属性值着变化,因为属性和源指向如何使用呢,通常在需要拷贝内容,但是副本和源不要互相影响的情况下使用.`*` 同一内存地址.
-* 例如`array/dictionary`中,可能会需要一个副本来做一些操作(筛选,排序等),但是并不希望影响原始值,则可以使用`copy`
-</code></pre></li>
-<li>@property (copy) NSMutableArray *array; 这样写有什么问题吗<br> 因为用了<code>copy</code>, 内部会深拷贝一次, 指针实际指向的是<code>NSArray</code>, 所以如果调用<code>removeObject</code>和<code>addObject</code>方法的话, 会<code>unRecognized selector</code></li>
-<li>如何让自己的类用 copy 修饰符？如何重写带 copy 关键字的 setter？<br> 当一个对象发生改变时不影响另外一个对象，这里就需要使用<code>copy</code>关键字了，实现<code>NSCopying</code>协议，重写- <code>(id)copyWithZone:(NSZone *)zone</code>方法。<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(_name != name)</div><div class="line">    &#123;</div><div class="line">        _name = [name <span class="keyword">copy</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-<li>@protocol 和 category 中如何使用 @property<br> <code>@protocol</code>可以通过关键字:<code>@synthesize</code>或者在继承的类里面重新定义一次该属性(<code>extension</code>里面定义是不行的)<br> <code>category</code>通过关联:<code>objc_setAssociatedObject</code>/<code>objc_getAssociatedObject</code></li>
-<li><code>@property</code> 的本质是什么？<code>ivar</code>、<code>getter</code>、<code>setter</code> 是如何生成并添加到这个类中的<br> <code>@property</code>本质是定义一个<code>objc_property</code>结构体<br><strong>如何生成目前不清楚</strong></li>
-<li><code>weak</code>属性需要在<code>dealloc</code>中置<code>nil</code>么<br> 不需要，因为weak会自动设置nil</li>
-<li><code>@synthesize</code>和@<code>dynamic</code>分别有什么作用<br> 关于@synthesize（现在已经不需要在写这个属性了，它是用来生成getter和setter方法）<br> <code>@dynamic</code> 就是要告诉编译器<code>getter</code>和<code>setter</code>方法会在程序运行或者用到动态绑定的方式，以便让编译器通过编译，这个主要要在<code>NSManagerObject</code>上。</li>
-<li><code>ARC</code>下，不显式指定任何属性关键字时，默认的关键字都有哪些<br> 在默认情况下，所有的实例变量和局部变量都是<code>strong</code>类型的。</li>
-<li>用<code>@property</code>声明的<code>NSString</code>（或<code>NSArray</code>，<code>NSDictionary</code>）经常使用<code>copy</code>关键字，为什么？如果改用strong关键字，可能造成什么问题<br>因为不想改变了其中的值后把原来的值也跟着改变了，用了<code>strong</code>后会出现这样的状况。</li>
-<li>什么是ARC<br>请阅读，然后随便谈谈你的理解即可。<br>ARC是为了解决下面几个问题<ul>
-<li>当我们要释放一个堆内存时，首先要确定指向这个堆空间的指针都被<code>release</code>了。（避免提前释放）</li>
-<li>释放指针指向的堆空间，首先要确定哪些指针指向同一个堆，这些指针只能释放一次。（<code>MRC</code>下即谁创建，谁释放，避免重复释放）</li>
-<li>模块化操作时，对象可能被多个模块创建和使用，不能确定最后由谁去释放。</li>
-<li>多线程操作时，不确定哪个线程最后使用完毕<br><a href="http://onevcat.com/2012/06/arc-hand-by-hand/" target="_blank" rel="external">手把手教你ARC——iOS/Mac开发ARC入门和使用</a><br><a href="http://www.oschina.net/translate/objc-automatic-reference-counting-in-xcode-explained" target="_blank" rel="external">理解 Objective-C 的 ARC</a></li>
-</ul>
-</li>
-<li>请解释以下keywords的区别： <code>assign</code> vs <code>weak</code>, <code>block</code> vs <code>weak</code><br><code>assign</code>适用于基本数据类型，<code>weak</code>是适用于<code>NSObject</code>对象，并且是一个弱引用。<ul>
-<li><code>assign</code>其实也可以用来修饰对象，那么我们为什么不用它呢？<br>因为被<code>assign</code>修饰的对象在释放之后，指针的地址还是存在的，也就是说指针并没有被置为<code>nil</code>。如果在后续的内存分配中，刚好分到了这块地址，程序就会崩溃掉。</li>
-<li><code>weak</code>修饰的对象在释放之后，指针地址会被置为<code>nil</code>。所以现在一般弱引用就是用<code>weak</code>。</li>
-<li><code>block</code>是用来修饰一个变量，这个变量就可以在<code>block</code>中被修改，使用<code>block</code>修饰的变量在<code>block</code>代码快中会被<code>retain</code>（<code>ARC</code>下，<code>MRC</code>下不会<code>retain</code>） </li>
-<li><code>weak</code>：使用<code>weak</code>修饰的变量不会在<code>block</code>代码块中被<code>retain</code>同时，在ARC下，要避免<code>block</code>出现循环引用 <code>weak typedof(self)weakSelf = self</code></li>
-</ul>
-</li>
-<li><code>__block</code>在<code>arc</code>和<code>非arc</code>下含义一样吗<br>是不一样的，ARC会retain，非ARC不会。</li>
-<li>描述一个你遇到过的<code>retain</code> cycle例子<br>在<code>viewController</code>中避免循环引用<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    _data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>  
-解决办法<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">__<span class="keyword">weak</span> ViewController *weakSelf = <span class="keyword">self</span>;</div><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    weakSelf.data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure></li>
-<li><code>+(void)load;</code> <code>+(void)initialize;</code>有什么用处<br>在Objective-C中，<code>runtime</code>会自动调用每个类的两个方法。<code>+load</code>会在类初始加载时调用，<code>+initialize</code>会在第一次调用类的类方法或实例方法之前被调用。这两个方法是可选的，且只有在实现了它们时才会被调用。<br>共同点：两个方法都只会被调用一次。</li>
-<li><code>UIView</code>和<code>CALayer</code>有什么关系<ul>
-<li><code>UIView</code>是iOS界面元素的基础，所有的界面元素都继承于它。它本身是由<code>CoreAnimation</code>来实现的，它真正绘图的部分是由一个<code>CALayer</code>的类来管理的，<code>UIView</code>本身更像是一个<code>CALayer</code>的管理器。</li>
-<li><code>UIView</code>都存在一个<code>layer</code>属性，可以访问到<code>CALayer</code>的实例。</li>
-<li><code>UIView</code>的<code>CALayer</code>类也存在一个<code>view</code>树结构，可以像<code>UIView</code>一样进行添加</li>
-<li><code>UIView</code>的<code>layer</code>树在系统内部，由系统来维护，它存在着三棵树，分别是逻辑树，动画树，显示树</li>
-</ul>
-</li>
-<li>如何高性能的给<code>UIImageView</code>加个圆角<ul>
-<li>使用贝塞尔曲线来切割图片</li>
-<li>使用<code>Quartz2D</code>直接绘制图片</li>
-</ul>
-</li>
-<li>使用<code>drawRect</code>有什么影响<br><code>drawRect</code>方法依赖<code>Core Graphics</code>框架来进行自定义的绘制，但这种方法主要的缺点就是它处理<code>touch</code>事件的方式：每次按钮被点击后，都会用<code>setNeddsDisplay</code>进行强制重绘；而且不止一次，每次单点事件触发两次执行。这样的话从性能的角度来说，对<code>CPU</code>和内存来说都是欠佳的。</li>
-<li>SDWebImage里面给UIImageView加载图片的逻辑是什么样的<br>详情看<a href="http://www.cnblogs.com/6duxz/p/4159572.html" target="_blank" rel="external">最新版SDWebImage的使用</a></li>
-<li>麻烦你设计个简单的图片内存缓存器<br>图片的内存缓存，可以考虑将图片数据保存到一个数据模型中，所以在程序运行时这个模型都存在内存中，一定要具备移除策略，即释放数据模型。</li>
-<li>讲讲你用<code>Instrument</code>优化动画性能的经历<br><a href="http://www.hrchen.com/2013/05/performance-with-instruments/" target="_blank" rel="external">怎么使用instrument</a></li>
-<li><code>loadView</code>是干嘛用的<br>当你访问一个<code>ViewController</code>的<code>view</code>属性时，如果此时<code>view</code>的值是<code>nil</code>，那么，<code>ViewController</code>就会自动调用<code>loadView</code>这个方法。这个方法就会加载或者创建一个<code>view</code>对象，赋值给<code>view</code>属性。<br><code>loadView</code>默认做的事情是：如果此<code>ViewController</code>存在一个对应的<code>nib</code>文件，那么就加载这个<code>nib</code>。否则，就创建一个<code>UIView</code>对象。<br>如果你用<code>Interface Builder</code>来创建界面，那么不应该重载这个方法。<br>如果你想自己创建<code>view</code>对象，那么可以重载这个方法。此时你需要自己给<code>view</code>属性赋值。你自定义的方法不应该调用<code>super</code>。如果你需要对<code>view</code>做一些其他的定制操作，在<code>viewDidLoad</code>里面去做。<br><a href="http://www.cnblogs.com/dyllove98/archive/2013/06/06/3123005.html" target="_blank" rel="external">iOS 的loadView 及使用loadView中初始化View注意的问题</a></li>
-<li>用过<code>CoreData</code>或者<code>SQLite</code>吗？读写是分线程的吗？遇到过死锁没？咋解决的<br>参考<a href="http://blog.csdn.net/hanangellove/article/details/44966769" target="_blank" rel="external">CoreData与SQLite的线程安全</a></li>
-<li><code>GCD</code>里面有哪几种<code>Queue</code>？你自己建立过串行<code>queue</code>吗？背后的线程模型是什么样的<ul>
-<li>主队列 <code>dispatch_main_queue();</code> 串行 ，更新UI</li>
-<li>全局队列 <code>dispatch_global_queue();</code> 并行，四个优先级：<code>background</code>，<code>low</code>，<code>default</code>，<code>high</code></li>
-<li>自定义队列 <code>dispatch_queue_t queue;</code> 可以自定义是并行：<code>DISPATCH_QUEUE_CONCURRENT</code>或者串行<code>DISPATCH_QUEUE_SERIAL</code></li>
-</ul>
-</li>
-<li>为什么其他语言里叫函数调用， <code>Objective-C</code>里则是给对象发消息（或者谈下对<code>runtime</code>的理解）<br>网上关于<code>runtime</code>的资料非常多，其实这方面在平时的开发中使用非常非常之少，底层的黑魔法。<br><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a><br><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></li>
-<li>什么是<code>method swizzling</code><br>在Objective-C中调用一个方法，其实是向一个对象发送消息，查找消息的唯一依据是<code>selector</code>的名字。利用<code>Objective-C</code>的动态特性，可以实现在运行时偷换<code>selector</code>对应的方法实现，达到给方法挂钩的目的。<br><a href="http://blog.csdn.net/yiyaaixuexi/article/details/9374411" target="_blank" rel="external">详细的案例</a></li>
-<li>runtime 如何实现 weak 属性 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">OBJC_ASSOCIATION_ASSIGN</div><div class="line">OBJC_ASSOCIATION_RETAIN_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_COPY_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_RETAIN</div><div class="line">OBJC_ASSOCIATION_COPY</div><div class="line">objc_setAssociatedObject(<span class="keyword">self</span>, &amp;myKey, anObject, OBJC_ASSOCIATION_RETAIN);</div></pre></td></tr></table></figure>
-可以自定义<code>weak</code>来实现内存管理，Apple已经为我们准备了常量。<br>参考<br><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a><br><a href="http://southpeak.github.io/blog/2014/10/30/objective-c-runtime-yun-xing-shi-zhi-er-:cheng-yuan-bian-liang-yu-shu-xing/" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a></li>
-<li><code>objc</code>中向一个<code>nil</code>对象发送消息将会发生什么<br><code>objc</code>的特性是允许对一个 <code>nil</code> 对象发送消息不会 Crash，因为会被忽略掉。</li>
-<li>什么时候会报<code>unrecognized selector</code>的异常<br>调用一个不存在的方法</li>
-<li><code>objc</code>中向一个对象发送消息<code>[obj foo]</code>和<code>objc_msgSend()</code>函数之间有什么关系<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[obj foo];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo));</div><div class="line"></div><div class="line">[obj foo:parameter];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo:),parameter);</div></pre></td></tr></table></figure></li>
-<li>一个objc对象如何进行内存布局<br>可参考<a href="http://www.cnblogs.com/csutanyu/archive/2011/12/12/objective-c_memory_layout.html" target="_blank" rel="external">Objective-C内存布局</a></li>
-<li>一个objc对象的isa的指针指向什么？有什么作用？<br>isa是一个Class 类型的指针. 每个实例对象有个isa的指针,他指向对象的类，而Class里也有个isa的指针, 指向meteClass(元类)。元类保存了类方法的列表。当类方法被调用时，先会从本身查找类方法的实现，如果没有，元类会向他父类查找该方法。同时注意的是：元类（meteClass）也是类，它也是对象。元类也有isa指针,它的isa指针最终指向的是一个根元类(root meteClass).根元类的isa指针指向本身，这样形成了一个封闭的内循环。</li>
-<li>下面的代码输出什么<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Son</span> : <span class="title">Father</span></span></div><div class="line">- (<span class="keyword">id</span>)init</div><div class="line">&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">super</span> <span class="keyword">class</span>]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-输出Son</li>
-<li>runtime如何通过selector找到对应的IMP地址<br>id (*IMP)(id, SEL, …)<br>这个函数使用当前CPU架构实现的标准的C调用约定。第一个参数是指向self的指针(如果是实例方法，则是类实例的内存地址；如果是类方法，则是指向元类的指针)，第二个参数是方法选择器(selector)，接下来是方法的实际参数列表。<br>前面介绍过的SEL就是为了查找方法的最终实现IMP的。由于每个方法对应唯一的SEL，因此我们可以通过SEL方便快速准确地获得它所对应的IMP，查找过程将在下面讨论。取得IMP后，我们就获得了执行这个方法代码的入口点，此时，我们就可以像调用普通的C语言函数一样来使用这个函数指针了。<br>通过取得IMP，我们可以跳过Runtime的消息传递机制，直接执行IMP指向的函数实现，这样省去了Runtime消息传递过程中所做的一系列查找操作，会比直接向对象发送消息高效一些。</li>
-</ol>
-<h2 id="Hybrid-混合开发"><a href="#Hybrid-混合开发" class="headerlink" title="Hybrid 混合开发"></a>Hybrid 混合开发</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 align=&quot;center&quot;&gt;iOS有用的面试题大集合&lt;/h1&gt;
-
-&lt;h2 id=&quot;面试题从何处得来&quot;&gt;&lt;a href=&quot;#面试题从何处得来&quot; class=&quot;headerlink&quot; title=&quot;面试题从何处得来&quot;&gt;&lt;/a&gt;面试题从何处得来&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a
-    
-    </summary>
-    
-      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="汇总" scheme="http://huos3203.github.io/boyer/tags/%E6%B1%87%E6%80%BB/"/>
-    
-      <category term="资源" scheme="http://huos3203.github.io/boyer/tags/%E8%B5%84%E6%BA%90/"/>
-    
-      <category term="面试" scheme="http://huos3203.github.io/boyer/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>腾讯云之小直播开发</title>
     <link href="http://huos3203.github.io/boyer/2017/01/22/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
     <id>http://huos3203.github.io/boyer/2017/01/22/腾讯云之小直播开发/</id>
@@ -870,59 +728,6 @@
       <category term="集成" scheme="http://huos3203.github.io/boyer/tags/%E9%9B%86%E6%88%90/"/>
     
       <category term="SDK" scheme="http://huos3203.github.io/boyer/tags/SDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AR 开发资料汇[转]</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/22/AR开发资料汇/</id>
-    <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
-<hr>
-<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
-<hr>
-<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
-<hr>
-<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
-<hr>
-<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
-<hr>
-<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
-<hr>
-<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
-<hr>
-<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
-<hr>
-<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
-<hr>
-<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
-<hr>
-<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
-<hr>
-<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
-<hr>
-<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
-    
-    </summary>
-    
-      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="AR" scheme="http://huos3203.github.io/boyer/tags/AR/"/>
-    
-      <category term="LBS+AR" scheme="http://huos3203.github.io/boyer/tags/LBS-AR/"/>
-    
-      <category term="QQ红包" scheme="http://huos3203.github.io/boyer/tags/QQ%E7%BA%A2%E5%8C%85/"/>
     
   </entry>
   
@@ -1112,6 +917,201 @@
       <category term="汇总" scheme="http://huos3203.github.io/boyer/tags/%E6%B1%87%E6%80%BB/"/>
     
       <category term="资源" scheme="http://huos3203.github.io/boyer/tags/%E8%B5%84%E6%BA%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS面试题大集合[转]</title>
+    <link href="http://huos3203.github.io/boyer/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
+    <id>http://huos3203.github.io/boyer/2017/01/22/iOS面试题大集合/</id>
+    <published>2017-01-22T10:55:21.000Z</published>
+    <updated>2017-01-22T10:55:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 align="center">iOS有用的面试题大集合</h1>
+
+<h2 id="面试题从何处得来"><a href="#面试题从何处得来" class="headerlink" title="面试题从何处得来"></a>面试题从何处得来</h2><ul>
+<li><a href="http://blog.sunnyxx.com/2015/07/04/ios-interview/" target="_blank" rel="external">招聘一个靠谱的 iOS</a></li>
+<li><a href="http://www.zhihu.com/question/19604641" target="_blank" rel="external">知乎－如何面试 iOS 工程师？</a></li>
+</ul>
+<h2 id="阅读面试题之前"><a href="#阅读面试题之前" class="headerlink" title="阅读面试题之前"></a>阅读面试题之前</h2><p>在正式开始之前，我期望你能对iOS/Mac OS X平台开发有所了解，在iOS开发中已经很少需要自己写复杂的算法了，一般情况下很少会在面试中出现算法的考核，如果你了解一些基础的算法，还是有帮助的。</p>
+<p>Now！！请使用ARC</p>
+<h3 id="什么是iOS开发"><a href="#什么是iOS开发" class="headerlink" title="什么是iOS开发"></a>什么是iOS开发</h3><p>iOS是iPhone iPad等手持设备的操作系统，所谓的iOS开发就是开发运行在iOS系统上的应用或者游戏，比如支付宝，微信，微博等，当然这也包括了iPad版的应用，iOS开发可以归纳到<strong>移动开发</strong>领域。</p>
+<p><strong>有时候面试官是那种’脑残粉’，了解一下Apple的发展历史，可能比较聊的开。</strong></p>
+<p><a href="http://digi.tech.qq.com/a/20150127/021898.htm" target="_blank" rel="external">苹果Mac计算机31年发展历程回顾</a></p>
+<p><a href="http://baike.baidu.com/link?url=68F4Bl4llkNvdFJ1Md0fkZDDudN-NS46JeZoLrgPeqEbZmm8oBKG92Ocyd983yNQU6FVuDTFZOnjjPjfUHnuoePdfh6zJJ973pXFKYcbIKp5bCnQy_WvUVNJ6P84s8HE1xAlRaGdLVuoCb2p_8uaMa" target="_blank" rel="external">苹果公司</a></p>
+<p><a href="http://www.zhihu.com/topic/19551762" target="_blank" rel="external">苹果公司在知乎上的话题</a></p>
+<p><a href="http://www.amazon.cn/%E5%8F%B2%E8%92%82%E5%A4%AB%C2%B7%E4%B9%94%E5%B8%83%E6%96%AF%E4%BC%A0-%E6%B2%83%E5%B0%94%E7%89%B9%C2%B7%E8%89%BE%E8%90%A8%E5%85%8B%E6%A3%AE/dp/B00IM4IFL2/ref=sr_1_1?ie=UTF8&amp;qid=1436592631&amp;sr=8-1&amp;keywords=%E4%B9%94%E5%B8%83%E6%96%AF" target="_blank" rel="external">乔布斯个人传记</a></p>
+<h3 id="拼写正确的重要性"><a href="#拼写正确的重要性" class="headerlink" title="拼写正确的重要性"></a>拼写正确的重要性</h3><p>有些面试官可能更注重细节，所以，拼写的单词一定要对，比如iOS，Xcode，iPhone，Objective-C，JSON等，良好的拼写习惯，会让面试官觉得你细心靠谱。</p>
+<h3 id="Swift和Objective-C的比较"><a href="#Swift和Objective-C的比较" class="headerlink" title="Swift和Objective-C的比较"></a>Swift和Objective-C的比较</h3><p>仁者见仁智者见智，从个人的使用角度上来看，Swift在某些情况上比Objective-C更加的严谨了，入门非常简单，但是想开发应用，还是需要学习cocoa框架，这玩意路子还是Objective-C的，所以有基础可能更好的理解Swift在iOS/Mac OS X 中的开发和应用。</p>
+<p><a href="http://www.zhihu.com/question/24002984" target="_blank" rel="external">知乎原文</a></p>
+<h3 id="了解Watch-OS"><a href="#了解Watch-OS" class="headerlink" title="了解Watch OS"></a>了解Watch OS</h3><p><code>Watch OS</code>是苹果公司推出的应用在手表上的一个操作系统，<code>Watch OS 1.0</code>需要跟iPhone相结合才能工作。</p>
+<p><a href="https://stratechery.com/2014/apple-watch-asking-saying/" target="_blank" rel="external">Apple Watch</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&amp;mid=208847424&amp;idx=1&amp;sn=fac57c5da8136b07fe9cdf53d1ec9f4c#rd" target="_blank" rel="external">Watch OS 2.0 开发概述</a></p>
+<hr>
+<h2 id="iOS面试"><a href="#iOS面试" class="headerlink" title="iOS面试"></a>iOS面试</h2><h5>property 后面可以有哪些修饰符</h5>
+
+<ol>
+<li><p>读写修饰符 <code>readwrite</code> | <code>readonly</code></p>
+<p> <code>readwrite</code> Xcode会帮助我们创建<code>setter</code>，<code>getter</code>方法，<code>readonly</code> Xcode只会帮助我们创建<code>getter</code>方法，不会创建<code>setter</code>方法。</p>
+</li>
+<li><p><code>setter</code>相关的修饰符 <code>assign</code> | <code>retain</code> | <code>copy</code></p>
+<p> 2.1 <code>setter</code>相关的修饰符表明了<code>setter</code>方法该如何实现，<code>assign</code>用于基本数据类型<code>NSInteger</code>，<code>CGFloat</code>，C数据类型<code>int</code>，<code>float</code>，<code>id</code>类型等，这个符号不会涉及内存管理，但是如果是对象类使用了它，可能会导致内存泄漏或者<code>EXC_BAD_ACCESS</code>错误。</p>
+<p> 2.2 <code>retain</code>用于对象类的内存管理，如果基本数据类型使用它，<code>Xcode</code>会直接报错。当对象类使用此修饰符时，<code>setter</code>方法的实现是先<code>release</code>一次，然后再对新的对象做一次<code>retain</code>操作。</p>
+<p> 2.3 <code>copy</code>主要用于<code>NSString</code>，用于内容复制。</p>
+</li>
+<li><p>原子性修饰符 <code>atomic</code> | <code>nonatomic</code></p>
+<p> <code>atomic</code> 表示线程安全</p>
+<p> <code>nonatomic</code> 表示非线程安全，使用此修饰符会提高性能</p>
+</li>
+<li><p><code>getter</code>，<code>setter</code>修饰符</p>
+<p> 这两个修饰符用于设置生成的getter，setter的方法名</p>
+</li>
+<li><p><code>strong</code>，<code>weak</code>修饰符（ARC）<br>在ARC中内存管理都只需要使用这两个修饰符，而且<code>strong</code>是默认全局的，只要你写了<code>Objective-C</code>的对象，不自己添加<code>weak</code>的话，默认就是<code>strong</code>。<br> 5.1 <code>strong</code>表示这个对象的拥有者<br> 一个对象可以有多个拥有者，<code>strong</code>就是用来表示对这个对象的拥有。比如在往<code>NSMutableArray</code>中添加<code>Objective-C</code>对象，当你从数组中删除时，这个对象并不会释放。需要你手动设置为<code>nil</code>，或者在控制器的生命周期内，由系统来释放。<br> 5.2 <code>weak</code>指针变量仍然可以指向一个对象，但不是这个对象的拥有者<br> <code>weak</code>修饰的指针变量也可以指向对象，但不是这个对象的实际拥有者，也就是说<code>weak</code>修饰的指针变量如果想要释放，需要<code>strong</code>修饰的指针变量设置为<code>nil</code>，<code>weak</code>修饰的指针变量也会是一个<code>nil</code>，它指向的对象已经没有了，还需要设置<code>weak</code>修饰的指针变量为<code>nil</code>。</p>
+</li>
+<li><code>nonnull</code> <code>nullable</code> <code>null_resettable</code></li>
+</ol>
+<p>Xcode 6.3推出的<code>nullability annotations</code>，主要是为了更好的Swift与Objective-C混编，在Swift中有可选型的概念<code>!</code>,<code>?</code>，但是Objective-C中木有这玩意，于是Xcode 6.3中才有了这个，<br>从字面可以看出:<br>    <code>nonnull</code> 表示对象不应该为空，如果是这个修饰符对应的就是Swift中已经解包的对象或者<code>!</code><br>    <code>nullable</code>表示可以为<code>nil</code>或者<code>NULL</code>,对应是Swift中的可选<code>?</code><br>    <code>null_resettable</code>则是表达属性的空属性，该属性<code>setter</code>访问器允许将其设置为<code>nil</code>（设置该属性为默认值），但是它的<code>getter</code>访问器不会提供一个<code>nil</code>值（因为它提供了默认值），有一个这样的属性如UIView’s tintColor，如果没有tint颜色指定时它会提供一个默认的tint颜色值，对应的Swift使用是var tintColor:UIColor!</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><ol>
+<li>使用 <code>weak</code> 关键字，相比 <code>assign</code> 有什么不同<br> 一般情况下使用<code>weak</code>是避免循环引用，因为它不是对象的拥有者。而<code>assign</code>则是用于基本数据类型，或者C类型，而且<code>assign</code>是直接赋值，可能会导致一个问题。比如我想a和b共用一块内存，a是用<code>assign</code>修饰的，<code>a = b</code>，现在a使用的目的已经完成，我想释放这个内存，但是a并不知道b到底用没用完，如果此时a释放内存，而b还在使用，那么会导致应用程序crash，使用<code>weak</code>就能避免这样的问题。</li>
+<li>怎么用 copy 关键字<br> <code>copy</code>拷贝的是内容,<code>retain</code>是拷贝的指针<pre><code>* 以`string`为例,如果`string`的属性为`copy`的话,那么传入参数为`NSString`的话,即为不可变`string`,`retain`,`copy`效果一样.
+* 如果传入参数是`mutable`的话,那么`copy`拷贝内容,源随意变化不影响该属性的值.`retain`拷贝指针,源变化则属性值着变化,因为属性和源指向如何使用呢,通常在需要拷贝内容,但是副本和源不要互相影响的情况下使用.`*` 同一内存地址.
+* 例如`array/dictionary`中,可能会需要一个副本来做一些操作(筛选,排序等),但是并不希望影响原始值,则可以使用`copy`
+</code></pre></li>
+<li>@property (copy) NSMutableArray *array; 这样写有什么问题吗<br> 因为用了<code>copy</code>, 内部会深拷贝一次, 指针实际指向的是<code>NSArray</code>, 所以如果调用<code>removeObject</code>和<code>addObject</code>方法的话, 会<code>unRecognized selector</code></li>
+<li>如何让自己的类用 copy 修饰符？如何重写带 copy 关键字的 setter？<br> 当一个对象发生改变时不影响另外一个对象，这里就需要使用<code>copy</code>关键字了，实现<code>NSCopying</code>协议，重写- <code>(id)copyWithZone:(NSZone *)zone</code>方法。<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(_name != name)</div><div class="line">    &#123;</div><div class="line">        _name = [name <span class="keyword">copy</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li>@protocol 和 category 中如何使用 @property<br> <code>@protocol</code>可以通过关键字:<code>@synthesize</code>或者在继承的类里面重新定义一次该属性(<code>extension</code>里面定义是不行的)<br> <code>category</code>通过关联:<code>objc_setAssociatedObject</code>/<code>objc_getAssociatedObject</code></li>
+<li><code>@property</code> 的本质是什么？<code>ivar</code>、<code>getter</code>、<code>setter</code> 是如何生成并添加到这个类中的<br> <code>@property</code>本质是定义一个<code>objc_property</code>结构体<br><strong>如何生成目前不清楚</strong></li>
+<li><code>weak</code>属性需要在<code>dealloc</code>中置<code>nil</code>么<br> 不需要，因为weak会自动设置nil</li>
+<li><code>@synthesize</code>和@<code>dynamic</code>分别有什么作用<br> 关于@synthesize（现在已经不需要在写这个属性了，它是用来生成getter和setter方法）<br> <code>@dynamic</code> 就是要告诉编译器<code>getter</code>和<code>setter</code>方法会在程序运行或者用到动态绑定的方式，以便让编译器通过编译，这个主要要在<code>NSManagerObject</code>上。</li>
+<li><code>ARC</code>下，不显式指定任何属性关键字时，默认的关键字都有哪些<br> 在默认情况下，所有的实例变量和局部变量都是<code>strong</code>类型的。</li>
+<li>用<code>@property</code>声明的<code>NSString</code>（或<code>NSArray</code>，<code>NSDictionary</code>）经常使用<code>copy</code>关键字，为什么？如果改用strong关键字，可能造成什么问题<br>因为不想改变了其中的值后把原来的值也跟着改变了，用了<code>strong</code>后会出现这样的状况。</li>
+<li>什么是ARC<br>请阅读，然后随便谈谈你的理解即可。<br>ARC是为了解决下面几个问题<ul>
+<li>当我们要释放一个堆内存时，首先要确定指向这个堆空间的指针都被<code>release</code>了。（避免提前释放）</li>
+<li>释放指针指向的堆空间，首先要确定哪些指针指向同一个堆，这些指针只能释放一次。（<code>MRC</code>下即谁创建，谁释放，避免重复释放）</li>
+<li>模块化操作时，对象可能被多个模块创建和使用，不能确定最后由谁去释放。</li>
+<li>多线程操作时，不确定哪个线程最后使用完毕<br><a href="http://onevcat.com/2012/06/arc-hand-by-hand/" target="_blank" rel="external">手把手教你ARC——iOS/Mac开发ARC入门和使用</a><br><a href="http://www.oschina.net/translate/objc-automatic-reference-counting-in-xcode-explained" target="_blank" rel="external">理解 Objective-C 的 ARC</a></li>
+</ul>
+</li>
+<li>请解释以下keywords的区别： <code>assign</code> vs <code>weak</code>, <code>block</code> vs <code>weak</code><br><code>assign</code>适用于基本数据类型，<code>weak</code>是适用于<code>NSObject</code>对象，并且是一个弱引用。<ul>
+<li><code>assign</code>其实也可以用来修饰对象，那么我们为什么不用它呢？<br>因为被<code>assign</code>修饰的对象在释放之后，指针的地址还是存在的，也就是说指针并没有被置为<code>nil</code>。如果在后续的内存分配中，刚好分到了这块地址，程序就会崩溃掉。</li>
+<li><code>weak</code>修饰的对象在释放之后，指针地址会被置为<code>nil</code>。所以现在一般弱引用就是用<code>weak</code>。</li>
+<li><code>block</code>是用来修饰一个变量，这个变量就可以在<code>block</code>中被修改，使用<code>block</code>修饰的变量在<code>block</code>代码快中会被<code>retain</code>（<code>ARC</code>下，<code>MRC</code>下不会<code>retain</code>） </li>
+<li><code>weak</code>：使用<code>weak</code>修饰的变量不会在<code>block</code>代码块中被<code>retain</code>同时，在ARC下，要避免<code>block</code>出现循环引用 <code>weak typedof(self)weakSelf = self</code></li>
+</ul>
+</li>
+<li><code>__block</code>在<code>arc</code>和<code>非arc</code>下含义一样吗<br>是不一样的，ARC会retain，非ARC不会。</li>
+<li>描述一个你遇到过的<code>retain</code> cycle例子<br>在<code>viewController</code>中避免循环引用<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    _data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>  
+解决办法<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">__<span class="keyword">weak</span> ViewController *weakSelf = <span class="keyword">self</span>;</div><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    weakSelf.data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure></li>
+<li><code>+(void)load;</code> <code>+(void)initialize;</code>有什么用处<br>在Objective-C中，<code>runtime</code>会自动调用每个类的两个方法。<code>+load</code>会在类初始加载时调用，<code>+initialize</code>会在第一次调用类的类方法或实例方法之前被调用。这两个方法是可选的，且只有在实现了它们时才会被调用。<br>共同点：两个方法都只会被调用一次。</li>
+<li><code>UIView</code>和<code>CALayer</code>有什么关系<ul>
+<li><code>UIView</code>是iOS界面元素的基础，所有的界面元素都继承于它。它本身是由<code>CoreAnimation</code>来实现的，它真正绘图的部分是由一个<code>CALayer</code>的类来管理的，<code>UIView</code>本身更像是一个<code>CALayer</code>的管理器。</li>
+<li><code>UIView</code>都存在一个<code>layer</code>属性，可以访问到<code>CALayer</code>的实例。</li>
+<li><code>UIView</code>的<code>CALayer</code>类也存在一个<code>view</code>树结构，可以像<code>UIView</code>一样进行添加</li>
+<li><code>UIView</code>的<code>layer</code>树在系统内部，由系统来维护，它存在着三棵树，分别是逻辑树，动画树，显示树</li>
+</ul>
+</li>
+<li>如何高性能的给<code>UIImageView</code>加个圆角<ul>
+<li>使用贝塞尔曲线来切割图片</li>
+<li>使用<code>Quartz2D</code>直接绘制图片</li>
+</ul>
+</li>
+<li>使用<code>drawRect</code>有什么影响<br><code>drawRect</code>方法依赖<code>Core Graphics</code>框架来进行自定义的绘制，但这种方法主要的缺点就是它处理<code>touch</code>事件的方式：每次按钮被点击后，都会用<code>setNeddsDisplay</code>进行强制重绘；而且不止一次，每次单点事件触发两次执行。这样的话从性能的角度来说，对<code>CPU</code>和内存来说都是欠佳的。</li>
+<li>SDWebImage里面给UIImageView加载图片的逻辑是什么样的<br>详情看<a href="http://www.cnblogs.com/6duxz/p/4159572.html" target="_blank" rel="external">最新版SDWebImage的使用</a></li>
+<li>麻烦你设计个简单的图片内存缓存器<br>图片的内存缓存，可以考虑将图片数据保存到一个数据模型中，所以在程序运行时这个模型都存在内存中，一定要具备移除策略，即释放数据模型。</li>
+<li>讲讲你用<code>Instrument</code>优化动画性能的经历<br><a href="http://www.hrchen.com/2013/05/performance-with-instruments/" target="_blank" rel="external">怎么使用instrument</a></li>
+<li><code>loadView</code>是干嘛用的<br>当你访问一个<code>ViewController</code>的<code>view</code>属性时，如果此时<code>view</code>的值是<code>nil</code>，那么，<code>ViewController</code>就会自动调用<code>loadView</code>这个方法。这个方法就会加载或者创建一个<code>view</code>对象，赋值给<code>view</code>属性。<br><code>loadView</code>默认做的事情是：如果此<code>ViewController</code>存在一个对应的<code>nib</code>文件，那么就加载这个<code>nib</code>。否则，就创建一个<code>UIView</code>对象。<br>如果你用<code>Interface Builder</code>来创建界面，那么不应该重载这个方法。<br>如果你想自己创建<code>view</code>对象，那么可以重载这个方法。此时你需要自己给<code>view</code>属性赋值。你自定义的方法不应该调用<code>super</code>。如果你需要对<code>view</code>做一些其他的定制操作，在<code>viewDidLoad</code>里面去做。<br><a href="http://www.cnblogs.com/dyllove98/archive/2013/06/06/3123005.html" target="_blank" rel="external">iOS 的loadView 及使用loadView中初始化View注意的问题</a></li>
+<li>用过<code>CoreData</code>或者<code>SQLite</code>吗？读写是分线程的吗？遇到过死锁没？咋解决的<br>参考<a href="http://blog.csdn.net/hanangellove/article/details/44966769" target="_blank" rel="external">CoreData与SQLite的线程安全</a></li>
+<li><code>GCD</code>里面有哪几种<code>Queue</code>？你自己建立过串行<code>queue</code>吗？背后的线程模型是什么样的<ul>
+<li>主队列 <code>dispatch_main_queue();</code> 串行 ，更新UI</li>
+<li>全局队列 <code>dispatch_global_queue();</code> 并行，四个优先级：<code>background</code>，<code>low</code>，<code>default</code>，<code>high</code></li>
+<li>自定义队列 <code>dispatch_queue_t queue;</code> 可以自定义是并行：<code>DISPATCH_QUEUE_CONCURRENT</code>或者串行<code>DISPATCH_QUEUE_SERIAL</code></li>
+</ul>
+</li>
+<li>为什么其他语言里叫函数调用， <code>Objective-C</code>里则是给对象发消息（或者谈下对<code>runtime</code>的理解）<br>网上关于<code>runtime</code>的资料非常多，其实这方面在平时的开发中使用非常非常之少，底层的黑魔法。<br><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a><br><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></li>
+<li>什么是<code>method swizzling</code><br>在Objective-C中调用一个方法，其实是向一个对象发送消息，查找消息的唯一依据是<code>selector</code>的名字。利用<code>Objective-C</code>的动态特性，可以实现在运行时偷换<code>selector</code>对应的方法实现，达到给方法挂钩的目的。<br><a href="http://blog.csdn.net/yiyaaixuexi/article/details/9374411" target="_blank" rel="external">详细的案例</a></li>
+<li>runtime 如何实现 weak 属性 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">OBJC_ASSOCIATION_ASSIGN</div><div class="line">OBJC_ASSOCIATION_RETAIN_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_COPY_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_RETAIN</div><div class="line">OBJC_ASSOCIATION_COPY</div><div class="line">objc_setAssociatedObject(<span class="keyword">self</span>, &amp;myKey, anObject, OBJC_ASSOCIATION_RETAIN);</div></pre></td></tr></table></figure>
+可以自定义<code>weak</code>来实现内存管理，Apple已经为我们准备了常量。<br>参考<br><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a><br><a href="http://southpeak.github.io/blog/2014/10/30/objective-c-runtime-yun-xing-shi-zhi-er-:cheng-yuan-bian-liang-yu-shu-xing/" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a></li>
+<li><code>objc</code>中向一个<code>nil</code>对象发送消息将会发生什么<br><code>objc</code>的特性是允许对一个 <code>nil</code> 对象发送消息不会 Crash，因为会被忽略掉。</li>
+<li>什么时候会报<code>unrecognized selector</code>的异常<br>调用一个不存在的方法</li>
+<li><code>objc</code>中向一个对象发送消息<code>[obj foo]</code>和<code>objc_msgSend()</code>函数之间有什么关系<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[obj foo];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo));</div><div class="line"></div><div class="line">[obj foo:parameter];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo:),parameter);</div></pre></td></tr></table></figure></li>
+<li>一个objc对象如何进行内存布局<br>可参考<a href="http://www.cnblogs.com/csutanyu/archive/2011/12/12/objective-c_memory_layout.html" target="_blank" rel="external">Objective-C内存布局</a></li>
+<li>一个objc对象的isa的指针指向什么？有什么作用？<br>isa是一个Class 类型的指针. 每个实例对象有个isa的指针,他指向对象的类，而Class里也有个isa的指针, 指向meteClass(元类)。元类保存了类方法的列表。当类方法被调用时，先会从本身查找类方法的实现，如果没有，元类会向他父类查找该方法。同时注意的是：元类（meteClass）也是类，它也是对象。元类也有isa指针,它的isa指针最终指向的是一个根元类(root meteClass).根元类的isa指针指向本身，这样形成了一个封闭的内循环。</li>
+<li>下面的代码输出什么<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Son</span> : <span class="title">Father</span></span></div><div class="line">- (<span class="keyword">id</span>)init</div><div class="line">&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">super</span> <span class="keyword">class</span>]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+输出Son</li>
+<li>runtime如何通过selector找到对应的IMP地址<br>id (*IMP)(id, SEL, …)<br>这个函数使用当前CPU架构实现的标准的C调用约定。第一个参数是指向self的指针(如果是实例方法，则是类实例的内存地址；如果是类方法，则是指向元类的指针)，第二个参数是方法选择器(selector)，接下来是方法的实际参数列表。<br>前面介绍过的SEL就是为了查找方法的最终实现IMP的。由于每个方法对应唯一的SEL，因此我们可以通过SEL方便快速准确地获得它所对应的IMP，查找过程将在下面讨论。取得IMP后，我们就获得了执行这个方法代码的入口点，此时，我们就可以像调用普通的C语言函数一样来使用这个函数指针了。<br>通过取得IMP，我们可以跳过Runtime的消息传递机制，直接执行IMP指向的函数实现，这样省去了Runtime消息传递过程中所做的一系列查找操作，会比直接向对象发送消息高效一些。</li>
+</ol>
+<h2 id="Hybrid-混合开发"><a href="#Hybrid-混合开发" class="headerlink" title="Hybrid 混合开发"></a>Hybrid 混合开发</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 align=&quot;center&quot;&gt;iOS有用的面试题大集合&lt;/h1&gt;
+
+&lt;h2 id=&quot;面试题从何处得来&quot;&gt;&lt;a href=&quot;#面试题从何处得来&quot; class=&quot;headerlink&quot; title=&quot;面试题从何处得来&quot;&gt;&lt;/a&gt;面试题从何处得来&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a
+    
+    </summary>
+    
+      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="汇总" scheme="http://huos3203.github.io/boyer/tags/%E6%B1%87%E6%80%BB/"/>
+    
+      <category term="资源" scheme="http://huos3203.github.io/boyer/tags/%E8%B5%84%E6%BA%90/"/>
+    
+      <category term="面试" scheme="http://huos3203.github.io/boyer/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AR 开发资料汇[转]</title>
+    <link href="http://huos3203.github.io/boyer/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
+    <id>http://huos3203.github.io/boyer/2017/01/22/AR开发资料汇/</id>
+    <published>2017-01-22T10:55:21.000Z</published>
+    <updated>2017-01-22T10:55:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
+<hr>
+<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
+<hr>
+<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
+<hr>
+<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
+<hr>
+<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
+<hr>
+<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
+<hr>
+<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
+<hr>
+<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
+<hr>
+<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
+<hr>
+<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
+<hr>
+<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
+<hr>
+<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
+<hr>
+<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
+    
+    </summary>
+    
+      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="AR" scheme="http://huos3203.github.io/boyer/tags/AR/"/>
+    
+      <category term="LBS+AR" scheme="http://huos3203.github.io/boyer/tags/LBS-AR/"/>
+    
+      <category term="QQ红包" scheme="http://huos3203.github.io/boyer/tags/QQ%E7%BA%A2%E5%8C%85/"/>
     
   </entry>
   
@@ -1586,8 +1586,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#115;&#111;&#109;&#101;&#45;&#111;&#110;&#x65;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#115;&#111;&#109;&#101;&#45;&#111;&#110;&#x65;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#115;&#x6f;&#109;&#101;&#45;&#111;&#110;&#101;&#64;&#101;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#x6f;&#x6d;">&#115;&#x6f;&#109;&#101;&#45;&#111;&#110;&#101;&#64;&#101;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x73;&#x6f;&#109;&#x65;&#x2d;&#111;&#110;&#101;&#64;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#x73;&#x6f;&#109;&#x65;&#x2d;&#111;&#110;&#101;&#64;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#58;&#115;&#x6f;&#x6d;&#101;&#x2d;&#x6f;&#x6e;&#101;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#109;">&#115;&#x6f;&#x6d;&#101;&#x2d;&#x6f;&#x6e;&#101;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -1657,9 +1657,9 @@
     
       <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
-    
       <category term="搭建" scheme="http://huos3203.github.io/boyer/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
