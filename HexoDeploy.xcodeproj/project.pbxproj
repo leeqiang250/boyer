@@ -105,6 +105,7 @@
 		142051171E4ABF3E006D86DE /* jacman.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = jacman.yml; sourceTree = "<group>"; };
 		142051181E4ABF3E006D86DE /* maupassant.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = maupassant.yml; sourceTree = "<group>"; };
 		142051191E4ABF3E006D86DE /* next.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = next.yml; sourceTree = "<group>"; };
+		142051221E4B2720006D86DE /* maupassant.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = maupassant.jpg; sourceTree = "<group>"; };
 		145012011E3455C200BBDEBB /* AR开发资料汇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AR开发资料汇.md"; sourceTree = "<group>"; };
 		145012021E34588200BBDEBB /* AwsomeAppleDevelopGuide.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = AwsomeAppleDevelopGuide.md; sourceTree = "<group>"; };
 		145012031E345AA100BBDEBB /* iOS面试题大集合.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "iOS面试题大集合.md"; sourceTree = "<group>"; };
@@ -815,6 +816,7 @@
 			isa = PBXGroup;
 			children = (
 				14D1C36E1E497BBC00E3F905 /* xcode8.png */,
+				142051221E4B2720006D86DE /* maupassant.jpg */,
 				14D1C36D1E4971DB00E3F905 /* xcode6.jpg */,
 				149F33831E0A767600AAC556 /* 1430807925718367.png */,
 				149F33841E0A767600AAC556 /* bianqian.png */,
