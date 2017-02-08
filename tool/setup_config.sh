@@ -1,5 +1,6 @@
 #! /bin/bash
 SRC_HOME=`pwd`  # 处于source目录
+#清空历史
 hexo clean
 #next=$(cat _config.yml | grep 'theme: next')
 #maupassant=$(cat _config.yml | grep 'theme: maupassant')
@@ -41,3 +42,8 @@ else
     # 在根目录（即`pwd`目录）下，创建git版本库中的_config.yml的替身
     ln -s ${SRC_HOME}/_config.yml `pwd`/_config.yml
 fi
+
+#执行发布操作
+echo "执行发布操作 `pwd`"
+hexo g
+hexo d

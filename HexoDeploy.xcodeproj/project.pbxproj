@@ -2334,7 +2334,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n#执行发布操作\nhexo g\nhexo d\n";
+			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh";
 		};
 		14D1C3851E49D5B600E3F905 /* hexo */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2348,7 +2348,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n#执行发布操作\nhexo g\nhexo d";
+			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh";
 		};
 		843D6AD21E0AE20B004A5FB0 /* hexo */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2362,7 +2362,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n#执行发布操作\nhexo g\nhexo d\n";
+			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

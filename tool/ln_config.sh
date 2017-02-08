@@ -20,3 +20,8 @@ ln -fs ${themePath} ${updateConfig}
 #打印效果
 logtheme=$(cat ${updateConfig} | grep "${themename}\:") #: 冒号需要反斜杠转译
 echo "$logtheme ----"
+
+#执行发布操作
+echo "执行发布操作 `pwd`"
+hexo g
+hexo d
