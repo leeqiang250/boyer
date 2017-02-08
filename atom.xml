@@ -677,6 +677,61 @@
   </entry>
   
   <entry>
+    <title>腾讯云之小直播开发</title>
+    <link href="http://huos3203.github.io/boyer/2017/01/22/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
+    <id>http://huos3203.github.io/boyer/2017/01/22/腾讯云之小直播开发/</id>
+    <published>2017-01-22T10:55:21.000Z</published>
+    <updated>2017-01-22T10:55:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="视频服务"><a href="#视频服务" class="headerlink" title="视频服务"></a>视频服务</h1><ol>
+<li><p><a href="https://www.qcloud.com/product/LVB" target="_blank" rel="external">直播LVB</a> </p>
+<ol>
+<li><a href="https://www.qcloud.com/document/product/267/7964" target="_blank" rel="external">开发指南</a></li>
+</ol>
+</li>
+<li><p><a href="https://www.qcloud.com/product/mlvb" target="_blank" rel="external">移动直播MLVB</a></p>
+<ol>
+<li><a href="https://www.qcloud.com/document/product/454/7876" target="_blank" rel="external">开发指南</a><br>移动直播是一套移动终端直播解决方案的<code>集合</code>，它以免费源码的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
+</ol>
+</li>
+</ol>
+<h2 id="快速集成方案"><a href="#快速集成方案" class="headerlink" title="快速集成方案"></a>快速集成方案</h2><img src="https://mc.qcloudimg.com/static/img/92a464fc26bbe52fea8816f8e6061ef3/image.jpg" class="导图" title="100% 200 集成导图 图片">
+<p>如果您想要在自己的 APP 里集成直播推流和播放功能，下面三步就能达成目标：</p>
+<ol>
+<li>开通直播服务<br><a href="https://console.qcloud.com/live" target="_blank" rel="external">文档</a></li>
+<li>集成 RTMP SDK<br><a href="https://www.qcloud.com/document/product/454/7880" target="_blank" rel="external">RTMP SDK - iOS 平台播放</a></li>
+<li>对接直播流管理<ol>
+<li><a href="https://www.qcloud.com/document/product/454/7915" target="_blank" rel="external">云端API - 如何获取推流URL？</a></li>
+<li><a href="https://www.qcloud.com/document/product/454/7916" target="_blank" rel="external">云端API - 如何构建房间列表？</a></li>
+<li><a href="https://www.qcloud.com/document/product/454/7920" target="_blank" rel="external">云端API - 如何管理直播流？</a><br>小直播是有腾讯云研发团队提供的一套开源源码集，致力于以 DEMO 的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;视频服务&quot;&gt;&lt;a href=&quot;#视频服务&quot; class=&quot;headerlink&quot; title=&quot;视频服务&quot;&gt;&lt;/a&gt;视频服务&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.qcloud.com/product/LVB&quot; target=&quot;
+    
+    </summary>
+    
+      <category term="直播" scheme="http://huos3203.github.io/boyer/categories/%E7%9B%B4%E6%92%AD/"/>
+    
+    
+      <category term="搭建" scheme="http://huos3203.github.io/boyer/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="直播" scheme="http://huos3203.github.io/boyer/tags/%E7%9B%B4%E6%92%AD/"/>
+    
+      <category term="腾讯云" scheme="http://huos3203.github.io/boyer/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
+    
+      <category term="集成" scheme="http://huos3203.github.io/boyer/tags/%E9%9B%86%E6%88%90/"/>
+    
+      <category term="SDK" scheme="http://huos3203.github.io/boyer/tags/SDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Awsome Apple Develop Guide[转]</title>
     <link href="http://huos3203.github.io/boyer/2017/01/22/AwsomeAppleDevelopGuide/"/>
     <id>http://huos3203.github.io/boyer/2017/01/22/AwsomeAppleDevelopGuide/</id>
@@ -1004,61 +1059,6 @@
       <category term="资源" scheme="http://huos3203.github.io/boyer/tags/%E8%B5%84%E6%BA%90/"/>
     
       <category term="面试" scheme="http://huos3203.github.io/boyer/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>腾讯云之小直播开发</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/22/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/22/腾讯云之小直播开发/</id>
-    <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="视频服务"><a href="#视频服务" class="headerlink" title="视频服务"></a>视频服务</h1><ol>
-<li><p><a href="https://www.qcloud.com/product/LVB" target="_blank" rel="external">直播LVB</a> </p>
-<ol>
-<li><a href="https://www.qcloud.com/document/product/267/7964" target="_blank" rel="external">开发指南</a></li>
-</ol>
-</li>
-<li><p><a href="https://www.qcloud.com/product/mlvb" target="_blank" rel="external">移动直播MLVB</a></p>
-<ol>
-<li><a href="https://www.qcloud.com/document/product/454/7876" target="_blank" rel="external">开发指南</a><br>移动直播是一套移动终端直播解决方案的<code>集合</code>，它以免费源码的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
-</ol>
-</li>
-</ol>
-<h2 id="快速集成方案"><a href="#快速集成方案" class="headerlink" title="快速集成方案"></a>快速集成方案</h2><img src="https://mc.qcloudimg.com/static/img/92a464fc26bbe52fea8816f8e6061ef3/image.jpg" class="导图" title="100% 200 集成导图 图片">
-<p>如果您想要在自己的 APP 里集成直播推流和播放功能，下面三步就能达成目标：</p>
-<ol>
-<li>开通直播服务<br><a href="https://console.qcloud.com/live" target="_blank" rel="external">文档</a></li>
-<li>集成 RTMP SDK<br><a href="https://www.qcloud.com/document/product/454/7880" target="_blank" rel="external">RTMP SDK - iOS 平台播放</a></li>
-<li>对接直播流管理<ol>
-<li><a href="https://www.qcloud.com/document/product/454/7915" target="_blank" rel="external">云端API - 如何获取推流URL？</a></li>
-<li><a href="https://www.qcloud.com/document/product/454/7916" target="_blank" rel="external">云端API - 如何构建房间列表？</a></li>
-<li><a href="https://www.qcloud.com/document/product/454/7920" target="_blank" rel="external">云端API - 如何管理直播流？</a><br>小直播是有腾讯云研发团队提供的一套开源源码集，致力于以 DEMO 的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
-</ol>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;视频服务&quot;&gt;&lt;a href=&quot;#视频服务&quot; class=&quot;headerlink&quot; title=&quot;视频服务&quot;&gt;&lt;/a&gt;视频服务&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.qcloud.com/product/LVB&quot; target=&quot;
-    
-    </summary>
-    
-      <category term="直播" scheme="http://huos3203.github.io/boyer/categories/%E7%9B%B4%E6%92%AD/"/>
-    
-    
-      <category term="搭建" scheme="http://huos3203.github.io/boyer/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="直播" scheme="http://huos3203.github.io/boyer/tags/%E7%9B%B4%E6%92%AD/"/>
-    
-      <category term="腾讯云" scheme="http://huos3203.github.io/boyer/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
-    
-      <category term="集成" scheme="http://huos3203.github.io/boyer/tags/%E9%9B%86%E6%88%90/"/>
-    
-      <category term="SDK" scheme="http://huos3203.github.io/boyer/tags/SDK/"/>
     
   </entry>
   
@@ -1586,8 +1586,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#115;&#111;&#109;&#101;&#45;&#111;&#110;&#101;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#x6f;&#109;">&#115;&#111;&#109;&#101;&#45;&#111;&#110;&#101;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#x6f;&#109;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#115;&#111;&#x6d;&#101;&#x2d;&#111;&#x6e;&#x65;&#64;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#46;&#x63;&#111;&#109;">&#115;&#111;&#x6d;&#101;&#x2d;&#111;&#x6e;&#x65;&#64;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#46;&#x63;&#111;&#109;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#115;&#111;&#109;&#x65;&#x2d;&#x6f;&#110;&#101;&#64;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#x6d;">&#115;&#111;&#109;&#x65;&#x2d;&#x6f;&#110;&#101;&#64;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#115;&#x6f;&#109;&#x65;&#x2d;&#x6f;&#x6e;&#x65;&#64;&#101;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#99;&#111;&#109;">&#115;&#x6f;&#109;&#x65;&#x2d;&#x6f;&#x6e;&#x65;&#64;&#101;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#99;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -1657,9 +1657,9 @@
     
       <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
-    
       <category term="搭建" scheme="http://huos3203.github.io/boyer/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
