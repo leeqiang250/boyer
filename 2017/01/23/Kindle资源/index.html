@@ -1,51 +1,190 @@
-extends base
-
-block title
-  title= page.title + ' | ' + config.title
-
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format('ll')
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-    if theme.duoshuo
-      a.ds-thread-count(data-thread-key=page.path, href=url_for(page.path) + '#comments')
-    if theme.disqus
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content)
-    .post-content
-      != page.content
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url='#{page.permalink}', data-id='#{page._id}')= __('shareto')
-    include _partial/tag
-    include _partial/post_nav
-    if theme.duoshuo
-      div(class='ds-share flat' data-thread-key=page.path, data-title=page.title, data-url=page.permalink)
-         .ds-share-inline
-            ul.ds-share-icons-16
-              li(data-toggle='ds-share-icons-more')
-                a(class='ds-more' href='javascript:void(0);') 分享到：
-              li
-                a(class='ds-weibo' href='javascript:void(0);' data-service='weibo') 微博
-              li
-                a(class='ds-qzone' href='javascript:void(0);' data-service='qzone') QQ空间
-              li
-                a(class='ds-qqt' href='javascript:void(0);' data-service='qqt') 腾讯微博
-              li
-                a(class='ds-wechat' href='javascript:void(0);' data-service='wechat') 微信
-            .ds-share-icons-more
-    include _partial/comments
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="不物喜，不己悲，善假物，易参行！"><title>Kindle114 资源集[转] | 布衣男儿</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Kindle114 资源集[转]</h1><a id="logo" href="/.">布衣男儿</a><p class="description">不物喜，不己悲，善假物，易参行！</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Kindle114 资源集[转]</h1><div class="post-meta">Jan 23, 2017<span> | </span><span class="category"><a href="/categories/资源/">资源</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2017/01/23/Kindle资源/" href="/2017/01/23/Kindle资源/#comments" class="ds-thread-count"></a><div class="post-content"><h2 id="鸣谢"><a href="#鸣谢" class="headerlink" title="鸣谢"></a>鸣谢</h2><ul>
+<li><a href="http://www.hi-pda.com/forum/viewthread.php?tid=1815180" target="_blank" rel="external">hi-pda dtgc</a></li>
+<li><a href="http://kindle115.com" target="_blank" rel="external">Kindle115</a></li>
+</ul>
+<h2 id="综合类"><a href="#综合类" class="headerlink" title="综合类"></a>综合类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2050031688#category/type=0" target="_blank" rel="external">青风乘翼 最近出版的译著</a> 更新中</li>
+<li><a href="http://pan.baidu.com/s/1qWRYl1i" target="_blank" rel="external">周旋久 按字母排列的书籍</a> 提取码：djhp</li>
+</ol>
+<ul>
+<li><a href="http://f92a01.l45.yunpan.cn/lk/cxvBQv5ymqCMY" target="_blank" rel="external">F、H、J、R字母</a> 提取码 39bd  </li>
+<li><a href="http://f93be8.l45.yunpan.cn/lk/cxvB6neaCmfGL" target="_blank" rel="external">S、T、Y字母</a> 提取码 42b1</li>
+</ul>
+<ol>
+<li><a href="http://pan.baidu.com/share/home?uk=1848670581&amp;view=share#category/type=0" target="_blank" rel="external">烫伤关东煮</a> 约1t以上 20160302更新</li>
+<li><a href="http://pan.baidu.com/share/home?uk=2724752809#category/type=0" target="_blank" rel="external">18810815415 精排版书籍</a> （可能是豆瓣读书编辑）</li>
+<li><a href="http://pan.baidu.com/share/link?uk=1194297961&amp;shareid=256546" target="_blank" rel="external">liantingv70657</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3728907970&amp;view=share#category/type=0" target="_blank" rel="external">炜博happy</a> 更新中</li>
+<li><a href="http://pan.baidu.com/share/home?uk=1365179281&amp;view=share#category/type=0" target="_blank" rel="external">guyuemuziye6@gmail.com 旅游原版书</a> （微博号逼影共享，解压密码bygx）</li>
+<li><a href="http://pan.baidu.com/share/link?uk=4029256032&amp;shareid=139939577" target="_blank" rel="external">枫729882492</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=439872812&amp;view=share#category/type=0" target="_blank" rel="external">电子书资源外链发布站</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1293124599#category/type=0" target="_blank" rel="external">赤霓</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=4278581020#category/type=0" target="_blank" rel="external">nnuuij11111</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1282872761&amp;view=share#category/type=0" target="_blank" rel="external">风扒皮1503</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=4211477728&amp;view=share#category/type=0" target="_blank" rel="external">zphstar</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1261210236#category/type=0" target="_blank" rel="external">skmjtptwr</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1093619523&amp;view=share#category/type=0" target="_blank" rel="external">327995970ou</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1057298937&amp;view=share#category/type=0" target="_blank" rel="external">xunys</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1946547680#category/type=0" target="_blank" rel="external">ohhe</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=490155926#category/type=0" target="_blank" rel="external">没我找不到的电子书</a> （此人吹牛居多，书籍不全）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=1426398717&amp;view=share#category/type=0" target="_blank" rel="external">搜珍玉鏡</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=959117889&amp;view=share#category/type=0" target="_blank" rel="external">菜是菜菜</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=775816440&amp;view=share#category/type=0" target="_blank" rel="external">13805758171</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=842217715&amp;view=share#category/type=0" target="_blank" rel="external">yun360419811</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1512823434&amp;view=share#category/type=0" target="_blank" rel="external">虚昧斋</a> 分享新书 可私信求书</li>
+<li><a href="http://pan.baidu.com/share/home?uk=3324179911#category/type=0" target="_blank" rel="external">唯我君行 中医、VB</a></li>
+<li><a href="https://pan.baidu.com/share/home?uk=2603616653" target="_blank" rel="external">haoyou43 mobi epub 格式书籍 350+</a> 更新中</li>
+<li><a href="http://pan.baidu.com/share/home?uk=2063855134#category/type=0" target="_blank" rel="external">liguobing55 txt合集</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=4097060373&amp;view=share#category/type=0" target="_blank" rel="external">青辰VOW  部分全站打包等</a></li>
+<li>苏菇莨百度盘书（BTSync） 约56G 至20160222关闭前 感谢：maldiniymx</li>
+</ol>
+<ul>
+<li>B3EWLQK7C6O6RK3CU5CG3PZUYDUJLMYCP</li>
+<li>B25G263OSC7ZAXPLCZESSL3DFJOHK6UQ3</li>
+</ul>
+<ol>
+<li><a href="https://mega.nz/#F!nJ8GFJAQ!K5Nw2HF1cMXMGNbYQ7RggQ" target="_blank" rel="external">wizardforcel 杂项书籍</a></li>
+<li><a href="http://pan.baidu.com/s/1lKIiq" target="_blank" rel="external">豆瓣图书top250</a></li>
+<li><a href="http://pan.baidu.com/share/link?uk=1459936824&amp;shareid=3702424259" target="_blank" rel="external">当当epub7000本</a></li>
+<li><a href="http://pan.baidu.com/share/link?shareid=1080906058&amp;uk=1412470983" target="_blank" rel="external">卡夫卡全集和哈佛管理</a></li>
+<li><a href="http://pan.baidu.com/s/1sjLkZ97" target="_blank" rel="external">知乎话题、专栏、收藏</a></li>
+<li><a href="http://pan.baidu.com/s/1kT85Zp1" target="_blank" rel="external">知日系列</a></li>
+<li><a href="http://pan.baidu.com/s/1eQAereE" target="_blank" rel="external">知乎盐系列</a></li>
+<li><a href="http://pan.baidu.com/s/1pJDjOJx" target="_blank" rel="external">图说天下系列</a></li>
+<li><a href="http://pan.baidu.com/share/link?uk=754986678&amp;shareid=237392098" target="_blank" rel="external">kindle人资源打包</a> 精品区11G+自购区31G+自制区10G+66G</li>
+<li><a href="https://onedrive.live.com/?id=F5B0090663FEEADA%21828&amp;cid=F5B0090663FEEADA" target="_blank" rel="external">programthink</a></li>
+</ol>
+<h2 id="文学历史类、社科类"><a href="#文学历史类、社科类" class="headerlink" title="文学历史类、社科类"></a>文学历史类、社科类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=1259438467&amp;view=share#category/type=0" target="_blank" rel="external">零度小然 稀有现代书历史籍</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2704770694&amp;view=share#category/type=0" target="_blank" rel="external">youngharrylg 中华人民共和国前三十年历史</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1460307841&amp;view=share#category/type=0" target="_blank" rel="external">南阳高卧 近现代大家</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3946745677&amp;view=share#category/type=0" target="_blank" rel="external">doppel88 各国文学</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=152128425&amp;view=share#category/type=0" target="_blank" rel="external">坊書流元 语言学</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1728233671&amp;view=share#category/type=0" target="_blank" rel="external">高贵的容克领主 历史</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=3943501741&amp;view=share#category/type=0" target="_blank" rel="external">dfdean 文学 名家文集</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2905885322#category/type=0" target="_blank" rel="external">rainthounder 文史高清pdg版图书</a></li>
+<li><a href="http://pan.baidu.com/s/1eQqW062" target="_blank" rel="external">翟子昂 中国古文字学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2987157500&amp;view=share#category/type=0" target="_blank" rel="external">longhuarenn 历史</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=4111094503#category/type=0" target="_blank" rel="external">Lyra1900</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=805574156&amp;third=0#category/type=0" target="_blank" rel="external">iilikes</a></li>
+</ol>
+<h2 id="古籍类"><a href="#古籍类" class="headerlink" title="古籍类"></a>古籍类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2670973685&amp;view=share" target="_blank" rel="external">Ac_heron 古典文学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=4029740943&amp;view=share" target="_blank" rel="external">dadssfree 大批量文史书籍</a> (约1.3t)</li>
+<li><a href="http://pan.baidu.com/share/home?uk=1896826771&amp;view=share#category/type=0" target="_blank" rel="external">qq312145694 古文史资料</a> （大约1t以上）</li>
+<li><a href="http://pan.baidu.com/share/home?uk=272017959&amp;view=share#category/type=0" target="_blank" rel="external">洋风汉魂 日本文史资料原版</a> （大约1t以上）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=2533729796#category/type=0" target="_blank" rel="external">久舞而凄 精选精美古籍</a> （大约500G以上,更新中）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=3405888410&amp;view=share#category/type=0" target="_blank" rel="external">逍遥449824194 古籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=2118390434&amp;view=share#category/type=0" target="_blank" rel="external">事无所成只因懒 古籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=4211484048&amp;view=share#category/type=0" target="_blank" rel="external">钱建文 古籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=4066113708#category/type=0" target="_blank" rel="external">风家纪录片3</a></li>
+<li><a href="http://pan.baidu.com/s/1os4MQ" target="_blank" rel="external">子乌书简全站打包 20130507</a> 密码：qjq8</li>
+</ol>
+<h2 id="小说"><a href="#小说" class="headerlink" title="小说"></a>小说</h2><ol>
+<li><a href="https://mega.nz/#F!jVsinZIT!1Oiz9bkHwNBABc7NU5sSAg" target="_blank" rel="external">wizardforcel 小说</a></li>
+<li><a href="http://pan.baidu.com/s/1sjNSRtr" target="_blank" rel="external">莫迪亚诺作品集</a></li>
+<li><a href="http://pan.baidu.com/s/1i3uzhbB" target="_blank" rel="external">王小波全集</a></li>
+<li><a href="http://pan.baidu.com/s/1qW0q3Kg" target="_blank" rel="external">阿加莎·克里斯蒂作品集</a></li>
+<li><a href="http://pan.baidu.com/s/1sjqLbzB" target="_blank" rel="external">周浩晖作品集</a></li>
+</ol>
+<h2 id="医学类、心理学类"><a href="#医学类、心理学类" class="headerlink" title="医学类、心理学类"></a>医学类、心理学类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=3711822837&amp;view=share" target="_blank" rel="external">于柏清二 中医</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3527489425&amp;view=share#category/type=0" target="_blank" rel="external">bdywuxinghua 中医丛书</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2818809037&amp;view=share" target="_blank" rel="external">yyzsm99 心理学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1225533335&amp;view=share#category/type=0" target="_blank" rel="external">异硫氰酸烯丙酯 医学</a></li>
+<li><a href="http://pan.baidu.com/s/1pJju6dd#path=%252F%25E4%25BC%259F%25E5%25BA%25B7" target="_blank" rel="external">一蹀盐 呼吸医学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1630489195&amp;view=share#category/type=0" target="_blank" rel="external">cnchenlian 康复医学</a></li>
+<li><a href="http://pan.baidu.com/s/1gdFHavh#path=%252F%25E4%25B9%25A6" target="_blank" rel="external">Zita 解剖学 图谱</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3221391314#category/type=0" target="_blank" rel="external">LV终结者 制药技术</a> （物化资料夹里）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=405421905&amp;view=share#category/type=0" target="_blank" rel="external">136603yin 性科学为特色 偏综合</a></li>
+<li><a href="http://pan.baidu.com/s/17mp8P" target="_blank" rel="external">心理学交际学电子书合集13本</a></li>
+<li><a href="http://vdisk.weibo.com/u/1778220897" target="_blank" rel="external">hhhzihao 心理学</a></li>
+</ol>
+<h2 id="佛学类"><a href="#佛学类" class="headerlink" title="佛学类"></a>佛学类</h2><ol>
+<li><a href="http://yun.baidu.com/share/home?uk=289392363&amp;third=1&amp;view=share#category/type=0" target="_blank" rel="external">CBETA_TW 中華電子佛典協會分享佛教书籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1913113259&amp;view=share#category/type=0" target="_blank" rel="external">dufojing 佛教书籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=925845574&amp;view=share#category/type=0" target="_blank" rel="external">senmy08 佛教书籍</a></li>
+</ol>
+<h2 id="数理学科类"><a href="#数理学科类" class="headerlink" title="数理学科类"></a>数理学科类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=1244439600&amp;;view=share" target="_blank" rel="external">小兆一凡 数学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3409070258&amp;view=share#category/type=0" target="_blank" rel="external">我就叫混沌</a></li>
+<li><a href="http://pan.baidu.com/share/link?uk=1766755481&amp;shareid=2684679400" target="_blank" rel="external">华章数学译丛 百度云</a></li>
+<li><a href="http://vdisk.weibo.com/s/B-1mTXGOXIRvY?category_id=0&amp;parents_ref=B-1mTXGOXIRaF" target="_blank" rel="external">华章数学译丛 微盘</a></li>
+<li><a href="http://pan.baidu.com/share/link?uk=3191333230&amp;shareid=870418565" target="_blank" rel="external">图灵数学·统计学丛书 百度云</a></li>
+<li><a href="http://vdisk.weibo.com/s/B-1mTXGOXIQZJ?category_id=0&amp;parents_ref=B-1mTXGOXIRaF" target="_blank" rel="external">图灵数学·统计学丛书 微盘</a></li>
+</ol>
+<h2 id="生物学类（动物、植物、野外生存等）"><a href="#生物学类（动物、植物、野外生存等）" class="headerlink" title="生物学类（动物、植物、野外生存等）"></a>生物学类（动物、植物、野外生存等）</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2855048701&amp;view=share#category/type=0" target="_blank" rel="external">ChentaoTony1 昆虫学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3959509661&amp;view=share#category/type=0" target="_blank" rel="external">jkdpgh 野外生存 动物志</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2734991257&amp;third=0#category/type=0" target="_blank" rel="external">麦子 生物学 动物学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3020331843&amp;view=share#category/type=0" target="_blank" rel="external">xiayang405 精神病学、细胞生物学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=86518920&amp;view=share#category/type=0" target="_blank" rel="external">li__cheng__ 中国植物志、各地区植物志</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=420129823#category/type=0" target="_blank" rel="external">山刺玫 植物学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=523517449&amp;view=share#category/type=0" target="_blank" rel="external">绿色营上海小组 植物学</a></li>
+</ol>
+<h2 id="计算机技术类"><a href="#计算机技术类" class="headerlink" title="计算机技术类"></a>计算机技术类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=3339153721&amp;view=share" target="_blank" rel="external">lxghost IT</a> （xiaoshuwu.net）</li>
+<li><a href="http://pan.baidu.com/share/home?uk=1074173238&amp;view=share#category/type=0" target="_blank" rel="external">wintelsui IT</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3809969834&amp;view=share#category/type=0" target="_blank" rel="external">明月无风</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1832385835#category/type=0" target="_blank" rel="external">耍大刀xyz PS书籍</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1176304088#category/type=0" target="_blank" rel="external">hcbbt IT</a></li>
+<li><a href="http://pan.baidu.com/share/link?shareid=2981703177&amp;uk=2214641459" target="_blank" rel="external">salttiger IT</a></li>
+<li><a href="https://mega.nz/#F!qQUwUTKR!okYrzPOauVIaFj4GNSRZfA" target="_blank" rel="external">wizardforcel IT</a></li>
+</ol>
+<h2 id="非IT工业技术类"><a href="#非IT工业技术类" class="headerlink" title="非IT工业技术类"></a>非IT工业技术类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2437672157#category/type=0" target="_blank" rel="external">南航飞动研学群 航空航天</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2702990868&amp;view=share#category/type=0" target="_blank" rel="external">星河舰队司令 武器</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=35826880&amp;view=share#category/type=0" target="_blank" rel="external">wxjoldgoat 武器</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2349638677#category/type=0" target="_blank" rel="external">cfhcjg 军事资料</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1611109307#category/type=0" target="_blank" rel="external">以逸待劳hk 航天资料</a></li>
+</ol>
+<h2 id="语言学习类"><a href="#语言学习类" class="headerlink" title="语言学习类"></a>语言学习类</h2><ol>
+<li><a href="https://pan.baidu.com/share/home?uk=3394258028&amp;view=share#category/type=0" target="_blank" rel="external">学派英语团队 英语学习</a></li>
+<li><a href="http://pan.baidu.com/s/1sjugDQ1" target="_blank" rel="external">英语学习资料</a></li>
+</ol>
+<h2 id="经管"><a href="#经管" class="headerlink" title="经管"></a>经管</h2><ol>
+<li><a href="http://vdisk.weibo.com/u/5340187825" target="_blank" rel="external">商业类电子书</a></li>
+</ol>
+<h2 id="艺术类-（摄影、音乐、绘画等）"><a href="#艺术类-（摄影、音乐、绘画等）" class="headerlink" title="艺术类 （摄影、音乐、绘画等）"></a>艺术类 （摄影、音乐、绘画等）</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2755480552&amp;view=share#category/type=0" target="_blank" rel="external">吸血鬼123牛仔 音乐</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=674298946#category/type=0" target="_blank" rel="external">xslp2004 摄影</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=2738239597&amp;view=share#category/type=0" target="_blank" rel="external">yu鈥唋ei 中国绘画</a> 新浪微博@于双子鱼 分享私密文件</li>
+</ol>
+<h2 id="杂志类"><a href="#杂志类" class="headerlink" title="杂志类"></a>杂志类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2332146839&amp;view=share" target="_blank" rel="external">qingge16 杂志</a> （含部分最新书）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=2737417622#category/type=0" target="_blank" rel="external">yanxishe 杂志</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=3156696063&amp;;view=share#category/type=0" target="_blank" rel="external">liuafenliu 台湾地区优质财经杂志（天下雜誌/遠見雜誌/商業周刊/經理人月刊）</a> 更新中</li>
+<li><a href="http://yun.baidu.com/share/home?uk=3859261705&amp;;view=share#category/type=0" target="_blank" rel="external">foodservice 台湾地区优质财经杂志（天下雜誌/遠見雜誌/商業周刊/經理人月刊）</a> 似乎是台湾地区人 更新到201410</li>
+</ol>
+<h2 id="原版书类"><a href="#原版书类" class="headerlink" title="原版书类"></a>原版书类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=1563658231&amp;view=share" target="_blank" rel="external">好想一次过 原版外文书</a></li>
+<li><a href="http://pan.baidu.com/s/1i39TawH" target="_blank" rel="external">12879本Kindle英文原版电子书</a></li>
+<li><a href="http://pan.baidu.com/s/1gdELWgN" target="_blank" rel="external">经典、畅销英文原著100本</a></li>
+</ol>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ol>
+<li><a href="http://bestcbooks.com/" target="_blank" rel="external">计算机书籍控</a></li>
+<li><a href="http://www.jb51.net/books/" target="_blank" rel="external">脚本之家电子书</a></li>
+<li><a href="http://www.xiaoshuwu.net/" target="_blank" rel="external">小书屋</a></li>
+<li><a href="http://www.ckook.com/" target="_blank" rel="external">稀酷客</a></li>
+<li><a href="http://readcolor.com/books?tag=%E8%AE%A1%E7%AE%97%E6%9C%BA" target="_blank" rel="external">读远</a></li>
+<li><a href="http://www.salttiger.com/" target="_blank" rel="external">SaltTiger</a></li>
+<li><a href="http://it-ebooks.cn/" target="_blank" rel="external">it-ebooks.cn</a></li>
+<li><a href="http://it-ebooks.info/" target="_blank" rel="external">it-ebooks.info</a></li>
+<li><a href="http://it-ebooks.org/" target="_blank" rel="external">it-ebooks.org</a></li>
+<li><a href="http://it-ebooks.com/" target="_blank" rel="external">it-ebooks.com</a></li>
+<li><a href="http://ebooks-it.net/" target="_blank" rel="external">ebooks-it.net</a></li>
+<li><a href="http://wowebook.org/" target="_blank" rel="external">wowebook.org</a></li>
+<li><a href="http://bookdl.com/" target="_blank" rel="external">bookdl.com</a></li>
+<li><a href="http://bookzz.org/" target="_blank" rel="external">bookzz.org</a></li>
+<li><a href="http://www.allitebooks.com/" target="_blank" rel="external">allitebooks.com</a></li>
+</ol>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="https://huos3203.github.io/2017/01/23/Kindle资源/" data-id="ciywn2cza005pa52l7m4dg93f" class="article-share-link">分享到</a><div class="tags"><a href="/tags/资源/">资源</a><a href="/tags/kindle/">kindle</a><a href="/tags/书籍/">书籍</a></div><div class="post-nav"><a href="/2017/01/23/Kindle之ResilioSync索引/" class="pre">Kindle之Resilio Sync索引</a><a href="/2017/01/22/AwsomeAppleDevelopGuide/" class="next">Awsome Apple Develop Guide[转]</a></div><div data-thread-key="2017/01/23/Kindle资源/" data-title="Kindle114 资源集[转]" data-url="https://huos3203.github.io/2017/01/23/Kindle资源/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2017/01/23/Kindle资源/" data-title="Kindle114 资源集[转]" data-url="https://huos3203.github.io/2017/01/23/Kindle资源/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://huos3203.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CI/">CI</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Octopress/">Octopress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ruby/">ruby</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/直播/">直播</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/管理/">管理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/资源/">资源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/骗局/">骗局</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/指南/" style="font-size: 15px;">指南</a> <a href="/tags/内购/" style="font-size: 15px;">内购</a> <a href="/tags/被骗/" style="font-size: 15px;">被骗</a> <a href="/tags/iPhone6/" style="font-size: 15px;">iPhone6</a> <a href="/tags/iPhone5s/" style="font-size: 15px;">iPhone5s</a> <a href="/tags/octopress/" style="font-size: 15px;">octopress</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/mou/" style="font-size: 15px;">mou</a> <a href="/tags/ruby/" style="font-size: 15px;">ruby</a> <a href="/tags/截屏/" style="font-size: 15px;">截屏</a> <a href="/tags/IOS7/" style="font-size: 15px;">IOS7</a> <a href="/tags/TextKit/" style="font-size: 15px;">TextKit</a> <a href="/tags/概念/" style="font-size: 15px;">概念</a> <a href="/tags/设备/" style="font-size: 15px;">设备</a> <a href="/tags/Storyboard/" style="font-size: 15px;">Storyboard</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/案例/" style="font-size: 15px;">案例</a> <a href="/tags/转场/" style="font-size: 15px;">转场</a> <a href="/tags/AutoLayout/" style="font-size: 15px;">AutoLayout</a> <a href="/tags/布局/" style="font-size: 15px;">布局</a> <a href="/tags/socket/" style="font-size: 15px;">socket</a> <a href="/tags/协议/" style="font-size: 15px;">协议</a> <a href="/tags/scheme/" style="font-size: 15px;">scheme</a> <a href="/tags/版本控制/" style="font-size: 15px;">版本控制</a> <a href="/tags/坑/" style="font-size: 15px;">坑</a> <a href="/tags/脚本/" style="font-size: 15px;">脚本</a> <a href="/tags/安装/" style="font-size: 15px;">安装</a> <a href="/tags/加密/" style="font-size: 15px;">加密</a> <a href="/tags/gitBook/" style="font-size: 15px;">gitBook</a> <a href="/tags/TDD/" style="font-size: 15px;">TDD</a> <a href="/tags/BDD/" style="font-size: 15px;">BDD</a> <a href="/tags/小米路由/" style="font-size: 15px;">小米路由</a> <a href="/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/tags/语法/" style="font-size: 15px;">语法</a> <a href="/tags/中关村/" style="font-size: 15px;">中关村</a> <a href="/tags/测试/" style="font-size: 15px;">测试</a> <a href="/tags/UI/" style="font-size: 15px;">UI</a> <a href="/tags/gitLab/" style="font-size: 15px;">gitLab</a> <a href="/tags/搭建/" style="font-size: 15px;">搭建</a> <a href="/tags/Scrum/" style="font-size: 15px;">Scrum</a> <a href="/tags/混编/" style="font-size: 15px;">混编</a> <a href="/tags/管理/" style="font-size: 15px;">管理</a> <a href="/tags/数据库/" style="font-size: 15px;">数据库</a> <a href="/tags/realm/" style="font-size: 15px;">realm</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/命令/" style="font-size: 15px;">命令</a> <a href="/tags/AR/" style="font-size: 15px;">AR</a> <a href="/tags/LBS-AR/" style="font-size: 15px;">LBS+AR</a> <a href="/tags/QQ红包/" style="font-size: 15px;">QQ红包</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/插件/" style="font-size: 15px;">插件</a> <a href="/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/tags/objc/" style="font-size: 15px;">objc</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/汇总/" style="font-size: 15px;">汇总</a> <a href="/tags/资源/" style="font-size: 15px;">资源</a> <a href="/tags/kindle/" style="font-size: 15px;">kindle</a> <a href="/tags/书籍/" style="font-size: 15px;">书籍</a> <a href="/tags/targets/" style="font-size: 15px;">targets</a> <a href="/tags/直播/" style="font-size: 15px;">直播</a> <a href="/tags/腾讯云/" style="font-size: 15px;">腾讯云</a> <a href="/tags/集成/" style="font-size: 15px;">集成</a> <a href="/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/tags/swift/" style="font-size: 15px;">swift</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/git-svn/" style="font-size: 15px;">git-svn</a> <a href="/tags/ResilioSync/" style="font-size: 15px;">ResilioSync</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/OSX应用插件开发/">OSX 应用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Hexo标签插件/">Hexo标签插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Kindle之ResilioSync索引/">Kindle之Resilio Sync索引</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Kindle资源/">Kindle114 资源集[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/AwsomeAppleDevelopGuide/">Awsome Apple Develop Guide[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/腾讯云之小直播开发/">腾讯云之小直播开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/iOS面试题大集合/">iOS面试题大集合[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/AR开发资料汇/">AR 开发资料汇[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/迁移SVN库到git库保留branchs和tags/">迁移SVN库到git库保留branchs和tags</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/ErrorHandlingForSwift/">Error Handling for Swift</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">布衣男儿.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'huo3203'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

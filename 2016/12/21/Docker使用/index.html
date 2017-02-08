@@ -1,51 +1,174 @@
-extends base
-
-block title
-  title= page.title + ' | ' + config.title
-
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format('ll')
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-    if theme.duoshuo
-      a.ds-thread-count(data-thread-key=page.path, href=url_for(page.path) + '#comments')
-    if theme.disqus
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content)
-    .post-content
-      != page.content
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url='#{page.permalink}', data-id='#{page._id}')= __('shareto')
-    include _partial/tag
-    include _partial/post_nav
-    if theme.duoshuo
-      div(class='ds-share flat' data-thread-key=page.path, data-title=page.title, data-url=page.permalink)
-         .ds-share-inline
-            ul.ds-share-icons-16
-              li(data-toggle='ds-share-icons-more')
-                a(class='ds-more' href='javascript:void(0);') 分享到：
-              li
-                a(class='ds-weibo' href='javascript:void(0);' data-service='weibo') 微博
-              li
-                a(class='ds-qzone' href='javascript:void(0);' data-service='qzone') QQ空间
-              li
-                a(class='ds-qqt' href='javascript:void(0);' data-service='qqt') 腾讯微博
-              li
-                a(class='ds-wechat' href='javascript:void(0);' data-service='wechat') 微信
-            .ds-share-icons-more
-    include _partial/comments
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="不物喜，不己悲，善假物，易参行！"><title>Docker安装使用 | 布衣男儿</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Docker安装使用</h1><a id="logo" href="/.">布衣男儿</a><p class="description">不物喜，不己悲，善假物，易参行！</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Docker安装使用</h1><div class="post-meta">Dec 21, 2016<span> | </span><span class="category"><a href="/categories/docker/">docker</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2016/12/21/Docker使用/" href="/2016/12/21/Docker使用/#comments" class="ds-thread-count"></a><div class="post-content"><h2 id="安装Docker-for-Mac"><a href="#安装Docker-for-Mac" class="headerlink" title="安装Docker for Mac"></a>安装<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">Docker for Mac</a></h2><p>在Mac上运行Docker。系统要求，OS X 10.10.3 或者更高版本，至少4G内存，4.3.30版本以前的VirtualBox会与Docker for Mac产生冲突，所以请卸载旧版本的VitrualBox。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">echo '下载dmg...'</div><div class="line">curl -o Docker.dmg https://dn-dao-github-mirror.qbox.me/docker/install/mac/Docker.dmg</div><div class="line">#安装Docker.dmg</div><div class="line">MOUNTDIR=$(echo `hdiutil mount Docker.dmg | tail -1 \</div><div class="line">| awk '&#123;$1=$2=""; print $0&#125;'` | xargs -0 echo) \</div><div class="line">&amp;&amp; cd $&#123;MOUNTDIR&#125; &amp;&amp; cp -R Docker.app /Applications/ \</div><div class="line">&amp;&amp; open /Applications/Docker.app</div></pre></td></tr></table></figure></p>
+<h3 id="配置-Docker-加速器镜像源"><a href="#配置-Docker-加速器镜像源" class="headerlink" title="配置 Docker 加速器镜像源"></a>配置 Docker 加速器镜像源</h3><p>右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Advanced 标签下的 Registry mirrors 列表中加入下面的镜像地址:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://142*****.m.daocloud.io</div></pre></td></tr></table></figure></p>
+<p>点击 Apply &amp; Restart 按钮使设置生效。</p>
+<h3 id="安装主机监控程序加速器"><a href="#安装主机监控程序加速器" class="headerlink" title="安装主机监控程序加速器"></a>安装主机监控程序加速器</h3><hr>
+<ol>
+<li>登录到 <code>DaoCloud 控制台</code>，点击「我的集群」按钮，在「接入自有主机」界面，点击 Mac 按钮。</li>
+<li>安装<a href="https://github.com/docker/toolbox/releases/download/v1.12.5/DockerToolbox-1.12.5.pkg" target="_blank" rel="external">DockerToolbox</a>，是一个完整的开发组件，通过安装和配置<code>DaoCloud加速器 v2</code>，提升下载 <code>Docker Hub 镜像</code>的速度。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//下载pkg</div><div class="line">curl -o DockerToolbox.pkg https://github.com/docker/toolbox/releases/download/v1.12.5/DockerToolbox-1.12.5.pkg</div><div class="line">//安装pkg</div><div class="line">sudo installer -pkg DockerToolbox.pkg -target /</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li>安装Toolbox好了，下一步：<br><img src="http://docs.daocloud.io/user/pages/03.faq/08.install-docker-daocloud/DashboardDaoCloudInstall.png" alt=""></li>
+<li><code>$ docker-machine start default</code>启动 Docker.<br>当执行后提示：<code>Host does not exist: &quot;default&quot;</code><figure class="highlight plain"><figcaption><span>docker-machine create</span><a href="http://stackoverflow.com/a/38602630" target="_blank" rel="external">stackoverflow</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker-machine create -d virtualbox default</div></pre></td></tr></table></figure></li>
+<li><p>在 <code>Docker 主机</code> DaoCloud 加速器的组件包：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL <span class="symbol">https:</span>/<span class="regexp">/get.daocloud.io/daomonit</span><span class="regexp">/install.sh | sh -s d0312f829e9807ee0bf157******</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>启动组件包,会在「安装主机监控程序」的 DaoCloud 控制台页面下方显示一台已经接入的主机。<br><img src="/images/daoshell.png" alt=""></p>
+</li>
+<li>执行<code>Dao Pull</code>命令,高速下载<code>Docker Hub</code>镜像文件<br>这台 Docker 主机已经被接入 DaoCloud 平台，用户可以在 DaoCloud 控制台的「我的集群」页面发现这台主机，可以执行管理和部署应用的操作。</li>
+</ol>
+<h3 id="从Docker-Hub-仓库中获取一个镜像"><a href="#从Docker-Hub-仓库中获取一个镜像" class="headerlink" title="从Docker Hub 仓库中获取一个镜像"></a>从Docker Hub 仓库中获取一个镜像</h3><hr>
+<p>Docker 使用类似 git 的方式管理镜像。通过基本的镜像可以定制创建出来不同种应用的 Docker 镜像。Docker Hub 是 Docker 官方提供的镜像中心。在这里可以很方便地找到各类应用、环境的镜像。由于 Docker 使用联合文件系统，所以镜像就像是夹心饼干一样一层层构成，相同底层的镜像可以共享。所以 Docker 还是相当节约磁盘空间的。要使用一 个镜像，需要先从远程的镜像注册中心拉取，这点非常类似 git。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull ubuntu</div></pre></td></tr></table></figure></p>
+<h2 id="Docker-命令创建管理容器"><a href="#Docker-命令创建管理容器" class="headerlink" title="Docker 命令创建管理容器"></a>Docker 命令创建管理容器</h2><hr>
+<h3 id="获取镜像的两种方式"><a href="#获取镜像的两种方式" class="headerlink" title="获取镜像的两种方式"></a>获取镜像的两种方式</h3><hr>
+<h4 id="1-docker-pull命令"><a href="#1-docker-pull命令" class="headerlink" title="1. docker pull命令"></a>1. <code>docker pull</code>命令</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker search perfectlysoft/ubuntu</div><div class="line">docker pull perfectlysoft/ubuntu</div></pre></td></tr></table></figure>
+<h4 id="2-docker-import命令"><a href="#2-docker-import命令" class="headerlink" title="2. docker import命令"></a>2. <code>docker import</code>命令</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker import myubuntu.tar.gz</div></pre></td></tr></table></figure>
+<h3 id="通过镜像创建容器"><a href="#通过镜像创建容器" class="headerlink" title="通过镜像创建容器"></a>通过镜像创建容器</h3><hr>
+<p>创建一个容器有两种方式：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker create 镜像名</div><div class="line">docker run   镜像名   /<span class="regexp">/立即启动容器 等价于：create + start 命令组合</span></div></pre></td></tr></table></figure></p>
+<p>进入容器终端控制台如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root@ec72dc76502e:/# ls</div><div class="line">app  boot  etc   lib    media  opt   root  sbin  sys  usr</div><div class="line">bin  dev   home  lib64  mnt    proc  run   srv   tmp  var</div></pre></td></tr></table></figure></p>
+<h4 id="docker-run-images命令"><a href="#docker-run-images命令" class="headerlink" title="docker run images命令"></a><code>docker run images</code>命令</h4><ol>
+<li><p>样例1<br>执行<code>run images</code>，并将 Ubuntu 的 Shell 作为入口，进入Docker容器环境操作</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it <span class="symbol">ubuntu:</span>latest sh -c <span class="string">'/bin/bash'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>样例2<br>执行<code>docker start -i 容器</code>命令进入容器环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker start -i 容器ID/容器名</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="从KitematicGUI进入容器环境"><a href="#从KitematicGUI进入容器环境" class="headerlink" title="从KitematicGUI进入容器环境"></a>从<code>Kitematic</code>GUI进入容器环境</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash -c <span class="string">"clear &amp;&amp; docker exec -it perfectswift sh"</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>参数<br>-i 表示这是一个交互容器，会把当前标准输入重定向到容器的标准输入中，而不是终止程序运行<br>-t 指为这个容器分配一个终端</p>
+</blockquote>
+<p>这时候我们成功创建了一个 Ubuntu 的容器，并将当前终端连接为这个 Ubuntu 的 bash shell。这时候就可以愉快地使用 Ubuntu 的相关命令了。</p>
+<h3 id="ps-查看容器状态"><a href="#ps-查看容器状态" class="headerlink" title="ps 查看容器状态"></a>ps 查看容器状态</h3><hr>
+<p>在容器运行期间，我们可以通过 <code>docker ps</code> 命令看到所有当前正在运行的容器。<br>添加-a参数可以看到所有创建的容器：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure></p>
+<h3 id="容器ID标识"><a href="#容器ID标识" class="headerlink" title="容器ID标识"></a>容器ID标识</h3><hr>
+<p>每个容器都有一个唯一的 ID 标识，通过 ID 可以对这个容器进行管理和操作。在创建容器时，我们可以通过 –name 参数指定一个容器名称，如果没有指定系统将会分配一个，就像这里的「trusting_morse」。</p>
+<h3 id="启动-退出-移除容器"><a href="#启动-退出-移除容器" class="headerlink" title="启动/退出/移除容器"></a>启动/退出/移除容器</h3><hr>
+<p>启动：<code>start</code><br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker start -i trusting_morse</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：每次执行 docker run 命令都会创建新的容器，建议一次创建后，使用 docker start/stop 来启动和停用容器。</p>
+</blockquote>
+<p>退出：<br>按 <code>Ctrl+D</code> 退出</p>
+<p>移除：<code>rm</code>ID/name<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rm [CONTAINER ID/NAMES]</div></pre></td></tr></table></figure></p>
+<p>重命名：<code>rename</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rename 容器ID newName</div></pre></td></tr></table></figure></p>
+<h2 id="创建管理镜像"><a href="#创建管理镜像" class="headerlink" title="创建管理镜像"></a>创建管理镜像</h2><hr>
+<p>Docker 强大的威力在于可以把自己开发的应用随同各种依赖环境一起打包、分发、运行。要创建一个新的 Docker 镜像，通常基于一个已有的 Docker 镜像来创建。<br>Docker 提供了两种方式来创建镜像：</p>
+<ol>
+<li>把容器创建为一个新的镜像</li>
+<li>使用 Dockerfile 创建镜像。</li>
+</ol>
+<h3 id="将容器创建为镜像"><a href="#将容器创建为镜像" class="headerlink" title="将容器创建为镜像"></a>将容器创建为镜像</h3><hr>
+<ol>
+<li><p>为了创建一个新的镜像，我们先创建一个新的容器作为基底：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it <span class="symbol">ubuntu:</span>latest sh -c <span class="string">'/bin/bash'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>定制这个容器，例如我们可以配置 PHP 环境、将我们的项目代码部署在里面等：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install php</div><div class="line"><span class="comment"># some other opreations ...</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>当执行完操作之后，我们按 Ctrl+D 退出容器.</p>
+<ol>
+<li><p>获取定制后的容器ID</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div><div class="line">[root@localhost ~]# docker ps -a</div><div class="line"></div><div class="line">CONTAINER ID        IMAGE                        COMMAND                    CREATED             STATUS                      PORTS               NAMES</div><div class="line">cb2b06c83a50        ubuntu:latest                &quot;sh -c /bin/bash&quot;          7 minutes ago       Exited (0) 7 seconds ago                       trusting_morse</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>docker commit</code> 把这个容器变为一个镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker commit cb2b06c83a50 ubuntu:myubuntu</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这时候 docker 容器会被创建为一个新的 Ubuntu 镜像，版本名称为 myubuntu。以后我们可以随时使用这个镜像来创建容器了，新的容器将自动包含上面对容器的操作。    </p>
+<ol>
+<li><p>打包/发布镜像</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker save -o myubuntu.tar.gz <span class="symbol">ubuntu:</span>myubuntu</div></pre></td></tr></table></figure>
+</li>
+<li><p>导入打包镜像</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker import myubuntu.tar.gz</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><hr>
+<h4 id="通过Dockerfile创建镜像"><a href="#通过Dockerfile创建镜像" class="headerlink" title="通过Dockerfile创建镜像"></a>通过<code>Dockerfile</code>创建镜像</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build yourDir/Dockerfile</div></pre></td></tr></table></figure>
+<blockquote>
+<p>确保Dockerfile文件在一个目录中，否则会提示错误</p>
+</blockquote>
+<p>Docker Hub 提供了类似 GitHub 的镜像存管服务。一个镜像发布到 Docker Hub 不仅可以供更多人使用，而且便于镜像的版本管理。在一个企业内部可以通过自建 Docker Registry 的方式来统一管理和发布镜像。将 Docker Registry 集成到版本管理和上线发布的工作流之中，还有许多工作要做，在我整理出最佳实践后会第一时间分享。<br>使用命令行的方式创建 Docker 镜像通常难以自动化操作。在更多的时候，我们使用 Dockerfile 来创建 Docker 镜像。Dockerfile 是一个纯文本文件，它记载了从一个镜像创建另一个新镜像的步骤。撰写好 Dockerfile 文件之后，我们就可以轻而易举的使用 docker build 命令来创建镜像了。<br>Dockerfile 非常简单，仅有以下命令在 Dockerfile 中常被使用：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">命令</th>
+<th style="text-align:right">参数</th>
+<th style="text-align:right">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">#</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">注释说明</td>
+</tr>
+<tr>
+<td style="text-align:right">FROM</td>
+<td style="text-align:right"><image>[:<tag>]</tag></image></td>
+<td style="text-align:right">从一个已有镜像创建，例如ubuntu:latest</td>
+</tr>
+<tr>
+<td style="text-align:right">MAINTAINER</td>
+<td style="text-align:right">Author <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#115;&#x6f;&#109;&#101;&#45;&#111;&#110;&#101;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#115;&#x6f;&#109;&#101;&#45;&#111;&#110;&#101;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#115;&#x6f;&#x6d;&#x65;&#45;&#111;&#x6e;&#x65;&#64;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#109;">&#115;&#x6f;&#x6d;&#x65;&#45;&#111;&#x6e;&#x65;&#64;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#109;</a></td>
+</tr>
+<tr>
+<td style="text-align:right">RUN</td>
+<td style="text-align:right"><cmd>或者[‘cmd1’, ‘cmd2’…]</cmd></td>
+<td style="text-align:right">在镜像创建用的临时容器里执行单行命令</td>
+</tr>
+<tr>
+<td style="text-align:right">ADD</td>
+<td style="text-align:right"><src> <dest></dest></src></td>
+<td style="text-align:right">将本地的<src>添加到镜像容器中的<dest>位置</dest></src></td>
+</tr>
+<tr>
+<td style="text-align:right">VOLUME</td>
+<td style="text-align:right"><path></path>或者[‘/var’, ‘home’]</td>
+<td style="text-align:right">将指定的路径挂载为数据卷</td>
+</tr>
+<tr>
+<td style="text-align:right">EXPOSE</td>
+<td style="text-align:right"><port> [<port>…]</port></port></td>
+<td style="text-align:right">将指定的端口暴露给主机</td>
+</tr>
+<tr>
+<td style="text-align:right">ENV</td>
+<td style="text-align:right"><key> <value> 或者 <key> = <value></value></key></value></key></td>
+<td style="text-align:right">指定环境变量值</td>
+</tr>
+<tr>
+<td style="text-align:right">CMD</td>
+<td style="text-align:right">[“executable”,”param1”,”param2”]</td>
+<td style="text-align:right">容器启动时默认执行的命令。注意一个Dockerfile中只有最后一个CMD生效。</td>
+</tr>
+<tr>
+<td style="text-align:right">ENTRYPOINT</td>
+<td style="text-align:right">[“executable”, “param1”, “param2”]</td>
+<td style="text-align:right">容器的进入点</td>
+</tr>
+</tbody>
+</table>
+<h4 id="配置Dockerfile"><a href="#配置Dockerfile" class="headerlink" title="配置Dockerfile"></a>配置Dockerfile</h4><hr>
+<p>下面是一个 Dockerfile 的例子：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># This is a comment</span></div><div class="line">FROM <span class="symbol">ubuntu:</span><span class="number">14.04</span></div><div class="line">MAINTAINER Kate Smith &lt;ksmith@example.com&gt;</div><div class="line">RUN apt-get update &amp;&amp; apt-get install -y ruby ruby-dev</div><div class="line">RUN gem install sinatra</div></pre></td></tr></table></figure></p>
+<h5 id="CMD命令"><a href="#CMD命令" class="headerlink" title="CMD命令"></a><code>CMD</code>命令</h5><hr>
+<p><code>CMD</code>: 命令可用指定 Docker 容器启动时默认的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it ubuntu:latest sh -c &apos;/bin/bash&apos;</div></pre></td></tr></table></figure></p>
+<p>其中 <code>sh -c &#39;/bin/bash&#39;</code> 就是手工指定的<code>CMD</code>,否则容器将会使用默认 <code>CMD</code> 指定的命令启动。</p>
+<h5 id="ENTRYPOINT命令"><a href="#ENTRYPOINT命令" class="headerlink" title="ENTRYPOINT命令"></a><code>ENTRYPOINT</code>命令</h5><hr>
+<p>用来指定可执行文件、Shell 脚本，同时会并把启动参数或 CMD 指定的默认值，当作附加参数传递给 执行文件、Shell 脚本。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ENTRYPOINT [<span class="string">'/usr/bin/mysql'</span>]</div><div class="line">CMD [<span class="string">'-h 192.168.100.128'</span>, <span class="string">'-p'</span>]</div></pre></td></tr></table></figure></p>
+<p>执行mysql启动程序，连接<code>192.168.100.128</code> 主机,也可以通过指定参数，来连接别的主机。</p>
+<p>因此，我们在使用 Dockerfile 创建文件的时候，可以创建一个 entrypoint.sh 脚本，作为系统入口。在这个文件里面，我们可以进行一些基础性的自举操作，比如检查环境变量，根据需要初始化数据库等等。下面两个文件是我在日常工作的项目中添加的 Dockerfile 和 entrypoint.sh，仅供参考：<br><a href="https://github.com/starlight36/SimpleOA/blob/master/Dockerfile" target="_blank" rel="external">https://github.com/starlight36/SimpleOA/blob/master/Dockerfile</a><br><a href="https://github.com/starlight36/SimpleOA/blob/master/docker-entrypoint.sh" target="_blank" rel="external">https://github.com/starlight36/SimpleOA/blob/master/docker-entrypoint.sh</a><br>在准备好 Dockerfile 之后，我们就可以创建镜像了：</p>
+<h4 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t starlight36/simpleoa .</div></pre></td></tr></table></figure>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="https://huos3203.github.io/2016/12/21/Docker使用/" data-id="ciywn2cyt0055a52lb0uy94up" class="article-share-link">分享到</a><div class="tags"><a href="/tags/工具/">工具</a><a href="/tags/语法/">语法</a><a href="/tags/搭建/">搭建</a></div><div class="post-nav"><a href="/2017/01/03/SwiftGuide/" class="pre">Swift 语言指南[转]</a><a href="/2016/12/21/hackmd使用/" class="next">hackmd使用</a></div><div data-thread-key="2016/12/21/Docker使用/" data-title="Docker安装使用" data-url="https://huos3203.github.io/2016/12/21/Docker使用/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/12/21/Docker使用/" data-title="Docker安装使用" data-url="https://huos3203.github.io/2016/12/21/Docker使用/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://huos3203.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CI/">CI</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Octopress/">Octopress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ruby/">ruby</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/直播/">直播</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/管理/">管理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/资源/">资源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/骗局/">骗局</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/指南/" style="font-size: 15px;">指南</a> <a href="/tags/内购/" style="font-size: 15px;">内购</a> <a href="/tags/被骗/" style="font-size: 15px;">被骗</a> <a href="/tags/iPhone6/" style="font-size: 15px;">iPhone6</a> <a href="/tags/iPhone5s/" style="font-size: 15px;">iPhone5s</a> <a href="/tags/octopress/" style="font-size: 15px;">octopress</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/mou/" style="font-size: 15px;">mou</a> <a href="/tags/ruby/" style="font-size: 15px;">ruby</a> <a href="/tags/截屏/" style="font-size: 15px;">截屏</a> <a href="/tags/IOS7/" style="font-size: 15px;">IOS7</a> <a href="/tags/TextKit/" style="font-size: 15px;">TextKit</a> <a href="/tags/概念/" style="font-size: 15px;">概念</a> <a href="/tags/设备/" style="font-size: 15px;">设备</a> <a href="/tags/Storyboard/" style="font-size: 15px;">Storyboard</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/案例/" style="font-size: 15px;">案例</a> <a href="/tags/转场/" style="font-size: 15px;">转场</a> <a href="/tags/AutoLayout/" style="font-size: 15px;">AutoLayout</a> <a href="/tags/布局/" style="font-size: 15px;">布局</a> <a href="/tags/socket/" style="font-size: 15px;">socket</a> <a href="/tags/协议/" style="font-size: 15px;">协议</a> <a href="/tags/scheme/" style="font-size: 15px;">scheme</a> <a href="/tags/版本控制/" style="font-size: 15px;">版本控制</a> <a href="/tags/坑/" style="font-size: 15px;">坑</a> <a href="/tags/脚本/" style="font-size: 15px;">脚本</a> <a href="/tags/安装/" style="font-size: 15px;">安装</a> <a href="/tags/加密/" style="font-size: 15px;">加密</a> <a href="/tags/gitBook/" style="font-size: 15px;">gitBook</a> <a href="/tags/TDD/" style="font-size: 15px;">TDD</a> <a href="/tags/BDD/" style="font-size: 15px;">BDD</a> <a href="/tags/小米路由/" style="font-size: 15px;">小米路由</a> <a href="/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/tags/语法/" style="font-size: 15px;">语法</a> <a href="/tags/中关村/" style="font-size: 15px;">中关村</a> <a href="/tags/测试/" style="font-size: 15px;">测试</a> <a href="/tags/UI/" style="font-size: 15px;">UI</a> <a href="/tags/gitLab/" style="font-size: 15px;">gitLab</a> <a href="/tags/搭建/" style="font-size: 15px;">搭建</a> <a href="/tags/Scrum/" style="font-size: 15px;">Scrum</a> <a href="/tags/混编/" style="font-size: 15px;">混编</a> <a href="/tags/管理/" style="font-size: 15px;">管理</a> <a href="/tags/数据库/" style="font-size: 15px;">数据库</a> <a href="/tags/realm/" style="font-size: 15px;">realm</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/命令/" style="font-size: 15px;">命令</a> <a href="/tags/AR/" style="font-size: 15px;">AR</a> <a href="/tags/LBS-AR/" style="font-size: 15px;">LBS+AR</a> <a href="/tags/QQ红包/" style="font-size: 15px;">QQ红包</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/插件/" style="font-size: 15px;">插件</a> <a href="/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/tags/objc/" style="font-size: 15px;">objc</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/汇总/" style="font-size: 15px;">汇总</a> <a href="/tags/资源/" style="font-size: 15px;">资源</a> <a href="/tags/kindle/" style="font-size: 15px;">kindle</a> <a href="/tags/书籍/" style="font-size: 15px;">书籍</a> <a href="/tags/targets/" style="font-size: 15px;">targets</a> <a href="/tags/直播/" style="font-size: 15px;">直播</a> <a href="/tags/腾讯云/" style="font-size: 15px;">腾讯云</a> <a href="/tags/集成/" style="font-size: 15px;">集成</a> <a href="/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/tags/swift/" style="font-size: 15px;">swift</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/git-svn/" style="font-size: 15px;">git-svn</a> <a href="/tags/ResilioSync/" style="font-size: 15px;">ResilioSync</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/OSX应用插件开发/">OSX 应用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Hexo标签插件/">Hexo标签插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Kindle之ResilioSync索引/">Kindle之Resilio Sync索引</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Kindle资源/">Kindle114 资源集[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/AwsomeAppleDevelopGuide/">Awsome Apple Develop Guide[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/腾讯云之小直播开发/">腾讯云之小直播开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/iOS面试题大集合/">iOS面试题大集合[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/AR开发资料汇/">AR 开发资料汇[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/迁移SVN库到git库保留branchs和tags/">迁移SVN库到git库保留branchs和tags</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/ErrorHandlingForSwift/">Error Handling for Swift</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">布衣男儿.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'huo3203'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
