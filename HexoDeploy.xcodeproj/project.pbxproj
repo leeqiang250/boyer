@@ -7,44 +7,104 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		149F33481E0A74AE00AAC556 /* DeployCoding */ = {
+		1420510C1E49E1BB006D86DE /* updateDate */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 149F33491E0A74B000AAC556 /* Build configuration list for PBXAggregateTarget "DeployCoding" */;
+			buildConfigurationList = 1420510E1E49E1BB006D86DE /* Build configuration list for PBXAggregateTarget "updateDate" */;
 			buildPhases = (
-				149F334C1E0A74BD00AAC556 /* 发布 */,
+				1420510D1E49E1BB006D86DE /* hexo */,
 			);
 			dependencies = (
 			);
-			name = DeployCoding;
+			name = updateDate;
 			productName = Deploy;
 		};
-		843D6AD01E0AE20B004A5FB0 /* DeployAll */ = {
+		149F33481E0A74AE00AAC556 /* jacman */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 843D6AD31E0AE20B004A5FB0 /* Build configuration list for PBXAggregateTarget "DeployAll" */;
+			buildConfigurationList = 149F33491E0A74B000AAC556 /* Build configuration list for PBXAggregateTarget "jacman" */;
 			buildPhases = (
-				843D6AD21E0AE20B004A5FB0 /* server调试 */,
+				149F334C1E0A74BD00AAC556 /* hexo */,
 			);
 			dependencies = (
-				8451A3D41E2938D700301CE2 /* PBXTargetDependency */,
+				1420511B1E4AC357006D86DE /* PBXTargetDependency */,
 			);
-			name = DeployAll;
+			name = jacman;
+			productName = Deploy;
+		};
+		14D1C3711E49D0CA00E3F905 /* maupassant */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 14D1C3751E49D0CA00E3F905 /* Build configuration list for PBXAggregateTarget "maupassant" */;
+			buildPhases = (
+				14D1C3851E49D5B600E3F905 /* hexo */,
+			);
+			dependencies = (
+				1420511F1E4AC372006D86DE /* PBXTargetDependency */,
+			);
+			name = maupassant;
+			productName = Deploy;
+		};
+		14D1C3781E49D4DA00E3F905 /* all */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 14D1C37C1E49D4DA00E3F905 /* Build configuration list for PBXAggregateTarget "all" */;
+			buildPhases = (
+			);
+			dependencies = (
+				142051141E49E26F006D86DE /* PBXTargetDependency */,
+			);
+			name = all;
+			productName = Deploy;
+		};
+		843D6AD01E0AE20B004A5FB0 /* next */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 843D6AD31E0AE20B004A5FB0 /* Build configuration list for PBXAggregateTarget "next" */;
+			buildPhases = (
+				843D6AD21E0AE20B004A5FB0 /* hexo */,
+			);
+			dependencies = (
+				1420511D1E4AC368006D86DE /* PBXTargetDependency */,
+			);
+			name = next;
 			productName = Deploy;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXContainerItemProxy section */
-		8451A3D31E2938D700301CE2 /* PBXContainerItemProxy */ = {
+		142051131E49E26F006D86DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 149F33421E0A747000AAC556 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14D1C3711E49D0CA00E3F905;
+			remoteInfo = maupassant;
+		};
+		1420511A1E4AC357006D86DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 149F33421E0A747000AAC556 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1420510C1E49E1BB006D86DE;
+			remoteInfo = updateDate;
+		};
+		1420511C1E4AC368006D86DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 149F33421E0A747000AAC556 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 149F33481E0A74AE00AAC556;
-			remoteInfo = DeployCoding;
+			remoteInfo = jacman;
+		};
+		1420511E1E4AC372006D86DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 149F33421E0A747000AAC556 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 843D6AD01E0AE20B004A5FB0;
+			remoteInfo = next;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1407ACAB1E0B7547001D4D65 /* setup_snippets.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_snippets.sh; sourceTree = "<group>"; };
 		1407ACAF1E0B8464001D4D65 /* postsUpdated.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postsUpdated.sh; sourceTree = "<group>"; };
+		142051151E4ABAC7006D86DE /* ln_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ln_config.sh; sourceTree = "<group>"; };
+		142051171E4ABF3E006D86DE /* jacman.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = jacman.yml; sourceTree = "<group>"; };
+		142051181E4ABF3E006D86DE /* maupassant.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = maupassant.yml; sourceTree = "<group>"; };
+		142051191E4ABF3E006D86DE /* next.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = next.yml; sourceTree = "<group>"; };
 		145012011E3455C200BBDEBB /* AR开发资料汇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AR开发资料汇.md"; sourceTree = "<group>"; };
 		145012021E34588200BBDEBB /* AwsomeAppleDevelopGuide.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = AwsomeAppleDevelopGuide.md; sourceTree = "<group>"; };
 		145012031E345AA100BBDEBB /* iOS面试题大集合.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "iOS面试题大集合.md"; sourceTree = "<group>"; };
@@ -384,6 +444,7 @@
 		14D1C36C1E4969B600E3F905 /* OSX应用插件开发.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "OSX应用插件开发.md"; sourceTree = "<group>"; };
 		14D1C36D1E4971DB00E3F905 /* xcode6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xcode6.jpg; sourceTree = "<group>"; };
 		14D1C36E1E497BBC00E3F905 /* xcode8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xcode8.png; sourceTree = "<group>"; };
+		14D1C3701E49C89900E3F905 /* _config.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = _config.yml; path = ../themes/maupassant/_config.yml; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 		8451A2711E28F1CF00301CE2 /* setup_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_config.sh; sourceTree = "<group>"; };
 		8451A2751E2908D000301CE2 /* .bowerrc */ = {isa = PBXFileReference; lastKnownFileType = text; path = .bowerrc; sourceTree = "<group>"; };
@@ -672,15 +733,28 @@
 			isa = PBXGroup;
 			children = (
 				8451A2711E28F1CF00301CE2 /* setup_config.sh */,
+				142051151E4ABAC7006D86DE /* ln_config.sh */,
 				1407ACAF1E0B8464001D4D65 /* postsUpdated.sh */,
 			);
 			path = tool;
+			sourceTree = "<group>";
+		};
+		142051161E4ABF3E006D86DE /* ln_config */ = {
+			isa = PBXGroup;
+			children = (
+				142051171E4ABF3E006D86DE /* jacman.yml */,
+				142051181E4ABF3E006D86DE /* maupassant.yml */,
+				142051191E4ABF3E006D86DE /* next.yml */,
+			);
+			name = ln_config;
+			path = _config;
 			sourceTree = "<group>";
 		};
 		149F33411E0A746F00AAC556 = {
 			isa = PBXGroup;
 			children = (
 				149F334E1E0A767600AAC556 /* _config.yml */,
+				142051161E4ABF3E006D86DE /* ln_config */,
 				14B364D61E2738FC00D1FB05 /* 主题 */,
 				149F33D71E0A767600AAC556 /* SUMMARY.md */,
 				1407ACAE1E0B8464001D4D65 /* tool */,
@@ -1361,8 +1435,17 @@
 			children = (
 				8451A3C51E29091D00301CE2 /* next */,
 				8451A3C41E2908FE00301CE2 /* jacman */,
+				14D1C36F1E49C7DA00E3F905 /* maupassant */,
 			);
 			name = "主题";
+			sourceTree = "<group>";
+		};
+		14D1C36F1E49C7DA00E3F905 /* maupassant */ = {
+			isa = PBXGroup;
+			children = (
+				14D1C3701E49C89900E3F905 /* _config.yml */,
+			);
+			name = maupassant;
 			sourceTree = "<group>";
 		};
 		8451A2741E2908D000301CE2 /* next */ = {
@@ -2185,10 +2268,19 @@
 			attributes = {
 				LastUpgradeCheck = 0810;
 				TargetAttributes = {
+					1420510C1E49E1BB006D86DE = {
+						DevelopmentTeam = FA78T6VRG8;
+					};
 					149F33481E0A74AE00AAC556 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = FA78T6VRG8;
 						ProvisioningStyle = Automatic;
+					};
+					14D1C3711E49D0CA00E3F905 = {
+						DevelopmentTeam = FA78T6VRG8;
+					};
+					14D1C3781E49D4DA00E3F905 = {
+						DevelopmentTeam = FA78T6VRG8;
 					};
 					843D6AD01E0AE20B004A5FB0 = {
 						DevelopmentTeam = FA78T6VRG8;
@@ -2206,52 +2298,114 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				843D6AD01E0AE20B004A5FB0 /* DeployAll */,
-				149F33481E0A74AE00AAC556 /* DeployCoding */,
+				14D1C3781E49D4DA00E3F905 /* all */,
+				843D6AD01E0AE20B004A5FB0 /* next */,
+				149F33481E0A74AE00AAC556 /* jacman */,
+				14D1C3711E49D0CA00E3F905 /* maupassant */,
+				1420510C1E49E1BB006D86DE /* updateDate */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		149F334C1E0A74BD00AAC556 /* 发布 */ = {
+		1420510D1E49E1BB006D86DE /* hexo */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "发布";
+			name = hexo;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n#修改更新时间\nsh tool/postsUpdated.sh\n#执行发布操作\nhexo g\nhexo d\n";
+			shellScript = "#修改更新时间\nsh tool/postsUpdated.sh\n";
 		};
-		843D6AD21E0AE20B004A5FB0 /* server调试 */ = {
+		149F334C1E0A74BD00AAC556 /* hexo */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "server调试";
+			name = hexo;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n#修改更新时间\nsh tool/postsUpdated.sh\n#执行发布操作\nhexo g\nhexo d\n";
+			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n#执行发布操作\nhexo g\nhexo d\n";
+		};
+		14D1C3851E49D5B600E3F905 /* hexo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = hexo;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n#执行发布操作\nhexo g\nhexo d";
+		};
+		843D6AD21E0AE20B004A5FB0 /* hexo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = hexo;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n#执行发布操作\nhexo g\nhexo d\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8451A3D41E2938D700301CE2 /* PBXTargetDependency */ = {
+		142051141E49E26F006D86DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 149F33481E0A74AE00AAC556 /* DeployCoding */;
-			targetProxy = 8451A3D31E2938D700301CE2 /* PBXContainerItemProxy */;
+			target = 14D1C3711E49D0CA00E3F905 /* maupassant */;
+			targetProxy = 142051131E49E26F006D86DE /* PBXContainerItemProxy */;
+		};
+		1420511B1E4AC357006D86DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1420510C1E49E1BB006D86DE /* updateDate */;
+			targetProxy = 1420511A1E4AC357006D86DE /* PBXContainerItemProxy */;
+		};
+		1420511D1E4AC368006D86DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 149F33481E0A74AE00AAC556 /* jacman */;
+			targetProxy = 1420511C1E4AC368006D86DE /* PBXContainerItemProxy */;
+		};
+		1420511F1E4AC372006D86DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 843D6AD01E0AE20B004A5FB0 /* next */;
+			targetProxy = 1420511E1E4AC372006D86DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1420510F1E49E1BB006D86DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		142051101E49E1BB006D86DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		149F33461E0A747000AAC556 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2280,6 +2434,38 @@
 			};
 			name = Release;
 		};
+		14D1C3761E49D0CA00E3F905 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		14D1C3771E49D0CA00E3F905 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		14D1C37D1E49D4DA00E3F905 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		14D1C37E1E49D4DA00E3F905 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FA78T6VRG8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		843D6AD41E0AE20B004A5FB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2299,6 +2485,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1420510E1E49E1BB006D86DE /* Build configuration list for PBXAggregateTarget "updateDate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1420510F1E49E1BB006D86DE /* Debug */,
+				142051101E49E1BB006D86DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		149F33451E0A747000AAC556 /* Build configuration list for PBXProject "HexoDeploy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2308,7 +2503,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		149F33491E0A74B000AAC556 /* Build configuration list for PBXAggregateTarget "DeployCoding" */ = {
+		149F33491E0A74B000AAC556 /* Build configuration list for PBXAggregateTarget "jacman" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				149F334A1E0A74B000AAC556 /* Debug */,
@@ -2317,7 +2512,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		843D6AD31E0AE20B004A5FB0 /* Build configuration list for PBXAggregateTarget "DeployAll" */ = {
+		14D1C3751E49D0CA00E3F905 /* Build configuration list for PBXAggregateTarget "maupassant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14D1C3761E49D0CA00E3F905 /* Debug */,
+				14D1C3771E49D0CA00E3F905 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14D1C37C1E49D4DA00E3F905 /* Build configuration list for PBXAggregateTarget "all" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14D1C37D1E49D4DA00E3F905 /* Debug */,
+				14D1C37E1E49D4DA00E3F905 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		843D6AD31E0AE20B004A5FB0 /* Build configuration list for PBXAggregateTarget "next" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				843D6AD41E0AE20B004A5FB0 /* Debug */,

@@ -17,35 +17,38 @@ git status -s > modified.txt
 # 例如：M "_posts/Awsome Apple Develop Guide.md"
 cat modified.txt | grep 'M.*_posts' | sed 's/^.*M.*_posts//g' | sed 's/md"/md/g' > postfile.txt
 #"重定向法 管道法: cat $FILENAME | while read LINE"
-#读取文件路径，找到文件替换文件内容
-cat postfile.txt | while read line
-do
-    #逐行循环开始
-    postPath="_posts${line}"
-    echo "$postPath"
-    if [ -f "${postPath}" ]; then
-        #直接修改文件内容(危险动作) updated:值
-        createdLine=$(cat ${postPath} | grep 'date: 创建时间')  #当初始值"创建时间"时才更新
-        updatedLine=$(cat ${postPath} | grep 'updated: ') # 每次执行都更新
-        time=`date '+%Y-%m-%d %H:%M:%S'`
-        #替换创建时间
-        if [ "$createdLine" != "" ]; then
-            echo "--开始替换 date: --"
-            sed -i '' "s/${createdLine}/date: ${time}/g" "${postPath}"
+if [ -f postfile.txt ]; then
+    #读取文件路径，找到文件替换文件内容
+    cat postfile.txt | while read line
+    do
+        #逐行循环开始
+        postPath="_posts${line}"
+        echo "$postPath"
+        if [ -f "${postPath}" ]; then
+            #直接修改文件内容(危险动作) updated:值
+            createdLine=$(cat ${postPath} | grep 'date: 创建时间')  #当初始值"创建时间"时才更新
+            updatedLine=$(cat ${postPath} | grep 'updated: ') # 每次执行都更新
+            time=`date '+%Y-%m-%d %H:%M:%S'`
+            #替换创建时间
+            if [ "$createdLine" != "" ]; then
+                echo "--开始替换 date: --"
+                sed -i '' "s/${createdLine}/date: ${time}/g" "${postPath}"
+            else
+                echo "date: 不存在"
+            fi
+            #替换更新时间
+            if [ "$updatedLine" != "" ]; then
+                echo "--开始替换 updated: --"
+                sed -i '' "s/${updatedLine}/updated: ${time}/g" "${postPath}"
+            else
+                echo "updated: 不存在"
+            fi
+    #        exit 0
         else
-            echo "date: 不存在"
+            echo "${postPath}不存在"
         fi
-        #替换更新时间
-        if [ "$updatedLine" != "" ]; then
-            echo "--开始替换 updated: --"
-            sed -i '' "s/${updatedLine}/updated: ${time}/g" "${postPath}"
-        else
-            echo "updated: 不存在"
-        fi
-#        exit 0
-    else
-        echo "${postPath}不存在"
-    fi
-done
-#删除临时文件
-rm -r modified.txt postfile.txt # _posts/.\!9*
+    done
+
+    echo "移除临时文件"
+    rm -r modified.txt postfile.txt # _posts/.\!9*
+fi

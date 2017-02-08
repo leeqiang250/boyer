@@ -4,20 +4,50 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>HexoAll.xcscheme</key>
+		<key>all.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
-		<key>HexoCoding.xcscheme</key>
+		<key>jacman.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>maupassant.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>next copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>next.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1420510C1E49E1BB006D86DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>149F33481E0A74AE00AAC556</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>14D1C3711E49D0CA00E3F905</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>14D1C3781E49D4DA00E3F905</key>
 		<dict>
 			<key>primary</key>
 			<true/>
