@@ -18,7 +18,7 @@ sed -i '' "s/.*jacman:/#jacman:/g" _config.yml
 
 #打印站点名称
 nextURL="https:\/\/huos3203.github.io"
-maupassantURL="http:\/\/huos3203.github.io"
+maupassantURL="http:\/\/huos3203.github.io\/boyer"
 if [ "$themename" == "jacman" ]; then
     echo "站点：coding"
 elif [ "$themename" == "next" ]; then
