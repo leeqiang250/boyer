@@ -11,7 +11,7 @@ themename=$TARGET_NAME
 themeLine=$(cat _config.yml | grep 'theme: ') # 替换当前主题
 sed -i '' "s/${themeLine}/theme: ${themename}/g" _config.yml
 
-#重置站点库
+#重置站点库,库路径别名前必须保留足够的空格，否则会导致语法错误
 sed -i '' "s/.*next:/        #next:/g" _config.yml
 sed -i '' "s/.*maupassant:/        #maupassant:/g" _config.yml
 sed -i '' "s/.*jacman:/        #jacman:/g" _config.yml
