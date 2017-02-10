@@ -443,6 +443,7 @@
 		14B364D31E27389D00D1FB05 /* jquery.fancybox.pack.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.fancybox.pack.js; sourceTree = "<group>"; };
 		14B364D51E27389D00D1FB05 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		14B6568B1E4D5F3900CC45E2 /* bilibili之Mac版ffmpeg依赖编译.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "bilibili之Mac版ffmpeg依赖编译.md"; sourceTree = "<group>"; };
+		14B697F21E4DCA7D00F43C23 /* 用Git将代码恢复到一个历史的版本.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "用Git将代码恢复到一个历史的版本.md"; sourceTree = "<group>"; };
 		14D1C36C1E4969B600E3F905 /* OSX应用插件开发.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "OSX应用插件开发.md"; sourceTree = "<group>"; };
 		14D1C36D1E4971DB00E3F905 /* xcode6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xcode6.jpg; sourceTree = "<group>"; };
 		14D1C36E1E497BBC00E3F905 /* xcode8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xcode8.png; sourceTree = "<group>"; };
@@ -794,6 +795,7 @@
 				145012061E35C54800BBDEBB /* SwiftGuide.md */,
 				14D1C36C1E4969B600E3F905 /* OSX应用插件开发.md */,
 				14B6568B1E4D5F3900CC45E2 /* bilibili之Mac版ffmpeg依赖编译.md */,
+				14B697F21E4DCA7D00F43C23 /* 用Git将代码恢复到一个历史的版本.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
