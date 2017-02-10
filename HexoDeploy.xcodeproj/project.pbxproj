@@ -442,6 +442,7 @@
 		14B364D21E27389D00D1FB05 /* jquery.fancybox.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.fancybox.js; sourceTree = "<group>"; };
 		14B364D31E27389D00D1FB05 /* jquery.fancybox.pack.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.fancybox.pack.js; sourceTree = "<group>"; };
 		14B364D51E27389D00D1FB05 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		14B6568B1E4D5F3900CC45E2 /* bilibili之Mac版ffmpeg依赖编译.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "bilibili之Mac版ffmpeg依赖编译.md"; sourceTree = "<group>"; };
 		14D1C36C1E4969B600E3F905 /* OSX应用插件开发.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "OSX应用插件开发.md"; sourceTree = "<group>"; };
 		14D1C36D1E4971DB00E3F905 /* xcode6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xcode6.jpg; sourceTree = "<group>"; };
 		14D1C36E1E497BBC00E3F905 /* xcode8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xcode8.png; sourceTree = "<group>"; };
@@ -740,14 +741,14 @@
 			path = tool;
 			sourceTree = "<group>";
 		};
-		142051161E4ABF3E006D86DE /* ln_config */ = {
+		142051161E4ABF3E006D86DE /* ln_config替身 */ = {
 			isa = PBXGroup;
 			children = (
 				142051171E4ABF3E006D86DE /* jacman.yml */,
 				142051181E4ABF3E006D86DE /* maupassant.yml */,
 				142051191E4ABF3E006D86DE /* next.yml */,
 			);
-			name = ln_config;
+			name = "ln_config替身";
 			path = _config;
 			sourceTree = "<group>";
 		};
@@ -755,13 +756,13 @@
 			isa = PBXGroup;
 			children = (
 				149F334E1E0A767600AAC556 /* _config.yml */,
-				142051161E4ABF3E006D86DE /* ln_config */,
+				142051161E4ABF3E006D86DE /* ln_config替身 */,
 				14B364D61E2738FC00D1FB05 /* 主题 */,
 				149F33D71E0A767600AAC556 /* SUMMARY.md */,
 				1407ACAE1E0B8464001D4D65 /* tool */,
 				1407ACA91E0B7547001D4D65 /* CodeSnippets */,
-				14B363EB1E261B0F00D1FB05 /* _drafts */,
-				149F334F1E0A767600AAC556 /* _posts */,
+				14B363EB1E261B0F00D1FB05 /* _drafts草稿 */,
+				149F334F1E0A767600AAC556 /* _posts博文 */,
 				149F337D1E0A767600AAC556 /* about */,
 				149F337F1E0A767600AAC556 /* categories */,
 				149F33821E0A767600AAC556 /* images */,
@@ -771,7 +772,7 @@
 			);
 			sourceTree = "<group>";
 		};
-		149F334F1E0A767600AAC556 /* _posts */ = {
+		149F334F1E0A767600AAC556 /* _posts博文 */ = {
 			isa = PBXGroup;
 			children = (
 				14B363E91E25F9D800D1FB05 /* old */,
@@ -792,7 +793,9 @@
 				145012051E35A64100BBDEBB /* Kindle之ResilioSync索引.md */,
 				145012061E35C54800BBDEBB /* SwiftGuide.md */,
 				14D1C36C1E4969B600E3F905 /* OSX应用插件开发.md */,
+				14B6568B1E4D5F3900CC45E2 /* bilibili之Mac版ffmpeg依赖编译.md */,
 			);
+			name = "_posts博文";
 			path = _posts;
 			sourceTree = "<group>";
 		};
@@ -956,7 +959,7 @@
 			name = old;
 			sourceTree = "<group>";
 		};
-		14B363EB1E261B0F00D1FB05 /* _drafts */ = {
+		14B363EB1E261B0F00D1FB05 /* _drafts草稿 */ = {
 			isa = PBXGroup;
 			children = (
 				14B363F21E26399400D1FB05 /* 2015-12-15-zong-jie.markdown */,
@@ -964,6 +967,7 @@
 				14B363F41E26399400D1FB05 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */,
 				14B363F51E27374700D1FB05 /* 2015-01-20-iapkai-fa-bu-zou.md */,
 			);
+			name = "_drafts草稿";
 			path = _drafts;
 			sourceTree = "<group>";
 		};
