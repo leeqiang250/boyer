@@ -21,6 +21,8 @@ nextURL="https:\/\/huos3203.github.io"
 maupassantURL="http:\/\/huos3203.github.io\/boyer"
 if [ "$themename" == "jacman" ]; then
     echo "站点：coding"
+    sed -i '' "s/url:.*/url: ${nextURL}/g" _config.yml
+    sed -i '' "s/root:.*/root: \//g" _config.yml
 elif [ "$themename" == "next" ]; then
     #主题next
     echo "站点：github"
