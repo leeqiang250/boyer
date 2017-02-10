@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="布衣男儿">
 <meta property="og:description" content="经历：将代码全提交到默认的head分支中，切换分支后，无法找到分支的严重后果：目的：在当前分支上，将代码恢复到一个历史的提交版本上。
 暴力的方式如果仓库是自己在用（不影响别人），那么可以使用git reset --hard &amp;lt;target_commit_id&amp;gt; 来恢复到指定的提交，再用 git push -f 来强制更新远程的分支指针。为了保证万一需要找回历史提交，我们可以先打一个 t">
-<meta property="og:updated_time" content="2017-02-10T10:19:48.000Z">
+<meta property="og:updated_time" content="2017-02-10T10:21:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Git将代码恢复到一个历史的版本">
 <meta name="twitter:description" content="经历：将代码全提交到默认的head分支中，切换分支后，无法找到分支的严重后果：目的：在当前分支上，将代码恢复到一个历史的提交版本上。
@@ -98,7 +98,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#暴力的方式"><span class="toc-number">1.</span> <span class="toc-text">暴力的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#温柔的方式"><span class="toc-number">1.0.1.</span> <span class="toc-text">温柔的方式</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#暴力的方式"><span class="toc-number">1.</span> <span class="toc-text">暴力的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#温柔的方式"><span class="toc-number">2.</span> <span class="toc-text">温柔的方式</span></a></li></ol>
 		
 		</div>
 		
@@ -109,7 +109,7 @@
 <li>第二步：根据上面的sh2值，回滚：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset  —hard  a1d09fd</div></pre></td></tr></table></figure>
 这样就可以找回代码.</li>
 </ol>
-<h4 id="温柔的方式"><a href="#温柔的方式" class="headerlink" title="温柔的方式"></a>温柔的方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#回滚</div><div class="line">git reset  —hard  a1d09fd</div><div class="line">#将当前代码切换回最新的提交</div><div class="line">git reset --soft origin/source</div></pre></td></tr></table></figure>
+<h2 id="温柔的方式"><a href="#温柔的方式" class="headerlink" title="温柔的方式"></a>温柔的方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#回滚</div><div class="line">git reset  —hard  a1d09fd</div><div class="line">#将当前代码切换回最新的提交</div><div class="line">git reset --soft origin/source</div></pre></td></tr></table></figure>
 <p>此时工作区变成了历史的提交内容，这个时候用 <code>git add</code> 和 <code>git commit</code> 即可.</p>
   
 	</div>
@@ -192,7 +192,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#暴力的方式"><span class="toc-number">1.</span> <span class="toc-text">暴力的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#温柔的方式"><span class="toc-number">1.0.1.</span> <span class="toc-text">温柔的方式</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#暴力的方式"><span class="toc-number">1.</span> <span class="toc-text">暴力的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#温柔的方式"><span class="toc-number">2.</span> <span class="toc-text">温柔的方式</span></a></li></ol>
  
   </div>
 
@@ -325,7 +325,7 @@
 			
 		
 			
-				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
 			
 		
 			
@@ -333,11 +333,15 @@
 			
 		
 			
-				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/svn/" title="svn">svn<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/书籍/" title="书籍">书籍<sup>2</sup></a></li>
 			
 		
 			
@@ -353,15 +357,11 @@
 			
 		
 			
-				<li><a href="/tags/书籍/" title="书籍">书籍<sup>2</sup></a></li>
+				<li><a href="/tags/测试/" title="测试">测试<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/概念/" title="概念">概念<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/IOS7/" title="IOS7">IOS7<sup>1</sup></a></li>
+				<li><a href="/tags/octopress/" title="octopress">octopress<sup>1</sup></a></li>
 			
 		
 		</ul>
