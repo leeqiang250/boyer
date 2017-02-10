@@ -1,4 +1,108 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="不物喜，不己悲，善假物，易参行！"><title>用Git将代码恢复到一个历史的版本 | 布衣男儿</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/boyer/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/boyer/favicon.ico"><link rel="apple-touch-icon" href="/boyer/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/boyer/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/boyer/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">用Git将代码恢复到一个历史的版本</h1><a id="logo" href="/boyer/.">布衣男儿</a><p class="description">不物喜，不己悲，善假物，易参行！</p></div><div id="nav-menu"><a href="/boyer/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/boyer/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/boyer/about/"><i class="fa fa-user"> 关于</i></a><a href="/boyer/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">用Git将代码恢复到一个历史的版本</h1><div class="post-meta">Feb 10, 2017<span> | </span><span class="category"><a href="/boyer/categories/git/">git</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2017/02/10/用Git将代码恢复到一个历史的版本/" href="/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/#comments" class="ds-thread-count"></a><div class="post-content"><p>经历：将代码全提交到默认的head分支中，切换分支后，无法找到分支的严重后果：<br>目的：在当前分支上，将代码恢复到一个历史的提交版本上。</p>
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>用Git将代码恢复到一个历史的版本 | 布衣男儿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="boyer">
+    
+
+    
+    <meta name="description" content="经历：将代码全提交到默认的head分支中，切换分支后，无法找到分支的严重后果：目的：在当前分支上，将代码恢复到一个历史的提交版本上。
+暴力的方式如果仓库是自己在用（不影响别人），那么可以使用git reset --hard &amp;lt;target_commit_id&amp;gt; 来恢复到指定的提交，再用 git push -f 来强制更新远程的分支指针。为了保证万一需要找回历史提交，我们可以先打一个 t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Git将代码恢复到一个历史的版本">
+<meta property="og:url" content="https://huos3203.github.io/2017/02/10/用Git将代码恢复到一个历史的版本/index.html">
+<meta property="og:site_name" content="布衣男儿">
+<meta property="og:description" content="经历：将代码全提交到默认的head分支中，切换分支后，无法找到分支的严重后果：目的：在当前分支上，将代码恢复到一个历史的提交版本上。
+暴力的方式如果仓库是自己在用（不影响别人），那么可以使用git reset --hard &amp;lt;target_commit_id&amp;gt; 来恢复到指定的提交，再用 git push -f 来强制更新远程的分支指针。为了保证万一需要找回历史提交，我们可以先打一个 t">
+<meta property="og:updated_time" content="2017-02-10T10:29:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Git将代码恢复到一个历史的版本">
+<meta name="twitter:description" content="经历：将代码全提交到默认的head分支中，切换分支后，无法找到分支的严重后果：目的：在当前分支上，将代码恢复到一个历史的提交版本上。
+暴力的方式如果仓库是自己在用（不影响别人），那么可以使用git reset --hard &amp;lt;target_commit_id&amp;gt; 来恢复到指定的提交，再用 git push -f 来强制更新远程的分支指针。为了保证万一需要找回历史提交，我们可以先打一个 t">
+
+    
+    <link rel="alternative" href="/atom.xml" title="布衣男儿" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="布衣男儿" title="布衣男儿"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
+				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= SE_zzsearchcode_shhzc78w ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/02/10/用Git将代码恢复到一个历史的版本/" title="用Git将代码恢复到一个历史的版本" itemprop="url">用Git将代码恢复到一个历史的版本</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="boyer" target="_blank" itemprop="author">boyer</a>
+		
+  <p class="article-time">
+    <time datetime="2017-02-10T10:19:48.000Z" itemprop="datePublished"> 发表于 2017-02-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#暴力的方式"><span class="toc-number">1.</span> <span class="toc-text">暴力的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#温柔的方式"><span class="toc-number">2.</span> <span class="toc-text">温柔的方式</span></a></li></ol>
+		
+		</div>
+		
+		<p>经历：将代码全提交到默认的head分支中，切换分支后，无法找到分支的严重后果：<br>目的：在当前分支上，将代码恢复到一个历史的提交版本上。</p>
 <h2 id="暴力的方式"><a href="#暴力的方式" class="headerlink" title="暴力的方式"></a>暴力的方式</h2><p>如果仓库是自己在用（不影响别人），那么可以使用<code>git reset --hard &lt;target_commit_id&gt;</code> 来恢复到指定的提交，再用 git push -f 来强制更新远程的分支指针。为了保证万一需要找回历史提交，我们可以先打一个 tag 来备份。</p>
 <ol>
 <li>第一步：查看本地的索引的提交日志：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git reflog 		</div><div class="line">a1d09fd HEAD@&#123;0&#125;: checkout: moving from all to master</div><div class="line">a1d09fd HEAD@&#123;1&#125;: checkout: moving from master to all</div><div class="line">a1d09fd HEAD@&#123;2&#125;: checkout: moving from HEAD to master</div><div class="line">a1d09fd HEAD@&#123;3&#125;: checkout: moving from all to HEAD</div></pre></td></tr></table></figure></li>
@@ -7,19 +111,609 @@
 </ol>
 <h2 id="温柔的方式"><a href="#温柔的方式" class="headerlink" title="温柔的方式"></a>温柔的方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#回滚</div><div class="line">git reset  —hard  a1d09fd</div><div class="line">#将当前代码切换回最新的提交</div><div class="line">git reset --soft origin/source</div></pre></td></tr></table></figure>
 <p>此时工作区变成了历史的提交内容，这个时候用 <code>git add</code> 和 <code>git commit</code> 即可.</p>
-</div><script type="text/javascript" src="/boyer/js/share.js?v=0.0.0" async></script><a data-url="http://huos3203.github.io/boyer/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/" data-id="ciyzo15wj004k932llta54o85" class="article-share-link">分享到</a><div class="tags"><a href="/boyer/tags/工具/">工具</a><a href="/boyer/tags/git/">git</a><a href="/boyer/tags/语法/">语法</a></div><div class="post-nav"><a href="/boyer/2017/02/10/bilibili之Mac版ffmpeg依赖编译/" class="next">bilibiliForMac版之mpv依赖编译</a></div><div data-thread-key="2017/02/10/用Git将代码恢复到一个历史的版本/" data-title="用Git将代码恢复到一个历史的版本" data-url="http://huos3203.github.io/boyer/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2017/02/10/用Git将代码恢复到一个历史的版本/" data-title="用Git将代码恢复到一个历史的版本" data-url="http://huos3203.github.io/boyer/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://huos3203.github.io/boyer"/></form></div><div class="widget"><input placeholder="Search" type="text" class="st-default-search-input"/></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/CI/">CI</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/Octopress/">Octopress</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/Swift/">Swift</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/macOS/">macOS</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/ruby/">ruby</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/直播/">直播</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/管理/">管理</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/资源/">资源</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/骗局/">骗局</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/boyer/tags/UI/" style="font-size: 15px;">UI</a> <a href="/boyer/tags/内购/" style="font-size: 15px;">内购</a> <a href="/boyer/tags/中关村/" style="font-size: 15px;">中关村</a> <a href="/boyer/tags/被骗/" style="font-size: 15px;">被骗</a> <a href="/boyer/tags/iPhone6/" style="font-size: 15px;">iPhone6</a> <a href="/boyer/tags/iPhone5s/" style="font-size: 15px;">iPhone5s</a> <a href="/boyer/tags/IOS7/" style="font-size: 15px;">IOS7</a> <a href="/boyer/tags/octopress/" style="font-size: 15px;">octopress</a> <a href="/boyer/tags/blog/" style="font-size: 15px;">blog</a> <a href="/boyer/tags/github/" style="font-size: 15px;">github</a> <a href="/boyer/tags/mou/" style="font-size: 15px;">mou</a> <a href="/boyer/tags/ruby/" style="font-size: 15px;">ruby</a> <a href="/boyer/tags/设备/" style="font-size: 15px;">设备</a> <a href="/boyer/tags/Storyboard/" style="font-size: 15px;">Storyboard</a> <a href="/boyer/tags/工具/" style="font-size: 15px;">工具</a> <a href="/boyer/tags/TextKit/" style="font-size: 15px;">TextKit</a> <a href="/boyer/tags/案例/" style="font-size: 15px;">案例</a> <a href="/boyer/tags/概念/" style="font-size: 15px;">概念</a> <a href="/boyer/tags/转场/" style="font-size: 15px;">转场</a> <a href="/boyer/tags/协议/" style="font-size: 15px;">协议</a> <a href="/boyer/tags/scheme/" style="font-size: 15px;">scheme</a> <a href="/boyer/tags/git/" style="font-size: 15px;">git</a> <a href="/boyer/tags/坑/" style="font-size: 15px;">坑</a> <a href="/boyer/tags/socket/" style="font-size: 15px;">socket</a> <a href="/boyer/tags/AutoLayout/" style="font-size: 15px;">AutoLayout</a> <a href="/boyer/tags/布局/" style="font-size: 15px;">布局</a> <a href="/boyer/tags/指南/" style="font-size: 15px;">指南</a> <a href="/boyer/tags/TDD/" style="font-size: 15px;">TDD</a> <a href="/boyer/tags/BDD/" style="font-size: 15px;">BDD</a> <a href="/boyer/tags/加密/" style="font-size: 15px;">加密</a> <a href="/boyer/tags/gitLab/" style="font-size: 15px;">gitLab</a> <a href="/boyer/tags/搭建/" style="font-size: 15px;">搭建</a> <a href="/boyer/tags/脚本/" style="font-size: 15px;">脚本</a> <a href="/boyer/tags/安装/" style="font-size: 15px;">安装</a> <a href="/boyer/tags/gitBook/" style="font-size: 15px;">gitBook</a> <a href="/boyer/tags/测试/" style="font-size: 15px;">测试</a> <a href="/boyer/tags/截屏/" style="font-size: 15px;">截屏</a> <a href="/boyer/tags/语法/" style="font-size: 15px;">语法</a> <a href="/boyer/tags/Scrum/" style="font-size: 15px;">Scrum</a> <a href="/boyer/tags/小米路由/" style="font-size: 15px;">小米路由</a> <a href="/boyer/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/boyer/tags/混编/" style="font-size: 15px;">混编</a> <a href="/boyer/tags/管理/" style="font-size: 15px;">管理</a> <a href="/boyer/tags/svn/" style="font-size: 15px;">svn</a> <a href="/boyer/tags/AR/" style="font-size: 15px;">AR</a> <a href="/boyer/tags/LBS-AR/" style="font-size: 15px;">LBS+AR</a> <a href="/boyer/tags/QQ红包/" style="font-size: 15px;">QQ红包</a> <a href="/boyer/tags/数据库/" style="font-size: 15px;">数据库</a> <a href="/boyer/tags/realm/" style="font-size: 15px;">realm</a> <a href="/boyer/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/boyer/tags/汇总/" style="font-size: 15px;">汇总</a> <a href="/boyer/tags/资源/" style="font-size: 15px;">资源</a> <a href="/boyer/tags/安全/" style="font-size: 15px;">安全</a> <a href="/boyer/tags/kindle/" style="font-size: 15px;">kindle</a> <a href="/boyer/tags/书籍/" style="font-size: 15px;">书籍</a> <a href="/boyer/tags/命令/" style="font-size: 15px;">命令</a> <a href="/boyer/tags/插件/" style="font-size: 15px;">插件</a> <a href="/boyer/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/boyer/tags/objc/" style="font-size: 15px;">objc</a> <a href="/boyer/tags/swift/" style="font-size: 15px;">swift</a> <a href="/boyer/tags/编译/" style="font-size: 15px;">编译</a> <a href="/boyer/tags/ffmpeg/" style="font-size: 15px;">ffmpeg</a> <a href="/boyer/tags/mpv/" style="font-size: 15px;">mpv</a> <a href="/boyer/tags/shell/" style="font-size: 15px;">shell</a> <a href="/boyer/tags/面试/" style="font-size: 15px;">面试</a> <a href="/boyer/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/boyer/tags/直播/" style="font-size: 15px;">直播</a> <a href="/boyer/tags/腾讯云/" style="font-size: 15px;">腾讯云</a> <a href="/boyer/tags/集成/" style="font-size: 15px;">集成</a> <a href="/boyer/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/boyer/tags/git-svn/" style="font-size: 15px;">git-svn</a> <a href="/boyer/tags/targets/" style="font-size: 15px;">targets</a> <a href="/boyer/tags/ResilioSync/" style="font-size: 15px;">ResilioSync</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/">用Git将代码恢复到一个历史的版本</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/10/bilibili之Mac版ffmpeg依赖编译/">bilibiliForMac版之mpv依赖编译</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/07/OSX应用插件开发/">OSX 应用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/01/23/Hexo标签插件/">Hexo标签插件</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/01/23/Kindle之ResilioSync索引/">Kindle之Resilio Sync索引</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/01/23/Kindle资源/">Kindle114 资源集[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/01/22/AR开发资料汇/">AR 开发资料汇[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/01/22/iOS面试题大集合/">iOS面试题大集合[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/01/22/AwsomeAppleDevelopGuide/">Awsome Apple Develop Guide[转]</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/01/22/腾讯云之小直播开发/">腾讯云之小直播开发</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" title="swift文档" target="_blank">swift文档</a><ul></ul><a href="https://www.objccn.io" title="objc中国" target="_blank">objc中国</a><ul></ul><a href="http://nshipster.cn" title="NSHipster" target="_blank">NSHipster</a><ul></ul><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" title="动画" target="_blank">动画</a><ul></ul><a href="https://git-scm.com/book/zh" title="Git Pro" target="_blank">Git Pro</a><ul></ul><a href="http://kaopu.so/pan" title="全盘搜" target="_blank">全盘搜</a><ul></ul><a href="https://mp.weixin.qq.com" title="小程序官方" target="_blank">小程序官方</a><ul></ul><a href="https://onevcat.com" title="王维" target="_blank">王维</a><ul></ul><a href="http://blog.devtang.com" title="唐巧" target="_blank">唐巧</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/boyer/." rel="nofollow">布衣男儿.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/boyer/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/boyer/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/boyer/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'huo3203'};
-(function() {
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/git/">git</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/工具/">工具</a><a href="/tags/git/">git</a><a href="/tags/语法/">语法</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"1791281385"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/02/10/bilibili之Mac版ffmpeg依赖编译/"  title="bilibiliForMac版之mpv依赖编译">
+ <strong>下一篇：</strong><br/> 
+ <span>bilibiliForMac版之mpv依赖编译
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/02/10/用Git将代码恢复到一个历史的版本/" data-title="用Git将代码恢复到一个历史的版本" data-url="https://huos3203.github.io/2017/02/10/用Git将代码恢复到一个历史的版本/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#暴力的方式"><span class="toc-number">1.</span> <span class="toc-text">暴力的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#温柔的方式"><span class="toc-number">2.</span> <span class="toc-text">温柔的方式</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CI/" title="CI">CI<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Octopress/" title="Octopress">Octopress<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Swift/" title="Swift">Swift<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Xcode/" title="Xcode">Xcode<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/docker/" title="docker">docker<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ruby/" title="ruby">ruby<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小程序/" title="小程序">小程序<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/直播/" title="直播">直播<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/管理/" title="管理">管理<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/资源/" title="资源">资源<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/骗局/" title="骗局">骗局<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/语法/" title="语法">语法<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/资源/" title="资源">资源<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/搭建/" title="搭建">搭建<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/管理/" title="管理">管理<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/汇总/" title="汇总">汇总<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/svn/" title="svn">svn<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/kindle/" title="kindle">kindle<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/书籍/" title="书籍">书籍<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/案例/" title="案例">案例<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/转场/" title="转场">转场<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/AutoLayout/" style="font-size: 10px;">AutoLayout</a> <a href="/tags/BDD/" style="font-size: 11.67px;">BDD</a> <a href="/tags/IOS7/" style="font-size: 10px;">IOS7</a> <a href="/tags/LBS-AR/" style="font-size: 10px;">LBS+AR</a> <a href="/tags/QQ红包/" style="font-size: 10px;">QQ红包</a> <a href="/tags/ResilioSync/" style="font-size: 10px;">ResilioSync</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Scrum/" style="font-size: 10px;">Scrum</a> <a href="/tags/Storyboard/" style="font-size: 13.33px;">Storyboard</a> <a href="/tags/TDD/" style="font-size: 11.67px;">TDD</a> <a href="/tags/TextKit/" style="font-size: 11.67px;">TextKit</a> <a href="/tags/UI/" style="font-size: 11.67px;">UI</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/git-svn/" style="font-size: 10px;">git-svn</a> <a href="/tags/gitBook/" style="font-size: 10px;">gitBook</a> <a href="/tags/gitLab/" style="font-size: 10px;">gitLab</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iPhone5s/" style="font-size: 10px;">iPhone5s</a> <a href="/tags/iPhone6/" style="font-size: 10px;">iPhone6</a> <a href="/tags/kindle/" style="font-size: 11.67px;">kindle</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/mou/" style="font-size: 10px;">mou</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/objc/" style="font-size: 10px;">objc</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/realm/" style="font-size: 10px;">realm</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/scheme/" style="font-size: 10px;">scheme</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/svn/" style="font-size: 11.67px;">svn</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/targets/" style="font-size: 10px;">targets</a> <a href="/tags/中关村/" style="font-size: 10px;">中关村</a> <a href="/tags/书籍/" style="font-size: 11.67px;">书籍</a> <a href="/tags/内购/" style="font-size: 10px;">内购</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/协议/" style="font-size: 13.33px;">协议</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/坑/" style="font-size: 13.33px;">坑</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/小米路由/" style="font-size: 10px;">小米路由</a> <a href="/tags/工具/" style="font-size: 20px;">工具</a> <a href="/tags/布局/" style="font-size: 10px;">布局</a> <a href="/tags/截屏/" style="font-size: 11.67px;">截屏</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/搭建/" style="font-size: 15px;">搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/汇总/" style="font-size: 13.33px;">汇总</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/混编/" style="font-size: 10px;">混编</a> <a href="/tags/直播/" style="font-size: 10px;">直播</a> <a href="/tags/管理/" style="font-size: 13.33px;">管理</a> <a href="/tags/编译/" style="font-size: 10px;">编译</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/腾讯云/" style="font-size: 10px;">腾讯云</a> <a href="/tags/被骗/" style="font-size: 10px;">被骗</a> <a href="/tags/设备/" style="font-size: 10px;">设备</a> <a href="/tags/语法/" style="font-size: 18.33px;">语法</a> <a href="/tags/资源/" style="font-size: 16.67px;">资源</a> <a href="/tags/转场/" style="font-size: 10px;">转场</a> <a href="/tags/集成/" style="font-size: 10px;">集成</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+
+  <div class="weixin">
+<p class="asidetitle">微信公众号</p>
+<img src=/img/weixinimg.jpg width="230px" />
+</div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+<iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=1&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1791281385&verifier=8c6f2d1f&dpc=1"></iframe>
+</div>
+
+
+  <div class="earth">
+<p class="asidetitle">访客地图</p>
+<script type="text/javascript" src="http://jg.revolvermaps.com/2/4.js?i=6j7ij8f0xzy&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=35" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" target="_blank" title="swift文档">swift文档</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.objccn.io" target="_blank" title="objc中国">objc中国</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://nshipster.cn" target="_blank" title="NSHipster">NSHipster</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" title="动画">动画</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://git-scm.com/book/zh" target="_blank" title="Git Pro">Git Pro</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kaopu.so/pan" target="_blank" title="全盘搜">全盘搜</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://mp.weixin.qq.com" target="_blank" title="小程序官方">小程序官方</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://onevcat.com" target="_blank" title="王维">王维</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.devtang.com" target="_blank" title="唐巧">唐巧</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 嗨，见文如晤，多多指教. <br/>
+			粗浅见解，修葺成文，盼广交同道中人.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1791281385" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/huos3203" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/6211905" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		<a href="https://www.linkedin.com/in/boyerswift" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/boyers" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/boyers" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:724987481@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="boyer">boyer</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"huo3203"};
+  (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.src = '//static.duoshuo.com/embed.js';
     ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
-_st('install','dazsKTijnsz_zi-bXB3t','2.0.0');
-</script><script type="text/javascript" src="/boyer/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/boyer/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+
+<!--百度统计 coding-->
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+
+<!--百度统计 github-->
+  var hmgit = document.createElement("script");
+  hmgit.src = "//hm.baidu.com/hm.js?cda1b75e08a0a3e897aa6f92112910b4";
+  var sgit = document.getElementsByTagName("script")[0];
+  sgit.parentNode.insertBefore(hmgit, sgit);
+
+})();
+
+
+</script>
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
