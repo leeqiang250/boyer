@@ -2326,7 +2326,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#修改更新时间\nsh tool/postsUpdated.sh\n";
+			shellScript = "#修改更新时间\nsh tool/postsUpdated.sh";
 		};
 		149F334C1E0A74BD00AAC556 /* hexo */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2368,7 +2368,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh\n";
+			shellScript = "#pwd\n#把Hexo设置文件改为版本库中设置文件\nsh tool/setup_config.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 

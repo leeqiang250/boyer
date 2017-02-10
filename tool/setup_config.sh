@@ -12,9 +12,9 @@ themeLine=$(cat _config.yml | grep 'theme: ') # 替换当前主题
 sed -i '' "s/${themeLine}/theme: ${themename}/g" _config.yml
 
 #重置站点库
-sed -i '' "s/.*next:/#next:/g" _config.yml
-sed -i '' "s/.*maupassant:/#maupassant:/g" _config.yml
-sed -i '' "s/.*jacman:/#jacman:/g" _config.yml
+sed -i '' "s/.*next:/        #next:/g" _config.yml
+sed -i '' "s/.*maupassant:/        #maupassant:/g" _config.yml
+sed -i '' "s/.*jacman:/        #jacman:/g" _config.yml
 
 #打印站点名称
 nextURL="https:\/\/huos3203.github.io"
@@ -40,6 +40,8 @@ echo "$logtheme ----"
 
 ### 进入boyers根目录即：存在_config.yml的目录 ####
 cd ../
+ln -fs ${SRC_HOME}/_config.yml `pwd`/_config.yml
+
 if [ -f _config.yml.backup ]; then
     echo "_config.yml已经备份过"
 else
