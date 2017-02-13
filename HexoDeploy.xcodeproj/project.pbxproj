@@ -106,6 +106,10 @@
 		142051181E4ABF3E006D86DE /* maupassant.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = maupassant.yml; sourceTree = "<group>"; };
 		142051191E4ABF3E006D86DE /* next.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = next.yml; sourceTree = "<group>"; };
 		142051221E4B2720006D86DE /* maupassant.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = maupassant.jpg; sourceTree = "<group>"; };
+		143217551E518F5100FEE010 /* 需求速记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "需求速记.jpg"; sourceTree = "<group>"; };
+		143217571E51A8EB00FEE010 /* 读书笔记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "读书笔记.jpg"; sourceTree = "<group>"; };
+		143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "思维导图之开发实践篇.md"; sourceTree = "<group>"; };
+		143217591E51AD4800FEE010 /* 6w1h.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6w1h.jpg; sourceTree = "<group>"; };
 		145012011E3455C200BBDEBB /* AR开发资料汇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AR开发资料汇.md"; sourceTree = "<group>"; };
 		145012021E34588200BBDEBB /* AwsomeAppleDevelopGuide.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = AwsomeAppleDevelopGuide.md; sourceTree = "<group>"; };
 		145012031E345AA100BBDEBB /* iOS面试题大集合.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "iOS面试题大集合.md"; sourceTree = "<group>"; };
@@ -152,7 +156,7 @@
 		149F33711E0A767600AAC556 /* 2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown"; sourceTree = "<group>"; };
 		149F33731E0A767600AAC556 /* 2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown"; sourceTree = "<group>"; };
 		149F33751E0A767600AAC556 /* 2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown"; sourceTree = "<group>"; };
-		149F33761E0A767600AAC556 /* 2016-01-07-gtdru-men.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2016-01-07-gtdru-men.markdown"; sourceTree = "<group>"; };
+		149F33761E0A767600AAC556 /* GTD任务清单整理技巧.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "GTD任务清单整理技巧.markdown"; sourceTree = "<group>"; };
 		149F33781E0A767600AAC556 /* hackmd使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "hackmd使用.md"; sourceTree = "<group>"; };
 		149F33791E0A767600AAC556 /* gitbook+Hexo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "gitbook+Hexo.md"; sourceTree = "<group>"; };
 		149F337A1E0A767600AAC556 /* Hexo-hello-world.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Hexo-hello-world.md"; sourceTree = "<group>"; };
@@ -193,7 +197,6 @@
 		149F33A11E0A767600AAC556 /* noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise.png; sourceTree = "<group>"; };
 		149F33A21E0A767600AAC556 /* NotepadWithDynamicType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotepadWithDynamicType.png; sourceTree = "<group>"; };
 		149F33A31E0A767600AAC556 /* QbMJNrM.png!web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QbMJNrM.png!web.png"; sourceTree = "<group>"; };
-		149F33A41E0A767600AAC556 /* QQ20160114-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQ20160114-0.png"; sourceTree = "<group>"; };
 		149F33A51E0A767600AAC556 /* QQ20160114-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQ20160114-1.png"; sourceTree = "<group>"; };
 		149F33A61E0A767600AAC556 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		149F33A71E0A767600AAC556 /* rss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rss.png; sourceTree = "<group>"; };
@@ -720,6 +723,9 @@
 		8451A3C11E2908D100301CE2 /* .jshintrc */ = {isa = PBXFileReference; lastKnownFileType = text; path = .jshintrc; sourceTree = "<group>"; };
 		8451A3C21E2908D100301CE2 /* helpers.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = helpers.js; sourceTree = "<group>"; };
 		8451A3C31E2908D100301CE2 /* intern.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = intern.js; sourceTree = "<group>"; };
+		8461D4DA1E5010F6008CC6CE /* Java​Script​Core实现swift混编.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Java​Script​Core实现swift混编.md"; sourceTree = "<group>"; };
+		8461D4DB1E5016F1008CC6CE /* JSValueType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JSValueType.png; sourceTree = "<group>"; };
+		8461D4DC1E502B81008CC6CE /* JavaScriptCore实战.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScriptCore实战.md"; sourceTree = "<group>"; };
 		84EC55EE1E0D645E004F71A4 /* daoshell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daoshell.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -796,6 +802,9 @@
 				14D1C36C1E4969B600E3F905 /* OSX应用插件开发.md */,
 				14B6568B1E4D5F3900CC45E2 /* bilibili之Mac版ffmpeg依赖编译.md */,
 				14B697F21E4DCA7D00F43C23 /* 用Git将代码恢复到一个历史的版本.md */,
+				8461D4DA1E5010F6008CC6CE /* Java​Script​Core实现swift混编.md */,
+				8461D4DC1E502B81008CC6CE /* JavaScriptCore实战.md */,
+				143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
@@ -820,6 +829,10 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				143217591E51AD4800FEE010 /* 6w1h.jpg */,
+				143217571E51A8EB00FEE010 /* 读书笔记.jpg */,
+				143217551E518F5100FEE010 /* 需求速记.jpg */,
+				8461D4DB1E5016F1008CC6CE /* JSValueType.png */,
 				14D1C36E1E497BBC00E3F905 /* xcode8.png */,
 				142051221E4B2720006D86DE /* maupassant.jpg */,
 				14D1C36D1E4971DB00E3F905 /* xcode6.jpg */,
@@ -857,7 +870,6 @@
 				149F33A11E0A767600AAC556 /* noise.png */,
 				149F33A21E0A767600AAC556 /* NotepadWithDynamicType.png */,
 				149F33A31E0A767600AAC556 /* QbMJNrM.png!web.png */,
-				149F33A41E0A767600AAC556 /* QQ20160114-0.png */,
 				149F33A51E0A767600AAC556 /* QQ20160114-1.png */,
 				149F33A61E0A767600AAC556 /* README.md */,
 				149F33A71E0A767600AAC556 /* rss.png */,
@@ -956,7 +968,7 @@
 				149F33711E0A767600AAC556 /* 2015-12-01-ocyu-swiftxiang-hu-diao-yong.markdown */,
 				149F33731E0A767600AAC556 /* 2015-12-16-realmshu-ju-ku-yin-qing-swift.markdown */,
 				149F33751E0A767600AAC556 /* 2016-01-05-git-svnqiao-jie-ming-ling-de-ji-chu.markdown */,
-				149F33761E0A767600AAC556 /* 2016-01-07-gtdru-men.markdown */,
+				149F33761E0A767600AAC556 /* GTD任务清单整理技巧.markdown */,
 			);
 			name = old;
 			sourceTree = "<group>";
