@@ -22,7 +22,7 @@
 
 如何从 JavaScrip">
 <meta property="og:image" content="https://huos3203.github.io/images/JSValueType.png">
-<meta property="og:updated_time" content="2017-02-12T06:41:35.000Z">
+<meta property="og:updated_time" content="2017-02-13T09:34:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java​Script​Core实现swift混编">
 <meta name="twitter:description" content="OS X Mavericks 和 iOS 7 引入了 JavaScriptCore 库，它把 WebKit 的 JavaScript 引擎用 Objective-C 封装，提供了简单，快速以及安全的方式接入世界上最流行的语言。不管你爱它还是恨它，JavaScript 的普遍存在使得程序员、工具以及融合到 OS X 和 iOS 里这样超快的虚拟机中资源的使用都大幅增长。
@@ -103,7 +103,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScriptCore概览"><span class="toc-number">1.</span> <span class="toc-text">JavaScriptCore概览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSContext"><span class="toc-number">1.1.</span> <span class="toc-text">JSContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSValue"><span class="toc-number">1.2.</span> <span class="toc-text">JSValue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用下标取值"><span class="toc-number">1.3.</span> <span class="toc-text">使用下标取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用方法"><span class="toc-number">1.4.</span> <span class="toc-text">调用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exceptionHandler错误处理"><span class="toc-number">1.5.</span> <span class="toc-text">exceptionHandler错误处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-调用"><span class="toc-number">2.</span> <span class="toc-text">JavaScript 调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blocks和标示符封装为JavaScript函数"><span class="toc-number">2.1.</span> <span class="toc-text">Blocks和标示符封装为JavaScript函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存管理"><span class="toc-number">2.1.1.</span> <span class="toc-text">内存管理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSExport-协议"><span class="toc-number">2.2.</span> <span class="toc-text">JSExport 协议</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#swift通过JSContext调用JavaScript"><span class="toc-number">1.</span> <span class="toc-text">swift通过JSContext调用JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSContext"><span class="toc-number">1.1.</span> <span class="toc-text">JSContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSValue"><span class="toc-number">1.2.</span> <span class="toc-text">JSValue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用下标取值"><span class="toc-number">1.3.</span> <span class="toc-text">使用下标取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用方法"><span class="toc-number">1.4.</span> <span class="toc-text">调用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exceptionHandler错误处理"><span class="toc-number">1.5.</span> <span class="toc-text">exceptionHandler错误处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-通过JSContext调用-swift／OC"><span class="toc-number">2.</span> <span class="toc-text">JavaScript 通过JSContext调用 swift／OC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blocks和标示符封装为JavaScript函数"><span class="toc-number">2.1.</span> <span class="toc-text">Blocks和标示符封装为JavaScript函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存管理"><span class="toc-number">2.1.1.</span> <span class="toc-text">内存管理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSExport-协议"><span class="toc-number">2.2.</span> <span class="toc-text">JSExport 协议</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -112,7 +112,7 @@
 <li>如何从 <code>JavaScript 环境</code>中提取值以及如何调用其中定义的函数?</li>
 <li>那么反向呢？怎样从 <code>JavaScript</code> 访问我们在 <code>Objective-C</code>或 <code>Swift</code> 定义的对象和方法？</li>
 </ol>
-<h2 id="JavaScriptCore概览"><a href="#JavaScriptCore概览" class="headerlink" title="JavaScriptCore概览"></a>JavaScriptCore概览</h2><p>如何从 <code>JavaScript 环境</code>中提取值以及如何调用其中定义的函数?</p>
+<h2 id="swift通过JSContext调用JavaScript"><a href="#swift通过JSContext调用JavaScript" class="headerlink" title="swift通过JSContext调用JavaScript"></a>swift通过JSContext调用JavaScript</h2><p>如何从 <code>JavaScript 环境</code>中提取值以及如何调用其中定义的函数?</p>
 <h3 id="JSContext"><a href="#JSContext" class="headerlink" title="JSContext"></a>JSContext</h3><p><code>JSContext</code> 是运行 <code>JavaScript</code> 代码的环境。一个 <code>JSContext</code> 是一个全局环境的实例，如果你写过一个在浏览器内运行的 <code>JavaScript</code>，<code>JSContext</code> 类似于 <code>window</code>。创建一个 <code>JSContext</code> 后，可以很容易地运行 <code>JavaScript</code> 代码来<code>创建变量</code>，<code>做计算</code>，甚至<code>定义方法</code>：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> context = <span class="type">JSContext</span>()    <span class="comment">//创建全局环境</span></div><div class="line">context.evaluateScript(<span class="string">"var num = 5 + 5"</span>) <span class="comment">//计算</span></div><div class="line">context.evaluateScript(<span class="string">"var names = ['Grace', 'Ada', 'Margaret']"</span>) <span class="comment">//定义变量</span></div><div class="line">context.evaluateScript(<span class="string">"var triple = function(value) &#123; return value * 3 &#125;"</span>) <span class="comment">//定义方法</span></div><div class="line"><span class="keyword">let</span> tripleNum: <span class="type">JSValue</span> = context.evaluateScript(<span class="string">"triple(num)"</span>)  </div></pre></td></tr></table></figure></p>
 <h3 id="JSValue"><a href="#JSValue" class="headerlink" title="JSValue"></a>JSValue</h3><p>获取<code>tripleNum</code>值：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">println</span>(<span class="string">"Tripled: \(tripleNum.toInt32())"</span>)</div></pre></td></tr></table></figure><br>任何出自 <code>JSContext</code> 的值都被包裹在一个 <code>JSValue</code> 对象中。像 <code>JavaScript</code> 这样的动态语言需要一个动态类型，所以 <code>JSValue</code> 包装了每一个可能的 <code>JavaScript 值</code>：字符串和数字；数组、对象和方法；甚至错误和特殊的 JavaScript 值诸如 <code>null</code> 和 <code>undefined</code>。<br><code>JSValue</code> 包括一系列方法用于访问其可能的值以保证有正确的 Foundation 基本类型，包括：<br><img src="/images/JSValueType.png"></p>
 <h3 id="使用下标取值"><a href="#使用下标取值" class="headerlink" title="使用下标取值"></a>使用下标取值</h3><p><code>JSContext</code> 和 <code>JSValue</code> 实例使用下标的方式访问我们之前创建的 <code>context</code> 的任何值。<br>    <code>JSContext</code>：需要一个字符串下标<br>    <code>JSValue</code>：允许使用<code>字符串</code>或<code>整数</code>标来得到里面的对象和数组<br>举例：</p>
@@ -126,8 +126,7 @@
 </blockquote>
 <h3 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h3><p><code>JSValue</code> 包装了一个 JavaScript 函数:<code>triple</code>，我们可以从 <code>Objective-C / Swift</code> 代码中使用 <code>Foundation基本类型</code>作为参数来直接调用该函数。再次，<code>JavaScriptCore</code> 很轻松的处理了这个桥接：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line"><span class="keyword">let</span> tripleFunction = context.objectForKeyedSubscript(<span class="string">"triple"</span>) <span class="comment">//下标取值</span></div><div class="line"><span class="keyword">let</span> result = tripleFunction.callWithArguments([<span class="number">5</span>]) <span class="comment">//传入基本类型参数直接调用</span></div><div class="line"><span class="built_in">println</span>(<span class="string">"Five tripled: \(result.toInt32())"</span>)</div></pre></td></tr></table></figure></p>
 <h3 id="exceptionHandler错误处理"><a href="#exceptionHandler错误处理" class="headerlink" title="exceptionHandler错误处理"></a><code>exceptionHandler</code>错误处理</h3><p><code>exceptionHandler</code> 是一个接收<code>JSContext 引用</code>和<code>异常本身</code>的回调处理的闭包。<br>通过设置上下文的 <code>exceptionHandler</code> 属性，可以观察和记录<code>语法</code>，<code>类型</code>以及<code>运行时错误</code>:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">context.exceptionHandler = &#123; context, exception <span class="keyword">in</span></div><div class="line"><span class="built_in">println</span>(<span class="string">"JS Error: \(exception)"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">context.evaluateScript(<span class="string">"function multiply(value1, value2) &#123; return value1 * value2 "</span>)</div><div class="line"><span class="comment">// JS Error: SyntaxError: Unexpected end of script</span></div></pre></td></tr></table></figure><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">context.exceptionHandler = ^(JSContext *context, JSValue *exception) &#123;</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"JS Error: %@"</span>, exception);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">[context evaluateScript:<span class="string">@"function multiply(value1, value2) &#123; return value1 * value2 "</span>];</div><div class="line"><span class="comment">// JS Error: SyntaxError: Unexpected end of script</span></div></pre></td></tr></table></figure></p>
-<h2 id="JavaScript-调用"><a href="#JavaScript-调用" class="headerlink" title="JavaScript 调用"></a>JavaScript 调用</h2><p>怎样从 <code>JavaScript</code> 访问我们在 <code>Objective-C</code>或 <code>Swift</code> 定义的对象和方法？</p>
-<p>让 <code>JSContext</code> 访问我们的本地客户端代码的方式主要有两种：<code>block</code> 和 <code>JSExport 协议</code>。</p>
+<h2 id="JavaScript-通过JSContext调用-swift／OC"><a href="#JavaScript-通过JSContext调用-swift／OC" class="headerlink" title="JavaScript 通过JSContext调用 swift／OC"></a>JavaScript 通过JSContext调用 swift／OC</h2><p>怎样从 <code>JavaScript</code> 访问我们在 <code>Objective-C</code>或 <code>Swift</code> 定义的对象和方法？<br>让 <code>JSContext</code> 访问我们的本地客户端代码的方式主要有两种：<code>block</code> 和 <code>JSExport 协议</code>。</p>
 <h3 id="Blocks和标示符封装为JavaScript函数"><a href="#Blocks和标示符封装为JavaScript函数" class="headerlink" title="Blocks和标示符封装为JavaScript函数"></a>Blocks和标示符封装为JavaScript函数</h3><p>当一个 <code>Objective-C block</code> 被赋给 <code>JSContext</code> 里的一个标识符，<code>JavaScriptCore</code> 会自动的把 <code>block</code> 封装在 <code>JavaScript 函数</code>里，并以该标示符作为函数名来调用该block的实现。这使得在 <code>JavaScript</code> 中可以简单的使用 <code>Foundation</code> 和 <code>Cocoa</code>类，所有的桥接都为你做好了。<br><a href="http://nshipster.cn/cfstringtransform/" target="_blank" rel="external">CFStringTransform</a>处理语言的强大威力<br>在 <code>JSContext</code> 中使用 <code>Swift 闭包</code>需要注意两点:</p>
 <ol>
 <li>与 @objc_block 属性一起声明</li>
@@ -150,7 +149,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/语法/">语法</a><a href="/tags/混编/">混编</a><a href="/tags/iOS/">iOS</a><a href="/tags/macOS/">macOS</a><a href="/tags/Java​Script​Core/">Java​Script​Core</a><a href="/tags/swift/">swift</a>
+  <span></span> <a href="/tags/语法/">语法</a><a href="/tags/混编/">混编</a><a href="/tags/Java​Script​Core/">Java​Script​Core</a><a href="/tags/swift/">swift</a><a href="/tags/iOS/">iOS</a><a href="/tags/macOS/">macOS</a>
   </div>
 
 </div>
@@ -226,7 +225,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScriptCore概览"><span class="toc-number">1.</span> <span class="toc-text">JavaScriptCore概览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSContext"><span class="toc-number">1.1.</span> <span class="toc-text">JSContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSValue"><span class="toc-number">1.2.</span> <span class="toc-text">JSValue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用下标取值"><span class="toc-number">1.3.</span> <span class="toc-text">使用下标取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用方法"><span class="toc-number">1.4.</span> <span class="toc-text">调用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exceptionHandler错误处理"><span class="toc-number">1.5.</span> <span class="toc-text">exceptionHandler错误处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-调用"><span class="toc-number">2.</span> <span class="toc-text">JavaScript 调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blocks和标示符封装为JavaScript函数"><span class="toc-number">2.1.</span> <span class="toc-text">Blocks和标示符封装为JavaScript函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存管理"><span class="toc-number">2.1.1.</span> <span class="toc-text">内存管理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSExport-协议"><span class="toc-number">2.2.</span> <span class="toc-text">JSExport 协议</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#swift通过JSContext调用JavaScript"><span class="toc-number">1.</span> <span class="toc-text">swift通过JSContext调用JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSContext"><span class="toc-number">1.1.</span> <span class="toc-text">JSContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSValue"><span class="toc-number">1.2.</span> <span class="toc-text">JSValue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用下标取值"><span class="toc-number">1.3.</span> <span class="toc-text">使用下标取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用方法"><span class="toc-number">1.4.</span> <span class="toc-text">调用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exceptionHandler错误处理"><span class="toc-number">1.5.</span> <span class="toc-text">exceptionHandler错误处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-通过JSContext调用-swift／OC"><span class="toc-number">2.</span> <span class="toc-text">JavaScript 通过JSContext调用 swift／OC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blocks和标示符封装为JavaScript函数"><span class="toc-number">2.1.</span> <span class="toc-text">Blocks和标示符封装为JavaScript函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存管理"><span class="toc-number">2.1.1.</span> <span class="toc-text">内存管理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSExport-协议"><span class="toc-number">2.2.</span> <span class="toc-text">JSExport 协议</span></a></li></ol></li></ol>
  
   </div>
 
@@ -335,11 +334,11 @@
 			
 		
 			
-				<li><a href="/tags/git/" title="git">git<sup>5</sup></a></li>
+				<li><a href="/tags/资源/" title="资源">资源<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/资源/" title="资源">资源<sup>5</sup></a></li>
+				<li><a href="/tags/git/" title="git">git<sup>5</sup></a></li>
 			
 		
 			
@@ -351,15 +350,23 @@
 			
 		
 			
-				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
 			
 		
 			
+				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/swift/" title="swift">swift<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
 			
 		
 			
@@ -371,15 +378,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/混编/" title="混编">混编<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
 			
 		
 			
@@ -387,7 +386,7 @@
 			
 		
 			
-				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+				<li><a href="/tags/Java​Script​Core/" title="Java​Script​Core">Java​Script​Core<sup>2</sup></a></li>
 			
 		
 			
@@ -395,15 +394,15 @@
 			
 		
 			
-				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+				<li><a href="/tags/书籍/" title="书籍">书籍<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/UI/" title="UI">UI<sup>2</sup></a></li>
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/kindle/" title="kindle">kindle<sup>2</sup></a></li>
+				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
 			
 		
 		</ul>
