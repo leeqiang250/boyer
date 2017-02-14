@@ -455,6 +455,7 @@
 		14FB50561E52B13C00E05601 /* macOS之PDFKit基础.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "macOS之PDFKit基础.md"; sourceTree = "<group>"; };
 		14FB50571E52B87500E05601 /* view_vspage_space.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = view_vspage_space.gif; sourceTree = "<group>"; };
 		14FB50581E52BC0F00E05601 /* pdfkit_inheritancehierarchy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pdfkit_inheritancehierarchy.gif; sourceTree = "<group>"; };
+		14FB50591E52C21F00E05601 /* pdfkit_uses_hierarchy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pdfkit_uses_hierarchy.gif; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 		843F28831E51F4770020C321 /* gistflag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gistflag.jpg; sourceTree = "<group>"; };
 		8451A2711E28F1CF00301CE2 /* setup_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_config.sh; sourceTree = "<group>"; };
@@ -836,6 +837,7 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				14FB50591E52C21F00E05601 /* pdfkit_uses_hierarchy.gif */,
 				14FB50581E52BC0F00E05601 /* pdfkit_inheritancehierarchy.gif */,
 				14FB50571E52B87500E05601 /* view_vspage_space.gif */,
 				843F28831E51F4770020C321 /* gistflag.jpg */,
