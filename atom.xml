@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>布衣男儿</title>
   <subtitle>不物喜，不己悲，善假物，易参行！</subtitle>
-  <link href="/boyer/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="http://huos3203.github.io/boyer/"/>
-  <updated>2017-02-13T09:15:34.000Z</updated>
-  <id>http://huos3203.github.io/boyer/</id>
+  <link href="https://huos3203.github.io/"/>
+  <updated>2017-02-14T03:14:35.000Z</updated>
+  <id>https://huos3203.github.io/</id>
   
   <author>
     <name>boyer</name>
@@ -16,9 +16,58 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Fabric对macOS系统的支持调研</title>
+    <link href="https://huos3203.github.io/2017/02/14/Fabric%E5%AF%B9macOS%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%94%AF%E6%8C%81%E8%B0%83%E7%A0%94/"/>
+    <id>https://huos3203.github.io/2017/02/14/Fabric对macOS系统的支持调研/</id>
+    <published>2017-02-14T03:14:35.000Z</published>
+    <updated>2017-02-14T03:14:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Fabric"><a href="#Fabric" class="headerlink" title="Fabric"></a>Fabric</h2><p><code>Fabric</code> 是Twitter的移动应用开发平台，一个模块化、跨平台的移动开发套件，该博文主要研究<code>crashlytics</code>在app中的运用。<br><a href="https://try.crashlytics.com/" target="_blank" rel="external">注册新的账户</a>登录，审核通过时间为几个小时或者1到2天不等。然后注册时候输入的邮箱就会收到如下的邀请涵<br><a href="https://docs.fabric.io/apple/crashlytics/os-x.html#macos-support" target="_blank" rel="external">浏览官方文档</a></p>
+<h3 id="crashlytics支持macOS"><a href="#crashlytics支持macOS" class="headerlink" title="crashlytics支持macOS"></a>crashlytics支持macOS</h3><p>对<code>macOS</code>的支持中出现的问题<br>问题：<code>NSApplicationCrashOnExceptions</code> is not set. This will result in poor <code>top-level</code> uncaught exception reporting<br>官方解释：<br><blockquote><p>Uncaught Exceptions<br>Intercepting and reporting uncaught exceptions on macOS is more complex than it is on iOS. On macOS, AppKit will catch exceptions thrown on the main thread, preventing the application from crashing, but also preventing Crashlytics from reporting them. To make matters worse, Apple’s frameworks are not exception safe. This means that while AppKit will prevent your app from crashing, it will also likely corrupt your process’s state, often including AppKit itself. Typically, once an exception involving UI interaction is thrown, it will prevent your app from working correctly from that moment on.<br>Thankfully, AppKit has a little-known feature you can turn on to make the behavior much more predictable. We strongly recommend that you do the following in your application, right before you initialize Crashlytics.</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">NSUserDefaults</span> standardUserDefaults] registerDefaults:@&#123; <span class="string">@”NSApplicationCrashOnExceptions”</span>: @YES &#125;];</div></pre></td></tr></table></figure>
+
+<p>This will make your application’s behavior much closer to iOS. It will mean that your app will crash on uncaught exceptions, and will also allow Crashlytics to report them with useful stack traces. It will also give you the ability to override this behavior with the user defaults system, even on per-user basis.<br>Of course, this is all optional. Crashlytics will warn about NSApplicationCrashOnExceptions not being set, but will otherwise preserve normal AppKit behavior by default.</p>
+<footer><strong>官方文档</strong><cite><a href="https://docs.fabric.io/apple/crashlytics/os-x.html#macos-support" target="_blank" rel="external">macOS Support</a></cite></footer></blockquote><br>拦截和报告未捕获的异常在MacOS比iOS更复杂。在MacOS，AppKit会抓住扔在主线程异常，防止应用程序崩溃，也防止crashlytics报告他们。更糟糕的是，Apple’s frameworks也不例外。这意味着AppKit可以防止你的应用程序崩溃，也可能破坏你的进程的状态，包括AppKit本身。通常情况下，一旦涉及到用户界面交互的异常被抛出，它将阻止您的应用程序从正确的工作从那一刻起。<br>以上情况，可以通过设置：<code>NSApplicationCrashOnExceptions</code> 改变系统默认的值，达到像iOS端一样抓去异常。如果没有设置会提示：NSApplicationCrashOnExceptions not set</p>
+<h3 id="Cause-a-Test-Crash教程"><a href="#Cause-a-Test-Crash教程" class="headerlink" title="Cause a Test Crash教程"></a><a href="https://docs.fabric.io/apple/crashlytics/test-crash.html" target="_blank" rel="external">Cause a Test Crash教程</a></h3><p>崩溃日志是在重启APP程序的同时进行的，要确保程序在前台全屏显示。<br>Xcode调试器会阻止我们捕捉崩溃报告，所以在抓取崩溃报告时，要保证在非调试状态下进行。如果你的移动设备连接到Mac机上，Xcode仍然可以进入调试状态。</p>
+<ol>
+<li><code>run</code>在模拟器上安装运行APP</li>
+<li>点击<code>Stop</code>断开Xcode和模拟器，确保在非调试状态</li>
+<li>在模拟器上启动APP，并执行崩溃操作</li>
+<li>在Xcode上点击<code>run</code><br>在Xcode的控制台console中输出显示奔溃报告，以及上传日志的相关提示。<blockquote><p>It’s possible, but rare, that we are missing a dSYM to symbolicate any crash reports. There will be an alert on your dashboard if this is the case. Click through to upload the missing dSYM. Keep in mind that exceptions are not guaranteed to crash. The full code path, including code in system libraries, matters here. If you aren’t seeing the dSYM alert, you can go to your app’s settings page, and append “/mappings” to the URL to reach it, e.g. <a href="https://fabric.io/settings/apps/some_app_id/mappings" target="_blank" rel="external">https://fabric.io/settings/apps/some_app_id/mappings</a></p>
+<footer><strong>官方文档</strong><cite><a href="https://docs.fabric.io/apple/crashlytics/test-crash.html" target="_blank" rel="external">Cause a Test Crash教程</a></cite></footer></blockquote>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Fabric&quot;&gt;&lt;a href=&quot;#Fabric&quot; class=&quot;headerlink&quot; title=&quot;Fabric&quot;&gt;&lt;/a&gt;Fabric&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Fabric&lt;/code&gt; 是Twitter的移动应用开发平台，一个模块化、跨平台的移动开发套件
+    
+    </summary>
+    
+      <category term="CI" scheme="https://huos3203.github.io/categories/CI/"/>
+    
+    
+      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="SDK" scheme="https://huos3203.github.io/tags/SDK/"/>
+    
+      <category term="发布" scheme="https://huos3203.github.io/tags/%E5%8F%91%E5%B8%83/"/>
+    
+      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>思维导图之开发实践篇</title>
-    <link href="http://huos3203.github.io/boyer/2017/02/13/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E4%B9%8B%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E7%AF%87/"/>
-    <id>http://huos3203.github.io/boyer/2017/02/13/思维导图之开发实践篇/</id>
+    <link href="https://huos3203.github.io/2017/02/13/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E4%B9%8B%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E7%AF%87/"/>
+    <id>https://huos3203.github.io/2017/02/13/思维导图之开发实践篇/</id>
     <published>2017-02-13T09:11:26.000Z</published>
     <updated>2017-02-13T09:15:34.000Z</updated>
     
@@ -31,7 +80,7 @@
 <p>使用思维导图的场景无处不在，无论是做产品还是做设计，我们都需要清晰的思路，明确自己需要做些什么，最后需要达到什么效果，这时候，如果有一张清晰的思维导图，就能很快的理清自己的思路。作为互联网公司自称是产品型设计师（也就是既需要帮助老板整理需求梳理产品，也要设计漂亮的界面）的我更是如此。 </p>
 <p>目的：通过学习在该文章中讲到的开发设计案例，站在项目开发角度，了解从速记到思维导图再到实际开发的过程。<br>从产品、设计等方面谈谈我是如何运用思维导图的。</p>
 <h2 id="需求分析——完善最初的想法"><a href="#需求分析——完善最初的想法" class="headerlink" title="需求分析——完善最初的想法"></a>需求分析——完善最初的想法</h2><p>一般老板只会告诉我们大概需要一个什么东西，具体的细节还需要我们去整理。这时候，我会把大概涉及到的基本点写在纸上，想到一条写一条，特别是一些需要注意的地方。</p>
-<h3 id="需求速记法"><a href="#需求速记法" class="headerlink" title="需求速记法"></a>需求速记法</h3><p>先用纸笔速记的方式，把临时能想到的点记录下来<br><img src="/boyer/images/需求速记.jpg" class="需求速记"><br>在纸上列得差不多了，再新建一个 <code>XMind</code> 文档，把之前列的一些点一一转到电脑上，然后整理分类。</p>
+<h3 id="需求速记法"><a href="#需求速记法" class="headerlink" title="需求速记法"></a>需求速记法</h3><p>先用纸笔速记的方式，把临时能想到的点记录下来<br><img src="/images/需求速记.jpg" class="需求速记" width="300" height="500"><br>在纸上列得差不多了，再新建一个 <code>XMind</code> 文档，把之前列的一些点一一转到电脑上，然后整理分类。</p>
 <h3 id="功能结构图案例"><a href="#功能结构图案例" class="headerlink" title="功能结构图案例"></a>功能结构图案例</h3><ol>
 <li>码市逻辑图<br>通过思维导图能够一目了然的看到码市的功能<img src="https://dn-coding-net-production-pp.qbox.me/fa34c949-b36d-4c86-a1be-a6f6c5459f3e.png"></li>
 <li>网站功能逻辑图<br>通过功能主干图直观显示了一个网站或者 APP 整体大功能组成部分，一般在写产品需求文档时需要的功能逻辑图。<img src="https://dn-coding-net-production-pp.qbox.me/535567ad-e51f-43b9-aa66-8b98fc719dc6.png">
@@ -52,21 +101,21 @@
     
     </summary>
     
-      <category term="逻辑思维" scheme="http://huos3203.github.io/boyer/categories/%E9%80%BB%E8%BE%91%E6%80%9D%E7%BB%B4/"/>
+      <category term="逻辑思维" scheme="https://huos3203.github.io/categories/%E9%80%BB%E8%BE%91%E6%80%9D%E7%BB%B4/"/>
     
     
-      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="管理" scheme="http://huos3203.github.io/boyer/tags/%E7%AE%A1%E7%90%86/"/>
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
-      <category term="思维导图" scheme="http://huos3203.github.io/boyer/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+      <category term="思维导图" scheme="https://huos3203.github.io/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>JavaScriptCore 实战</title>
-    <link href="http://huos3203.github.io/boyer/2017/02/12/JavaScriptCore%E5%AE%9E%E6%88%98/"/>
-    <id>http://huos3203.github.io/boyer/2017/02/12/JavaScriptCore实战/</id>
+    <link href="https://huos3203.github.io/2017/02/12/JavaScriptCore%E5%AE%9E%E6%88%98/"/>
+    <id>https://huos3203.github.io/2017/02/12/JavaScriptCore实战/</id>
     <published>2017-02-12T06:41:35.000Z</published>
     <updated>2017-02-12T06:41:35.000Z</updated>
     
@@ -88,27 +137,27 @@
     
     </summary>
     
-      <category term="swift" scheme="http://huos3203.github.io/boyer/categories/swift/"/>
+      <category term="swift" scheme="https://huos3203.github.io/categories/swift/"/>
     
     
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="混编" scheme="http://huos3203.github.io/boyer/tags/%E6%B7%B7%E7%BC%96/"/>
+      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="iOS" scheme="http://huos3203.github.io/boyer/tags/iOS/"/>
+      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
     
-      <category term="swift" scheme="http://huos3203.github.io/boyer/tags/swift/"/>
+      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
-      <category term="macOS" scheme="http://huos3203.github.io/boyer/tags/macOS/"/>
+      <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
     
-      <category term="Java​Script​Core" scheme="http://huos3203.github.io/boyer/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
+      <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
   </entry>
   
   <entry>
     <title>Java​Script​Core实现swift混编</title>
-    <link href="http://huos3203.github.io/boyer/2017/02/12/Java%E2%80%8BScript%E2%80%8BCore%E5%AE%9E%E7%8E%B0swift%E6%B7%B7%E7%BC%96/"/>
-    <id>http://huos3203.github.io/boyer/2017/02/12/Java​Script​Core实现swift混编/</id>
+    <link href="https://huos3203.github.io/2017/02/12/Java%E2%80%8BScript%E2%80%8BCore%E5%AE%9E%E7%8E%B0swift%E6%B7%B7%E7%BC%96/"/>
+    <id>https://huos3203.github.io/2017/02/12/Java​Script​Core实现swift混编/</id>
     <published>2017-02-12T05:34:06.000Z</published>
     <updated>2017-02-13T09:39:22.000Z</updated>
     
@@ -119,7 +168,7 @@
 </ol>
 <h2 id="swift通过JSContext调用JavaScript"><a href="#swift通过JSContext调用JavaScript" class="headerlink" title="swift通过JSContext调用JavaScript"></a>swift通过JSContext调用JavaScript</h2><p>如何从 <code>JavaScript 环境</code>中提取值以及如何调用其中定义的函数?</p>
 <h3 id="JSContext"><a href="#JSContext" class="headerlink" title="JSContext"></a>JSContext</h3><p><code>JSContext</code> 是运行 <code>JavaScript</code> 代码的环境。一个 <code>JSContext</code> 是一个全局环境的实例，如果你写过一个在浏览器内运行的 <code>JavaScript</code>，<code>JSContext</code> 类似于 <code>window</code>。创建一个 <code>JSContext</code> 后，可以很容易地运行 <code>JavaScript</code> 代码来<code>创建变量</code>，<code>做计算</code>，甚至<code>定义方法</code>：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> context = <span class="type">JSContext</span>()    <span class="comment">//创建全局环境</span></div><div class="line">context.evaluateScript(<span class="string">"var num = 5 + 5"</span>) <span class="comment">//计算</span></div><div class="line">context.evaluateScript(<span class="string">"var names = ['Grace', 'Ada', 'Margaret']"</span>) <span class="comment">//定义变量</span></div><div class="line">context.evaluateScript(<span class="string">"var triple = function(value) &#123; return value * 3 &#125;"</span>) <span class="comment">//定义方法</span></div><div class="line"><span class="keyword">let</span> tripleNum: <span class="type">JSValue</span> = context.evaluateScript(<span class="string">"triple(num)"</span>)  </div></pre></td></tr></table></figure></p>
-<h3 id="JSValue"><a href="#JSValue" class="headerlink" title="JSValue"></a>JSValue</h3><p>获取<code>tripleNum</code>值：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">println</span>(<span class="string">"Tripled: \(tripleNum.toInt32())"</span>)</div></pre></td></tr></table></figure><br>任何出自 <code>JSContext</code> 的值都被包裹在一个 <code>JSValue</code> 对象中。像 <code>JavaScript</code> 这样的动态语言需要一个动态类型，所以 <code>JSValue</code> 包装了每一个可能的 <code>JavaScript 值</code>：字符串和数字；数组、对象和方法；甚至错误和特殊的 JavaScript 值诸如 <code>null</code> 和 <code>undefined</code>。<br><code>JSValue</code> 包括一系列方法用于访问其可能的值以保证有正确的 Foundation 基本类型，包括：<br><img src="/boyer/images/JSValueType.png"></p>
+<h3 id="JSValue"><a href="#JSValue" class="headerlink" title="JSValue"></a>JSValue</h3><p>获取<code>tripleNum</code>值：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">println</span>(<span class="string">"Tripled: \(tripleNum.toInt32())"</span>)</div></pre></td></tr></table></figure><br>任何出自 <code>JSContext</code> 的值都被包裹在一个 <code>JSValue</code> 对象中。像 <code>JavaScript</code> 这样的动态语言需要一个动态类型，所以 <code>JSValue</code> 包装了每一个可能的 <code>JavaScript 值</code>：字符串和数字；数组、对象和方法；甚至错误和特殊的 JavaScript 值诸如 <code>null</code> 和 <code>undefined</code>。<br><code>JSValue</code> 包括一系列方法用于访问其可能的值以保证有正确的 Foundation 基本类型，包括：<br><img src="/images/JSValueType.png"></p>
 <h3 id="使用下标取值"><a href="#使用下标取值" class="headerlink" title="使用下标取值"></a>使用下标取值</h3><p><code>JSContext</code> 和 <code>JSValue</code> 实例使用下标的方式访问我们之前创建的 <code>context</code> 的任何值。<br>    <code>JSContext</code>：需要一个字符串下标<br>    <code>JSValue</code>：允许使用<code>字符串</code>或<code>整数</code>标来得到里面的对象和数组<br>举例：</p>
 <ol>
 <li><code>swift</code>语法<figure class="highlight swift"><figcaption><span>原始方法</span><a href="http://nshipster.cn/object-subscripting/" target="_blank" rel="external">objectAtKeyedSubscript()和objectAtIndexedSubscript()</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> names = context.objectForKeyedSubscript(<span class="string">"names"</span>)  <span class="comment">//字符串下标</span></div><div class="line"><span class="keyword">let</span> initialName = names.objectAtIndexedSubscript(<span class="number">0</span>)   <span class="comment">//整数下标</span></div><div class="line"><span class="built_in">println</span>(<span class="string">"The first name: \(initialName.toString())"</span>)  <span class="comment">//JSValue method</span></div><div class="line"><span class="comment">// The first name: Grace</span></div></pre></td></tr></table></figure></li>
@@ -149,27 +198,27 @@
     
     </summary>
     
-      <category term="swift" scheme="http://huos3203.github.io/boyer/categories/swift/"/>
+      <category term="swift" scheme="https://huos3203.github.io/categories/swift/"/>
     
     
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="混编" scheme="http://huos3203.github.io/boyer/tags/%E6%B7%B7%E7%BC%96/"/>
+      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="iOS" scheme="http://huos3203.github.io/boyer/tags/iOS/"/>
+      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
     
-      <category term="swift" scheme="http://huos3203.github.io/boyer/tags/swift/"/>
+      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
-      <category term="macOS" scheme="http://huos3203.github.io/boyer/tags/macOS/"/>
+      <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
     
-      <category term="Java​Script​Core" scheme="http://huos3203.github.io/boyer/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
+      <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
   </entry>
   
   <entry>
     <title>用Git将代码恢复到一个历史的版本</title>
-    <link href="http://huos3203.github.io/boyer/2017/02/10/%E7%94%A8Git%E5%B0%86%E4%BB%A3%E7%A0%81%E6%81%A2%E5%A4%8D%E5%88%B0%E4%B8%80%E4%B8%AA%E5%8E%86%E5%8F%B2%E7%9A%84%E7%89%88%E6%9C%AC/"/>
-    <id>http://huos3203.github.io/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/</id>
+    <link href="https://huos3203.github.io/2017/02/10/%E7%94%A8Git%E5%B0%86%E4%BB%A3%E7%A0%81%E6%81%A2%E5%A4%8D%E5%88%B0%E4%B8%80%E4%B8%AA%E5%8E%86%E5%8F%B2%E7%9A%84%E7%89%88%E6%9C%AC/"/>
+    <id>https://huos3203.github.io/2017/02/10/用Git将代码恢复到一个历史的版本/</id>
     <published>2017-02-10T10:19:48.000Z</published>
     <updated>2017-02-10T10:29:19.000Z</updated>
     
@@ -191,21 +240,21 @@
     
     </summary>
     
-      <category term="git" scheme="http://huos3203.github.io/boyer/categories/git/"/>
+      <category term="git" scheme="https://huos3203.github.io/categories/git/"/>
     
     
-      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="git" scheme="http://huos3203.github.io/boyer/tags/git/"/>
+      <category term="git" scheme="https://huos3203.github.io/tags/git/"/>
     
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>bilibiliForMac版之mpv依赖编译</title>
-    <link href="http://huos3203.github.io/boyer/2017/02/10/bilibili%E4%B9%8BMac%E7%89%88ffmpeg%E4%BE%9D%E8%B5%96%E7%BC%96%E8%AF%91/"/>
-    <id>http://huos3203.github.io/boyer/2017/02/10/bilibili之Mac版ffmpeg依赖编译/</id>
+    <link href="https://huos3203.github.io/2017/02/10/bilibili%E4%B9%8BMac%E7%89%88ffmpeg%E4%BE%9D%E8%B5%96%E7%BC%96%E8%AF%91/"/>
+    <id>https://huos3203.github.io/2017/02/10/bilibili之Mac版ffmpeg依赖编译/</id>
     <published>2017-02-10T02:45:03.000Z</published>
     <updated>2017-02-10T07:35:25.000Z</updated>
     
@@ -245,29 +294,29 @@
     
     </summary>
     
-      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
+      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
     
     
-      <category term="编译" scheme="http://huos3203.github.io/boyer/tags/%E7%BC%96%E8%AF%91/"/>
+      <category term="编译" scheme="https://huos3203.github.io/tags/%E7%BC%96%E8%AF%91/"/>
     
-      <category term="ffmpeg" scheme="http://huos3203.github.io/boyer/tags/ffmpeg/"/>
+      <category term="ffmpeg" scheme="https://huos3203.github.io/tags/ffmpeg/"/>
     
-      <category term="mpv" scheme="http://huos3203.github.io/boyer/tags/mpv/"/>
+      <category term="mpv" scheme="https://huos3203.github.io/tags/mpv/"/>
     
-      <category term="shell" scheme="http://huos3203.github.io/boyer/tags/shell/"/>
+      <category term="shell" scheme="https://huos3203.github.io/tags/shell/"/>
     
   </entry>
   
   <entry>
     <title>OSX 应用插件</title>
-    <link href="http://huos3203.github.io/boyer/2017/02/07/OSX%E5%BA%94%E7%94%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    <id>http://huos3203.github.io/boyer/2017/02/07/OSX应用插件开发/</id>
+    <link href="https://huos3203.github.io/2017/02/07/OSX%E5%BA%94%E7%94%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <id>https://huos3203.github.io/2017/02/07/OSX应用插件开发/</id>
     <published>2017-02-07T04:38:58.000Z</published>
     <updated>2017-02-07T05:47:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过<code>NSBundle</code>和 <code>plug-ins</code>插件,可以很方便的向原有APP中添加新功能点。</p>
 <p>目的：在一个修改过的 TextEdit 里面加入加载 bundle 的功能</p>
-<h2 id="包-Bundles-和接口-Interfaces"><a href="#包-Bundles-和接口-Interfaces" class="headerlink" title="包 (Bundles) 和接口 (Interfaces)"></a>包 (Bundles) 和接口 (Interfaces)</h2><p>如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如： <code>Screen Savers</code> 到 <code>Image Units</code>等。<br>在<code>Framework &amp; Library</code>中的 <code>Bundle</code> 条目。我会在今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。<br><img src="/boyer/images/xcode8.png" class="项目模版"><br><code>bundle 模版</code>项目与APP项目比较：</p>
+<h2 id="包-Bundles-和接口-Interfaces"><a href="#包-Bundles-和接口-Interfaces" class="headerlink" title="包 (Bundles) 和接口 (Interfaces)"></a>包 (Bundles) 和接口 (Interfaces)</h2><p>如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如： <code>Screen Savers</code> 到 <code>Image Units</code>等。<br>在<code>Framework &amp; Library</code>中的 <code>Bundle</code> 条目。我会在今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。<br><img src="/images/xcode8.png" class="项目模版"><br><code>bundle 模版</code>项目与APP项目比较：</p>
 <ol>
 <li>一个 <code>Contents</code> 目录，里面包含了 <code>Info.plist</code> 和 <code>Resource</code> 目录。</li>
 <li>如果你在你的项目下加入了新的类，你可以看见包含一个可执行文件的 <code>MacOS</code> 目录。</li>
@@ -301,7 +350,7 @@
 </li>
 </ol>
 <h2 id="集成插件"><a href="#集成插件" class="headerlink" title="集成插件"></a>集成插件</h2><p>运行 <code>TextEdit</code> （它会创建<code>Plug-Ins</code>目录），然后构建 <code>MarkYellow</code> 工程。把 <code>MarkYellow.bundle</code> 丢到你的 <code>~/Library/Application Support/Text Edit/Plug-Ins/</code> 目录下面，重启你的 <code>TextEdit</code> 应用。<br>一切看起来都很好，扫描，加载，插入一个菜单，然后，当你使用菜单项的时候，传递到参数到插件里面。试一试，点击 <code>Plug-Ins ▸ Mark Selected Text Yellow</code>，选择的文字的背景颜色就变成黄色的了。</p>
-<h2 id="XCode8版本问题"><a href="#XCode8版本问题" class="headerlink" title="XCode8版本问题"></a>XCode8版本问题</h2><p>Xcode8 不再支持<code>Application Plug-in</code>插件<br><img src="/boyer/images/xcode6.jpg" class="xcode6" title="100% 300 项目创建模版"><br><a href="http://www.jianshu.com/p/39443429f71d" target="_blank" rel="external">XCode8.2.1继续使用xcode插件</a><br>这个是因为苹果解决xcode ghost，把插件屏蔽了。<br>解决方法<br><code>sudo /usr/libexec/xpccachectl</code><br>然后必须重启电脑后生效.</p>
+<h2 id="XCode8版本问题"><a href="#XCode8版本问题" class="headerlink" title="XCode8版本问题"></a>XCode8版本问题</h2><p>Xcode8 不再支持<code>Application Plug-in</code>插件<br><img src="/images/xcode6.jpg" class="xcode6" title="100% 300 项目创建模版"><br><a href="http://www.jianshu.com/p/39443429f71d" target="_blank" rel="external">XCode8.2.1继续使用xcode插件</a><br>这个是因为苹果解决xcode ghost，把插件屏蔽了。<br>解决方法<br><code>sudo /usr/libexec/xpccachectl</code><br>然后必须重启电脑后生效.</p>
 ]]></content>
     
     <summary type="html">
@@ -311,23 +360,23 @@
     
     </summary>
     
-      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
+      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
     
     
-      <category term="插件" scheme="http://huos3203.github.io/boyer/tags/%E6%8F%92%E4%BB%B6/"/>
+      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
     
-      <category term="macOS" scheme="http://huos3203.github.io/boyer/tags/macOS/"/>
+      <category term="插件" scheme="https://huos3203.github.io/tags/%E6%8F%92%E4%BB%B6/"/>
     
-      <category term="objc" scheme="http://huos3203.github.io/boyer/tags/objc/"/>
+      <category term="objc" scheme="https://huos3203.github.io/tags/objc/"/>
     
   </entry>
   
   <entry>
     <title>Hexo标签插件</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/23/Hexo%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/23/Hexo标签插件/</id>
+    <link href="https://huos3203.github.io/2017/01/23/Hexo%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6/"/>
+    <id>https://huos3203.github.io/2017/01/23/Hexo标签插件/</id>
     <published>2017-01-23T07:17:33.000Z</published>
-    <updated>2017-02-13T10:05:57.000Z</updated>
+    <updated>2017-02-14T01:29:26.000Z</updated>
     
     <content type="html"><![CDATA[<p>标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。</p>
 <h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><hr>
@@ -525,7 +574,7 @@
 <p>一个gist可能存在多个文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://gist.github.com/dergachev/4627207#file-gif-screencast-osx-md</div></pre></td></tr></table></figure></p>
 <p><code>4627207</code>：表示gist_id ，<code>#file-</code>后边内容：表示Gist中某个文件名</p>
 <p>如下:指定文章中嵌入<code>ecba275d5e4404678354</code>中的<code>NSAttributeString相关方法.m</code>内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist ecba275d5e4404678354 NSAttributeString相关方法.m %&#125;</div></pre></td></tr></table></figure></p>
-<script src="//gist.github.com/ecba275d5e4404678354.js?file=NSAttributeString相关方法.m"></script>
+<img src="/images/gistflag.jpg" class="gist需要翻墙">
 <h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><hr>
 <p>在文章中插入 iframe。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% iframe url [width] [height] %&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><hr>
@@ -568,11 +617,11 @@
 <li><p>相对路径</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% post_path Docker使用 %&#125;</div></pre></td></tr></table></figure>
 <p> 相对于服务器根目录的位置：</p>
- /boyer/2016/12/21/Docker使用/</li>
+ /2016/12/21/Docker使用/</li>
 <li><p>绝对路径</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% post_link Docker使用 Docker使用 %&#125;</div></pre></td></tr></table></figure>
 <p> 本博中其他文章的超链接：</p>
- <a href="/boyer/2016/12/21/Docker使用/" title="Docker使用">Docker使用</a>
+ <a href="/2016/12/21/Docker使用/" title="Docker使用">Docker使用</a>
 </li>
 </ol>
 <h2 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h2><hr>
@@ -596,47 +645,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://huos3203.github.io/boyer/categories/hexo/"/>
+      <category term="hexo" scheme="https://huos3203.github.io/categories/hexo/"/>
     
     
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kindle之Resilio Sync索引</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/23/Kindle%E4%B9%8BResilioSync%E7%B4%A2%E5%BC%95/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/23/Kindle之ResilioSync索引/</id>
-    <published>2017-01-23T04:49:49.000Z</published>
-    <updated>2017-02-13T09:54:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://kindlefere.com/share" target="_blank" rel="external">Kindle伴原文</a><br>Resilio Sync同步密钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOC3NIGPF2DOKETOF2FAHXJXE2HF24QWC</div></pre></td></tr></table></figure><br><a href="https://kindlefere.github.io/share/ebook/" target="_blank" rel="external">索引原文</a><br>目录索引 - Kindle伴侣精品书库（更新：01月23日10:30）</p>
-<iframe src="https://kindlefere.github.io/share/ebook/" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://kindlefere.com/share&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Kindle伴原文&lt;/a&gt;&lt;br&gt;Resilio Sync同步密钥&lt;br&gt;&lt;figure class=&quot;highlight plain
-    
-    </summary>
-    
-      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="资源" scheme="http://huos3203.github.io/boyer/tags/%E8%B5%84%E6%BA%90/"/>
-    
-      <category term="kindle" scheme="http://huos3203.github.io/boyer/tags/kindle/"/>
-    
-      <category term="书籍" scheme="http://huos3203.github.io/boyer/tags/%E4%B9%A6%E7%B1%8D/"/>
-    
-      <category term="ResilioSync" scheme="http://huos3203.github.io/boyer/tags/ResilioSync/"/>
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>Kindle114 资源集[转]</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/23/Kindle%E8%B5%84%E6%BA%90/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/23/Kindle资源/</id>
+    <link href="https://huos3203.github.io/2017/01/23/Kindle%E8%B5%84%E6%BA%90/"/>
+    <id>https://huos3203.github.io/2017/01/23/Kindle资源/</id>
     <published>2017-01-23T04:49:49.000Z</published>
     <updated>2017-01-23T09:34:23.000Z</updated>
     
@@ -829,129 +848,51 @@
     
     </summary>
     
-      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="资源" scheme="http://huos3203.github.io/boyer/tags/%E8%B5%84%E6%BA%90/"/>
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
-      <category term="kindle" scheme="http://huos3203.github.io/boyer/tags/kindle/"/>
+      <category term="kindle" scheme="https://huos3203.github.io/tags/kindle/"/>
     
-      <category term="书籍" scheme="http://huos3203.github.io/boyer/tags/%E4%B9%A6%E7%B1%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>腾讯云之小直播开发</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/22/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/22/腾讯云之小直播开发/</id>
-    <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="视频服务"><a href="#视频服务" class="headerlink" title="视频服务"></a>视频服务</h1><ol>
-<li><p><a href="https://www.qcloud.com/product/LVB" target="_blank" rel="external">直播LVB</a> </p>
-<ol>
-<li><a href="https://www.qcloud.com/document/product/267/7964" target="_blank" rel="external">开发指南</a></li>
-</ol>
-</li>
-<li><p><a href="https://www.qcloud.com/product/mlvb" target="_blank" rel="external">移动直播MLVB</a></p>
-<ol>
-<li><a href="https://www.qcloud.com/document/product/454/7876" target="_blank" rel="external">开发指南</a><br>移动直播是一套移动终端直播解决方案的<code>集合</code>，它以免费源码的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
-</ol>
-</li>
-</ol>
-<h2 id="快速集成方案"><a href="#快速集成方案" class="headerlink" title="快速集成方案"></a>快速集成方案</h2><img src="https://mc.qcloudimg.com/static/img/92a464fc26bbe52fea8816f8e6061ef3/image.jpg" class="导图" title="100% 200 集成导图 图片">
-<p>如果您想要在自己的 APP 里集成直播推流和播放功能，下面三步就能达成目标：</p>
-<ol>
-<li>开通直播服务<br><a href="https://console.qcloud.com/live" target="_blank" rel="external">文档</a></li>
-<li>集成 RTMP SDK<br><a href="https://www.qcloud.com/document/product/454/7880" target="_blank" rel="external">RTMP SDK - iOS 平台播放</a></li>
-<li>对接直播流管理<ol>
-<li><a href="https://www.qcloud.com/document/product/454/7915" target="_blank" rel="external">云端API - 如何获取推流URL？</a></li>
-<li><a href="https://www.qcloud.com/document/product/454/7916" target="_blank" rel="external">云端API - 如何构建房间列表？</a></li>
-<li><a href="https://www.qcloud.com/document/product/454/7920" target="_blank" rel="external">云端API - 如何管理直播流？</a><br>小直播是有腾讯云研发团队提供的一套开源源码集，致力于以 DEMO 的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
-</ol>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;视频服务&quot;&gt;&lt;a href=&quot;#视频服务&quot; class=&quot;headerlink&quot; title=&quot;视频服务&quot;&gt;&lt;/a&gt;视频服务&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.qcloud.com/product/LVB&quot; target=&quot;
-    
-    </summary>
-    
-      <category term="直播" scheme="http://huos3203.github.io/boyer/categories/%E7%9B%B4%E6%92%AD/"/>
-    
-    
-      <category term="搭建" scheme="http://huos3203.github.io/boyer/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="直播" scheme="http://huos3203.github.io/boyer/tags/%E7%9B%B4%E6%92%AD/"/>
-    
-      <category term="腾讯云" scheme="http://huos3203.github.io/boyer/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
-    
-      <category term="集成" scheme="http://huos3203.github.io/boyer/tags/%E9%9B%86%E6%88%90/"/>
-    
-      <category term="SDK" scheme="http://huos3203.github.io/boyer/tags/SDK/"/>
+      <category term="书籍" scheme="https://huos3203.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
     
   </entry>
   
   <entry>
-    <title>AR 开发资料汇[转]</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/22/AR开发资料汇/</id>
-    <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
+    <title>Kindle之Resilio Sync索引</title>
+    <link href="https://huos3203.github.io/2017/01/23/Kindle%E4%B9%8BResilioSync%E7%B4%A2%E5%BC%95/"/>
+    <id>https://huos3203.github.io/2017/01/23/Kindle之ResilioSync索引/</id>
+    <published>2017-01-23T04:49:49.000Z</published>
+    <updated>2017-02-13T09:54:40.000Z</updated>
     
-    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
-<hr>
-<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
-<hr>
-<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
-<hr>
-<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
-<hr>
-<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
-<hr>
-<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
-<hr>
-<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
-<hr>
-<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
-<hr>
-<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
-<hr>
-<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
-<hr>
-<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
-<hr>
-<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
-<hr>
-<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
+    <content type="html"><![CDATA[<p><a href="https://kindlefere.com/share" target="_blank" rel="external">Kindle伴原文</a><br>Resilio Sync同步密钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOC3NIGPF2DOKETOF2FAHXJXE2HF24QWC</div></pre></td></tr></table></figure><br><a href="https://kindlefere.github.io/share/ebook/" target="_blank" rel="external">索引原文</a><br>目录索引 - Kindle伴侣精品书库（更新：01月23日10:30）</p>
+<iframe src="https://kindlefere.github.io/share/ebook/" width="500" height="2000" frameborder="0" allowfullscreen></iframe>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
+      &lt;p&gt;&lt;a href=&quot;https://kindlefere.com/share&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Kindle伴原文&lt;/a&gt;&lt;br&gt;Resilio Sync同步密钥&lt;br&gt;&lt;figure class=&quot;highlight plain
     
     </summary>
     
-      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="AR" scheme="http://huos3203.github.io/boyer/tags/AR/"/>
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
-      <category term="LBS+AR" scheme="http://huos3203.github.io/boyer/tags/LBS-AR/"/>
+      <category term="kindle" scheme="https://huos3203.github.io/tags/kindle/"/>
     
-      <category term="QQ红包" scheme="http://huos3203.github.io/boyer/tags/QQ%E7%BA%A2%E5%8C%85/"/>
+      <category term="书籍" scheme="https://huos3203.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
+    
+      <category term="ResilioSync" scheme="https://huos3203.github.io/tags/ResilioSync/"/>
     
   </entry>
   
   <entry>
     <title>Awsome Apple Develop Guide[转]</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/22/AwsomeAppleDevelopGuide/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/22/AwsomeAppleDevelopGuide/</id>
+    <link href="https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/"/>
+    <id>https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/</id>
     <published>2017-01-22T10:55:21.000Z</published>
     <updated>2017-01-23T09:34:23.000Z</updated>
     
@@ -1126,21 +1067,129 @@
     
     </summary>
     
-      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="iOS" scheme="http://huos3203.github.io/boyer/tags/iOS/"/>
+      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
-      <category term="汇总" scheme="http://huos3203.github.io/boyer/tags/%E6%B1%87%E6%80%BB/"/>
+      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
     
-      <category term="资源" scheme="http://huos3203.github.io/boyer/tags/%E8%B5%84%E6%BA%90/"/>
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>腾讯云之小直播开发</title>
+    <link href="https://huos3203.github.io/2017/01/22/%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B9%8B%E5%B0%8F%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/"/>
+    <id>https://huos3203.github.io/2017/01/22/腾讯云之小直播开发/</id>
+    <published>2017-01-22T10:55:21.000Z</published>
+    <updated>2017-01-22T10:55:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="视频服务"><a href="#视频服务" class="headerlink" title="视频服务"></a>视频服务</h1><ol>
+<li><p><a href="https://www.qcloud.com/product/LVB" target="_blank" rel="external">直播LVB</a> </p>
+<ol>
+<li><a href="https://www.qcloud.com/document/product/267/7964" target="_blank" rel="external">开发指南</a></li>
+</ol>
+</li>
+<li><p><a href="https://www.qcloud.com/product/mlvb" target="_blank" rel="external">移动直播MLVB</a></p>
+<ol>
+<li><a href="https://www.qcloud.com/document/product/454/7876" target="_blank" rel="external">开发指南</a><br>移动直播是一套移动终端直播解决方案的<code>集合</code>，它以免费源码的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
+</ol>
+</li>
+</ol>
+<h2 id="快速集成方案"><a href="#快速集成方案" class="headerlink" title="快速集成方案"></a>快速集成方案</h2><img src="https://mc.qcloudimg.com/static/img/92a464fc26bbe52fea8816f8e6061ef3/image.jpg" class="导图" title="100% 200 集成导图 图片">
+<p>如果您想要在自己的 APP 里集成直播推流和播放功能，下面三步就能达成目标：</p>
+<ol>
+<li>开通直播服务<br><a href="https://console.qcloud.com/live" target="_blank" rel="external">文档</a></li>
+<li>集成 RTMP SDK<br><a href="https://www.qcloud.com/document/product/454/7880" target="_blank" rel="external">RTMP SDK - iOS 平台播放</a></li>
+<li>对接直播流管理<ol>
+<li><a href="https://www.qcloud.com/document/product/454/7915" target="_blank" rel="external">云端API - 如何获取推流URL？</a></li>
+<li><a href="https://www.qcloud.com/document/product/454/7916" target="_blank" rel="external">云端API - 如何构建房间列表？</a></li>
+<li><a href="https://www.qcloud.com/document/product/454/7920" target="_blank" rel="external">云端API - 如何管理直播流？</a><br>小直播是有腾讯云研发团队提供的一套开源源码集，致力于以 DEMO 的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;视频服务&quot;&gt;&lt;a href=&quot;#视频服务&quot; class=&quot;headerlink&quot; title=&quot;视频服务&quot;&gt;&lt;/a&gt;视频服务&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.qcloud.com/product/LVB&quot; target=&quot;
+    
+    </summary>
+    
+      <category term="直播" scheme="https://huos3203.github.io/categories/%E7%9B%B4%E6%92%AD/"/>
+    
+    
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="SDK" scheme="https://huos3203.github.io/tags/SDK/"/>
+    
+      <category term="直播" scheme="https://huos3203.github.io/tags/%E7%9B%B4%E6%92%AD/"/>
+    
+      <category term="腾讯云" scheme="https://huos3203.github.io/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
+    
+      <category term="集成" scheme="https://huos3203.github.io/tags/%E9%9B%86%E6%88%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AR 开发资料汇[转]</title>
+    <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
+    <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
+    <published>2017-01-22T10:55:21.000Z</published>
+    <updated>2017-01-22T10:55:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
+<hr>
+<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
+<hr>
+<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
+<hr>
+<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
+<hr>
+<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
+<hr>
+<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
+<hr>
+<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
+<hr>
+<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
+<hr>
+<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
+<hr>
+<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
+<hr>
+<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
+<hr>
+<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
+<hr>
+<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
+    
+    </summary>
+    
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="AR" scheme="https://huos3203.github.io/tags/AR/"/>
+    
+      <category term="LBS+AR" scheme="https://huos3203.github.io/tags/LBS-AR/"/>
+    
+      <category term="QQ红包" scheme="https://huos3203.github.io/tags/QQ%E7%BA%A2%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>iOS面试题大集合[转]</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/22/iOS面试题大集合/</id>
+    <link href="https://huos3203.github.io/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
+    <id>https://huos3203.github.io/2017/01/22/iOS面试题大集合/</id>
     <published>2017-01-22T10:55:21.000Z</published>
     <updated>2017-01-22T10:55:21.000Z</updated>
     
@@ -1268,21 +1317,21 @@
     
     </summary>
     
-      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="汇总" scheme="http://huos3203.github.io/boyer/tags/%E6%B1%87%E6%80%BB/"/>
+      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
     
-      <category term="资源" scheme="http://huos3203.github.io/boyer/tags/%E8%B5%84%E6%BA%90/"/>
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
-      <category term="面试" scheme="http://huos3203.github.io/boyer/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="https://huos3203.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>迁移SVN库到git库保留branchs和tags</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/18/%E8%BF%81%E7%A7%BBSVN%E5%BA%93%E5%88%B0git%E5%BA%93%E4%BF%9D%E7%95%99branchs%E5%92%8Ctags/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/18/迁移SVN库到git库保留branchs和tags/</id>
+    <link href="https://huos3203.github.io/2017/01/18/%E8%BF%81%E7%A7%BBSVN%E5%BA%93%E5%88%B0git%E5%BA%93%E4%BF%9D%E7%95%99branchs%E5%92%8Ctags/"/>
+    <id>https://huos3203.github.io/2017/01/18/迁移SVN库到git库保留branchs和tags/</id>
     <published>2017-01-18T04:21:46.000Z</published>
     <updated>2017-02-10T09:29:50.000Z</updated>
     
@@ -1339,25 +1388,25 @@
     
     </summary>
     
-      <category term="git" scheme="http://huos3203.github.io/boyer/categories/git/"/>
+      <category term="git" scheme="https://huos3203.github.io/categories/git/"/>
     
     
-      <category term="git" scheme="http://huos3203.github.io/boyer/tags/git/"/>
+      <category term="git" scheme="https://huos3203.github.io/tags/git/"/>
     
-      <category term="svn" scheme="http://huos3203.github.io/boyer/tags/svn/"/>
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
-      <category term="管理" scheme="http://huos3203.github.io/boyer/tags/%E7%AE%A1%E7%90%86/"/>
+      <category term="svn" scheme="https://huos3203.github.io/tags/svn/"/>
     
-      <category term="git-svn" scheme="http://huos3203.github.io/boyer/tags/git-svn/"/>
+      <category term="git-svn" scheme="https://huos3203.github.io/tags/git-svn/"/>
     
   </entry>
   
   <entry>
     <title>Error Handling for Swift</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/11/ErrorHandlingForSwift/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/11/ErrorHandlingForSwift/</id>
+    <link href="https://huos3203.github.io/2017/01/11/ErrorHandlingForSwift/"/>
+    <id>https://huos3203.github.io/2017/01/11/ErrorHandlingForSwift/</id>
     <published>2017-01-11T09:04:21.000Z</published>
     <updated>2017-01-12T03:57:41.000Z</updated>
     
@@ -1420,17 +1469,17 @@
     
     </summary>
     
-      <category term="Swift" scheme="http://huos3203.github.io/boyer/categories/Swift/"/>
+      <category term="Swift" scheme="https://huos3203.github.io/categories/Swift/"/>
     
     
-      <category term="安全" scheme="http://huos3203.github.io/boyer/tags/%E5%AE%89%E5%85%A8/"/>
+      <category term="安全" scheme="https://huos3203.github.io/tags/%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
   <entry>
     <title>在OC和swift中区分多个targets</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/11/%E5%9C%A8OC%E5%92%8Cswift%E4%B8%AD%E5%8C%BA%E5%88%86%E5%A4%9A%E4%B8%AAtargets/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/11/在OC和swift中区分多个targets/</id>
+    <link href="https://huos3203.github.io/2017/01/11/%E5%9C%A8OC%E5%92%8Cswift%E4%B8%AD%E5%8C%BA%E5%88%86%E5%A4%9A%E4%B8%AAtargets/"/>
+    <id>https://huos3203.github.io/2017/01/11/在OC和swift中区分多个targets/</id>
     <published>2017-01-11T05:49:33.000Z</published>
     <updated>2017-01-12T03:57:41.000Z</updated>
     
@@ -1460,17 +1509,17 @@
     
     </summary>
     
-      <category term="Swift" scheme="http://huos3203.github.io/boyer/categories/Swift/"/>
+      <category term="Swift" scheme="https://huos3203.github.io/categories/Swift/"/>
     
     
-      <category term="targets" scheme="http://huos3203.github.io/boyer/tags/targets/"/>
+      <category term="targets" scheme="https://huos3203.github.io/tags/targets/"/>
     
   </entry>
   
   <entry>
     <title>Swift 语言指南[转]</title>
-    <link href="http://huos3203.github.io/boyer/2017/01/03/SwiftGuide/"/>
-    <id>http://huos3203.github.io/boyer/2017/01/03/SwiftGuide/</id>
+    <link href="https://huos3203.github.io/2017/01/03/SwiftGuide/"/>
+    <id>https://huos3203.github.io/2017/01/03/SwiftGuide/</id>
     <published>2017-01-03T09:05:20.000Z</published>
     <updated>2017-01-23T10:33:57.000Z</updated>
     
@@ -1623,21 +1672,21 @@
     
     </summary>
     
-      <category term="资源" scheme="http://huos3203.github.io/boyer/categories/%E8%B5%84%E6%BA%90/"/>
+      <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="汇总" scheme="http://huos3203.github.io/boyer/tags/%E6%B1%87%E6%80%BB/"/>
+      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
     
-      <category term="资源" scheme="http://huos3203.github.io/boyer/tags/%E8%B5%84%E6%BA%90/"/>
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
-      <category term="swift" scheme="http://huos3203.github.io/boyer/tags/swift/"/>
+      <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
     
   </entry>
   
   <entry>
     <title>Docker安装使用</title>
-    <link href="http://huos3203.github.io/boyer/2016/12/21/Docker%E4%BD%BF%E7%94%A8/"/>
-    <id>http://huos3203.github.io/boyer/2016/12/21/Docker使用/</id>
+    <link href="https://huos3203.github.io/2016/12/21/Docker%E4%BD%BF%E7%94%A8/"/>
+    <id>https://huos3203.github.io/2016/12/21/Docker使用/</id>
     <published>2016-12-21T13:25:29.000Z</published>
     <updated>2017-02-07T05:47:53.000Z</updated>
     
@@ -1755,8 +1804,8 @@
 </tr>
 <tr>
 <td style="text-align:right">MAINTAINER</td>
-<td style="text-align:right">Author <a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#x73;&#x6f;&#x6d;&#x65;&#x2d;&#111;&#x6e;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#x73;&#x6f;&#x6d;&#x65;&#x2d;&#111;&#x6e;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
-<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#115;&#111;&#x6d;&#x65;&#x2d;&#111;&#110;&#101;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#x6d;">&#115;&#111;&#x6d;&#x65;&#x2d;&#111;&#110;&#101;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">Author <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#115;&#111;&#109;&#x65;&#45;&#111;&#110;&#x65;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#x65;&#x2e;&#99;&#x6f;&#x6d;">&#115;&#111;&#109;&#x65;&#45;&#111;&#110;&#x65;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#x65;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td style="text-align:right">镜像作者名字，如Max Liu <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#x73;&#x6f;&#x6d;&#101;&#45;&#x6f;&#110;&#101;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#109;">&#x73;&#x6f;&#x6d;&#101;&#45;&#x6f;&#110;&#101;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td style="text-align:right">RUN</td>
@@ -1821,21 +1870,21 @@
     
     </summary>
     
-      <category term="docker" scheme="http://huos3203.github.io/boyer/categories/docker/"/>
+      <category term="docker" scheme="https://huos3203.github.io/categories/docker/"/>
     
     
-      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="搭建" scheme="http://huos3203.github.io/boyer/tags/%E6%90%AD%E5%BB%BA/"/>
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
   <entry>
     <title>hackmd使用</title>
-    <link href="http://huos3203.github.io/boyer/2016/12/21/hackmd%E4%BD%BF%E7%94%A8/"/>
-    <id>http://huos3203.github.io/boyer/2016/12/21/hackmd使用/</id>
+    <link href="https://huos3203.github.io/2016/12/21/hackmd%E4%BD%BF%E7%94%A8/"/>
+    <id>https://huos3203.github.io/2016/12/21/hackmd使用/</id>
     <published>2016-12-21T02:49:32.000Z</published>
     <updated>2017-02-07T11:40:34.000Z</updated>
     
@@ -2136,49 +2185,10 @@ line 3 of code
     
     </summary>
     
-      <category term="hexo" scheme="http://huos3203.github.io/boyer/categories/hexo/"/>
+      <category term="hexo" scheme="https://huos3203.github.io/categories/hexo/"/>
     
     
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo Hello World</title>
-    <link href="http://huos3203.github.io/boyer/2016/12/20/Hexo-hello-world/"/>
-    <id>http://huos3203.github.io/boyer/2016/12/20/Hexo-hello-world/</id>
-    <published>2016-12-20T10:02:13.000Z</published>
-    <updated>2017-01-13T08:39:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new draft <span class="string">"草稿名"</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo publish <span class="string">"草稿名"</span>  <span class="comment">#Moves a draft post from _drafts to _posts folder.</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>在我们开始之前,你必须在 <code>_config.yml</code> 修改设置。一个有效的部署设置必须有 <code>type</code> 字段。例如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    <span class="built_in">type</span>: git</div></pre></td></tr></table></figure></p>
-<p>你可用同时部署到多个type，Hexo将依次执行每个部署。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    - <span class="built_in">type</span>: git</div><div class="line">      repo:</div><div class="line">    - <span class="built_in">type</span>: heroku</div><div class="line">      repo:</div></pre></td></tr></table></figure></p>
-<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><h4 id="安装同步到git-插件"><a href="#安装同步到git-插件" class="headerlink" title="安装同步到git 插件"></a>安装同步到git 插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-<p>编辑<code>_config.yml</code>设置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    <span class="built_in">type</span>: git</div><div class="line">    repo: &lt;repository url&gt;</div><div class="line">    branch: [branch]</div><div class="line">    message: [message]</div></pre></td></tr></table></figure></p>
-<h4 id="安装生成RSS支持插件"><a href="#安装生成RSS支持插件" class="headerlink" title="安装生成RSS支持插件"></a>安装生成RSS支持插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install  hexo-generator-feed --save</div></pre></td></tr></table></figure>
-<p>编辑<code>_config.yml</code>设置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">feed:</div><div class="line">    <span class="built_in">type</span>: atom</div><div class="line">    path: atom.xml</div><div class="line">    <span class="built_in">limit</span>: 20</div><div class="line">    hub:</div></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://huos3203.github.io/boyer/categories/hexo/"/>
-    
-    
-      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   

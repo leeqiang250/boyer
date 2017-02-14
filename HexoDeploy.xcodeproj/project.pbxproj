@@ -451,7 +451,9 @@
 		14D1C36D1E4971DB00E3F905 /* xcode6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xcode6.jpg; sourceTree = "<group>"; };
 		14D1C36E1E497BBC00E3F905 /* xcode8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xcode8.png; sourceTree = "<group>"; };
 		14D1C3701E49C89900E3F905 /* _config.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = _config.yml; path = ../themes/maupassant/_config.yml; sourceTree = "<group>"; };
+		14FB50531E5298F200E05601 /* Fabric对macOS系统的支持调研.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Fabric对macOS系统的支持调研.md"; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
+		843F28831E51F4770020C321 /* gistflag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gistflag.jpg; sourceTree = "<group>"; };
 		8451A2711E28F1CF00301CE2 /* setup_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_config.sh; sourceTree = "<group>"; };
 		8451A2751E2908D000301CE2 /* .bowerrc */ = {isa = PBXFileReference; lastKnownFileType = text; path = .bowerrc; sourceTree = "<group>"; };
 		8451A2761E2908D000301CE2 /* .editorconfig */ = {isa = PBXFileReference; lastKnownFileType = text; path = .editorconfig; sourceTree = "<group>"; };
@@ -805,6 +807,7 @@
 				8461D4DA1E5010F6008CC6CE /* Java​Script​Core实现swift混编.md */,
 				8461D4DC1E502B81008CC6CE /* JavaScriptCore实战.md */,
 				143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */,
+				14FB50531E5298F200E05601 /* Fabric对macOS系统的支持调研.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
@@ -829,6 +832,7 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				843F28831E51F4770020C321 /* gistflag.jpg */,
 				143217591E51AD4800FEE010 /* 6w1h.jpg */,
 				143217571E51A8EB00FEE010 /* 读书笔记.jpg */,
 				143217551E518F5100FEE010 /* 需求速记.jpg */,
