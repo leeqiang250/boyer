@@ -457,6 +457,7 @@
 		14FB50581E52BC0F00E05601 /* pdfkit_inheritancehierarchy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pdfkit_inheritancehierarchy.gif; sourceTree = "<group>"; };
 		14FB50591E52C21F00E05601 /* pdfkit_uses_hierarchy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pdfkit_uses_hierarchy.gif; sourceTree = "<group>"; };
 		14FB505A1E52D7A100E05601 /* annotations.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = annotations.gif; sourceTree = "<group>"; };
+		14FB505B1E52F90B00E05601 /* 在沙盒中编写脚本.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "在沙盒中编写脚本.md"; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 		843F28831E51F4770020C321 /* gistflag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gistflag.jpg; sourceTree = "<group>"; };
 		8451A2711E28F1CF00301CE2 /* setup_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_config.sh; sourceTree = "<group>"; };
@@ -814,6 +815,7 @@
 				143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */,
 				14FB50531E5298F200E05601 /* Fabric对macOS系统的支持调研.md */,
 				14FB50561E52B13C00E05601 /* macOS之PDFKit基础.md */,
+				14FB505B1E52F90B00E05601 /* 在沙盒中编写脚本.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
