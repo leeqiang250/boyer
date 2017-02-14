@@ -11,30 +11,30 @@
     
 
     <meta name="keywords" content="阅读器,macOS">
-    <meta name="description" content="PDF文档一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。作为文件版本，可以支持元数据标记如作者，创建日期，等等。一个文件可以加密，需要密码才能查看它。两级加密存在：
+    <meta name="description" content="一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。作为文件版本，可以支持元数据标记如作者，创建日期，等等。一个文件可以加密，需要密码才能查看它。两级加密存在：
 
 用户级加密：如果用户成功地获得用户级权限，他或她可以查看文档，但可以限制打印或复制文档。
-所有者级别加密：获得所有者级别权限的用户可以查看文档并具有完全使用权限。许多加密的PDF文件有一">
+所有者级别加密：获得所有者级别权限的用户可以查看文档并具有完全使用权限。许多加密的PDF文件有一个“dum">
 <meta property="og:type" content="article">
 <meta property="og:title" content="macOS之PDFKit基础">
 <meta property="og:url" content="https://huos3203.github.io/2017/02/14/macOS之PDFKit基础/index.html">
 <meta property="og:site_name" content="布衣男儿">
-<meta property="og:description" content="PDF文档一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。作为文件版本，可以支持元数据标记如作者，创建日期，等等。一个文件可以加密，需要密码才能查看它。两级加密存在：
+<meta property="og:description" content="一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。作为文件版本，可以支持元数据标记如作者，创建日期，等等。一个文件可以加密，需要密码才能查看它。两级加密存在：
 
 用户级加密：如果用户成功地获得用户级权限，他或她可以查看文档，但可以限制打印或复制文档。
-所有者级别加密：获得所有者级别权限的用户可以查看文档并具有完全使用权限。许多加密的PDF文件有一">
+所有者级别加密：获得所有者级别权限的用户可以查看文档并具有完全使用权限。许多加密的PDF文件有一个“dum">
 <meta property="og:image" content="https://huos3203.github.io/images/view_vspage_space.gif">
 <meta property="og:image" content="https://huos3203.github.io/images/pdfkit_inheritancehierarchy.gif">
 <meta property="og:image" content="https://huos3203.github.io/images/pdfkit_uses_hierarchy.gif">
 <meta property="og:image" content="https://huos3203.github.io/images/pdfkit_inheritancehierarchy.gif">
 <meta property="og:image" content="https://huos3203.github.io/images/annotations.gif">
-<meta property="og:updated_time" content="2017-02-14T06:29:18.000Z">
+<meta property="og:updated_time" content="2017-02-14T06:33:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS之PDFKit基础">
-<meta name="twitter:description" content="PDF文档一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。作为文件版本，可以支持元数据标记如作者，创建日期，等等。一个文件可以加密，需要密码才能查看它。两级加密存在：
+<meta name="twitter:description" content="一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。作为文件版本，可以支持元数据标记如作者，创建日期，等等。一个文件可以加密，需要密码才能查看它。两级加密存在：
 
 用户级加密：如果用户成功地获得用户级权限，他或她可以查看文档，但可以限制打印或复制文档。
-所有者级别加密：获得所有者级别权限的用户可以查看文档并具有完全使用权限。许多加密的PDF文件有一">
+所有者级别加密：获得所有者级别权限的用户可以查看文档并具有完全使用权限。许多加密的PDF文件有一个“dum">
 <meta name="twitter:image" content="https://huos3203.github.io/images/view_vspage_space.gif">
 
     
@@ -110,11 +110,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF文档"><span class="toc-number">1.</span> <span class="toc-text">PDF文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF页面"><span class="toc-number">2.</span> <span class="toc-text">PDF页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#view-VS-page空间坐标"><span class="toc-number">2.1.</span> <span class="toc-text">view VS page空间坐标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF-Kit-Classes"><span class="toc-number">3.</span> <span class="toc-text">PDF Kit Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PDFView-Class"><span class="toc-number">3.1.</span> <span class="toc-text">PDFView Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PDF-Kit-Utility-Classes"><span class="toc-number">3.2.</span> <span class="toc-text">PDF Kit Utility Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PDF-Document"><span class="toc-number">3.2.1.</span> <span class="toc-text">PDF Document</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFPage"><span class="toc-number">3.2.2.</span> <span class="toc-text">PDFPage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFOutline"><span class="toc-number">3.2.3.</span> <span class="toc-text">PDFOutline</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFSelection"><span class="toc-number">3.2.4.</span> <span class="toc-text">PDFSelection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFAnnotation"><span class="toc-number">3.2.5.</span> <span class="toc-text">PDFAnnotation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFBorder"><span class="toc-number">3.2.6.</span> <span class="toc-text">PDFBorder</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF页面"><span class="toc-number">1.</span> <span class="toc-text">PDF页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#view-VS-page空间坐标"><span class="toc-number">1.1.</span> <span class="toc-text">view VS page空间坐标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF-Kit-Classes"><span class="toc-number">2.</span> <span class="toc-text">PDF Kit Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PDFView-Class"><span class="toc-number">2.1.</span> <span class="toc-text">PDFView Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PDF-Kit-Utility-Classes"><span class="toc-number">2.2.</span> <span class="toc-text">PDF Kit Utility Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PDF-Document"><span class="toc-number">2.2.1.</span> <span class="toc-text">PDF Document</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFPage"><span class="toc-number">2.2.2.</span> <span class="toc-text">PDFPage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFOutline"><span class="toc-number">2.2.3.</span> <span class="toc-text">PDFOutline</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFSelection"><span class="toc-number">2.2.4.</span> <span class="toc-text">PDFSelection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFAnnotation"><span class="toc-number">2.2.5.</span> <span class="toc-text">PDFAnnotation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFBorder"><span class="toc-number">2.2.6.</span> <span class="toc-text">PDFBorder</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="PDF文档"><a href="#PDF文档" class="headerlink" title="PDF文档"></a>PDF文档</h2><p>一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。<br>作为文件版本，可以支持元数据标记如作者，创建日期，等等。<br>一个文件可以加密，需要密码才能查看它。两级加密存在：</p>
+		<p>一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。<br>作为文件版本，可以支持元数据标记如作者，创建日期，等等。<br>一个文件可以加密，需要密码才能查看它。两级加密存在：</p>
 <ul>
 <li>用户级加密：如果用户成功地获得用户级权限，他或她可以查看文档，但可以限制打印或复制文档。</li>
 <li>所有者级别加密：获得所有者级别权限的用户可以查看文档并具有完全使用权限。<br>许多加密的PDF文件有一个“dummy”的用户密码为<code>空字符串</code>。大多数PDF文档解析器（包括PDF套件）自动尝试空字符串密码加密后的文件，如果成功，只显示文档。因此，在技术上加密的文档不一定提示用户口令。</li>
@@ -213,7 +213,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF文档"><span class="toc-number">1.</span> <span class="toc-text">PDF文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF页面"><span class="toc-number">2.</span> <span class="toc-text">PDF页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#view-VS-page空间坐标"><span class="toc-number">2.1.</span> <span class="toc-text">view VS page空间坐标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF-Kit-Classes"><span class="toc-number">3.</span> <span class="toc-text">PDF Kit Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PDFView-Class"><span class="toc-number">3.1.</span> <span class="toc-text">PDFView Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PDF-Kit-Utility-Classes"><span class="toc-number">3.2.</span> <span class="toc-text">PDF Kit Utility Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PDF-Document"><span class="toc-number">3.2.1.</span> <span class="toc-text">PDF Document</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFPage"><span class="toc-number">3.2.2.</span> <span class="toc-text">PDFPage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFOutline"><span class="toc-number">3.2.3.</span> <span class="toc-text">PDFOutline</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFSelection"><span class="toc-number">3.2.4.</span> <span class="toc-text">PDFSelection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFAnnotation"><span class="toc-number">3.2.5.</span> <span class="toc-text">PDFAnnotation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFBorder"><span class="toc-number">3.2.6.</span> <span class="toc-text">PDFBorder</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF页面"><span class="toc-number">1.</span> <span class="toc-text">PDF页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#view-VS-page空间坐标"><span class="toc-number">1.1.</span> <span class="toc-text">view VS page空间坐标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF-Kit-Classes"><span class="toc-number">2.</span> <span class="toc-text">PDF Kit Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PDFView-Class"><span class="toc-number">2.1.</span> <span class="toc-text">PDFView Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PDF-Kit-Utility-Classes"><span class="toc-number">2.2.</span> <span class="toc-text">PDF Kit Utility Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PDF-Document"><span class="toc-number">2.2.1.</span> <span class="toc-text">PDF Document</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFPage"><span class="toc-number">2.2.2.</span> <span class="toc-text">PDFPage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFOutline"><span class="toc-number">2.2.3.</span> <span class="toc-text">PDFOutline</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFSelection"><span class="toc-number">2.2.4.</span> <span class="toc-text">PDFSelection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFAnnotation"><span class="toc-number">2.2.5.</span> <span class="toc-text">PDFAnnotation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDFBorder"><span class="toc-number">2.2.6.</span> <span class="toc-text">PDFBorder</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -237,7 +237,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/CI/" title="CI">CI<sup>4</sup></a></li>
+			<li><a href="/categories/CI/" title="CI">CI<sup>3</sup></a></li>
 		  
 		
 		  
@@ -269,7 +269,7 @@
 		  
 		
 		  
-			<li><a href="/categories/macOS/" title="macOS">macOS<sup>3</sup></a></li>
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>4</sup></a></li>
 		  
 		
 		  
@@ -322,7 +322,7 @@
 			
 		
 			
-				<li><a href="/tags/搭建/" title="搭建">搭建<sup>5</sup></a></li>
+				<li><a href="/tags/资源/" title="资源">资源<sup>5</sup></a></li>
 			
 		
 			
@@ -330,11 +330,11 @@
 			
 		
 			
-				<li><a href="/tags/资源/" title="资源">资源<sup>5</sup></a></li>
+				<li><a href="/tags/管理/" title="管理">管理<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/管理/" title="管理">管理<sup>5</sup></a></li>
+				<li><a href="/tags/搭建/" title="搭建">搭建<sup>5</sup></a></li>
 			
 		
 			
@@ -342,7 +342,7 @@
 			
 		
 			
-				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
+				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
 			
 		
 			
@@ -350,19 +350,7 @@
 			
 		
 			
-				<li><a href="/tags/汇总/" title="汇总">汇总<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/swift/" title="swift">swift<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
 			
 		
 			
@@ -370,19 +358,23 @@
 			
 		
 			
-				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/svn/" title="svn">svn<sup>2</sup></a></li>
+				<li><a href="/tags/汇总/" title="汇总">汇总<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/SDK/" title="SDK">SDK<sup>2</sup></a></li>
+				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+				<li><a href="/tags/swift/" title="swift">swift<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TextKit/" title="TextKit">TextKit<sup>2</sup></a></li>
 			
 		
 			
@@ -390,7 +382,15 @@
 			
 		
 			
-				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
+				<li><a href="/tags/截屏/" title="截屏">截屏<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SDK/" title="SDK">SDK<sup>2</sup></a></li>
 			
 		
 		</ul>
