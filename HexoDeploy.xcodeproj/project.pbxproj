@@ -458,6 +458,10 @@
 		14FB50591E52C21F00E05601 /* pdfkit_uses_hierarchy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pdfkit_uses_hierarchy.gif; sourceTree = "<group>"; };
 		14FB505A1E52D7A100E05601 /* annotations.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = annotations.gif; sourceTree = "<group>"; };
 		14FB505B1E52F90B00E05601 /* 在沙盒中编写脚本.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "在沙盒中编写脚本.md"; sourceTree = "<group>"; };
+		14FB505D1E53F02D00E05601 /* JavaScript实现自动化.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScript实现自动化.md"; sourceTree = "<group>"; };
+		14FB505E1E54016800E05601 /* shell命令+AppleScript脚本+Swift代码相互调用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "shell命令+AppleScript脚本+Swift代码相互调用.md"; sourceTree = "<group>"; };
+		14FB505F1E543BB200E05601 /* JavaScript对macOS支持的基本语法.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScript对macOS支持的基本语法.md"; sourceTree = "<group>"; };
+		14FB50601E54544000E05601 /* Objective-C和JavaScript桥接语法.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Objective-C和JavaScript桥接语法.md"; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 		843F28831E51F4770020C321 /* gistflag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gistflag.jpg; sourceTree = "<group>"; };
 		8451A2711E28F1CF00301CE2 /* setup_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_config.sh; sourceTree = "<group>"; };
@@ -816,6 +820,9 @@
 				14FB50531E5298F200E05601 /* Fabric对macOS系统的支持调研.md */,
 				14FB50561E52B13C00E05601 /* macOS之PDFKit基础.md */,
 				14FB505B1E52F90B00E05601 /* 在沙盒中编写脚本.md */,
+				14FB505E1E54016800E05601 /* shell命令+AppleScript脚本+Swift代码相互调用.md */,
+				14FB505F1E543BB200E05601 /* JavaScript对macOS支持的基本语法.md */,
+				14FB50601E54544000E05601 /* Objective-C和JavaScript桥接语法.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
@@ -996,6 +1003,7 @@
 				14B363F31E26399400D1FB05 /* 2015-12-25-zui-xin-zhong-guan-cun-can-tong-jing-li.markdown */,
 				14B363F41E26399400D1FB05 /* 2016-01-13-yuan-ti-ku-jia-gou-xue-xi.markdown */,
 				14B363F51E27374700D1FB05 /* 2015-01-20-iapkai-fa-bu-zou.md */,
+				14FB505D1E53F02D00E05601 /* JavaScript实现自动化.md */,
 			);
 			name = "_drafts草稿";
 			path = _drafts;
