@@ -463,7 +463,7 @@
 		14FB505F1E543BB200E05601 /* macOS支持JavaScript自动化组件基础.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "macOS支持JavaScript自动化组件基础.md"; sourceTree = "<group>"; };
 		14FB50601E54544000E05601 /* JavaScript自动化组件OC桥接.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScript自动化组件OC桥接.md"; sourceTree = "<group>"; };
 		14FB50611E545BEA00E05601 /* Playground中使用XCPlaygroundModule.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Playground中使用XCPlaygroundModule.md"; sourceTree = "<group>"; };
-		14FB50621E55792F00E05601 /* iOS8中几种常用的展示控制器使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "iOS8中几种常用的展示控制器使用.md"; sourceTree = "<group>"; };
+		14FB50621E55792F00E05601 /* iOS中几种常用的展示控制器使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "iOS中几种常用的展示控制器使用.md"; sourceTree = "<group>"; };
 		14FB50631E5589D100E05601 /* iPhoneipadalert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneipadalert.png; sourceTree = "<group>"; };
 		14FB50641E558D9C00E05601 /* popover箭头.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover箭头.png"; sourceTree = "<group>"; };
 		14FB50651E5596E600E05601 /* UIPopoverArrowDirection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIPopoverArrowDirection.png; sourceTree = "<group>"; };
@@ -831,7 +831,7 @@
 				14FB505E1E54016800E05601 /* shell命令+AppleScript脚本+Swift代码相互调用.md */,
 				14FB505F1E543BB200E05601 /* macOS支持JavaScript自动化组件基础.md */,
 				14FB50601E54544000E05601 /* JavaScript自动化组件OC桥接.md */,
-				14FB50621E55792F00E05601 /* iOS8中几种常用的展示控制器使用.md */,
+				14FB50621E55792F00E05601 /* iOS中几种常用的展示控制器使用.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
