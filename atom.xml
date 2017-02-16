@@ -30,6 +30,48 @@
   </entry>
   
   <entry>
+    <title>JavaScript自动化组件OC桥接</title>
+    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
+    <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
+    <published>2017-02-15T09:19:30.000Z</published>
+    <updated>2017-02-16T05:32:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
+<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
+<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
+<blockquote>
+<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
+</blockquote>
+<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
+<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
+<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
+    
+    </summary>
+    
+      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+    
+    
+      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>macOS支持JavaScript自动化组件基础</title>
     <link href="https://huos3203.github.io/2017/02/15/macOS%E6%94%AF%E6%8C%81JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80/"/>
     <id>https://huos3203.github.io/2017/02/15/macOS支持JavaScript自动化组件基础/</id>
@@ -99,53 +141,11 @@
     
       <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
-    
       <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
       <category term="JavaScript" scheme="https://huos3203.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript自动化组件OC桥接</title>
-    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
-    <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
-    <published>2017-02-15T09:19:30.000Z</published>
-    <updated>2017-02-16T05:32:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
-<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
-<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
-<blockquote>
-<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
-</blockquote>
-<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
-<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
-<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
-    
-    </summary>
-    
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
-    
-    
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
-    
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
@@ -182,9 +182,9 @@
     
       <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
-    
       <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
       <category term="shell" scheme="https://huos3203.github.io/tags/shell/"/>
     
@@ -351,9 +351,9 @@
     
       <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
-    
       <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
     
       <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
@@ -1223,144 +1223,55 @@
   </entry>
   
   <entry>
-    <title>iOS面试题大集合[转]</title>
-    <link href="https://huos3203.github.io/2017/01/22/iOS%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E9%9B%86%E5%90%88/"/>
-    <id>https://huos3203.github.io/2017/01/22/iOS面试题大集合/</id>
+    <title>AR 开发资料汇[转]</title>
+    <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
+    <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
     <published>2017-01-22T10:55:21.000Z</published>
     <updated>2017-01-22T10:55:21.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 align="center">iOS有用的面试题大集合</h1>
-
-<h2 id="面试题从何处得来"><a href="#面试题从何处得来" class="headerlink" title="面试题从何处得来"></a>面试题从何处得来</h2><ul>
-<li><a href="http://blog.sunnyxx.com/2015/07/04/ios-interview/" target="_blank" rel="external">招聘一个靠谱的 iOS</a></li>
-<li><a href="http://www.zhihu.com/question/19604641" target="_blank" rel="external">知乎－如何面试 iOS 工程师？</a></li>
-</ul>
-<h2 id="阅读面试题之前"><a href="#阅读面试题之前" class="headerlink" title="阅读面试题之前"></a>阅读面试题之前</h2><p>在正式开始之前，我期望你能对iOS/Mac OS X平台开发有所了解，在iOS开发中已经很少需要自己写复杂的算法了，一般情况下很少会在面试中出现算法的考核，如果你了解一些基础的算法，还是有帮助的。</p>
-<p>Now！！请使用ARC</p>
-<h3 id="什么是iOS开发"><a href="#什么是iOS开发" class="headerlink" title="什么是iOS开发"></a>什么是iOS开发</h3><p>iOS是iPhone iPad等手持设备的操作系统，所谓的iOS开发就是开发运行在iOS系统上的应用或者游戏，比如支付宝，微信，微博等，当然这也包括了iPad版的应用，iOS开发可以归纳到<strong>移动开发</strong>领域。</p>
-<p><strong>有时候面试官是那种’脑残粉’，了解一下Apple的发展历史，可能比较聊的开。</strong></p>
-<p><a href="http://digi.tech.qq.com/a/20150127/021898.htm" target="_blank" rel="external">苹果Mac计算机31年发展历程回顾</a></p>
-<p><a href="http://baike.baidu.com/link?url=68F4Bl4llkNvdFJ1Md0fkZDDudN-NS46JeZoLrgPeqEbZmm8oBKG92Ocyd983yNQU6FVuDTFZOnjjPjfUHnuoePdfh6zJJ973pXFKYcbIKp5bCnQy_WvUVNJ6P84s8HE1xAlRaGdLVuoCb2p_8uaMa" target="_blank" rel="external">苹果公司</a></p>
-<p><a href="http://www.zhihu.com/topic/19551762" target="_blank" rel="external">苹果公司在知乎上的话题</a></p>
-<p><a href="http://www.amazon.cn/%E5%8F%B2%E8%92%82%E5%A4%AB%C2%B7%E4%B9%94%E5%B8%83%E6%96%AF%E4%BC%A0-%E6%B2%83%E5%B0%94%E7%89%B9%C2%B7%E8%89%BE%E8%90%A8%E5%85%8B%E6%A3%AE/dp/B00IM4IFL2/ref=sr_1_1?ie=UTF8&amp;qid=1436592631&amp;sr=8-1&amp;keywords=%E4%B9%94%E5%B8%83%E6%96%AF" target="_blank" rel="external">乔布斯个人传记</a></p>
-<h3 id="拼写正确的重要性"><a href="#拼写正确的重要性" class="headerlink" title="拼写正确的重要性"></a>拼写正确的重要性</h3><p>有些面试官可能更注重细节，所以，拼写的单词一定要对，比如iOS，Xcode，iPhone，Objective-C，JSON等，良好的拼写习惯，会让面试官觉得你细心靠谱。</p>
-<h3 id="Swift和Objective-C的比较"><a href="#Swift和Objective-C的比较" class="headerlink" title="Swift和Objective-C的比较"></a>Swift和Objective-C的比较</h3><p>仁者见仁智者见智，从个人的使用角度上来看，Swift在某些情况上比Objective-C更加的严谨了，入门非常简单，但是想开发应用，还是需要学习cocoa框架，这玩意路子还是Objective-C的，所以有基础可能更好的理解Swift在iOS/Mac OS X 中的开发和应用。</p>
-<p><a href="http://www.zhihu.com/question/24002984" target="_blank" rel="external">知乎原文</a></p>
-<h3 id="了解Watch-OS"><a href="#了解Watch-OS" class="headerlink" title="了解Watch OS"></a>了解Watch OS</h3><p><code>Watch OS</code>是苹果公司推出的应用在手表上的一个操作系统，<code>Watch OS 1.0</code>需要跟iPhone相结合才能工作。</p>
-<p><a href="https://stratechery.com/2014/apple-watch-asking-saying/" target="_blank" rel="external">Apple Watch</a></p>
-<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&amp;mid=208847424&amp;idx=1&amp;sn=fac57c5da8136b07fe9cdf53d1ec9f4c#rd" target="_blank" rel="external">Watch OS 2.0 开发概述</a></p>
+    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
 <hr>
-<h2 id="iOS面试"><a href="#iOS面试" class="headerlink" title="iOS面试"></a>iOS面试</h2><h5>property 后面可以有哪些修饰符</h5>
-
-<ol>
-<li><p>读写修饰符 <code>readwrite</code> | <code>readonly</code></p>
-<p> <code>readwrite</code> Xcode会帮助我们创建<code>setter</code>，<code>getter</code>方法，<code>readonly</code> Xcode只会帮助我们创建<code>getter</code>方法，不会创建<code>setter</code>方法。</p>
-</li>
-<li><p><code>setter</code>相关的修饰符 <code>assign</code> | <code>retain</code> | <code>copy</code></p>
-<p> 2.1 <code>setter</code>相关的修饰符表明了<code>setter</code>方法该如何实现，<code>assign</code>用于基本数据类型<code>NSInteger</code>，<code>CGFloat</code>，C数据类型<code>int</code>，<code>float</code>，<code>id</code>类型等，这个符号不会涉及内存管理，但是如果是对象类使用了它，可能会导致内存泄漏或者<code>EXC_BAD_ACCESS</code>错误。</p>
-<p> 2.2 <code>retain</code>用于对象类的内存管理，如果基本数据类型使用它，<code>Xcode</code>会直接报错。当对象类使用此修饰符时，<code>setter</code>方法的实现是先<code>release</code>一次，然后再对新的对象做一次<code>retain</code>操作。</p>
-<p> 2.3 <code>copy</code>主要用于<code>NSString</code>，用于内容复制。</p>
-</li>
-<li><p>原子性修饰符 <code>atomic</code> | <code>nonatomic</code></p>
-<p> <code>atomic</code> 表示线程安全</p>
-<p> <code>nonatomic</code> 表示非线程安全，使用此修饰符会提高性能</p>
-</li>
-<li><p><code>getter</code>，<code>setter</code>修饰符</p>
-<p> 这两个修饰符用于设置生成的getter，setter的方法名</p>
-</li>
-<li><p><code>strong</code>，<code>weak</code>修饰符（ARC）<br>在ARC中内存管理都只需要使用这两个修饰符，而且<code>strong</code>是默认全局的，只要你写了<code>Objective-C</code>的对象，不自己添加<code>weak</code>的话，默认就是<code>strong</code>。<br> 5.1 <code>strong</code>表示这个对象的拥有者<br> 一个对象可以有多个拥有者，<code>strong</code>就是用来表示对这个对象的拥有。比如在往<code>NSMutableArray</code>中添加<code>Objective-C</code>对象，当你从数组中删除时，这个对象并不会释放。需要你手动设置为<code>nil</code>，或者在控制器的生命周期内，由系统来释放。<br> 5.2 <code>weak</code>指针变量仍然可以指向一个对象，但不是这个对象的拥有者<br> <code>weak</code>修饰的指针变量也可以指向对象，但不是这个对象的实际拥有者，也就是说<code>weak</code>修饰的指针变量如果想要释放，需要<code>strong</code>修饰的指针变量设置为<code>nil</code>，<code>weak</code>修饰的指针变量也会是一个<code>nil</code>，它指向的对象已经没有了，还需要设置<code>weak</code>修饰的指针变量为<code>nil</code>。</p>
-</li>
-<li><code>nonnull</code> <code>nullable</code> <code>null_resettable</code></li>
-</ol>
-<p>Xcode 6.3推出的<code>nullability annotations</code>，主要是为了更好的Swift与Objective-C混编，在Swift中有可选型的概念<code>!</code>,<code>?</code>，但是Objective-C中木有这玩意，于是Xcode 6.3中才有了这个，<br>从字面可以看出:<br>    <code>nonnull</code> 表示对象不应该为空，如果是这个修饰符对应的就是Swift中已经解包的对象或者<code>!</code><br>    <code>nullable</code>表示可以为<code>nil</code>或者<code>NULL</code>,对应是Swift中的可选<code>?</code><br>    <code>null_resettable</code>则是表达属性的空属性，该属性<code>setter</code>访问器允许将其设置为<code>nil</code>（设置该属性为默认值），但是它的<code>getter</code>访问器不会提供一个<code>nil</code>值（因为它提供了默认值），有一个这样的属性如UIView’s tintColor，如果没有tint颜色指定时它会提供一个默认的tint颜色值，对应的Swift使用是var tintColor:UIColor!</p>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><ol>
-<li>使用 <code>weak</code> 关键字，相比 <code>assign</code> 有什么不同<br> 一般情况下使用<code>weak</code>是避免循环引用，因为它不是对象的拥有者。而<code>assign</code>则是用于基本数据类型，或者C类型，而且<code>assign</code>是直接赋值，可能会导致一个问题。比如我想a和b共用一块内存，a是用<code>assign</code>修饰的，<code>a = b</code>，现在a使用的目的已经完成，我想释放这个内存，但是a并不知道b到底用没用完，如果此时a释放内存，而b还在使用，那么会导致应用程序crash，使用<code>weak</code>就能避免这样的问题。</li>
-<li>怎么用 copy 关键字<br> <code>copy</code>拷贝的是内容,<code>retain</code>是拷贝的指针<pre><code>* 以`string`为例,如果`string`的属性为`copy`的话,那么传入参数为`NSString`的话,即为不可变`string`,`retain`,`copy`效果一样.
-* 如果传入参数是`mutable`的话,那么`copy`拷贝内容,源随意变化不影响该属性的值.`retain`拷贝指针,源变化则属性值着变化,因为属性和源指向如何使用呢,通常在需要拷贝内容,但是副本和源不要互相影响的情况下使用.`*` 同一内存地址.
-* 例如`array/dictionary`中,可能会需要一个副本来做一些操作(筛选,排序等),但是并不希望影响原始值,则可以使用`copy`
-</code></pre></li>
-<li>@property (copy) NSMutableArray *array; 这样写有什么问题吗<br> 因为用了<code>copy</code>, 内部会深拷贝一次, 指针实际指向的是<code>NSArray</code>, 所以如果调用<code>removeObject</code>和<code>addObject</code>方法的话, 会<code>unRecognized selector</code></li>
-<li>如何让自己的类用 copy 修饰符？如何重写带 copy 关键字的 setter？<br> 当一个对象发生改变时不影响另外一个对象，这里就需要使用<code>copy</code>关键字了，实现<code>NSCopying</code>协议，重写- <code>(id)copyWithZone:(NSZone *)zone</code>方法。<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(_name != name)</div><div class="line">    &#123;</div><div class="line">        _name = [name <span class="keyword">copy</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-<li>@protocol 和 category 中如何使用 @property<br> <code>@protocol</code>可以通过关键字:<code>@synthesize</code>或者在继承的类里面重新定义一次该属性(<code>extension</code>里面定义是不行的)<br> <code>category</code>通过关联:<code>objc_setAssociatedObject</code>/<code>objc_getAssociatedObject</code></li>
-<li><code>@property</code> 的本质是什么？<code>ivar</code>、<code>getter</code>、<code>setter</code> 是如何生成并添加到这个类中的<br> <code>@property</code>本质是定义一个<code>objc_property</code>结构体<br><strong>如何生成目前不清楚</strong></li>
-<li><code>weak</code>属性需要在<code>dealloc</code>中置<code>nil</code>么<br> 不需要，因为weak会自动设置nil</li>
-<li><code>@synthesize</code>和@<code>dynamic</code>分别有什么作用<br> 关于@synthesize（现在已经不需要在写这个属性了，它是用来生成getter和setter方法）<br> <code>@dynamic</code> 就是要告诉编译器<code>getter</code>和<code>setter</code>方法会在程序运行或者用到动态绑定的方式，以便让编译器通过编译，这个主要要在<code>NSManagerObject</code>上。</li>
-<li><code>ARC</code>下，不显式指定任何属性关键字时，默认的关键字都有哪些<br> 在默认情况下，所有的实例变量和局部变量都是<code>strong</code>类型的。</li>
-<li>用<code>@property</code>声明的<code>NSString</code>（或<code>NSArray</code>，<code>NSDictionary</code>）经常使用<code>copy</code>关键字，为什么？如果改用strong关键字，可能造成什么问题<br>因为不想改变了其中的值后把原来的值也跟着改变了，用了<code>strong</code>后会出现这样的状况。</li>
-<li>什么是ARC<br>请阅读，然后随便谈谈你的理解即可。<br>ARC是为了解决下面几个问题<ul>
-<li>当我们要释放一个堆内存时，首先要确定指向这个堆空间的指针都被<code>release</code>了。（避免提前释放）</li>
-<li>释放指针指向的堆空间，首先要确定哪些指针指向同一个堆，这些指针只能释放一次。（<code>MRC</code>下即谁创建，谁释放，避免重复释放）</li>
-<li>模块化操作时，对象可能被多个模块创建和使用，不能确定最后由谁去释放。</li>
-<li>多线程操作时，不确定哪个线程最后使用完毕<br><a href="http://onevcat.com/2012/06/arc-hand-by-hand/" target="_blank" rel="external">手把手教你ARC——iOS/Mac开发ARC入门和使用</a><br><a href="http://www.oschina.net/translate/objc-automatic-reference-counting-in-xcode-explained" target="_blank" rel="external">理解 Objective-C 的 ARC</a></li>
-</ul>
-</li>
-<li>请解释以下keywords的区别： <code>assign</code> vs <code>weak</code>, <code>block</code> vs <code>weak</code><br><code>assign</code>适用于基本数据类型，<code>weak</code>是适用于<code>NSObject</code>对象，并且是一个弱引用。<ul>
-<li><code>assign</code>其实也可以用来修饰对象，那么我们为什么不用它呢？<br>因为被<code>assign</code>修饰的对象在释放之后，指针的地址还是存在的，也就是说指针并没有被置为<code>nil</code>。如果在后续的内存分配中，刚好分到了这块地址，程序就会崩溃掉。</li>
-<li><code>weak</code>修饰的对象在释放之后，指针地址会被置为<code>nil</code>。所以现在一般弱引用就是用<code>weak</code>。</li>
-<li><code>block</code>是用来修饰一个变量，这个变量就可以在<code>block</code>中被修改，使用<code>block</code>修饰的变量在<code>block</code>代码快中会被<code>retain</code>（<code>ARC</code>下，<code>MRC</code>下不会<code>retain</code>） </li>
-<li><code>weak</code>：使用<code>weak</code>修饰的变量不会在<code>block</code>代码块中被<code>retain</code>同时，在ARC下，要避免<code>block</code>出现循环引用 <code>weak typedof(self)weakSelf = self</code></li>
-</ul>
-</li>
-<li><code>__block</code>在<code>arc</code>和<code>非arc</code>下含义一样吗<br>是不一样的，ARC会retain，非ARC不会。</li>
-<li>描述一个你遇到过的<code>retain</code> cycle例子<br>在<code>viewController</code>中避免循环引用<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    _data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>  
-解决办法<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">__<span class="keyword">weak</span> ViewController *weakSelf = <span class="keyword">self</span>;</div><div class="line">[ downloadData:^(<span class="keyword">id</span> responseData)&#123;</div><div class="line">    weakSelf.data = responseData;</div><div class="line">&#125;];</div></pre></td></tr></table></figure></li>
-<li><code>+(void)load;</code> <code>+(void)initialize;</code>有什么用处<br>在Objective-C中，<code>runtime</code>会自动调用每个类的两个方法。<code>+load</code>会在类初始加载时调用，<code>+initialize</code>会在第一次调用类的类方法或实例方法之前被调用。这两个方法是可选的，且只有在实现了它们时才会被调用。<br>共同点：两个方法都只会被调用一次。</li>
-<li><code>UIView</code>和<code>CALayer</code>有什么关系<ul>
-<li><code>UIView</code>是iOS界面元素的基础，所有的界面元素都继承于它。它本身是由<code>CoreAnimation</code>来实现的，它真正绘图的部分是由一个<code>CALayer</code>的类来管理的，<code>UIView</code>本身更像是一个<code>CALayer</code>的管理器。</li>
-<li><code>UIView</code>都存在一个<code>layer</code>属性，可以访问到<code>CALayer</code>的实例。</li>
-<li><code>UIView</code>的<code>CALayer</code>类也存在一个<code>view</code>树结构，可以像<code>UIView</code>一样进行添加</li>
-<li><code>UIView</code>的<code>layer</code>树在系统内部，由系统来维护，它存在着三棵树，分别是逻辑树，动画树，显示树</li>
-</ul>
-</li>
-<li>如何高性能的给<code>UIImageView</code>加个圆角<ul>
-<li>使用贝塞尔曲线来切割图片</li>
-<li>使用<code>Quartz2D</code>直接绘制图片</li>
-</ul>
-</li>
-<li>使用<code>drawRect</code>有什么影响<br><code>drawRect</code>方法依赖<code>Core Graphics</code>框架来进行自定义的绘制，但这种方法主要的缺点就是它处理<code>touch</code>事件的方式：每次按钮被点击后，都会用<code>setNeddsDisplay</code>进行强制重绘；而且不止一次，每次单点事件触发两次执行。这样的话从性能的角度来说，对<code>CPU</code>和内存来说都是欠佳的。</li>
-<li>SDWebImage里面给UIImageView加载图片的逻辑是什么样的<br>详情看<a href="http://www.cnblogs.com/6duxz/p/4159572.html" target="_blank" rel="external">最新版SDWebImage的使用</a></li>
-<li>麻烦你设计个简单的图片内存缓存器<br>图片的内存缓存，可以考虑将图片数据保存到一个数据模型中，所以在程序运行时这个模型都存在内存中，一定要具备移除策略，即释放数据模型。</li>
-<li>讲讲你用<code>Instrument</code>优化动画性能的经历<br><a href="http://www.hrchen.com/2013/05/performance-with-instruments/" target="_blank" rel="external">怎么使用instrument</a></li>
-<li><code>loadView</code>是干嘛用的<br>当你访问一个<code>ViewController</code>的<code>view</code>属性时，如果此时<code>view</code>的值是<code>nil</code>，那么，<code>ViewController</code>就会自动调用<code>loadView</code>这个方法。这个方法就会加载或者创建一个<code>view</code>对象，赋值给<code>view</code>属性。<br><code>loadView</code>默认做的事情是：如果此<code>ViewController</code>存在一个对应的<code>nib</code>文件，那么就加载这个<code>nib</code>。否则，就创建一个<code>UIView</code>对象。<br>如果你用<code>Interface Builder</code>来创建界面，那么不应该重载这个方法。<br>如果你想自己创建<code>view</code>对象，那么可以重载这个方法。此时你需要自己给<code>view</code>属性赋值。你自定义的方法不应该调用<code>super</code>。如果你需要对<code>view</code>做一些其他的定制操作，在<code>viewDidLoad</code>里面去做。<br><a href="http://www.cnblogs.com/dyllove98/archive/2013/06/06/3123005.html" target="_blank" rel="external">iOS 的loadView 及使用loadView中初始化View注意的问题</a></li>
-<li>用过<code>CoreData</code>或者<code>SQLite</code>吗？读写是分线程的吗？遇到过死锁没？咋解决的<br>参考<a href="http://blog.csdn.net/hanangellove/article/details/44966769" target="_blank" rel="external">CoreData与SQLite的线程安全</a></li>
-<li><code>GCD</code>里面有哪几种<code>Queue</code>？你自己建立过串行<code>queue</code>吗？背后的线程模型是什么样的<ul>
-<li>主队列 <code>dispatch_main_queue();</code> 串行 ，更新UI</li>
-<li>全局队列 <code>dispatch_global_queue();</code> 并行，四个优先级：<code>background</code>，<code>low</code>，<code>default</code>，<code>high</code></li>
-<li>自定义队列 <code>dispatch_queue_t queue;</code> 可以自定义是并行：<code>DISPATCH_QUEUE_CONCURRENT</code>或者串行<code>DISPATCH_QUEUE_SERIAL</code></li>
-</ul>
-</li>
-<li>为什么其他语言里叫函数调用， <code>Objective-C</code>里则是给对象发消息（或者谈下对<code>runtime</code>的理解）<br>网上关于<code>runtime</code>的资料非常多，其实这方面在平时的开发中使用非常非常之少，底层的黑魔法。<br><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a><br><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></li>
-<li>什么是<code>method swizzling</code><br>在Objective-C中调用一个方法，其实是向一个对象发送消息，查找消息的唯一依据是<code>selector</code>的名字。利用<code>Objective-C</code>的动态特性，可以实现在运行时偷换<code>selector</code>对应的方法实现，达到给方法挂钩的目的。<br><a href="http://blog.csdn.net/yiyaaixuexi/article/details/9374411" target="_blank" rel="external">详细的案例</a></li>
-<li>runtime 如何实现 weak 属性 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">OBJC_ASSOCIATION_ASSIGN</div><div class="line">OBJC_ASSOCIATION_RETAIN_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_COPY_NONATOMIC</div><div class="line">OBJC_ASSOCIATION_RETAIN</div><div class="line">OBJC_ASSOCIATION_COPY</div><div class="line">objc_setAssociatedObject(<span class="keyword">self</span>, &amp;myKey, anObject, OBJC_ASSOCIATION_RETAIN);</div></pre></td></tr></table></figure>
-可以自定义<code>weak</code>来实现内存管理，Apple已经为我们准备了常量。<br>参考<br><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a><br><a href="http://southpeak.github.io/blog/2014/10/30/objective-c-runtime-yun-xing-shi-zhi-er-:cheng-yuan-bian-liang-yu-shu-xing/" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a></li>
-<li><code>objc</code>中向一个<code>nil</code>对象发送消息将会发生什么<br><code>objc</code>的特性是允许对一个 <code>nil</code> 对象发送消息不会 Crash，因为会被忽略掉。</li>
-<li>什么时候会报<code>unrecognized selector</code>的异常<br>调用一个不存在的方法</li>
-<li><code>objc</code>中向一个对象发送消息<code>[obj foo]</code>和<code>objc_msgSend()</code>函数之间有什么关系<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[obj foo];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo));</div><div class="line"></div><div class="line">[obj foo:parameter];</div><div class="line"><span class="comment">//编译时会变成</span></div><div class="line">objc_msgSend(obj,<span class="keyword">@selector</span>(foo:),parameter);</div></pre></td></tr></table></figure></li>
-<li>一个objc对象如何进行内存布局<br>可参考<a href="http://www.cnblogs.com/csutanyu/archive/2011/12/12/objective-c_memory_layout.html" target="_blank" rel="external">Objective-C内存布局</a></li>
-<li>一个objc对象的isa的指针指向什么？有什么作用？<br>isa是一个Class 类型的指针. 每个实例对象有个isa的指针,他指向对象的类，而Class里也有个isa的指针, 指向meteClass(元类)。元类保存了类方法的列表。当类方法被调用时，先会从本身查找类方法的实现，如果没有，元类会向他父类查找该方法。同时注意的是：元类（meteClass）也是类，它也是对象。元类也有isa指针,它的isa指针最终指向的是一个根元类(root meteClass).根元类的isa指针指向本身，这样形成了一个封闭的内循环。</li>
-<li>下面的代码输出什么<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Son</span> : <span class="title">Father</span></span></div><div class="line">- (<span class="keyword">id</span>)init</div><div class="line">&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">super</span> <span class="keyword">class</span>]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-输出Son</li>
-<li>runtime如何通过selector找到对应的IMP地址<br>id (*IMP)(id, SEL, …)<br>这个函数使用当前CPU架构实现的标准的C调用约定。第一个参数是指向self的指针(如果是实例方法，则是类实例的内存地址；如果是类方法，则是指向元类的指针)，第二个参数是方法选择器(selector)，接下来是方法的实际参数列表。<br>前面介绍过的SEL就是为了查找方法的最终实现IMP的。由于每个方法对应唯一的SEL，因此我们可以通过SEL方便快速准确地获得它所对应的IMP，查找过程将在下面讨论。取得IMP后，我们就获得了执行这个方法代码的入口点，此时，我们就可以像调用普通的C语言函数一样来使用这个函数指针了。<br>通过取得IMP，我们可以跳过Runtime的消息传递机制，直接执行IMP指向的函数实现，这样省去了Runtime消息传递过程中所做的一系列查找操作，会比直接向对象发送消息高效一些。</li>
-</ol>
-<h2 id="Hybrid-混合开发"><a href="#Hybrid-混合开发" class="headerlink" title="Hybrid 混合开发"></a>Hybrid 混合开发</h2>]]></content>
+<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
+<hr>
+<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
+<hr>
+<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
+<hr>
+<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
+<hr>
+<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
+<hr>
+<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
+<hr>
+<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
+<hr>
+<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
+<hr>
+<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
+<hr>
+<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
+<hr>
+<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
+<hr>
+<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h1 align=&quot;center&quot;&gt;iOS有用的面试题大集合&lt;/h1&gt;
-
-&lt;h2 id=&quot;面试题从何处得来&quot;&gt;&lt;a href=&quot;#面试题从何处得来&quot; class=&quot;headerlink&quot; title=&quot;面试题从何处得来&quot;&gt;&lt;/a&gt;面试题从何处得来&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a
+      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
     
     </summary>
     
       <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
+      <category term="AR" scheme="https://huos3203.github.io/tags/AR/"/>
     
-      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
+      <category term="LBS+AR" scheme="https://huos3203.github.io/tags/LBS-AR/"/>
     
-      <category term="面试" scheme="https://huos3203.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="QQ红包" scheme="https://huos3203.github.io/tags/QQ%E7%BA%A2%E5%8C%85/"/>
     
   </entry>
   
@@ -1420,55 +1331,191 @@
   </entry>
   
   <entry>
-    <title>AR 开发资料汇[转]</title>
-    <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
-    <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
+    <title>Awsome Apple Develop Guide[转]</title>
+    <link href="https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/"/>
+    <id>https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/</id>
     <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
+    <updated>2017-01-23T09:34:23.000Z</updated>
     
-    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
-<hr>
-<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
-<hr>
-<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
-<hr>
-<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
-<hr>
-<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
-<hr>
-<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
-<hr>
-<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
-<hr>
-<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
-<hr>
-<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
-<hr>
-<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
-<hr>
-<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
-<hr>
-<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
-<hr>
-<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
+    <content type="html"><![CDATA[<p>此文档是Apple平台开发所使用语言的主流学习资源</p>
+<h1 id="iOS开发者博客"><a href="#iOS开发者博客" class="headerlink" title="iOS开发者博客"></a>iOS开发者博客</h1><ul>
+<li>使用 <a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">iOSBlogCN</a>添加或者订阅</li>
+</ul>
+<h1 id="从社区学习知识"><a href="#从社区学习知识" class="headerlink" title="从社区学习知识"></a>从社区学习知识</h1><ul>
+<li><a href="http://weekly.ios-wiki.com/" target="_blank" rel="external">iOS技术周报</a></li>
+<li><a href="http://objccn.io/" target="_blank" rel="external">objc中国</a></li>
+<li><a href="http://www.cocoachina.com/" target="_blank" rel="external">cocoachina</a></li>
+<li><a href="http://swiftist.org/" target="_blank" rel="external">Swift社区</a></li>
+</ul>
+<h1 id="从iOS面试题总结"><a href="#从iOS面试题总结" class="headerlink" title="从iOS面试题总结"></a>从iOS面试题总结</h1><p><a href="iOS-usefulInterviewquestions-zh_CN">iOS有用的面试题</a></p>
+<h1 id="建议－学习iOS之前快速预览一下"><a href="#建议－学习iOS之前快速预览一下" class="headerlink" title="建议－学习iOS之前快速预览一下"></a>建议－学习iOS之前快速预览一下</h1><p><a href="http://aaaaaashu.gitbooks.io/mac-dev-setup/content/" target="_blank" rel="external">MAC开发环境配置</a></p>
+<p><a href="http://www.zhihu.com/question/24002984" target="_blank" rel="external">什么是Swift，如何评价 Swift 语言？</a></p>
+<p><a href="http://zh.wikipedia.org/zh-cn/Objective-C" target="_blank" rel="external">了解一下Objective-C是什么</a></p>
+<p><a href="https://github.com/qinjx/30min_guides/blob/master/ios.md" target="_blank" rel="external">iOS开发60分钟入门</a></p>
+<p><a href="https://developer.apple.com/library/ios/referencelibrary/GettingStarted/RoadMapiOSCh/index.html#//apple_ref/doc/uid/TP40012668-CH2-SW1" target="_blank" rel="external">Start Developing iOS Apps Today</a></p>
+<p><a href="http://www.jianshu.com/p/8472ba0f2bb6" target="_blank" rel="external">从零开始学iOS开发的15条建议</a></p>
+<p><a href="http://limboy.me/ios/2014/12/31/learning-ios.html" target="_blank" rel="external">自学iOS开发的一些经验</a></p>
+<p><a href="http://www.cocoachina.com/special/fornew.html" target="_blank" rel="external">学习路线</a></p>
+<h2 id="语言学习"><a href="#语言学习" class="headerlink" title="语言学习"></a>语言学习</h2><p>这里包括了Swift，Objective-C，C，C++</p>
+<p><a href="https://github.com/numbbbbb/the-swift-programming-language-in-chinese" target="_blank" rel="external">中文版 Apple 官方 Swift 教程《The Swift Programming Language》1.2</a></p>
+<p><a href="http://wiki.jikexueyuan.com/project/swift/" target="_blank" rel="external">中文版 Apple 官方 Swift 教程《The Swift Programming Language》2.0</a></p>
+<p><a href="https://github.com/raywenderlich/swift-style-guide" target="_blank" rel="external">The Official raywenderlich.com Swift Style Guide</a></p>
+<p><a href="http://swift.gg/2015/08/11/raywenderlich-swift-style-guide/" target="_blank" rel="external">The Official raywenderlich.com Swift Style Guide 中文版</a></p>
+<p><a href="https://github.com/CocoaChina-editors/Welcome-to-Swift/blob/master/UsingSwiftwithCocoaandObjective-C%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C.md" target="_blank" rel="external">Using Swift with Cocoa and Objective-C中文手册</a></p>
+<p><a href="http://c-faq-chn.sourceforge.net/ccfaq/index.html" target="_blank" rel="external">C 语言常见问题集</a></p>
+<p><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/" target="_blank" rel="external">Google Objective-C Style Guide 中文版</a></p>
+<p><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-cpp-styleguide/contents/" target="_blank" rel="external">Google C++ Style Guide 中文版</a></p>
+<p><a href="https://github.com/oa414/objc-zen-book-cn" target="_blank" rel="external">禅与 Objective-C 编程艺术 （Zen and the Art of the Objective-C Craftsmanship 中文翻译</a></p>
+<h2 id="免费视频资源"><a href="#免费视频资源" class="headerlink" title="免费视频资源"></a>免费视频资源</h2><p><a href="http://www.imooc.com/learn/127" target="_blank" rel="external">玩儿转Swift</a></p>
+<p><a href="http://www.imooc.com/learn/218" target="_blank" rel="external">征战Objective-C</a></p>
+<p><a href="http://v.163.com/special/opencourse/ios7.html" target="_blank" rel="external">斯坦福大学公开课：iOS 7应用开发</a></p>
+<p><a href="https://github.com/x140yu/Developing_iOS_8_Apps_With_Swift" target="_blank" rel="external">斯坦福大学公开课：Swift开发iOS 8应用－中文字幕</a></p>
+<p><a href="https://itunes.apple.com/us/course/developing-ios-8-apps-swift/id961180099" target="_blank" rel="external">斯坦福大学公开课：Swift开发iOS 8应用</a></p>
+<p><a href="https://github.com/qiaoxueshi/WWDC_2015_Video_Subtitle" target="_blank" rel="external">WWDC 2015 Video 英文字幕 (共104个)</a></p>
+<p><a href="https://github.com/6david9/WWDC2015" target="_blank" rel="external">WWDC2015下载链接</a></p>
+<h2 id="精粹"><a href="#精粹" class="headerlink" title="精粹"></a>精粹</h2><p><a href="https://github.com/nixzhu/dev-blog" target="_blank" rel="external">一些 iOS / Web 开发相关的翻译或原创博客文章</a></p>
+<p><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" rel="external">iOS-Core-Animation-Advanced-Techniques</a></p>
+<p><a href="https://github.com/objccn/articles" target="_blank" rel="external">objc.io中文翻译版本</a></p>
+<p><a href="https://github.com/ipader/SwiftGuide" target="_blank" rel="external">这份指南汇集了Swift语言主流学习资源，并以开发者的视角整理编排</a></p>
+<p><a href="https://github.com/cjwirth/awesome-ios-ui" target="_blank" rel="external">A curated list of awesome iOS UI/UX libraries</a></p>
+<p><a href="https://github.com/shinobicontrols/iOS8-day-by-day" target="_blank" rel="external">iOS8-Day-by-Day blog series</a></p>
+<p><a href="https://github.com/ShinobiControls/iOS9-day-by-day/" target="_blank" rel="external">iOS9 Day-by-Day blog series</a></p>
+<p><a href="https://github.com/matteocrippa/awesome-swift" target="_blank" rel="external">matteocrippa/awesome-swift</a></p>
+<p><a href="https://github.com/Wolg/awesome-swift" target="_blank" rel="external">Wolg/awesome-swift</a></p>
+<p><a href="https://github.com/vsouza/awesome-ios" target="_blank" rel="external">awesome-ios</a></p>
+<h2 id="Swift-Objective-C-C-C-设计-资源集合"><a href="#Swift-Objective-C-C-C-设计-资源集合" class="headerlink" title="Swift | Objective-C | C/C++ | 设计 资源集合"></a>Swift | Objective-C | C/C++ | 设计 资源集合</h2><p><a href="http://www.jianshu.com/p/f1208b5e42d9" target="_blank" rel="external">Alamofire网络库基础教程</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxNDI5NzEzNg==&amp;mid=204340894&amp;idx=1&amp;sn=cf7d5b0a9e3a198a39111fb07b0685e5#rd" target="_blank" rel="external">C 语言中的指针和内存泄漏</a></p>
+<p><a href="http://www.ideawu.net/blog/archives/878.html" target="_blank" rel="external">C/C++编程的现代习惯</a></p>
+<p><a href="http://onevcat.com/2015/01/swift-pointer/" target="_blank" rel="external">Swift指针的使用</a></p>
+<p><a href="http://swifter.tips/" target="_blank" rel="external">Swift tips</a></p>
+<p><a href="https://github.com/ming1016/study" target="_blank" rel="external">Study</a></p>
+<p><a href="https://github.com/100mango/zen" target="_blank" rel="external">iOS心得</a></p>
+<p><a href="https://github.com/Aufree/trip-to-iOS" target="_blank" rel="external">A curated list of delightful iOS resources.</a></p>
+<p><a href="https://github.com/CocoaChinaTranslationTeam/Excellent-Articles-Translations" target="_blank" rel="external">优秀外文翻译资源集合</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=207789673&amp;idx=1&amp;sn=15683e2b9c939f9e21084b4e65df9b92#rd" target="_blank" rel="external">详解Swift中的iOS设计模式</a></p>
+<p><a href="http://www.yming9.com/?p=579" target="_blank" rel="external">在iOS8 下用Swift 创建自定义的键盘</a></p>
+<p><a href="http://www.devtf.cn/?p=462" target="_blank" rel="external">Swift和自动引用计数(ARC)整理之强，弱和无主引用</a></p>
+<p><a href="http://lvwenhan.com/ios/454.html" target="_blank" rel="external">自己动手写一个 iOS 网络请求库（一）—— NSURLSession 初探</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=209907200&amp;idx=1&amp;sn=4c3d467cc76980209ed55ae8d08694f5#rd" target="_blank" rel="external">ReactiveCocoa 3.0 初窥</a></p>
+<p><a href="http://www.jianshu.com/p/2dc639b2675a" target="_blank" rel="external">Swift 2 有哪些新特性</a></p>
+<p><a href="http://www.cocoachina.com/cms/wap.php?action=article&amp;id=12237" target="_blank" rel="external">如何使用Instruments诊断App（Swift版）：起步</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=209755668&amp;idx=1&amp;sn=383f306a3cc8cf2463a0a2c951ce17f6#rd" target="_blank" rel="external">理解 ARC 下的循环引用</a></p>
+<p><a href="http://www.devtalking.com/articles/what-is-new-in-swift/" target="_blank" rel="external">Swift 2.0初探</a></p>
+<p><a href="http://www.cocoachina.com/industry/20140103/7651.html?utm_campaign=ios_wiki_dev_issue_1&amp;utm_source=ios_wiki_com&amp;utm_medium=website" target="_blank" rel="external">2013 CocoaChina微信精选之技术汇</a></p>
+<p><a href="http://www.imooc.com/wenda/detail/238393" target="_blank" rel="external">理解 Objective-C 的 ARC</a></p>
+<p><a href="http://www.jianshu.com/p/50b63a221f09" target="_blank" rel="external">iOS开发的一些奇巧淫技</a></p>
+<p><a href="http://www.jianshu.com/p/2fa080673842" target="_blank" rel="external">我推荐的一些iOS开发书单 叶孤城___</a></p>
+<p><a href="http://www.jianshu.com/p/9e1f0b44935c" target="_blank" rel="external">iOS性能优化</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206525720&amp;idx=1&amp;sn=61ad896414bd492f5dee7a46c1753b50#rd" target="_blank" rel="external">iOS 调试核对清单</a></p>
+<p><a href="http://www.jianshu.com/p/e28e8f5c7578?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS APP 测试点摘要</a></p>
+<p><a href="http://toutiao.io/r/z71jv" target="_blank" rel="external">GCD使用经验与技巧浅谈</a></p>
+<p><a href="http://xuexuefeng.com/autolayout/" target="_blank" rel="external">iOS 开发实践之 Auto Layout</a></p>
+<p><a href="http://www.jianshu.com/p/9c35432ec7a4?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">I Found You! 正则表达式!</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206617040&amp;idx=1&amp;sn=35c497c91047130c96490b1e7b9a3fa5#rd" target="_blank" rel="external">iOS 开发中的消息传递机制</a></p>
+<p><a href="http://www.jianshu.com/p/6b7d54b3f88b?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS扫一扫功能开发</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206668083&amp;idx=1&amp;sn=1661f83ff6d5e1f1b75eba9176e1b640#rd" target="_blank" rel="external">给游戏开发者们的 7 个制作建议</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206705810&amp;idx=1&amp;sn=32beff0e768d167f9a76a2be003d0886#rd" target="_blank" rel="external">iOS另类的内存管理</a></p>
+<p><a href="http://www.jianshu.com/p/613916eea37f?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS runloop</a></p>
+<p><a href="http://tanqisen.github.io/blog/2013/04/19/gcd-block-cycle-retain/" target="_blank" rel="external">正确使用Block避免Cycle Retain和Crash</a></p>
+<p><a href="http://tutuge.me/2015/03/29/bind-data-to-gcd-queue/" target="_blank" rel="external">为GCD队列绑定NSObject类型上下文数据-利用__bridge_retained(transfer)转移内存管理权</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=207272218&amp;idx=1&amp;sn=fe72df0ae11997be7e0dac8cc06115aa#rd" target="_blank" rel="external">iOS事件分发机制（一） hit-Testing</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=207315755&amp;idx=1&amp;sn=3e48dbd35674882b46796ac9bd02ad10#rd" target="_blank" rel="external">iOS事件分发机制（二）：The Responder Chain</a></p>
+<p><a href="http://blog.cnbang.net/tech/2729/" target="_blank" rel="external">iOS富文本组件的实现—DTCoreText源码解析 渲染篇</a></p>
+<p><a href="http://blog.cnbang.net/tech/2630/" target="_blank" rel="external">iOS富文本组件的实现—DTCoreText源码解析 数据篇</a></p>
+<p><a href="https://github.com/bboyfeiyu/iOS-tech-frontier/blob/master/issue-2/GCD%E6%A6%82%E8%BF%B0%E3%80%81%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%A5%BD%E7%9A%84%E7%A4%BA%E4%BE%8B.md" target="_blank" rel="external">GCD概述、语法以及好的示例</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=208119666&amp;idx=1&amp;sn=b85d6532b7804cdeb2accb5e8aea3c38#rd" target="_blank" rel="external">通过减少动态派送提升性能</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206285714&amp;idx=5&amp;sn=2048f89ee84149bac671ce8e204ec277#rd" target="_blank" rel="external">NSString属性什么时候用copy，什么时候用strong?</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206321222&amp;idx=8&amp;sn=71171f2298c2ed6d72015b942733f607#rd" target="_blank" rel="external">NSRecursiveLock递归锁的使用</a></p>
+<p><a href="http://cubernet.cn/blog/rootdaemon/" target="_blank" rel="external">在iOS上以root身份运行守护进程</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206483177&amp;idx=2&amp;sn=0431f8a7673bf6633643c23e1776fcdd#rd" target="_blank" rel="external">iOS开发中两个常见问题的处理</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206448996&amp;idx=3&amp;sn=895663ec96a8469820b54b6536975340#rd" target="_blank" rel="external">iOS 8增强的自动布局功能</a></p>
+<p><a href="http://cubernet.cn/blog/theos1/" target="_blank" rel="external">Theos介绍</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206637839&amp;idx=7&amp;sn=d5719f4c59753143c288de6d6206832b#rd" target="_blank" rel="external">iOS中几种定时器 - 控制了时间，就控制了一切</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=208071791&amp;idx=5&amp;sn=8fd1f5ae65611a4de7ce3885db28dc6f#rd" target="_blank" rel="external">iOS view的frame和bounds之区别（位置和大小）</a></p>
+<p><a href="http://www.jianshu.com/p/aa50e5350852?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=writer_share&amp;utm_source=weibo" target="_blank" rel="external">iOS应用程序的生命周期</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=207857740&amp;idx=2&amp;sn=95d11ae018381f7b711320f406f800ab#rd" target="_blank" rel="external">2015 Objective-C 三大新特性 | 干货</a></p>
+<p><a href="http://www.olinone.com/?p=232" target="_blank" rel="external">“自释放”在iOS开发中的应用</a></p>
+<p><a href="http://nshipster.cn/" target="_blank" rel="external">关注被忽略的 Objective-C、Swift 和 Cocoa 特性</a></p>
+<p><a href="https://www.bloc.io/tutorials/swiftris-build-your-first-ios-game-with-swift#!/chapters/675" target="_blank" rel="external">Swift开发游戏步骤</a></p>
+<p><a href="http://www.jianshu.com/p/d46fb9d72ddb?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">关于iOS编码规范</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206155008&amp;idx=1&amp;sn=360b4f02a9f9aea2cdd21f9253140276#rd" target="_blank" rel="external">Objective-C开发编码规范（一）</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=208035695&amp;idx=2&amp;sn=b5069f3429308204dec4dd459bc4652f#rd" target="_blank" rel="external">Objective-C开发编码规范（二）</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206573834&amp;idx=5&amp;sn=b18dc313960fada8e84b76efabd3175c#rd" target="_blank" rel="external">Swift扩展的三个微妙细节</a></p>
+<p><a href="http://quotation.github.io/objc/2015/05/21/objc-runtime-ivar-access.html" target="_blank" rel="external">Objective-C类成员变量深度剖析</a></p>
+<p><a href="http://cubernet.cn/blog/swift-1/" target="_blank" rel="external">Swift基础(一)</a></p>
+<p><a href="http://isux.tencent.com/ios-human-interface-guidelines-ui-design-basics-ios7.html" target="_blank" rel="external">iOS7人机界面指南</a></p>
+<p><a href="http://wileam.com/iphone-6-screen-cn/" target="_blank" rel="external">iphone6 屏幕设计揭秘</a></p>
+<p><a href="http://www.mobile-patterns.com/" target="_blank" rel="external">mobile设计</a></p>
+<p><a href="http://www.jianshu.com/p/e7fc525f342d?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS常用框架</a></p>
+<p><a href="http://www.jianshu.com/p/47201e57d21a?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS面试基础知识36题</a></p>
+<p><a href="http://www.jianshu.com/p/ca75fa02cf1e" target="_blank" rel="external">GitHub 上排名前 50 的 Objective-C 项目简介</a></p>
+<p><a href="http://www.jianshu.com/p/c5b0eb58b878" target="_blank" rel="external">一些知名App用到的第三方库汇总</a></p>
+<p><a href="http://foggry.com/blog/2014/04/25/githubyou-xiu-xiang-mu-ios/" target="_blank" rel="external">Github优秀开源项目大全-iOS</a></p>
+<p><a href="http://zixun.github.io/blog/2015/04/11/iosdan-yuan-ce-shi-xi-lie-dan-yuan-ce-shi-kuang-jia-xuan-xing/" target="_blank" rel="external">[iOS单元测试系列]单元测试框架选型</a></p>
+<p><a href="https://github.com/linqiang/Demo" target="_blank" rel="external">购物商城的Demo</a></p>
+<p><a href="https://github.com/jkyin/Subtitle" target="_blank" rel="external">斯坦福大学公开课：iOS 7 应用开发 Demo</a></p>
+<p><a href="https://github.com/Lax/iOS-Swift-Demos" target="_blank" rel="external">iOS-Swift-Demos</a></p>
+<p><a href="https://github.com/numbbbbb/Accessibility-Programming-Guide-for-iOS" target="_blank" rel="external">iOS 无障碍开发指导</a></p>
+<p><a href="https://github.com/CocoaChinaTranslationTeam/TestingWithXcodeDocsCN" target="_blank" rel="external">TestingWithXcode中文文档</a></p>
+<p><a href="http://ourcoders.com/thread/show/117/" target="_blank" rel="external">苹果Xcode帮助文档阅读指南</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=209849033&amp;idx=2&amp;sn=59b5aa163d0be134afbbe951e55ea708#rd" target="_blank" rel="external">iOS项目的持续集成与管理</a></p>
+<p><a href="http://www.coderyi.com/archives/751" target="_blank" rel="external">（译）WebViewJavascriptBridge－Obj-C和JavaScript互通消息的桥梁</a></p>
+<p><a href="http://www.jianshu.com/p/6376149a2c4c?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">截获导航控制器系统返回按钮的点击pop及右滑pop事件</a></p>
+<p><a href="http://beauty-soft.net/blog/ceiba/Ios/20140102/680.html" target="_blank" rel="external">UITableView常用属性和方法</a></p>
+<p><a href="http://www.devtalking.com/articles/swift-access-control/" target="_blank" rel="external">Swift新特性 – 访问控制（Access Control）</a></p>
+<p><a href="http://chengway.in/post/ji-zhu/viewcontroller-programming-guide/presenting-a-view-controller" target="_blank" rel="external">ViewController Programming Guide 笔记（一）</a></p>
+<p><a href="http://www.cnblogs.com/haibindev/archive/2013/01/30/2880764.html" target="_blank" rel="external">HTTP Live Streaming直播(iOS直播)技术分析与实现</a></p>
+<p><a href="http://ourui.github.io/blog/2014/01/22/mantle-use/" target="_blank" rel="external">Mantle 初步使用</a></p>
+<p><a href="http://www.jianshu.com/p/76c588893b19?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">使用CAReplicatorLayer创建动画</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206678143&amp;idx=" target="_blank" rel="external">iOS动画——ViewAnimations</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206718165&amp;idx=6&amp;sn=17c3a363f49df7a90a4e973b9c6d9af6#rd" target="_blank" rel="external">iOS动画——Layer Animations</a></p>
+<p><a href="https://github.com/sxyx2008/awesome-ios-animation" target="_blank" rel="external">收集整理了下iOS平台下比较主流炫酷的几款动画框架</a></p>
+<p><a href="http://adad184.com/2014/09/28/use-masonry-to-quick-solve-autolayout/" target="_blank" rel="external">Masonry介绍与使用实践(快速上手Autolayout)</a></p>
+<p><a href="http://vit0.com/blog/2013/12/07/iosxue-xi-zhi-autolayout/" target="_blank" rel="external">iOS学习之Autolayout</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=208000068&amp;idx=2&amp;sn=a4fdbf1858302470cab8b0d4bf3484cd#rd" target="_blank" rel="external">如何实现一个不规则排列的图片布局算法 | 干货</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=209655681&amp;idx=2&amp;sn=9f89d8d1ecb393db58c3e064d713b9b5#rd" target="_blank" rel="external">响应式视图</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=208550104&amp;idx=1&amp;sn=83eca61921efd512c42ec9e68ca6b492#rd" target="_blank" rel="external">微软前员工：开发Apple Watch应用的27个技巧</a></p>
+<p><a href="http://nilsun.github.io/apple-watch/" target="_blank" rel="external">Apple Watch开发初探</a></p>
+<p><a href="http://www.cocoachina.com/applewatch/" target="_blank" rel="external">Apple Watch开发专题</a></p>
+<p><a href="http://tech.meituan.com/DiveIntoMethodCache.html" target="_blank" rel="external">深入理解Objective-C：方法缓存</a></p>
+<p><a href="http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/" target="_blank" rel="external">优化UITableViewCell高度计算的那些事</a></p>
+<p><a href="http://objccn.io/issue-4-2/" target="_blank" rel="external">一个完整的Core Data应用</a></p>
+<p><a href="http://oncenote.com/2014/10/21/Security-1-HTTPS/" target="_blank" rel="external">iOS安全系列之一：HTTPS</a></p>
+<p><a href="http://www.90159.com/2015/08/10/ios-block-basic-article/" target="_blank" rel="external">block基础篇</a></p>
+<p><a href="http://www.90159.com/2015/08/04/ios-block-ultimate/" target="_blank" rel="external">block终极篇</a></p>
+<p><a href="http://www.jianshu.com/p/0b0d9b1f1f19" target="_blank" rel="external">关于iOS多线程，你看我就够了</a></p>
+<h2 id="Objective-C-Run-time"><a href="#Objective-C-Run-time" class="headerlink" title="Objective-C Run time"></a>Objective-C Run time</h2><p><a href="http://www.jianshu.com/p/425a39d43d16?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=writer_share&amp;utm_source=weibo" target="_blank" rel="external">轻松学习之三——IMP指针的作用</a></p>
+<p><a href="http://www.jianshu.com/p/d39f7d22db6c?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">轻松学习之二——iOS利用Runtime自定义控制器POP手势动画</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206641670&amp;idx=1&amp;sn=3fbc0070451d33b4c87d0da616ead22d#rd" target="_blank" rel="external">Cocoa Runtime系统知识整理</a></p>
+<p><a href="http://blog.cocoabit.com/2014-10-06-yi-li-jie-objctive-c-runtime/" target="_blank" rel="external">理解 Objective-C Runtime</a></p>
+<p><a href="http://www.jianshu.com/p/41735c66dccb" target="_blank" rel="external">Objective-C isa 指针 与 runtime 机制</a></p>
+<p><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></p>
+<p><a href="http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></p>
+<p><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a></p>
+<h2 id="项目结构经验"><a href="#项目结构经验" class="headerlink" title="项目结构经验"></a>项目结构经验</h2><p><a href="http://www.jianshu.com/p/77a948bcbc38" target="_blank" rel="external">iOS 项目的目录结构能看出你的开发经验</a></p>
+<p><a href="https://github.com/makeLaugh/TWAPP" target="_blank" rel="external">iOS项目架构探索</a></p>
+<p><a href="http://casatwy.com/iosying-yong-jia-gou-tan-kai-pian.html" target="_blank" rel="external">iOS应用架构谈系列</a></p>
+<h2 id="学习UI"><a href="#学习UI" class="headerlink" title="学习UI"></a>学习UI</h2><p><a href="http://segmentfault.com/a/1190000002412930" target="_blank" rel="external">iOS组件之UIScrollView详解</a></p>
+<p><a href="http://tech.glowing.com/cn/practice-in-uiscrollview/" target="_blank" rel="external">UIScrollView 实践经验</a></p>
+<p><a href="https://github.com/icepy/Awsome-Apple-Develop-Guide" target="_blank" rel="external">参考原文</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
+      &lt;p&gt;此文档是Apple平台开发所使用语言的主流学习资源&lt;/p&gt;
+&lt;h1 id=&quot;iOS开发者博客&quot;&gt;&lt;a href=&quot;#iOS开发者博客&quot; class=&quot;headerlink&quot; title=&quot;iOS开发者博客&quot;&gt;&lt;/a&gt;iOS开发者博客&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;使用 &lt;a h
     
     </summary>
     
       <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="AR" scheme="https://huos3203.github.io/tags/AR/"/>
+      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
-      <category term="LBS+AR" scheme="https://huos3203.github.io/tags/LBS-AR/"/>
+      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
     
-      <category term="QQ红包" scheme="https://huos3203.github.io/tags/QQ%E7%BA%A2%E5%8C%85/"/>
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
   </entry>
   
