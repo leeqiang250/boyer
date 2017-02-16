@@ -457,11 +457,11 @@
 		14FB50581E52BC0F00E05601 /* pdfkit_inheritancehierarchy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pdfkit_inheritancehierarchy.gif; sourceTree = "<group>"; };
 		14FB50591E52C21F00E05601 /* pdfkit_uses_hierarchy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pdfkit_uses_hierarchy.gif; sourceTree = "<group>"; };
 		14FB505A1E52D7A100E05601 /* annotations.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = annotations.gif; sourceTree = "<group>"; };
-		14FB505B1E52F90B00E05601 /* 在沙盒中编写脚本.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "在沙盒中编写脚本.md"; sourceTree = "<group>"; };
+		14FB505B1E52F90B00E05601 /* 通过沙盒中JS脚本访问其他APP.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "通过沙盒中JS脚本访问其他APP.md"; sourceTree = "<group>"; };
 		14FB505D1E53F02D00E05601 /* JavaScript实现自动化.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScript实现自动化.md"; sourceTree = "<group>"; };
 		14FB505E1E54016800E05601 /* shell命令+AppleScript脚本+Swift代码相互调用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "shell命令+AppleScript脚本+Swift代码相互调用.md"; sourceTree = "<group>"; };
-		14FB505F1E543BB200E05601 /* JavaScript对macOS支持的基本语法.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScript对macOS支持的基本语法.md"; sourceTree = "<group>"; };
-		14FB50601E54544000E05601 /* Objective-C和JavaScript桥接语法.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Objective-C和JavaScript桥接语法.md"; sourceTree = "<group>"; };
+		14FB505F1E543BB200E05601 /* macOS支持JavaScript自动化组件基础.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "macOS支持JavaScript自动化组件基础.md"; sourceTree = "<group>"; };
+		14FB50601E54544000E05601 /* JavaScript自动化组件OC桥接.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScript自动化组件OC桥接.md"; sourceTree = "<group>"; };
 		14FB50611E545BEA00E05601 /* Playground中使用XCPlaygroundModule.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Playground中使用XCPlaygroundModule.md"; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 		843F28831E51F4770020C321 /* gistflag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gistflag.jpg; sourceTree = "<group>"; };
@@ -738,7 +738,7 @@
 		8451A3C31E2908D100301CE2 /* intern.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = intern.js; sourceTree = "<group>"; };
 		8461D4DA1E5010F6008CC6CE /* Java​Script​Core实现swift混编.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Java​Script​Core实现swift混编.md"; sourceTree = "<group>"; };
 		8461D4DB1E5016F1008CC6CE /* JSValueType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JSValueType.png; sourceTree = "<group>"; };
-		8461D4DC1E502B81008CC6CE /* JavaScriptCore实战.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScriptCore实战.md"; sourceTree = "<group>"; };
+		8461D4DC1E502B81008CC6CE /* 使用JavaScript把JSON数据定义对象.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "使用JavaScript把JSON数据定义对象.md"; sourceTree = "<group>"; };
 		84EC55EE1E0D645E004F71A4 /* daoshell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daoshell.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -816,14 +816,14 @@
 				14B6568B1E4D5F3900CC45E2 /* bilibili之Mac版ffmpeg依赖编译.md */,
 				14B697F21E4DCA7D00F43C23 /* 用Git将代码恢复到一个历史的版本.md */,
 				8461D4DA1E5010F6008CC6CE /* Java​Script​Core实现swift混编.md */,
-				8461D4DC1E502B81008CC6CE /* JavaScriptCore实战.md */,
+				8461D4DC1E502B81008CC6CE /* 使用JavaScript把JSON数据定义对象.md */,
 				143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */,
 				14FB50531E5298F200E05601 /* Fabric对macOS系统的支持调研.md */,
 				14FB50561E52B13C00E05601 /* macOS之PDFKit基础.md */,
-				14FB505B1E52F90B00E05601 /* 在沙盒中编写脚本.md */,
+				14FB505B1E52F90B00E05601 /* 通过沙盒中JS脚本访问其他APP.md */,
 				14FB505E1E54016800E05601 /* shell命令+AppleScript脚本+Swift代码相互调用.md */,
-				14FB505F1E543BB200E05601 /* JavaScript对macOS支持的基本语法.md */,
-				14FB50601E54544000E05601 /* Objective-C和JavaScript桥接语法.md */,
+				14FB505F1E543BB200E05601 /* macOS支持JavaScript自动化组件基础.md */,
+				14FB50601E54544000E05601 /* JavaScript自动化组件OC桥接.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
