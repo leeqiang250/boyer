@@ -1,44 +1,1032 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="不物喜，不己悲，善假物，易参行！"><title>布衣男儿 | 不物喜，不己悲，善假物，易参行！</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/boyer/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/boyer/favicon.ico"><link rel="apple-touch-icon" href="/boyer/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/boyer/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/boyer/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">布衣男儿</h1><a id="logo" href="/boyer/.">布衣男儿</a><p class="description">不物喜，不己悲，善假物，易参行！</p></div><div id="nav-menu"><a href="/boyer/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/boyer/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/boyer/about/"><i class="fa fa-user"> 关于</i></a><a href="/boyer/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/15/Playground中使用XCPlaygroundModule/">no-title</a></h2><div class="post-meta">2017-02-15</div><a data-thread-key="2017/02/15/Playground中使用XCPlaygroundModule/" href="/boyer/2017/02/15/Playground中使用XCPlaygroundModule/#comments" class="ds-thread-count"></a><p class="readmore"><a href="/boyer/2017/02/15/Playground中使用XCPlaygroundModule/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/">shell命令+AppleScript脚本+Swift代码相互调用</a></h2><div class="post-meta">2017-02-15</div><a data-thread-key="2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/" href="/boyer/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/#comments" class="ds-thread-count"></a><div class="post-content"><p>当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是<code>AppleScript</code>作为互通的桥梁。</p>
-<h2 id="NSTask调用AppleScript"><a href="#NSTask调用AppleScript" class="headerlink" title="NSTask调用AppleScript"></a><code>NSTask</code>调用<code>AppleScript</code></h2><h3 id="调用脚本文件main-scpt"><a href="#调用脚本文件main-scpt" class="headerlink" title="调用脚本文件main.scpt"></a>调用脚本文件<code>main.scpt</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//let bundle = NSBundle.init(forClass: self.dynamicType)</span></div><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptPath = bundle.pathForResource(<span class="string">"main"</span>, ofType: <span class="string">"scpt"</span>)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> paths = [scriptPath]</div><div class="line">    <span class="type">NSTask</span>.launchedTaskWithLaunchPath(<span class="string">"/usr/bin/osascript"</span>, arguments: paths)</div><div class="line">&#125;</div></pre></td></tr></table></figure></div><p class="readmore"><a href="/boyer/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/15/macOS支持JavaScript自动化组件基础/">macOS支持JavaScript自动化组件基础</a></h2><div class="post-meta">2017-02-15</div><a data-thread-key="2017/02/15/macOS支持JavaScript自动化组件基础/" href="/boyer/2017/02/15/macOS支持JavaScript自动化组件基础/#comments" class="ds-thread-count"></a><div class="post-content"><p>苹果 <code>OS X Yosemite系统</code>把 <code>JavaScript</code>作为<code>AppleScript</code>的另一选择。<code>Automation</code> 是 <code>OS X 10.10版本</code>中的新特性，苹果在官网发布<a href="https://developer.apple.com/library/prerelease/mac/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/index.html#//apple_ref/doc/uid/TP40014508" target="_blank" rel="external">JavaScript for Automation Release Notes</a>有篇文章介绍了用<code>JavaScript</code>写自动化<code>Automation</code>脚本。<br><code>JavaScript</code>凭借其简单的语法，良好的性能，超轻量的框架，极小耦合的模块系统等等优势已经吸引了很多大厂的关注。<br>再加上<code>JavaScript</code>先天开放且无版权专利纠纷的问题，拥有非常广泛的开发者（开源）群体，苹果将其引入<code>OS X平台</code>代替私有的<code>AppleScript</code>，可能也有着一部分开放性平台的考虑，从而吸引广泛的第三方开发者。<br>资源<br><a href="https://github.com/tylergaw/js-osx-app-examples" target="_blank" rel="external">JavaScript OS X App Examples</a><br><a href="https://github.com/dtinth/JXA-Cookbook" target="_blank" rel="external">JavaScript for Automation Cookbook</a></p></div><p class="readmore"><a href="/boyer/2017/02/15/macOS支持JavaScript自动化组件基础/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/15/JavaScript自动化组件OC桥接/">JavaScript自动化组件OC桥接</a></h2><div class="post-meta">2017-02-15</div><a data-thread-key="2017/02/15/JavaScript自动化组件OC桥接/" href="/boyer/2017/02/15/JavaScript自动化组件OC桥接/#comments" class="ds-thread-count"></a><div class="post-content"><p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p></div><p class="readmore"><a href="/boyer/2017/02/15/JavaScript自动化组件OC桥接/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/15/JavaScript实现自动化/">no-title</a></h2><div class="post-meta">2017-02-15</div><a data-thread-key="2017/02/15/JavaScript实现自动化/" href="/boyer/2017/02/15/JavaScript实现自动化/#comments" class="ds-thread-count"></a><p class="readmore"><a href="/boyer/2017/02/15/JavaScript实现自动化/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/14/通过沙盒中JS脚本访问其他APP/">通过沙盒中JS脚本访问其他APP</a></h2><div class="post-meta">2017-02-14</div><a data-thread-key="2017/02/14/通过沙盒中JS脚本访问其他APP/" href="/boyer/2017/02/14/通过沙盒中JS脚本访问其他APP/#comments" class="ds-thread-count"></a><div class="post-content"><p>如何使用脚本字典里的命令和对象来与其他的应用进行通讯?<br>这个教程将向您展示现在使用 <code>AppleScript</code> 来控制别的应用的最佳方式。我也会告诉您一些小技巧以帮助您和您的用户用最小的努力就架设起 <code>AppleScript</code>。</p>
-<h2 id="在自己的APP中编写"><a href="#在自己的APP中编写" class="headerlink" title="在自己的APP中编写"></a>在自己的APP中编写</h2><h3 id="编写AppleScript代码"><a href="#编写AppleScript代码" class="headerlink" title="编写AppleScript代码"></a>编写AppleScript代码</h3><p><a href="https://developer.apple.com/library/mac/documentation/applescript/conceptual/applescriptlangguide/introduction/ASLR_intro.html#//apple_ref/doc/uid/TP40000983-CH208-SW1" target="_blank" rel="external">AppleScript 脚本指南</a><br>与其他应用进行通讯的脚本一般来说都很短，也容易理解。<code>AppleScript</code> 可以被想做一种传送的机制，而不是一种处理环境。<br>典型脚本:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">on chockify(inputString)</div><div class="line">    set resultString to <span class="string">""</span></div><div class="line"></div><div class="line">        repeat <span class="keyword">with</span> inputStringCharacter <span class="keyword">in</span> inputString</div><div class="line">            set asciiValue to (ASCII number inputStringCharacter)</div><div class="line">            <span class="keyword">if</span> (asciiValue &gt; <span class="number">96</span> and asciiValue &lt; <span class="number">123</span>) then</div><div class="line">                set resultString to resultString &amp; (ASCII character (asciiValue - <span class="number">32</span>))</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="keyword">if</span> ((asciiValue &gt; <span class="number">64</span> and asciiValue &lt; <span class="number">91</span>) or (asciiValue = <span class="number">32</span>)) then</div><div class="line">                    set resultString to resultString &amp; inputStringCharacter</div><div class="line">                <span class="keyword">else</span></div><div class="line">                    <span class="keyword">if</span> (asciiValue &gt; <span class="number">47</span> and asciiValue &lt; <span class="number">58</span>) then</div><div class="line">                        set numberStrings to &#123;<span class="string">"ZERO"</span>, <span class="string">"ONE"</span>, <span class="string">"TWO"</span>, <span class="string">"THREE"</span>, <span class="string">"FOR"</span>, <span class="string">"FIVE"</span>, <span class="string">"SIX"</span>, <span class="string">"SEVEN"</span>, <span class="string">"EIGHT"</span>, <span class="string">"NINE"</span>&#125;</div><div class="line">                        set itemIndex to asciiValue - <span class="number">47</span></div><div class="line">                        set numberString to item itemIndex <span class="keyword">of</span> numberStrings</div><div class="line">                        set resultString to resultString &amp; numberString &amp; <span class="string">" "</span></div><div class="line">                    <span class="keyword">else</span></div><div class="line">                        <span class="keyword">if</span> (asciiValue = <span class="number">33</span>) then</div><div class="line">                            set resultString to resultString &amp; <span class="string">" DUH"</span></div><div class="line">                        <span class="keyword">else</span></div><div class="line">                            <span class="keyword">if</span> (asciiValue = <span class="number">63</span>) then</div><div class="line">                                set resultString to resultString &amp; <span class="string">" IF YOU KNOW WHAT I MEAN"</span></div><div class="line">                            end <span class="keyword">if</span></div><div class="line">                        end <span class="keyword">if</span></div><div class="line">                    end <span class="keyword">if</span></div><div class="line">                end <span class="keyword">if</span></div><div class="line">            end <span class="keyword">if</span></div><div class="line">        end repeat</div><div class="line">        resultString</div><div class="line">end chockify</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/boyer/2017/02/14/通过沙盒中JS脚本访问其他APP/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/14/macOS之PDFKit基础/">macOS之PDFKit基础</a></h2><div class="post-meta">2017-02-14</div><a data-thread-key="2017/02/14/macOS之PDFKit基础/" href="/boyer/2017/02/14/macOS之PDFKit基础/#comments" class="ds-thread-count"></a><div class="post-content"><p>一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。<br>作为文件版本，可以支持元数据标记如作者，创建日期，等等。<br>一个文件可以加密，需要密码才能查看它。两级加密存在：</p>
-<ul>
-<li>用户级加密：如果用户成功地获得用户级权限，他或她可以查看文档，但可以限制打印或复制文档。</li></div><p class="readmore"><a href="/boyer/2017/02/14/macOS之PDFKit基础/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/14/Fabric对macOS系统的支持调研/">Fabric对macOS系统的支持</a></h2><div class="post-meta">2017-02-14</div><a data-thread-key="2017/02/14/Fabric对macOS系统的支持调研/" href="/boyer/2017/02/14/Fabric对macOS系统的支持调研/#comments" class="ds-thread-count"></a><div class="post-content"><h2 id="Fabric"><a href="#Fabric" class="headerlink" title="Fabric"></a>Fabric</h2><p><code>Fabric</code> 是Twitter的移动应用开发平台，一个模块化、跨平台的移动开发套件，该博文主要研究<code>crashlytics</code>在app中的运用。<br><a href="https://try.crashlytics.com/" target="_blank" rel="external">注册新的账户</a>登录，审核通过时间为几个小时或者1到2天不等。然后注册时候输入的邮箱就会收到如下的邀请涵<br><a href="https://docs.fabric.io/apple/crashlytics/os-x.html#macos-support" target="_blank" rel="external">浏览官方文档</a></p></div><p class="readmore"><a href="/boyer/2017/02/14/Fabric对macOS系统的支持调研/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/13/思维导图之开发实践篇/">思维导图之开发实践篇</a></h2><div class="post-meta">2017-02-13</div><a data-thread-key="2017/02/13/思维导图之开发实践篇/" href="/boyer/2017/02/13/思维导图之开发实践篇/#comments" class="ds-thread-count"></a><div class="post-content"><h2 id="阅读书籍"><a href="#阅读书籍" class="headerlink" title="阅读书籍"></a>阅读书籍</h2><ul>
-<li>5种图表解决工作中的12大难题</li>
-<li>你的第一本思维导图操作书</li>
-<li>5分钟手绘彩色圆珠笔涂鸦集</li>
-<li>如果阅读一本书</li></div><p class="readmore"><a href="/boyer/2017/02/13/思维导图之开发实践篇/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/12/使用JavaScript把JSON数据定义对象/">使用JavaScript把JSON数据转为对象</a></h2><div class="post-meta">2017-02-12</div><a data-thread-key="2017/02/12/使用JavaScript把JSON数据定义对象/" href="/boyer/2017/02/12/使用JavaScript把JSON数据定义对象/#comments" class="ds-thread-count"></a><div class="post-content"><h2 id="将JSON数据序列化为代码实例"><a href="#将JSON数据序列化为代码实例" class="headerlink" title="将JSON数据序列化为代码实例"></a>将JSON数据序列化为代码实例</h2><ol>
-<li>定义一个继承自 <code>JSExport</code> 子协议 <code>PersonJSExports</code></li></div><p class="readmore"><a href="/boyer/2017/02/12/使用JavaScript把JSON数据定义对象/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/12/Java​Script​Core实现swift混编/">Java​Script​Core实现swift混编</a></h2><div class="post-meta">2017-02-12</div><a data-thread-key="2017/02/12/Java​Script​Core实现swift混编/" href="/boyer/2017/02/12/Java​Script​Core实现swift混编/#comments" class="ds-thread-count"></a><div class="post-content"><p>OS X Mavericks 和 iOS 7 引入了 <code>JavaScriptCore</code> 库，它把 <code>WebKit 的 JavaScript</code> 引擎用 <code>Objective-C</code> 封装，提供了简单，快速以及安全的方式接入世界上最流行的语言。不管你爱它还是恨它，<code>JavaScript</code> 的普遍存在使得程序员、工具以及融合到 OS X 和 iOS 里这样超快的虚拟机中资源的使用都大幅增长。</p></div><p class="readmore"><a href="/boyer/2017/02/12/Java​Script​Core实现swift混编/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/">用Git将代码恢复到一个历史的版本</a></h2><div class="post-meta">2017-02-10</div><a data-thread-key="2017/02/10/用Git将代码恢复到一个历史的版本/" href="/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/#comments" class="ds-thread-count"></a><div class="post-content"><p>经历：将代码全提交到默认的head分支中，切换分支后，无法找到分支的严重后果：<br>目的：在当前分支上，将代码恢复到一个历史的提交版本上。</p>
-<h2 id="暴力的方式"><a href="#暴力的方式" class="headerlink" title="暴力的方式"></a>暴力的方式</h2><p>如果仓库是自己在用（不影响别人），那么可以使用<code>git reset --hard &lt;target_commit_id&gt;</code> 来恢复到指定的提交，再用 git push -f 来强制更新远程的分支指针。为了保证万一需要找回历史提交，我们可以先打一个 tag 来备份。</p></div><p class="readmore"><a href="/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/10/bilibili之Mac版ffmpeg依赖编译/">bilibiliForMac版之mpv依赖编译</a></h2><div class="post-meta">2017-02-10</div><a data-thread-key="2017/02/10/bilibili之Mac版ffmpeg依赖编译/" href="/boyer/2017/02/10/bilibili之Mac版ffmpeg依赖编译/#comments" class="ds-thread-count"></a><div class="post-content"><h2 id="Bilibili-Mac-Client"><a href="#Bilibili-Mac-Client" class="headerlink" title="Bilibili Mac Client"></a><a href="https://github.com/typcn/bilibili-mac-client" target="_blank" rel="external">Bilibili Mac Client</a></h2><p>一款基于mpv和ffmpeg底层库实现的播放器.</p></div><p class="readmore"><a href="/boyer/2017/02/10/bilibili之Mac版ffmpeg依赖编译/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/02/07/OSX应用插件开发/">OSX 应用插件</a></h2><div class="post-meta">2017-02-07</div><a data-thread-key="2017/02/07/OSX应用插件开发/" href="/boyer/2017/02/07/OSX应用插件开发/#comments" class="ds-thread-count"></a><div class="post-content"><p>在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过<code>NSBundle</code>和 <code>plug-ins</code>插件,可以很方便的向原有APP中添加新功能点。</p>
-<p>目的：在一个修改过的 TextEdit 里面加入加载 bundle 的功能</p></div><p class="readmore"><a href="/boyer/2017/02/07/OSX应用插件开发/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/01/23/Hexo标签插件/">Hexo标签插件</a></h2><div class="post-meta">2017-01-23</div><a data-thread-key="2017/01/23/Hexo标签插件/" href="/boyer/2017/01/23/Hexo标签插件/#comments" class="ds-thread-count"></a><div class="post-content"><p>标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。</p>
-<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><hr>
-<p>在文章中插入引言，可包含作者、来源和标题。</p>
-<h3 id="别号：-quote"><a href="#别号：-quote" class="headerlink" title="别号： quote"></a>别号： quote</h3><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</div><div class="line">content</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><hr>
-<h5 id="无参普通blockquote"><a href="#无参普通blockquote" class="headerlink" title="无参普通blockquote"></a>无参普通blockquote</h5><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% blockquote %&#125;</div><div class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</div><div class="line">&#123;% endblockquote %&#125;</div></pre></td></tr></table></figure>
-<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
-</blockquote></div><p class="readmore"><a href="/boyer/2017/01/23/Hexo标签插件/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/01/23/Kindle资源/">Kindle114 资源集[转]</a></h2><div class="post-meta">2017-01-23</div><a data-thread-key="2017/01/23/Kindle资源/" href="/boyer/2017/01/23/Kindle资源/#comments" class="ds-thread-count"></a><div class="post-content"><h2 id="鸣谢"><a href="#鸣谢" class="headerlink" title="鸣谢"></a>鸣谢</h2><ul>
-<li><a href="http://www.hi-pda.com/forum/viewthread.php?tid=1815180" target="_blank" rel="external">hi-pda dtgc</a></li></div><p class="readmore"><a href="/boyer/2017/01/23/Kindle资源/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/01/23/Kindle之ResilioSync索引/">Kindle之Resilio Sync索引</a></h2><div class="post-meta">2017-01-23</div><a data-thread-key="2017/01/23/Kindle之ResilioSync索引/" href="/boyer/2017/01/23/Kindle之ResilioSync索引/#comments" class="ds-thread-count"></a><div class="post-content"><p><a href="https://kindlefere.com/share" target="_blank" rel="external">Kindle伴原文</a><br>Resilio Sync同步密钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOC3NIGPF2DOKETOF2FAHXJXE2HF24QWC</div></pre></td></tr></table></figure><br><a href="https://kindlefere.github.io/share/ebook/" target="_blank" rel="external">索引原文</a><br>目录索引 - Kindle伴侣精品书库（更新：01月23日10:30）</p></div><p class="readmore"><a href="/boyer/2017/01/23/Kindle之ResilioSync索引/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/01/22/iOS面试题大集合/">iOS面试题大集合[转]</a></h2><div class="post-meta">2017-01-22</div><a data-thread-key="2017/01/22/iOS面试题大集合/" href="/boyer/2017/01/22/iOS面试题大集合/#comments" class="ds-thread-count"></a><div class="post-content"><h1 align="center">iOS有用的面试题大集合</h1>
 
-<h2 id="面试题从何处得来"><a href="#面试题从何处得来" class="headerlink" title="面试题从何处得来"></a>面试题从何处得来</h2><ul>
-<li><a href="http://blog.sunnyxx.com/2015/07/04/ios-interview/" target="_blank" rel="external">招聘一个靠谱的 iOS</a></li></div><p class="readmore"><a href="/boyer/2017/01/22/iOS面试题大集合/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/01/22/AwsomeAppleDevelopGuide/">Awsome Apple Develop Guide[转]</a></h2><div class="post-meta">2017-01-22</div><a data-thread-key="2017/01/22/AwsomeAppleDevelopGuide/" href="/boyer/2017/01/22/AwsomeAppleDevelopGuide/#comments" class="ds-thread-count"></a><div class="post-content"><p>此文档是Apple平台开发所使用语言的主流学习资源</p>
-<h1 id="iOS开发者博客"><a href="#iOS开发者博客" class="headerlink" title="iOS开发者博客"></a>iOS开发者博客</h1><ul>
-<li>使用 <a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">iOSBlogCN</a>添加或者订阅</li></div><p class="readmore"><a href="/boyer/2017/01/22/AwsomeAppleDevelopGuide/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/boyer/2017/01/22/AR开发资料汇/">AR 开发资料汇[转]</a></h2><div class="post-meta">2017-01-22</div><a data-thread-key="2017/01/22/AR开发资料汇/" href="/boyer/2017/01/22/AR开发资料汇/#comments" class="ds-thread-count"></a><div class="post-content"><p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
-<hr>
-<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p></div><p class="readmore"><a href="/boyer/2017/01/22/AR开发资料汇/">阅读更多</a></p></div><nav class="page-navigator"><span class="page-number current">1</span><a class="page-number" href="/boyer/page/2/">2</a><a class="page-number" href="/boyer/page/3/">3</a><a class="page-number" href="/boyer/page/4/">4</a><a class="extend next" rel="next" href="/boyer/page/2/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://huos3203.github.io/boyer"/></form></div><div class="widget"><input placeholder="Search" type="text" class="st-default-search-input"/></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/CI/">CI</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/Octopress/">Octopress</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/Swift/">Swift</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/macOS/">macOS</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/ruby/">ruby</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/swift/">swift</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/直播/">直播</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/管理/">管理</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/资源/">资源</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/逻辑思维/">逻辑思维</a></li><li class="category-list-item"><a class="category-list-link" href="/boyer/categories/骗局/">骗局</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/boyer/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/boyer/tags/中关村/" style="font-size: 15px;">中关村</a> <a href="/boyer/tags/iPhone6/" style="font-size: 15px;">iPhone6</a> <a href="/boyer/tags/iPhone5s/" style="font-size: 15px;">iPhone5s</a> <a href="/boyer/tags/内购/" style="font-size: 15px;">内购</a> <a href="/boyer/tags/截屏/" style="font-size: 15px;">截屏</a> <a href="/boyer/tags/octopress/" style="font-size: 15px;">octopress</a> <a href="/boyer/tags/blog/" style="font-size: 15px;">blog</a> <a href="/boyer/tags/github/" style="font-size: 15px;">github</a> <a href="/boyer/tags/mou/" style="font-size: 15px;">mou</a> <a href="/boyer/tags/ruby/" style="font-size: 15px;">ruby</a> <a href="/boyer/tags/TextKit/" style="font-size: 15px;">TextKit</a> <a href="/boyer/tags/概念/" style="font-size: 15px;">概念</a> <a href="/boyer/tags/Storyboard/" style="font-size: 15px;">Storyboard</a> <a href="/boyer/tags/工具/" style="font-size: 15px;">工具</a> <a href="/boyer/tags/IOS7/" style="font-size: 15px;">IOS7</a> <a href="/boyer/tags/指南/" style="font-size: 15px;">指南</a> <a href="/boyer/tags/设备/" style="font-size: 15px;">设备</a> <a href="/boyer/tags/转场/" style="font-size: 15px;">转场</a> <a href="/boyer/tags/协议/" style="font-size: 15px;">协议</a> <a href="/boyer/tags/scheme/" style="font-size: 15px;">scheme</a> <a href="/boyer/tags/案例/" style="font-size: 15px;">案例</a> <a href="/boyer/tags/socket/" style="font-size: 15px;">socket</a> <a href="/boyer/tags/AutoLayout/" style="font-size: 15px;">AutoLayout</a> <a href="/boyer/tags/布局/" style="font-size: 15px;">布局</a> <a href="/boyer/tags/git/" style="font-size: 15px;">git</a> <a href="/boyer/tags/坑/" style="font-size: 15px;">坑</a> <a href="/boyer/tags/脚本/" style="font-size: 15px;">脚本</a> <a href="/boyer/tags/安装/" style="font-size: 15px;">安装</a> <a href="/boyer/tags/gitBook/" style="font-size: 15px;">gitBook</a> <a href="/boyer/tags/加密/" style="font-size: 15px;">加密</a> <a href="/boyer/tags/语法/" style="font-size: 15px;">语法</a> <a href="/boyer/tags/TDD/" style="font-size: 15px;">TDD</a> <a href="/boyer/tags/BDD/" style="font-size: 15px;">BDD</a> <a href="/boyer/tags/测试/" style="font-size: 15px;">测试</a> <a href="/boyer/tags/UI/" style="font-size: 15px;">UI</a> <a href="/boyer/tags/gitLab/" style="font-size: 15px;">gitLab</a> <a href="/boyer/tags/搭建/" style="font-size: 15px;">搭建</a> <a href="/boyer/tags/svn/" style="font-size: 15px;">svn</a> <a href="/boyer/tags/Scrum/" style="font-size: 15px;">Scrum</a> <a href="/boyer/tags/小米路由/" style="font-size: 15px;">小米路由</a> <a href="/boyer/tags/被骗/" style="font-size: 15px;">被骗</a> <a href="/boyer/tags/管理/" style="font-size: 15px;">管理</a> <a href="/boyer/tags/混编/" style="font-size: 15px;">混编</a> <a href="/boyer/tags/数据库/" style="font-size: 15px;">数据库</a> <a href="/boyer/tags/realm/" style="font-size: 15px;">realm</a> <a href="/boyer/tags/命令/" style="font-size: 15px;">命令</a> <a href="/boyer/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/boyer/tags/发布/" style="font-size: 15px;">发布</a> <a href="/boyer/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/boyer/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/boyer/tags/汇总/" style="font-size: 15px;">汇总</a> <a href="/boyer/tags/资源/" style="font-size: 15px;">资源</a> <a href="/boyer/tags/AR/" style="font-size: 15px;">AR</a> <a href="/boyer/tags/LBS-AR/" style="font-size: 15px;">LBS+AR</a> <a href="/boyer/tags/QQ红包/" style="font-size: 15px;">QQ红包</a> <a href="/boyer/tags/安全/" style="font-size: 15px;">安全</a> <a href="/boyer/tags/Java​Script​Core/" style="font-size: 15px;">Java​Script​Core</a> <a href="/boyer/tags/swift/" style="font-size: 15px;">swift</a> <a href="/boyer/tags/kindle/" style="font-size: 15px;">kindle</a> <a href="/boyer/tags/书籍/" style="font-size: 15px;">书籍</a> <a href="/boyer/tags/ResilioSync/" style="font-size: 15px;">ResilioSync</a> <a href="/boyer/tags/逻辑思维/" style="font-size: 15px;">逻辑思维</a> <a href="/boyer/tags/插件/" style="font-size: 15px;">插件</a> <a href="/boyer/tags/objc/" style="font-size: 15px;">objc</a> <a href="/boyer/tags/编译/" style="font-size: 15px;">编译</a> <a href="/boyer/tags/ffmpeg/" style="font-size: 15px;">ffmpeg</a> <a href="/boyer/tags/mpv/" style="font-size: 15px;">mpv</a> <a href="/boyer/tags/shell/" style="font-size: 15px;">shell</a> <a href="/boyer/tags/PDF/" style="font-size: 15px;">PDF</a> <a href="/boyer/tags/阅读器/" style="font-size: 15px;">阅读器</a> <a href="/boyer/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/boyer/tags/面试/" style="font-size: 15px;">面试</a> <a href="/boyer/tags/json/" style="font-size: 15px;">json</a> <a href="/boyer/tags/targets/" style="font-size: 15px;">targets</a> <a href="/boyer/tags/思维导图/" style="font-size: 15px;">思维导图</a> <a href="/boyer/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/boyer/tags/直播/" style="font-size: 15px;">直播</a> <a href="/boyer/tags/腾讯云/" style="font-size: 15px;">腾讯云</a> <a href="/boyer/tags/集成/" style="font-size: 15px;">集成</a> <a href="/boyer/tags/沙盒/" style="font-size: 15px;">沙盒</a> <a href="/boyer/tags/AppleScript/" style="font-size: 15px;">AppleScript</a> <a href="/boyer/tags/git-svn/" style="font-size: 15px;">git-svn</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/15/Playground中使用XCPlaygroundModule/">Playground中使用XCPlaygroundModule</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/">shell命令+AppleScript脚本+Swift代码相互调用</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/15/macOS支持JavaScript自动化组件基础/">macOS支持JavaScript自动化组件基础</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/15/JavaScript自动化组件OC桥接/">JavaScript自动化组件OC桥接</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/15/JavaScript实现自动化/">JavaScript实现自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/14/通过沙盒中JS脚本访问其他APP/">通过沙盒中JS脚本访问其他APP</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/14/macOS之PDFKit基础/">macOS之PDFKit基础</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/14/Fabric对macOS系统的支持调研/">Fabric对macOS系统的支持</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/13/思维导图之开发实践篇/">思维导图之开发实践篇</a></li><li class="post-list-item"><a class="post-list-link" href="/boyer/2017/02/12/使用JavaScript把JSON数据定义对象/">使用JavaScript把JSON数据转为对象</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" title="swift文档" target="_blank">swift文档</a><ul></ul><a href="https://www.objccn.io" title="objc中国" target="_blank">objc中国</a><ul></ul><a href="http://nshipster.cn" title="NSHipster" target="_blank">NSHipster</a><ul></ul><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" title="动画" target="_blank">动画</a><ul></ul><a href="https://git-scm.com/book/zh" title="Git Pro" target="_blank">Git Pro</a><ul></ul><a href="http://kaopu.so/pan" title="全盘搜" target="_blank">全盘搜</a><ul></ul><a href="https://mp.weixin.qq.com" title="小程序官方" target="_blank">小程序官方</a><ul></ul><a href="https://onevcat.com" title="王维" target="_blank">王维</a><ul></ul><a href="http://blog.devtang.com" title="唐巧" target="_blank">唐巧</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/boyer/." rel="nofollow">布衣男儿.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/boyer/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/boyer/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/boyer/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'huo3203'};
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>布衣男儿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="boyer">
+    
+
+    
+    <meta name="description" content="不物喜，不己悲，善假物，易参行！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="布衣男儿">
+<meta property="og:url" content="https://huos3203.github.io/index.html">
+<meta property="og:site_name" content="布衣男儿">
+<meta property="og:description" content="不物喜，不己悲，善假物，易参行！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="布衣男儿">
+<meta name="twitter:description" content="不物喜，不己悲，善假物，易参行！">
+
+    
+    <link rel="alternative" href="/atom.xml" title="布衣男儿" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="布衣男儿" title="布衣男儿"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="布衣男儿">布衣男儿</a></h1>
+				<h2 class="blog-motto">不物喜，不己悲，善假物，易参行！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= SE_zzsearchcode_shhzc78w ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/16/iOS8中几种常用的展示控制器使用/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >开始项目完整项目
+UIAlertController在iOS8中，提供UIAlertController控制器代替UIAlertView和UIActionSheet两个控件。给用户展示提示信息的新的一种方式。
+UIAlertController全新改进
+能够自适应的（在iPad上</p>
+        
+    
+    <time datetime="2017-02-16T06:07:42.000Z" itemprop="datePublished">2017-02-16</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/15/Playground中使用XCPlaygroundModule/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" ></p>
+        
+    
+    <time datetime="2017-02-15T09:50:33.000Z" itemprop="datePublished">2017-02-15</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/15/JavaScript自动化组件OC桥接/" title="JavaScript自动化组件OC桥接" itemprop="url">
+  
+    <h1 itemprop="name">JavaScript自动化组件OC桥接</h1>
+    
+     
+           <p itemprop="description" >文档JavaScript自动化有一个内置的Objective-C Bridge，使您能够访问文件系统，创建Cocoa应用程序。Objective-C Bridge的主要接入点是全局属性objc和$。
+FrameworksFoundation framework中的语法默认支持Ja</p>
+        
+    
+    <time datetime="2017-02-15T09:19:30.000Z" itemprop="datePublished">2017-02-15</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/" title="shell命令+AppleScript脚本+Swift代码相互调用" itemprop="url">
+  
+    <h1 itemprop="name">shell命令+AppleScript脚本+Swift代码相互调用</h1>
+    
+     
+           <p itemprop="description" >当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是AppleScript作为互通的桥梁。
+NSTask调用AppleScript调用脚本文件main.scpt1234567//let bundle = NSBundle.</p>
+        
+    
+    <time datetime="2017-02-15T09:19:30.000Z" itemprop="datePublished">2017-02-15</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/15/macOS支持JavaScript自动化组件基础/" title="macOS支持JavaScript自动化组件基础" itemprop="url">
+  
+    <h1 itemprop="name">macOS支持JavaScript自动化组件基础</h1>
+    
+     
+           <p itemprop="description" >苹果 OS X Yosemite系统把 JavaScript作为AppleScript的另一选择。Automation 是 OS X 10.10版本中的新特性，苹果在官网发布JavaScript for Automation Release Notes有篇文章介绍了用JavaSc</p>
+        
+    
+    <time datetime="2017-02-15T09:19:30.000Z" itemprop="datePublished">2017-02-15</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/15/JavaScript实现自动化/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" ></p>
+        
+    
+    <time datetime="2017-02-15T02:10:52.000Z" itemprop="datePublished">2017-02-15</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/14/通过沙盒中JS脚本访问其他APP/" title="通过沙盒中JS脚本访问其他APP" itemprop="url">
+  
+    <h1 itemprop="name">通过沙盒中JS脚本访问其他APP</h1>
+    
+     
+           <p itemprop="description" >如何使用脚本字典里的命令和对象来与其他的应用进行通讯?这个教程将向您展示现在使用 AppleScript 来控制别的应用的最佳方式。我也会告诉您一些小技巧以帮助您和您的用户用最小的努力就架设起 AppleScript。
+在自己的APP中编写编写AppleScript代码Apple</p>
+        
+    
+    <time datetime="2017-02-14T10:25:29.000Z" itemprop="datePublished">2017-02-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/14/macOS之PDFKit基础/" title="macOS之PDFKit基础" itemprop="url">
+  
+    <h1 itemprop="name">macOS之PDFKit基础</h1>
+    
+     
+           <p itemprop="description" >一个PDF的基本构建块是Documents本身。Documents通常作为文件存储在磁盘上。作为文件版本，可以支持元数据标记如作者，创建日期，等等。一个文件可以加密，需要密码才能查看它。两级加密存在：
+
+用户级加密：如果用户成功地获得用户级权限，他或她可以查看文档，但可以限制打印</p>
+        
+    
+    <time datetime="2017-02-14T06:29:18.000Z" itemprop="datePublished">2017-02-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/14/Fabric对macOS系统的支持调研/" title="Fabric对macOS系统的支持" itemprop="url">
+  
+    <h1 itemprop="name">Fabric对macOS系统的支持</h1>
+    
+     
+           <p itemprop="description" >FabricFabric 是Twitter的移动应用开发平台，一个模块化、跨平台的移动开发套件，该博文主要研究crashlytics在app中的运用。注册新的账户登录，审核通过时间为几个小时或者1到2天不等。然后注册时候输入的邮箱就会收到如下的邀请涵浏览官方文档
+crashlyt</p>
+        
+    
+    <time datetime="2017-02-14T03:14:35.000Z" itemprop="datePublished">2017-02-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/13/思维导图之开发实践篇/" title="思维导图之开发实践篇" itemprop="url">
+  
+    <h1 itemprop="name">思维导图之开发实践篇</h1>
+    
+     
+           <p itemprop="description" >阅读书籍
+5种图表解决工作中的12大难题
+你的第一本思维导图操作书
+5分钟手绘彩色圆珠笔涂鸦集
+如果阅读一本书
+
+使用思维导图的场景无处不在，无论是做产品还是做设计，我们都需要清晰的思路，明确自己需要做些什么，最后需要达到什么效果，这时候，如果有一张清晰的思维导图，就能很快的理清</p>
+        
+    
+    <time datetime="2017-02-13T09:11:26.000Z" itemprop="datePublished">2017-02-13</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/12/使用JavaScript把JSON数据定义对象/" title="使用JavaScript把JSON数据转为对象" itemprop="url">
+  
+    <h1 itemprop="name">使用JavaScript把JSON数据转为对象</h1>
+    
+     
+           <p itemprop="description" >将JSON数据序列化为代码实例
+定义一个继承自 JSExport 子协议 PersonJSExports
+定义一个遵守PersonJSExports协议的Person数据模
+使用 JavaScript 把JSON转为类并实例化对象都有一个完整的 JVM 在那儿了，谁还需要 NSJ</p>
+        
+    
+    <time datetime="2017-02-12T06:41:35.000Z" itemprop="datePublished">2017-02-12</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/12/Java​Script​Core实现swift混编/" title="Java​Script​Core实现swift混编" itemprop="url">
+  
+    <h1 itemprop="name">Java​Script​Core实现swift混编</h1>
+    
+     
+           <p itemprop="description" >OS X Mavericks 和 iOS 7 引入了 JavaScriptCore 库，它把 WebKit 的 JavaScript 引擎用 Objective-C 封装，提供了简单，快速以及安全的方式接入世界上最流行的语言。不管你爱它还是恨它，JavaScript 的普遍存在使</p>
+        
+    
+    <time datetime="2017-02-12T05:34:06.000Z" itemprop="datePublished">2017-02-12</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/10/用Git将代码恢复到一个历史的版本/" title="用Git将代码恢复到一个历史的版本" itemprop="url">
+  
+    <h1 itemprop="name">用Git将代码恢复到一个历史的版本</h1>
+    
+     
+           <p itemprop="description" >经历：将代码全提交到默认的head分支中，切换分支后，无法找到分支的严重后果：目的：在当前分支上，将代码恢复到一个历史的提交版本上。
+暴力的方式如果仓库是自己在用（不影响别人），那么可以使用git reset --hard &amp;lt;target_commit_id&amp;gt; 来恢复</p>
+        
+    
+    <time datetime="2017-02-10T10:19:48.000Z" itemprop="datePublished">2017-02-10</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/10/bilibili之Mac版ffmpeg依赖编译/" title="bilibiliForMac版之mpv依赖编译" itemprop="url">
+  
+    <h1 itemprop="name">bilibiliForMac版之mpv依赖编译</h1>
+    
+     
+           <p itemprop="description" >Bilibili Mac Client一款基于mpv和ffmpeg底层库实现的播放器.
+项目依赖库编译在项目中所需的相关依赖库
+下载资源
+下载mpv-build
+1git clone https://github.com/mpv-player/mpv-build.git
+
+执行下</p>
+        
+    
+    <time datetime="2017-02-10T02:45:03.000Z" itemprop="datePublished">2017-02-10</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/02/07/OSX应用插件开发/" title="OSX 应用插件" itemprop="url">
+  
+    <h1 itemprop="name">OSX 应用插件</h1>
+    
+     
+           <p itemprop="description" >在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过NSBundle和 plug-ins插件,可以很方便的向原有APP中添加新功能点。
+目的：在一个修改过的 TextEdit 里面加入加载 bundle 的功能
+包 (Bundles) 和接</p>
+        
+    
+    <time datetime="2017-02-07T04:38:58.000Z" itemprop="datePublished">2017-02-07</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/01/23/Hexo标签插件/" title="Hexo标签插件" itemprop="url">
+  
+    <h1 itemprop="name">Hexo标签插件</h1>
+    
+     
+       <p itemprop="description" >标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。
+引用块
+在文章中插入引言，可包含作者、来源和标题。
+别号： quote
+123&amp;#123;% blockquote [author[, source]] [link] [source_</p>
+      
+    
+    <time datetime="2017-01-23T07:17:33.000Z" itemprop="datePublished">2017-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/01/23/Kindle之ResilioSync索引/" title="Kindle之Resilio Sync索引" itemprop="url">
+  
+    <h1 itemprop="name">Kindle之Resilio Sync索引</h1>
+    
+     
+           <p itemprop="description" >Kindle伴原文Resilio Sync同步密钥1BOC3NIGPF2DOKETOF2FAHXJXE2HF24QWC索引原文目录索引 - Kindle伴侣精品书库（更新：01月23日10:30）</p>
+        
+    
+    <time datetime="2017-01-23T04:49:49.000Z" itemprop="datePublished">2017-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/01/23/Kindle资源/" title="Kindle114 资源集[转]" itemprop="url">
+  
+    <h1 itemprop="name">Kindle114 资源集[转]</h1>
+    
+     
+           <p itemprop="description" >鸣谢
+hi-pda dtgc
+Kindle115
+
+综合类
+青风乘翼 最近出版的译著 更新中
+周旋久 按字母排列的书籍 提取码：djhp
+
+
+F、H、J、R字母 提取码 39bd  
+S、T、Y字母 提取码 42b1
+
+
+烫伤关东煮 约1t以上 20160302更新
+188108</p>
+        
+    
+    <time datetime="2017-01-23T04:49:49.000Z" itemprop="datePublished">2017-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/01/22/AR开发资料汇/" title="AR 开发资料汇[转]" itemprop="url">
+  
+    <h1 itemprop="name">AR 开发资料汇[转]</h1>
+    
+     
+           <p itemprop="description" >总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。
+
+AR 平台Vuforia–不用多说，最流行的AR应用开发引擎。EasyAR－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。Easy</p>
+        
+    
+    <time datetime="2017-01-22T10:55:21.000Z" itemprop="datePublished">2017-01-22</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/01/22/腾讯云之小直播开发/" title="腾讯云之小直播开发" itemprop="url">
+  
+    <h1 itemprop="name">腾讯云之小直播开发</h1>
+    
+     
+           <p itemprop="description" >视频服务
+直播LVB 
+
+开发指南
+
+
+移动直播MLVB
+
+开发指南移动直播是一套移动终端直播解决方案的集合，它以免费源码的形式向您展示：如何利用腾讯云直播(LVB)、点播(VOD)、云通信(IM) 和 对象存储(COS)等几项服务组合构建出适合您的直播解决方案。
+
+
+
+快速集成</p>
+        
+    
+    <time datetime="2017-01-22T10:55:21.000Z" itemprop="datePublished">2017-01-22</time>
+  </a>
+</section>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix unexpand">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="huos3203" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CI/" title="CI">CI<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Octopress/" title="Octopress">Octopress<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Swift/" title="Swift">Swift<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Xcode/" title="Xcode">Xcode<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/docker/" title="docker">docker<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ruby/" title="ruby">ruby<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/swift/" title="swift">swift<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小程序/" title="小程序">小程序<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/直播/" title="直播">直播<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/管理/" title="管理">管理<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/资源/" title="资源">资源<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/逻辑思维/" title="逻辑思维">逻辑思维<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/骗局/" title="骗局">骗局<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/语法/" title="语法">语法<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/管理/" title="管理">管理<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/搭建/" title="搭建">搭建<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/混编/" title="混编">混编<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/资源/" title="资源">资源<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/macOS/" title="macOS">macOS<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Storyboard/" title="Storyboard">Storyboard<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/测试/" title="测试">测试<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/脚本/" title="脚本">脚本<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UI/" title="UI">UI<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/汇总/" title="汇总">汇总<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/坑/" title="坑">坑<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/协议/" title="协议">协议<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/swift/" title="swift">swift<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TDD/" title="TDD">TDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BDD/" title="BDD">BDD<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AppleScript/" title="AppleScript">AppleScript<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/AR/" style="font-size: 10px;">AR</a> <a href="/tags/AppleScript/" style="font-size: 11.25px;">AppleScript</a> <a href="/tags/AutoLayout/" style="font-size: 10px;">AutoLayout</a> <a href="/tags/BDD/" style="font-size: 11.25px;">BDD</a> <a href="/tags/IOS7/" style="font-size: 10px;">IOS7</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Java​Script​Core/" style="font-size: 11.25px;">Java​Script​Core</a> <a href="/tags/LBS-AR/" style="font-size: 10px;">LBS+AR</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/QQ红包/" style="font-size: 10px;">QQ红包</a> <a href="/tags/ResilioSync/" style="font-size: 10px;">ResilioSync</a> <a href="/tags/SDK/" style="font-size: 11.25px;">SDK</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Scrum/" style="font-size: 10px;">Scrum</a> <a href="/tags/Storyboard/" style="font-size: 12.5px;">Storyboard</a> <a href="/tags/TDD/" style="font-size: 11.25px;">TDD</a> <a href="/tags/TextKit/" style="font-size: 11.25px;">TextKit</a> <a href="/tags/UI/" style="font-size: 12.5px;">UI</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/git-svn/" style="font-size: 10px;">git-svn</a> <a href="/tags/gitBook/" style="font-size: 10px;">gitBook</a> <a href="/tags/gitLab/" style="font-size: 10px;">gitLab</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/iOS/" style="font-size: 12.5px;">iOS</a> <a href="/tags/iPhone5s/" style="font-size: 10px;">iPhone5s</a> <a href="/tags/iPhone6/" style="font-size: 10px;">iPhone6</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/kindle/" style="font-size: 11.25px;">kindle</a> <a href="/tags/macOS/" style="font-size: 13.75px;">macOS</a> <a href="/tags/mou/" style="font-size: 10px;">mou</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/objc/" style="font-size: 10px;">objc</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/realm/" style="font-size: 10px;">realm</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/scheme/" style="font-size: 10px;">scheme</a> <a href="/tags/shell/" style="font-size: 11.25px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/svn/" style="font-size: 11.25px;">svn</a> <a href="/tags/swift/" style="font-size: 12.5px;">swift</a> <a href="/tags/targets/" style="font-size: 10px;">targets</a> <a href="/tags/中关村/" style="font-size: 10px;">中关村</a> <a href="/tags/书籍/" style="font-size: 11.25px;">书籍</a> <a href="/tags/内购/" style="font-size: 10px;">内购</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/协议/" style="font-size: 12.5px;">协议</a> <a href="/tags/发布/" style="font-size: 10px;">发布</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/坑/" style="font-size: 12.5px;">坑</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/小米路由/" style="font-size: 10px;">小米路由</a> <a href="/tags/工具/" style="font-size: 20px;">工具</a> <a href="/tags/布局/" style="font-size: 10px;">布局</a> <a href="/tags/思维导图/" style="font-size: 10px;">思维导图</a> <a href="/tags/截屏/" style="font-size: 11.25px;">截屏</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/搭建/" style="font-size: 16.25px;">搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/汇总/" style="font-size: 12.5px;">汇总</a> <a href="/tags/沙盒/" style="font-size: 10px;">沙盒</a> <a href="/tags/测试/" style="font-size: 12.5px;">测试</a> <a href="/tags/混编/" style="font-size: 16.25px;">混编</a> <a href="/tags/直播/" style="font-size: 10px;">直播</a> <a href="/tags/管理/" style="font-size: 17.5px;">管理</a> <a href="/tags/编译/" style="font-size: 10px;">编译</a> <a href="/tags/脚本/" style="font-size: 12.5px;">脚本</a> <a href="/tags/腾讯云/" style="font-size: 10px;">腾讯云</a> <a href="/tags/被骗/" style="font-size: 10px;">被骗</a> <a href="/tags/设备/" style="font-size: 10px;">设备</a> <a href="/tags/语法/" style="font-size: 18.75px;">语法</a> <a href="/tags/资源/" style="font-size: 15px;">资源</a> <a href="/tags/转场/" style="font-size: 10px;">转场</a> <a href="/tags/逻辑思维/" style="font-size: 10px;">逻辑思维</a> <a href="/tags/阅读器/" style="font-size: 10px;">阅读器</a> <a href="/tags/集成/" style="font-size: 10px;">集成</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+
+  <div class="weixin">
+<p class="asidetitle">微信公众号</p>
+<img src=/img/weixinimg.jpg width="230px" />
+</div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+<iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=1&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1791281385&verifier=8c6f2d1f&dpc=1"></iframe>
+</div>
+
+
+  <div class="earth">
+<p class="asidetitle">访客地图</p>
+<script type="text/javascript" src="http://jg.revolvermaps.com/2/4.js?i=6j7ij8f0xzy&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=35" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/" target="_blank" title="swift文档">swift文档</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.objccn.io" target="_blank" title="objc中国">objc中国</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://nshipster.cn" target="_blank" title="NSHipster">NSHipster</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" title="动画">动画</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://git-scm.com/book/zh" target="_blank" title="Git Pro">Git Pro</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kaopu.so/pan" target="_blank" title="全盘搜">全盘搜</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://mp.weixin.qq.com" target="_blank" title="小程序官方">小程序官方</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://onevcat.com" target="_blank" title="王维">王维</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.devtang.com" target="_blank" title="唐巧">唐巧</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 嗨，见文如晤，多多指教. <br/>
+			粗浅见解，修葺成文，盼广交同道中人.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1791281385" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/huos3203" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/6211905" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		<a href="https://www.linkedin.com/in/boyerswift" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/boyers" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/boyers" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:724987481@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="boyer">boyer</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
 (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-_st('install','dazsKTijnsz_zi-bXB3t','2.0.0');
-</script><script type="text/javascript" src="/boyer/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/boyer/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<!--百度统计 coding-->
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b4a2528a681e2f23855d15a4de0abfc2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+
+<!--百度统计 github-->
+  var hmgit = document.createElement("script");
+  hmgit.src = "//hm.baidu.com/hm.js?cda1b75e08a0a3e897aa6f92112910b4";
+  var sgit = document.getElementsByTagName("script")[0];
+  sgit.parentNode.insertBefore(hmgit, sgit);
+
+})();
+
+
+</script>
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

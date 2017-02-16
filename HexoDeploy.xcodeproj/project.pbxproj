@@ -463,6 +463,13 @@
 		14FB505F1E543BB200E05601 /* macOS支持JavaScript自动化组件基础.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "macOS支持JavaScript自动化组件基础.md"; sourceTree = "<group>"; };
 		14FB50601E54544000E05601 /* JavaScript自动化组件OC桥接.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScript自动化组件OC桥接.md"; sourceTree = "<group>"; };
 		14FB50611E545BEA00E05601 /* Playground中使用XCPlaygroundModule.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Playground中使用XCPlaygroundModule.md"; sourceTree = "<group>"; };
+		14FB50621E55792F00E05601 /* iOS8中几种常用的展示控制器使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "iOS8中几种常用的展示控制器使用.md"; sourceTree = "<group>"; };
+		14FB50631E5589D100E05601 /* iPhoneipadalert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneipadalert.png; sourceTree = "<group>"; };
+		14FB50641E558D9C00E05601 /* popover箭头.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover箭头.png"; sourceTree = "<group>"; };
+		14FB50651E5596E600E05601 /* UIPopoverArrowDirection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIPopoverArrowDirection.png; sourceTree = "<group>"; };
+		14FB50661E55979500E05601 /* iPhonemodally.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhonemodally.png; sourceTree = "<group>"; };
+		14FB50671E55A12A00E05601 /* adaptivePresentationStyleForPresentationController.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adaptivePresentationStyleForPresentationController.png; sourceTree = "<group>"; };
+		14FB50681E55A1C700E05601 /* UIModalPresentationStyle.None.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIModalPresentationStyle.None.png; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 		843F28831E51F4770020C321 /* gistflag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gistflag.jpg; sourceTree = "<group>"; };
 		8451A2711E28F1CF00301CE2 /* setup_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_config.sh; sourceTree = "<group>"; };
@@ -824,6 +831,7 @@
 				14FB505E1E54016800E05601 /* shell命令+AppleScript脚本+Swift代码相互调用.md */,
 				14FB505F1E543BB200E05601 /* macOS支持JavaScript自动化组件基础.md */,
 				14FB50601E54544000E05601 /* JavaScript自动化组件OC桥接.md */,
+				14FB50621E55792F00E05601 /* iOS8中几种常用的展示控制器使用.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
@@ -848,6 +856,12 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				14FB50681E55A1C700E05601 /* UIModalPresentationStyle.None.png */,
+				14FB50671E55A12A00E05601 /* adaptivePresentationStyleForPresentationController.png */,
+				14FB50661E55979500E05601 /* iPhonemodally.png */,
+				14FB50651E5596E600E05601 /* UIPopoverArrowDirection.png */,
+				14FB50631E5589D100E05601 /* iPhoneipadalert.png */,
+				14FB50641E558D9C00E05601 /* popover箭头.png */,
 				14FB505A1E52D7A100E05601 /* annotations.gif */,
 				14FB50591E52C21F00E05601 /* pdfkit_uses_hierarchy.gif */,
 				14FB50581E52BC0F00E05601 /* pdfkit_inheritancehierarchy.gif */,
