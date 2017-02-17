@@ -472,6 +472,9 @@
 		14FB50681E55A1C700E05601 /* UIModalPresentationStyle.None.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIModalPresentationStyle.None.png; sourceTree = "<group>"; };
 		843D6ACF1E0ABB8C004A5FB0 /* Docker使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Docker使用.md"; sourceTree = "<group>"; };
 		843F28831E51F4770020C321 /* gistflag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gistflag.jpg; sourceTree = "<group>"; };
+		843F28841E55E9BB0020C321 /* 自定义展示型控制器.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "自定义展示型控制器.md"; sourceTree = "<group>"; };
+		843F28851E55EDE30020C321 /* semi-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "semi-transparent.png"; sourceTree = "<group>"; };
+		843F28861E55F1E30020C321 /* userinformation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userinformation.png; sourceTree = "<group>"; };
 		8451A2711E28F1CF00301CE2 /* setup_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_config.sh; sourceTree = "<group>"; };
 		8451A2751E2908D000301CE2 /* .bowerrc */ = {isa = PBXFileReference; lastKnownFileType = text; path = .bowerrc; sourceTree = "<group>"; };
 		8451A2761E2908D000301CE2 /* .editorconfig */ = {isa = PBXFileReference; lastKnownFileType = text; path = .editorconfig; sourceTree = "<group>"; };
@@ -832,6 +835,7 @@
 				14FB505F1E543BB200E05601 /* macOS支持JavaScript自动化组件基础.md */,
 				14FB50601E54544000E05601 /* JavaScript自动化组件OC桥接.md */,
 				14FB50621E55792F00E05601 /* iOS中几种常用的展示控制器使用.md */,
+				843F28841E55E9BB0020C321 /* 自定义展示型控制器.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
@@ -856,6 +860,8 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				843F28861E55F1E30020C321 /* userinformation.png */,
+				843F28851E55EDE30020C321 /* semi-transparent.png */,
 				14FB50681E55A1C700E05601 /* UIModalPresentationStyle.None.png */,
 				14FB50671E55A12A00E05601 /* adaptivePresentationStyleForPresentationController.png */,
 				14FB50661E55979500E05601 /* iPhonemodally.png */,
