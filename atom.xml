@@ -178,49 +178,6 @@
   </entry>
   
   <entry>
-    <title>shell命令+AppleScript脚本+Swift代码相互调用</title>
-    <link href="https://huos3203.github.io/2017/02/15/shell%E5%91%BD%E4%BB%A4+AppleScript%E8%84%9A%E6%9C%AC+Swift%E4%BB%A3%E7%A0%81%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8/"/>
-    <id>https://huos3203.github.io/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/</id>
-    <published>2017-02-15T09:19:30.000Z</published>
-    <updated>2017-02-15T09:19:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是<code>AppleScript</code>作为互通的桥梁。</p>
-<h2 id="NSTask调用AppleScript"><a href="#NSTask调用AppleScript" class="headerlink" title="NSTask调用AppleScript"></a><code>NSTask</code>调用<code>AppleScript</code></h2><h3 id="调用脚本文件main-scpt"><a href="#调用脚本文件main-scpt" class="headerlink" title="调用脚本文件main.scpt"></a>调用脚本文件<code>main.scpt</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//let bundle = NSBundle.init(forClass: self.dynamicType)</span></div><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptPath = bundle.pathForResource(<span class="string">"main"</span>, ofType: <span class="string">"scpt"</span>)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> paths = [scriptPath]</div><div class="line">    <span class="type">NSTask</span>.launchedTaskWithLaunchPath(<span class="string">"/usr/bin/osascript"</span>, arguments: paths)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="调用APPleScript脚本片段"><a href="#调用APPleScript脚本片段" class="headerlink" title="调用APPleScript脚本片段"></a>调用<code>APPleScript脚本片段</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">let</span> videoPath = bundle.pathForResource(<span class="string">"BigBuck"</span>, ofType: <span class="string">"m4v"</span>)</div><div class="line"><span class="comment">//https://developer.apple.com/library/mac/technotes/tn2084/_index.html</span></div><div class="line"><span class="comment">//open -na /Applications/mpv.app命令行必须是 -na 才能调用当前指定的播放器，否则会调用系统默认播发器</span></div><div class="line"><span class="keyword">let</span> myAppleScript = <span class="string">"on run\ndo shell script \"open -na /Applications/mpv.app \(videoPath!)\"\ntell application \"mpv\" to activate\n end run"</span></div><div class="line"><span class="built_in">print</span>(myAppleScript)</div><div class="line"><span class="keyword">var</span> error: <span class="type">NSDictionary</span>?</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptObject = <span class="type">NSAppleScript</span>(source: myAppleScript) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> output: <span class="type">NSAppleEventDescriptor</span> = scriptObject.executeAndReturnError(</div><div class="line">    &amp;error) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(output.stringValue)</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (error != <span class="literal">nil</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"error: \(error)"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="AppleScript调用shell"><a href="#AppleScript调用shell" class="headerlink" title="AppleScript调用shell"></a><code>AppleScript</code>调用<code>shell</code></h2><p>AppleScript语句中为on run {变量名称，逗号隔开} 以endrun结束。中间为AppleScript语句。</p>
-<h3 id="do-shell-script"><a href="#do-shell-script" class="headerlink" title="do shell script"></a>do shell script</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">on run [变量1,变量2...]  #开始 多个变量名称，用逗号隔开</div><div class="line">    do shell script "open -n /Applications/mpv.app" #AppleScript语句  </div><div class="line">end run #结束</div></pre></td></tr></table></figure>
-<h2 id="终端osascript调用AppleScript"><a href="#终端osascript调用AppleScript" class="headerlink" title="终端osascript调用AppleScript"></a>终端<code>osascript</code>调用<code>AppleScript</code></h2><p><a href="http://www.hackmac.org/tutorials/run-applescript-from-the-command-line/" target="_blank" rel="external">参考</a></p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;applescript command&apos; #单引号</div></pre></td></tr></table></figure>
-<h3 id="打开Finder窗口"><a href="#打开Finder窗口" class="headerlink" title="打开Finder窗口"></a>打开Finder窗口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;tell app &quot;Finder&quot; to make new Finder window&apos;</div></pre></td></tr></table></figure>
-<h3 id="打开某个程序同时弹出”Hello-World”提示框"><a href="#打开某个程序同时弹出”Hello-World”提示框" class="headerlink" title="打开某个程序同时弹出”Hello World”提示框"></a>打开某个程序同时弹出”Hello World”提示框</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">'tell app "applicationname" to display dialog "Hello World"'</span></div></pre></td></tr></table></figure>
-<h3 id="设置音量，音量大小范围（0-7）"><a href="#设置音量，音量大小范围（0-7）" class="headerlink" title="设置音量，音量大小范围（0-7）"></a>设置音量，音量大小范围（0-7）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">"set volume number"</span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是&lt;code&gt;AppleScript&lt;/code&gt;作为互通的桥梁。&lt;/p&gt;
-&lt;h2 id=&quot;NSTask调用AppleScript&quot;&gt;&lt;a href=&quot;#NSTask
-    
-    </summary>
-    
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
-    
-    
-      <category term="脚本" scheme="https://huos3203.github.io/tags/%E8%84%9A%E6%9C%AC/"/>
-    
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
-    
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
-    
-      <category term="shell" scheme="https://huos3203.github.io/tags/shell/"/>
-    
-      <category term="AppleScript" scheme="https://huos3203.github.io/tags/AppleScript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>macOS支持JavaScript自动化组件基础</title>
     <link href="https://huos3203.github.io/2017/02/15/macOS%E6%94%AF%E6%8C%81JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80/"/>
     <id>https://huos3203.github.io/2017/02/15/macOS支持JavaScript自动化组件基础/</id>
@@ -299,6 +256,49 @@
   </entry>
   
   <entry>
+    <title>shell命令+AppleScript脚本+Swift代码相互调用</title>
+    <link href="https://huos3203.github.io/2017/02/15/shell%E5%91%BD%E4%BB%A4+AppleScript%E8%84%9A%E6%9C%AC+Swift%E4%BB%A3%E7%A0%81%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8/"/>
+    <id>https://huos3203.github.io/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/</id>
+    <published>2017-02-15T09:19:30.000Z</published>
+    <updated>2017-02-15T09:19:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是<code>AppleScript</code>作为互通的桥梁。</p>
+<h2 id="NSTask调用AppleScript"><a href="#NSTask调用AppleScript" class="headerlink" title="NSTask调用AppleScript"></a><code>NSTask</code>调用<code>AppleScript</code></h2><h3 id="调用脚本文件main-scpt"><a href="#调用脚本文件main-scpt" class="headerlink" title="调用脚本文件main.scpt"></a>调用脚本文件<code>main.scpt</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//let bundle = NSBundle.init(forClass: self.dynamicType)</span></div><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptPath = bundle.pathForResource(<span class="string">"main"</span>, ofType: <span class="string">"scpt"</span>)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> paths = [scriptPath]</div><div class="line">    <span class="type">NSTask</span>.launchedTaskWithLaunchPath(<span class="string">"/usr/bin/osascript"</span>, arguments: paths)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用APPleScript脚本片段"><a href="#调用APPleScript脚本片段" class="headerlink" title="调用APPleScript脚本片段"></a>调用<code>APPleScript脚本片段</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">let</span> videoPath = bundle.pathForResource(<span class="string">"BigBuck"</span>, ofType: <span class="string">"m4v"</span>)</div><div class="line"><span class="comment">//https://developer.apple.com/library/mac/technotes/tn2084/_index.html</span></div><div class="line"><span class="comment">//open -na /Applications/mpv.app命令行必须是 -na 才能调用当前指定的播放器，否则会调用系统默认播发器</span></div><div class="line"><span class="keyword">let</span> myAppleScript = <span class="string">"on run\ndo shell script \"open -na /Applications/mpv.app \(videoPath!)\"\ntell application \"mpv\" to activate\n end run"</span></div><div class="line"><span class="built_in">print</span>(myAppleScript)</div><div class="line"><span class="keyword">var</span> error: <span class="type">NSDictionary</span>?</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptObject = <span class="type">NSAppleScript</span>(source: myAppleScript) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> output: <span class="type">NSAppleEventDescriptor</span> = scriptObject.executeAndReturnError(</div><div class="line">    &amp;error) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(output.stringValue)</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (error != <span class="literal">nil</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"error: \(error)"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="AppleScript调用shell"><a href="#AppleScript调用shell" class="headerlink" title="AppleScript调用shell"></a><code>AppleScript</code>调用<code>shell</code></h2><p>AppleScript语句中为on run {变量名称，逗号隔开} 以endrun结束。中间为AppleScript语句。</p>
+<h3 id="do-shell-script"><a href="#do-shell-script" class="headerlink" title="do shell script"></a>do shell script</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">on run [变量1,变量2...]  #开始 多个变量名称，用逗号隔开</div><div class="line">    do shell script "open -n /Applications/mpv.app" #AppleScript语句  </div><div class="line">end run #结束</div></pre></td></tr></table></figure>
+<h2 id="终端osascript调用AppleScript"><a href="#终端osascript调用AppleScript" class="headerlink" title="终端osascript调用AppleScript"></a>终端<code>osascript</code>调用<code>AppleScript</code></h2><p><a href="http://www.hackmac.org/tutorials/run-applescript-from-the-command-line/" target="_blank" rel="external">参考</a></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;applescript command&apos; #单引号</div></pre></td></tr></table></figure>
+<h3 id="打开Finder窗口"><a href="#打开Finder窗口" class="headerlink" title="打开Finder窗口"></a>打开Finder窗口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;tell app &quot;Finder&quot; to make new Finder window&apos;</div></pre></td></tr></table></figure>
+<h3 id="打开某个程序同时弹出”Hello-World”提示框"><a href="#打开某个程序同时弹出”Hello-World”提示框" class="headerlink" title="打开某个程序同时弹出”Hello World”提示框"></a>打开某个程序同时弹出”Hello World”提示框</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">'tell app "applicationname" to display dialog "Hello World"'</span></div></pre></td></tr></table></figure>
+<h3 id="设置音量，音量大小范围（0-7）"><a href="#设置音量，音量大小范围（0-7）" class="headerlink" title="设置音量，音量大小范围（0-7）"></a>设置音量，音量大小范围（0-7）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">"set volume number"</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是&lt;code&gt;AppleScript&lt;/code&gt;作为互通的桥梁。&lt;/p&gt;
+&lt;h2 id=&quot;NSTask调用AppleScript&quot;&gt;&lt;a href=&quot;#NSTask
+    
+    </summary>
+    
+      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+    
+    
+      <category term="脚本" scheme="https://huos3203.github.io/tags/%E8%84%9A%E6%9C%AC/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
+    
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="shell" scheme="https://huos3203.github.io/tags/shell/"/>
+    
+      <category term="AppleScript" scheme="https://huos3203.github.io/tags/AppleScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript自动化组件OC桥接</title>
     <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
     <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
@@ -328,9 +328,9 @@
     
       <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
       <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
       <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
     
@@ -410,9 +410,9 @@
     
       <category term="脚本" scheme="https://huos3203.github.io/tags/%E8%84%9A%E6%9C%AC/"/>
     
-      <category term="AppleScript" scheme="https://huos3203.github.io/tags/AppleScript/"/>
-    
       <category term="沙盒" scheme="https://huos3203.github.io/tags/%E6%B2%99%E7%9B%92/"/>
+    
+      <category term="AppleScript" scheme="https://huos3203.github.io/tags/AppleScript/"/>
     
   </entry>
   
@@ -614,9 +614,9 @@
     
       <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
-      <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
-    
       <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
+    
+      <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
       <category term="json" scheme="https://huos3203.github.io/tags/json/"/>
     
@@ -686,9 +686,9 @@
     
       <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
-      <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
-    
       <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
+    
+      <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
   </entry>
   
@@ -722,9 +722,9 @@
     
       <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
       <category term="git" scheme="https://huos3203.github.io/tags/git/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
@@ -1367,55 +1367,191 @@
   </entry>
   
   <entry>
-    <title>AR 开发资料汇[转]</title>
-    <link href="https://huos3203.github.io/2017/01/22/AR%E5%BC%80%E5%8F%91%E8%B5%84%E6%96%99%E6%B1%87/"/>
-    <id>https://huos3203.github.io/2017/01/22/AR开发资料汇/</id>
+    <title>Awsome Apple Develop Guide[转]</title>
+    <link href="https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/"/>
+    <id>https://huos3203.github.io/2017/01/22/AwsomeAppleDevelopGuide/</id>
     <published>2017-01-22T10:55:21.000Z</published>
-    <updated>2017-01-22T10:55:21.000Z</updated>
+    <updated>2017-01-23T09:34:23.000Z</updated>
     
-    <content type="html"><![CDATA[<p>总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。</p>
-<hr>
-<h1 id="AR-平台"><a href="#AR-平台" class="headerlink" title="AR 平台"></a>AR 平台</h1><p><a href="https://developer.vuforia.com/" target="_blank" rel="external">Vuforia</a>–不用多说，最流行的AR应用开发引擎。<br><a href="http://www.easyar.cn/" target="_blank" rel="external">EasyAR</a>－－EasyAR是国内最专业的AR引擎,是国内首款投入应用的AR SDK。EasyAR是好用且免费的增强现实(Augmented Reality)开发者引擎。<br><a href="http://www.hiar.com.cn/" target="_blank" rel="external">HiAR</a>–HiAR 增强现实开发平台 HiAR 是亮风台信息科技打造的新一代移动增强现实(AR)开发平台,提供一整套世界领先的增强现实(AR)技术服务。<br><a href="http://www.voidar.net/" target="_blank" rel="external">太虚AR</a>－－成都米有网络科技有限公司自主研发集成于Unity3d实现增强现实的SDK开发包,虚拟现实SDK太虚官方网站。<br><a href="http://www.wikitude.com/" target="_blank" rel="external">Wikitude</a>–Wikitude是一家专门从事智能手机增强现实的应用，分别出品了两款应用Wikitude drive与Wikitude World Browser。<br><a href="http://www.intel.com/content/www/us/en/architecture-and-technology/realsense-overview.html" target="_blank" rel="external">Inter RealSense</a>–RealSense 3D是一套感知计算解决方案,包括世界上最小的3D摄像头,模块比两个硬币摞起来还薄,除了硬件外,英特尔还将提供驱动及软件等全套开发工具<br><a href="https://www.icreator.cn/" target="_blank" rel="external">ICreator</a>–依托于iCreator 3D, VR引擎,模型师可以快速创建交互式3D, VR内容,并支持微信平台传播,也为模型师提供可视化3D模型交易功能。<br><a href="http://www.tianyanar.com/" target="_blank" rel="external">天眼</a>－－天眼AR包括天眼云平台和天眼AR浏览器,用户需在天眼云平台完成“AR内容”制作,然后在天眼AR浏览器查看效果。<br><a href="https://developers.google.com/tango/" target="_blank" rel="external">Google Tango</a>–小编重点推荐。运动追踪(Motion Tracking)，深度感知(Depth Perception)和区域学习(Area Learning)。</p>
-<hr>
-<h1 id="AR-视频教程"><a href="#AR-视频教程" class="headerlink" title="AR 视频教程"></a>AR 视频教程</h1><p><a href="http://edu.manew.com/course/204" target="_blank" rel="external">Hololens 开发教程</a><br><a href="http://edu.manew.com/course/154" target="_blank" rel="external">增强现实技术分享</a><br><a href="http://edu.manew.com/course/172" target="_blank" rel="external">AR房地产</a><br><a href="http://edu.manew.com/course/175" target="_blank" rel="external">AR - 双卡互动</a><br><a href="http://edu.manew.com/course/162" target="_blank" rel="external">AR涂涂乐</a><br><a href="http://www.taikr.com/course/378" target="_blank" rel="external">Hololens 开发</a><br><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a><br><a href="http://www.arinchina.com/video/show-1946.html" target="_blank" rel="external">Intel realSense制作面部捕捉小游戏</a><br><a href="http://www.arinchina.com/video/show-1972.html" target="_blank" rel="external">HiAR 视频播放</a><br><a href="http://www.arinchina.com/video/show-1965.html" target="_blank" rel="external">HiAR 水晶球</a><br><a href="http://www.arinchina.com/video/show-1982.html" target="_blank" rel="external">HiAR 瞬间拥有Apple Watch</a><br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">Vuforia 入门－基础－进阶</a></p>
-<hr>
-<h1 id="AR-网站"><a href="#AR-网站" class="headerlink" title="AR 网站"></a>AR 网站</h1><p><a href="http://arjiang.com/" target="_blank" rel="external">AR酱</a>–发现闪闪发光的AR从业者|增强现实|混合现实|虚拟现实<br><a href="http://www.arinchina.com/" target="_blank" rel="external">增强现实</a>－－增强现实中国ARinChina 是中国最大的专注于AR增强现实技术行业的门户网站。<br><a href="http://www.arvrschool.com/" target="_blank" rel="external">AR 学院</a>－－增强现实|虚拟现实技术交流社区、综合门户<br><a href="http://www.arcun.cn/" target="_blank" rel="external">AR 村</a>－－提供最新最快的AR增强现实信息,最权威的AR增强现实解读与产品发布.<br><a href="http://www.youziar.com/" target="_blank" rel="external">柚子AR</a>－－柚子AR打造专业的增强现实技术领域门户网站,提供AR资讯、AR技术、AR视频、AR游戏、AR设备等相关知识教程,柚子AR,打造增强现实行业交流聚集地。<br><a href="http://www.chinaar.com/" target="_blank" rel="external">ChinaAR</a>－－中国AR网,是国内第一家打造增强现实技术交流的一个自媒体平台!意在打造中国AR爱好者对AR技术的交流与学习的一个平台<br><a href="http://www.archina.org/" target="_blank" rel="external">AR 中国</a>－－AR中国是专注于增强现实技术的新闻门户网站<br><a href="http://www.arjishu.com/" target="_blank" rel="external">AR 技术网</a><br><a href="http://www.arcompetition.com/Default.aspx" target="_blank" rel="external">Realseer</a></p>
-<hr>
-<h1 id="增强现实视频合辑"><a href="#增强现实视频合辑" class="headerlink" title="增强现实视频合辑"></a>增强现实视频合辑</h1><p><a href="http://www.arcun.cn/thread-2111-1-1.html" target="_blank" rel="external">增强现实技术1-31篇技术视频教程合集</a></p>
-<hr>
-<h1 id="Vuforai-教程精选"><a href="#Vuforai-教程精选" class="headerlink" title="Vuforai 教程精选"></a>Vuforai 教程精选</h1><p><a href="http://www.arinchina.com/video/list/149/" target="_blank" rel="external">Vuforia 公开课</a>－－包括Vuforia 环境搭建，多图识别，单页翻页效果，模型自动旋转…<br><a href="http://www.arvrschool.com/read.php?tid=325&amp;fid=21" target="_blank" rel="external">VUforia 视频合辑</a><br><a href="http://www.chinaar.com/Vuforia/" target="_blank" rel="external">Vuforia 官方教程</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=36" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://dev.arinchina.com/qualcomm/1" target="_blank" rel="external">Vuforia 论坛</a><br><a href="http://www.manew.com/thread-92723-1-1.html?_dsign=51711fb9" target="_blank" rel="external">Vufoira 涂涂乐文章教程</a>－－讲解详细<br><a href="http://mec0825.net/blog/?p=126" target="_blank" rel="external">Vuforia 实现物体阴影特效</a><br><a href="http://www.th7.cn/Program/Android/201502/394666.shtml" target="_blank" rel="external">Vuforia 多图识别</a><br><a href="http://www.arinchina.com/video/show-1956.html" target="_blank" rel="external">Vuforia 脱卡</a><br><a href="http://lib.csdn.net/article/vr/20346" target="_blank" rel="external">Vuforia SDK—- AR开发vuforia实现拍照截屏功能</a></p>
-<hr>
-<h1 id="EasyAR教程精选"><a href="#EasyAR教程精选" class="headerlink" title="EasyAR教程精选"></a>EasyAR教程精选</h1><p><a href="http://www.manew.com/thread-98569-1-1.html" target="_blank" rel="external">Leap Motion+EasyAR AR手势开发教程</a><br><a href="http://www.manew.com/thread-98708-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(1)—搭建开发环境</a><br><a href="http://www.manew.com/thread-98992-1-1.html" target="_blank" rel="external">AR从入门到精通开发系列教程(2)–创建模型并互动</a><br><a href="http://www.arinchina.com/video/list/151/" target="_blank" rel="external">EasyAR 公开课</a><br><a href="http://www.easyar.cn/view/documentapi.html" target="_blank" rel="external">EasyAR 文档</a><br><a href="http://bbs.sightp.com/thread-249-1-1.html" target="_blank" rel="external">EasyAR官方Sample之涂涂乐</a><br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=86" target="_blank" rel="external">EasyAR 论坛</a><br><a href="http://www.taidous.com/bbs/thread-42793-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(1)</a><br><a href="http://www.taidous.com/bbs/thread-42825-1-1.html" target="_blank" rel="external">带你开发类似Pokemon Go的AR游戏(2)</a></p>
-<hr>
-<h1 id="HiAR-教程"><a href="#HiAR-教程" class="headerlink" title="HiAR 教程"></a>HiAR 教程</h1><p><a href="http://www.hiar.com.cn/doc-v1/main/home/" target="_blank" rel="external">HiAR 官方文档</a>－－看完之后就掌握的大概了，官方文档很详细了。<br><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=98" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://dev.arinchina.com/hiar/1" target="_blank" rel="external">HiAR 论坛</a><br><a href="http://edu.51cto.com/course/course_id-5565.html" target="_blank" rel="external">HiAR SDK 教学视频</a></p>
-<hr>
-<h1 id="其他平台教程"><a href="#其他平台教程" class="headerlink" title="其他平台教程"></a>其他平台教程</h1><p><a href="http://www.arvrschool.com/index.php?c=thread&amp;fid=87" target="_blank" rel="external">太虚AR教程</a><br><a href="http://dev.arinchina.com/143/1" target="_blank" rel="external">太虚AR学习</a><br><a href="http://dev.arinchina.com/metaio/1" target="_blank" rel="external">Metaio 学习</a><br><a href="http://www.arinchina.com/video/list/150/" target="_blank" rel="external">Wikitude 公开课</a><br><a href="http://www.arinchina.com/video/list/154/" target="_blank" rel="external">太虚AR公开课</a></p>
-<hr>
-<h1 id="Google-tango教程"><a href="#Google-tango教程" class="headerlink" title="Google tango教程"></a>Google tango教程</h1><p><a href="https://pan.baidu.com/s/1i44Fpat" target="_blank" rel="external">Tango SDK 下载</a>（提取码：sh18）<br><a href="http://www.aiweibang.com/yuedu/147339646.html" target="_blank" rel="external">跟着Shrek Team学tango</a><br><a href="https://www.zhihu.com/question/37920173" target="_blank" rel="external">Project Tango 知识原理</a><br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=308" target="_blank" rel="external">Google Tango 项目</a></p>
-<hr>
-<h1 id="AR-技术文章"><a href="#AR-技术文章" class="headerlink" title="AR 技术文章"></a>AR 技术文章</h1><p><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=344" target="_blank" rel="external">两家AR专利大厂在AR硬件方面的探索</a><br><a href="http://www.doc88.com/p-5661286681360.html" target="_blank" rel="external">增强现实技术及其应用</a><br><a href="http://www.vrguancha.net/a/start/baogaoku/2016/1102/2026.html" target="_blank" rel="external">全球首份VR/AR医疗健康产业应用创新报告</a></p>
-<hr>
-<h1 id="AR-精选论文"><a href="#AR-精选论文" class="headerlink" title="AR 精选论文"></a>AR 精选论文</h1><p><a href="http://www.docin.com/p-62167994.html" target="_blank" rel="external">基于ARM和OpenCV的增强现实平台研究</a><br><a href="http://www.docin.com/p-890798256.html" target="_blank" rel="external">基于Android的增强现实技术研究与实现</a><br><a href="http://www.docin.com/p-123294670.html" target="_blank" rel="external">增强现实应用技术研究</a><br><a href="http://www.docin.com/p-220443601.html" target="_blank" rel="external">基于ARTOOLKIT的增强现实技术在恐龙博物馆中的应用研究</a><br><a href="http://www.docin.com/p-983104432.html" target="_blank" rel="external">基于增强现实技术的虚拟留言墙系统的设计与实现</a><br><a href="http://www.docin.com/p-880664177.html" target="_blank" rel="external">基于智能移动终端的移动增强现实应用研究与实现 </a><br><a href="http://www.docin.com/p-1404596806.html" target="_blank" rel="external">基于unity3d的移动增强现实技术与应用研究分析</a><br><a href="http://www.docin.com/p-129257030.html" target="_blank" rel="external">增强现实中标记设计与识别方法研究</a><br><a href="http://www.docin.com/p-1124496600.html" target="_blank" rel="external">户外增强现实gis的应用研究</a><br><a href="http://www.docin.com/p-1701043105.html" target="_blank" rel="external">手持式增强现实神经导航关键技术研究及其系统建立</a><br><a href="http://www.docin.com/p-118637060.html" target="_blank" rel="external">基于ARToolKit平台的增强现实人机交互系统的若干问题研究</a><br><a href="http://www.docin.com/p-427198314.html" target="_blank" rel="external">基于ARToolkit的汉字识别系统的设计与实现</a><br><a href="http://www.docin.com/p-1609057674.html" target="_blank" rel="external">基于ARToolKit的增强现实技术在恐龙博物馆中的应用研究</a></p>
-<hr>
-<h1 id="AR应用精选"><a href="#AR应用精选" class="headerlink" title="AR应用精选"></a>AR应用精选</h1><p><a href="http://www.anzhi.com/soft_2519240.html" target="_blank" rel="external">视+AR</a>－－搭载独立开发的EasyAR引擎，全新视+2.0强势来袭！包罗丰富ar内容的增强现实浏览器，等你来体验！<br><a href="http://www.anzhi.com/soft_2699705.html" target="_blank" rel="external">AR</a>–这是一款增强现实AR的应用，主要分为三部分：LOL人物展示（带有经典音效），太空大战，手势交互（可以旋转与缩放）。突破现在AR格局，给玩家带来更多的乐趣。你只需一张个人身份证的反面，便会通过AR得到一个精彩的世界！<br><a href="http://neobear.com/index.php/home/product/product/" target="_blank" rel="external">小熊尼奥产品</a><br><a href="http://mec0825.net/blog/?p=107" target="_blank" rel="external">增强现实优秀应用</a>－－大部分是国外的。<br><a href="http://www.arjiang.com/index.php?m=content&amp;c=index&amp;a=show&amp;catid=11&amp;id=298" target="_blank" rel="external">十一用12个案例SoLoMo，AR+LBS</a><br><a href="http://digi.163.com/15/0312/14/AKGVTR86001668IL.html" target="_blank" rel="external">让你脑洞大开的AR技术应用</a><br><a href="http://www.leiphone.com/news/201406/the-best-augmented-reality-apps.html" target="_blank" rel="external">13款最叫绝的增强现实应用</a><br><a href="http://www.arinchina.com/news/show-2573.html" target="_blank" rel="external">9款超赞的AR教育APP</a><br><a href="https://github.com/GeekLiB/AR-Source" target="_blank" rel="external">参考原文</a></p>
+    <content type="html"><![CDATA[<p>此文档是Apple平台开发所使用语言的主流学习资源</p>
+<h1 id="iOS开发者博客"><a href="#iOS开发者博客" class="headerlink" title="iOS开发者博客"></a>iOS开发者博客</h1><ul>
+<li>使用 <a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">iOSBlogCN</a>添加或者订阅</li>
+</ul>
+<h1 id="从社区学习知识"><a href="#从社区学习知识" class="headerlink" title="从社区学习知识"></a>从社区学习知识</h1><ul>
+<li><a href="http://weekly.ios-wiki.com/" target="_blank" rel="external">iOS技术周报</a></li>
+<li><a href="http://objccn.io/" target="_blank" rel="external">objc中国</a></li>
+<li><a href="http://www.cocoachina.com/" target="_blank" rel="external">cocoachina</a></li>
+<li><a href="http://swiftist.org/" target="_blank" rel="external">Swift社区</a></li>
+</ul>
+<h1 id="从iOS面试题总结"><a href="#从iOS面试题总结" class="headerlink" title="从iOS面试题总结"></a>从iOS面试题总结</h1><p><a href="iOS-usefulInterviewquestions-zh_CN">iOS有用的面试题</a></p>
+<h1 id="建议－学习iOS之前快速预览一下"><a href="#建议－学习iOS之前快速预览一下" class="headerlink" title="建议－学习iOS之前快速预览一下"></a>建议－学习iOS之前快速预览一下</h1><p><a href="http://aaaaaashu.gitbooks.io/mac-dev-setup/content/" target="_blank" rel="external">MAC开发环境配置</a></p>
+<p><a href="http://www.zhihu.com/question/24002984" target="_blank" rel="external">什么是Swift，如何评价 Swift 语言？</a></p>
+<p><a href="http://zh.wikipedia.org/zh-cn/Objective-C" target="_blank" rel="external">了解一下Objective-C是什么</a></p>
+<p><a href="https://github.com/qinjx/30min_guides/blob/master/ios.md" target="_blank" rel="external">iOS开发60分钟入门</a></p>
+<p><a href="https://developer.apple.com/library/ios/referencelibrary/GettingStarted/RoadMapiOSCh/index.html#//apple_ref/doc/uid/TP40012668-CH2-SW1" target="_blank" rel="external">Start Developing iOS Apps Today</a></p>
+<p><a href="http://www.jianshu.com/p/8472ba0f2bb6" target="_blank" rel="external">从零开始学iOS开发的15条建议</a></p>
+<p><a href="http://limboy.me/ios/2014/12/31/learning-ios.html" target="_blank" rel="external">自学iOS开发的一些经验</a></p>
+<p><a href="http://www.cocoachina.com/special/fornew.html" target="_blank" rel="external">学习路线</a></p>
+<h2 id="语言学习"><a href="#语言学习" class="headerlink" title="语言学习"></a>语言学习</h2><p>这里包括了Swift，Objective-C，C，C++</p>
+<p><a href="https://github.com/numbbbbb/the-swift-programming-language-in-chinese" target="_blank" rel="external">中文版 Apple 官方 Swift 教程《The Swift Programming Language》1.2</a></p>
+<p><a href="http://wiki.jikexueyuan.com/project/swift/" target="_blank" rel="external">中文版 Apple 官方 Swift 教程《The Swift Programming Language》2.0</a></p>
+<p><a href="https://github.com/raywenderlich/swift-style-guide" target="_blank" rel="external">The Official raywenderlich.com Swift Style Guide</a></p>
+<p><a href="http://swift.gg/2015/08/11/raywenderlich-swift-style-guide/" target="_blank" rel="external">The Official raywenderlich.com Swift Style Guide 中文版</a></p>
+<p><a href="https://github.com/CocoaChina-editors/Welcome-to-Swift/blob/master/UsingSwiftwithCocoaandObjective-C%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C.md" target="_blank" rel="external">Using Swift with Cocoa and Objective-C中文手册</a></p>
+<p><a href="http://c-faq-chn.sourceforge.net/ccfaq/index.html" target="_blank" rel="external">C 语言常见问题集</a></p>
+<p><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/" target="_blank" rel="external">Google Objective-C Style Guide 中文版</a></p>
+<p><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-cpp-styleguide/contents/" target="_blank" rel="external">Google C++ Style Guide 中文版</a></p>
+<p><a href="https://github.com/oa414/objc-zen-book-cn" target="_blank" rel="external">禅与 Objective-C 编程艺术 （Zen and the Art of the Objective-C Craftsmanship 中文翻译</a></p>
+<h2 id="免费视频资源"><a href="#免费视频资源" class="headerlink" title="免费视频资源"></a>免费视频资源</h2><p><a href="http://www.imooc.com/learn/127" target="_blank" rel="external">玩儿转Swift</a></p>
+<p><a href="http://www.imooc.com/learn/218" target="_blank" rel="external">征战Objective-C</a></p>
+<p><a href="http://v.163.com/special/opencourse/ios7.html" target="_blank" rel="external">斯坦福大学公开课：iOS 7应用开发</a></p>
+<p><a href="https://github.com/x140yu/Developing_iOS_8_Apps_With_Swift" target="_blank" rel="external">斯坦福大学公开课：Swift开发iOS 8应用－中文字幕</a></p>
+<p><a href="https://itunes.apple.com/us/course/developing-ios-8-apps-swift/id961180099" target="_blank" rel="external">斯坦福大学公开课：Swift开发iOS 8应用</a></p>
+<p><a href="https://github.com/qiaoxueshi/WWDC_2015_Video_Subtitle" target="_blank" rel="external">WWDC 2015 Video 英文字幕 (共104个)</a></p>
+<p><a href="https://github.com/6david9/WWDC2015" target="_blank" rel="external">WWDC2015下载链接</a></p>
+<h2 id="精粹"><a href="#精粹" class="headerlink" title="精粹"></a>精粹</h2><p><a href="https://github.com/nixzhu/dev-blog" target="_blank" rel="external">一些 iOS / Web 开发相关的翻译或原创博客文章</a></p>
+<p><a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" rel="external">iOS-Core-Animation-Advanced-Techniques</a></p>
+<p><a href="https://github.com/objccn/articles" target="_blank" rel="external">objc.io中文翻译版本</a></p>
+<p><a href="https://github.com/ipader/SwiftGuide" target="_blank" rel="external">这份指南汇集了Swift语言主流学习资源，并以开发者的视角整理编排</a></p>
+<p><a href="https://github.com/cjwirth/awesome-ios-ui" target="_blank" rel="external">A curated list of awesome iOS UI/UX libraries</a></p>
+<p><a href="https://github.com/shinobicontrols/iOS8-day-by-day" target="_blank" rel="external">iOS8-Day-by-Day blog series</a></p>
+<p><a href="https://github.com/ShinobiControls/iOS9-day-by-day/" target="_blank" rel="external">iOS9 Day-by-Day blog series</a></p>
+<p><a href="https://github.com/matteocrippa/awesome-swift" target="_blank" rel="external">matteocrippa/awesome-swift</a></p>
+<p><a href="https://github.com/Wolg/awesome-swift" target="_blank" rel="external">Wolg/awesome-swift</a></p>
+<p><a href="https://github.com/vsouza/awesome-ios" target="_blank" rel="external">awesome-ios</a></p>
+<h2 id="Swift-Objective-C-C-C-设计-资源集合"><a href="#Swift-Objective-C-C-C-设计-资源集合" class="headerlink" title="Swift | Objective-C | C/C++ | 设计 资源集合"></a>Swift | Objective-C | C/C++ | 设计 资源集合</h2><p><a href="http://www.jianshu.com/p/f1208b5e42d9" target="_blank" rel="external">Alamofire网络库基础教程</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxNDI5NzEzNg==&amp;mid=204340894&amp;idx=1&amp;sn=cf7d5b0a9e3a198a39111fb07b0685e5#rd" target="_blank" rel="external">C 语言中的指针和内存泄漏</a></p>
+<p><a href="http://www.ideawu.net/blog/archives/878.html" target="_blank" rel="external">C/C++编程的现代习惯</a></p>
+<p><a href="http://onevcat.com/2015/01/swift-pointer/" target="_blank" rel="external">Swift指针的使用</a></p>
+<p><a href="http://swifter.tips/" target="_blank" rel="external">Swift tips</a></p>
+<p><a href="https://github.com/ming1016/study" target="_blank" rel="external">Study</a></p>
+<p><a href="https://github.com/100mango/zen" target="_blank" rel="external">iOS心得</a></p>
+<p><a href="https://github.com/Aufree/trip-to-iOS" target="_blank" rel="external">A curated list of delightful iOS resources.</a></p>
+<p><a href="https://github.com/CocoaChinaTranslationTeam/Excellent-Articles-Translations" target="_blank" rel="external">优秀外文翻译资源集合</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=207789673&amp;idx=1&amp;sn=15683e2b9c939f9e21084b4e65df9b92#rd" target="_blank" rel="external">详解Swift中的iOS设计模式</a></p>
+<p><a href="http://www.yming9.com/?p=579" target="_blank" rel="external">在iOS8 下用Swift 创建自定义的键盘</a></p>
+<p><a href="http://www.devtf.cn/?p=462" target="_blank" rel="external">Swift和自动引用计数(ARC)整理之强，弱和无主引用</a></p>
+<p><a href="http://lvwenhan.com/ios/454.html" target="_blank" rel="external">自己动手写一个 iOS 网络请求库（一）—— NSURLSession 初探</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=209907200&amp;idx=1&amp;sn=4c3d467cc76980209ed55ae8d08694f5#rd" target="_blank" rel="external">ReactiveCocoa 3.0 初窥</a></p>
+<p><a href="http://www.jianshu.com/p/2dc639b2675a" target="_blank" rel="external">Swift 2 有哪些新特性</a></p>
+<p><a href="http://www.cocoachina.com/cms/wap.php?action=article&amp;id=12237" target="_blank" rel="external">如何使用Instruments诊断App（Swift版）：起步</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=209755668&amp;idx=1&amp;sn=383f306a3cc8cf2463a0a2c951ce17f6#rd" target="_blank" rel="external">理解 ARC 下的循环引用</a></p>
+<p><a href="http://www.devtalking.com/articles/what-is-new-in-swift/" target="_blank" rel="external">Swift 2.0初探</a></p>
+<p><a href="http://www.cocoachina.com/industry/20140103/7651.html?utm_campaign=ios_wiki_dev_issue_1&amp;utm_source=ios_wiki_com&amp;utm_medium=website" target="_blank" rel="external">2013 CocoaChina微信精选之技术汇</a></p>
+<p><a href="http://www.imooc.com/wenda/detail/238393" target="_blank" rel="external">理解 Objective-C 的 ARC</a></p>
+<p><a href="http://www.jianshu.com/p/50b63a221f09" target="_blank" rel="external">iOS开发的一些奇巧淫技</a></p>
+<p><a href="http://www.jianshu.com/p/2fa080673842" target="_blank" rel="external">我推荐的一些iOS开发书单 叶孤城___</a></p>
+<p><a href="http://www.jianshu.com/p/9e1f0b44935c" target="_blank" rel="external">iOS性能优化</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206525720&amp;idx=1&amp;sn=61ad896414bd492f5dee7a46c1753b50#rd" target="_blank" rel="external">iOS 调试核对清单</a></p>
+<p><a href="http://www.jianshu.com/p/e28e8f5c7578?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS APP 测试点摘要</a></p>
+<p><a href="http://toutiao.io/r/z71jv" target="_blank" rel="external">GCD使用经验与技巧浅谈</a></p>
+<p><a href="http://xuexuefeng.com/autolayout/" target="_blank" rel="external">iOS 开发实践之 Auto Layout</a></p>
+<p><a href="http://www.jianshu.com/p/9c35432ec7a4?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">I Found You! 正则表达式!</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206617040&amp;idx=1&amp;sn=35c497c91047130c96490b1e7b9a3fa5#rd" target="_blank" rel="external">iOS 开发中的消息传递机制</a></p>
+<p><a href="http://www.jianshu.com/p/6b7d54b3f88b?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS扫一扫功能开发</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206668083&amp;idx=1&amp;sn=1661f83ff6d5e1f1b75eba9176e1b640#rd" target="_blank" rel="external">给游戏开发者们的 7 个制作建议</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206705810&amp;idx=1&amp;sn=32beff0e768d167f9a76a2be003d0886#rd" target="_blank" rel="external">iOS另类的内存管理</a></p>
+<p><a href="http://www.jianshu.com/p/613916eea37f?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS runloop</a></p>
+<p><a href="http://tanqisen.github.io/blog/2013/04/19/gcd-block-cycle-retain/" target="_blank" rel="external">正确使用Block避免Cycle Retain和Crash</a></p>
+<p><a href="http://tutuge.me/2015/03/29/bind-data-to-gcd-queue/" target="_blank" rel="external">为GCD队列绑定NSObject类型上下文数据-利用__bridge_retained(transfer)转移内存管理权</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=207272218&amp;idx=1&amp;sn=fe72df0ae11997be7e0dac8cc06115aa#rd" target="_blank" rel="external">iOS事件分发机制（一） hit-Testing</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=207315755&amp;idx=1&amp;sn=3e48dbd35674882b46796ac9bd02ad10#rd" target="_blank" rel="external">iOS事件分发机制（二）：The Responder Chain</a></p>
+<p><a href="http://blog.cnbang.net/tech/2729/" target="_blank" rel="external">iOS富文本组件的实现—DTCoreText源码解析 渲染篇</a></p>
+<p><a href="http://blog.cnbang.net/tech/2630/" target="_blank" rel="external">iOS富文本组件的实现—DTCoreText源码解析 数据篇</a></p>
+<p><a href="https://github.com/bboyfeiyu/iOS-tech-frontier/blob/master/issue-2/GCD%E6%A6%82%E8%BF%B0%E3%80%81%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%A5%BD%E7%9A%84%E7%A4%BA%E4%BE%8B.md" target="_blank" rel="external">GCD概述、语法以及好的示例</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=208119666&amp;idx=1&amp;sn=b85d6532b7804cdeb2accb5e8aea3c38#rd" target="_blank" rel="external">通过减少动态派送提升性能</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206285714&amp;idx=5&amp;sn=2048f89ee84149bac671ce8e204ec277#rd" target="_blank" rel="external">NSString属性什么时候用copy，什么时候用strong?</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206321222&amp;idx=8&amp;sn=71171f2298c2ed6d72015b942733f607#rd" target="_blank" rel="external">NSRecursiveLock递归锁的使用</a></p>
+<p><a href="http://cubernet.cn/blog/rootdaemon/" target="_blank" rel="external">在iOS上以root身份运行守护进程</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206483177&amp;idx=2&amp;sn=0431f8a7673bf6633643c23e1776fcdd#rd" target="_blank" rel="external">iOS开发中两个常见问题的处理</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206448996&amp;idx=3&amp;sn=895663ec96a8469820b54b6536975340#rd" target="_blank" rel="external">iOS 8增强的自动布局功能</a></p>
+<p><a href="http://cubernet.cn/blog/theos1/" target="_blank" rel="external">Theos介绍</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206637839&amp;idx=7&amp;sn=d5719f4c59753143c288de6d6206832b#rd" target="_blank" rel="external">iOS中几种定时器 - 控制了时间，就控制了一切</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=208071791&amp;idx=5&amp;sn=8fd1f5ae65611a4de7ce3885db28dc6f#rd" target="_blank" rel="external">iOS view的frame和bounds之区别（位置和大小）</a></p>
+<p><a href="http://www.jianshu.com/p/aa50e5350852?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=writer_share&amp;utm_source=weibo" target="_blank" rel="external">iOS应用程序的生命周期</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=207857740&amp;idx=2&amp;sn=95d11ae018381f7b711320f406f800ab#rd" target="_blank" rel="external">2015 Objective-C 三大新特性 | 干货</a></p>
+<p><a href="http://www.olinone.com/?p=232" target="_blank" rel="external">“自释放”在iOS开发中的应用</a></p>
+<p><a href="http://nshipster.cn/" target="_blank" rel="external">关注被忽略的 Objective-C、Swift 和 Cocoa 特性</a></p>
+<p><a href="https://www.bloc.io/tutorials/swiftris-build-your-first-ios-game-with-swift#!/chapters/675" target="_blank" rel="external">Swift开发游戏步骤</a></p>
+<p><a href="http://www.jianshu.com/p/d46fb9d72ddb?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">关于iOS编码规范</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206155008&amp;idx=1&amp;sn=360b4f02a9f9aea2cdd21f9253140276#rd" target="_blank" rel="external">Objective-C开发编码规范（一）</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=208035695&amp;idx=2&amp;sn=b5069f3429308204dec4dd459bc4652f#rd" target="_blank" rel="external">Objective-C开发编码规范（二）</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206573834&amp;idx=5&amp;sn=b18dc313960fada8e84b76efabd3175c#rd" target="_blank" rel="external">Swift扩展的三个微妙细节</a></p>
+<p><a href="http://quotation.github.io/objc/2015/05/21/objc-runtime-ivar-access.html" target="_blank" rel="external">Objective-C类成员变量深度剖析</a></p>
+<p><a href="http://cubernet.cn/blog/swift-1/" target="_blank" rel="external">Swift基础(一)</a></p>
+<p><a href="http://isux.tencent.com/ios-human-interface-guidelines-ui-design-basics-ios7.html" target="_blank" rel="external">iOS7人机界面指南</a></p>
+<p><a href="http://wileam.com/iphone-6-screen-cn/" target="_blank" rel="external">iphone6 屏幕设计揭秘</a></p>
+<p><a href="http://www.mobile-patterns.com/" target="_blank" rel="external">mobile设计</a></p>
+<p><a href="http://www.jianshu.com/p/e7fc525f342d?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS常用框架</a></p>
+<p><a href="http://www.jianshu.com/p/47201e57d21a?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">iOS面试基础知识36题</a></p>
+<p><a href="http://www.jianshu.com/p/ca75fa02cf1e" target="_blank" rel="external">GitHub 上排名前 50 的 Objective-C 项目简介</a></p>
+<p><a href="http://www.jianshu.com/p/c5b0eb58b878" target="_blank" rel="external">一些知名App用到的第三方库汇总</a></p>
+<p><a href="http://foggry.com/blog/2014/04/25/githubyou-xiu-xiang-mu-ios/" target="_blank" rel="external">Github优秀开源项目大全-iOS</a></p>
+<p><a href="http://zixun.github.io/blog/2015/04/11/iosdan-yuan-ce-shi-xi-lie-dan-yuan-ce-shi-kuang-jia-xuan-xing/" target="_blank" rel="external">[iOS单元测试系列]单元测试框架选型</a></p>
+<p><a href="https://github.com/linqiang/Demo" target="_blank" rel="external">购物商城的Demo</a></p>
+<p><a href="https://github.com/jkyin/Subtitle" target="_blank" rel="external">斯坦福大学公开课：iOS 7 应用开发 Demo</a></p>
+<p><a href="https://github.com/Lax/iOS-Swift-Demos" target="_blank" rel="external">iOS-Swift-Demos</a></p>
+<p><a href="https://github.com/numbbbbb/Accessibility-Programming-Guide-for-iOS" target="_blank" rel="external">iOS 无障碍开发指导</a></p>
+<p><a href="https://github.com/CocoaChinaTranslationTeam/TestingWithXcodeDocsCN" target="_blank" rel="external">TestingWithXcode中文文档</a></p>
+<p><a href="http://ourcoders.com/thread/show/117/" target="_blank" rel="external">苹果Xcode帮助文档阅读指南</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=209849033&amp;idx=2&amp;sn=59b5aa163d0be134afbbe951e55ea708#rd" target="_blank" rel="external">iOS项目的持续集成与管理</a></p>
+<p><a href="http://www.coderyi.com/archives/751" target="_blank" rel="external">（译）WebViewJavascriptBridge－Obj-C和JavaScript互通消息的桥梁</a></p>
+<p><a href="http://www.jianshu.com/p/6376149a2c4c?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">截获导航控制器系统返回按钮的点击pop及右滑pop事件</a></p>
+<p><a href="http://beauty-soft.net/blog/ceiba/Ios/20140102/680.html" target="_blank" rel="external">UITableView常用属性和方法</a></p>
+<p><a href="http://www.devtalking.com/articles/swift-access-control/" target="_blank" rel="external">Swift新特性 – 访问控制（Access Control）</a></p>
+<p><a href="http://chengway.in/post/ji-zhu/viewcontroller-programming-guide/presenting-a-view-controller" target="_blank" rel="external">ViewController Programming Guide 笔记（一）</a></p>
+<p><a href="http://www.cnblogs.com/haibindev/archive/2013/01/30/2880764.html" target="_blank" rel="external">HTTP Live Streaming直播(iOS直播)技术分析与实现</a></p>
+<p><a href="http://ourui.github.io/blog/2014/01/22/mantle-use/" target="_blank" rel="external">Mantle 初步使用</a></p>
+<p><a href="http://www.jianshu.com/p/76c588893b19?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">使用CAReplicatorLayer创建动画</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206678143&amp;idx=" target="_blank" rel="external">iOS动画——ViewAnimations</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=206718165&amp;idx=6&amp;sn=17c3a363f49df7a90a4e973b9c6d9af6#rd" target="_blank" rel="external">iOS动画——Layer Animations</a></p>
+<p><a href="https://github.com/sxyx2008/awesome-ios-animation" target="_blank" rel="external">收集整理了下iOS平台下比较主流炫酷的几款动画框架</a></p>
+<p><a href="http://adad184.com/2014/09/28/use-masonry-to-quick-solve-autolayout/" target="_blank" rel="external">Masonry介绍与使用实践(快速上手Autolayout)</a></p>
+<p><a href="http://vit0.com/blog/2013/12/07/iosxue-xi-zhi-autolayout/" target="_blank" rel="external">iOS学习之Autolayout</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&amp;mid=208000068&amp;idx=2&amp;sn=a4fdbf1858302470cab8b0d4bf3484cd#rd" target="_blank" rel="external">如何实现一个不规则排列的图片布局算法 | 干货</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=209655681&amp;idx=2&amp;sn=9f89d8d1ecb393db58c3e064d713b9b5#rd" target="_blank" rel="external">响应式视图</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=208550104&amp;idx=1&amp;sn=83eca61921efd512c42ec9e68ca6b492#rd" target="_blank" rel="external">微软前员工：开发Apple Watch应用的27个技巧</a></p>
+<p><a href="http://nilsun.github.io/apple-watch/" target="_blank" rel="external">Apple Watch开发初探</a></p>
+<p><a href="http://www.cocoachina.com/applewatch/" target="_blank" rel="external">Apple Watch开发专题</a></p>
+<p><a href="http://tech.meituan.com/DiveIntoMethodCache.html" target="_blank" rel="external">深入理解Objective-C：方法缓存</a></p>
+<p><a href="http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/" target="_blank" rel="external">优化UITableViewCell高度计算的那些事</a></p>
+<p><a href="http://objccn.io/issue-4-2/" target="_blank" rel="external">一个完整的Core Data应用</a></p>
+<p><a href="http://oncenote.com/2014/10/21/Security-1-HTTPS/" target="_blank" rel="external">iOS安全系列之一：HTTPS</a></p>
+<p><a href="http://www.90159.com/2015/08/10/ios-block-basic-article/" target="_blank" rel="external">block基础篇</a></p>
+<p><a href="http://www.90159.com/2015/08/04/ios-block-ultimate/" target="_blank" rel="external">block终极篇</a></p>
+<p><a href="http://www.jianshu.com/p/0b0d9b1f1f19" target="_blank" rel="external">关于iOS多线程，你看我就够了</a></p>
+<h2 id="Objective-C-Run-time"><a href="#Objective-C-Run-time" class="headerlink" title="Objective-C Run time"></a>Objective-C Run time</h2><p><a href="http://www.jianshu.com/p/425a39d43d16?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=writer_share&amp;utm_source=weibo" target="_blank" rel="external">轻松学习之三——IMP指针的作用</a></p>
+<p><a href="http://www.jianshu.com/p/d39f7d22db6c?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note" target="_blank" rel="external">轻松学习之二——iOS利用Runtime自定义控制器POP手势动画</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAxMzE2Mjc2Ng==&amp;mid=206641670&amp;idx=1&amp;sn=3fbc0070451d33b4c87d0da616ead22d#rd" target="_blank" rel="external">Cocoa Runtime系统知识整理</a></p>
+<p><a href="http://blog.cocoabit.com/2014-10-06-yi-li-jie-objctive-c-runtime/" target="_blank" rel="external">理解 Objective-C Runtime</a></p>
+<p><a href="http://www.jianshu.com/p/41735c66dccb" target="_blank" rel="external">Objective-C isa 指针 与 runtime 机制</a></p>
+<p><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></p>
+<p><a href="http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime</a></p>
+<p><a href="http://www.jianshu.com/p/25a319aee33d" target="_blank" rel="external">Objective-C特性：Runtime</a></p>
+<h2 id="项目结构经验"><a href="#项目结构经验" class="headerlink" title="项目结构经验"></a>项目结构经验</h2><p><a href="http://www.jianshu.com/p/77a948bcbc38" target="_blank" rel="external">iOS 项目的目录结构能看出你的开发经验</a></p>
+<p><a href="https://github.com/makeLaugh/TWAPP" target="_blank" rel="external">iOS项目架构探索</a></p>
+<p><a href="http://casatwy.com/iosying-yong-jia-gou-tan-kai-pian.html" target="_blank" rel="external">iOS应用架构谈系列</a></p>
+<h2 id="学习UI"><a href="#学习UI" class="headerlink" title="学习UI"></a>学习UI</h2><p><a href="http://segmentfault.com/a/1190000002412930" target="_blank" rel="external">iOS组件之UIScrollView详解</a></p>
+<p><a href="http://tech.glowing.com/cn/practice-in-uiscrollview/" target="_blank" rel="external">UIScrollView 实践经验</a></p>
+<p><a href="https://github.com/icepy/Awsome-Apple-Develop-Guide" target="_blank" rel="external">参考原文</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;总结了AR开发的平台汇总，AR视频经典教程，AR主流资讯网站，Vuforia，EasyAR一些实例教程以及AR精选应用。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;AR-平台&quot;&gt;&lt;a href=&quot;#AR-平台&quot; class=&quot;headerlink&quot; title=&quot;AR 平台&quot;&gt;&lt;/
+      &lt;p&gt;此文档是Apple平台开发所使用语言的主流学习资源&lt;/p&gt;
+&lt;h1 id=&quot;iOS开发者博客&quot;&gt;&lt;a href=&quot;#iOS开发者博客&quot; class=&quot;headerlink&quot; title=&quot;iOS开发者博客&quot;&gt;&lt;/a&gt;iOS开发者博客&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;使用 &lt;a h
     
     </summary>
     
       <category term="资源" scheme="https://huos3203.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     
     
-      <category term="AR" scheme="https://huos3203.github.io/tags/AR/"/>
+      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
-      <category term="LBS+AR" scheme="https://huos3203.github.io/tags/LBS-AR/"/>
+      <category term="汇总" scheme="https://huos3203.github.io/tags/%E6%B1%87%E6%80%BB/"/>
     
-      <category term="QQ红包" scheme="https://huos3203.github.io/tags/QQ%E7%BA%A2%E5%8C%85/"/>
+      <category term="资源" scheme="https://huos3203.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
   </entry>
   
