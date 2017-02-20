@@ -99,6 +99,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1402B8681E5A7A70004FBFD9 /* UI自动测试学习.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "UI自动测试学习.md"; sourceTree = "<group>"; };
 		1407ACAB1E0B7547001D4D65 /* setup_snippets.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_snippets.sh; sourceTree = "<group>"; };
 		1407ACAF1E0B8464001D4D65 /* postsUpdated.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postsUpdated.sh; sourceTree = "<group>"; };
 		142051151E4ABAC7006D86DE /* ln_config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ln_config.sh; sourceTree = "<group>"; };
@@ -836,6 +837,7 @@
 				14FB50601E54544000E05601 /* JavaScript自动化组件OC桥接.md */,
 				14FB50621E55792F00E05601 /* iOS中几种常用的展示控制器使用.md */,
 				843F28841E55E9BB0020C321 /* 自定义展示型控制器.md */,
+				1402B8681E5A7A70004FBFD9 /* UI自动测试学习.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
