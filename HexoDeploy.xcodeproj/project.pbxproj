@@ -750,6 +750,7 @@
 		8461D4DA1E5010F6008CC6CE /* Java​Script​Core实现swift混编.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Java​Script​Core实现swift混编.md"; sourceTree = "<group>"; };
 		8461D4DB1E5016F1008CC6CE /* JSValueType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JSValueType.png; sourceTree = "<group>"; };
 		8461D4DC1E502B81008CC6CE /* 使用JavaScript把JSON数据定义对象.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "使用JavaScript把JSON数据定义对象.md"; sourceTree = "<group>"; };
+		84B898411E5B1B7D007E391B /* 高期望实现异步单元测试.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "高期望实现异步单元测试.md"; sourceTree = "<group>"; };
 		84EC55EE1E0D645E004F71A4 /* daoshell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daoshell.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -838,6 +839,7 @@
 				14FB50621E55792F00E05601 /* iOS中几种常用的展示控制器使用.md */,
 				843F28841E55E9BB0020C321 /* 自定义展示型控制器.md */,
 				1402B8681E5A7A70004FBFD9 /* UI自动测试学习.md */,
+				84B898411E5B1B7D007E391B /* 高期望实现异步单元测试.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
