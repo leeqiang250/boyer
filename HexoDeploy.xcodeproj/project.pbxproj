@@ -107,6 +107,8 @@
 		142051181E4ABF3E006D86DE /* maupassant.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = maupassant.yml; sourceTree = "<group>"; };
 		142051191E4ABF3E006D86DE /* next.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = next.yml; sourceTree = "<group>"; };
 		142051221E4B2720006D86DE /* maupassant.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = maupassant.jpg; sourceTree = "<group>"; };
+		142A9CCB1E5FDCEC002A680D /* XCUIElementTypeQueryProvider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XCUIElementTypeQueryProvider.png; sourceTree = "<group>"; };
+		142A9CCC1E5FDCEC002A680D /* XCUIElementAttributes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XCUIElementAttributes.png; sourceTree = "<group>"; };
 		143217551E518F5100FEE010 /* 需求速记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "需求速记.jpg"; sourceTree = "<group>"; };
 		143217571E51A8EB00FEE010 /* 读书笔记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "读书笔记.jpg"; sourceTree = "<group>"; };
 		143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "思维导图之开发实践篇.md"; sourceTree = "<group>"; };
@@ -864,6 +866,8 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				142A9CCB1E5FDCEC002A680D /* XCUIElementTypeQueryProvider.png */,
+				142A9CCC1E5FDCEC002A680D /* XCUIElementAttributes.png */,
 				843F28861E55F1E30020C321 /* userinformation.png */,
 				843F28851E55EDE30020C321 /* semi-transparent.png */,
 				14FB50681E55A1C700E05601 /* UIModalPresentationStyle.None.png */,
