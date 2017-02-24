@@ -275,6 +275,48 @@
   </entry>
   
   <entry>
+    <title>JavaScript自动化组件OC桥接</title>
+    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
+    <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
+    <published>2017-02-15T09:19:30.000Z</published>
+    <updated>2017-02-16T05:43:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
+<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
+<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
+<blockquote>
+<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
+</blockquote>
+<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
+<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
+<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
+    
+    </summary>
+    
+      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+    
+    
+      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
+    
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>shell命令+AppleScript脚本+Swift代码相互调用</title>
     <link href="https://huos3203.github.io/2017/02/15/shell%E5%91%BD%E4%BB%A4+AppleScript%E8%84%9A%E6%9C%AC+Swift%E4%BB%A3%E7%A0%81%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8/"/>
     <id>https://huos3203.github.io/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/</id>
@@ -392,48 +434,6 @@
       <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
       <category term="JavaScript" scheme="https://huos3203.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript自动化组件OC桥接</title>
-    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
-    <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
-    <published>2017-02-15T09:19:30.000Z</published>
-    <updated>2017-02-16T05:43:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
-<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
-<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
-<blockquote>
-<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
-</blockquote>
-<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
-<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
-<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
-    
-    </summary>
-    
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
-    
-    
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
-    
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
@@ -596,9 +596,9 @@
     
       <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
       <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
     
       <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
@@ -819,9 +819,9 @@
     
       <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
       <category term="git" scheme="https://huos3203.github.io/tags/git/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
@@ -1227,19 +1227,198 @@
   </entry>
   
   <entry>
-    <title>Kindle之Resilio Sync索引</title>
-    <link href="https://huos3203.github.io/2017/01/23/Kindle%E4%B9%8BResilioSync%E7%B4%A2%E5%BC%95/"/>
-    <id>https://huos3203.github.io/2017/01/23/Kindle之ResilioSync索引/</id>
+    <title>Kindle114 资源集[转]</title>
+    <link href="https://huos3203.github.io/2017/01/23/Kindle%E8%B5%84%E6%BA%90/"/>
+    <id>https://huos3203.github.io/2017/01/23/Kindle资源/</id>
     <published>2017-01-23T04:49:49.000Z</published>
-    <updated>2017-02-13T09:54:40.000Z</updated>
+    <updated>2017-01-23T09:34:23.000Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://kindlefere.com/share" target="_blank" rel="external">Kindle伴原文</a><br>Resilio Sync同步密钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOC3NIGPF2DOKETOF2FAHXJXE2HF24QWC</div></pre></td></tr></table></figure><br><a href="https://kindlefere.github.io/share/ebook/" target="_blank" rel="external">索引原文</a><br>目录索引 - Kindle伴侣精品书库（更新：01月23日10:30）</p>
-<iframe src="https://kindlefere.github.io/share/ebook/" width="500" height="2000" frameborder="0" allowfullscreen></iframe>
+    <content type="html"><![CDATA[<h2 id="鸣谢"><a href="#鸣谢" class="headerlink" title="鸣谢"></a>鸣谢</h2><ul>
+<li><a href="http://www.hi-pda.com/forum/viewthread.php?tid=1815180" target="_blank" rel="external">hi-pda dtgc</a></li>
+<li><a href="http://kindle115.com" target="_blank" rel="external">Kindle115</a></li>
+</ul>
+<h2 id="综合类"><a href="#综合类" class="headerlink" title="综合类"></a>综合类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2050031688#category/type=0" target="_blank" rel="external">青风乘翼 最近出版的译著</a> 更新中</li>
+<li><a href="http://pan.baidu.com/s/1qWRYl1i" target="_blank" rel="external">周旋久 按字母排列的书籍</a> 提取码：djhp</li>
+</ol>
+<ul>
+<li><a href="http://f92a01.l45.yunpan.cn/lk/cxvBQv5ymqCMY" target="_blank" rel="external">F、H、J、R字母</a> 提取码 39bd  </li>
+<li><a href="http://f93be8.l45.yunpan.cn/lk/cxvB6neaCmfGL" target="_blank" rel="external">S、T、Y字母</a> 提取码 42b1</li>
+</ul>
+<ol>
+<li><a href="http://pan.baidu.com/share/home?uk=1848670581&amp;view=share#category/type=0" target="_blank" rel="external">烫伤关东煮</a> 约1t以上 20160302更新</li>
+<li><a href="http://pan.baidu.com/share/home?uk=2724752809#category/type=0" target="_blank" rel="external">18810815415 精排版书籍</a> （可能是豆瓣读书编辑）</li>
+<li><a href="http://pan.baidu.com/share/link?uk=1194297961&amp;shareid=256546" target="_blank" rel="external">liantingv70657</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3728907970&amp;view=share#category/type=0" target="_blank" rel="external">炜博happy</a> 更新中</li>
+<li><a href="http://pan.baidu.com/share/home?uk=1365179281&amp;view=share#category/type=0" target="_blank" rel="external">guyuemuziye6@gmail.com 旅游原版书</a> （微博号逼影共享，解压密码bygx）</li>
+<li><a href="http://pan.baidu.com/share/link?uk=4029256032&amp;shareid=139939577" target="_blank" rel="external">枫729882492</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=439872812&amp;view=share#category/type=0" target="_blank" rel="external">电子书资源外链发布站</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1293124599#category/type=0" target="_blank" rel="external">赤霓</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=4278581020#category/type=0" target="_blank" rel="external">nnuuij11111</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1282872761&amp;view=share#category/type=0" target="_blank" rel="external">风扒皮1503</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=4211477728&amp;view=share#category/type=0" target="_blank" rel="external">zphstar</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1261210236#category/type=0" target="_blank" rel="external">skmjtptwr</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1093619523&amp;view=share#category/type=0" target="_blank" rel="external">327995970ou</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1057298937&amp;view=share#category/type=0" target="_blank" rel="external">xunys</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1946547680#category/type=0" target="_blank" rel="external">ohhe</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=490155926#category/type=0" target="_blank" rel="external">没我找不到的电子书</a> （此人吹牛居多，书籍不全）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=1426398717&amp;view=share#category/type=0" target="_blank" rel="external">搜珍玉鏡</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=959117889&amp;view=share#category/type=0" target="_blank" rel="external">菜是菜菜</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=775816440&amp;view=share#category/type=0" target="_blank" rel="external">13805758171</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=842217715&amp;view=share#category/type=0" target="_blank" rel="external">yun360419811</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1512823434&amp;view=share#category/type=0" target="_blank" rel="external">虚昧斋</a> 分享新书 可私信求书</li>
+<li><a href="http://pan.baidu.com/share/home?uk=3324179911#category/type=0" target="_blank" rel="external">唯我君行 中医、VB</a></li>
+<li><a href="https://pan.baidu.com/share/home?uk=2603616653" target="_blank" rel="external">haoyou43 mobi epub 格式书籍 350+</a> 更新中</li>
+<li><a href="http://pan.baidu.com/share/home?uk=2063855134#category/type=0" target="_blank" rel="external">liguobing55 txt合集</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=4097060373&amp;view=share#category/type=0" target="_blank" rel="external">青辰VOW  部分全站打包等</a></li>
+<li>苏菇莨百度盘书（BTSync） 约56G 至20160222关闭前 感谢：maldiniymx</li>
+</ol>
+<ul>
+<li>B3EWLQK7C6O6RK3CU5CG3PZUYDUJLMYCP</li>
+<li>B25G263OSC7ZAXPLCZESSL3DFJOHK6UQ3</li>
+</ul>
+<ol>
+<li><a href="https://mega.nz/#F!nJ8GFJAQ!K5Nw2HF1cMXMGNbYQ7RggQ" target="_blank" rel="external">wizardforcel 杂项书籍</a></li>
+<li><a href="http://pan.baidu.com/s/1lKIiq" target="_blank" rel="external">豆瓣图书top250</a></li>
+<li><a href="http://pan.baidu.com/share/link?uk=1459936824&amp;shareid=3702424259" target="_blank" rel="external">当当epub7000本</a></li>
+<li><a href="http://pan.baidu.com/share/link?shareid=1080906058&amp;uk=1412470983" target="_blank" rel="external">卡夫卡全集和哈佛管理</a></li>
+<li><a href="http://pan.baidu.com/s/1sjLkZ97" target="_blank" rel="external">知乎话题、专栏、收藏</a></li>
+<li><a href="http://pan.baidu.com/s/1kT85Zp1" target="_blank" rel="external">知日系列</a></li>
+<li><a href="http://pan.baidu.com/s/1eQAereE" target="_blank" rel="external">知乎盐系列</a></li>
+<li><a href="http://pan.baidu.com/s/1pJDjOJx" target="_blank" rel="external">图说天下系列</a></li>
+<li><a href="http://pan.baidu.com/share/link?uk=754986678&amp;shareid=237392098" target="_blank" rel="external">kindle人资源打包</a> 精品区11G+自购区31G+自制区10G+66G</li>
+<li><a href="https://onedrive.live.com/?id=F5B0090663FEEADA%21828&amp;cid=F5B0090663FEEADA" target="_blank" rel="external">programthink</a></li>
+</ol>
+<h2 id="文学历史类、社科类"><a href="#文学历史类、社科类" class="headerlink" title="文学历史类、社科类"></a>文学历史类、社科类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=1259438467&amp;view=share#category/type=0" target="_blank" rel="external">零度小然 稀有现代书历史籍</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2704770694&amp;view=share#category/type=0" target="_blank" rel="external">youngharrylg 中华人民共和国前三十年历史</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1460307841&amp;view=share#category/type=0" target="_blank" rel="external">南阳高卧 近现代大家</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3946745677&amp;view=share#category/type=0" target="_blank" rel="external">doppel88 各国文学</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=152128425&amp;view=share#category/type=0" target="_blank" rel="external">坊書流元 语言学</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1728233671&amp;view=share#category/type=0" target="_blank" rel="external">高贵的容克领主 历史</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=3943501741&amp;view=share#category/type=0" target="_blank" rel="external">dfdean 文学 名家文集</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2905885322#category/type=0" target="_blank" rel="external">rainthounder 文史高清pdg版图书</a></li>
+<li><a href="http://pan.baidu.com/s/1eQqW062" target="_blank" rel="external">翟子昂 中国古文字学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2987157500&amp;view=share#category/type=0" target="_blank" rel="external">longhuarenn 历史</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=4111094503#category/type=0" target="_blank" rel="external">Lyra1900</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=805574156&amp;third=0#category/type=0" target="_blank" rel="external">iilikes</a></li>
+</ol>
+<h2 id="古籍类"><a href="#古籍类" class="headerlink" title="古籍类"></a>古籍类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2670973685&amp;view=share" target="_blank" rel="external">Ac_heron 古典文学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=4029740943&amp;view=share" target="_blank" rel="external">dadssfree 大批量文史书籍</a> (约1.3t)</li>
+<li><a href="http://pan.baidu.com/share/home?uk=1896826771&amp;view=share#category/type=0" target="_blank" rel="external">qq312145694 古文史资料</a> （大约1t以上）</li>
+<li><a href="http://pan.baidu.com/share/home?uk=272017959&amp;view=share#category/type=0" target="_blank" rel="external">洋风汉魂 日本文史资料原版</a> （大约1t以上）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=2533729796#category/type=0" target="_blank" rel="external">久舞而凄 精选精美古籍</a> （大约500G以上,更新中）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=3405888410&amp;view=share#category/type=0" target="_blank" rel="external">逍遥449824194 古籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=2118390434&amp;view=share#category/type=0" target="_blank" rel="external">事无所成只因懒 古籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=4211484048&amp;view=share#category/type=0" target="_blank" rel="external">钱建文 古籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=4066113708#category/type=0" target="_blank" rel="external">风家纪录片3</a></li>
+<li><a href="http://pan.baidu.com/s/1os4MQ" target="_blank" rel="external">子乌书简全站打包 20130507</a> 密码：qjq8</li>
+</ol>
+<h2 id="小说"><a href="#小说" class="headerlink" title="小说"></a>小说</h2><ol>
+<li><a href="https://mega.nz/#F!jVsinZIT!1Oiz9bkHwNBABc7NU5sSAg" target="_blank" rel="external">wizardforcel 小说</a></li>
+<li><a href="http://pan.baidu.com/s/1sjNSRtr" target="_blank" rel="external">莫迪亚诺作品集</a></li>
+<li><a href="http://pan.baidu.com/s/1i3uzhbB" target="_blank" rel="external">王小波全集</a></li>
+<li><a href="http://pan.baidu.com/s/1qW0q3Kg" target="_blank" rel="external">阿加莎·克里斯蒂作品集</a></li>
+<li><a href="http://pan.baidu.com/s/1sjqLbzB" target="_blank" rel="external">周浩晖作品集</a></li>
+</ol>
+<h2 id="医学类、心理学类"><a href="#医学类、心理学类" class="headerlink" title="医学类、心理学类"></a>医学类、心理学类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=3711822837&amp;view=share" target="_blank" rel="external">于柏清二 中医</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3527489425&amp;view=share#category/type=0" target="_blank" rel="external">bdywuxinghua 中医丛书</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2818809037&amp;view=share" target="_blank" rel="external">yyzsm99 心理学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1225533335&amp;view=share#category/type=0" target="_blank" rel="external">异硫氰酸烯丙酯 医学</a></li>
+<li><a href="http://pan.baidu.com/s/1pJju6dd#path=%252F%25E4%25BC%259F%25E5%25BA%25B7" target="_blank" rel="external">一蹀盐 呼吸医学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1630489195&amp;view=share#category/type=0" target="_blank" rel="external">cnchenlian 康复医学</a></li>
+<li><a href="http://pan.baidu.com/s/1gdFHavh#path=%252F%25E4%25B9%25A6" target="_blank" rel="external">Zita 解剖学 图谱</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3221391314#category/type=0" target="_blank" rel="external">LV终结者 制药技术</a> （物化资料夹里）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=405421905&amp;view=share#category/type=0" target="_blank" rel="external">136603yin 性科学为特色 偏综合</a></li>
+<li><a href="http://pan.baidu.com/s/17mp8P" target="_blank" rel="external">心理学交际学电子书合集13本</a></li>
+<li><a href="http://vdisk.weibo.com/u/1778220897" target="_blank" rel="external">hhhzihao 心理学</a></li>
+</ol>
+<h2 id="佛学类"><a href="#佛学类" class="headerlink" title="佛学类"></a>佛学类</h2><ol>
+<li><a href="http://yun.baidu.com/share/home?uk=289392363&amp;third=1&amp;view=share#category/type=0" target="_blank" rel="external">CBETA_TW 中華電子佛典協會分享佛教书籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=1913113259&amp;view=share#category/type=0" target="_blank" rel="external">dufojing 佛教书籍</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=925845574&amp;view=share#category/type=0" target="_blank" rel="external">senmy08 佛教书籍</a></li>
+</ol>
+<h2 id="数理学科类"><a href="#数理学科类" class="headerlink" title="数理学科类"></a>数理学科类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=1244439600&amp;;view=share" target="_blank" rel="external">小兆一凡 数学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3409070258&amp;view=share#category/type=0" target="_blank" rel="external">我就叫混沌</a></li>
+<li><a href="http://pan.baidu.com/share/link?uk=1766755481&amp;shareid=2684679400" target="_blank" rel="external">华章数学译丛 百度云</a></li>
+<li><a href="http://vdisk.weibo.com/s/B-1mTXGOXIRvY?category_id=0&amp;parents_ref=B-1mTXGOXIRaF" target="_blank" rel="external">华章数学译丛 微盘</a></li>
+<li><a href="http://pan.baidu.com/share/link?uk=3191333230&amp;shareid=870418565" target="_blank" rel="external">图灵数学·统计学丛书 百度云</a></li>
+<li><a href="http://vdisk.weibo.com/s/B-1mTXGOXIQZJ?category_id=0&amp;parents_ref=B-1mTXGOXIRaF" target="_blank" rel="external">图灵数学·统计学丛书 微盘</a></li>
+</ol>
+<h2 id="生物学类（动物、植物、野外生存等）"><a href="#生物学类（动物、植物、野外生存等）" class="headerlink" title="生物学类（动物、植物、野外生存等）"></a>生物学类（动物、植物、野外生存等）</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2855048701&amp;view=share#category/type=0" target="_blank" rel="external">ChentaoTony1 昆虫学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3959509661&amp;view=share#category/type=0" target="_blank" rel="external">jkdpgh 野外生存 动物志</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2734991257&amp;third=0#category/type=0" target="_blank" rel="external">麦子 生物学 动物学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3020331843&amp;view=share#category/type=0" target="_blank" rel="external">xiayang405 精神病学、细胞生物学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=86518920&amp;view=share#category/type=0" target="_blank" rel="external">li__cheng__ 中国植物志、各地区植物志</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=420129823#category/type=0" target="_blank" rel="external">山刺玫 植物学</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=523517449&amp;view=share#category/type=0" target="_blank" rel="external">绿色营上海小组 植物学</a></li>
+</ol>
+<h2 id="计算机技术类"><a href="#计算机技术类" class="headerlink" title="计算机技术类"></a>计算机技术类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=3339153721&amp;view=share" target="_blank" rel="external">lxghost IT</a> （xiaoshuwu.net）</li>
+<li><a href="http://pan.baidu.com/share/home?uk=1074173238&amp;view=share#category/type=0" target="_blank" rel="external">wintelsui IT</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=3809969834&amp;view=share#category/type=0" target="_blank" rel="external">明月无风</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1832385835#category/type=0" target="_blank" rel="external">耍大刀xyz PS书籍</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1176304088#category/type=0" target="_blank" rel="external">hcbbt IT</a></li>
+<li><a href="http://pan.baidu.com/share/link?shareid=2981703177&amp;uk=2214641459" target="_blank" rel="external">salttiger IT</a></li>
+<li><a href="https://mega.nz/#F!qQUwUTKR!okYrzPOauVIaFj4GNSRZfA" target="_blank" rel="external">wizardforcel IT</a></li>
+</ol>
+<h2 id="非IT工业技术类"><a href="#非IT工业技术类" class="headerlink" title="非IT工业技术类"></a>非IT工业技术类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2437672157#category/type=0" target="_blank" rel="external">南航飞动研学群 航空航天</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2702990868&amp;view=share#category/type=0" target="_blank" rel="external">星河舰队司令 武器</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=35826880&amp;view=share#category/type=0" target="_blank" rel="external">wxjoldgoat 武器</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=2349638677#category/type=0" target="_blank" rel="external">cfhcjg 军事资料</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=1611109307#category/type=0" target="_blank" rel="external">以逸待劳hk 航天资料</a></li>
+</ol>
+<h2 id="语言学习类"><a href="#语言学习类" class="headerlink" title="语言学习类"></a>语言学习类</h2><ol>
+<li><a href="https://pan.baidu.com/share/home?uk=3394258028&amp;view=share#category/type=0" target="_blank" rel="external">学派英语团队 英语学习</a></li>
+<li><a href="http://pan.baidu.com/s/1sjugDQ1" target="_blank" rel="external">英语学习资料</a></li>
+</ol>
+<h2 id="经管"><a href="#经管" class="headerlink" title="经管"></a>经管</h2><ol>
+<li><a href="http://vdisk.weibo.com/u/5340187825" target="_blank" rel="external">商业类电子书</a></li>
+</ol>
+<h2 id="艺术类-（摄影、音乐、绘画等）"><a href="#艺术类-（摄影、音乐、绘画等）" class="headerlink" title="艺术类 （摄影、音乐、绘画等）"></a>艺术类 （摄影、音乐、绘画等）</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2755480552&amp;view=share#category/type=0" target="_blank" rel="external">吸血鬼123牛仔 音乐</a></li>
+<li><a href="http://pan.baidu.com/share/home?uk=674298946#category/type=0" target="_blank" rel="external">xslp2004 摄影</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=2738239597&amp;view=share#category/type=0" target="_blank" rel="external">yu鈥唋ei 中国绘画</a> 新浪微博@于双子鱼 分享私密文件</li>
+</ol>
+<h2 id="杂志类"><a href="#杂志类" class="headerlink" title="杂志类"></a>杂志类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=2332146839&amp;view=share" target="_blank" rel="external">qingge16 杂志</a> （含部分最新书）</li>
+<li><a href="http://yun.baidu.com/share/home?uk=2737417622#category/type=0" target="_blank" rel="external">yanxishe 杂志</a></li>
+<li><a href="http://yun.baidu.com/share/home?uk=3156696063&amp;;view=share#category/type=0" target="_blank" rel="external">liuafenliu 台湾地区优质财经杂志（天下雜誌/遠見雜誌/商業周刊/經理人月刊）</a> 更新中</li>
+<li><a href="http://yun.baidu.com/share/home?uk=3859261705&amp;;view=share#category/type=0" target="_blank" rel="external">foodservice 台湾地区优质财经杂志（天下雜誌/遠見雜誌/商業周刊/經理人月刊）</a> 似乎是台湾地区人 更新到201410</li>
+</ol>
+<h2 id="原版书类"><a href="#原版书类" class="headerlink" title="原版书类"></a>原版书类</h2><ol>
+<li><a href="http://pan.baidu.com/share/home?uk=1563658231&amp;view=share" target="_blank" rel="external">好想一次过 原版外文书</a></li>
+<li><a href="http://pan.baidu.com/s/1i39TawH" target="_blank" rel="external">12879本Kindle英文原版电子书</a></li>
+<li><a href="http://pan.baidu.com/s/1gdELWgN" target="_blank" rel="external">经典、畅销英文原著100本</a></li>
+</ol>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ol>
+<li><a href="http://bestcbooks.com/" target="_blank" rel="external">计算机书籍控</a></li>
+<li><a href="http://www.jb51.net/books/" target="_blank" rel="external">脚本之家电子书</a></li>
+<li><a href="http://www.xiaoshuwu.net/" target="_blank" rel="external">小书屋</a></li>
+<li><a href="http://www.ckook.com/" target="_blank" rel="external">稀酷客</a></li>
+<li><a href="http://readcolor.com/books?tag=%E8%AE%A1%E7%AE%97%E6%9C%BA" target="_blank" rel="external">读远</a></li>
+<li><a href="http://www.salttiger.com/" target="_blank" rel="external">SaltTiger</a></li>
+<li><a href="http://it-ebooks.cn/" target="_blank" rel="external">it-ebooks.cn</a></li>
+<li><a href="http://it-ebooks.info/" target="_blank" rel="external">it-ebooks.info</a></li>
+<li><a href="http://it-ebooks.org/" target="_blank" rel="external">it-ebooks.org</a></li>
+<li><a href="http://it-ebooks.com/" target="_blank" rel="external">it-ebooks.com</a></li>
+<li><a href="http://ebooks-it.net/" target="_blank" rel="external">ebooks-it.net</a></li>
+<li><a href="http://wowebook.org/" target="_blank" rel="external">wowebook.org</a></li>
+<li><a href="http://bookdl.com/" target="_blank" rel="external">bookdl.com</a></li>
+<li><a href="http://bookzz.org/" target="_blank" rel="external">bookzz.org</a></li>
+<li><a href="http://www.allitebooks.com/" target="_blank" rel="external">allitebooks.com</a></li>
+</ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;https://kindlefere.com/share&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Kindle伴原文&lt;/a&gt;&lt;br&gt;Resilio Sync同步密钥&lt;br&gt;&lt;figure class=&quot;highlight plain
+      &lt;h2 id=&quot;鸣谢&quot;&gt;&lt;a href=&quot;#鸣谢&quot; class=&quot;headerlink&quot; title=&quot;鸣谢&quot;&gt;&lt;/a&gt;鸣谢&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.hi-pda.com/forum/viewthread.php?tid=1815180&quot;
     
     </summary>
     
@@ -1251,8 +1430,6 @@
       <category term="kindle" scheme="https://huos3203.github.io/tags/kindle/"/>
     
       <category term="书籍" scheme="https://huos3203.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
-    
-      <category term="ResilioSync" scheme="https://huos3203.github.io/tags/ResilioSync/"/>
     
   </entry>
   
