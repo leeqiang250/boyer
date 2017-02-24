@@ -109,6 +109,10 @@
 		142051221E4B2720006D86DE /* maupassant.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = maupassant.jpg; sourceTree = "<group>"; };
 		142A9CCB1E5FDCEC002A680D /* XCUIElementTypeQueryProvider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XCUIElementTypeQueryProvider.png; sourceTree = "<group>"; };
 		142A9CCC1E5FDCEC002A680D /* XCUIElementAttributes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XCUIElementAttributes.png; sourceTree = "<group>"; };
+		142A9CCD1E5FF8DF002A680D /* UIAccessibility.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = UIAccessibility.jpg; sourceTree = "<group>"; };
+		142A9CCE1E600454002A680D /* 更改设备屏幕上显示的应用程序图标下方的名称.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "更改设备屏幕上显示的应用程序图标下方的名称.md"; sourceTree = "<group>"; };
+		142A9CCF1E6004C6002A680D /* qa1823_WatchKitAppInfoPane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qa1823_WatchKitAppInfoPane.png; sourceTree = "<group>"; };
+		142A9CD01E6004C6002A680D /* qa1823_ExpandAppInProjectNavigator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qa1823_ExpandAppInProjectNavigator.png; sourceTree = "<group>"; };
 		143217551E518F5100FEE010 /* 需求速记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "需求速记.jpg"; sourceTree = "<group>"; };
 		143217571E51A8EB00FEE010 /* 读书笔记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "读书笔记.jpg"; sourceTree = "<group>"; };
 		143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "思维导图之开发实践篇.md"; sourceTree = "<group>"; };
@@ -842,6 +846,7 @@
 				843F28841E55E9BB0020C321 /* 自定义展示型控制器.md */,
 				1402B8681E5A7A70004FBFD9 /* UI自动测试学习.md */,
 				84B898411E5B1B7D007E391B /* 高期望实现异步单元测试.md */,
+				142A9CCE1E600454002A680D /* 更改设备屏幕上显示的应用程序图标下方的名称.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
@@ -866,6 +871,9 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				142A9CCF1E6004C6002A680D /* qa1823_WatchKitAppInfoPane.png */,
+				142A9CD01E6004C6002A680D /* qa1823_ExpandAppInProjectNavigator.png */,
+				142A9CCD1E5FF8DF002A680D /* UIAccessibility.jpg */,
 				142A9CCB1E5FDCEC002A680D /* XCUIElementTypeQueryProvider.png */,
 				142A9CCC1E5FDCEC002A680D /* XCUIElementAttributes.png */,
 				843F28861E55F1E30020C321 /* userinformation.png */,
