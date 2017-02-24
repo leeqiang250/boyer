@@ -113,6 +113,40 @@
 		142A9CCE1E600454002A680D /* 更改设备屏幕上显示的应用程序图标下方的名称.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "更改设备屏幕上显示的应用程序图标下方的名称.md"; sourceTree = "<group>"; };
 		142A9CCF1E6004C6002A680D /* qa1823_WatchKitAppInfoPane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qa1823_WatchKitAppInfoPane.png; sourceTree = "<group>"; };
 		142A9CD01E6004C6002A680D /* qa1823_ExpandAppInProjectNavigator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qa1823_ExpandAppInProjectNavigator.png; sourceTree = "<group>"; };
+		142A9CD11E600F04002A680D /* UIStackView教程了解StackView.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "UIStackView教程了解StackView.md"; sourceTree = "<group>"; };
+		142A9CD21E60135C002A680D /* UIStackView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIStackView.png; sourceTree = "<group>"; };
+		142A9CD31E601547002A680D /* WEATHERhide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WEATHERhide.png; sourceTree = "<group>"; };
+		142A9CD41E6017E2002A680D /* stack1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack1.png; sourceTree = "<group>"; };
+		142A9CD51E601A59002A680D /* 05-simulated-metrics-iphone-4-inch_639x173.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "05-simulated-metrics-iphone-4-inch_639x173.png"; sourceTree = "<group>"; };
+		142A9CD61E601F5F002A680D /* stack2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack2.png; sourceTree = "<group>"; };
+		142A9CD71E60201A002A680D /* stack3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack3.png; sourceTree = "<group>"; };
+		142A9CD81E6020B5002A680D /* stack4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack4.png; sourceTree = "<group>"; };
+		142A9CD91E602219002A680D /* stack5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack5.png; sourceTree = "<group>"; };
+		142A9CDA1E60231F002A680D /* stack6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack6.png; sourceTree = "<group>"; };
+		142A9CDB1E602384002A680D /* stack7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack7.png; sourceTree = "<group>"; };
+		142A9CDC1E6023F1002A680D /* stack8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack8.png; sourceTree = "<group>"; };
+		142A9CDD1E602442002A680D /* stack9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack9.png; sourceTree = "<group>"; };
+		142A9CDE1E6025A3002A680D /* stack0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0.png; sourceTree = "<group>"; };
+		142A9CDF1E60270C002A680D /* stack01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack01.png; sourceTree = "<group>"; };
+		142A9CE01E602846002A680D /* stack02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack02.png; sourceTree = "<group>"; };
+		142A9CE11E60288B002A680D /* stack03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack03.png; sourceTree = "<group>"; };
+		142A9CE21E6029DA002A680D /* stack04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack04.png; sourceTree = "<group>"; };
+		142A9CE31E602D19002A680D /* stack05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack05.png; sourceTree = "<group>"; };
+		142A9CE41E602D9B002A680D /* stack06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack06.png; sourceTree = "<group>"; };
+		142A9CE51E602E46002A680D /* stack08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack08.png; sourceTree = "<group>"; };
+		142A9CE61E602E46002A680D /* stack07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack07.png; sourceTree = "<group>"; };
+		142A9CE71E602FA9002A680D /* stack00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack00.png; sourceTree = "<group>"; };
+		142A9CE81E602FA9002A680D /* stack09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack09.png; sourceTree = "<group>"; };
+		142A9CE91E6030C0002A680D /* stack001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack001.png; sourceTree = "<group>"; };
+		142A9CEA1E6031E2002A680D /* stack003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack003.png; sourceTree = "<group>"; };
+		142A9CEB1E6031E2002A680D /* stack002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack002.png; sourceTree = "<group>"; };
+		142A9CEC1E60330A002A680D /* stack005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack005.png; sourceTree = "<group>"; };
+		142A9CED1E60330A002A680D /* stack004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack004.png; sourceTree = "<group>"; };
+		142A9CEE1E6035E0002A680D /* stack006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack006.png; sourceTree = "<group>"; };
+		142A9CEF1E603711002A680D /* stack000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack000.png; sourceTree = "<group>"; };
+		142A9CF01E603711002A680D /* stack008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack008.png; sourceTree = "<group>"; };
+		142A9CF11E603711002A680D /* stack009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack009.png; sourceTree = "<group>"; };
+		142A9CF21E603785002A680D /* stack0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0001.png; sourceTree = "<group>"; };
 		143217551E518F5100FEE010 /* 需求速记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "需求速记.jpg"; sourceTree = "<group>"; };
 		143217571E51A8EB00FEE010 /* 读书笔记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "读书笔记.jpg"; sourceTree = "<group>"; };
 		143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "思维导图之开发实践篇.md"; sourceTree = "<group>"; };
@@ -847,6 +881,7 @@
 				1402B8681E5A7A70004FBFD9 /* UI自动测试学习.md */,
 				84B898411E5B1B7D007E391B /* 高期望实现异步单元测试.md */,
 				142A9CCE1E600454002A680D /* 更改设备屏幕上显示的应用程序图标下方的名称.md */,
+				142A9CD11E600F04002A680D /* UIStackView教程了解StackView.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
@@ -871,6 +906,39 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				142A9CF21E603785002A680D /* stack0001.png */,
+				142A9CEF1E603711002A680D /* stack000.png */,
+				142A9CF01E603711002A680D /* stack008.png */,
+				142A9CF11E603711002A680D /* stack009.png */,
+				142A9CEE1E6035E0002A680D /* stack006.png */,
+				142A9CEC1E60330A002A680D /* stack005.png */,
+				142A9CED1E60330A002A680D /* stack004.png */,
+				142A9CEA1E6031E2002A680D /* stack003.png */,
+				142A9CEB1E6031E2002A680D /* stack002.png */,
+				142A9CE91E6030C0002A680D /* stack001.png */,
+				142A9CE71E602FA9002A680D /* stack00.png */,
+				142A9CE81E602FA9002A680D /* stack09.png */,
+				142A9CE51E602E46002A680D /* stack08.png */,
+				142A9CE61E602E46002A680D /* stack07.png */,
+				142A9CE41E602D9B002A680D /* stack06.png */,
+				142A9CE31E602D19002A680D /* stack05.png */,
+				142A9CE21E6029DA002A680D /* stack04.png */,
+				142A9CE11E60288B002A680D /* stack03.png */,
+				142A9CE01E602846002A680D /* stack02.png */,
+				142A9CDF1E60270C002A680D /* stack01.png */,
+				142A9CDE1E6025A3002A680D /* stack0.png */,
+				142A9CDD1E602442002A680D /* stack9.png */,
+				142A9CDC1E6023F1002A680D /* stack8.png */,
+				142A9CDB1E602384002A680D /* stack7.png */,
+				142A9CDA1E60231F002A680D /* stack6.png */,
+				142A9CD91E602219002A680D /* stack5.png */,
+				142A9CD81E6020B5002A680D /* stack4.png */,
+				142A9CD71E60201A002A680D /* stack3.png */,
+				142A9CD61E601F5F002A680D /* stack2.png */,
+				142A9CD51E601A59002A680D /* 05-simulated-metrics-iphone-4-inch_639x173.png */,
+				142A9CD41E6017E2002A680D /* stack1.png */,
+				142A9CD31E601547002A680D /* WEATHERhide.png */,
+				142A9CD21E60135C002A680D /* UIStackView.png */,
 				142A9CCF1E6004C6002A680D /* qa1823_WatchKitAppInfoPane.png */,
 				142A9CD01E6004C6002A680D /* qa1823_ExpandAppInProjectNavigator.png */,
 				142A9CCD1E5FF8DF002A680D /* UIAccessibility.jpg */,
