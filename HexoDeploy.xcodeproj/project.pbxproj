@@ -149,6 +149,28 @@
 		142A9CF21E603785002A680D /* stack0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0001.png; sourceTree = "<group>"; };
 		142A9CF31E603CB7002A680D /* stack0002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0002.png; sourceTree = "<group>"; };
 		142A9CF41E603DE2002A680D /* stack0003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0003.png; sourceTree = "<group>"; };
+		142A9CF51E6040E6002A680D /* stack0005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0005.png; sourceTree = "<group>"; };
+		142A9CF61E6040E6002A680D /* stack0004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0004.png; sourceTree = "<group>"; };
+		142A9CF71E604193002A680D /* stack0006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0006.png; sourceTree = "<group>"; };
+		142A9CF81E6043E0002A680D /* stack0007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0007.png; sourceTree = "<group>"; };
+		142A9CF91E6043E0002A680D /* stack0008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0008.png; sourceTree = "<group>"; };
+		142A9CFA1E604545002A680D /* stack007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack007.png; sourceTree = "<group>"; };
+		142A9CFB1E604607002A680D /* stack0009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0009.png; sourceTree = "<group>"; };
+		142A9CFC1E604607002A680D /* stack0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack0000.png; sourceTree = "<group>"; };
+		142A9CFD1E6046CD002A680D /* stack010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack010.png; sourceTree = "<group>"; };
+		142A9CFE1E604DC8002A680D /* stack011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack011.png; sourceTree = "<group>"; };
+		142A9CFF1E604DC8002A680D /* stack012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack012.png; sourceTree = "<group>"; };
+		142A9D001E604E2A002A680D /* stack015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack015.png; sourceTree = "<group>"; };
+		142A9D011E604E2A002A680D /* stack013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack013.png; sourceTree = "<group>"; };
+		142A9D021E604E2A002A680D /* stack014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack014.png; sourceTree = "<group>"; };
+		142A9D031E604FB9002A680D /* stack018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack018.png; sourceTree = "<group>"; };
+		142A9D041E604FB9002A680D /* stack016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack016.png; sourceTree = "<group>"; };
+		142A9D051E604FB9002A680D /* stack017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack017.png; sourceTree = "<group>"; };
+		142A9D061E60504A002A680D /* stack019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack019.png; sourceTree = "<group>"; };
+		142A9D071E6050B1002A680D /* stack023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack023.png; sourceTree = "<group>"; };
+		142A9D081E6050B1002A680D /* stack020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack020.png; sourceTree = "<group>"; };
+		142A9D091E6050B1002A680D /* stack021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack021.png; sourceTree = "<group>"; };
+		142A9D0A1E6050B1002A680D /* stack022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack022.png; sourceTree = "<group>"; };
 		143217551E518F5100FEE010 /* 需求速记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "需求速记.jpg"; sourceTree = "<group>"; };
 		143217571E51A8EB00FEE010 /* 读书笔记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "读书笔记.jpg"; sourceTree = "<group>"; };
 		143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "思维导图之开发实践篇.md"; sourceTree = "<group>"; };
@@ -908,12 +930,34 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				142A9D071E6050B1002A680D /* stack023.png */,
+				142A9D081E6050B1002A680D /* stack020.png */,
+				142A9D091E6050B1002A680D /* stack021.png */,
+				142A9D0A1E6050B1002A680D /* stack022.png */,
+				142A9D061E60504A002A680D /* stack019.png */,
+				142A9D031E604FB9002A680D /* stack018.png */,
+				142A9D041E604FB9002A680D /* stack016.png */,
+				142A9D051E604FB9002A680D /* stack017.png */,
+				142A9D001E604E2A002A680D /* stack015.png */,
+				142A9D011E604E2A002A680D /* stack013.png */,
+				142A9D021E604E2A002A680D /* stack014.png */,
+				142A9CFE1E604DC8002A680D /* stack011.png */,
+				142A9CFF1E604DC8002A680D /* stack012.png */,
+				142A9CFD1E6046CD002A680D /* stack010.png */,
+				142A9CFB1E604607002A680D /* stack0009.png */,
+				142A9CFC1E604607002A680D /* stack0000.png */,
+				142A9CF81E6043E0002A680D /* stack0007.png */,
+				142A9CF91E6043E0002A680D /* stack0008.png */,
+				142A9CF71E604193002A680D /* stack0006.png */,
+				142A9CF51E6040E6002A680D /* stack0005.png */,
+				142A9CF61E6040E6002A680D /* stack0004.png */,
 				142A9CF41E603DE2002A680D /* stack0003.png */,
 				142A9CF31E603CB7002A680D /* stack0002.png */,
 				142A9CF21E603785002A680D /* stack0001.png */,
 				142A9CEF1E603711002A680D /* stack000.png */,
 				142A9CF01E603711002A680D /* stack008.png */,
 				142A9CF11E603711002A680D /* stack009.png */,
+				142A9CFA1E604545002A680D /* stack007.png */,
 				142A9CEE1E6035E0002A680D /* stack006.png */,
 				142A9CEC1E60330A002A680D /* stack005.png */,
 				142A9CED1E60330A002A680D /* stack004.png */,
