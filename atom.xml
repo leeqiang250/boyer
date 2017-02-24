@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>布衣男儿</title>
   <subtitle>不物喜，不己悲，善假物，易参行！</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/boyer/atom.xml" rel="self"/>
   
-  <link href="https://huos3203.github.io/"/>
+  <link href="http://huos3203.github.io/boyer/"/>
   <updated>2017-02-24T10:12:14.000Z</updated>
-  <id>https://huos3203.github.io/</id>
+  <id>http://huos3203.github.io/boyer/</id>
   
   <author>
     <name>boyer</name>
@@ -17,16 +17,16 @@
   
   <entry>
     <title>UIStackView教程：了解Stack View</title>
-    <link href="https://huos3203.github.io/2017/02/24/UIStackView%E6%95%99%E7%A8%8B%E4%BA%86%E8%A7%A3StackView/"/>
-    <id>https://huos3203.github.io/2017/02/24/UIStackView教程了解StackView/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/24/UIStackView%E6%95%99%E7%A8%8B%E4%BA%86%E8%A7%A3StackView/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/24/UIStackView教程了解StackView/</id>
     <published>2017-02-24T10:12:14.000Z</published>
     <updated>2017-02-24T10:12:14.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/kmyhy/article/details/50456444" target="_blank" rel="external">原地址</a></p>
-<h2 id="UIStackView简单介绍"><a href="#UIStackView简单介绍" class="headerlink" title="UIStackView简单介绍"></a>UIStackView简单介绍</h2><p>一个Stack View能够将它所含的View以各种方式沿其轴向进行分布，同时也可以将View沿某个方向等距分布，要隐藏<code>Stack View</code>中的视图，你只需要设置该View的<code>Hidden</code>属性为<code>true</code>，剩下的工作Stack View会自己完成。。<br><img src="/images/stack0.png"><br>坐标（Axis）、间隔（Spacing）、对齐（Alignment）以及分布（Distribution ）等。<br>distribution属性：决定Stack View如何沿它轴向的水平方向摆放它的subview，当属性值是Fill，这表示subview会沿轴向完全占据Stack View。因此，Stack View会拉伸其中一个subview使其填充剩余空间，尤其是水平内容优先级最低的那个，如果所有subview优先级相同，则拉伸第一个subview。<br>Alignment属性：决定了Stack View如何沿它轴向的垂直方向摆放它的subview，对于一个垂直的Stack View，这个属性可以设置为Fill、Leading、Center和Trailing。<br>对于水平的Stack View，这个属性则稍有不同：<br><img src="/images/stack006.png" class="distribution/Alignment属性区别"><br>.Top取代了.Leading，.Bottom取代了.Trailing。此外，水平Stack View还多出了两个属性值：.FirstBaseLine和.LastBaseLine。<br>对于水平的Stack View，这个属性则稍有不同：<br>Fill:<br><img src="/images/stack007.png" class="Fill"><br>Leading:<br><img src="/images/stack008.png" class="Leading"><br>Center:<br><img src="/images/stack009.png" class="Center"><br>Trailing:<br><img src="/images/stack000.png" class="Trailing"></p>
-<p>布局方式对比<br><img src="/images/stack01.png" class="布局方式对比"></p>
-<h3 id="添加一个新的Stack-View"><a href="#添加一个新的Stack-View" class="headerlink" title="添加一个新的Stack View"></a>添加一个新的Stack View</h3><p>点击故事板画布左下角<code>Auto Layout工具栏</code>中的<code>Stack按钮</code>：<br><img src="/images/stack3.png" class="Stack按钮"><br>另一种解散的方法是选中Stack View，然后点击<code>Editor\Emebed in\stack view</code>菜单。</p>
-<h3 id="解散一个废弃的Stack-View"><a href="#解散一个废弃的Stack-View" class="headerlink" title="解散一个废弃的Stack View"></a>解散一个废弃的Stack View</h3><p>首先，选定想解散的Stack View。按下<code>Option键</code>，点击<code>Stack 按钮</code>。这将弹出一个上下文菜单，然后点击Unembed：<br><img src="/images/stack001.png"><br>另一种解散的方法是选中Stack View，然后点击<code>Editor\Unemebed</code>菜单。</p>
+<h2 id="UIStackView简单介绍"><a href="#UIStackView简单介绍" class="headerlink" title="UIStackView简单介绍"></a>UIStackView简单介绍</h2><p>一个Stack View能够将它所含的View以各种方式沿其轴向进行分布，同时也可以将View沿某个方向等距分布，要隐藏<code>Stack View</code>中的视图，你只需要设置该View的<code>Hidden</code>属性为<code>true</code>，剩下的工作Stack View会自己完成。。<br><img src="/boyer/images/stack0.png"><br>坐标（Axis）、间隔（Spacing）、对齐（Alignment）以及分布（Distribution ）等。<br>distribution属性：决定Stack View如何沿它轴向的水平方向摆放它的subview，当属性值是Fill，这表示subview会沿轴向完全占据Stack View。因此，Stack View会拉伸其中一个subview使其填充剩余空间，尤其是水平内容优先级最低的那个，如果所有subview优先级相同，则拉伸第一个subview。<br>Alignment属性：决定了Stack View如何沿它轴向的垂直方向摆放它的subview，对于一个垂直的Stack View，这个属性可以设置为Fill、Leading、Center和Trailing。<br>对于水平的Stack View，这个属性则稍有不同：<br><img src="/boyer/images/stack006.png" class="distribution/Alignment属性区别"><br>.Top取代了.Leading，.Bottom取代了.Trailing。此外，水平Stack View还多出了两个属性值：.FirstBaseLine和.LastBaseLine。<br>对于水平的Stack View，这个属性则稍有不同：<br>Fill:<br><img src="/boyer/images/stack007.png" class="Fill"><br>Leading:<br><img src="/boyer/images/stack008.png" class="Leading"><br>Center:<br><img src="/boyer/images/stack009.png" class="Center"><br>Trailing:<br><img src="/boyer/images/stack000.png" class="Trailing"></p>
+<p>布局方式对比<br><img src="/boyer/images/stack01.png" class="布局方式对比"></p>
+<h3 id="添加一个新的Stack-View"><a href="#添加一个新的Stack-View" class="headerlink" title="添加一个新的Stack View"></a>添加一个新的Stack View</h3><p>点击故事板画布左下角<code>Auto Layout工具栏</code>中的<code>Stack按钮</code>：<br><img src="/boyer/images/stack3.png" class="Stack按钮"><br>另一种解散的方法是选中Stack View，然后点击<code>Editor\Emebed in\stack view</code>菜单。</p>
+<h3 id="解散一个废弃的Stack-View"><a href="#解散一个废弃的Stack-View" class="headerlink" title="解散一个废弃的Stack View"></a>解散一个废弃的Stack View</h3><p>首先，选定想解散的Stack View。按下<code>Option键</code>，点击<code>Stack 按钮</code>。这将弹出一个上下文菜单，然后点击Unembed：<br><img src="/boyer/images/stack001.png"><br>另一种解散的方法是选中Stack View，然后点击<code>Editor\Unemebed</code>菜单。</p>
 <h2 id="使用场景描述"><a href="#使用场景描述" class="headerlink" title="使用场景描述"></a>使用场景描述</h2><p>当APP运行中增加或删除一个<code>view</code>时，需要重新调整邻近<code>view</code>的位置布局。<br>预见困境：</p>
 <ol>
 <li>在故事板中新建一些布局约束连接，以便能够安装或卸载其中的一些约束</li>
@@ -35,33 +35,33 @@
 </ol>
 <p><code>UIStackView</code>提供了一个对多个视图进行水平或垂直布局的方法。通过对几个属性进行简单设置，比如对齐、分布和间距，可以让我们让其所包含的视图适应于其有效空间。</p>
 <h2 id="实现需求"><a href="#实现需求" class="headerlink" title="实现需求"></a>实现需求</h2><p>存在着这几方面的问题:</p>
-<h3 id="问题一：自适应横竖屏"><a href="#问题一：自适应横竖屏" class="headerlink" title="问题一：自适应横竖屏"></a>问题一：自适应横竖屏</h3><p>在横屏状态下（command+左箭头旋转为横屏），发现截图中的一排按钮位置无法适应屏幕宽度的变化。这时可以使用<code>UIStackView</code>来帮助实现自动适应横竖屏的效果。<br><img src="/images/UIStackView.png"></p>
-<h3 id="问题二：控件间留白不紧凑"><a href="#问题二：控件间留白不紧凑" class="headerlink" title="问题二：控件间留白不紧凑"></a>问题二：控件间留白不紧凑</h3><p>点击WEATHER旁边的Hide按钮。隐藏了下面的文本内容后，留下了一大块的空白区域。<br><img src="/images/WEATHERhide.png"></p>
-<h2 id="解决按钮自适应横竖屏"><a href="#解决按钮自适应横竖屏" class="headerlink" title="解决按钮自适应横竖屏"></a>解决按钮自适应横竖屏</h2><h3 id="Storyboard引入界面"><a href="#Storyboard引入界面" class="headerlink" title="Storyboard引入界面"></a>Storyboard引入界面</h3><p>打开<code>Main.storyboard</code>，找到<code>Spot Info View Controller</code>这个Scene。将这些标签和按钮设为不同的背景色，是为了在运行时效果更直观。就是在故事板中，这也有助于看到<code>Stack View</code>属性的改变导致其内部视图的变化。<br><img src="/images/stack1.png"><br>如果想在运行App时看见这些颜色，在<code>SpotInfoViewController</code>的<code>viewDidLoad()</code>方法中将下列语句注释：<br><figure class="highlight swift"><figcaption><span>swift</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 清空标签和按钮的背景色</span></div><div class="line"><span class="keyword">for</span> view <span class="keyword">in</span> backgroundColoredViews </div><div class="line">&#123;</div><div class="line">    view.backgroundColor = <span class="type">UIColor</span>.clearColor()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="Size类便于使用storyboard"><a href="#Size类便于使用storyboard" class="headerlink" title="Size类便于使用storyboard"></a>Size类便于使用storyboard</h4><p>在本案例中，故事板中Scene大小不是默认<code>600x600</code>，在这里Simulated Metrics下的Size属性被设置成iPhone 4-inch。Simulated Metrics属性在运行时并没有任何影响——不同设备上视图的大小仍然会自动改变。<br><img src="/images/05-simulated-metrics-iphone-4-inch_639x173.png"></p>
+<h3 id="问题一：自适应横竖屏"><a href="#问题一：自适应横竖屏" class="headerlink" title="问题一：自适应横竖屏"></a>问题一：自适应横竖屏</h3><p>在横屏状态下（command+左箭头旋转为横屏），发现截图中的一排按钮位置无法适应屏幕宽度的变化。这时可以使用<code>UIStackView</code>来帮助实现自动适应横竖屏的效果。<br><img src="/boyer/images/UIStackView.png"></p>
+<h3 id="问题二：控件间留白不紧凑"><a href="#问题二：控件间留白不紧凑" class="headerlink" title="问题二：控件间留白不紧凑"></a>问题二：控件间留白不紧凑</h3><p>点击WEATHER旁边的Hide按钮。隐藏了下面的文本内容后，留下了一大块的空白区域。<br><img src="/boyer/images/WEATHERhide.png"></p>
+<h2 id="解决按钮自适应横竖屏"><a href="#解决按钮自适应横竖屏" class="headerlink" title="解决按钮自适应横竖屏"></a>解决按钮自适应横竖屏</h2><h3 id="Storyboard引入界面"><a href="#Storyboard引入界面" class="headerlink" title="Storyboard引入界面"></a>Storyboard引入界面</h3><p>打开<code>Main.storyboard</code>，找到<code>Spot Info View Controller</code>这个Scene。将这些标签和按钮设为不同的背景色，是为了在运行时效果更直观。就是在故事板中，这也有助于看到<code>Stack View</code>属性的改变导致其内部视图的变化。<br><img src="/boyer/images/stack1.png"><br>如果想在运行App时看见这些颜色，在<code>SpotInfoViewController</code>的<code>viewDidLoad()</code>方法中将下列语句注释：<br><figure class="highlight swift"><figcaption><span>swift</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 清空标签和按钮的背景色</span></div><div class="line"><span class="keyword">for</span> view <span class="keyword">in</span> backgroundColoredViews </div><div class="line">&#123;</div><div class="line">    view.backgroundColor = <span class="type">UIColor</span>.clearColor()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="Size类便于使用storyboard"><a href="#Size类便于使用storyboard" class="headerlink" title="Size类便于使用storyboard"></a>Size类便于使用storyboard</h4><p>在本案例中，故事板中Scene大小不是默认<code>600x600</code>，在这里Simulated Metrics下的Size属性被设置成iPhone 4-inch。Simulated Metrics属性在运行时并没有任何影响——不同设备上视图的大小仍然会自动改变。<br><img src="/boyer/images/05-simulated-metrics-iphone-4-inch_639x173.png"></p>
 <h3 id="创建水平UIStackView"><a href="#创建水平UIStackView" class="headerlink" title="创建水平UIStackView"></a>创建水平<code>UIStackView</code></h3><ol>
-<li>选中按钮<br>用<code>Command+左键</code>同时选中<code>Spot Info View Controller</code>底下一排的所有按钮：<img src="/images/stack2.png"></li>
-<li>Stack按钮添加一个新的Stack View<br>点击故事板画布左下角<code>Auto Layout工具栏</code>中新增的<code>Stack按钮</code>：<img src="/images/stack3.png" class="Stack按钮">
-这些按钮被嵌到一个新的Stack View中：<img src="/images/stack4.png">
-<h4 id="给新的Stack-View添加布局约束"><a href="#给新的Stack-View添加布局约束" class="headerlink" title="给新的Stack View添加布局约束"></a>给新的Stack View添加布局约束</h4>要在故事板选取一个充满了子视图的Stack View还是比较难的，介绍两种选择技巧。<br>3.1 在<code>Outline视图</code>中选取Stack View<img src="/images/stack5.png" class="Outline视图">
-3.2 Shift+右键调出View树<br>在Stack View 的任意地方按下<code>Shift+右键</code>或者<code>Control+Shift+左键</code>（如果你正在用触控板的话）。这时将弹出一个上下文菜单，列出了位于所点击的地方的View树，你可以在这个菜单中选择Stack View。<img src="/images/stack6.png" class="Shift+右键:View树"></li>
-<li>自动布局工具栏中的Pin按钮,添加一个约束<img src="/images/stack7.png" class="自动布局工具栏中的Pin按钮">
+<li>选中按钮<br>用<code>Command+左键</code>同时选中<code>Spot Info View Controller</code>底下一排的所有按钮：<img src="/boyer/images/stack2.png"></li>
+<li>Stack按钮添加一个新的Stack View<br>点击故事板画布左下角<code>Auto Layout工具栏</code>中新增的<code>Stack按钮</code>：<img src="/boyer/images/stack3.png" class="Stack按钮">
+这些按钮被嵌到一个新的Stack View中：<img src="/boyer/images/stack4.png">
+<h4 id="给新的Stack-View添加布局约束"><a href="#给新的Stack-View添加布局约束" class="headerlink" title="给新的Stack View添加布局约束"></a>给新的Stack View添加布局约束</h4>要在故事板选取一个充满了子视图的Stack View还是比较难的，介绍两种选择技巧。<br>3.1 在<code>Outline视图</code>中选取Stack View<img src="/boyer/images/stack5.png" class="Outline视图">
+3.2 Shift+右键调出View树<br>在Stack View 的任意地方按下<code>Shift+右键</code>或者<code>Control+Shift+左键</code>（如果你正在用触控板的话）。这时将弹出一个上下文菜单，列出了位于所点击的地方的View树，你可以在这个菜单中选择Stack View。<img src="/boyer/images/stack6.png" class="Shift+右键:View树"></li>
+<li>自动布局工具栏中的Pin按钮,添加一个约束<img src="/boyer/images/stack7.png" class="自动布局工具栏中的Pin按钮">
 首先勾选Constrain to margins。然后在Stack View四周添加下列约束：<figure class="highlight swift"><figcaption><span>swift</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">Top</span>: <span class="number">20</span>, <span class="type">Leading</span>: <span class="number">0</span>, <span class="type">Trailing</span>: <span class="number">0</span>, <span class="type">Bottom</span>: <span class="number">0</span></div></pre></td></tr></table></figure>
-仔细检查top、leading、trailing、bottom中的数字并确保它们的I型柱都被选中。然后点击Add 4 Constraints：<img src="/images/stack8.png" class="Add 4 Constraints">
+仔细检查top、leading、trailing、bottom中的数字并确保它们的I型柱都被选中。然后点击Add 4 Constraints：<img src="/boyer/images/stack8.png" class="Add 4 Constraints">
 </li>
 </ol>
-<h4 id="按钮等间距分布"><a href="#按钮等间距分布" class="headerlink" title="按钮等间距分布"></a>按钮等间距分布</h4><p>添加约束后，导致第一个按钮被拉伸：<br><img src="/images/stack9.png" class="第一个按钮被拉伸填充所有剩余空间"></p>
-<h5 id="使用等宽约束的Spacer-View实现"><a href="#使用等宽约束的Spacer-View实现" class="headerlink" title="使用等宽约束的Spacer View实现"></a>使用等宽约束的<code>Spacer View</code>实现</h5><p>解决这个问题只能使用空白的View来分隔这些按钮，在按钮之间摆放上一些用于分隔空间的 Spacer View。所有的Spacer View都要添加等宽约束，以及许多额外的约束，才能将这些Spacer View布局正确。<br>这看起来如下图所示。为了直观起见，这些Spacer View的背景色设置成了浅灰色：<br><img src="/images/stack04.png" class="`Spacer View`添加等宽约束实现"><br>如果要在运行时添加一个按钮或者隐藏/删除一个按钮时，要想调整这些Spacer View和约束就要命了。</p>
-<h5 id="Distribution属性：沿轴向水平分布"><a href="#Distribution属性：沿轴向水平分布" class="headerlink" title="Distribution属性：沿轴向水平分布"></a><code>Distribution</code>属性：沿轴向水平分布</h5><p>distribution属性：决定Stack View如何将它的subview沿轴向分布，当属性值是Fill，这表示subview会沿轴向完全占据Stack View。因此，Stack View会拉伸其中一个subview使其填充剩余空间，尤其是水平内容优先级最低的那个，如果所有subview优先级相同，则拉伸第一个subview。<br>打开Stack View属性面板。将<code>Distribution</code>属性由<code>Fill</code>修改为<code>Equal Spacing</code>：<br><img src="/images/stack02.png" class="`Fill`修改为`Equal Spacing`"><br>编译运行，点击某个单元格，旋转模拟器（⌘→）。你将看到最下一排按钮现在按照等间距排列了！<br><img src="/images/stack03.png" class="`Distribution`属性值`Equal Spacing`"></p>
-<h4 id="Rating版块"><a href="#Rating版块" class="headerlink" title="Rating版块"></a>Rating版块</h4><p>选中RATING标签，以及旁边的显示为几个星形图标的标签：<br><img src="/images/stack05.png" class="选中RATING标签"><br>然后点击Stack按钮将它们嵌到一个Stack View中：<br><img src="/images/stack3.png" class="Stack按钮"><br><img src="/images/stack06.png" class="RATING标签嵌到一个Stack View中"><br>然后点击Pin按钮。勾选Constrain to margins，并添加如下约束：<br><figure class="highlight swift"><figcaption><span>swift</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">Top</span>: <span class="number">20</span>, <span class="type">Leading</span>: <span class="number">0</span>, <span class="type">Bottom</span>: <span class="number">20</span></div></pre></td></tr></table></figure><br><img src="/images/stack07.png" class="添加约束"><br>打开属性面板，将间距设置为8：<br><img src="/images/stack08.png" class="间距设置为8"><br>你可能会看到一个 Misplaced Views的布局约束警告，同时星星标签会显示将会被拉伸到视图之外：<br><img src="/images/stack09.png" class="Misplaced Views的布局约束警告"><br>有时候Xcode会临时提示一些警告，或者显示Stack View的位置不正确，这些警告会在你添加其他约束后消失。你完全可以忽略这些警告。<br>要解决这个警告，我们可以修改一下Stack View的Frame然后又改回，或者临时修改它的一条布局约束。<br>让我们试一下。先将Alignment 属性从Fill修改为Top，然后又改回原来的Fill。你将看到这下星星标签显示正常了：<br><img src="/images/stack00.png" class="布局约束警告消失"><br>编译运行，进行测试</p>
-<h3 id="创建垂直的Stack-View"><a href="#创建垂直的Stack-View" class="headerlink" title="创建垂直的Stack View"></a>创建垂直的Stack View</h3><p>Xcode会自动根据这两者的位置推断出这将是一个垂直的Stack View，Stack View没有添加任何约束时，会自动适应了两个标签中的最宽的一个的宽度。<br>选中WHY VISIT标签及下面的标签,创建一个垂直的Stack View：<br><img src="/images/stack002.png" class="选中WHY VISIT标签及下面的标签"><br>点击Stack 按钮将二者嵌到一个Stack View：<br><img src="/images/stack003.png" class="嵌到一个垂直的Stack View"></p>
-<h4 id="添加约束"><a href="#添加约束" class="headerlink" title="添加约束"></a>添加约束</h4><p>默认，约束是相对于距离最近的对象，对于Bottom约束来说就是距离它15像素的Hide按钮。但我们其实是想让约束相对于WEATHER标签。<br>选中Stack View，点击Pin按钮。勾选Constrain to margins，设置Top、Leading、Trainling为0。<br>然后，点击Bottom右边的下拉按钮，从列表中选择WEATHER（curent distance =20）：<br><img src="/images/stack004.png" class="Top、Leading、Trainling为0"><br>最后点击Add 4 Constraints按钮。显示结果如下图所示：<br><img src="/images/stack005.png" class="Top、Leading、Trainling为0"></p>
-<h4 id="alignment属性：轴向的垂直方向"><a href="#alignment属性：轴向的垂直方向" class="headerlink" title="alignment属性：轴向的垂直方向"></a>alignment属性：轴向的垂直方向</h4><p>Stack View问题，它的右边对齐于View的右边。但是底下的标签仍然是原来的宽度。需要使用alignment属性解决这个问题。<br>当你测试完所有Alignment值的布局效果后，将Alignment修改为Fill：<br><img src="/images/stack0001.png" class="Top、Leading、Trainling为0"><br>将<code>Alignment</code>设置为<code>Fill</code>，表示所有View将沿与Stack View轴向垂直的方向进行全占式分布。这会让WHY VISIT标签扩展它的宽度到100%.</p>
+<h4 id="按钮等间距分布"><a href="#按钮等间距分布" class="headerlink" title="按钮等间距分布"></a>按钮等间距分布</h4><p>添加约束后，导致第一个按钮被拉伸：<br><img src="/boyer/images/stack9.png" class="第一个按钮被拉伸填充所有剩余空间"></p>
+<h5 id="使用等宽约束的Spacer-View实现"><a href="#使用等宽约束的Spacer-View实现" class="headerlink" title="使用等宽约束的Spacer View实现"></a>使用等宽约束的<code>Spacer View</code>实现</h5><p>解决这个问题只能使用空白的View来分隔这些按钮，在按钮之间摆放上一些用于分隔空间的 Spacer View。所有的Spacer View都要添加等宽约束，以及许多额外的约束，才能将这些Spacer View布局正确。<br>这看起来如下图所示。为了直观起见，这些Spacer View的背景色设置成了浅灰色：<br><img src="/boyer/images/stack04.png" class="`Spacer View`添加等宽约束实现"><br>如果要在运行时添加一个按钮或者隐藏/删除一个按钮时，要想调整这些Spacer View和约束就要命了。</p>
+<h5 id="Distribution属性：沿轴向水平分布"><a href="#Distribution属性：沿轴向水平分布" class="headerlink" title="Distribution属性：沿轴向水平分布"></a><code>Distribution</code>属性：沿轴向水平分布</h5><p>distribution属性：决定Stack View如何将它的subview沿轴向分布，当属性值是Fill，这表示subview会沿轴向完全占据Stack View。因此，Stack View会拉伸其中一个subview使其填充剩余空间，尤其是水平内容优先级最低的那个，如果所有subview优先级相同，则拉伸第一个subview。<br>打开Stack View属性面板。将<code>Distribution</code>属性由<code>Fill</code>修改为<code>Equal Spacing</code>：<br><img src="/boyer/images/stack02.png" class="`Fill`修改为`Equal Spacing`"><br>编译运行，点击某个单元格，旋转模拟器（⌘→）。你将看到最下一排按钮现在按照等间距排列了！<br><img src="/boyer/images/stack03.png" class="`Distribution`属性值`Equal Spacing`"></p>
+<h4 id="Rating版块"><a href="#Rating版块" class="headerlink" title="Rating版块"></a>Rating版块</h4><p>选中RATING标签，以及旁边的显示为几个星形图标的标签：<br><img src="/boyer/images/stack05.png" class="选中RATING标签"><br>然后点击Stack按钮将它们嵌到一个Stack View中：<br><img src="/boyer/images/stack3.png" class="Stack按钮"><br><img src="/boyer/images/stack06.png" class="RATING标签嵌到一个Stack View中"><br>然后点击Pin按钮。勾选Constrain to margins，并添加如下约束：<br><figure class="highlight swift"><figcaption><span>swift</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">Top</span>: <span class="number">20</span>, <span class="type">Leading</span>: <span class="number">0</span>, <span class="type">Bottom</span>: <span class="number">20</span></div></pre></td></tr></table></figure><br><img src="/boyer/images/stack07.png" class="添加约束"><br>打开属性面板，将间距设置为8：<br><img src="/boyer/images/stack08.png" class="间距设置为8"><br>你可能会看到一个 Misplaced Views的布局约束警告，同时星星标签会显示将会被拉伸到视图之外：<br><img src="/boyer/images/stack09.png" class="Misplaced Views的布局约束警告"><br>有时候Xcode会临时提示一些警告，或者显示Stack View的位置不正确，这些警告会在你添加其他约束后消失。你完全可以忽略这些警告。<br>要解决这个警告，我们可以修改一下Stack View的Frame然后又改回，或者临时修改它的一条布局约束。<br>让我们试一下。先将Alignment 属性从Fill修改为Top，然后又改回原来的Fill。你将看到这下星星标签显示正常了：<br><img src="/boyer/images/stack00.png" class="布局约束警告消失"><br>编译运行，进行测试</p>
+<h3 id="创建垂直的Stack-View"><a href="#创建垂直的Stack-View" class="headerlink" title="创建垂直的Stack View"></a>创建垂直的Stack View</h3><p>Xcode会自动根据这两者的位置推断出这将是一个垂直的Stack View，Stack View没有添加任何约束时，会自动适应了两个标签中的最宽的一个的宽度。<br>选中WHY VISIT标签及下面的标签,创建一个垂直的Stack View：<br><img src="/boyer/images/stack002.png" class="选中WHY VISIT标签及下面的标签"><br>点击Stack 按钮将二者嵌到一个Stack View：<br><img src="/boyer/images/stack003.png" class="嵌到一个垂直的Stack View"></p>
+<h4 id="添加约束"><a href="#添加约束" class="headerlink" title="添加约束"></a>添加约束</h4><p>默认，约束是相对于距离最近的对象，对于Bottom约束来说就是距离它15像素的Hide按钮。但我们其实是想让约束相对于WEATHER标签。<br>选中Stack View，点击Pin按钮。勾选Constrain to margins，设置Top、Leading、Trainling为0。<br>然后，点击Bottom右边的下拉按钮，从列表中选择WEATHER（curent distance =20）：<br><img src="/boyer/images/stack004.png" class="Top、Leading、Trainling为0"><br>最后点击Add 4 Constraints按钮。显示结果如下图所示：<br><img src="/boyer/images/stack005.png" class="Top、Leading、Trainling为0"></p>
+<h4 id="alignment属性：轴向的垂直方向"><a href="#alignment属性：轴向的垂直方向" class="headerlink" title="alignment属性：轴向的垂直方向"></a>alignment属性：轴向的垂直方向</h4><p>Stack View问题，它的右边对齐于View的右边。但是底下的标签仍然是原来的宽度。需要使用alignment属性解决这个问题。<br>当你测试完所有Alignment值的布局效果后，将Alignment修改为Fill：<br><img src="/boyer/images/stack0001.png" class="Top、Leading、Trainling为0"><br>将<code>Alignment</code>设置为<code>Fill</code>，表示所有View将沿与Stack View轴向垂直的方向进行全占式分布。这会让WHY VISIT标签扩展它的宽度到100%.</p>
 <p>如果我们只想让底下的标签将宽度扩展到100%怎么办？</p>
 <p>这个问题现在看来还不是多大的问题，因为两个标签在运行时的背景色都是透明的。但对于Weather版块来说就不同了。</p>
 <p>我们将用另外一个Stack View来说明这个问题。</p>
-<h3 id="垂直／水平Stack-View嵌套使用"><a href="#垂直／水平Stack-View嵌套使用" class="headerlink" title="垂直／水平Stack View嵌套使用"></a>垂直／水平Stack View嵌套使用</h3><p>在Weather版块相对复杂一些，因为它多了一个Hide按钮。<br>要隐藏<code>Stack View</code>中的视图，你只需要设置该View的<code>Hidden</code>属性为<code>true</code>，剩下的工作Stack View会自己完成。这也是我们解决用户隐藏WEATHER标签下文本的主要思路。<br>一种方法是使用嵌套的Stack View，先将WEATHER标签和Hide按钮嵌到一个水平StackView，再将这个Stack View和标签嵌到一个垂直Stack View。<br><img src="/images/stack0002.png" class="垂直／水平Stack View嵌套使用"></p>
-<h3 id="添加按钮相对于Stack-View内的标签约束"><a href="#添加按钮相对于Stack-View内的标签约束" class="headerlink" title="添加按钮相对于Stack View内的标签约束"></a>添加按钮相对于Stack View内的标签约束</h3><p>注意，WEATHER标签被拉伸为和Hide按钮一样高了。这并不合适，因为这会导致WEATHER标签和下面的文本之间多出了一些空间。<br>注意Alignment属性负责Stack View轴向垂直的方向上的布局。所以，我们需要将Alignment属性设置为 Bottom：<br><img src="/images/stack0003.png" class="垂直／水平Stack View嵌套使用"><br>正确的方法是让 Hide 按钮不要和 Weather 版块呆在同一个Stack View中，或者任何别的Stack View中。</p>
+<h3 id="垂直／水平Stack-View嵌套使用"><a href="#垂直／水平Stack-View嵌套使用" class="headerlink" title="垂直／水平Stack View嵌套使用"></a>垂直／水平Stack View嵌套使用</h3><p>在Weather版块相对复杂一些，因为它多了一个Hide按钮。<br>要隐藏<code>Stack View</code>中的视图，你只需要设置该View的<code>Hidden</code>属性为<code>true</code>，剩下的工作Stack View会自己完成。这也是我们解决用户隐藏WEATHER标签下文本的主要思路。<br>一种方法是使用嵌套的Stack View，先将WEATHER标签和Hide按钮嵌到一个水平StackView，再将这个Stack View和标签嵌到一个垂直Stack View。<br><img src="/boyer/images/stack0002.png" class="垂直／水平Stack View嵌套使用"></p>
+<h4 id="在UIStackView中按钮拉伸标签的问题"><a href="#在UIStackView中按钮拉伸标签的问题" class="headerlink" title="在UIStackView中按钮拉伸标签的问题"></a>在UIStackView中按钮拉伸标签的问题</h4><p>注意，WEATHER标签被拉伸为和Hide按钮一样高了。这并不合适，因为这会导致WEATHER标签和下面的文本之间多出了一些空间。<br>注意Alignment属性负责Stack View轴向垂直的方向上的布局。所以，我们需要将Alignment属性设置为 Bottom：<br><img src="/boyer/images/stack0003.png" class="垂直／水平Stack View嵌套使用"><br>正确的方法是让 Hide 按钮不要和 Weather 版块呆在同一个Stack View中，或者任何别的Stack View中。</p>
 <p>这样，在顶层View中还会保留一个subview，你将为它添加一个相对于WEATHER标签的约束——WEATHER标签嵌在Stack View里的。也就是说，你要为位于Stack View之外的按钮加一个约束，这个约束是相对于Stack View内的一个标签！</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>]]></content>
     
@@ -72,47 +72,47 @@
     
     </summary>
     
-      <category term="iOS" scheme="https://huos3203.github.io/categories/iOS/"/>
+      <category term="iOS" scheme="http://huos3203.github.io/boyer/categories/iOS/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="UI" scheme="https://huos3203.github.io/tags/UI/"/>
+      <category term="UI" scheme="http://huos3203.github.io/boyer/tags/UI/"/>
     
   </entry>
   
   <entry>
     <title>CFBundleDisplayName更改APP启动图标的名称</title>
-    <link href="https://huos3203.github.io/2017/02/24/%E6%9B%B4%E6%94%B9%E8%AE%BE%E5%A4%87%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA%E7%9A%84%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%9B%BE%E6%A0%87%E4%B8%8B%E6%96%B9%E7%9A%84%E5%90%8D%E7%A7%B0/"/>
-    <id>https://huos3203.github.io/2017/02/24/更改设备屏幕上显示的应用程序图标下方的名称/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/24/%E6%9B%B4%E6%94%B9%E8%AE%BE%E5%A4%87%E5%B1%8F%E5%B9%95%E4%B8%8A%E6%98%BE%E7%A4%BA%E7%9A%84%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%9B%BE%E6%A0%87%E4%B8%8B%E6%96%B9%E7%9A%84%E5%90%8D%E7%A7%B0/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/24/更改设备屏幕上显示的应用程序图标下方的名称/</id>
     <published>2017-02-24T06:23:59.000Z</published>
     <updated>2017-02-24T06:23:59.000Z</updated>
     
-    <content type="html"><![CDATA[<p>修改APP启动图标上的名称，需配置<code>Info.plist</code>文件，增加<code>CFBundleDisplayName</code>属性键值对。<br>进入到如下界面：<br><!--长宽设置百分比大小无效果--><br><img src="/images/qa1823_ExpandAppInProjectNavigator.png"></p>
-<p>在<code>Info.plist</code>文件属性列表中搜索”Bundle display name”，如果存在就修改为新APP名称。<br>如果不存在，在任何一个属性条目下，点击”+”按钮，弹出的下拉列表中选择”Bundle display name”，再双击”Bundle display name”属性值列，输入新APP名称。<br><!--长宽设置百分比大小无效果--><br><img src="/images/qa1823_WatchKitAppInfoPane.png"></p>
+    <content type="html"><![CDATA[<p>修改APP启动图标上的名称，需配置<code>Info.plist</code>文件，增加<code>CFBundleDisplayName</code>属性键值对。<br>进入到如下界面：<br><!--长宽设置百分比大小无效果--><br><img src="/boyer/images/qa1823_ExpandAppInProjectNavigator.png"></p>
+<p>在<code>Info.plist</code>文件属性列表中搜索”Bundle display name”，如果存在就修改为新APP名称。<br>如果不存在，在任何一个属性条目下，点击”+”按钮，弹出的下拉列表中选择”Bundle display name”，再双击”Bundle display name”属性值列，输入新APP名称。<br><!--长宽设置百分比大小无效果--><br><img src="/boyer/images/qa1823_WatchKitAppInfoPane.png"></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;修改APP启动图标上的名称，需配置&lt;code&gt;Info.plist&lt;/code&gt;文件，增加&lt;code&gt;CFBundleDisplayName&lt;/code&gt;属性键值对。&lt;br&gt;进入到如下界面：&lt;br&gt;&lt;!--长宽设置百分比大小无效果--&gt;&lt;br&gt;&lt;img src=&quot;/imag
+      &lt;p&gt;修改APP启动图标上的名称，需配置&lt;code&gt;Info.plist&lt;/code&gt;文件，增加&lt;code&gt;CFBundleDisplayName&lt;/code&gt;属性键值对。&lt;br&gt;进入到如下界面：&lt;br&gt;&lt;!--长宽设置百分比大小无效果--&gt;&lt;br&gt;&lt;img src=&quot;/boye
     
     </summary>
     
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="经历" scheme="https://huos3203.github.io/tags/%E7%BB%8F%E5%8E%86/"/>
+      <category term="经历" scheme="http://huos3203.github.io/boyer/tags/%E7%BB%8F%E5%8E%86/"/>
     
-      <category term="配置" scheme="https://huos3203.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
+      <category term="配置" scheme="http://huos3203.github.io/boyer/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
   <entry>
     <title>高期望实现异步单元测试</title>
-    <link href="https://huos3203.github.io/2017/02/20/%E9%AB%98%E6%9C%9F%E6%9C%9B%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
-    <id>https://huos3203.github.io/2017/02/20/高期望实现异步单元测试/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/20/%E9%AB%98%E6%9C%9F%E6%9C%9B%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/20/高期望实现异步单元测试/</id>
     <published>2017-02-20T15:09:30.000Z</published>
     <updated>2017-02-20T15:24:09.000Z</updated>
     
@@ -138,23 +138,23 @@
     
     </summary>
     
-      <category term="测试" scheme="https://huos3203.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+      <category term="测试" scheme="http://huos3203.github.io/boyer/categories/%E6%B5%8B%E8%AF%95/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+      <category term="测试" scheme="http://huos3203.github.io/boyer/tags/%E6%B5%8B%E8%AF%95/"/>
     
-      <category term="UI" scheme="https://huos3203.github.io/tags/UI/"/>
+      <category term="UI" scheme="http://huos3203.github.io/boyer/tags/UI/"/>
     
-      <category term="单元测试" scheme="https://huos3203.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+      <category term="单元测试" scheme="http://huos3203.github.io/boyer/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>UI自动测试开发相关API</title>
-    <link href="https://huos3203.github.io/2017/02/20/UI%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://huos3203.github.io/2017/02/20/UI自动测试学习/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/20/UI%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/20/UI自动测试学习/</id>
     <published>2017-02-20T09:16:49.000Z</published>
     <updated>2017-02-24T06:23:59.000Z</updated>
     
@@ -168,9 +168,9 @@
 <h5 id="第四种所有包含的元素：containingType"><a href="#第四种所有包含的元素：containingType" class="headerlink" title="第四种所有包含的元素：containingType"></a>第四种所有包含的元素：<code>containingType</code></h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> buttons:<span class="type">XCUIElementQuery</span> = <span class="type">XCUIApplication</span>().containingType(.<span class="type">Button</span>)</div><div class="line"><span class="keyword">let</span> textFields:<span class="type">XCUIElementQuery</span> = <span class="type">XCUIApplication</span>().containingType(.textField)</div></pre></td></tr></table></figure>
 <h3 id="XCUIElement表示系统的各种UI控件"><a href="#XCUIElement表示系统的各种UI控件" class="headerlink" title="XCUIElement表示系统的各种UI控件"></a>XCUIElement表示系统的各种UI控件</h3><p><code>XCUIElement</code>UI控件在测试框架中的代理，继承<code>NSObject</code>，实现<code>XCUIElementAttributes</code>协议, <code>XCUIElementTypeQueryProvider</code>协议，可以表示系统的各种UI控件。</p>
 <ol>
-<li>XCUIElementAttributes协议：里面包含了UIAccessibility中的部分属性<img src="/images/XCUIElementAttributes.png">
-<img src="/images/UIAccessibility.jpg"></li>
-<li>XCUIElementTypeQueryProvider协议：包含了系统中大部分UI控件的类型，可通过读属性的方式取得某种类型的UI集合<img src="/images/XCUIElementTypeQueryProvider.png">
+<li>XCUIElementAttributes协议：里面包含了UIAccessibility中的部分属性<img src="/boyer/images/XCUIElementAttributes.png">
+<img src="/boyer/images/UIAccessibility.jpg"></li>
+<li>XCUIElementTypeQueryProvider协议：包含了系统中大部分UI控件的类型，可通过读属性的方式取得某种类型的UI集合<img src="/boyer/images/XCUIElementTypeQueryProvider.png">
 </li>
 </ol>
 <h4 id="访问UI控件"><a href="#访问UI控件" class="headerlink" title="访问UI控件"></a>访问UI控件</h4><ol>
@@ -193,23 +193,23 @@
     
     </summary>
     
-      <category term="测试" scheme="https://huos3203.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+      <category term="测试" scheme="http://huos3203.github.io/boyer/categories/%E6%B5%8B%E8%AF%95/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+      <category term="测试" scheme="http://huos3203.github.io/boyer/tags/%E6%B5%8B%E8%AF%95/"/>
     
-      <category term="UI" scheme="https://huos3203.github.io/tags/UI/"/>
+      <category term="UI" scheme="http://huos3203.github.io/boyer/tags/UI/"/>
     
-      <category term="单元测试" scheme="https://huos3203.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+      <category term="单元测试" scheme="http://huos3203.github.io/boyer/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>通过转场动画代理协议自定义来展示型控制器</title>
-    <link href="https://huos3203.github.io/2017/02/17/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%95%E7%A4%BA%E5%9E%8B%E6%8E%A7%E5%88%B6%E5%99%A8/"/>
-    <id>https://huos3203.github.io/2017/02/17/自定义展示型控制器/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/17/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%95%E7%A4%BA%E5%9E%8B%E6%8E%A7%E5%88%B6%E5%99%A8/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/17/自定义展示型控制器/</id>
     <published>2017-02-17T04:26:11.000Z</published>
     <updated>2017-02-17T08:28:51.000Z</updated>
     
@@ -219,7 +219,7 @@
 <p>该方法仅限于在自定义容器控制器里使用，直接使用 UINavigationController 和 UITabBarController 调用该方法在其下的子 VC 间转换会抛出异常。不过 iOS 7 中这两个容器控制器开放的自定义转场做的是同样的事情，回头再看第一章 Transition 解释，转场协议 API 将这个方法拆分成了上面的几个组件，并且加入了激动人心的交互控制，以便我们能够方便定制转场动画。</p>
 </blockquote>
 <h2 id="引入UIPresentationController"><a href="#引入UIPresentationController" class="headerlink" title="引入UIPresentationController"></a>引入UIPresentationController</h2><p>已经了解了几种常用的展示型控制器的使用方法，它们用来展示提示信息很强大。如果想自定义展示动画和界面，就需要继承<code>UIPresentationController</code>来提供视图和转场管理。有三部分组成：<code>presented</code>视图控制器, <code>presenting</code>视图控制器和 <code>chrome</code>视图：通常是灰色半透明的视图.<br>如下如标注的三个组件：</p>
-<img src="/images/semi-transparent.png">
+<img src="/boyer/images/semi-transparent.png">
 <p><code>UIPresentationController</code>拥有<code>presented</code>和<code>presenting</code>两个视图控制器，管理这两个视图控制器的转场动画，自定义chrome，提供自适应特性。</p>
 <h3 id="继承-UIPresentationController-定制-presentedView-的外观和动画"><a href="#继承-UIPresentationController-定制-presentedView-的外观和动画" class="headerlink" title="继承 UIPresentationController 定制 presentedView 的外观和动画"></a>继承 UIPresentationController 定制 presentedView 的外观和动画</h3><p>继承<code>UIPresentationController</code>和<code>UIAdaptivePresentationControllerDelegate</code>转场协调器协议</p>
 <ol>
@@ -286,19 +286,19 @@
     
     </summary>
     
-      <category term="iOS" scheme="https://huos3203.github.io/categories/iOS/"/>
+      <category term="iOS" scheme="http://huos3203.github.io/boyer/categories/iOS/"/>
     
     
-      <category term="转场" scheme="https://huos3203.github.io/tags/%E8%BD%AC%E5%9C%BA/"/>
+      <category term="转场" scheme="http://huos3203.github.io/boyer/tags/%E8%BD%AC%E5%9C%BA/"/>
     
-      <category term="动画" scheme="https://huos3203.github.io/tags/%E5%8A%A8%E7%94%BB/"/>
+      <category term="动画" scheme="http://huos3203.github.io/boyer/tags/%E5%8A%A8%E7%94%BB/"/>
     
   </entry>
   
   <entry>
     <title>整理iOS中几种常用的展示型视图控制器</title>
-    <link href="https://huos3203.github.io/2017/02/16/iOS%E4%B8%AD%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B1%95%E7%A4%BA%E6%8E%A7%E5%88%B6%E5%99%A8%E4%BD%BF%E7%94%A8/"/>
-    <id>https://huos3203.github.io/2017/02/16/iOS中几种常用的展示控制器使用/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/16/iOS%E4%B8%AD%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B1%95%E7%A4%BA%E6%8E%A7%E5%88%B6%E5%99%A8%E4%BD%BF%E7%94%A8/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/16/iOS中几种常用的展示控制器使用/</id>
     <published>2017-02-16T09:53:18.000Z</published>
     <updated>2017-02-16T13:56:31.000Z</updated>
     
@@ -311,9 +311,9 @@
 <li>子控件支持：<code>Alert view</code>支持按钮和输入框两种，Action sheets仅支持按钮一种控件。</li>
 <li>不同于以往的两类<code>UIAlertController</code>继承自<code>UIViewController</code>。这意味着可以使用视图控制器提供展示信息的功能。</li>
 </ol>
-<h3 id="创建使用UIAlertController"><a href="#创建使用UIAlertController" class="headerlink" title="创建使用UIAlertController"></a>创建使用UIAlertController</h3><p>用<code>title</code>，<code>message</code>参数来实例化<code>alertController</code>实例，然后在实例中添加两个闭包的按钮<br><figure class="highlight swift"><figcaption><span>showAlertWasTapped</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">showAlertWasTapped</span><span class="params">(sender: UIButton)</span></span> </div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Appcoda"</span>, message: <span class="string">"Message in alert dialog"</span>, preferredStyle: <span class="type">UIAlertControllerStyle</span>.<span class="type">Alert</span>)</div><div class="line"></div><div class="line">    <span class="keyword">let</span> deleteAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Delete"</span>, style: <span class="type">UIAlertActionStyle</span>.<span class="type">Destructive</span>, handler: &#123;(alert :<span class="type">UIAlertAction</span>!) <span class="keyword">in</span></div><div class="line">        <span class="built_in">println</span>(<span class="string">"Delete button tapped"</span>)</div><div class="line">    &#125;)</div><div class="line">    alertController.addAction(deleteAction)</div><div class="line"></div><div class="line">    <span class="keyword">let</span> okAction = <span class="type">UIAlertAction</span>(title: <span class="string">"OK"</span>, style: <span class="type">UIAlertActionStyle</span>.<span class="type">Default</span>, handler: &#123;(alert :<span class="type">UIAlertAction</span>!) <span class="keyword">in</span></div><div class="line">        <span class="built_in">println</span>(<span class="string">"OK button tapped"</span>)</div><div class="line">    &#125;)</div><div class="line">    alertController.addAction(okAction)</div><div class="line"></div><div class="line">    presentViewController(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>运行效果：<br><img src="/images/iPhoneipadalert.png"></p>
+<h3 id="创建使用UIAlertController"><a href="#创建使用UIAlertController" class="headerlink" title="创建使用UIAlertController"></a>创建使用UIAlertController</h3><p>用<code>title</code>，<code>message</code>参数来实例化<code>alertController</code>实例，然后在实例中添加两个闭包的按钮<br><figure class="highlight swift"><figcaption><span>showAlertWasTapped</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">showAlertWasTapped</span><span class="params">(sender: UIButton)</span></span> </div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Appcoda"</span>, message: <span class="string">"Message in alert dialog"</span>, preferredStyle: <span class="type">UIAlertControllerStyle</span>.<span class="type">Alert</span>)</div><div class="line"></div><div class="line">    <span class="keyword">let</span> deleteAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Delete"</span>, style: <span class="type">UIAlertActionStyle</span>.<span class="type">Destructive</span>, handler: &#123;(alert :<span class="type">UIAlertAction</span>!) <span class="keyword">in</span></div><div class="line">        <span class="built_in">println</span>(<span class="string">"Delete button tapped"</span>)</div><div class="line">    &#125;)</div><div class="line">    alertController.addAction(deleteAction)</div><div class="line"></div><div class="line">    <span class="keyword">let</span> okAction = <span class="type">UIAlertAction</span>(title: <span class="string">"OK"</span>, style: <span class="type">UIAlertActionStyle</span>.<span class="type">Default</span>, handler: &#123;(alert :<span class="type">UIAlertAction</span>!) <span class="keyword">in</span></div><div class="line">        <span class="built_in">println</span>(<span class="string">"OK button tapped"</span>)</div><div class="line">    &#125;)</div><div class="line">    alertController.addAction(okAction)</div><div class="line"></div><div class="line">    presentViewController(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>运行效果：<br><img src="/boyer/images/iPhoneipadalert.png"></p>
 <h3 id="UIAlertControllerStyle枚举：Alert切换ActionSheet"><a href="#UIAlertControllerStyle枚举：Alert切换ActionSheet" class="headerlink" title="UIAlertControllerStyle枚举：Alert切换ActionSheet"></a>UIAlertControllerStyle枚举：<code>Alert</code>切换<code>ActionSheet</code></h3><p>在<code>UIAlertController</code>之前，切换<code>alert</code>和<code>action sheet</code>需要重写大量的代码，但现在只需要改变一个枚举值<code>UIAlertControllerStyle.Alert</code>为<code>UIAlertControllerStyle.ActionSheet</code>.<br><figure class="highlight swift"><figcaption><span>UIAlertControllerStyle.ActionSheet</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Appcoda"</span>, message: <span class="string">"Message in alert dialog"</span>, preferredStyle: <span class="type">UIAlertControllerStyle</span>.<span class="type">ActionSheet</span>)</div></pre></td></tr></table></figure><br>在iPhone上，屏幕底部显示一个<code>action sheet</code>。<br>问题：在iPad上，点击上面的按钮崩溃，需要定义锚点位置。</p>
-<h3 id="popoverPresentationController锚点：sourceView-sourceRect"><a href="#popoverPresentationController锚点：sourceView-sourceRect" class="headerlink" title="popoverPresentationController锚点：sourceView/sourceRect"></a>popoverPresentationController锚点：sourceView/sourceRect</h3><p><code>popover controller</code>在<code>alertController</code>视图内展示，需要一个<code>popover箭头</code>指向<code>alertController</code>视图的某一位置。<br>通过设置<code>sourceView</code>来确定<code>popover箭头</code>位置，这个<code>popover</code>以及<code>popover箭头</code>指向的矩形区域都在这个<code>sourceView</code>上。<br>在调用<code>presentViewController()</code>之前添加代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alertController.popoverPresentationController?.sourceView = view</div><div class="line">alertController.popoverPresentationController?.sourceRect = sender.frame</div></pre></td></tr></table></figure><br><img src="/images/popover箭头.png"></p>
+<h3 id="popoverPresentationController锚点：sourceView-sourceRect"><a href="#popoverPresentationController锚点：sourceView-sourceRect" class="headerlink" title="popoverPresentationController锚点：sourceView/sourceRect"></a>popoverPresentationController锚点：sourceView/sourceRect</h3><p><code>popover controller</code>在<code>alertController</code>视图内展示，需要一个<code>popover箭头</code>指向<code>alertController</code>视图的某一位置。<br>通过设置<code>sourceView</code>来确定<code>popover箭头</code>位置，这个<code>popover</code>以及<code>popover箭头</code>指向的矩形区域都在这个<code>sourceView</code>上。<br>在调用<code>presentViewController()</code>之前添加代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alertController.popoverPresentationController?.sourceView = view</div><div class="line">alertController.popoverPresentationController?.sourceRect = sender.frame</div></pre></td></tr></table></figure><br><img src="/boyer/images/popover箭头.png"></p>
 <h2 id="UIPopoverPresentationController"><a href="#UIPopoverPresentationController" class="headerlink" title="UIPopoverPresentationController"></a>UIPopoverPresentationController</h2><p><code>Alert</code>主要用于显示用户的提示信息，当展示的信息很多时，就需要借助<code>popover presentation controller</code>。</p>
 <h3 id="在compact和regular两种屏幕中显示模态视图"><a href="#在compact和regular两种屏幕中显示模态视图" class="headerlink" title="在compact和regular两种屏幕中显示模态视图"></a>在compact和regular两种屏幕中显示模态视图</h3><p>在<code>storyboard</code>文件，设置视图的<code>storyboard ID</code>:<code>PopoverViewController</code>，设置模态视图展示样式，展示在<code>compact-width</code>和<code>regular-width</code>的两种设备屏幕上。<br>实现如下：<br><figure class="highlight swift"><figcaption><span>actionWasTapped</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">actionWasTapped</span><span class="params">(sender: UIBarButtonItem)</span></span> </div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> storyboard : <span class="type">UIStoryboard</span> = <span class="type">UIStoryboard</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>)</div><div class="line">    <span class="keyword">let</span> vc = storyboard.instantiateViewControllerWithIdentifier(<span class="string">"PopoverViewController"</span>) <span class="keyword">as</span>! <span class="type">UIViewController</span></div><div class="line">    vc.modalPresentationStyle = <span class="type">UIModalPresentationStyle</span>.<span class="type">Popover</span></div><div class="line">    <span class="keyword">let</span> popover: <span class="type">UIPopoverPresentationController</span> = vc.popoverPresentationController!</div><div class="line">    popover.barButtonItem = sender  <span class="comment">//`popover箭头`锚的位置</span></div><div class="line">    presentViewController(vc, animated: <span class="literal">true</span>, completion:<span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h4 id="设置锚点四种方式"><a href="#设置锚点四种方式" class="headerlink" title="设置锚点四种方式"></a>设置锚点四种方式</h4><ol>
@@ -322,9 +322,9 @@
 <li>通过其他属性来实现，例如：<code>permittedArrowDirections</code>，也能够指定锚点。</li>
 <li>如果在在展示过程中，无法确定箭头的方向时，就是用默认值：<code>UIPopoverArrowDirection.Any</code>.<br>在iPad显示：</li>
 </ol>
-<img src="/images/UIPopoverArrowDirection.png">
+<img src="/boyer/images/UIPopoverArrowDirection.png">
 <p>在iPhone上以模态显示：</p>
-<img src="/images/iPhonemodally.png">
+<img src="/boyer/images/iPhonemodally.png">
 <h3 id="在iPhone设备上dissmiss模态视图"><a href="#在iPhone设备上dissmiss模态视图" class="headerlink" title="在iPhone设备上dissmiss模态视图"></a>在iPhone设备上dissmiss模态视图</h3><p>要在iPhone设备上，实现模态视图dissmiss功能，需要借助导航控制器，同时这个模态视图需要遵循<code>UIPopoverPresentationController</code>协议，实现两个代理方法</p>
 <h4 id="实现UIPopoverPresentationController协议"><a href="#实现UIPopoverPresentationController协议" class="headerlink" title="实现UIPopoverPresentationController协议"></a>实现<code>UIPopoverPresentationController</code>协议</h4><ol>
 <li><code>PopoverViewController</code>类定义修改如下:<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PopoverViewController</span>: <span class="title">UIViewController</span>, <span class="title">UIPopoverPresentationControllerDelegate</span> </span>&#123;</div></pre></td></tr></table></figure></li>
@@ -334,7 +334,7 @@
 </li>
 </ol>
 <h4 id="Done按钮的dismiss事件"><a href="#Done按钮的dismiss事件" class="headerlink" title="Done按钮的dismiss事件"></a><code>Done</code>按钮的dismiss事件</h4><p>在导航控制器中国封装这个视图，在导航条上添加一个<code>Done</code>按钮，点击<code>Done</code>dismiss这个视图<br><figure class="highlight swift"><figcaption><span>dismiss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">dismiss</span><span class="params">()</span></span> </div><div class="line">&#123;</div><div class="line">    <span class="keyword">self</span>.dismissViewControllerAnimated(<span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在iPhone上，显示修改后的视图控制器，多出带按钮的导航栏。<br>在iPad上，视图控制器显示没有导航控制器，因为它不使用全屏幕显示。<br><img src="/images/adaptivePresentationStyleForPresentationController.png"><br>如果想让iPhone像iPad一样显示一个Popover，只<code>adaptivePresentationStyleForPresentationController</code>返回：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="type">UIModalPresentationStyle</span>.<span class="type">None</span></div></pre></td></tr></table></figure><br><img src="/images/UIModalPresentationStyle.None.png"></p>
+<p>在iPhone上，显示修改后的视图控制器，多出带按钮的导航栏。<br>在iPad上，视图控制器显示没有导航控制器，因为它不使用全屏幕显示。<br><img src="/boyer/images/adaptivePresentationStyleForPresentationController.png"><br>如果想让iPhone像iPad一样显示一个Popover，只<code>adaptivePresentationStyleForPresentationController</code>返回：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="type">UIModalPresentationStyle</span>.<span class="type">None</span></div></pre></td></tr></table></figure><br><img src="/boyer/images/UIModalPresentationStyle.None.png"></p>
 ]]></content>
     
     <summary type="html">
@@ -343,21 +343,21 @@
     
     </summary>
     
-      <category term="iOS" scheme="https://huos3203.github.io/categories/iOS/"/>
+      <category term="iOS" scheme="http://huos3203.github.io/boyer/categories/iOS/"/>
     
     
-      <category term="转场" scheme="https://huos3203.github.io/tags/%E8%BD%AC%E5%9C%BA/"/>
+      <category term="转场" scheme="http://huos3203.github.io/boyer/tags/%E8%BD%AC%E5%9C%BA/"/>
     
-      <category term="UI" scheme="https://huos3203.github.io/tags/UI/"/>
+      <category term="UI" scheme="http://huos3203.github.io/boyer/tags/UI/"/>
     
-      <category term="动画" scheme="https://huos3203.github.io/tags/%E5%8A%A8%E7%94%BB/"/>
+      <category term="动画" scheme="http://huos3203.github.io/boyer/tags/%E5%8A%A8%E7%94%BB/"/>
     
   </entry>
   
   <entry>
     <title></title>
-    <link href="https://huos3203.github.io/2017/02/15/Playground%E4%B8%AD%E4%BD%BF%E7%94%A8XCPlaygroundModule/"/>
-    <id>https://huos3203.github.io/2017/02/15/Playground中使用XCPlaygroundModule/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/15/Playground%E4%B8%AD%E4%BD%BF%E7%94%A8XCPlaygroundModule/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/15/Playground中使用XCPlaygroundModule/</id>
     <published>2017-02-15T09:50:33.000Z</published>
     <updated>2017-02-15T09:50:33.000Z</updated>
     
@@ -369,94 +369,9 @@
   </entry>
   
   <entry>
-    <title>shell命令+AppleScript脚本+Swift代码相互调用</title>
-    <link href="https://huos3203.github.io/2017/02/15/shell%E5%91%BD%E4%BB%A4+AppleScript%E8%84%9A%E6%9C%AC+Swift%E4%BB%A3%E7%A0%81%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8/"/>
-    <id>https://huos3203.github.io/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/</id>
-    <published>2017-02-15T09:19:30.000Z</published>
-    <updated>2017-02-15T09:19:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是<code>AppleScript</code>作为互通的桥梁。</p>
-<h2 id="NSTask调用AppleScript"><a href="#NSTask调用AppleScript" class="headerlink" title="NSTask调用AppleScript"></a><code>NSTask</code>调用<code>AppleScript</code></h2><h3 id="调用脚本文件main-scpt"><a href="#调用脚本文件main-scpt" class="headerlink" title="调用脚本文件main.scpt"></a>调用脚本文件<code>main.scpt</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//let bundle = NSBundle.init(forClass: self.dynamicType)</span></div><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptPath = bundle.pathForResource(<span class="string">"main"</span>, ofType: <span class="string">"scpt"</span>)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> paths = [scriptPath]</div><div class="line">    <span class="type">NSTask</span>.launchedTaskWithLaunchPath(<span class="string">"/usr/bin/osascript"</span>, arguments: paths)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="调用APPleScript脚本片段"><a href="#调用APPleScript脚本片段" class="headerlink" title="调用APPleScript脚本片段"></a>调用<code>APPleScript脚本片段</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">let</span> videoPath = bundle.pathForResource(<span class="string">"BigBuck"</span>, ofType: <span class="string">"m4v"</span>)</div><div class="line"><span class="comment">//https://developer.apple.com/library/mac/technotes/tn2084/_index.html</span></div><div class="line"><span class="comment">//open -na /Applications/mpv.app命令行必须是 -na 才能调用当前指定的播放器，否则会调用系统默认播发器</span></div><div class="line"><span class="keyword">let</span> myAppleScript = <span class="string">"on run\ndo shell script \"open -na /Applications/mpv.app \(videoPath!)\"\ntell application \"mpv\" to activate\n end run"</span></div><div class="line"><span class="built_in">print</span>(myAppleScript)</div><div class="line"><span class="keyword">var</span> error: <span class="type">NSDictionary</span>?</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptObject = <span class="type">NSAppleScript</span>(source: myAppleScript) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> output: <span class="type">NSAppleEventDescriptor</span> = scriptObject.executeAndReturnError(</div><div class="line">    &amp;error) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(output.stringValue)</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (error != <span class="literal">nil</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"error: \(error)"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="AppleScript调用shell"><a href="#AppleScript调用shell" class="headerlink" title="AppleScript调用shell"></a><code>AppleScript</code>调用<code>shell</code></h2><p>AppleScript语句中为on run {变量名称，逗号隔开} 以endrun结束。中间为AppleScript语句。</p>
-<h3 id="do-shell-script"><a href="#do-shell-script" class="headerlink" title="do shell script"></a>do shell script</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">on run [变量1,变量2...]  #开始 多个变量名称，用逗号隔开</div><div class="line">    do shell script "open -n /Applications/mpv.app" #AppleScript语句  </div><div class="line">end run #结束</div></pre></td></tr></table></figure>
-<h2 id="终端osascript调用AppleScript"><a href="#终端osascript调用AppleScript" class="headerlink" title="终端osascript调用AppleScript"></a>终端<code>osascript</code>调用<code>AppleScript</code></h2><p><a href="http://www.hackmac.org/tutorials/run-applescript-from-the-command-line/" target="_blank" rel="external">参考</a></p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;applescript command&apos; #单引号</div></pre></td></tr></table></figure>
-<h3 id="打开Finder窗口"><a href="#打开Finder窗口" class="headerlink" title="打开Finder窗口"></a>打开Finder窗口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;tell app &quot;Finder&quot; to make new Finder window&apos;</div></pre></td></tr></table></figure>
-<h3 id="打开某个程序同时弹出”Hello-World”提示框"><a href="#打开某个程序同时弹出”Hello-World”提示框" class="headerlink" title="打开某个程序同时弹出”Hello World”提示框"></a>打开某个程序同时弹出”Hello World”提示框</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">'tell app "applicationname" to display dialog "Hello World"'</span></div></pre></td></tr></table></figure>
-<h3 id="设置音量，音量大小范围（0-7）"><a href="#设置音量，音量大小范围（0-7）" class="headerlink" title="设置音量，音量大小范围（0-7）"></a>设置音量，音量大小范围（0-7）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">"set volume number"</span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是&lt;code&gt;AppleScript&lt;/code&gt;作为互通的桥梁。&lt;/p&gt;
-&lt;h2 id=&quot;NSTask调用AppleScript&quot;&gt;&lt;a href=&quot;#NSTask
-    
-    </summary>
-    
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
-    
-    
-      <category term="脚本" scheme="https://huos3203.github.io/tags/%E8%84%9A%E6%9C%AC/"/>
-    
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
-    
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
-    
-      <category term="shell" scheme="https://huos3203.github.io/tags/shell/"/>
-    
-      <category term="AppleScript" scheme="https://huos3203.github.io/tags/AppleScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript自动化组件OC桥接</title>
-    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
-    <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
-    <published>2017-02-15T09:19:30.000Z</published>
-    <updated>2017-02-16T05:43:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
-<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
-<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
-<blockquote>
-<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
-</blockquote>
-<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
-<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
-<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
-    
-    </summary>
-    
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
-    
-    
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
-    
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
-    
-  </entry>
-  
-  <entry>
     <title>macOS支持JavaScript自动化组件基础</title>
-    <link href="https://huos3203.github.io/2017/02/15/macOS%E6%94%AF%E6%8C%81JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80/"/>
-    <id>https://huos3203.github.io/2017/02/15/macOS支持JavaScript自动化组件基础/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/15/macOS%E6%94%AF%E6%8C%81JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/15/macOS支持JavaScript自动化组件基础/</id>
     <published>2017-02-15T09:19:30.000Z</published>
     <updated>2017-02-16T05:43:01.000Z</updated>
     
@@ -516,25 +431,110 @@
     
     </summary>
     
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+      <category term="管理" scheme="http://huos3203.github.io/boyer/tags/%E7%AE%A1%E7%90%86/"/>
     
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
+      <category term="混编" scheme="http://huos3203.github.io/boyer/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="JavaScript" scheme="https://huos3203.github.io/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://huos3203.github.io/boyer/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell命令+AppleScript脚本+Swift代码相互调用</title>
+    <link href="http://huos3203.github.io/boyer/2017/02/15/shell%E5%91%BD%E4%BB%A4+AppleScript%E8%84%9A%E6%9C%AC+Swift%E4%BB%A3%E7%A0%81%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/</id>
+    <published>2017-02-15T09:19:30.000Z</published>
+    <updated>2017-02-15T09:19:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是<code>AppleScript</code>作为互通的桥梁。</p>
+<h2 id="NSTask调用AppleScript"><a href="#NSTask调用AppleScript" class="headerlink" title="NSTask调用AppleScript"></a><code>NSTask</code>调用<code>AppleScript</code></h2><h3 id="调用脚本文件main-scpt"><a href="#调用脚本文件main-scpt" class="headerlink" title="调用脚本文件main.scpt"></a>调用脚本文件<code>main.scpt</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//let bundle = NSBundle.init(forClass: self.dynamicType)</span></div><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptPath = bundle.pathForResource(<span class="string">"main"</span>, ofType: <span class="string">"scpt"</span>)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> paths = [scriptPath]</div><div class="line">    <span class="type">NSTask</span>.launchedTaskWithLaunchPath(<span class="string">"/usr/bin/osascript"</span>, arguments: paths)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用APPleScript脚本片段"><a href="#调用APPleScript脚本片段" class="headerlink" title="调用APPleScript脚本片段"></a>调用<code>APPleScript脚本片段</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">let</span> videoPath = bundle.pathForResource(<span class="string">"BigBuck"</span>, ofType: <span class="string">"m4v"</span>)</div><div class="line"><span class="comment">//https://developer.apple.com/library/mac/technotes/tn2084/_index.html</span></div><div class="line"><span class="comment">//open -na /Applications/mpv.app命令行必须是 -na 才能调用当前指定的播放器，否则会调用系统默认播发器</span></div><div class="line"><span class="keyword">let</span> myAppleScript = <span class="string">"on run\ndo shell script \"open -na /Applications/mpv.app \(videoPath!)\"\ntell application \"mpv\" to activate\n end run"</span></div><div class="line"><span class="built_in">print</span>(myAppleScript)</div><div class="line"><span class="keyword">var</span> error: <span class="type">NSDictionary</span>?</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptObject = <span class="type">NSAppleScript</span>(source: myAppleScript) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> output: <span class="type">NSAppleEventDescriptor</span> = scriptObject.executeAndReturnError(</div><div class="line">    &amp;error) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(output.stringValue)</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (error != <span class="literal">nil</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"error: \(error)"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="AppleScript调用shell"><a href="#AppleScript调用shell" class="headerlink" title="AppleScript调用shell"></a><code>AppleScript</code>调用<code>shell</code></h2><p>AppleScript语句中为on run {变量名称，逗号隔开} 以endrun结束。中间为AppleScript语句。</p>
+<h3 id="do-shell-script"><a href="#do-shell-script" class="headerlink" title="do shell script"></a>do shell script</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">on run [变量1,变量2...]  #开始 多个变量名称，用逗号隔开</div><div class="line">    do shell script "open -n /Applications/mpv.app" #AppleScript语句  </div><div class="line">end run #结束</div></pre></td></tr></table></figure>
+<h2 id="终端osascript调用AppleScript"><a href="#终端osascript调用AppleScript" class="headerlink" title="终端osascript调用AppleScript"></a>终端<code>osascript</code>调用<code>AppleScript</code></h2><p><a href="http://www.hackmac.org/tutorials/run-applescript-from-the-command-line/" target="_blank" rel="external">参考</a></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;applescript command&apos; #单引号</div></pre></td></tr></table></figure>
+<h3 id="打开Finder窗口"><a href="#打开Finder窗口" class="headerlink" title="打开Finder窗口"></a>打开Finder窗口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;tell app &quot;Finder&quot; to make new Finder window&apos;</div></pre></td></tr></table></figure>
+<h3 id="打开某个程序同时弹出”Hello-World”提示框"><a href="#打开某个程序同时弹出”Hello-World”提示框" class="headerlink" title="打开某个程序同时弹出”Hello World”提示框"></a>打开某个程序同时弹出”Hello World”提示框</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">'tell app "applicationname" to display dialog "Hello World"'</span></div></pre></td></tr></table></figure>
+<h3 id="设置音量，音量大小范围（0-7）"><a href="#设置音量，音量大小范围（0-7）" class="headerlink" title="设置音量，音量大小范围（0-7）"></a>设置音量，音量大小范围（0-7）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">"set volume number"</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是&lt;code&gt;AppleScript&lt;/code&gt;作为互通的桥梁。&lt;/p&gt;
+&lt;h2 id=&quot;NSTask调用AppleScript&quot;&gt;&lt;a href=&quot;#NSTask
+    
+    </summary>
+    
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
+    
+    
+      <category term="脚本" scheme="http://huos3203.github.io/boyer/tags/%E8%84%9A%E6%9C%AC/"/>
+    
+      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="管理" scheme="http://huos3203.github.io/boyer/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="混编" scheme="http://huos3203.github.io/boyer/tags/%E6%B7%B7%E7%BC%96/"/>
+    
+      <category term="shell" scheme="http://huos3203.github.io/boyer/tags/shell/"/>
+    
+      <category term="AppleScript" scheme="http://huos3203.github.io/boyer/tags/AppleScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript自动化组件OC桥接</title>
+    <link href="http://huos3203.github.io/boyer/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/15/JavaScript自动化组件OC桥接/</id>
+    <published>2017-02-15T09:19:30.000Z</published>
+    <updated>2017-02-16T05:43:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
+<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
+<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
+<blockquote>
+<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
+</blockquote>
+<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
+<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
+<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
+    
+    </summary>
+    
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
+    
+    
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="测试" scheme="http://huos3203.github.io/boyer/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="搭建" scheme="http://huos3203.github.io/boyer/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="管理" scheme="http://huos3203.github.io/boyer/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="混编" scheme="http://huos3203.github.io/boyer/tags/%E6%B7%B7%E7%BC%96/"/>
     
   </entry>
   
   <entry>
     <title></title>
-    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
-    <id>https://huos3203.github.io/2017/02/15/JavaScript实现自动化/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/15/JavaScript%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/15/JavaScript实现自动化/</id>
     <published>2017-02-15T02:10:52.000Z</published>
     <updated>2017-02-15T09:19:27.000Z</updated>
     
@@ -547,8 +547,8 @@
   
   <entry>
     <title>通过沙盒中JS脚本访问其他APP</title>
-    <link href="https://huos3203.github.io/2017/02/14/%E9%80%9A%E8%BF%87%E6%B2%99%E7%9B%92%E4%B8%ADJS%E8%84%9A%E6%9C%AC%E8%AE%BF%E9%97%AE%E5%85%B6%E4%BB%96APP/"/>
-    <id>https://huos3203.github.io/2017/02/14/通过沙盒中JS脚本访问其他APP/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/14/%E9%80%9A%E8%BF%87%E6%B2%99%E7%9B%92%E4%B8%ADJS%E8%84%9A%E6%9C%AC%E8%AE%BF%E9%97%AE%E5%85%B6%E4%BB%96APP/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/14/通过沙盒中JS脚本访问其他APP/</id>
     <published>2017-02-14T10:25:29.000Z</published>
     <updated>2017-02-16T05:43:01.000Z</updated>
     
@@ -594,23 +594,23 @@
     
     </summary>
     
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="脚本" scheme="https://huos3203.github.io/tags/%E8%84%9A%E6%9C%AC/"/>
+      <category term="脚本" scheme="http://huos3203.github.io/boyer/tags/%E8%84%9A%E6%9C%AC/"/>
     
-      <category term="沙盒" scheme="https://huos3203.github.io/tags/%E6%B2%99%E7%9B%92/"/>
+      <category term="沙盒" scheme="http://huos3203.github.io/boyer/tags/%E6%B2%99%E7%9B%92/"/>
     
-      <category term="AppleScript" scheme="https://huos3203.github.io/tags/AppleScript/"/>
+      <category term="AppleScript" scheme="http://huos3203.github.io/boyer/tags/AppleScript/"/>
     
   </entry>
   
   <entry>
     <title>macOS之PDFKit基础</title>
-    <link href="https://huos3203.github.io/2017/02/14/macOS%E4%B9%8BPDFKit%E5%9F%BA%E7%A1%80/"/>
-    <id>https://huos3203.github.io/2017/02/14/macOS之PDFKit基础/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/14/macOS%E4%B9%8BPDFKit%E5%9F%BA%E7%A1%80/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/14/macOS之PDFKit基础/</id>
     <published>2017-02-14T06:29:18.000Z</published>
     <updated>2017-02-14T06:33:17.000Z</updated>
     
@@ -620,15 +620,15 @@
 <li>所有者级别加密：获得所有者级别权限的用户可以查看文档并具有完全使用权限。<br>许多加密的PDF文件有一个“dummy”的用户密码为<code>空字符串</code>。大多数PDF文档解析器（包括PDF套件）自动尝试空字符串密码加密后的文件，如果成功，只显示文档。因此，在技术上加密的文档不一定提示用户口令。</li>
 </ul>
 <h2 id="PDF页面"><a href="#PDF页面" class="headerlink" title="PDF页面"></a>PDF页面</h2><p>一个PDF文档由若干页面组成。这个页面看起来就像一本物理书页面显示在屏幕上。同时PDF页面可以包含<code>超链接</code>和<code>注释</code>。页面可以支持<code>裁剪</code>，还有其他使用功能：例如隐藏多余的部分（如注册标记）。</p>
-<h3 id="view-VS-page空间坐标"><a href="#view-VS-page空间坐标" class="headerlink" title="view VS page空间坐标"></a>view VS page空间坐标</h3><p>页面上的大多数对象都是在<code>page</code>空间中指定的，而不是在<code>view</code>空间中。<br>也就是说，坐标系统是在点（每英寸72点），<code>坐标原点</code>在page左侧底部，而不是<code>view</code>。<code>page</code>空间不关心缩放，显示模式等等。一个有<code>bounds</code>的item，比如说32points，保留这些界限，无论显示大小。<br>图view和page坐标系比较<br><img src="/images/view_vspage_space.gif" class="view和page坐标系比较"><br><code>PDFView class</code>包含几个转换方法，将坐标系统从<code>view space</code>的<code>page space</code>，反之亦然。</p>
-<h2 id="PDF-Kit-Classes"><a href="#PDF-Kit-Classes" class="headerlink" title="PDF Kit Classes"></a>PDF Kit Classes</h2><p><code>PDF Kit</code>套件提供了几个不同功能的<code>类</code>。<br><code>PDFView</code>和<code>PDFSelection</code>除外，这些<code>类</code>大致对应着各个<code>对象</code>在PDF格式的规范需求。<br><img src="/images/pdfkit_inheritancehierarchy.gif"></p>
-<h3 id="PDFView-Class"><a href="#PDFView-Class" class="headerlink" title="PDFView Class"></a>PDFView Class</h3><p><code>PDFView类</code>，就好比Web工具包的<code>WebView类</code>，源于<code>Application Kit</code>中的<code>NSView类</code>。在项目开发中，你可以使用<code>Interface Builder</code>轻松拖动一个<code>PDFView对象</code>放在一个window中。<del>从/Developer/Extras/Palettes/PDFKit.palette得到调色板。</del><br><code>PDFView</code>可能是<code>PDF Kit</code>中唯一个需要你自定义的的类。在APP中显示PDF数据，允许用户选择文档内容和导航浏览PDF文档，设置缩放级别，复制文本内容到剪贴板。用户可以拖放PDF文档到<code>PDFView</code>。<br><code>PDFView</code>能通过调用其他<code>PDF实用类</code>来实现其大部分功能。如果要添加特殊功能，则需要用户自定义<code>实用类</code>的子类来扩展其特殊功能。<br>Utility classes as used by PDFView<br><img src="/images/pdfkit_uses_hierarchy.gif"></p>
-<h3 id="PDF-Kit-Utility-Classes"><a href="#PDF-Kit-Utility-Classes" class="headerlink" title="PDF Kit Utility Classes"></a>PDF Kit Utility Classes</h3><p>PDF套件工具类提供一种混合的<code>Foundation-like</code>和<code>Application Kit-like</code>的行为。他们有类似的<code>NSString类</code>和<code>NSString Additions</code>方法。这些类都系橙自<code>NSObject</code><br><img src="/images/pdfkit_inheritancehierarchy.gif"></p>
+<h3 id="view-VS-page空间坐标"><a href="#view-VS-page空间坐标" class="headerlink" title="view VS page空间坐标"></a>view VS page空间坐标</h3><p>页面上的大多数对象都是在<code>page</code>空间中指定的，而不是在<code>view</code>空间中。<br>也就是说，坐标系统是在点（每英寸72点），<code>坐标原点</code>在page左侧底部，而不是<code>view</code>。<code>page</code>空间不关心缩放，显示模式等等。一个有<code>bounds</code>的item，比如说32points，保留这些界限，无论显示大小。<br>图view和page坐标系比较<br><img src="/boyer/images/view_vspage_space.gif" class="view和page坐标系比较"><br><code>PDFView class</code>包含几个转换方法，将坐标系统从<code>view space</code>的<code>page space</code>，反之亦然。</p>
+<h2 id="PDF-Kit-Classes"><a href="#PDF-Kit-Classes" class="headerlink" title="PDF Kit Classes"></a>PDF Kit Classes</h2><p><code>PDF Kit</code>套件提供了几个不同功能的<code>类</code>。<br><code>PDFView</code>和<code>PDFSelection</code>除外，这些<code>类</code>大致对应着各个<code>对象</code>在PDF格式的规范需求。<br><img src="/boyer/images/pdfkit_inheritancehierarchy.gif"></p>
+<h3 id="PDFView-Class"><a href="#PDFView-Class" class="headerlink" title="PDFView Class"></a>PDFView Class</h3><p><code>PDFView类</code>，就好比Web工具包的<code>WebView类</code>，源于<code>Application Kit</code>中的<code>NSView类</code>。在项目开发中，你可以使用<code>Interface Builder</code>轻松拖动一个<code>PDFView对象</code>放在一个window中。<del>从/Developer/Extras/Palettes/PDFKit.palette得到调色板。</del><br><code>PDFView</code>可能是<code>PDF Kit</code>中唯一个需要你自定义的的类。在APP中显示PDF数据，允许用户选择文档内容和导航浏览PDF文档，设置缩放级别，复制文本内容到剪贴板。用户可以拖放PDF文档到<code>PDFView</code>。<br><code>PDFView</code>能通过调用其他<code>PDF实用类</code>来实现其大部分功能。如果要添加特殊功能，则需要用户自定义<code>实用类</code>的子类来扩展其特殊功能。<br>Utility classes as used by PDFView<br><img src="/boyer/images/pdfkit_uses_hierarchy.gif"></p>
+<h3 id="PDF-Kit-Utility-Classes"><a href="#PDF-Kit-Utility-Classes" class="headerlink" title="PDF Kit Utility Classes"></a>PDF Kit Utility Classes</h3><p>PDF套件工具类提供一种混合的<code>Foundation-like</code>和<code>Application Kit-like</code>的行为。他们有类似的<code>NSString类</code>和<code>NSString Additions</code>方法。这些类都系橙自<code>NSObject</code><br><img src="/boyer/images/pdfkit_inheritancehierarchy.gif"></p>
 <h4 id="PDF-Document"><a href="#PDF-Document" class="headerlink" title="PDF Document"></a>PDF Document</h4><p><code>PDFDocument</code>是<code>PDF kit工具类</code>中重要类，代表着PDF data或PDF文件。其他实用工具类一般都在<code>PDFDocument</code>方法中的实例化。是<code>PDFPage</code>和<code>PDFOutline</code>；或相关支持操作：<code>PDFSelection</code>和<code>PDFDestination</code>。<br>你<code>PDFDocument对象</code>初始化，需要一个<code>PDF数据</code>或一个指向PDF文件的<code>URL</code>。实例化之后就可以访问<code>页数</code>，<code>添加</code>或<code>删除</code>页面，对所选内容为<code>NSString对象</code>进行<code>查找</code>或<code>分析</code>。</p>
 <h4 id="PDFPage"><a href="#PDFPage" class="headerlink" title="PDFPage"></a>PDFPage</h4><p><code>PDFPage</code>代表一个PDF文档的页面。你的应用程序获取一个<code>PDFPage</code>对象必须通过从<code>PDFDocument</code>对象来实例化。<code>PDFPage</code>对象是用户所看到的屏幕，和一个<code>view</code>可以同时显示多个<code>page</code>。你可以使用<code>PDFPage</code>把PDF文档内容渲染到屏幕上，添加<code>注释</code>，<code>计数字符串</code>，定义<code>选择</code>，获取一个<code>page</code>中的文本内容作为<code>NSString对象</code>或<code>NSAttributedString对象</code>。</p>
 <h4 id="PDFOutline"><a href="#PDFOutline" class="headerlink" title="PDFOutline"></a>PDFOutline</h4><p>除了显示实际的文件内容，<code>PDF Kit</code>也能呈现<code>PDFOutline</code>信息，前提是PDF文档中存在目录结构。在目录结构中，一个<code>PDFOutline对象</code>代表一个<code>父目录</code>或<code>子目录</code>。<br>目录是由一个层次的<code>PDFOutline对象</code>组层。顶层是<code>根目录对象</code>，它仅作为其他目录对象的容器。用户的<code>根目录</code>是不可见的。</p>
 <h4 id="PDFSelection"><a href="#PDFSelection" class="headerlink" title="PDFSelection"></a>PDFSelection</h4><p>一个<code>PDFSelection</code>对象包含一个跨PDF文档中文本。你不要直接创建<code>PDFSelection</code>。<code>PDFSelection</code>对象是作为返回值来实例化的。例如：通过调用<code>PDFPage</code>或<code>PDFDocument</code>对象中的selection方法，并从成功搜索的返回值来实例化<code>PDFSelection</code>对象。<br>在同时显示多个<code>PDFPage</code>的<code>PDFView</code>中，<code>PDFSelection</code>可以是不连续的，或两者兼具的。例如，可以选择在一个单柱连续两列页面的文本。可以在任何方向从一个选择区, 合并选择区, 或扩展选择区中得到文本和网页覆盖。</p>
-<h4 id="PDFAnnotation"><a href="#PDFAnnotation" class="headerlink" title="PDFAnnotation"></a>PDFAnnotation</h4><p>一个<code>PDFAnnotation</code>对象可以表示多种内容以外，在一个PDF文件的主要文本内容：链接、表单元素，突出圈子，等等。每个注释与页面上的特定位置相关，并且可以与用户提供交互性。<br><code>PDFAnnotation</code>是如图所示的具体类的抽象类。各种具体类代表<code>PDF Kit</code>支持的注释类型。<br><img src="/images/annotations.gif"></p>
+<h4 id="PDFAnnotation"><a href="#PDFAnnotation" class="headerlink" title="PDFAnnotation"></a>PDFAnnotation</h4><p>一个<code>PDFAnnotation</code>对象可以表示多种内容以外，在一个PDF文件的主要文本内容：链接、表单元素，突出圈子，等等。每个注释与页面上的特定位置相关，并且可以与用户提供交互性。<br><code>PDFAnnotation</code>是如图所示的具体类的抽象类。各种具体类代表<code>PDF Kit</code>支持的注释类型。<br><img src="/boyer/images/annotations.gif"></p>
 <h4 id="PDFBorder"><a href="#PDFBorder" class="headerlink" title="PDFBorder"></a>PDFBorder</h4><p><code>PDFBorder</code>对象封装的拉伸<code>PDFAnnotation</code>对象边框的行为。可以定义一个PDF的bord线的风格属性（例如，固体，破灭，或斜面），bord线的宽度，和圆角半径。</p>
 <p>过期:<del>从/Developer/Extras/Palettes/PDFKit.palette得到调色板。</del><br>Here’s what Apple says about it:<br><blockquote><p>“To add the PDFKit palette in Interface Builder, select the Palettes tab in the Preferences panel. Click the Add<br>button, navigate to the /Developer/Extras/Palettes folder, and select the PDFKit palette. Next, select the Customize Toolbar menu item in the Tools/Palettes menu and drag the PDFKit palette to the toolbar to make it visible.”</p>
 <footer><strong>老文档</strong><cite><a href="http://developer.apple.com/library/mac/#documentation/GraphicsImaging/Conceptual/PDFKitGuide/PDFKit_Prog_Tasks/PDFKit_Prog_Tasks.html" target="_blank" rel="external">PDFKit_Prog_Tasks</a></cite></footer></blockquote><br>So:<br>there’s no Palettes tab anywhere in the Preferences panel and the Xcode Help return a blank when searching for it.<br>There’s no PDFKit.palette file anywhere on my HD (says Spotlight).<br>I guess these instructions are for an older version of XCode but it’s all Apple seemed to have on it…</p>
@@ -642,23 +642,23 @@
     
     </summary>
     
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="UI" scheme="https://huos3203.github.io/tags/UI/"/>
+      <category term="UI" scheme="http://huos3203.github.io/boyer/tags/UI/"/>
     
-      <category term="PDF" scheme="https://huos3203.github.io/tags/PDF/"/>
+      <category term="PDF" scheme="http://huos3203.github.io/boyer/tags/PDF/"/>
     
-      <category term="阅读器" scheme="https://huos3203.github.io/tags/%E9%98%85%E8%AF%BB%E5%99%A8/"/>
+      <category term="阅读器" scheme="http://huos3203.github.io/boyer/tags/%E9%98%85%E8%AF%BB%E5%99%A8/"/>
     
   </entry>
   
   <entry>
     <title>Fabric对macOS系统的支持</title>
-    <link href="https://huos3203.github.io/2017/02/14/Fabric%E5%AF%B9macOS%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%94%AF%E6%8C%81%E8%B0%83%E7%A0%94/"/>
-    <id>https://huos3203.github.io/2017/02/14/Fabric对macOS系统的支持调研/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/14/Fabric%E5%AF%B9macOS%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%94%AF%E6%8C%81%E8%B0%83%E7%A0%94/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/14/Fabric对macOS系统的支持调研/</id>
     <published>2017-02-14T03:14:35.000Z</published>
     <updated>2017-02-14T06:33:17.000Z</updated>
     
@@ -685,29 +685,29 @@
     
     </summary>
     
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+      <category term="测试" scheme="http://huos3203.github.io/boyer/tags/%E6%B5%8B%E8%AF%95/"/>
     
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+      <category term="搭建" scheme="http://huos3203.github.io/boyer/tags/%E6%90%AD%E5%BB%BA/"/>
     
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+      <category term="管理" scheme="http://huos3203.github.io/boyer/tags/%E7%AE%A1%E7%90%86/"/>
     
-      <category term="SDK" scheme="https://huos3203.github.io/tags/SDK/"/>
+      <category term="SDK" scheme="http://huos3203.github.io/boyer/tags/SDK/"/>
     
-      <category term="发布" scheme="https://huos3203.github.io/tags/%E5%8F%91%E5%B8%83/"/>
+      <category term="发布" scheme="http://huos3203.github.io/boyer/tags/%E5%8F%91%E5%B8%83/"/>
     
-      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/tags/macOS/"/>
     
   </entry>
   
   <entry>
     <title>思维导图之开发实践篇</title>
-    <link href="https://huos3203.github.io/2017/02/13/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E4%B9%8B%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E7%AF%87/"/>
-    <id>https://huos3203.github.io/2017/02/13/思维导图之开发实践篇/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/13/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E4%B9%8B%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E7%AF%87/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/13/思维导图之开发实践篇/</id>
     <published>2017-02-13T09:11:26.000Z</published>
     <updated>2017-02-13T09:15:34.000Z</updated>
     
@@ -720,7 +720,7 @@
 <p>使用思维导图的场景无处不在，无论是做产品还是做设计，我们都需要清晰的思路，明确自己需要做些什么，最后需要达到什么效果，这时候，如果有一张清晰的思维导图，就能很快的理清自己的思路。作为互联网公司自称是产品型设计师（也就是既需要帮助老板整理需求梳理产品，也要设计漂亮的界面）的我更是如此。 </p>
 <p>目的：通过学习在该文章中讲到的开发设计案例，站在项目开发角度，了解从速记到思维导图再到实际开发的过程。<br>从产品、设计等方面谈谈我是如何运用思维导图的。</p>
 <h2 id="需求分析——完善最初的想法"><a href="#需求分析——完善最初的想法" class="headerlink" title="需求分析——完善最初的想法"></a>需求分析——完善最初的想法</h2><p>一般老板只会告诉我们大概需要一个什么东西，具体的细节还需要我们去整理。这时候，我会把大概涉及到的基本点写在纸上，想到一条写一条，特别是一些需要注意的地方。</p>
-<h3 id="需求速记法"><a href="#需求速记法" class="headerlink" title="需求速记法"></a>需求速记法</h3><p>先用纸笔速记的方式，把临时能想到的点记录下来<br><img src="/images/需求速记.jpg" class="需求速记" width="300" height="500"><br>在纸上列得差不多了，再新建一个 <code>XMind</code> 文档，把之前列的一些点一一转到电脑上，然后整理分类。</p>
+<h3 id="需求速记法"><a href="#需求速记法" class="headerlink" title="需求速记法"></a>需求速记法</h3><p>先用纸笔速记的方式，把临时能想到的点记录下来<br><img src="/boyer/images/需求速记.jpg" class="需求速记" width="300" height="500"><br>在纸上列得差不多了，再新建一个 <code>XMind</code> 文档，把之前列的一些点一一转到电脑上，然后整理分类。</p>
 <h3 id="功能结构图案例"><a href="#功能结构图案例" class="headerlink" title="功能结构图案例"></a>功能结构图案例</h3><ol>
 <li>码市逻辑图<br>通过思维导图能够一目了然的看到码市的功能<img src="https://dn-coding-net-production-pp.qbox.me/fa34c949-b36d-4c86-a1be-a6f6c5459f3e.png"></li>
 <li>网站功能逻辑图<br>通过功能主干图直观显示了一个网站或者 APP 整体大功能组成部分，一般在写产品需求文档时需要的功能逻辑图。<img src="https://dn-coding-net-production-pp.qbox.me/535567ad-e51f-43b9-aa66-8b98fc719dc6.png">
@@ -741,21 +741,21 @@
     
     </summary>
     
-      <category term="逻辑思维" scheme="https://huos3203.github.io/categories/%E9%80%BB%E8%BE%91%E6%80%9D%E7%BB%B4/"/>
+      <category term="逻辑思维" scheme="http://huos3203.github.io/boyer/categories/%E9%80%BB%E8%BE%91%E6%80%9D%E7%BB%B4/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+      <category term="管理" scheme="http://huos3203.github.io/boyer/tags/%E7%AE%A1%E7%90%86/"/>
     
-      <category term="思维导图" scheme="https://huos3203.github.io/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+      <category term="思维导图" scheme="http://huos3203.github.io/boyer/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>使用JavaScript把JSON数据转为对象</title>
-    <link href="https://huos3203.github.io/2017/02/12/%E4%BD%BF%E7%94%A8JavaScript%E6%8A%8AJSON%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E5%AF%B9%E8%B1%A1/"/>
-    <id>https://huos3203.github.io/2017/02/12/使用JavaScript把JSON数据定义对象/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/12/%E4%BD%BF%E7%94%A8JavaScript%E6%8A%8AJSON%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/12/使用JavaScript把JSON数据定义对象/</id>
     <published>2017-02-12T06:41:35.000Z</published>
     <updated>2017-02-16T05:43:01.000Z</updated>
     
@@ -794,29 +794,29 @@
     
     </summary>
     
-      <category term="swift" scheme="https://huos3203.github.io/categories/swift/"/>
+      <category term="swift" scheme="http://huos3203.github.io/boyer/categories/swift/"/>
     
     
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
+      <category term="混编" scheme="http://huos3203.github.io/boyer/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/tags/macOS/"/>
     
-      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
+      <category term="iOS" scheme="http://huos3203.github.io/boyer/tags/iOS/"/>
     
-      <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
+      <category term="Java​Script​Core" scheme="http://huos3203.github.io/boyer/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
-      <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
+      <category term="swift" scheme="http://huos3203.github.io/boyer/tags/swift/"/>
     
-      <category term="json" scheme="https://huos3203.github.io/tags/json/"/>
+      <category term="json" scheme="http://huos3203.github.io/boyer/tags/json/"/>
     
   </entry>
   
   <entry>
     <title>Java​Script​Core实现swift混编</title>
-    <link href="https://huos3203.github.io/2017/02/12/Java%E2%80%8BScript%E2%80%8BCore%E5%AE%9E%E7%8E%B0swift%E6%B7%B7%E7%BC%96/"/>
-    <id>https://huos3203.github.io/2017/02/12/Java​Script​Core实现swift混编/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/12/Java%E2%80%8BScript%E2%80%8BCore%E5%AE%9E%E7%8E%B0swift%E6%B7%B7%E7%BC%96/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/12/Java​Script​Core实现swift混编/</id>
     <published>2017-02-12T05:34:06.000Z</published>
     <updated>2017-02-16T05:43:01.000Z</updated>
     
@@ -827,7 +827,7 @@
 </ol>
 <h2 id="swift通过JSContext调用JavaScript"><a href="#swift通过JSContext调用JavaScript" class="headerlink" title="swift通过JSContext调用JavaScript"></a>swift通过JSContext调用JavaScript</h2><p>如何从<code>JavaScript 环境</code>中提取值以及如何调用其中定义的函数?</p>
 <h3 id="全局实例JSContext：运行JavaScript代码的环境"><a href="#全局实例JSContext：运行JavaScript代码的环境" class="headerlink" title="全局实例JSContext：运行JavaScript代码的环境"></a>全局实例JSContext：运行JavaScript代码的环境</h3><p>全局实例<code>JSContext</code>作用就像在浏览器内运行的一个<code>JavaScript</code>脚本，<code>JSContext</code> 类似于 <code>window</code>。<br>通过<code>JSContext</code>实例运行<code>JavaScript</code>代码<code>创建变量</code>，<code>做计算</code>，<code>定义方法</code>：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> context = <span class="type">JSContext</span>()    <span class="comment">//创建全局环境</span></div><div class="line">context.evaluateScript(<span class="string">"var num = 5 + 5"</span>) <span class="comment">//计算</span></div><div class="line">context.evaluateScript(<span class="string">"var names = ['Grace', 'Ada', 'Margaret']"</span>) <span class="comment">//定义变量</span></div><div class="line">context.evaluateScript(<span class="string">"var triple = function(value) &#123; return value * 3 &#125;"</span>) <span class="comment">//定义方法</span></div><div class="line"><span class="keyword">let</span> tripleNum: <span class="type">JSValue</span> = context.evaluateScript(<span class="string">"triple(num)"</span>)  </div></pre></td></tr></table></figure></p>
-<h3 id="动态类型JSValue-包裹JSContext环境下每一个可能的JS值"><a href="#动态类型JSValue-包裹JSContext环境下每一个可能的JS值" class="headerlink" title="动态类型JSValue:包裹JSContext环境下每一个可能的JS值"></a>动态类型JSValue:包裹JSContext环境下每一个可能的JS值</h3><p><code>JavaScript</code> 是动态语言，所以动态类型<code>JSValue</code>包裹JSContext环境中任何可能的JS值，字符串和数字；数组、对象和方法；甚至错误和特殊的 JavaScript 值诸如 <code>null</code> 和 <code>undefined</code>。<br>获取<code>tripleNum</code>值：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">println</span>(<span class="string">"Tripled: \(tripleNum.toInt32())"</span>)</div></pre></td></tr></table></figure><br><code>JSValue</code> 包括一系列方法用于访问其可能的值以保证有正确的 <code>Foundation 基本类型</code><br>包括：<br><img src="/images/JSValueType.png"></p>
+<h3 id="动态类型JSValue-包裹JSContext环境下每一个可能的JS值"><a href="#动态类型JSValue-包裹JSContext环境下每一个可能的JS值" class="headerlink" title="动态类型JSValue:包裹JSContext环境下每一个可能的JS值"></a>动态类型JSValue:包裹JSContext环境下每一个可能的JS值</h3><p><code>JavaScript</code> 是动态语言，所以动态类型<code>JSValue</code>包裹JSContext环境中任何可能的JS值，字符串和数字；数组、对象和方法；甚至错误和特殊的 JavaScript 值诸如 <code>null</code> 和 <code>undefined</code>。<br>获取<code>tripleNum</code>值：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">println</span>(<span class="string">"Tripled: \(tripleNum.toInt32())"</span>)</div></pre></td></tr></table></figure><br><code>JSValue</code> 包括一系列方法用于访问其可能的值以保证有正确的 <code>Foundation 基本类型</code><br>包括：<br><img src="/boyer/images/JSValueType.png"></p>
 <h3 id="下标取值：访问JSContext环境下的任何值"><a href="#下标取值：访问JSContext环境下的任何值" class="headerlink" title="下标取值：访问JSContext环境下的任何值"></a>下标取值：访问JSContext环境下的任何值</h3><p><code>JSContext</code> 和 <code>JSValue</code> 实例可以使用下标的方式访问之前创建的 <code>context</code> 的任何值。</p>
 <ul>
 <li><code>JSContext</code>：需要一个字符串下标</li>
@@ -866,27 +866,27 @@
     
     </summary>
     
-      <category term="swift" scheme="https://huos3203.github.io/categories/swift/"/>
+      <category term="swift" scheme="http://huos3203.github.io/boyer/categories/swift/"/>
     
     
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
+      <category term="混编" scheme="http://huos3203.github.io/boyer/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/tags/macOS/"/>
     
-      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
+      <category term="iOS" scheme="http://huos3203.github.io/boyer/tags/iOS/"/>
     
-      <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
+      <category term="Java​Script​Core" scheme="http://huos3203.github.io/boyer/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
-      <category term="swift" scheme="https://huos3203.github.io/tags/swift/"/>
+      <category term="swift" scheme="http://huos3203.github.io/boyer/tags/swift/"/>
     
   </entry>
   
   <entry>
     <title>用Git将代码恢复到一个历史的版本</title>
-    <link href="https://huos3203.github.io/2017/02/10/%E7%94%A8Git%E5%B0%86%E4%BB%A3%E7%A0%81%E6%81%A2%E5%A4%8D%E5%88%B0%E4%B8%80%E4%B8%AA%E5%8E%86%E5%8F%B2%E7%9A%84%E7%89%88%E6%9C%AC/"/>
-    <id>https://huos3203.github.io/2017/02/10/用Git将代码恢复到一个历史的版本/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/10/%E7%94%A8Git%E5%B0%86%E4%BB%A3%E7%A0%81%E6%81%A2%E5%A4%8D%E5%88%B0%E4%B8%80%E4%B8%AA%E5%8E%86%E5%8F%B2%E7%9A%84%E7%89%88%E6%9C%AC/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/10/用Git将代码恢复到一个历史的版本/</id>
     <published>2017-02-10T10:19:48.000Z</published>
     <updated>2017-02-10T10:29:19.000Z</updated>
     
@@ -908,21 +908,21 @@
     
     </summary>
     
-      <category term="git" scheme="https://huos3203.github.io/categories/git/"/>
+      <category term="git" scheme="http://huos3203.github.io/boyer/categories/git/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://huos3203.github.io/boyer/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="git" scheme="https://huos3203.github.io/tags/git/"/>
+      <category term="git" scheme="http://huos3203.github.io/boyer/tags/git/"/>
     
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="语法" scheme="http://huos3203.github.io/boyer/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>bilibiliForMac版之mpv依赖编译</title>
-    <link href="https://huos3203.github.io/2017/02/10/bilibili%E4%B9%8BMac%E7%89%88ffmpeg%E4%BE%9D%E8%B5%96%E7%BC%96%E8%AF%91/"/>
-    <id>https://huos3203.github.io/2017/02/10/bilibili之Mac版ffmpeg依赖编译/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/10/bilibili%E4%B9%8BMac%E7%89%88ffmpeg%E4%BE%9D%E8%B5%96%E7%BC%96%E8%AF%91/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/10/bilibili之Mac版ffmpeg依赖编译/</id>
     <published>2017-02-10T02:45:03.000Z</published>
     <updated>2017-02-10T07:35:25.000Z</updated>
     
@@ -962,29 +962,29 @@
     
     </summary>
     
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
     
     
-      <category term="编译" scheme="https://huos3203.github.io/tags/%E7%BC%96%E8%AF%91/"/>
+      <category term="编译" scheme="http://huos3203.github.io/boyer/tags/%E7%BC%96%E8%AF%91/"/>
     
-      <category term="ffmpeg" scheme="https://huos3203.github.io/tags/ffmpeg/"/>
+      <category term="ffmpeg" scheme="http://huos3203.github.io/boyer/tags/ffmpeg/"/>
     
-      <category term="mpv" scheme="https://huos3203.github.io/tags/mpv/"/>
+      <category term="mpv" scheme="http://huos3203.github.io/boyer/tags/mpv/"/>
     
-      <category term="shell" scheme="https://huos3203.github.io/tags/shell/"/>
+      <category term="shell" scheme="http://huos3203.github.io/boyer/tags/shell/"/>
     
   </entry>
   
   <entry>
     <title>OSX 应用插件</title>
-    <link href="https://huos3203.github.io/2017/02/07/OSX%E5%BA%94%E7%94%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    <id>https://huos3203.github.io/2017/02/07/OSX应用插件开发/</id>
+    <link href="http://huos3203.github.io/boyer/2017/02/07/OSX%E5%BA%94%E7%94%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <id>http://huos3203.github.io/boyer/2017/02/07/OSX应用插件开发/</id>
     <published>2017-02-07T04:38:58.000Z</published>
     <updated>2017-02-07T05:47:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>在以前的 OS X 系统中，给你的 App 在运行时动态载入可执行代码比较困难。现在可以通过<code>NSBundle</code>和 <code>plug-ins</code>插件,可以很方便的向原有APP中添加新功能点。</p>
 <p>目的：在一个修改过的 TextEdit 里面加入加载 bundle 的功能</p>
-<h2 id="包-Bundles-和接口-Interfaces"><a href="#包-Bundles-和接口-Interfaces" class="headerlink" title="包 (Bundles) 和接口 (Interfaces)"></a>包 (Bundles) 和接口 (Interfaces)</h2><p>如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如： <code>Screen Savers</code> 到 <code>Image Units</code>等。<br>在<code>Framework &amp; Library</code>中的 <code>Bundle</code> 条目。我会在今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。<br><img src="/images/xcode8.png" class="项目模版"><br><code>bundle 模版</code>项目与APP项目比较：</p>
+<h2 id="包-Bundles-和接口-Interfaces"><a href="#包-Bundles-和接口-Interfaces" class="headerlink" title="包 (Bundles) 和接口 (Interfaces)"></a>包 (Bundles) 和接口 (Interfaces)</h2><p>如果你打开 Xcode8 创建一个新项目，会看见 OS X 所有可以编写APP插件的模版，例如： <code>Screen Savers</code> 到 <code>Image Units</code>等。<br>在<code>Framework &amp; Library</code>中的 <code>Bundle</code> 条目。我会在今天探索一个非常简单的的项目，那就是在一个修改过的 TextEdit 里面加入加载 bundle 的功能。<br><img src="/boyer/images/xcode8.png" class="项目模版"><br><code>bundle 模版</code>项目与APP项目比较：</p>
 <ol>
 <li>一个 <code>Contents</code> 目录，里面包含了 <code>Info.plist</code> 和 <code>Resource</code> 目录。</li>
 <li>如果你在你的项目下加入了新的类，你可以看见包含一个可执行文件的 <code>MacOS</code> 目录。</li>
@@ -1018,7 +1018,7 @@
 </li>
 </ol>
 <h2 id="集成插件"><a href="#集成插件" class="headerlink" title="集成插件"></a>集成插件</h2><p>运行 <code>TextEdit</code> （它会创建<code>Plug-Ins</code>目录），然后构建 <code>MarkYellow</code> 工程。把 <code>MarkYellow.bundle</code> 丢到你的 <code>~/Library/Application Support/Text Edit/Plug-Ins/</code> 目录下面，重启你的 <code>TextEdit</code> 应用。<br>一切看起来都很好，扫描，加载，插入一个菜单，然后，当你使用菜单项的时候，传递到参数到插件里面。试一试，点击 <code>Plug-Ins ▸ Mark Selected Text Yellow</code>，选择的文字的背景颜色就变成黄色的了。</p>
-<h2 id="XCode8版本问题"><a href="#XCode8版本问题" class="headerlink" title="XCode8版本问题"></a>XCode8版本问题</h2><p>Xcode8 不再支持<code>Application Plug-in</code>插件<br><img src="/images/xcode6.jpg" class="xcode6" title="100% 300 项目创建模版"><br><a href="http://www.jianshu.com/p/39443429f71d" target="_blank" rel="external">XCode8.2.1继续使用xcode插件</a><br>这个是因为苹果解决xcode ghost，把插件屏蔽了。<br>解决方法<br><code>sudo /usr/libexec/xpccachectl</code><br>然后必须重启电脑后生效.</p>
+<h2 id="XCode8版本问题"><a href="#XCode8版本问题" class="headerlink" title="XCode8版本问题"></a>XCode8版本问题</h2><p>Xcode8 不再支持<code>Application Plug-in</code>插件<br><img src="/boyer/images/xcode6.jpg" class="xcode6" title="100% 300 项目创建模版"><br><a href="http://www.jianshu.com/p/39443429f71d" target="_blank" rel="external">XCode8.2.1继续使用xcode插件</a><br>这个是因为苹果解决xcode ghost，把插件屏蔽了。<br>解决方法<br><code>sudo /usr/libexec/xpccachectl</code><br>然后必须重启电脑后生效.</p>
 ]]></content>
     
     <summary type="html">
@@ -1028,14 +1028,14 @@
     
     </summary>
     
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/categories/macOS/"/>
     
     
-      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
+      <category term="macOS" scheme="http://huos3203.github.io/boyer/tags/macOS/"/>
     
-      <category term="插件" scheme="https://huos3203.github.io/tags/%E6%8F%92%E4%BB%B6/"/>
+      <category term="插件" scheme="http://huos3203.github.io/boyer/tags/%E6%8F%92%E4%BB%B6/"/>
     
-      <category term="objc" scheme="https://huos3203.github.io/tags/objc/"/>
+      <category term="objc" scheme="http://huos3203.github.io/boyer/tags/objc/"/>
     
   </entry>
   
