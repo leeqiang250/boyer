@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huos3203.github.io/"/>
-  <updated>2017-02-24T09:54:48.000Z</updated>
+  <updated>2017-02-24T10:04:52.000Z</updated>
   <id>https://huos3203.github.io/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="https://huos3203.github.io/2017/02/24/UIStackView%E6%95%99%E7%A8%8B%E4%BA%86%E8%A7%A3StackView/"/>
     <id>https://huos3203.github.io/2017/02/24/UIStackView教程了解StackView/</id>
     <published>2017-02-24T06:49:40.000Z</published>
-    <updated>2017-02-24T09:54:48.000Z</updated>
+    <updated>2017-02-24T10:04:52.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="UIStackView简单介绍"><a href="#UIStackView简单介绍" class="headerlink" title="UIStackView简单介绍"></a>UIStackView简单介绍</h2><p>一个Stack View能够将它所含的View以各种方式沿其轴向进行分布，同时也可以将View沿某个方向等距分布，要隐藏<code>Stack View</code>中的视图，你只需要设置该View的<code>Hidden</code>属性为<code>true</code>，剩下的工作Stack View会自己完成。。<br><img src="/images/stack0.png"><br>坐标（Axis）、间隔（Spacing）、对齐（Alignment）以及分布（Distribution ）等。<br>distribution属性：决定Stack View如何沿它轴向的水平方向摆放它的subview，当属性值是Fill，这表示subview会沿轴向完全占据Stack View。因此，Stack View会拉伸其中一个subview使其填充剩余空间，尤其是水平内容优先级最低的那个，如果所有subview优先级相同，则拉伸第一个subview。<br>Alignment属性：决定了Stack View如何沿它轴向的垂直方向摆放它的subview，对于一个垂直的Stack View，这个属性可以设置为Fill、Leading、Center和Trailing。<br>对于水平的Stack View，这个属性则稍有不同：<br><img src="/images/stack006.png" class="distribution/Alignment属性区别"><br>.Top取代了.Leading，.Bottom取代了.Trailing。此外，水平Stack View还多出了两个属性值：.FirstBaseLine和.LastBaseLine。<br>对于水平的Stack View，这个属性则稍有不同：<br>Fill:<br><img src="/images/stack007.png" class="Fill"><br>Leading:<br><img src="/images/stack008.png" class="Leading"><br>Center:<br><img src="/images/stack009.png" class="Center"><br>Trailing:<br><img src="/images/stack000.png" class="Trailing"></p>
+    <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/kmyhy/article/details/50456444" target="_blank" rel="external">原地址</a></p>
+<h2 id="UIStackView简单介绍"><a href="#UIStackView简单介绍" class="headerlink" title="UIStackView简单介绍"></a>UIStackView简单介绍</h2><p>一个Stack View能够将它所含的View以各种方式沿其轴向进行分布，同时也可以将View沿某个方向等距分布，要隐藏<code>Stack View</code>中的视图，你只需要设置该View的<code>Hidden</code>属性为<code>true</code>，剩下的工作Stack View会自己完成。。<br><img src="/images/stack0.png"><br>坐标（Axis）、间隔（Spacing）、对齐（Alignment）以及分布（Distribution ）等。<br>distribution属性：决定Stack View如何沿它轴向的水平方向摆放它的subview，当属性值是Fill，这表示subview会沿轴向完全占据Stack View。因此，Stack View会拉伸其中一个subview使其填充剩余空间，尤其是水平内容优先级最低的那个，如果所有subview优先级相同，则拉伸第一个subview。<br>Alignment属性：决定了Stack View如何沿它轴向的垂直方向摆放它的subview，对于一个垂直的Stack View，这个属性可以设置为Fill、Leading、Center和Trailing。<br>对于水平的Stack View，这个属性则稍有不同：<br><img src="/images/stack006.png" class="distribution/Alignment属性区别"><br>.Top取代了.Leading，.Bottom取代了.Trailing。此外，水平Stack View还多出了两个属性值：.FirstBaseLine和.LastBaseLine。<br>对于水平的Stack View，这个属性则稍有不同：<br>Fill:<br><img src="/images/stack007.png" class="Fill"><br>Leading:<br><img src="/images/stack008.png" class="Leading"><br>Center:<br><img src="/images/stack009.png" class="Center"><br>Trailing:<br><img src="/images/stack000.png" class="Trailing"></p>
 <p>布局方式对比<br><img src="/images/stack01.png" class="布局方式对比"></p>
 <h3 id="添加一个新的Stack-View"><a href="#添加一个新的Stack-View" class="headerlink" title="添加一个新的Stack View"></a>添加一个新的Stack View</h3><p>点击故事板画布左下角<code>Auto Layout工具栏</code>中的<code>Stack按钮</code>：<br><img src="/images/stack3.png" class="Stack按钮"><br>另一种解散的方法是选中Stack View，然后点击<code>Editor\Emebed in\stack view</code>菜单。</p>
 <h3 id="解散一个废弃的Stack-View"><a href="#解散一个废弃的Stack-View" class="headerlink" title="解散一个废弃的Stack View"></a>解散一个废弃的Stack View</h3><p>首先，选定想解散的Stack View。按下<code>Option键</code>，点击<code>Stack 按钮</code>。这将弹出一个上下文菜单，然后点击Unembed：<br><img src="/images/stack001.png"><br>另一种解散的方法是选中Stack View，然后点击<code>Editor\Unemebed</code>菜单。</p>
@@ -59,12 +60,15 @@
 <p>如果我们只想让底下的标签将宽度扩展到100%怎么办？</p>
 <p>这个问题现在看来还不是多大的问题，因为两个标签在运行时的背景色都是透明的。但对于Weather版块来说就不同了。</p>
 <p>我们将用另外一个Stack View来说明这个问题。</p>
-<h4 id="将Weather版块转换成Stack-View"><a href="#将Weather版块转换成Stack-View" class="headerlink" title="将Weather版块转换成Stack View"></a>将Weather版块转换成Stack View</h4><p>Weather版块相对复杂一些，因为它多了一个Hide按钮。<br>要隐藏<code>Stack View</code>中的视图，你只需要设置该View的<code>Hidden</code>属性为<code>true</code>，剩下的工作Stack View会自己完成。这也是我们解决用户隐藏WEATHER标签下文本的主要思路。在本文后面的内容中，当你将weather标签添加到Stack View之后，我们再来介绍这个问题。<br>一种方法是使用嵌套的Stack View，先将WEATHER标签和Hide按钮嵌到一个水平StackView，再将这个Stack View和标签嵌到一个垂直Stack View。</p>
+<h4 id="将Weather版块转换成Stack-View"><a href="#将Weather版块转换成Stack-View" class="headerlink" title="将Weather版块转换成Stack View"></a>将Weather版块转换成Stack View</h4><p>Weather版块相对复杂一些，因为它多了一个Hide按钮。<br>要隐藏<code>Stack View</code>中的视图，你只需要设置该View的<code>Hidden</code>属性为<code>true</code>，剩下的工作Stack View会自己完成。这也是我们解决用户隐藏WEATHER标签下文本的主要思路。在本文后面的内容中，当你将weather标签添加到Stack View之后，我们再来介绍这个问题。<br>一种方法是使用嵌套的Stack View，先将WEATHER标签和Hide按钮嵌到一个水平StackView，再将这个Stack View和标签嵌到一个垂直Stack View。<br><img src="/images/stack0002.png" class="Top、Leading、Trainling为0"></p>
+<p>注意，WEATHER标签被拉伸为和Hide按钮一样高了。这并不合适，因为这会导致WEATHER标签和下面的文本之间多出了一些空间。</p>
+<p>注意Alignment属性负责Stack View轴向垂直的方向上的布局。所以，我们需要将Alignment属性设置为 Bottom：</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;UIStackView简单介绍&quot;&gt;&lt;a href=&quot;#UIStackView简单介绍&quot; class=&quot;headerlink&quot; title=&quot;UIStackView简单介绍&quot;&gt;&lt;/a&gt;UIStackView简单介绍&lt;/h2&gt;&lt;p&gt;一个Stack View能够将它所含
+      &lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/kmyhy/article/details/50456444&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原地址&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;UIStackView简单介绍&quot;&gt;&lt;a href
     
     </summary>
     
@@ -365,45 +369,44 @@
   </entry>
   
   <entry>
-    <title>shell命令+AppleScript脚本+Swift代码相互调用</title>
-    <link href="https://huos3203.github.io/2017/02/15/shell%E5%91%BD%E4%BB%A4+AppleScript%E8%84%9A%E6%9C%AC+Swift%E4%BB%A3%E7%A0%81%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8/"/>
-    <id>https://huos3203.github.io/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/</id>
+    <title>JavaScript自动化组件OC桥接</title>
+    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
+    <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
     <published>2017-02-15T09:19:30.000Z</published>
-    <updated>2017-02-15T09:19:30.000Z</updated>
+    <updated>2017-02-16T05:43:01.000Z</updated>
     
-    <content type="html"><![CDATA[<p>当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是<code>AppleScript</code>作为互通的桥梁。</p>
-<h2 id="NSTask调用AppleScript"><a href="#NSTask调用AppleScript" class="headerlink" title="NSTask调用AppleScript"></a><code>NSTask</code>调用<code>AppleScript</code></h2><h3 id="调用脚本文件main-scpt"><a href="#调用脚本文件main-scpt" class="headerlink" title="调用脚本文件main.scpt"></a>调用脚本文件<code>main.scpt</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//let bundle = NSBundle.init(forClass: self.dynamicType)</span></div><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptPath = bundle.pathForResource(<span class="string">"main"</span>, ofType: <span class="string">"scpt"</span>)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> paths = [scriptPath]</div><div class="line">    <span class="type">NSTask</span>.launchedTaskWithLaunchPath(<span class="string">"/usr/bin/osascript"</span>, arguments: paths)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="调用APPleScript脚本片段"><a href="#调用APPleScript脚本片段" class="headerlink" title="调用APPleScript脚本片段"></a>调用<code>APPleScript脚本片段</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">let</span> videoPath = bundle.pathForResource(<span class="string">"BigBuck"</span>, ofType: <span class="string">"m4v"</span>)</div><div class="line"><span class="comment">//https://developer.apple.com/library/mac/technotes/tn2084/_index.html</span></div><div class="line"><span class="comment">//open -na /Applications/mpv.app命令行必须是 -na 才能调用当前指定的播放器，否则会调用系统默认播发器</span></div><div class="line"><span class="keyword">let</span> myAppleScript = <span class="string">"on run\ndo shell script \"open -na /Applications/mpv.app \(videoPath!)\"\ntell application \"mpv\" to activate\n end run"</span></div><div class="line"><span class="built_in">print</span>(myAppleScript)</div><div class="line"><span class="keyword">var</span> error: <span class="type">NSDictionary</span>?</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptObject = <span class="type">NSAppleScript</span>(source: myAppleScript) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> output: <span class="type">NSAppleEventDescriptor</span> = scriptObject.executeAndReturnError(</div><div class="line">    &amp;error) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(output.stringValue)</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (error != <span class="literal">nil</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"error: \(error)"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="AppleScript调用shell"><a href="#AppleScript调用shell" class="headerlink" title="AppleScript调用shell"></a><code>AppleScript</code>调用<code>shell</code></h2><p>AppleScript语句中为on run {变量名称，逗号隔开} 以endrun结束。中间为AppleScript语句。</p>
-<h3 id="do-shell-script"><a href="#do-shell-script" class="headerlink" title="do shell script"></a>do shell script</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">on run [变量1,变量2...]  #开始 多个变量名称，用逗号隔开</div><div class="line">    do shell script "open -n /Applications/mpv.app" #AppleScript语句  </div><div class="line">end run #结束</div></pre></td></tr></table></figure>
-<h2 id="终端osascript调用AppleScript"><a href="#终端osascript调用AppleScript" class="headerlink" title="终端osascript调用AppleScript"></a>终端<code>osascript</code>调用<code>AppleScript</code></h2><p><a href="http://www.hackmac.org/tutorials/run-applescript-from-the-command-line/" target="_blank" rel="external">参考</a></p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;applescript command&apos; #单引号</div></pre></td></tr></table></figure>
-<h3 id="打开Finder窗口"><a href="#打开Finder窗口" class="headerlink" title="打开Finder窗口"></a>打开Finder窗口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;tell app &quot;Finder&quot; to make new Finder window&apos;</div></pre></td></tr></table></figure>
-<h3 id="打开某个程序同时弹出”Hello-World”提示框"><a href="#打开某个程序同时弹出”Hello-World”提示框" class="headerlink" title="打开某个程序同时弹出”Hello World”提示框"></a>打开某个程序同时弹出”Hello World”提示框</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">'tell app "applicationname" to display dialog "Hello World"'</span></div></pre></td></tr></table></figure>
-<h3 id="设置音量，音量大小范围（0-7）"><a href="#设置音量，音量大小范围（0-7）" class="headerlink" title="设置音量，音量大小范围（0-7）"></a>设置音量，音量大小范围（0-7）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">"set volume number"</span></div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
+<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
+<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
+<blockquote>
+<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
+</blockquote>
+<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
+<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
+<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是&lt;code&gt;AppleScript&lt;/code&gt;作为互通的桥梁。&lt;/p&gt;
-&lt;h2 id=&quot;NSTask调用AppleScript&quot;&gt;&lt;a href=&quot;#NSTask
+      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
     
     </summary>
     
       <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
     
     
-      <category term="脚本" scheme="https://huos3203.github.io/tags/%E8%84%9A%E6%9C%AC/"/>
+      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
       <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
     
       <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="shell" scheme="https://huos3203.github.io/tags/shell/"/>
-    
-      <category term="AppleScript" scheme="https://huos3203.github.io/tags/AppleScript/"/>
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
@@ -477,53 +480,54 @@
     
       <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
-    
       <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
+    
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
       <category term="JavaScript" scheme="https://huos3203.github.io/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
-    <title>JavaScript自动化组件OC桥接</title>
-    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
-    <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
+    <title>shell命令+AppleScript脚本+Swift代码相互调用</title>
+    <link href="https://huos3203.github.io/2017/02/15/shell%E5%91%BD%E4%BB%A4+AppleScript%E8%84%9A%E6%9C%AC+Swift%E4%BB%A3%E7%A0%81%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8/"/>
+    <id>https://huos3203.github.io/2017/02/15/shell命令+AppleScript脚本+Swift代码相互调用/</id>
     <published>2017-02-15T09:19:30.000Z</published>
-    <updated>2017-02-16T05:43:01.000Z</updated>
+    <updated>2017-02-15T09:19:30.000Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
-<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
-<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
-<blockquote>
-<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
-</blockquote>
-<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
-<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
-<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p>当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是<code>AppleScript</code>作为互通的桥梁。</p>
+<h2 id="NSTask调用AppleScript"><a href="#NSTask调用AppleScript" class="headerlink" title="NSTask调用AppleScript"></a><code>NSTask</code>调用<code>AppleScript</code></h2><h3 id="调用脚本文件main-scpt"><a href="#调用脚本文件main-scpt" class="headerlink" title="调用脚本文件main.scpt"></a>调用脚本文件<code>main.scpt</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//let bundle = NSBundle.init(forClass: self.dynamicType)</span></div><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptPath = bundle.pathForResource(<span class="string">"main"</span>, ofType: <span class="string">"scpt"</span>)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">let</span> paths = [scriptPath]</div><div class="line">    <span class="type">NSTask</span>.launchedTaskWithLaunchPath(<span class="string">"/usr/bin/osascript"</span>, arguments: paths)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用APPleScript脚本片段"><a href="#调用APPleScript脚本片段" class="headerlink" title="调用APPleScript脚本片段"></a>调用<code>APPleScript脚本片段</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> bundle = <span class="type">NSBundle</span>.mainBundle()</div><div class="line"><span class="keyword">let</span> videoPath = bundle.pathForResource(<span class="string">"BigBuck"</span>, ofType: <span class="string">"m4v"</span>)</div><div class="line"><span class="comment">//https://developer.apple.com/library/mac/technotes/tn2084/_index.html</span></div><div class="line"><span class="comment">//open -na /Applications/mpv.app命令行必须是 -na 才能调用当前指定的播放器，否则会调用系统默认播发器</span></div><div class="line"><span class="keyword">let</span> myAppleScript = <span class="string">"on run\ndo shell script \"open -na /Applications/mpv.app \(videoPath!)\"\ntell application \"mpv\" to activate\n end run"</span></div><div class="line"><span class="built_in">print</span>(myAppleScript)</div><div class="line"><span class="keyword">var</span> error: <span class="type">NSDictionary</span>?</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> scriptObject = <span class="type">NSAppleScript</span>(source: myAppleScript) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> output: <span class="type">NSAppleEventDescriptor</span> = scriptObject.executeAndReturnError(</div><div class="line">    &amp;error) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(output.stringValue)</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (error != <span class="literal">nil</span>) </div><div class="line">    &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"error: \(error)"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="AppleScript调用shell"><a href="#AppleScript调用shell" class="headerlink" title="AppleScript调用shell"></a><code>AppleScript</code>调用<code>shell</code></h2><p>AppleScript语句中为on run {变量名称，逗号隔开} 以endrun结束。中间为AppleScript语句。</p>
+<h3 id="do-shell-script"><a href="#do-shell-script" class="headerlink" title="do shell script"></a>do shell script</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">on run [变量1,变量2...]  #开始 多个变量名称，用逗号隔开</div><div class="line">    do shell script "open -n /Applications/mpv.app" #AppleScript语句  </div><div class="line">end run #结束</div></pre></td></tr></table></figure>
+<h2 id="终端osascript调用AppleScript"><a href="#终端osascript调用AppleScript" class="headerlink" title="终端osascript调用AppleScript"></a>终端<code>osascript</code>调用<code>AppleScript</code></h2><p><a href="http://www.hackmac.org/tutorials/run-applescript-from-the-command-line/" target="_blank" rel="external">参考</a></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;applescript command&apos; #单引号</div></pre></td></tr></table></figure>
+<h3 id="打开Finder窗口"><a href="#打开Finder窗口" class="headerlink" title="打开Finder窗口"></a>打开Finder窗口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e &apos;tell app &quot;Finder&quot; to make new Finder window&apos;</div></pre></td></tr></table></figure>
+<h3 id="打开某个程序同时弹出”Hello-World”提示框"><a href="#打开某个程序同时弹出”Hello-World”提示框" class="headerlink" title="打开某个程序同时弹出”Hello World”提示框"></a>打开某个程序同时弹出”Hello World”提示框</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">'tell app "applicationname" to display dialog "Hello World"'</span></div></pre></td></tr></table></figure>
+<h3 id="设置音量，音量大小范围（0-7）"><a href="#设置音量，音量大小范围（0-7）" class="headerlink" title="设置音量，音量大小范围（0-7）"></a>设置音量，音量大小范围（0-7）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">osascript -e <span class="string">"set volume number"</span></div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
+      &lt;p&gt;当想让自己的app支持播放，但有没有足够的时间来开发自己的播放器，可以先考虑用mpv播放器来实现相关功能，这是&lt;code&gt;AppleScript&lt;/code&gt;作为互通的桥梁。&lt;/p&gt;
+&lt;h2 id=&quot;NSTask调用AppleScript&quot;&gt;&lt;a href=&quot;#NSTask
     
     </summary>
     
       <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
     
     
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="脚本" scheme="https://huos3203.github.io/tags/%E8%84%9A%E6%9C%AC/"/>
     
       <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
       <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
     
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
+      <category term="shell" scheme="https://huos3203.github.io/tags/shell/"/>
+    
+      <category term="AppleScript" scheme="https://huos3203.github.io/tags/AppleScript/"/>
     
   </entry>
   
@@ -797,9 +801,9 @@
     
       <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
-    
       <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
+    
+      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
     
       <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
@@ -869,9 +873,9 @@
     
       <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
-    
       <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
+    
+      <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
     
       <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
