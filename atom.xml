@@ -303,6 +303,48 @@
   </entry>
   
   <entry>
+    <title>JavaScript自动化组件OC桥接</title>
+    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
+    <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
+    <published>2017-02-15T09:19:30.000Z</published>
+    <updated>2017-02-16T05:43:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
+<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
+<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
+<blockquote>
+<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
+</blockquote>
+<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
+<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
+<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
+    
+    </summary>
+    
+      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
+    
+    
+      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
+    
+      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>macOS支持JavaScript自动化组件基础</title>
     <link href="https://huos3203.github.io/2017/02/15/macOS%E6%94%AF%E6%8C%81JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80/"/>
     <id>https://huos3203.github.io/2017/02/15/macOS支持JavaScript自动化组件基础/</id>
@@ -424,48 +466,6 @@
   </entry>
   
   <entry>
-    <title>JavaScript自动化组件OC桥接</title>
-    <link href="https://huos3203.github.io/2017/02/15/JavaScript%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E4%BB%B6OC%E6%A1%A5%E6%8E%A5/"/>
-    <id>https://huos3203.github.io/2017/02/15/JavaScript自动化组件OC桥接/</id>
-    <published>2017-02-15T09:19:30.000Z</published>
-    <updated>2017-02-16T05:43:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10-10.html#//apple_ref/doc/uid/TP40014508-CH109-SW8" target="_blank" rel="external">文档</a><br><code>JavaScript自动化</code>有一个内置的<code>Objective-C Bridge</code>，使您能够访问文件系统，创建Cocoa应用程序。<br><code>Objective-C Bridge</code>的主要接入点是全局属性<code>objc</code>和<code>$</code>。</p>
-<h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><p><code>Foundation framework</code>中的语法默认支持<code>JavaScript自动化</code>。也可以通过使用<code>ObjC.import()</code>方法导入其他Frameworks 和 libraries。<br>例如，使用<code>Cocoa框架</code>中的<code>NSBeep()</code>函数，需要导入<code>Cocoa框架</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'Cocoa'</span>)</div><div class="line">$.NSBeep()</div></pre></td></tr></table></figure><br>除了系统框架之外，一些系统库的功能也被暴露出来。这个功能可以通过<code>头文件</code>的名称来暴漏出来（不带.h）<br>例如：<br>arpa/inet, asl, copyfile, dispatch, dyld, errno, getopt, glob, grp, ifaddrs, launch, membership, netdb, netinet/in, notify, objc, paths, pwd, readline, removefile, signal, spawn, sqlite3, stdio, stdlib, string, sys/fcntl, sys/file, sys/ioctl, sys/mount, sys/param, sys/resource, sys/socket, sys/stat, sys/sysctl, sys/time, sys/times, sys/types, sys/wait, sys/xattr, syslog, time, unistd, uuid/uuid, vImage, vecLib, vmnet, xpc, 和 zlib.<br>导入框架时，系统将参考桥接支持文件。除了内置的框架和库，您可以导入任何具有桥接支持的框架，只需要将完整路径传递给框架，如下示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjC.import(<span class="string">'/Library/Frameworks/Awesome.framework'</span>)</div></pre></td></tr></table></figure></p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始的<code>JavaScript数据类型</code>映射到<code>C数据类型</code>。例如，一个<code>JavaScript字符串</code>映射为<code>char *</code>，而<code>JavaScript整数</code>映射到<code>int</code>。使用<code>objc API</code>返回一个<code>char *</code>时，会得到一个<code>JS 字符串</code></p>
-<p>原始的<code>JavaScript数据类型</code>将被自动转换为<code>ObjC对象类型</code>，并能作为一个预期的对象类型的参数传递给ObjC方法。<br>例如，一个<code>JS字符串</code>将被转换为一个<code>NSString对象</code>如果是什么方法签名说应该是输入。</p>
-<blockquote>
-<p>注意，然而，ObjC方法返回的ObjC对象类型是不会自动转换为原始的JavaScript的数据类型。</p>
-</blockquote>
-<h2 id="实例化的类和调用方法"><a href="#实例化的类和调用方法" class="headerlink" title="实例化的类和调用方法"></a>实例化的类和调用方法</h2><p>所有类都定义为<code>$对象</code>的属性。ObjC对象的方法有两种方式调用，根据是否需要参数的方法。<br>如果ObjC方法不带参数，然后调用<code>JavaScript属性名</code>访问<code>属性值</code>。这个例子中实例化一个空的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = $.NSMutableString.alloc.init</div></pre></td></tr></table></figure><br>如果ObjC方法不带参数，根据<code>JSExport</code>规范来命名，通过JavaScript的方法调用（function-typed property）；<br>对于多参数的方法，Objective-C的方法每个部分都合并在一起，冒号后的字母变为大写并移除冒号。比如下边协议中的方法，在JavaScript调用就是：doFooWithBar(foo, bar);<br>这个例子说明<code>JavaScript字符串</code>转为<code>NSString</code>然后写入到一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = $.NSString.alloc.initWithUTF8String(<span class="string">'foo'</span>)</div><div class="line">str.writeToFileAtomically(<span class="string">'/tmp/foo'</span>, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
-<p>如果你调用一个方法，如<code>-intValue</code>，返回<code>C数据类型</code>而不是一个对象，然后你会回到原始的<code>JavaScript数据类型</code>。<br>此示例返回原始的JavaScript的整数，99。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.NSNumber.numberWithInt(<span class="number">99</span>).intValue</div></pre></td></tr></table></figure></p>
-<h3 id="访问-ObjC-Properties"><a href="#访问-ObjC-Properties" class="headerlink" title="访问 ObjC Properties"></a>访问 ObjC Properties</h3><p><code>ObjC属性</code>也可以通过<code>JavaScript属性</code>来访问，很像调用无参数方法。<br>当一个<code>桥接对象属性</code>的被访问时，ObjC属性列表是第一参考，如果列表中存在该名称对应的属性，那么就调用相应属性的<code>getter</code>或<code>setter</code>选择器。如果该名称的ObjC属性不在类中属性的列表中，那么该属性名称就作为<code>方法选择器</code>来调用。<br>使用自定义<code>getter</code>名定义一个属性，你可以使用<code>属性</code>名 或 <code>getter</code>名，并得到相同的结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task = $.NSTask.alloc.init</div><div class="line">task.running == task.isRunning</div></pre></td></tr></table></figure><br>另外，不同的参数方法，<code>桥接对象属性</code>映射到<code>ObjC属性</code>也可以设置为（read/write属性）。下面的两行定义了一个ObjC属性：<code>launchPath</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">task.launchPath = <span class="string">'/bin/sleep'</span></div><div class="line">task.setLaunchPath(<span class="string">'/bin/sleep'</span>)</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/OSX10
-    
-    </summary>
-    
-      <category term="macOS" scheme="https://huos3203.github.io/categories/macOS/"/>
-    
-    
-      <category term="工具" scheme="https://huos3203.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="语法" scheme="https://huos3203.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-      <category term="测试" scheme="https://huos3203.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-      <category term="搭建" scheme="https://huos3203.github.io/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
-    
-      <category term="管理" scheme="https://huos3203.github.io/tags/%E7%AE%A1%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title></title>
     <link href="https://huos3203.github.io/2017/02/15/JavaScript%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
     <id>https://huos3203.github.io/2017/02/15/JavaScript实现自动化/</id>
@@ -535,9 +535,9 @@
     
       <category term="脚本" scheme="https://huos3203.github.io/tags/%E8%84%9A%E6%9C%AC/"/>
     
-      <category term="沙盒" scheme="https://huos3203.github.io/tags/%E6%B2%99%E7%9B%92/"/>
-    
       <category term="AppleScript" scheme="https://huos3203.github.io/tags/AppleScript/"/>
+    
+      <category term="沙盒" scheme="https://huos3203.github.io/tags/%E6%B2%99%E7%9B%92/"/>
     
   </entry>
   
@@ -735,9 +735,9 @@
     
       <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
-    
       <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
+    
+      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
       <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
@@ -807,9 +807,9 @@
     
       <category term="混编" scheme="https://huos3203.github.io/tags/%E6%B7%B7%E7%BC%96/"/>
     
-      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
-    
       <category term="macOS" scheme="https://huos3203.github.io/tags/macOS/"/>
+    
+      <category term="iOS" scheme="https://huos3203.github.io/tags/iOS/"/>
     
       <category term="Java​Script​Core" scheme="https://huos3203.github.io/tags/Java%E2%80%8BScript%E2%80%8BCore/"/>
     
