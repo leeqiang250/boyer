@@ -171,6 +171,7 @@
 		142A9D081E6050B1002A680D /* stack020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack020.png; sourceTree = "<group>"; };
 		142A9D091E6050B1002A680D /* stack021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack021.png; sourceTree = "<group>"; };
 		142A9D0A1E6050B1002A680D /* stack022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stack022.png; sourceTree = "<group>"; };
+		142A9D0B1E65210D002A680D /* 使用Cocoapods创建私有podspec.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "使用Cocoapods创建私有podspec.md"; sourceTree = "<group>"; };
 		143217551E518F5100FEE010 /* 需求速记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "需求速记.jpg"; sourceTree = "<group>"; };
 		143217571E51A8EB00FEE010 /* 读书笔记.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "读书笔记.jpg"; sourceTree = "<group>"; };
 		143217581E51A97200FEE010 /* 思维导图之开发实践篇.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "思维导图之开发实践篇.md"; sourceTree = "<group>"; };
@@ -516,6 +517,10 @@
 		14D1C36D1E4971DB00E3F905 /* xcode6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xcode6.jpg; sourceTree = "<group>"; };
 		14D1C36E1E497BBC00E3F905 /* xcode8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xcode8.png; sourceTree = "<group>"; };
 		14D1C3701E49C89900E3F905 /* _config.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = _config.yml; path = ../themes/maupassant/_config.yml; sourceTree = "<group>"; };
+		14DC954B1E66A80800055361 /* 互动性的教学工具XCPlayground.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "互动性的教学工具XCPlayground.md"; sourceTree = "<group>"; };
+		14DC95521E66B2B100055361 /* xcplayground-capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xcplayground-capture.png"; sourceTree = "<group>"; };
+		14DC95531E66B2B100055361 /* xcplayground-documentation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xcplayground-documentation.png"; sourceTree = "<group>"; };
+		14DC95541E66B2B100055361 /* xcplayground-sources.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xcplayground-sources.png"; sourceTree = "<group>"; };
 		14FB50531E5298F200E05601 /* Fabric对macOS系统的支持调研.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Fabric对macOS系统的支持调研.md"; sourceTree = "<group>"; };
 		14FB50561E52B13C00E05601 /* macOS之PDFKit基础.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "macOS之PDFKit基础.md"; sourceTree = "<group>"; };
 		14FB50571E52B87500E05601 /* view_vspage_space.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = view_vspage_space.gif; sourceTree = "<group>"; };
@@ -906,6 +911,8 @@
 				84B898411E5B1B7D007E391B /* 高期望实现异步单元测试.md */,
 				142A9CCE1E600454002A680D /* 更改设备屏幕上显示的应用程序图标下方的名称.md */,
 				142A9CD11E600F04002A680D /* UIStackView教程了解StackView.md */,
+				142A9D0B1E65210D002A680D /* 使用Cocoapods创建私有podspec.md */,
+				14DC954B1E66A80800055361 /* 互动性的教学工具XCPlayground.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
@@ -930,6 +937,9 @@
 		149F33821E0A767600AAC556 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				14DC95521E66B2B100055361 /* xcplayground-capture.png */,
+				14DC95531E66B2B100055361 /* xcplayground-documentation.png */,
+				14DC95541E66B2B100055361 /* xcplayground-sources.png */,
 				142A9D071E6050B1002A680D /* stack023.png */,
 				142A9D081E6050B1002A680D /* stack020.png */,
 				142A9D091E6050B1002A680D /* stack021.png */,
