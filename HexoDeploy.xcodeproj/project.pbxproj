@@ -521,6 +521,7 @@
 		14DC95521E66B2B100055361 /* xcplayground-capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xcplayground-capture.png"; sourceTree = "<group>"; };
 		14DC95531E66B2B100055361 /* xcplayground-documentation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xcplayground-documentation.png"; sourceTree = "<group>"; };
 		14DC95541E66B2B100055361 /* xcplayground-sources.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xcplayground-sources.png"; sourceTree = "<group>"; };
+		14DC95551E67D48600055361 /* RxSwift基本概念.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "RxSwift基本概念.md"; sourceTree = "<group>"; };
 		14FB50531E5298F200E05601 /* Fabric对macOS系统的支持调研.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Fabric对macOS系统的支持调研.md"; sourceTree = "<group>"; };
 		14FB50561E52B13C00E05601 /* macOS之PDFKit基础.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "macOS之PDFKit基础.md"; sourceTree = "<group>"; };
 		14FB50571E52B87500E05601 /* view_vspage_space.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = view_vspage_space.gif; sourceTree = "<group>"; };
@@ -913,6 +914,7 @@
 				142A9CD11E600F04002A680D /* UIStackView教程了解StackView.md */,
 				142A9D0B1E65210D002A680D /* 使用Cocoapods创建私有podspec.md */,
 				14DC954B1E66A80800055361 /* 互动性的教学工具XCPlayground.md */,
+				14DC95551E67D48600055361 /* RxSwift基本概念.md */,
 			);
 			name = "_posts博文";
 			path = _posts;
